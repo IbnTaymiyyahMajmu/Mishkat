@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- A lamp in a niche: the mishkāt of 24:35. -->
+  <rect width="32" height="32" rx="6" fill="#f3f2f2"/>
+  <path d="M9 27V15a7 7 0 0 1 14 0v12" fill="none" stroke="#b68235" stroke-width="1.8"/>
+  <circle cx="16" cy="15.5" r="3.4" fill="none" stroke="#b68235" stroke-width="1.6"/>
+  <path d="M16 12.1V9.4" stroke="#b68235" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M9 27h14" stroke="#b68235" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

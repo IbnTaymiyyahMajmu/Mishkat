@@ -1,0 +1,32 @@
+.region {
+  position: fixed;
+  left: 50%;
+  bottom: 96px;
+  transform: translateX(-50%);
+  z-index: 95;
+  pointer-events: none;
+}
+
+.toast {
+  background: var(--color-neutral-900);
+  color: var(--color-neutral-100);
+  font-size: 13px;
+  padding: 9px 18px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  animation: sheet 180ms ease both;
+  white-space: nowrap;
+}
+
+:global(:root[data-theme="night"]) .toast {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-divider);
+}
+
+/* The shared sheet curve, declared locally because a module cannot reference a
+   global keyframe — see the note in globals.css. */
+@keyframes sheet {
+  from { transform: translateY(18px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}

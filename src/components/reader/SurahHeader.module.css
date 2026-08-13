@@ -1,0 +1,88 @@
+.header {
+  text-align: center;
+  padding: 36px 0 30px;
+  border-bottom: 1px solid var(--color-divider);
+  margin-bottom: 8px;
+}
+
+.arabic {
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 52px;
+  line-height: 1.7;
+  direction: rtl;
+  margin: 6px 0 2px;
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 30px;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.meaning {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--muted-62);
+  margin-top: 2px;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.intro {
+  text-align: left;
+  margin-top: 22px;
+  padding: 20px 22px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  animation: fade 240ms ease both;
+}
+
+.para {
+  font-size: 13.5px;
+  line-height: 1.8;
+  margin: 0 0 10px;
+  color: var(--muted-88);
+  text-align: justify;
+  hyphens: auto;
+}
+
+.paraArabic {
+  font-family: var(--font-amiri), serif;
+  font-size: 18px;
+  line-height: 2.05;
+  text-align: right;
+}
+
+.paraHeading {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 15px;
+  text-align: left;
+}
+
+.source {
+  font-size: 11px;
+  color: var(--muted-45);
+  margin-top: 6px;
+}
+
+/* The shared fade curve, declared locally because a module cannot reference a
+   global keyframe — see the note in globals.css. */
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .arabic { font-size: 40px; }
+  .name { font-size: 25px; }
+}

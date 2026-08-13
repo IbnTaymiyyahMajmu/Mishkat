@@ -1,0 +1,133 @@
+.body {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 46px 32px 90px;
+}
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-divider);
+  flex-wrap: wrap;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 42px;
+  margin: 6px 0 0;
+}
+
+.filter { max-width: 300px; }
+
+.orders {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 0 6px;
+  flex-wrap: wrap;
+}
+
+.order {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12px;
+  padding: 5px 11px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--muted-62);
+  cursor: pointer;
+}
+.order:hover:not(:disabled) { border-color: var(--color-accent); }
+.order:disabled { opacity: 0.4; cursor: not-allowed; }
+.orderOn { border-color: var(--color-accent); color: var(--color-accent); }
+
+.count {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  color: var(--muted-45);
+}
+
+.empty {
+  padding: 60px 0;
+  text-align: center;
+  font-style: italic;
+  color: var(--muted-55);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 0 40px;
+  margin-top: 8px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  text-align: left;
+  padding: 13px 8px;
+  border-bottom: 1px solid var(--color-divider);
+  text-decoration: none;
+  color: inherit;
+}
+.row:hover {
+  background: color-mix(in srgb, var(--color-accent) 7%, transparent);
+  color: inherit;
+}
+
+.diamond {
+  width: 32px;
+  height: 32px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-divider);
+  transform: rotate(45deg);
+  border-radius: 3px;
+}
+
+.diamondNumber {
+  transform: rotate(-45deg);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-heading);
+  color: var(--muted-62);
+}
+
+.rowText { flex: 1; min-width: 0; }
+
+.rowName {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 16px;
+}
+
+.rowMeta {
+  display: block;
+  font-size: 12px;
+  color: var(--muted-55);
+}
+
+.rowArabic {
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 21px;
+  direction: rtl;
+  color: var(--color-accent);
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .body { padding: 32px 20px 80px; }
+  .title { font-size: 32px; }
+  .filter { max-width: none; }
+}

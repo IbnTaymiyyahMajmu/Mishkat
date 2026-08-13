@@ -1,0 +1,72 @@
+# Build the static site and publish it to GitHub Pages.
+#
+# Before this can run: Settings → Pages → Source: "GitHub Actions".
+#
+# `configure-pages` reports the URL the site will actually be served from, so a
+# project page served at /mishkat gets the right base path without anyone
+# editing a constant.
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+
+      - id: pages
+        uses: actions/configure-pages@v5
+
+      - run: npm ci
+
+      - run: npm run typecheck
+      - run: npm run lint
+
+      - name: Build the static export
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: npm run build
+
+      - name: Check the export is complete
+        run: |
+          test -f out/index.html
+          test -f out/surahs/index.html
+          test -f out/notes/index.html
+          test -f out/settings/index.html
+          # 114 surahs in the reader and 114 in the muṣḥaf view, or something
+          # has gone wrong with the static params.
+          test "$(find out/read -mindepth 1 -maxdepth 1 -type d -regex '.*/[0-9]+' | wc -l)" -eq 114
+          test "$(find out/read -name 'index.html' -path '*mushaf*' | wc -l)" -eq 114
+          echo "published site: $(du -sh out | cut -f1)"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

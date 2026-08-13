@@ -1,0 +1,244 @@
+.empty {
+  margin: 18px 0;
+  font-size: 13px;
+  color: var(--muted-55);
+  font-style: italic;
+}
+
+.quiet {
+  margin: 0 0 8px;
+  font-size: 12.5px;
+  color: var(--muted-55);
+}
+
+.footnote {
+  margin-top: 20px;
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--muted-45);
+}
+
+.section { margin-top: 24px; }
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.count { font-size: 11px; color: var(--muted-45); font-variant-numeric: tabular-nums; }
+
+/* — word study — */
+.wordHead {
+  text-align: center;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.wordArabic {
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 50px;
+  line-height: 1.9;
+  direction: rtl;
+}
+
+.wordTranslit {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--muted-62);
+}
+
+.wordGloss {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 21px;
+  margin-top: 6px;
+}
+
+.definitions {
+  margin: 0;
+  padding: 16px 0 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 9px 18px;
+  font-size: 13px;
+  align-items: baseline;
+}
+.definitions dt {
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  color: var(--muted-45);
+}
+.definitions dd { margin: 0; }
+.numeric { font-variant-numeric: tabular-nums; }
+
+.missing {
+  margin-top: 22px;
+  padding: 14px 16px;
+  border: 1px dashed var(--color-divider);
+  border-radius: var(--radius-md);
+}
+.missing p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--muted-62);
+}
+
+.occurrence {
+  display: block;
+  width: 100%;
+  text-align: right;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--color-divider);
+  padding: 10px 0;
+  cursor: pointer;
+  color: inherit;
+  font-family: inherit;
+}
+.occurrence:hover { background: color-mix(in srgb, var(--color-accent) 6%, transparent); }
+
+.occurrenceText {
+  display: block;
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 20px;
+  line-height: 1.95;
+  direction: rtl;
+}
+
+.occurrenceKey {
+  display: block;
+  direction: ltr;
+  text-align: left;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  margin-top: 4px;
+}
+
+/* — tafsir — */
+.tafsirVerse {
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 25px;
+  line-height: 2.1;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-divider);
+  text-align: right;
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.chip {
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  padding: 4px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid var(--color-divider);
+  background: transparent;
+  color: var(--muted-62);
+  font-family: var(--font-body);
+  text-align: left;
+}
+.chip:hover { border-color: var(--color-accent); }
+.chipOn {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  color: var(--color-accent-800);
+}
+
+.work {
+  margin-top: 20px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.workHead {
+  padding: 11px 13px;
+  border-bottom: 1px solid var(--color-divider);
+  background: color-mix(in srgb, var(--color-text) 3%, transparent);
+}
+
+.workName {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 15px;
+}
+
+.workAuthor { font-size: 11.5px; color: var(--muted-55); margin-top: 1px; }
+
+.workBody { padding: 13px 13px 4px; }
+
+.tafsirPara {
+  margin: 0 0 11px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.8;
+  text-align: justify;
+  hyphens: auto;
+  color: var(--muted-88);
+}
+
+.tafsirArabic {
+  font-family: var(--font-amiri), serif;
+  font-size: 19px;
+  line-height: 2.05;
+  text-align: right;
+}
+
+.tafsirHeading {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 15px;
+  text-align: left;
+}
+
+.workFoot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 13px;
+  border-top: 1px solid var(--color-divider);
+}
+
+.sourceLink {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* — notes — */
+.scopeRow {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.scopeBtn {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12px;
+  padding: 5px 11px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-divider);
+  background: transparent;
+  color: var(--muted-62);
+  cursor: pointer;
+}
+.scopeBtn:hover { border-color: var(--color-accent); }
+.scopeBtnOn { border-color: var(--color-accent); color: var(--color-accent); }
+
+.notesList { margin-top: 8px; }

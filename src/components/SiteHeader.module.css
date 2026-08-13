@@ -1,0 +1,136 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 0 22px;
+  height: var(--header-h);
+  flex: none;
+  position: relative;
+  border-bottom: 1px solid var(--color-divider);
+  background: var(--color-bg);
+  color: var(--color-text);
+  z-index: 40;
+  transition:
+    background 300ms ease,
+    border-color 300ms ease,
+    color 300ms ease;
+}
+
+/* On the landing page the bar has no ground of its own: it sits in the lamp's
+   light, over the niche, and every colour in it is stated literally because the
+   page's tokens describe ink on paper. */
+.headerHome {
+  background: transparent;
+  border-bottom-color: transparent;
+  color: #efece4;
+}
+.headerHome .brandArabic { color: #e9c88d; }
+.headerHome .brandKicker { color: rgba(239, 236, 228, 0.42); }
+.headerHome .navLink { color: rgba(239, 236, 228, 0.72); }
+.headerHome .navLink:hover { color: #e9c88d; }
+.headerHome .navLinkOn {
+  color: #e9c88d;
+  border-bottom-color: #e9c88d;
+}
+/* The secondary button's border is mixed from the body ink, which is invisible
+   here; the search control keeps its outline in the page's own pale. */
+.headerHome .search {
+  border-color: rgba(239, 236, 228, 0.22);
+  color: inherit;
+}
+.headerHome .search:hover {
+  background: rgba(226, 190, 124, 0.12);
+  border-color: rgba(226, 190, 124, 0.5);
+}
+.headerHome .kbd { border-color: rgba(239, 236, 228, 0.3); }
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  margin-right: auto;
+  min-width: 0;
+}
+
+.brandArabic {
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 22px;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.brandName {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 19px;
+  letter-spacing: 0.01em;
+}
+
+.brandKicker {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-45);
+  font-family: var(--font-heading);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav::-webkit-scrollbar { display: none; }
+
+.navLink {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 14px;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding: 6px 10px;
+  letter-spacing: 0.01em;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+.navLink:hover { color: var(--color-accent); }
+.navLinkOn {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.search {
+  gap: 8px;
+  padding-inline: 12px;
+  flex: none;
+}
+
+.searchLabel {
+  opacity: 0.6;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.kbd {
+  font-family: var(--font-body);
+  font-size: 10px;
+  border: 1px solid var(--color-divider);
+  border-radius: 3px;
+  padding: 1px 5px;
+  opacity: 0.5;
+}
+
+@media (max-width: 860px) {
+  .header { gap: 12px; padding: 0 14px; }
+  .brandKicker { display: none; }
+  .searchLabel, .kbd { display: none; }
+  .search { width: 36px; padding-inline: 0; }
+}
+
+@media (max-width: 620px) {
+  .brandName { display: none; }
+  .navLink { font-size: 13px; padding: 6px 7px; }
+}

@@ -1,0 +1,30 @@
+.shell {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+/* The niche: warm at the top where the lamp hangs, falling away to almost
+   black at the bottom of the screen. */
+.shellHome {
+  background: radial-gradient(
+    150% 105% at 50% -6%,
+    #4a3719 0%,
+    #33260f 16%,
+    #241b0f 34%,
+    #16110a 62%,
+    #0b0906 100%
+  );
+  color: #efece4;
+}
+
+.main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}

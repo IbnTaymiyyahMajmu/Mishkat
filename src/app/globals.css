@@ -1,0 +1,386 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   Mishkāt — global stylesheet.
+
+   The first half is the "Classical" design system handed over with the design:
+   tokens and component classes, kept intact so the system stays the source of
+   truth for the look. The second half is what this application adds on top —
+   the reader, the panels, the muṣḥaf — expressed in the same tokens.
+
+   Typeface families arrive as CSS variables from next/font (see layout.tsx),
+   which self-hosts them at build time: no request leaves the page for a font.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --color-bg: #f3f2f2;
+  --color-surface: #eae9e9;
+  --color-text: #201f1d;
+  --color-accent: #b68235;
+  --color-accent-2: #ac803e;
+  --color-divider: color-mix(in srgb, var(--color-text) 16%, transparent);
+
+  /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
+     same step of any role matches the others in visual value. */
+  --color-neutral-100: #f8f4f4;
+  --color-neutral-200: #eae7e7;
+  --color-neutral-300: #d7d3d3;
+  --color-neutral-400: #bab6b6;
+  --color-neutral-500: #9b9797;
+  --color-neutral-600: #7d7979;
+  --color-neutral-700: #605d5d;
+  --color-neutral-800: #444141;
+  --color-neutral-900: #2d2b2b;
+
+  --color-accent-100: #fff3e4;
+  --color-accent-200: #ffe3bf;
+  --color-accent-300: #facb8d;
+  --color-accent-400: #e1ad66;
+  --color-accent-500: #c28d41;
+  --color-accent-600: #a06f24;
+  --color-accent-700: #7d5411;
+  --color-accent-800: #5a3b0a;
+  --color-accent-900: #3a270d;
+
+  --color-accent-2-100: #fff3e4;
+  --color-accent-2-200: #ffe3be;
+  --color-accent-2-300: #f5cd96;
+  --color-accent-2-400: #dbaf70;
+  --color-accent-2-500: #bc8f4e;
+  --color-accent-2-600: #9b7232;
+  --color-accent-2-700: #79561f;
+  --color-accent-2-800: #573d14;
+  --color-accent-2-900: #382810;
+
+  --font-heading: var(--font-cormorant), system-ui, sans-serif;
+  --font-heading-weight: 600;
+  --font-body: var(--font-lora), system-ui, sans-serif;
+
+  --space-1: 4.6px;
+  --space-2: 9.2px;
+  --space-3: 13.8px;
+  --space-4: 18.4px;
+  --space-6: 27.6px;
+  --space-8: 36.8px;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 7px;
+
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
+
+  /* — application additions — */
+  --tint: color-mix(in srgb, var(--color-accent) 17%, transparent);
+  --header-h: 62px;
+  --muted-45: color-mix(in srgb, var(--color-text) 45%, transparent);
+  --muted-55: color-mix(in srgb, var(--color-text) 55%, transparent);
+  --muted-62: color-mix(in srgb, var(--color-text) 62%, transparent);
+  --muted-72: color-mix(in srgb, var(--color-text) 72%, transparent);
+  --muted-88: color-mix(in srgb, var(--color-text) 88%, transparent);
+
+  /* Reader preferences, written onto the document element by the settings
+     store so type size changes never re-render the verse tree. */
+  --arabic-font: var(--font-amiri-quran), serif;
+  --arabic-size: 40px;
+  --trans-size: 15px;
+  --reader-max: 780px;
+}
+
+/* Night reading. Chosen by the reader in settings, not by the OS, because a
+   muṣḥaf is often read in a dark room on a device that is set to light. */
+:root[data-theme="night"] {
+  --color-bg: #14130f;
+  --color-surface: #1d1b17;
+  --color-text: #e8e3d7;
+  --color-accent: #c9a05a;
+  --color-divider: color-mix(in srgb, var(--color-text) 18%, transparent);
+
+  --color-neutral-100: #23211c;
+  --color-neutral-800: #d5cfc2;
+  --color-accent-100: #2c2418;
+  --color-accent-800: #e5c68b;
+  --color-accent-700: #d8b273;
+  --shadow-lg: 0 12px 32px rgb(0 0 0 / 55%);
+  --shadow-md: 0 3px 10px rgb(0 0 0 / 45%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 400;
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  margin: 0 0 var(--space-2);
+}
+
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+h3 { font-size: 25px; }
+h4 { font-size: 20px; }
+h5 { font-size: 16px; }
+h6 { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+p { margin: 0 0 var(--space-3); }
+
+a {
+  color: var(--color-accent-700);
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--color-accent); }
+
+img { display: block; max-width: 100%; }
+
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-text) 18%, transparent);
+  border-radius: 6px;
+  border: 3px solid var(--color-bg);
+}
+::-webkit-scrollbar-track { background: transparent; }
+
+.text-muted { color: var(--muted-55); }
+
+.hr {
+  height: 1px;
+  border: 0;
+  margin: var(--space-4) 0;
+  background: var(--color-divider);
+}
+
+/* — buttons — */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid transparent;
+  padding: var(--space-2) calc(var(--space-3) * 1.2);
+  border-radius: var(--radius-md);
+}
+.btn svg { display: block; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-primary { color: var(--color-accent); border-color: var(--color-accent); }
+.btn-primary:hover:not(:disabled) { background: color-mix(in srgb, var(--color-accent) 12%, transparent); }
+.btn-primary:active:not(:disabled) { background: color-mix(in srgb, var(--color-accent) 22%, transparent); }
+.btn-secondary { border-color: var(--color-divider); }
+.btn-secondary:hover:not(:disabled) { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.btn-secondary:active:not(:disabled) { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
+.btn-ghost { color: var(--color-accent); padding-inline: var(--space-1); }
+.btn-ghost:hover:not(:disabled) { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.btn-ghost:active:not(:disabled) { background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
+.btn-icon { width: 36px; height: 36px; padding: 0; }
+.btn-block { width: 100%; margin-top: var(--space-2); }
+.btn-on { color: var(--color-accent); border-color: var(--color-accent); }
+
+/* — forms — */
+.field > label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: var(--muted-72);
+}
+.input {
+  width: 100%;
+  min-height: 36px;
+  padding: 6px 10px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--color-text);
+  caret-color: var(--color-accent);
+  background: transparent;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+}
+.input:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
+.input:focus-visible { border-color: var(--color-accent); outline-offset: 0; }
+textarea.input { min-height: 90px; resize: vertical; font-family: var(--font-body); }
+
+/* — cards — */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: 1px solid var(--color-divider);
+}
+.card-kicker {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.card-title {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 17px;
+  line-height: 1.2;
+}
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--muted-55);
+}
+
+/* — tags — */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  padding: 3px 10px;
+  border-radius: calc(var(--radius-md) * 0.75);
+}
+.tag-accent { background: var(--color-accent-100); color: var(--color-accent-800); }
+.tag-neutral { background: var(--color-neutral-100); color: var(--color-neutral-800); }
+.tag-outline { border: 1px solid var(--color-accent); color: var(--color-accent); }
+
+/* — tables — */
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th {
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-62);
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--color-divider);
+}
+.table td {
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--color-divider);
+}
+.table tbody tr:hover { background: color-mix(in srgb, var(--color-text) 4%, transparent); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Application layer
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* The three shared motion curves — rise, fade and sheet — are deliberately NOT
+   declared here. A *.module.css file cannot reference a global keyframe: the
+   bundler scopes every animation name a module mentions, so `animation: fade`
+   inside a module resolves to a keyframe that does not exist and the element
+   never animates (`:global(fade)` does not help — the whole declaration is
+   dropped). Every module that animates therefore declares its own copy. If you
+   add a curve here, nothing in a module will be able to use it.
+
+     rise:  opacity 0 → 1, translateY(6px) → none
+     fade:  opacity 0 → 1
+     sheet: opacity 0 → 1, translateY(18px) → none */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Shared eyebrow used above every page title and panel section. */
+.kicker {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+}
+.kicker-sm { letter-spacing: 0.13em; font-size: 10px; }
+
+.page-shell {
+  flex: 1;
+  overflow-y: auto;
+}
+.page-body {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 46px 32px 90px;
+}
+
+/* Visible only to screen readers, and to anyone who tabs to it. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: var(--color-bg);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  font-family: var(--font-heading);
+}
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Arabic. `.quran` is every rendering of the revealed text itself. */
+.quran {
+  font-family: var(--arabic-font);
+  direction: rtl;
+  text-align: right;
+}
+
+.arabic-title {
+  font-family: var(--font-amiri-quran), serif;
+  direction: rtl;
+  line-height: 1.7;
+}

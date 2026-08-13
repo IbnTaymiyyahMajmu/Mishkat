@@ -1,0 +1,230 @@
+.wrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 22px;
+  border-bottom: 1px solid var(--color-divider);
+  flex: none;
+  flex-wrap: wrap;
+}
+
+.barCentre {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sizes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  padding: 2px 4px;
+}
+
+.sizeLabel {
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-62);
+  min-width: 38px;
+  text-align: center;
+}
+
+.fonts { display: flex; gap: 4px; }
+
+.fontBtn {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12px;
+  padding: 5px 10px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--muted-62);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.fontBtn:hover { border-color: var(--color-accent); }
+.fontBtnOn { border-color: var(--color-accent); color: var(--color-accent); }
+
+.page {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0 24px 160px;
+}
+
+.head {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 36px 0 20px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.headArabic {
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 44px;
+  line-height: 1.8;
+  direction: rtl;
+}
+
+.headName {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-55);
+}
+
+.bismillah {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 34px 0 10px;
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 36px;
+  direction: rtl;
+  line-height: 2;
+  color: var(--muted-88);
+}
+
+.state {
+  text-align: center;
+  padding: 70px 0;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  color: var(--muted-45);
+}
+
+/* The page itself. Justified with generous leading, the way a printed muṣḥaf
+   sets its text — and nothing else on the page to read instead. */
+.body {
+  max-width: 900px;
+  margin: 26px auto 0;
+  font-family: var(--arabic-font);
+  line-height: 2.4;
+  text-align: justify;
+  text-align-last: center;
+  color: var(--color-text);
+  word-spacing: 0.06em;
+}
+
+.ayah {
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: background 160ms ease;
+}
+.ayah:hover { background: color-mix(in srgb, var(--color-accent) 7%, transparent); }
+.ayahOn { background: color-mix(in srgb, var(--color-accent) 14%, transparent); }
+.ayah:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+/* The ayah marker: a rosette-sized disc set inline, at a fraction of the
+   running text so it separates without interrupting. */
+.marker {
+  display: inline-grid;
+  place-items: center;
+  width: 1.05em;
+  height: 1.05em;
+  margin: 0 0.18em;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+  border-radius: 50%;
+  font-family: var(--font-amiri), serif;
+  font-size: 0.42em;
+  line-height: 1;
+  color: var(--color-accent);
+  vertical-align: middle;
+}
+
+.foot {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 56px 0 0;
+}
+
+.footMark {
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 26px;
+  color: var(--color-accent);
+}
+
+.footText {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--muted-55);
+  margin-top: 8px;
+}
+
+.footNav {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.selection {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 24px;
+  z-index: 65;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 8px 6px 14px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  animation: sheet 180ms ease both;
+  max-width: calc(100vw - 24px);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.selectionKey {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.selectionClose {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--muted-45);
+  font-size: 13px;
+  padding: 4px 8px;
+}
+.selectionClose:hover { color: var(--color-text); }
+
+/* The shared sheet curve, declared locally because a module cannot reference a
+   global keyframe — see the note in globals.css. */
+@keyframes sheet {
+  from { transform: translateY(18px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+@media (max-width: 780px) {
+  .bar { padding: 8px 14px; }
+  .fonts { display: none; }
+  .page { padding: 0 16px 180px; }
+  .body { line-height: 2.2; }
+  .headArabic { font-size: 34px; }
+}

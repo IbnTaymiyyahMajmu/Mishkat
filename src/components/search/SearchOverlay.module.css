@@ -1,0 +1,173 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: color-mix(in srgb, var(--color-neutral-900) 42%, transparent);
+  display: flex;
+  justify-content: center;
+  padding: 8vh 20px 20px;
+  animation: fade 160ms ease both;
+}
+
+.panel {
+  width: min(760px, 100%);
+  max-height: 78vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  animation: sheet 200ms ease both;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 17px;
+  color: inherit;
+  outline: none;
+}
+
+.scopes {
+  display: flex;
+  gap: 4px;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--color-divider);
+  overflow-x: auto;
+}
+
+.scope {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  color: var(--muted-45);
+  padding: 4px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.scope:hover { color: var(--color-accent); }
+.scopeOn {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.results {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 0 14px;
+}
+
+.idle { padding: 30px 22px; }
+.suggestions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.state {
+  padding: 40px 22px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted-55);
+}
+
+.notice {
+  margin: 0;
+  padding: 18px 22px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--muted-62);
+  border-bottom: 1px solid var(--color-divider);
+}
+.notice code {
+  font-size: 12px;
+  background: color-mix(in srgb, var(--color-text) 6%, transparent);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.result {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--color-divider);
+  padding: 15px 22px;
+  cursor: pointer;
+  color: inherit;
+  font-family: inherit;
+}
+.resultOn { background: color-mix(in srgb, var(--color-accent) 6%, transparent); }
+
+.resultHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.resultKey {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.resultSurah { font-size: 11px; color: var(--muted-45); }
+
+.resultArabic {
+  display: block;
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 22px;
+  line-height: 2;
+  margin-bottom: 4px;
+}
+
+.resultSnippet {
+  display: block;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted-72);
+}
+
+.footnote {
+  padding: 12px 22px 0;
+  margin: 0;
+  font-size: 11px;
+  color: var(--muted-45);
+}
+
+/* The shared fade and sheet curves, declared locally because a module cannot
+   reference a global keyframe — see the note in globals.css. */
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sheet {
+  from { transform: translateY(18px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+@media (max-width: 600px) {
+  .backdrop { padding: 0; }
+  .panel { max-height: 100%; height: 100%; border-radius: 0; border: 0; }
+}

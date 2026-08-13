@@ -1,0 +1,70 @@
+.body { display: flex; flex-direction: column; gap: 12px; }
+
+.prose {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted-88);
+  white-space: pre-wrap;
+  text-wrap: pretty;
+}
+
+.empty {
+  margin: 0;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--muted-55);
+}
+
+/* The quoted ayah is set apart from the reader's own words: an accent rule on
+   the leading edge, the Arabic in the muṣḥaf face, the translation beneath it
+   in the same subdued grey the reader is used to. */
+.quote {
+  margin: 0;
+  padding: 12px 0 12px 16px;
+  border-inline-start: 2px solid var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 4%, transparent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.quoteArabic {
+  margin: 0 0 8px;
+  padding: 0 8px 0 0;
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 22px;
+  line-height: 2.05;
+  direction: rtl;
+  text-align: right;
+  color: var(--color-text);
+}
+
+.quoteTranslation {
+  margin: 0 0 6px;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--muted-72);
+}
+
+.quoteMeta {
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  color: var(--muted-45);
+}
+
+.quoteMissing {
+  font-size: 12px;
+  color: var(--muted-55);
+  font-style: italic;
+}
+
+.quoteLink {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: var(--color-accent);
+}
+.quoteLink:hover { text-decoration: underline; }

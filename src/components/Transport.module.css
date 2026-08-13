@@ -1,0 +1,112 @@
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 70;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-divider);
+  box-shadow: 0 -3px 14px color-mix(in srgb, var(--color-neutral-900) 8%, transparent);
+  animation: sheet 220ms ease both;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.scrubWrap {
+  display: block;
+  height: 2px;
+  position: relative;
+}
+
+/* The seek bar reads as a hairline until it is reached for. */
+.scrub {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin: 0;
+  cursor: pointer;
+  background: linear-gradient(
+    to right,
+    var(--color-accent) var(--progress, 0%),
+    color-mix(in srgb, var(--color-text) 8%, transparent) var(--progress, 0%)
+  );
+}
+.scrub:disabled { cursor: default; }
+.scrub::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0;
+  transition: opacity 140ms ease;
+}
+.scrub::-moz-range-thumb {
+  width: 11px;
+  height: 11px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0;
+}
+.scrubWrap:hover .scrub::-webkit-slider-thumb,
+.scrub:focus-visible::-webkit-slider-thumb { opacity: 1; }
+.scrubWrap:hover .scrub::-moz-range-thumb,
+.scrub:focus-visible::-moz-range-thumb { opacity: 1; }
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 22px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.play {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.small { width: 32px; height: 32px; flex: none; }
+
+.now { min-width: 0; flex: 1; }
+
+.nowTitle {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nowMeta {
+  font-size: 11px;
+  color: var(--muted-55);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-variant-numeric: tabular-nums;
+}
+
+.controls { display: flex; gap: 6px; align-items: center; }
+
+.chip { font-size: 11.5px; padding: 5px 11px; white-space: nowrap; }
+.numeric { font-variant-numeric: tabular-nums; }
+
+/* The shared sheet curve, declared locally because a module cannot reference a
+   global keyframe — see the note in globals.css. */
+@keyframes sheet {
+  from { transform: translateY(18px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+@media (max-width: 780px) {
+  .row { gap: 10px; padding: 10px 14px; }
+  .controls { display: none; }
+}

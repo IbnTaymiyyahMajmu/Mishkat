@@ -1,0 +1,117 @@
+.layout {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.scroller {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  position: relative;
+}
+
+.column {
+  max-width: var(--reader-max);
+  margin: 0 auto;
+  padding: 0 28px 220px;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0 0;
+  gap: 12px;
+}
+
+.topBarCentre {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.bismillah {
+  text-align: center;
+  padding: 28px 0 16px;
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 34px;
+  direction: rtl;
+  line-height: 2;
+  color: var(--muted-88);
+}
+
+.loading {
+  padding: 80px 0;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  color: var(--muted-45);
+  animation: fade 300ms ease both;
+}
+
+.error {
+  padding: 40px 0;
+  text-align: center;
+}
+.error p {
+  font-size: 14px;
+  color: var(--muted-62);
+}
+
+.more {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 26px 0;
+}
+
+.moreRule {
+  flex: 1;
+  height: 1px;
+  background: var(--color-divider);
+}
+
+.loadingMore {
+  padding: 30px 0;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  color: color-mix(in srgb, var(--color-text) 40%, transparent);
+}
+
+.end {
+  text-align: center;
+  padding: 54px 0 0;
+}
+
+.endMark {
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 26px;
+  color: var(--color-accent);
+  direction: rtl;
+}
+
+.endText {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--muted-55);
+  margin-top: 10px;
+}
+
+/* The shared fade curve, declared locally because a module cannot reference a
+   global keyframe — see the note in globals.css. */
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  .column { padding: 0 18px 260px; }
+  .topBar { flex-wrap: wrap; justify-content: center; }
+}
