@@ -61,7 +61,6 @@ export function Reader({ surah }: { surah: number }) {
 
   const chapter = byId(surah);
   const chapterName = chapter?.name_simple ?? `Surah ${surah}`;
-  const reading = settings.readingMode;
 
   // ── word highlighting ─────────────────────────────────────────────────────
   useEffect(() => highlight.acquire(), []);
@@ -325,14 +324,6 @@ export function Reader({ surah }: { surah: number }) {
                 Muṣḥaf view
               </Link>
               <button
-                onClick={() => update({ readingMode: !reading })}
-                className={`btn btn-secondary ${reading ? "btn-on" : ""}`}
-                style={{ fontSize: 12, padding: "5px 12px" }}
-                aria-pressed={reading}
-              >
-                Reading mode
-              </button>
-              <button
                 onClick={() => {
                   setComposeOnOpen(false);
                   setPanel({ mode: "notes", verseKey: panel?.verseKey ?? `${surah}:1` });
@@ -378,9 +369,9 @@ export function Reader({ surah }: { surah: number }) {
               words={verse.words.filter((w) => w.char_type_name === "word")}
               translation={plainText(verse.translations?.[0]?.text)}
               translator={verse.translations?.[0]?.resource_name ?? translatorName}
-              layout={reading ? "rows" : settings.layout}
-              showTranslit={settings.showTranslit && !reading}
-              showWbw={settings.showWbw && !reading}
+              layout={settings.layout}
+              showTranslit={settings.showTranslit}
+              showWbw={settings.showWbw}
               showTranslation={settings.showTranslation}
               playing={player.currentKey === verse.verse_key}
               bookmarked={isBookmarked(verse.verse_key)}

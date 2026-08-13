@@ -139,6 +139,7 @@
   font-size: 22px;
   line-height: 2;
   margin-bottom: 4px;
+  padding-bottom: var(--quran-descender-pad);
 }
 
 .resultSnippet {

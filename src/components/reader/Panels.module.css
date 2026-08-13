@@ -40,8 +40,9 @@
 .wordArabic {
   font-family: var(--font-amiri-quran), serif;
   font-size: 50px;
-  line-height: 1.9;
+  line-height: 2;
   direction: rtl;
+  padding-bottom: var(--quran-descender-pad);
 }
 
 .wordTranslit {
@@ -110,6 +111,7 @@
   font-size: 20px;
   line-height: 1.95;
   direction: rtl;
+  padding-bottom: var(--quran-descender-pad);
 }
 
 .occurrenceKey {

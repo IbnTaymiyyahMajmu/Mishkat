@@ -77,6 +77,7 @@
   font-size: 44px;
   line-height: 1.8;
   direction: rtl;
+  padding-bottom: var(--quran-descender-pad);
 }
 
 .headName {

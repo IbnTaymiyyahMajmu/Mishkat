@@ -11,6 +11,7 @@
   line-height: 1.7;
   direction: rtl;
   margin: 6px 0 2px;
+  padding-bottom: var(--quran-descender-pad);
 }
 
 .name {

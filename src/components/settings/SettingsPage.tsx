@@ -155,10 +155,10 @@ export function SettingsPage() {
             </div>
             <div className={styles.chips}>
               <Chip on={settings.layout === "rows"} onClick={() => update({ layout: "rows" })}>
-                Three aligned rows
+                Flowing
               </Chip>
               <Chip on={settings.layout === "stacked"} onClick={() => update({ layout: "stacked" })}>
-                Stacked per word
+                Spaced per word
               </Chip>
             </div>
           </div>

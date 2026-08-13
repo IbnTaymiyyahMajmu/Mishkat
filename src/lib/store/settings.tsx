@@ -32,8 +32,6 @@ export interface Settings {
   showWbw: boolean;
   showTranslation: boolean;
   layout: Layout;
-  /** Hides transliteration and word glosses without forgetting the reader chose them. */
-  readingMode: boolean;
   theme: Theme;
   reciterId: number;
   wordHighlight: WordHighlight;
@@ -58,7 +56,6 @@ export const DEFAULT_SETTINGS: Settings = {
   showWbw: true,
   showTranslation: true,
   layout: "rows",
-  readingMode: false,
   theme: "day",
   reciterId: DEFAULT_RECITER,
   wordHighlight: "both",

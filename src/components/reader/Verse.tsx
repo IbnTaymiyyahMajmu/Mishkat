@@ -138,85 +138,41 @@ function VerseImpl({
         </div>
       </div>
 
-      {layout === "stacked" ? (
-        <div dir="rtl" className={styles.stacked}>
-          {words.map((w) => (
-            <button
-              key={w.position}
-              data-w={wordDomId(key, w.position)}
-              data-role="ar"
-              className={styles.stackedWord}
-              aria-label={wordAria(w)}
-            >
-              <span className={styles.stackedArabic}>{w.text_uthmani || w.text}</span>
-              <span dir="ltr" className={styles.stackedTranslit}>
+      {/* Each word is a column, so its transliteration and gloss sit directly
+          under it. Three separate rows cannot do this: they are independent
+          flex containers whose items wrap at their own widths, so the nth
+          transliteration lands under whatever Arabic word happens to be nth
+          across a different set of line breaks. `layout` now chooses how
+          tightly the columns are packed, not whether they align. */}
+      <div
+        dir="rtl"
+        className={`${styles.words} ${layout === "stacked" ? styles.wordsSpaced : styles.wordsFlowing}`}
+      >
+        {words.map((w) => (
+          <button
+            key={w.position}
+            data-w={wordDomId(key, w.position)}
+            data-role="ar"
+            className={styles.word}
+            aria-label={wordAria(w)}
+          >
+            <span className={styles.arabic}>{w.text_uthmani || w.text}</span>
+            {showTranslit && (
+              <span dir="ltr" className={styles.translit}>
                 {w.transliteration?.text || "—"}
               </span>
-              <span dir="ltr" className={styles.stackedGloss}>
+            )}
+            {showWbw && (
+              <span dir="ltr" className={styles.gloss}>
                 {w.translation?.text || "—"}
               </span>
-            </button>
-          ))}
-          <span className={styles.endDisc} aria-hidden="true">
-            {number}
-          </span>
-        </div>
-      ) : (
-        <>
-          <div dir="rtl" className={styles.arabicRow}>
-            {words.map((w) => (
-              <button
-                key={w.position}
-                data-w={wordDomId(key, w.position)}
-                data-role="ar"
-                className={styles.arabicWord}
-                aria-label={wordAria(w)}
-              >
-                {w.text_uthmani || w.text}
-              </button>
-            ))}
-            <span className={styles.endDisc} aria-hidden="true">
-              {number}
-            </span>
-          </div>
-
-          {showTranslit && (
-            <div dir="rtl" className={styles.subRow}>
-              {words.map((w) => (
-                <button
-                  key={w.position}
-                  data-w={wordDomId(key, w.position)}
-                  data-role="tr"
-                  dir="ltr"
-                  tabIndex={-1}
-                  aria-hidden="true"
-                  className={styles.translitWord}
-                >
-                  {w.transliteration?.text || "—"}
-                </button>
-              ))}
-            </div>
-          )}
-
-          {showWbw && (
-            <div dir="rtl" className={styles.subRow}>
-              {words.map((w) => (
-                <button
-                  key={w.position}
-                  data-w={wordDomId(key, w.position)}
-                  data-role="en"
-                  dir="ltr"
-                  tabIndex={-1}
-                  aria-hidden="true"
-                  className={styles.glossWord}
-                >
-                  {w.translation?.text || "—"}
-                </button>
-              ))}
-            </div>
-          )}
-        </>
-      )}
+            )}
+          </button>
+        ))}
+        <span className={styles.endDisc} aria-hidden="true">
+          {number}
+        </span>
+      </div>
 
       {showTranslation && translation && (
         <div className={styles.translation}>
