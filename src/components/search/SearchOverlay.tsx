@@ -3,11 +3,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearch } from "./SearchProvider";
 import { search as runSearch, fetchVerse } from "@/lib/quran/api";
-import type { SearchResult } from "@/lib/quran/types";
+import type { Chapter, SearchResult } from "@/lib/quran/types";
 import { useSettings } from "@/lib/store/settings";
 import { useChapters } from "@/lib/store/chapters";
+import { useRecentSearches } from "@/lib/store/recent";
 import { useGoToVerse } from "@/lib/useGoToVerse";
-import { isValidVerseKey, plainText, stripDiacritics } from "@/lib/text";
+import { isValidVerseKey, plainText } from "@/lib/text";
+import { foldToText, markMatches, type MatchPart } from "@/lib/match";
 import styles from "./SearchOverlay.module.css";
 
 type Scope = "all" | "quran" | "translation" | "tafsir";
@@ -19,7 +21,15 @@ const SCOPES: { id: Scope; label: string }[] = [
   { id: "tafsir", label: "Tafsir" },
 ];
 
-const SUGGESTIONS = ["ٱلرَّحْمَـٰن", "patience", "light upon light", "2:255", "36:12"];
+const SUGGESTIONS = ["ٱلرَّحْمَـٰن", "patience", "light upon light", "Maryam", "2:255"];
+
+/** How the search box reads a query, shown while the box is empty. */
+const GRAMMAR: { term: string; means: string }[] = [
+  { term: "2:255", means: "jump straight to an ayah" },
+  { term: "Maryam", means: "open a surah by name or number" },
+  { term: "ٱلرَّحْمَـٰن", means: "Arabic, diacritics optional" },
+  { term: "light upon light", means: "search the translation" },
+];
 
 /** One shared empty list, so "no results" is the same reference every render. */
 const NO_RESULTS: SearchResult[] = [];
@@ -35,7 +45,8 @@ export function SearchOverlay() {
 function SearchDialog({ seed }: { seed: string }) {
   const { closeSearch } = useSearch();
   const { settings } = useSettings();
-  const { byId } = useChapters();
+  const { chapters, byId } = useChapters();
+  const { recent, remember, clear: clearRecent } = useRecentSearches();
   const goToVerse = useGoToVerse();
 
   const [query, setQuery] = useState(seed);
@@ -63,6 +74,7 @@ function SearchDialog({ seed }: { seed: string }) {
   const searched = !idle && settled;
 
   const inputRef = useRef<HTMLInputElement>(null);
+  const resultsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const t = setTimeout(() => inputRef.current?.focus(), 30);
@@ -106,6 +118,7 @@ function SearchDialog({ seed }: { seed: string }) {
                 },
               ],
             });
+            remember(q);
             return;
           }
         }
@@ -114,52 +127,127 @@ function SearchDialog({ seed }: { seed: string }) {
         const res = await runSearch(q, settings.translationId);
         if (seq.current !== mine) return;
         setAnswer({ query: q, results: res.results, total: res.total });
+        // Only a query that found something is worth offering back.
+        if (res.results.length) remember(q);
       } catch {
         if (seq.current === mine) setAnswer({ query: q, results: [], total: 0 });
       }
     }, 260);
 
     return () => clearTimeout(timer);
-  }, [trimmed, settings.translationId]);
+  }, [trimmed, settings.translationId, remember]);
 
   /**
    * The corpus search returns matches from the Arabic and from the translation
    * together and does not say which. Rather than claim a scope the data cannot
-   * support, the filter checks the result itself for the term.
+   * support, the filter checks the result itself for the term — folded, so a
+   * query typed without diacritics still matches fully-pointed Qur'anic text.
    */
+  const needle = useMemo(() => foldToText(trimmed), [trimmed]);
+
+  const counts = useMemo(() => {
+    const inArabic = (r: SearchResult) => !!needle && foldToText(r.arabic).includes(needle);
+    const inTranslation = (r: SearchResult) => !!needle && foldToText(r.snippet).includes(needle);
+    return {
+      all: results.length,
+      quran: results.filter(inArabic).length,
+      translation: results.filter(inTranslation).length,
+      tafsir: 0,
+    } satisfies Record<Scope, number>;
+  }, [results, needle]);
+
   const shown = useMemo(() => {
-    if (scope === "all" || scope === "tafsir") return results;
-    const needle = stripDiacritics(trimmed).toLowerCase();
-    if (!needle) return results;
+    if (scope === "tafsir") return NO_RESULTS;
+    if (scope === "all" || !needle) return results;
     return results.filter((r) => {
-      const inArabic = stripDiacritics(r.arabic).includes(needle);
-      const inTranslation = r.snippet.toLowerCase().includes(needle);
-      return scope === "quran" ? inArabic : inTranslation;
+      const where = scope === "quran" ? r.arabic : r.snippet;
+      return foldToText(where).includes(needle);
     });
-  }, [results, scope, trimmed]);
+  }, [results, scope, needle]);
+
+  /** A surah named, or numbered, rather than a phrase to look for. */
+  const chapterHits = useMemo(() => {
+    if (idle) return [] as Chapter[];
+    const matches = (c: Chapter) => {
+      if (String(c.id) === trimmed) return true;
+      if (needle.length < 3) return false;
+      return (
+        foldToText(c.name_simple).includes(needle) ||
+        foldToText(c.name_arabic).includes(needle) ||
+        foldToText(c.translated_name?.name ?? "").includes(needle)
+      );
+    };
+    return chapters.filter(matches).slice(0, 4);
+  }, [chapters, idle, trimmed, needle]);
 
   // Clamped rather than reset in an effect: when a longer result list is
   // replaced by a shorter one the selection simply moves to the last row,
   // instead of the list rendering once with a selection that is out of range.
   const cursorIndex = Math.min(cursor, Math.max(0, shown.length - 1));
 
+  // Keep the selected row in view when it is moved by the keyboard.
+  useEffect(() => {
+    const box = resultsRef.current;
+    const row = box?.querySelector<HTMLElement>(`[data-row="${cursorIndex}"]`);
+    if (!box || !row) return;
+    const top = row.offsetTop;
+    const bottom = top + row.offsetHeight;
+    if (top < box.scrollTop) box.scrollTop = Math.max(0, top - 10);
+    else if (bottom > box.scrollTop + box.clientHeight) box.scrollTop = bottom - box.clientHeight + 10;
+  }, [cursorIndex]);
+
   const go = (key: string) => {
     closeSearch();
     goToVerse(key);
   };
 
+  const ask = (q: string) => {
+    setQuery(q);
+    setCursor(0);
+    inputRef.current?.focus();
+  };
+
+  const clearQuery = () => {
+    // Retire any flight in progress, or its answer lands in an empty box.
+    seq.current++;
+    setQuery("");
+    setAnswer({ query: "", results: [], total: 0 });
+    setCursor(0);
+    inputRef.current?.focus();
+  };
+
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && shown[cursorIndex]) {
-      e.preventDefault();
-      go(shown[cursorIndex].key);
-    } else if (e.key === "ArrowDown") {
+    if (e.key === "ArrowDown") {
       e.preventDefault();
       setCursor(Math.min(shown.length - 1, cursorIndex + 1));
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       setCursor(Math.max(0, cursorIndex - 1));
+    } else if (e.key === "Home" && shown.length) {
+      e.preventDefault();
+      setCursor(0);
+    } else if (e.key === "End" && shown.length) {
+      e.preventDefault();
+      setCursor(shown.length - 1);
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      const row = shown[cursorIndex];
+      if (row) go(row.key);
+      else if (chapterHits[0]) go(`${chapterHits[0].id}:1`);
     }
   };
+
+  const empty = searched && shown.length === 0 && chapterHits.length === 0 && scope !== "tafsir";
+
+  const note = idle
+    ? "Type two letters or more"
+    : busy
+      ? "Searching…"
+      : scope === "all"
+        ? `${total} matches in the muṣḥaf and the selected translation`
+        : scope === "tafsir"
+          ? "Tafsir is not indexed for full-text search"
+          : `${shown.length} of ${results.length} carry the term in the ${scope === "quran" ? "Arabic" : "translation"}`;
 
   return (
     <div className={styles.backdrop} onClick={closeSearch} role="presentation">
@@ -171,7 +259,7 @@ function SearchDialog({ seed }: { seed: string }) {
         aria-label="Search the Qur'an"
       >
         <div className={styles.head}>
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
+          <svg className={styles.headIcon} width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
             <circle cx="11" cy="11" r="7" />
             <path d="m20 20-3.5-3.5" />
           </svg>
@@ -179,95 +267,209 @@ function SearchDialog({ seed }: { seed: string }) {
             ref={inputRef}
             className={styles.input}
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setCursor(0);
+            }}
             onKeyDown={onKeyDown}
-            placeholder="Search Arabic, translations, or a reference like 2:255"
+            placeholder="Search Arabic, an English phrase, a surah name, or 2:255"
             aria-label="Search Arabic, translations, or a reference"
           />
-          <button onClick={closeSearch} className="btn btn-icon" aria-label="Close search" style={{ width: 30, height: 30 }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
+          {query.length > 0 && (
+            <button onClick={clearQuery} className={styles.clear} aria-label="Clear search">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M15 9 9 15" />
+                <path d="m9 9 6 6" />
+              </svg>
+            </button>
+          )}
+          <span className={styles.headRule} aria-hidden="true" />
+          <button onClick={closeSearch} className={styles.esc} aria-label="Close search">
+            Esc
           </button>
         </div>
 
-        <div className={styles.scopes} role="tablist" aria-label="Search scope">
+        <div className={styles.scopes} role="group" aria-label="Search scope">
           {SCOPES.map((s) => (
             <button
               key={s.id}
-              role="tab"
-              aria-selected={scope === s.id}
-              onClick={() => setScope(s.id)}
+              aria-pressed={scope === s.id}
+              onClick={() => {
+                setScope(s.id);
+                setCursor(0);
+              }}
               className={`${styles.scope} ${scope === s.id ? styles.scopeOn : ""}`}
             >
-              {s.label}
+              <span>{s.label}</span>
+              {searched && s.id !== "tafsir" && (
+                <span className={styles.scopeCount}>{counts[s.id]}</span>
+              )}
             </button>
           ))}
         </div>
 
-        <div className={styles.results}>
-          {scope === "tafsir" && (
-            <p className={styles.notice}>
-              Tafsir is served per ayah in this build but is not indexed for full-text search.
-              Searching inside the tafsir corpus needs the works themselves, not an ayah-by-ayah
-              API — see <code>DATA-NEEDED.md</code>.
-            </p>
+        <div className={styles.results} ref={resultsRef}>
+          {chapterHits.length > 0 && (
+            <div className={styles.chapters}>
+              <div className={styles.sectionLabel}>Surahs</div>
+              {chapterHits.map((c) => (
+                <button key={c.id} className={styles.chapter} onClick={() => go(`${c.id}:1`)}>
+                  <span className={styles.chapterNum}>{c.id}</span>
+                  <span className={styles.chapterText}>
+                    <span className={styles.chapterName}>{c.name_simple}</span>
+                    <span className={styles.chapterSub}>
+                      {c.translated_name?.name ? `${c.translated_name.name} · ` : ""}
+                      {c.verses_count} ayat ·{" "}
+                      {c.revelation_place === "makkah" ? "Meccan" : "Medinan"}
+                    </span>
+                  </span>
+                  <span className={styles.chapterArabic} dir="rtl">
+                    {c.name_arabic}
+                  </span>
+                </button>
+              ))}
+            </div>
           )}
 
           {idle && (
             <div className={styles.idle}>
-              <div className="kicker kicker-sm" style={{ marginBottom: 14 }}>Try</div>
-              <div className={styles.suggestions}>
+              {recent.length > 0 && (
+                <div className={styles.block}>
+                  <div className={styles.sectionHead}>
+                    <span className={styles.sectionLabel}>Recent</span>
+                    <span className={styles.sectionRule} />
+                    <button onClick={clearRecent} className={styles.clearRecent}>
+                      Clear
+                    </button>
+                  </div>
+                  <div className={styles.chips}>
+                    {recent.map((r) => (
+                      <button key={r} className={styles.chip} onClick={() => ask(r)}>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
+                          <circle cx="12" cy="12" r="9" />
+                          <path d="M12 7v5l3 2" />
+                        </svg>
+                        <span>{r}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className={styles.sectionHead}>
+                <span className={styles.sectionLabel}>Try</span>
+                <span className={styles.sectionRule} />
+              </div>
+              <div className={styles.chips}>
                 {SUGGESTIONS.map((s) => (
-                  <button key={s} className="btn btn-secondary" style={{ fontSize: 13 }} onClick={() => setQuery(s)}>
+                  <button key={s} className={styles.chip} onClick={() => ask(s)}>
                     {s}
                   </button>
+                ))}
+              </div>
+
+              <div className={styles.grammar}>
+                {GRAMMAR.map((g) => (
+                  <div key={g.term}>
+                    <span className={styles.grammarTerm}>{g.term}</span> — {g.means}
+                  </div>
                 ))}
               </div>
             </div>
           )}
 
-          {busy && <div className={styles.state}>Searching…</div>}
+          {scope === "tafsir" && !idle && (
+            <p className={styles.notice}>
+              Tafsir is served per ayah in this build but is not indexed for full-text search — the
+              corpus itself, not an ayah-by-ayah API, is what that would need.
+            </p>
+          )}
 
-          {!busy && searched && shown.length === 0 && scope !== "tafsir" && (
+          {busy && (
             <div className={styles.state}>
-              Nothing found for that. Try an Arabic form, an English phrase, or a reference like 36:12.
+              <div className={styles.spinner} aria-hidden="true">
+                ۞
+              </div>
+              <div className={styles.stateText}>Searching the muṣḥaf…</div>
+            </div>
+          )}
+
+          {empty && (
+            <div className={styles.state}>
+              <div className={styles.stateText}>
+                Nothing found for that.
+                <br />
+                Try an Arabic form without diacritics, an English phrase, or a reference like 36:12.
+              </div>
             </div>
           )}
 
           {shown.map((r, i) => {
             const chapter = byId(Number(r.key.split(":")[0]));
+            const active = i === cursorIndex;
             return (
               <button
                 key={r.key}
-                className={`${styles.result} ${i === cursorIndex ? styles.resultOn : ""}`}
+                data-row={i}
+                className={`${styles.result} ${active ? styles.resultOn : ""}`}
                 onClick={() => go(r.key)}
                 onMouseEnter={() => setCursor(i)}
               >
                 <span className={styles.resultHead}>
-                  <span className={`tag ${r.kind === "Reference" ? "tag-neutral" : "tag-accent"}`} style={{ fontSize: 9.5, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                  <span
+                    className={`${styles.badge} ${r.kind === "Reference" ? styles.badgeNeutral : styles.badgeAccent}`}
+                  >
                     {r.kind}
                   </span>
                   <span className={styles.resultKey}>{r.key}</span>
                   <span className={styles.resultSurah}>{chapter?.name_simple ?? ""}</span>
+                  <span className={styles.resultGap} />
+                  <span className={styles.openHint}>↵ Open</span>
                 </span>
-                <span className={`quran ${styles.resultArabic}`}>{r.arabic}</span>
-                <span className={styles.resultSnippet}>{r.snippet}</span>
+                <span className={styles.resultArabic} dir="rtl">
+                  <Marked text={r.arabic} needle={needle} />
+                </span>
+                <span className={styles.resultSnippet}>
+                  <Marked text={r.snippet} needle={needle} />
+                </span>
               </button>
             );
           })}
+        </div>
 
-          {shown.length > 0 && (
-            <p className={styles.footnote}>
-              {scope === "all"
-                ? `${total} matches across the muṣḥaf and the selected translation.`
-                : `${shown.length} of ${results.length} matches contain the term in the ${scope === "quran" ? "Arabic" : "translation"}.`}{" "}
-              Each result is labelled by the layer it came from.
-            </p>
-          )}
+        <div className={styles.foot}>
+          <span className={styles.footNote}>{note}</span>
+          <span className={styles.resultGap} />
+          <span className={styles.key}>
+            <kbd className={styles.kbd}>↑↓</kbd>move
+          </span>
+          <span className={styles.key}>
+            <kbd className={styles.kbd}>↵</kbd>open
+          </span>
+          <span className={styles.key}>
+            <kbd className={styles.kbd}>esc</kbd>close
+          </span>
         </div>
       </div>
     </div>
+  );
+}
+
+/** The reader's term lit up inside the text it was found in. */
+function Marked({ text, needle }: { text: string; needle: string }) {
+  const parts: MatchPart[] = useMemo(() => markMatches(text, needle), [text, needle]);
+  return (
+    <>
+      {parts.map((p, i) =>
+        p.hit ? (
+          <mark key={i} className={styles.hit}>
+            {p.text}
+          </mark>
+        ) : (
+          <span key={i}>{p.text}</span>
+        ),
+      )}
+    </>
   );
 }
