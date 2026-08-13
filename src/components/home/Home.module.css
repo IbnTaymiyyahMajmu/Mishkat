@@ -130,6 +130,17 @@
   background-size: 340% 100%;
   -webkit-background-clip: text;
   background-clip: text;
+  /* The gradient is only painted inside this box, and the letters are drawn in
+     it rather than in a colour — so ink that falls outside the box is painted
+     with nothing at all and the glyph is cut off mid-stroke. Amiri Quran hangs
+     well past its line box (measured: 0.95em under the baseline, 1.77em over
+     it), which sliced the tail off ع and ر. The padding grows the painted area
+     to cover the ink; the matching negative margins hand the space straight
+     back, so the ayah sits exactly where it did. */
+  padding-top: var(--quran-ascender-pad);
+  padding-bottom: var(--quran-descender-pad);
+  margin-top: calc(-1 * var(--quran-ascender-pad));
+  margin-bottom: calc(-1 * var(--quran-descender-pad));
   animation:
     word 760ms cubic-bezier(0.22, 0.61, 0.36, 1) both,
     sheen 7s linear infinite;

@@ -80,16 +80,19 @@
 
   /* Reader preferences, written onto the document element by the settings
      store so type size changes never re-render the verse tree. */
-  /* Amiri Quran draws its marks far outside the line box. Measured across a
-     surah's worth of words, the ink reaches 1.77em above the baseline and
-     0.95em below it — the deep ones are tanwīn carrying a superscript mīm,
-     ٍۭ  as in زَوْجٍۭ — against a natural line box of 2.45em. At `line-height: 2`
-     the box holds only 1.60em above the baseline and 0.41em below, so Qur'anic
-     text needs this much room added or the marks land on whatever is next to
-     it: below, the transliteration; above, the previous line's gloss.
+  /* Amiri Quran draws its marks far outside the line box. Measured over a
+     surah and the twelve landing-page ayat, the ink reaches 1.83em above the
+     baseline — a standalone waqf mark — and 0.95em below it, where the deep
+     ones are tanwīn carrying a superscript mīm, ٍۭ  as in زَوْجٍۭ. The natural
+     line box is 2.45em, and at `line-height: 2` it holds only 1.60em above the
+     baseline and 0.41em below, so Qur'anic text needs this much room added or
+     the marks land on whatever is next to it: below, the transliteration;
+     above, the previous line's gloss. On the landing page, where the words are
+     painted through `background-clip: text`, ink outside the box is not
+     overlapped but simply never painted, and the glyph is cut off mid-stroke.
      In em, so both track the reader's type-size slider. */
   --quran-descender-pad: 0.6em;
-  --quran-ascender-pad: 0.22em;
+  --quran-ascender-pad: 0.3em;
 
   --arabic-font: var(--font-amiri-quran), serif;
   --arabic-size: 40px;
