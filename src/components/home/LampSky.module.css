@@ -1,15 +1,20 @@
 /* ══════════════════════════════════════════════════════════════════════════
-   The niche behind the landing page.
+   The sky behind the landing page — three of them, one per reading light.
 
-   Everything here is light: a lamp burning just above the top edge of the
-   screen, its halo, the shaft it throws down the middle, two slow drifts of
-   smoke to either side, and the embers it sends up. Every layer is painted in
-   `screen`, so it only ever adds light to the ground beneath it and never
-   darkens it — except the last, which is the vignette that closes the frame.
+   Evening and night are made of light: a lamp burning just above the top edge
+   of the screen, its halo, the shaft it throws down the middle, two slow drifts
+   of smoke to either side, and what it sends up. Every layer there is painted
+   in `screen`, so it only ever adds light to the ground beneath it and never
+   darkens it — except the vignette, which closes the frame.
 
-   It is one fixed element behind a scrolling page, and it is inert: aria-hidden,
-   pointer-events none, and reduced to nothing by the global reduced-motion rule
-   in globals.css.
+   Day is the exception and the reason `screen` is set per scene rather than on
+   `.layer`: on near-white paper `screen` is a no-op, so the sun and its shafts
+   are painted normally.
+
+   The three grounds are stacked and cross-faded on `--mk-scene-*`, which the
+   light sets in globals.css. It is one fixed element behind a scrolling page,
+   and it is inert: aria-hidden, pointer-events none, and reduced to nothing by
+   the global reduced-motion rule in globals.css.
    ══════════════════════════════════════════════════════════════════════════ */
 
 .sky {
@@ -20,12 +25,25 @@
   overflow: hidden;
 }
 
+/* Which sky is lit is a variable rather than React state, so a hard load of the
+   landing page in night paints the night sky in the first frame — the inline
+   script in the layout has set the light before any of this is parsed. */
+.scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.sceneDay { opacity: var(--mk-scene-day); }
+.sceneEve { opacity: var(--mk-scene-eve); }
+.sceneNight { opacity: var(--mk-scene-night); }
+
 .layer {
   position: absolute;
   mix-blend-mode: screen;
 }
 
-/* — the lamp itself, stacked from the widest wash to the wick — */
+/* ── evening ──────────────────────────────────────────────────────────────
+   The lamp itself, stacked from the widest wash down to the wick. */
 
 .wash {
   left: 50%;
@@ -171,14 +189,227 @@
   animation: breathe 31s ease-in-out infinite 8s;
 }
 
-/* — embers, rising off the bottom edge on three slightly different paths — */
+/* ── day ──────────────────────────────────────────────────────────────────
+   No blend mode here: on paper this near-white, `screen` would erase it. */
 
-.embers {
+.dayWash {
+  position: absolute;
+  left: 50%;
+  top: -8%;
+  width: 1560px;
+  height: 1320px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(255, 234, 178, 0.3) 0%,
+    rgba(255, 218, 138, 0.15) 30%,
+    rgba(240, 200, 116, 0.055) 56%,
+    rgba(240, 200, 116, 0) 78%
+  );
+  animation: breathe 30s ease-in-out infinite;
+}
+
+.sun {
+  position: absolute;
+  left: 50%;
+  top: -5%;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 253, 242, 0.85) 0%,
+    rgba(255, 246, 214, 0.55) 42%,
+    rgba(255, 236, 178, 0.2) 68%,
+    rgba(255, 236, 178, 0) 84%
+  );
+  filter: blur(8px);
+  animation: glow 14s ease-in-out infinite;
+}
+
+/* Three shafts leaning off the vertical, as light does through a high window.
+   Only opacity animates, so the lean can live on `transform`. */
+.ray {
+  position: absolute;
+  top: -20%;
+  height: 150vh;
+  transform-origin: top center;
+  animation: pulse 17s ease-in-out infinite;
+}
+.rayA {
+  left: 18%;
+  width: 300px;
+  transform: rotate(-13deg);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 224, 144, 0.38) 0%,
+    rgba(252, 220, 150, 0.17) 36%,
+    rgba(248, 220, 164, 0) 76%
+  );
+  filter: blur(22px);
+}
+.rayB {
+  left: 46%;
+  width: 420px;
+  transform: rotate(-5deg);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 230, 160, 0.42) 0%,
+    rgba(252, 222, 156, 0.19) 40%,
+    rgba(248, 220, 164, 0) 78%
+  );
+  filter: blur(26px);
+  animation-duration: 21s;
+  animation-delay: 3s;
+}
+.rayC {
+  left: 74%;
+  width: 260px;
+  transform: rotate(6deg);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 224, 144, 0.32) 0%,
+    rgba(252, 220, 150, 0.14) 34%,
+    rgba(248, 220, 164, 0) 74%
+  );
+  filter: blur(20px);
+  animation-duration: 19s;
+  animation-delay: 7s;
+}
+
+/* ── night ────────────────────────────────────────────────────────────────
+   The same niche, but the light in it has gone out and what is left is the
+   sky: the flicker becomes a slow breath, the gold becomes blue. */
+
+.nightWash {
+  left: 50%;
+  top: -4%;
+  width: 1700px;
+  height: 1500px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(206, 224, 255, 0.17) 0%,
+    rgba(158, 186, 236, 0.09) 28%,
+    rgba(104, 136, 196, 0.04) 52%,
+    rgba(40, 56, 88, 0) 76%
+  );
+  animation: breathe 30s ease-in-out infinite;
+}
+
+.nightHalo {
+  left: 50%;
+  top: -2%;
+  width: 1120px;
+  height: 1120px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(226, 240, 255, 0.3) 0%,
+    rgba(190, 214, 250, 0.16) 16%,
+    rgba(140, 172, 226, 0.07) 36%,
+    rgba(88, 116, 170, 0.028) 58%,
+    rgba(0, 0, 0, 0) 74%
+  );
+  filter: blur(3px);
+  animation: glow 19s ease-in-out infinite;
+}
+
+.nightCore {
+  left: 50%;
+  top: -1%;
+  width: 540px;
+  height: 540px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(240, 248, 255, 0.4) 0%,
+    rgba(212, 230, 255, 0.2) 26%,
+    rgba(178, 204, 246, 0.07) 52%,
+    rgba(178, 204, 246, 0) 74%
+  );
+  filter: blur(16px);
+  animation: glow 12s ease-in-out infinite 1.2s;
+}
+
+.nightFlame {
+  left: 50%;
+  top: -1.4%;
+  width: 210px;
+  height: 250px;
+  background: radial-gradient(
+    46% 50% at 50% 56%,
+    rgba(252, 254, 255, 0.62) 0%,
+    rgba(232, 242, 255, 0.32) 38%,
+    rgba(206, 226, 255, 0.12) 62%,
+    rgba(206, 226, 255, 0) 80%
+  );
+  filter: blur(14px);
+  animation: breathe 9.5s ease-in-out infinite;
+}
+
+.nightWick {
+  left: 50%;
+  top: -1.2%;
+  width: 74px;
+  height: 96px;
+  background: radial-gradient(
+    50% 50% at 50% 54%,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(240, 248, 255, 0.38) 44%,
+    rgba(240, 248, 255, 0) 78%
+  );
+  filter: blur(10px);
+  animation: breathe 6.8s ease-in-out infinite 0.5s;
+}
+
+.nightShaft {
+  left: 50%;
+  top: 0;
+  width: 800px;
+  height: 80vh;
+  transform: translate(-50%, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(212, 230, 255, 0.12) 0%,
+    rgba(166, 192, 236, 0.06) 28%,
+    rgba(112, 140, 190, 0.02) 56%,
+    rgba(0, 0, 0, 0) 82%
+  );
+  filter: blur(32px);
+  animation: pulse 13s ease-in-out infinite 2s;
+}
+
+.nightSmokeA {
+  left: 22%;
+  top: 38%;
+  width: 500px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(198, 218, 252, 0.055) 0%, rgba(198, 218, 252, 0) 70%);
+  filter: blur(30px);
+  animation: smoke 42s ease-in-out infinite;
+}
+
+.nightSmokeB {
+  left: 70%;
+  top: 52%;
+  width: 600px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(198, 218, 252, 0.045) 0%, rgba(198, 218, 252, 0) 70%);
+  filter: blur(36px);
+  animation: smoke 54s ease-in-out infinite 14s;
+}
+
+/* ── what rises, and what hangs still ─────────────────────────────────────
+   Embers off the bottom edge on three slightly different paths; in day the
+   same three paths carry dust through the shafts instead. */
+
+.motes {
   position: absolute;
   inset: 0;
 }
 
-.ember {
+.mote {
   position: absolute;
   bottom: -12px;
   border-radius: 50%;
@@ -186,26 +417,35 @@
   animation-iteration-count: infinite;
   animation-fill-mode: backwards;
 }
-.emberA { animation-name: ember-a; }
-.emberB { animation-name: ember-b; }
-.emberC { animation-name: ember-c; }
+.moteA { animation-name: ember-a; }
+.moteB { animation-name: ember-b; }
+.moteC { animation-name: ember-c; }
+
+/* Stars do not travel; they are placed where they are and only brighten. */
+.star {
+  position: absolute;
+  border-radius: 50%;
+  animation-name: star;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
 
 /* The frame. This is the one layer that takes light away rather than adding
-   it, so it is the only one not set in `screen`. */
+   it, so it is the only one never set in `screen`. */
 .vignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    140% 100% at 50% 6%,
-    rgba(11, 9, 6, 0) 34%,
-    rgba(11, 9, 6, 0.55) 74%,
-    rgba(9, 7, 5, 0.9) 100%
-  );
+  background: var(--mk-vignette);
 }
 
 @keyframes breathe {
   0%, 100% { opacity: 0.35; transform: translate(-50%, -50%) scale(1); }
   50% { opacity: 0.85; transform: translate(-50%, -50%) scale(1.12); }
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.18); }
 }
 
 @keyframes flicker {
@@ -228,6 +468,12 @@
   22% { opacity: 1; }
   48% { opacity: 0.62; }
   74% { opacity: 0.92; }
+}
+
+@keyframes star {
+  0%, 100% { opacity: 0.28; transform: scale(0.85); }
+  45% { opacity: 1; transform: scale(1.15); }
+  70% { opacity: 0.5; transform: scale(0.95); }
 }
 
 @keyframes smoke {
@@ -259,11 +505,13 @@
 }
 
 /* A phone is mostly the shaft and the vignette: the wide side washes fall
-   outside it anyway, and the embers cost more than they show at this width. */
+   outside it anyway, and the motes cost more than they show at this width. */
 @media (max-width: 700px) {
-  .wash { width: 900px; height: 900px; }
-  .halo { width: 720px; height: 720px; }
-  .shaft { width: 100%; }
-  .wallA, .wallB, .smokeA, .smokeB { display: none; }
-  .ember:nth-child(2n) { display: none; }
+  .wash, .nightWash, .dayWash { width: 900px; height: 900px; }
+  .halo, .nightHalo { width: 720px; height: 720px; }
+  .shaft, .nightShaft { width: 100%; }
+  .wallA, .wallB, .smokeA, .smokeB, .nightSmokeA, .nightSmokeB { display: none; }
+  .rayA, .rayC { display: none; }
+  .rayB { left: 50%; width: 80%; transform: translateX(-50%) rotate(-3deg); }
+  .mote:nth-child(2n) { display: none; }
 }

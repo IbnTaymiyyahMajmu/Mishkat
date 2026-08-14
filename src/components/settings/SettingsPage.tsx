@@ -1,12 +1,18 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { useSettings } from "@/lib/store/settings";
+import { useSettings, type Theme } from "@/lib/store/settings";
 import { useLibrary } from "@/lib/store/library";
 import { useToast } from "@/components/Toast";
 import { ARABIC_FONTS, RECITERS, TAFSIRS, TRANSLATIONS } from "@/lib/quran/resources";
 import { localIntroCount } from "@/lib/content";
 import styles from "./SettingsPage.module.css";
+
+const LIGHTS: { id: Theme; label: string }[] = [
+  { id: "day", label: "Day — bright paper" },
+  { id: "evening", label: "Evening — sepia lamplight" },
+  { id: "night", label: "Night — dark ground" },
+];
 
 export function SettingsPage() {
   const { settings, update, reset } = useSettings();
@@ -62,14 +68,20 @@ export function SettingsPage() {
           </div>
         </Section>
 
-        <Section title="Appearance">
+        <Section
+          title="Reading light"
+          note="The same three lamps are in the bar at the top of every page. The light is the reader’s choice rather than the operating system’s: a muṣḥaf is often read in a dark room on a device set to light, and as often on a bright morning on one set to dark."
+        >
           <div className={styles.chips}>
-            <Chip on={settings.theme === "day"} onClick={() => update({ theme: "day" })}>
-              Day
-            </Chip>
-            <Chip on={settings.theme === "night"} onClick={() => update({ theme: "night" })}>
-              Night
-            </Chip>
+            {LIGHTS.map((light) => (
+              <Chip
+                key={light.id}
+                on={settings.theme === light.id}
+                onClick={() => update({ theme: light.id })}
+              >
+                {light.label}
+              </Chip>
+            ))}
           </div>
         </Section>
 

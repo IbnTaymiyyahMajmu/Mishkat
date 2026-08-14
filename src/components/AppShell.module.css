@@ -8,18 +8,12 @@
   font-family: var(--font-body);
 }
 
-/* The niche: warm at the top where the lamp hangs, falling away to almost
-   black at the bottom of the screen. */
+/* The niche the landing page hangs in — warm at the top where the lamp is,
+   falling away at the bottom of the screen. Which niche depends on the reading
+   light: lamplight, daylight or starlight. */
 .shellHome {
-  background: radial-gradient(
-    150% 105% at 50% -6%,
-    #4a3719 0%,
-    #33260f 16%,
-    #241b0f 34%,
-    #16110a 62%,
-    #0b0906 100%
-  );
-  color: #efece4;
+  background: var(--mk-hero-bg);
+  color: var(--mk-hero-ink);
 }
 
 .main {

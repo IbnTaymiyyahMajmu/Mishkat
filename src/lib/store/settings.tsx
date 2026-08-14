@@ -21,7 +21,10 @@ import { createPersistedStore } from "./persisted";
 export type Layout = "rows" | "stacked";
 export type WordHighlight = "tint" | "underline" | "both";
 export type Repeat = "off" | "ayah" | "surah";
-export type Theme = "day" | "night";
+/** The three grounds the site is read in. See the note in globals.css. */
+export type Theme = "day" | "evening" | "night";
+
+export const THEMES: Theme[] = ["day", "evening", "night"];
 
 export interface Settings {
   translationId: number;
@@ -56,7 +59,9 @@ export const DEFAULT_SETTINGS: Settings = {
   showWbw: true,
   showTranslation: true,
   layout: "rows",
-  theme: "day",
+  // Evening is the light the site was drawn in, and the one the landing page's
+  // niche belongs to; day and night are departures from it.
+  theme: "evening",
   reciterId: DEFAULT_RECITER,
   wordHighlight: "both",
   readerWidth: 780,
@@ -77,7 +82,7 @@ function sanitise(stored: unknown, fallback: Settings): Settings {
     speed: clamp(s.speed, 0.5, 2),
     tafsirIds: Array.isArray(s.tafsirIds) && s.tafsirIds.length ? s.tafsirIds : DEFAULT_TAFSIRS,
     layout: s.layout === "stacked" ? "stacked" : "rows",
-    theme: s.theme === "night" ? "night" : "day",
+    theme: THEMES.includes(s.theme) ? s.theme : fallback.theme,
     repeat: s.repeat === "ayah" || s.repeat === "surah" ? s.repeat : "off",
   };
 }
@@ -85,6 +90,30 @@ function sanitise(stored: unknown, fallback: Settings): Settings {
 function clamp(n: number, lo: number, hi: number): number {
   if (!Number.isFinite(n)) return lo;
   return Math.min(hi, Math.max(lo, n));
+}
+
+/**
+ * Move the whole document to another reading light.
+ *
+ * Every colour on the site is a `--mk-*` token on the document element, which
+ * would make this a one-line change of an attribute were it not for a
+ * Chromium behaviour: an element that declares a `transition` on a property
+ * whose value comes from an inherited custom property does not re-resolve that
+ * property when the variable changes on an ancestor. The old value stays
+ * latched — the header keeps the previous light's ink, the landing page keeps
+ * the previous light's sky — until something unrelated invalidates it.
+ *
+ * So the flip is made inside a window with transitions off. The attribute that
+ * suppresses them is added, the light is changed, one forced recalc settles
+ * every element against the new tokens, and the attribute comes off again —
+ * all synchronously, so nothing between is ever painted. The light changes at
+ * once and completely, which is also what a lamp does.
+ */
+function setTheme(root: HTMLElement, theme: Theme) {
+  root.dataset.themeSwitching = "";
+  root.dataset.theme = theme;
+  void root.offsetHeight;
+  delete root.dataset.themeSwitching;
 }
 
 const settingsStore = createPersistedStore<Settings>("mishkat.settings.v1", DEFAULT_SETTINGS, sanitise);
@@ -126,7 +155,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     root.style.setProperty("--arabic-size", `${settings.arabicSize}px`);
     root.style.setProperty("--trans-size", `${settings.transSize}px`);
     root.style.setProperty("--reader-max", `${settings.readerWidth}px`);
-    root.dataset.theme = settings.theme;
+    setTheme(root, settings.theme);
   }, [
     settings.arabicFont,
     settings.arabicSize,

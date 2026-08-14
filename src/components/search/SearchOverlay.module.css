@@ -415,8 +415,8 @@
 
 /* The reader's term, lit where it was found. */
 .hit {
-  background: color-mix(in srgb, var(--color-accent) 30%, transparent);
-  color: var(--color-accent-800);
+  background: color-mix(in srgb, var(--mk-gold) 30%, transparent);
+  color: var(--mk-mark-ink);
   border-radius: 2px;
 }
 

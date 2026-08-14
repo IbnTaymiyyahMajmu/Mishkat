@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { fetchMushaf, fetchRecitation } from "@/lib/quran/api";
 import type { Verse } from "@/lib/quran/types";
 import { useChapters } from "@/lib/store/chapters";
-import { useSettings } from "@/lib/store/settings";
+import { THEMES, useSettings } from "@/lib/store/settings";
 import { useLibrary } from "@/lib/store/library";
 import { usePlayer } from "@/lib/audio/player";
 import { useToast } from "@/components/Toast";
@@ -157,12 +157,16 @@ export function MushafReader({ surah }: { surah: number }) {
             ))}
           </div>
 
+          {/* The muṣḥaf bar has no room for three lamps, so here the light is a
+              cycle: pressing it names the light it is about to move to. */}
           <button
-            onClick={() => update({ theme: settings.theme === "night" ? "day" : "night" })}
+            onClick={() =>
+              update({ theme: THEMES[(THEMES.indexOf(settings.theme) + 1) % THEMES.length] })
+            }
             className="btn btn-secondary"
-            style={{ fontSize: 12, padding: "5px 12px" }}
+            style={{ fontSize: 12, padding: "5px 12px", textTransform: "capitalize" }}
           >
-            {settings.theme === "night" ? "Day" : "Night"}
+            {THEMES[(THEMES.indexOf(settings.theme) + 1) % THEMES.length]}
           </button>
         </div>
 
