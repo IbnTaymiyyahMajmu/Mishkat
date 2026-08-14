@@ -33,6 +33,9 @@ import styles from "./MarkRail.module.css";
 /** Two marks closer together than this share a button. */
 const MERGE_PCT = 4.5;
 
+/** How close the preview card may come to the top or bottom of the reader. */
+const EDGE = 12;
+
 interface Props {
   surah: number;
   verses: Verse[];
@@ -43,6 +46,7 @@ interface Props {
 }
 
 export function MarkRail({ surah, verses, total, scrollerRef, onJump }: Props) {
+  const railRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const fillRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -113,13 +117,14 @@ export function MarkRail({ surah, verses, total, scrollerRef, onJump }: Props) {
   const showAt = useCallback(
     (ayah: number, note?: string, kicker?: string) => {
       const pct = pctOf(ayah);
+
+      // The cursor is the thing that points, so it sits at the true height and
+      // is never moved. Its content is written before the card is placed: the
+      // card is as tall as its note is long, and it cannot be fitted to the
+      // screen until it holds what it is going to hold.
       if (cursorRef.current) {
         cursorRef.current.style.top = `${pct}%`;
         cursorRef.current.classList.add(styles.cursorOn);
-      }
-      if (previewRef.current) {
-        previewRef.current.style.top = `${pct}%`;
-        previewRef.current.classList.add(styles.previewOn);
       }
       if (previewKickerRef.current) {
         const j = verseAt(ayah)?.juz_number;
@@ -131,6 +136,28 @@ export function MarkRail({ surah, verses, total, scrollerRef, onJump }: Props) {
         previewNoteRef.current.textContent = text;
         previewNoteRef.current.style.display = text ? "block" : "none";
       }
+
+      const card = previewRef.current;
+      const track = trackRef.current;
+      const rail = railRef.current;
+      if (!card || !track || !rail) return;
+      card.classList.add(styles.previewOn);
+
+      // The card is centred on the ayah, so at either end of a surah half of it
+      // would hang off the screen — the last ayah of al-Baqarah sits at the foot
+      // of the rail, and the note under it was being cut in half. It is held
+      // inside the rail instead, which is the height of the reader itself.
+      const half = card.offsetHeight / 2;
+      const top = track.offsetTop + (pct / 100) * track.clientHeight;
+      const lowest = EDGE + half;
+      const highest = rail.clientHeight - EDGE - half;
+      const held =
+        highest < lowest
+          ? // Taller than the reader is deep, which takes a very short window
+            // and a long note. Centred is the least bad place for it.
+            rail.clientHeight / 2
+          : Math.min(Math.max(top, lowest), highest);
+      card.style.top = `${held - track.offsetTop}px`;
     },
     [pctOf, verseAt, opening, noteFor],
   );
@@ -286,7 +313,7 @@ export function MarkRail({ surah, verses, total, scrollerRef, onJump }: Props) {
   if (n <= 3) return null;
 
   return (
-    <div className={styles.rail}>
+    <div ref={railRef} className={styles.rail}>
       <div
         ref={sliderRef}
         className={styles.slider}
