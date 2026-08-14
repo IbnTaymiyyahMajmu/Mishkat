@@ -14,6 +14,7 @@
 .shellHome {
   background: var(--mk-hero-bg);
   color: var(--mk-hero-ink);
+  transition: background 700ms ease, color 700ms ease;
 }
 
 .main {

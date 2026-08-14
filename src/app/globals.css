@@ -466,17 +466,6 @@ textarea.input { min-height: 90px; resize: vertical; font-family: var(--font-bod
      fade:  opacity 0 → 1
      sheet: opacity 0 → 1, translateY(18px) → none */
 
-/* The window the reading light is changed inside — see setTheme() in
-   lib/store/settings.tsx for why it has to exist. It is added and taken off
-   again within one synchronous block, so nothing is ever painted while it is
-   on; it exists only so the recalc in the middle runs with no transition able
-   to hold an element on the previous light's colour. */
-:root[data-theme-switching] *,
-:root[data-theme-switching] *::before,
-:root[data-theme-switching] *::after {
-  transition: none !important;
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

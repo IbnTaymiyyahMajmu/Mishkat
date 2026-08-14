@@ -95,25 +95,19 @@ function clamp(n: number, lo: number, hi: number): number {
 /**
  * Move the whole document to another reading light.
  *
- * Every colour on the site is a `--mk-*` token on the document element, which
- * would make this a one-line change of an attribute were it not for a
- * Chromium behaviour: an element that declares a `transition` on a property
- * whose value comes from an inherited custom property does not re-resolve that
- * property when the variable changes on an ancestor. The old value stays
- * latched — the header keeps the previous light's ink, the landing page keeps
- * the previous light's sky — until something unrelated invalidates it.
+ * Every colour on the site is a `--mk-*` token on the document element, so this
+ * is one attribute — the chrome, the reader, the panels and the landing page's
+ * sky all follow from it, cross-fading on their own transitions.
  *
- * So the flip is made inside a window with transitions off. The attribute that
- * suppresses them is added, the light is changed, one forced recalc settles
- * every element against the new tokens, and the attribute comes off again —
- * all synchronously, so nothing between is ever painted. The light changes at
- * once and completely, which is also what a lamp does.
+ * The forced recalc is the design's own remedy, carried over: Chromium has been
+ * seen to leave an element that transitions a property latched on its old value
+ * when the custom property behind it changes on an ancestor, and reading a
+ * layout property settles every such element at once. It costs one recalc on an
+ * action the reader takes by hand.
  */
 function setTheme(root: HTMLElement, theme: Theme) {
-  root.dataset.themeSwitching = "";
   root.dataset.theme = theme;
   void root.offsetHeight;
-  delete root.dataset.themeSwitching;
 }
 
 const settingsStore = createPersistedStore<Settings>("mishkat.settings.v1", DEFAULT_SETTINGS, sanitise);

@@ -11,10 +11,11 @@ import styles from "./LampSky.module.css";
  * lamp with a sun and its shafts, and the embers with the dust they light.
  * Night keeps the niche and cools it to starlight.
  *
- * All three skies stay mounted and only one is lit, on `--mk-scene-*`, so the
- * sky is right in the first painted frame rather than after hydration. Only the
- * lit sky's motes are rendered, though: an ember animating at zero opacity
- * still costs a composite every frame, and there can be a hundred of them.
+ * All three skies stay mounted and cross-fade on `--mk-scene-*`, so the sky is
+ * right in the first painted frame rather than after hydration, and changing
+ * the light is a dissolve rather than a cut. Only the lit sky's motes are
+ * rendered, though: an ember animating at zero opacity still costs a composite
+ * every frame, and there can be a hundred of them.
  *
  * Purely decorative and entirely CSS: no canvas, no animation frame, nothing
  * for React to re-render once the light is chosen. The whole thing is inert to

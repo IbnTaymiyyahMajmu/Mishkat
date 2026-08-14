@@ -27,11 +27,13 @@
 
 /* Which sky is lit is a variable rather than React state, so a hard load of the
    landing page in night paints the night sky in the first frame — the inline
-   script in the layout has set the light before any of this is parsed. */
+   script in the layout has set the light before any of this is parsed — and
+   changing the light afterwards is a dissolve rather than a cut. */
 .scene {
   position: absolute;
   inset: 0;
   overflow: hidden;
+  transition: opacity 700ms ease;
 }
 .sceneDay { opacity: var(--mk-scene-day); }
 .sceneEve { opacity: var(--mk-scene-eve); }
