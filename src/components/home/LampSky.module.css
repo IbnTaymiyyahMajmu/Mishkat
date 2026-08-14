@@ -27,13 +27,13 @@
 
 /* Which sky is lit is a variable rather than React state, so a hard load of the
    landing page in night paints the night sky in the first frame — the inline
-   script in the layout has set the light before any of this is parsed — and
-   changing the light afterwards is a dissolve rather than a cut. */
+   script in the layout has set the light before any of this is parsed. The
+   dissolve between skies is lent by the window in globals.css, so it runs at
+   the same rate as the ground and the ink rather than on a timing of its own. */
 .scene {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  transition: opacity 700ms ease;
 }
 .sceneDay { opacity: var(--mk-scene-day); }
 .sceneEve { opacity: var(--mk-scene-eve); }
@@ -433,11 +433,39 @@
 }
 
 /* The frame. This is the one layer that takes light away rather than adding
-   it, so it is the only one never set in `screen`. */
+   it, so it is the only one never set in `screen`.
+
+   Each sky states its own rather than reading a token off the document. A token
+   would be the *current* light's vignette, which means the sky on its way out
+   would repaint in the colour of the one arriving and the dissolve would show
+   two of the same frame crossing instead of one becoming the other. */
 .vignette {
   position: absolute;
   inset: 0;
-  background: var(--mk-vignette);
+}
+.sceneEve .vignette {
+  background: radial-gradient(
+    140% 100% at 50% 6%,
+    rgba(11, 9, 6, 0) 34%,
+    rgba(11, 9, 6, 0.55) 74%,
+    rgba(9, 7, 5, 0.9) 100%
+  );
+}
+.sceneDay .vignette {
+  background: radial-gradient(
+    140% 100% at 50% 6%,
+    rgba(198, 176, 140, 0) 42%,
+    rgba(198, 176, 140, 0.14) 78%,
+    rgba(186, 163, 124, 0.26) 100%
+  );
+}
+.sceneNight .vignette {
+  background: radial-gradient(
+    140% 100% at 50% 6%,
+    rgba(4, 6, 9, 0) 32%,
+    rgba(4, 6, 9, 0.62) 72%,
+    rgba(2, 3, 5, 0.96) 100%
+  );
 }
 
 @keyframes breathe {
