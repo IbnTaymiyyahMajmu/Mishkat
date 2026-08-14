@@ -14,6 +14,7 @@ import { TRANSLATIONS } from "@/lib/quran/resources";
 import { SCROLL_TO_VERSE, type ScrollToVerseDetail } from "@/lib/useGoToVerse";
 import { useToast } from "@/components/Toast";
 import { Verse, type VerseHandlers } from "./Verse";
+import { MarkRail } from "./MarkRail";
 import { SurahHeader } from "./SurahHeader";
 import { SidePanel, type PanelMode, type PanelState } from "./SidePanel";
 import { WordStudyPanel } from "./WordStudyPanel";
@@ -295,6 +296,16 @@ export function Reader({ surah }: { surah: number }) {
 
   return (
     <div className={styles.layout}>
+      {!loading && (
+        <MarkRail
+          surah={surah}
+          verses={verses}
+          total={chapter?.verses_count ?? verses.length}
+          scrollerRef={scrollerRef}
+          onJump={(ayah) => scrollToVerse(`${surah}:${ayah}`, false)}
+        />
+      )}
+
       <div
         ref={scrollerRef}
         className={styles.scroller}

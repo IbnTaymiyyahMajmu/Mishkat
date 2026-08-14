@@ -9,6 +9,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { AppShell } from "@/components/AppShell";
+import { InlineScript } from "@/components/InlineScript";
 import { Providers } from "@/components/Providers";
 
 /* Self-hosted at build time by next/font: the pages make no request to a font
@@ -89,7 +90,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={fontVars} data-theme="evening" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP }} />
+        <InlineScript>{THEME_BOOTSTRAP}</InlineScript>
       </head>
       <body>
         <Providers>

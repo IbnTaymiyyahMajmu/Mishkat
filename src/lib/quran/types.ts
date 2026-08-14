@@ -59,7 +59,10 @@ export interface Verse {
   verse_key: string;
   juz_number: number;
   hizb_number: number;
+  /** The muṣḥaf's own paragraph. Its last ayah is a resting place. */
+  ruku_number: number;
   page_number: number;
+  /** Set — to the ordinal of the prostration — only on the ayah carrying ۩. */
   sajdah_number: number | null;
   text_uthmani: string;
   words: Word[];
