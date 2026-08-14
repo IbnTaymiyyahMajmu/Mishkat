@@ -9,6 +9,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { AppShell } from "@/components/AppShell";
+import { InlineScript } from "@/components/InlineScript";
 import { Providers } from "@/components/Providers";
 
 /* Self-hosted at build time by next/font: the pages make no request to a font
@@ -63,16 +64,18 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f3f2f2" },
-    { media: "(prefers-color-scheme: dark)", color: "#14130f" },
+    { media: "(prefers-color-scheme: light)", color: "#f4eee2" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d0e10" },
   ],
   width: "device-width",
   initialScale: 1,
 };
 
-/* Runs before first paint so a reader who chose night does not get a flash of
-   the day theme on every navigation. */
-const THEME_BOOTSTRAP = `try{var s=JSON.parse(localStorage.getItem('mishkat.settings.v1')||'{}');if(s.theme==='night')document.documentElement.dataset.theme='night';if(s.arabicSize)document.documentElement.style.setProperty('--arabic-size',s.arabicSize+'px');}catch(e){}`;
+/* Runs in <head>, synchronously, while the browser is still parsing the
+   document — so the reader's light is on the element before anything is
+   painted, rather than a frame after React hydrates. The settings store reads
+   the same key through useSyncExternalStore, so the two always agree. */
+const THEME_BOOTSTRAP = `(function(){try{var s=JSON.parse(localStorage.getItem('mishkat.settings.v1')||'{}');if(s.theme==='day'||s.theme==='night')document.documentElement.dataset.theme=s.theme;if(s.arabicSize)document.documentElement.style.setProperty('--arabic-size',s.arabicSize+'px');}catch(e){}})()`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const fontVars = [
@@ -85,9 +88,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   ].join(" ");
 
   return (
-    <html lang="en" className={fontVars} data-theme="day" suppressHydrationWarning>
+    <html lang="en" className={fontVars} data-theme="evening" suppressHydrationWarning>
+      <head>
+        <InlineScript>{THEME_BOOTSTRAP}</InlineScript>
+      </head>
       <body>
-        <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP }} />
         <Providers>
           <AppShell>{children}</AppShell>
         </Providers>

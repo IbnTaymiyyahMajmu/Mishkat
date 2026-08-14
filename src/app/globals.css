@@ -10,17 +10,80 @@
    which self-hosts them at build time: no request leaves the page for a font.
    ══════════════════════════════════════════════════════════════════════════ */
 
+/* ── The three reading lights ──────────────────────────────────────────────
+   The site is read in one of three grounds, and the reader picks which from
+   the bar rather than inheriting it from their operating system: a muṣḥaf is
+   often read in a dark room on a device that is set to light, and just as
+   often on a bright morning on one that is set to dark.
+
+     day      bright paper, a sun overhead
+     evening  sepia lamplight, the niche and its embers — the default
+     night    a dark ground under a cold, still light
+
+   Everything downstream is stated in the `--mk-*` tokens below, and the
+   `--color-*` names the design system is written in are aliases onto them, so
+   a change of light moves the whole site — chrome, reader, panels, landing
+   page — from one place. `--mk-gold` is the light's mid gold, for strokes,
+   rails and marks; `--mk-gold-deeper` is the step accent-coloured *text*
+   takes, dark enough to read on paper and pale enough to read on night.
+
+   The `--mk-hero-*` set is the landing page, which is lit rather than printed:
+   in evening and night it is a dark niche with pale ink, in day it is bright.
+   `--mk-scene-*` is which of the three skies is on; see LampSky.module.css. */
 :root {
-  --color-bg: #f3f2f2;
-  --color-surface: #eae9e9;
-  --color-text: #201f1d;
-  --color-accent: #b68235;
+  --mk-paper: #f4eee2;
+  --mk-ink: #2b2318;
+  --mk-gold: #b68235;
+  --mk-gold-deep: #8a6224;
+  --mk-gold-deeper: #7d5411;
+  --mk-gold-pale: #e9c88d;
+  --mk-hero-bg: radial-gradient(
+    150% 105% at 50% -6%,
+    #4a3719 0%,
+    #33260f 16%,
+    #241b0f 34%,
+    #16110a 62%,
+    #0b0906 100%
+  );
+  --mk-hero-ink: #efece4;
+  --mk-hero-kicker: #d9b678;
+  /* Ink for text sitting on a gold search mark. */
+  --mk-mark-ink: #4a3110;
+  --mk-vignette: radial-gradient(
+    140% 100% at 50% 6%,
+    rgba(11, 9, 6, 0) 34%,
+    rgba(11, 9, 6, 0.55) 74%,
+    rgba(9, 7, 5, 0.9) 100%
+  );
+  /* The gold leaf the landing page's ayah is painted through. */
+  --mk-shine: linear-gradient(
+    100deg,
+    #c69a52 0%,
+    #eccc92 22%,
+    #fff4d8 34%,
+    #eccc92 46%,
+    #c69a52 68%,
+    #e3c48d 100%
+  );
+  --mk-scene-day: 0;
+  --mk-scene-eve: 1;
+  --mk-scene-night: 0;
+
+  --color-bg: var(--mk-paper);
+  --color-surface: #ebe3d4;
+  --color-text: var(--mk-ink);
+  /* The accent is text far more often than it is a stroke — eyebrows, ayah
+     numbers, the ordinal on a bookmark — so it takes the deep step of the gold
+     ramp, as the Classical guide asks. The mid gold stays available as
+     `--mk-gold` for the places that really are strokes and fills: the rail, the
+     word-by-word tint, the mark a search leaves on a hit. */
+  --color-accent: var(--mk-gold-deeper);
   --color-accent-2: #ac803e;
-  --color-divider: color-mix(in srgb, var(--color-text) 16%, transparent);
+  --color-divider: color-mix(in srgb, var(--color-text) 17%, transparent);
 
   /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
      same step of any role matches the others in visual value. */
-  --color-neutral-100: #f8f4f4;
+  --color-neutral-100: #f8f3e9;
   --color-neutral-200: #eae7e7;
   --color-neutral-300: #d7d3d3;
   --color-neutral-400: #bab6b6;
@@ -30,14 +93,16 @@
   --color-neutral-800: #444141;
   --color-neutral-900: #2d2b2b;
 
-  --color-accent-100: #fff3e4;
+  --color-accent-100: #f5e6cd;
   --color-accent-200: #ffe3bf;
   --color-accent-300: #facb8d;
   --color-accent-400: #e1ad66;
   --color-accent-500: #c28d41;
   --color-accent-600: #a06f24;
-  --color-accent-700: #7d5411;
-  --color-accent-800: #5a3b0a;
+  /* The step that carries accent-coloured *text* — links above all — is the
+     light's own deep gold, so it stays legible in all three grounds. */
+  --color-accent-700: var(--mk-gold-deeper);
+  --color-accent-800: #6d4d14;
   --color-accent-900: #3a270d;
 
   --color-accent-2-100: #fff3e4;
@@ -70,7 +135,7 @@
   --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
 
   /* — application additions — */
-  --tint: color-mix(in srgb, var(--color-accent) 17%, transparent);
+  --tint: color-mix(in srgb, var(--mk-gold) 17%, transparent);
   --header-h: 62px;
   --muted-45: color-mix(in srgb, var(--color-text) 45%, transparent);
   --muted-55: color-mix(in srgb, var(--color-text) 55%, transparent);
@@ -100,20 +165,95 @@
   --reader-max: 780px;
 }
 
-/* Night reading. Chosen by the reader in settings, not by the OS, because a
-   muṣḥaf is often read in a dark room on a device that is set to light. */
-:root[data-theme="night"] {
-  --color-bg: #14130f;
-  --color-surface: #1d1b17;
-  --color-text: #e8e3d7;
-  --color-accent: #c9a05a;
-  --color-divider: color-mix(in srgb, var(--color-text) 18%, transparent);
+/* Day. Nearly white paper and a sun overhead: the one light in which the
+   landing page is bright rather than lit, so its hero ink is dark and its
+   pale gold is not pale at all. */
+:root[data-theme="day"] {
+  --mk-paper: #fbfaf8;
+  --mk-ink: #1c1b19;
+  --mk-gold: #9d6d22;
+  --mk-gold-deep: #85591a;
+  --mk-gold-deeper: #6f4a13;
+  --mk-gold-pale: #8a5f1c;
+  --mk-hero-bg: radial-gradient(
+    150% 105% at 50% -6%,
+    #fffdf7 0%,
+    #fbf8f0 32%,
+    #f6f2e8 64%,
+    #efe9dd 100%
+  );
+  --mk-hero-ink: #26241f;
+  --mk-hero-kicker: #6b4711;
+  --mk-vignette: radial-gradient(
+    140% 100% at 50% 6%,
+    rgba(198, 176, 140, 0) 42%,
+    rgba(198, 176, 140, 0.14) 78%,
+    rgba(186, 163, 124, 0.26) 100%
+  );
+  --mk-shine: linear-gradient(
+    100deg,
+    #7a5214 0%,
+    #9d6d22 22%,
+    #b98436 34%,
+    #9d6d22 46%,
+    #6f4a13 68%,
+    #8a5f1c 100%
+  );
+  --mk-scene-day: 1;
+  --mk-scene-eve: 0;
 
-  --color-neutral-100: #23211c;
-  --color-neutral-800: #d5cfc2;
-  --color-accent-100: #2c2418;
-  --color-accent-800: #e5c68b;
-  --color-accent-700: #d8b273;
+  --color-surface: #f1efea;
+  --color-neutral-100: #f8f7f4;
+  --color-neutral-800: #423f3b;
+  --color-accent-100: #f4ead7;
+  --color-accent-800: #5f4110;
+}
+
+/* Night. A dark ground under a cold, still light, with the gold turned up to
+   carry it: on paper the mid gold is a stroke, here it has to be visible ink. */
+:root[data-theme="night"] {
+  color-scheme: dark;
+  --mk-paper: #0d0e10;
+  --mk-ink: #ebe6da;
+  --mk-gold: #cfa25c;
+  --mk-gold-deep: #dcb479;
+  --mk-gold-deeper: #e6c692;
+  --mk-gold-pale: #e9c88d;
+  --mk-hero-bg: radial-gradient(
+    150% 105% at 50% -6%,
+    #1c202a 0%,
+    #14171e 18%,
+    #0d1014 42%,
+    #07080a 72%,
+    #030405 100%
+  );
+  --mk-hero-ink: #efece4;
+  --mk-hero-kicker: #d9b678;
+  --mk-mark-ink: #fff0d0;
+  --mk-vignette: radial-gradient(
+    140% 100% at 50% 6%,
+    rgba(4, 6, 9, 0) 32%,
+    rgba(4, 6, 9, 0.62) 72%,
+    rgba(2, 3, 5, 0.96) 100%
+  );
+  --mk-shine: linear-gradient(
+    100deg,
+    #b3873f 0%,
+    #dfb977 22%,
+    #fff0cd 34%,
+    #dfb977 46%,
+    #b3873f 68%,
+    #cfa25c 100%
+  );
+  --mk-scene-night: 1;
+  --mk-scene-eve: 0;
+
+  --color-divider: color-mix(in srgb, var(--color-text) 20%, transparent);
+  --color-surface: #17191d;
+  --color-neutral-100: #1a1c20;
+  --color-neutral-800: #d2ccbf;
+  --color-accent-100: #34291a;
+  --color-accent-800: #f0d6a8;
   --shadow-lg: 0 12px 32px rgb(0 0 0 / 55%);
   --shadow-md: 0 3px 10px rgb(0 0 0 / 45%);
 }

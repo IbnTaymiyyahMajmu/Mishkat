@@ -60,6 +60,9 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   // mounted once, so they reach the current one through this rather than
   // closing over a stale copy.
   const loadRef = useRef<((key: string, autoplay: boolean) => void) | null>(null);
+  // An ayah the recitation was on when the reciter changed, waiting for the
+  // queue to come back in the new voice. See the note by `setQueue`.
+  const resumeRef = useRef<{ key: string; playing: boolean } | null>(null);
 
   const [open, setOpen] = useState(false);
   const [playing, setPlaying] = useState(false);
@@ -177,7 +180,21 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
       queueRef.current = queue;
       // Moving to another surah abandons the recitation rather than playing an
       // ayah the reader is no longer looking at.
-      if (changedSurah && currentRef.current) stop();
+      if (changedSurah && currentRef.current) {
+        resumeRef.current = null;
+        stop();
+        return;
+      }
+      // A queue that arrived because the reciter changed. The surah has to be
+      // fetched again for the new voice's recordings, so the ayah was put aside
+      // when the reciter was picked and is taken up again here — in the same
+      // place, in the new voice. Until this lands the previous recitation is
+      // still playing, so the change is a handover rather than a silence.
+      const resume = resumeRef.current;
+      if (resume && queue.verses.some((v) => v.verse_key === resume.key && v.audio?.url)) {
+        resumeRef.current = null;
+        loadRef.current?.(resume.key, resume.playing);
+      }
     },
     [stop],
   );
@@ -277,13 +294,16 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     if (currentKey) requestScroll(currentKey);
   }, [currentKey, requestScroll]);
 
-  // Changing reciter mid-recitation should keep the place, not lose it.
+  // Changing reciter mid-recitation keeps the place rather than losing it: the
+  // ayah is set aside here, and `setQueue` picks it up when the surah comes
+  // back carrying the new reciter's recordings.
   const reciterRef = useRef(settings.reciterId);
   useEffect(() => {
     if (reciterRef.current === settings.reciterId) return;
     reciterRef.current = settings.reciterId;
-    if (currentRef.current) stop();
-  }, [settings.reciterId, stop]);
+    const key = currentRef.current;
+    if (key) resumeRef.current = { key, playing: !audioRef.current?.paused };
+  }, [settings.reciterId]);
 
   useEffect(() => {
     if (!settings.follow) return;

@@ -21,7 +21,10 @@ import { createPersistedStore } from "./persisted";
 export type Layout = "rows" | "stacked";
 export type WordHighlight = "tint" | "underline" | "both";
 export type Repeat = "off" | "ayah" | "surah";
-export type Theme = "day" | "night";
+/** The three grounds the site is read in. See the note in globals.css. */
+export type Theme = "day" | "evening" | "night";
+
+export const THEMES: Theme[] = ["day", "evening", "night"];
 
 export interface Settings {
   translationId: number;
@@ -56,7 +59,9 @@ export const DEFAULT_SETTINGS: Settings = {
   showWbw: true,
   showTranslation: true,
   layout: "rows",
-  theme: "day",
+  // Evening is the light the site was drawn in, and the one the landing page's
+  // niche belongs to; day and night are departures from it.
+  theme: "evening",
   reciterId: DEFAULT_RECITER,
   wordHighlight: "both",
   readerWidth: 780,
@@ -77,7 +82,7 @@ function sanitise(stored: unknown, fallback: Settings): Settings {
     speed: clamp(s.speed, 0.5, 2),
     tafsirIds: Array.isArray(s.tafsirIds) && s.tafsirIds.length ? s.tafsirIds : DEFAULT_TAFSIRS,
     layout: s.layout === "stacked" ? "stacked" : "rows",
-    theme: s.theme === "night" ? "night" : "day",
+    theme: THEMES.includes(s.theme) ? s.theme : fallback.theme,
     repeat: s.repeat === "ayah" || s.repeat === "surah" ? s.repeat : "off",
   };
 }
@@ -85,6 +90,24 @@ function sanitise(stored: unknown, fallback: Settings): Settings {
 function clamp(n: number, lo: number, hi: number): number {
   if (!Number.isFinite(n)) return lo;
   return Math.min(hi, Math.max(lo, n));
+}
+
+/**
+ * Move the whole document to another reading light.
+ *
+ * Every colour on the site is a `--mk-*` token on the document element, so this
+ * is one attribute — the chrome, the reader, the panels and the landing page's
+ * sky all follow from it, cross-fading on their own transitions.
+ *
+ * The forced recalc is the design's own remedy, carried over: Chromium has been
+ * seen to leave an element that transitions a property latched on its old value
+ * when the custom property behind it changes on an ancestor, and reading a
+ * layout property settles every such element at once. It costs one recalc on an
+ * action the reader takes by hand.
+ */
+function setTheme(root: HTMLElement, theme: Theme) {
+  root.dataset.theme = theme;
+  void root.offsetHeight;
 }
 
 const settingsStore = createPersistedStore<Settings>("mishkat.settings.v1", DEFAULT_SETTINGS, sanitise);
@@ -126,7 +149,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     root.style.setProperty("--arabic-size", `${settings.arabicSize}px`);
     root.style.setProperty("--trans-size", `${settings.transSize}px`);
     root.style.setProperty("--reader-max", `${settings.readerWidth}px`);
-    root.dataset.theme = settings.theme;
+    setTheme(root, settings.theme);
   }, [
     settings.arabicFont,
     settings.arabicSize,

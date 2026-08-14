@@ -16,33 +16,39 @@
     color 300ms ease;
 }
 
-/* On the landing page the bar has no ground of its own: it sits in the lamp's
-   light, over the niche, and every colour in it is stated literally because the
-   page's tokens describe ink on paper. */
+/* On the landing page the bar has no ground of its own: it sits in the light,
+   over the niche. The page's own tokens describe ink on paper and disappear
+   against that, so everything here is stated in the hero set instead. */
 .headerHome {
   background: transparent;
   border-bottom-color: transparent;
-  color: #efece4;
+  color: var(--mk-hero-ink);
 }
-.headerHome .brandArabic { color: #e9c88d; }
-.headerHome .brandKicker { color: rgba(239, 236, 228, 0.42); }
-.headerHome .navLink { color: rgba(239, 236, 228, 0.72); }
-.headerHome .navLink:hover { color: #e9c88d; }
+.headerHome .brandArabic { color: var(--mk-gold-pale); }
+.headerHome .brandKicker { color: color-mix(in srgb, var(--mk-hero-ink) 58%, transparent); }
+.headerHome .navLink { color: color-mix(in srgb, var(--mk-hero-ink) 72%, transparent); }
+.headerHome .navLink:hover { color: var(--mk-gold-pale); }
 .headerHome .navLinkOn {
-  color: #e9c88d;
-  border-bottom-color: #e9c88d;
+  color: var(--mk-gold-pale);
+  border-bottom-color: var(--mk-gold-pale);
 }
 /* The secondary button's border is mixed from the body ink, which is invisible
    here; the search control keeps its outline in the page's own pale. */
+.headerHome .search,
+.headerHome .lights {
+  border-color: color-mix(in srgb, var(--mk-gold-pale) 32%, transparent);
+}
 .headerHome .search {
-  border-color: rgba(239, 236, 228, 0.22);
+  background: color-mix(in srgb, var(--mk-hero-ink) 7%, transparent);
   color: inherit;
 }
 .headerHome .search:hover {
-  background: rgba(226, 190, 124, 0.12);
-  border-color: rgba(226, 190, 124, 0.5);
+  background: color-mix(in srgb, var(--mk-gold) 16%, transparent);
+  border-color: color-mix(in srgb, var(--mk-gold-pale) 55%, transparent);
 }
-.headerHome .kbd { border-color: rgba(239, 236, 228, 0.3); }
+.headerHome .kbd { border-color: color-mix(in srgb, var(--mk-hero-ink) 30%, transparent); }
+.headerHome .light { color: color-mix(in srgb, var(--mk-hero-ink) 55%, transparent); }
+.headerHome .lightOn { color: var(--mk-gold-pale); }
 
 .brand {
   display: flex;
@@ -102,6 +108,40 @@
   border-bottom-color: var(--color-accent);
 }
 
+/* — the reading light —
+   Three grounds, shown as three lamps rather than as a menu: the choice is one
+   the reader makes with their eyes, not one they need to read a label for. */
+.lights {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  padding: 2px;
+  border-radius: 999px;
+  border: 1px solid var(--color-divider);
+  flex: none;
+}
+
+.light {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  background: transparent;
+  color: var(--muted-45);
+  transition: background 180ms ease, color 180ms ease;
+}
+.light:hover { color: var(--color-accent); }
+.light svg { display: block; }
+
+.lightOn {
+  background: color-mix(in srgb, var(--color-accent) 20%, transparent);
+  color: var(--color-accent);
+}
+
 /* A pill rather than a field: it opens the search, it is not the search. */
 .search {
   gap: 9px;
@@ -137,6 +177,12 @@
 }
 
 @media (max-width: 620px) {
+  .header { gap: 8px; }
   .brandName { display: none; }
-  .navLink { font-size: 13px; padding: 6px 7px; }
+  .navLink { font-size: 13px; padding: 6px 5px; }
+  /* The three lamps lose their pill and tighten up rather than disappearing:
+     the light is the one thing a reader is most likely to want changed on a
+     phone, which is where they are most likely to be reading in the dark. */
+  .lights { border-color: transparent; padding: 0; gap: 0; }
+  .light { width: 26px; height: 26px; }
 }
