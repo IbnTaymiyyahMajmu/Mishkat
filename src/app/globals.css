@@ -49,12 +49,7 @@
   --mk-hero-kicker: #d9b678;
   /* Ink for text sitting on a gold search mark. */
   --mk-mark-ink: #4a3110;
-  --mk-vignette: radial-gradient(
-    140% 100% at 50% 6%,
-    rgba(11, 9, 6, 0) 34%,
-    rgba(11, 9, 6, 0.55) 74%,
-    rgba(9, 7, 5, 0.9) 100%
-  );
+
   /* The gold leaf the landing page's ayah is painted through. */
   --mk-shine: linear-gradient(
     100deg,
@@ -175,21 +170,20 @@
   --mk-gold-deep: #85591a;
   --mk-gold-deeper: #6f4a13;
   --mk-gold-pale: #8a5f1c;
+  /* Five stops, like the other two lights. A gradient only interpolates with
+     another of the same shape, so a four-stop day would jump to and from
+     evening and night while those two faded into each other. */
   --mk-hero-bg: radial-gradient(
     150% 105% at 50% -6%,
     #fffdf7 0%,
-    #fbf8f0 32%,
-    #f6f2e8 64%,
+    #fdfbf5 17%,
+    #faf7ef 38%,
+    #f4f0e6 68%,
     #efe9dd 100%
   );
   --mk-hero-ink: #26241f;
   --mk-hero-kicker: #6b4711;
-  --mk-vignette: radial-gradient(
-    140% 100% at 50% 6%,
-    rgba(198, 176, 140, 0) 42%,
-    rgba(198, 176, 140, 0.14) 78%,
-    rgba(186, 163, 124, 0.26) 100%
-  );
+
   --mk-shine: linear-gradient(
     100deg,
     #7a5214 0%,
@@ -230,12 +224,7 @@
   --mk-hero-ink: #efece4;
   --mk-hero-kicker: #d9b678;
   --mk-mark-ink: #fff0d0;
-  --mk-vignette: radial-gradient(
-    140% 100% at 50% 6%,
-    rgba(4, 6, 9, 0) 32%,
-    rgba(4, 6, 9, 0.62) 72%,
-    rgba(2, 3, 5, 0.96) 100%
-  );
+
   --mk-shine: linear-gradient(
     100deg,
     #b3873f 0%,
@@ -465,6 +454,34 @@ textarea.input { min-height: 90px; resize: vertical; font-family: var(--font-bod
      rise:  opacity 0 → 1, translateY(6px) → none
      fade:  opacity 0 → 1
      sheet: opacity 0 → 1, translateY(18px) → none */
+
+/* The window a change of reading light is made inside — see setTheme() in
+   lib/store/settings.tsx. It lends every element the same transition for as
+   long as the light takes to arrive, so the page turns as one thing rather than
+   in instalments, and takes it away again afterwards so nothing carries a
+   transition it never asked for. `!important` because it has to outrank the
+   transitions components declare for their own hover and route changes.
+
+   `background-image` is in the list, which is why all three of `--mk-hero-bg`'s
+   variants are written with the same five stops: gradients interpolate only
+   with gradients of the same shape, and one written differently would jump
+   while everything around it faded.
+
+   Not applied under reduced motion — setTheme never opens the window there, so
+   the change is instant, which is what that preference asks for. */
+:root[data-light-changing] *,
+:root[data-light-changing] *::before,
+:root[data-light-changing] *::after {
+  transition:
+    background-color 500ms ease,
+    background-image 500ms ease,
+    border-color 500ms ease,
+    box-shadow 500ms ease,
+    color 500ms ease,
+    fill 500ms ease,
+    opacity 500ms ease,
+    stroke 500ms ease !important;
+}
 
 @media (prefers-reduced-motion: reduce) {
   *,

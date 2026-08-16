@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SurahIndex } from "@/components/surahs/SurahIndex";
 
 export const metadata: Metadata = {
-  title: "The one hundred and fourteen",
+  title: "Every surah",
   description: "Every surah of the Qur'an, with its Arabic name, its meaning and its length.",
 };
 

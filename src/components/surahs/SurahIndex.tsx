@@ -69,7 +69,7 @@ export function SurahIndex() {
         <div className={styles.head}>
           <div>
             <div className="kicker">Contents</div>
-            <h1 className={styles.title}>The one hundred and fourteen</h1>
+            <h1 className={styles.title}>Every surah</h1>
           </div>
           <input
             className={`input ${styles.filter}`}

@@ -93,21 +93,59 @@ function clamp(n: number, lo: number, hi: number): number {
 }
 
 /**
+ * How long a change of reading light takes. Must match the duration in the
+ * `[data-light-changing]` rule in globals.css.
+ */
+const LIGHT_MS = 500;
+
+let lightTimer: ReturnType<typeof setTimeout> | null = null;
+
+/**
  * Move the whole document to another reading light.
  *
- * Every colour on the site is a `--mk-*` token on the document element, so this
- * is one attribute — the chrome, the reader, the panels and the landing page's
- * sky all follow from it, cross-fading on their own transitions.
+ * Every colour on the site is a `--mk-*` token on the document element, so the
+ * change itself is one attribute. Making it *look* like one change is the
+ * harder half: hundreds of elements read those tokens, and each would otherwise
+ * move on whatever transition it happens to declare — the landing page's ground
+ * over 700ms, the header over 300ms, and everything that simply states
+ * `color: var(--mk-hero-ink)` not at all. The result was a light that arrived in
+ * instalments.
  *
- * The forced recalc is the design's own remedy, carried over: Chromium has been
- * seen to leave an element that transitions a property latched on its old value
- * when the custom property behind it changes on an ancestor, and reading a
- * layout property settles every such element at once. It costs one recalc on an
- * action the reader takes by hand.
+ * So the change is made inside a window that lends every element the same
+ * transition, and takes it away again once the light has arrived. Nothing
+ * carries a transition it did not ask for outside those five hundred
+ * milliseconds, and inside them the whole page turns together.
+ *
+ * The order matters. The window has to be open, and a style recalc has to have
+ * run under it, before the tokens change: a transition interpolates from the
+ * style an element had when the change landed, so if the window opened in the
+ * same pass there would be nothing to move from.
  */
 function setTheme(root: HTMLElement, theme: Theme) {
+  const previous = root.dataset.theme;
+
+  // Nothing to fade. Either this is the first application — the inline script
+  // has already put the reader's light on the element, and it should not
+  // dissolve on arrival — or the reader has asked for the light they are in.
+  const changing = !!previous && previous !== theme;
+  const still = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+  if (changing && !still) {
+    root.dataset.lightChanging = "";
+    void root.offsetHeight; // fix the old light as the style to move from
+  }
+
   root.dataset.theme = theme;
-  void root.offsetHeight;
+
+  if (lightTimer) clearTimeout(lightTimer);
+  if (changing && !still) {
+    lightTimer = setTimeout(() => {
+      delete root.dataset.lightChanging;
+      lightTimer = null;
+    }, LIGHT_MS + 60);
+  } else {
+    delete root.dataset.lightChanging;
+  }
 }
 
 const settingsStore = createPersistedStore<Settings>("mishkat.settings.v1", DEFAULT_SETTINGS, sanitise);

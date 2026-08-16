@@ -303,8 +303,16 @@ export function SettingsPage() {
               <tr>
                 <td className={styles.layer}>Root &amp; morphology</td>
                 <td className={styles.source}>
-                  Not connected in this build — the fields exist in the data model and are left
-                  empty rather than inferred
+                  The Quranic Arabic Corpus (Kais Dukes, University of Leeds) — root, lemma, part
+                  of speech and grammar per segment, served by al-nuqta
+                </td>
+              </tr>
+              <tr>
+                <td className={styles.layer}>Lexicons</td>
+                <td className={styles.source}>
+                  Twelve classical works by root — Ibn Fāris, al-Rāghib, Ibn Manẓūr&rsquo;s Lisān
+                  al-ʿArab, al-Zabīdī&rsquo;s Tāj al-ʿArūs, Lane and others — each shown in Arabic
+                  under its author&rsquo;s name, with a link to read it at the source
                 </td>
               </tr>
               <tr>
