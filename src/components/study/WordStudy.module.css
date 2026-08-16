@@ -1,0 +1,686 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   One word, given a page.
+
+   Two columns: a rail that says where you are and lets you jump, and a reading
+   measure narrow enough to actually read a few thousand words of Ibn Manẓūr in.
+   Below 1080px the rail lies down across the top and the measure takes the
+   width.
+
+   ── on the colour coding ────────────────────────────────────────────────
+   Three roles — prefix, stem, suffix — and every one of them is marked three
+   ways: by colour, by the shape of the underline beneath it, and by a chip
+   that says the word. Colour is never the only channel, so the coding survives
+   both a colour-blind reader and a monochrome print.
+
+   The colours are mixed from `--mk-gold` and `--color-text`, which are the two
+   primitives every reading light redefines. That is what keeps the key legible
+   on paper at noon and on near-black at night without a second set of values.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.layout {
+  --role-stem: var(--color-accent);
+  --role-prefix: color-mix(in srgb, var(--color-text) 56%, transparent);
+  --role-suffix: color-mix(in srgb, var(--mk-gold) 52%, var(--color-text));
+
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr);
+  gap: 52px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 38px 32px 140px;
+}
+
+.body { min-width: 0; max-width: 720px; }
+
+/* ── the rail ─────────────────────────────────────────────────────────── */
+
+.rail { position: relative; }
+
+.railInner {
+  position: sticky;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.railLink {
+  display: block;
+  padding: 5px 12px;
+  border-inline-start: 2px solid var(--color-divider);
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--muted-55);
+  text-decoration: none;
+  transition: color 0.15s, border-color 0.15s;
+}
+.railLink:hover { color: var(--color-text); }
+
+.railSub {
+  padding-inline-start: 22px;
+  font-size: 11.5px;
+  color: var(--muted-45);
+}
+
+.railOn {
+  color: var(--color-accent);
+  border-inline-start-color: var(--color-accent);
+}
+
+/* ── the head ─────────────────────────────────────────────────────────── */
+
+.head {
+  scroll-margin-top: 20px;
+  text-align: center;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 26px;
+  font-family: var(--font-heading);
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.headword {
+  font-family: var(--font-amiri-quran), serif;
+  font-size: clamp(56px, 11vw, 96px);
+  line-height: 1.75;
+  padding-bottom: var(--quran-descender-pad);
+}
+
+.headTranslit {
+  font-style: italic;
+  font-size: 19px;
+  color: var(--muted-62);
+}
+
+.headGloss {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 30px;
+  line-height: 1.3;
+  margin-top: 8px;
+}
+
+.headWhere {
+  margin-top: 14px;
+  font-size: 11.5px;
+  letter-spacing: 0.05em;
+  color: var(--muted-45);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── the ayah it stands in ────────────────────────────────────────────── */
+
+.context {
+  margin-top: 30px;
+  padding: 22px 24px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--color-text) 2.5%, transparent);
+}
+
+.contextArabic {
+  margin: 12px 0 0;
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 27px;
+  line-height: 2.15;
+  text-align: right;
+  padding-bottom: var(--quran-descender-pad);
+}
+
+/* The word this page is about, wherever it turns up in an ayah. */
+.here {
+  color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 13%, transparent);
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+.contextEnglish {
+  margin: 16px 0 0;
+  font-size: 14.5px;
+  line-height: 1.85;
+  color: var(--muted-88);
+}
+
+.credit {
+  margin-top: 8px;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  color: var(--muted-45);
+}
+
+/* ── sections ─────────────────────────────────────────────────────────── */
+
+.section {
+  margin-top: 56px;
+  scroll-margin-top: 20px;
+}
+
+.h2 {
+  font-size: 27px;
+  line-height: 1.3;
+  margin: 0 0 14px;
+  padding-bottom: 11px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.lede {
+  margin: 0 0 20px;
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: var(--muted-62);
+}
+
+.quiet { margin: 0 0 8px; font-size: 13px; color: var(--muted-55); }
+
+.footnote {
+  margin-top: 16px;
+  font-size: 11.5px;
+  line-height: 1.75;
+  color: var(--muted-45);
+}
+
+/* ── the word split into its pieces ───────────────────────────────────── */
+
+.split {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  padding: 22px 18px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+}
+
+.piece {
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 46px;
+  line-height: 1.7;
+  padding-bottom: var(--quran-descender-pad);
+}
+
+/* The three roles. Colour, and an underline whose shape says the same thing. */
+.prefix {
+  color: var(--role-prefix);
+  text-decoration: underline dashed currentColor 1.5px;
+  text-underline-offset: 0.22em;
+}
+.stem {
+  color: var(--role-stem);
+  text-decoration: underline solid currentColor 2px;
+  text-underline-offset: 0.22em;
+}
+.suffix {
+  color: var(--role-suffix);
+  text-decoration: underline dotted currentColor 2px;
+  text-underline-offset: 0.22em;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 14px;
+  font-size: 11.5px;
+  color: var(--muted-55);
+}
+.legendItem { display: inline-flex; align-items: center; gap: 7px; }
+
+.swatch {
+  width: 17px;
+  height: 0;
+  border-top-width: 2px;
+}
+.swatch.prefix { border-top: 2px dashed var(--role-prefix); }
+.swatch.stem { border-top: 2px solid var(--role-stem); }
+.swatch.suffix { border-top: 2px dotted var(--role-suffix); }
+
+/* ── one segment ──────────────────────────────────────────────────────── */
+
+.seg {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+  margin-top: 14px;
+  padding: 16px 20px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  border-inline-start-width: 3px;
+}
+.edge_prefix { border-inline-start-color: var(--role-prefix); }
+.edge_stem { border-inline-start-color: var(--role-stem); }
+.edge_suffix { border-inline-start-color: var(--role-suffix); }
+
+.segForm {
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 34px;
+  line-height: 1.75;
+  min-width: 3.6em;
+  text-align: right;
+  flex-shrink: 0;
+  padding-bottom: var(--quran-descender-pad);
+}
+
+.segBody { flex: 1; min-width: 0; }
+
+.segTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.segPos {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 18px;
+}
+
+.segRole {
+  font-size: 9.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  padding: 2px 7px;
+  border-radius: 2px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+.chip_prefix { color: var(--role-prefix); }
+.chip_stem { color: var(--role-stem); }
+.chip_suffix { color: var(--role-suffix); }
+
+.segStem {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 5px 16px;
+  margin: 12px 0 0;
+  align-items: baseline;
+}
+.segStem dt {
+  font-size: 9.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  color: var(--muted-45);
+}
+.segStem dd { margin: 0; font-family: var(--font-amiri), serif; font-size: 21px; line-height: 1.6; }
+.segRoot { color: var(--role-stem); letter-spacing: 0.05em; }
+.segLemma { color: var(--muted-88); }
+
+.traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 6px;
+  margin-top: 12px;
+}
+
+.trait {
+  font-size: 11.5px;
+  line-height: 1.5;
+  padding: 3px 9px;
+  border: 1px solid var(--color-divider);
+  border-radius: 3px;
+  color: var(--muted-62);
+}
+
+/* ── the root ─────────────────────────────────────────────────────────── */
+
+.rootBlock {
+  text-align: center;
+  padding: 26px 20px 22px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+}
+
+.rootArabic {
+  font-family: var(--font-amiri), serif;
+  font-size: clamp(48px, 9vw, 68px);
+  line-height: 1.55;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  padding-bottom: var(--quran-descender-pad);
+}
+
+.rootRoman {
+  font-style: italic;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  color: var(--muted-55);
+}
+
+.figures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+  gap: 1px;
+  margin-top: 22px;
+  background: var(--color-divider);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.figure {
+  background: var(--color-bg);
+  padding: 16px 12px;
+  text-align: center;
+}
+
+.figureN {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 30px;
+  line-height: 1.1;
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.figureLabel {
+  margin-top: 5px;
+  font-size: 10.5px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--muted-55);
+}
+
+.lemmas { display: flex; flex-wrap: wrap; gap: 7px; }
+
+.lemmaChip {
+  font-family: var(--font-amiri), serif;
+  font-size: 21px;
+  line-height: 1.9;
+  padding: 1px 12px;
+  border: 1px solid var(--color-divider);
+  border-radius: 3px;
+}
+.lemmaOn {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 9%, transparent);
+}
+
+/* ── where it occurs ──────────────────────────────────────────────────── */
+
+.occ {
+  display: block;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--color-divider);
+  text-decoration: none;
+  color: inherit;
+}
+.occ:hover { background: color-mix(in srgb, var(--color-accent) 5%, transparent); }
+
+.occKey {
+  display: block;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.occArabic {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 22px;
+  line-height: 2.05;
+  text-align: right;
+  padding-bottom: var(--quran-descender-pad);
+}
+
+.occEnglish {
+  display: block;
+  margin-top: 5px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--muted-55);
+}
+
+/* ── a lexicon entry ──────────────────────────────────────────────────── */
+
+.work {
+  margin-top: 16px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  scroll-margin-top: 20px;
+}
+
+.workHead {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 15px 18px;
+  background: color-mix(in srgb, var(--color-text) 3%, transparent);
+  border: 0;
+  cursor: pointer;
+  color: inherit;
+  font-family: inherit;
+}
+.workHead:hover .workName { color: var(--color-accent); }
+
+.workNames {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.workName {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 20px;
+}
+
+.workNameAr {
+  font-family: var(--font-amiri), serif;
+  font-size: 20px;
+  line-height: 1.8;
+  color: var(--muted-55);
+  white-space: nowrap;
+}
+
+.workBy {
+  display: block;
+  margin-top: 2px;
+  font-size: 12.5px;
+  color: var(--muted-55);
+}
+
+.tag {
+  display: inline-block;
+  margin-inline-start: 9px;
+  padding: 1px 7px;
+  border-radius: 2px;
+  font-size: 9.5px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  border: 1px solid var(--color-divider);
+}
+
+.workState {
+  display: block;
+  margin-top: 9px;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+}
+
+.workBody { padding: 22px 22px 18px; }
+
+/* The entry itself, set to be read rather than skimmed: a long measure, open
+   leading, and the Arabic a size you can follow unvowelled. */
+.entryArabic {
+  margin: 12px 0 0;
+  font-family: var(--font-amiri), serif;
+  font-size: 24px;
+  line-height: 2.35;
+  text-align: justify;
+  padding-bottom: var(--quran-descender-pad);
+}
+
+.entryPara {
+  margin: 0 0 13px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: var(--muted-88);
+}
+
+/* A numbered sense keeps its number in the gutter, where it reads as the
+   author's own division of the entry rather than as part of the sentence. */
+.sense {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 0 10px;
+  margin-top: 12px;
+}
+
+.senseN {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 14px;
+  line-height: 1.95;
+  color: var(--color-accent);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.workFoot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 22px;
+  padding-top: 15px;
+  border-top: 1px solid var(--color-divider);
+}
+
+.out {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* ── cognates ─────────────────────────────────────────────────────────── */
+
+.cognates { border-top: 1px solid var(--color-divider); }
+
+.cog {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 3px 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--color-divider);
+  align-items: baseline;
+}
+
+.cogWord { font-size: 18px; line-height: 1.6; }
+
+.cogLang { font-size: 12px; color: var(--muted-62); text-align: right; }
+.cogFamily { display: block; font-size: 10px; color: var(--muted-45); }
+
+.cogWhen {
+  font-size: 10.5px;
+  color: var(--muted-45);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  min-width: 5.5em;
+  text-align: right;
+}
+
+.cogSense {
+  grid-column: 1 / -1;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted-62);
+}
+
+/* ── sources ──────────────────────────────────────────────────────────── */
+
+.sources {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px 22px;
+  margin: 0;
+  font-size: 13px;
+  align-items: baseline;
+}
+.sources dt {
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  color: var(--muted-45);
+  white-space: nowrap;
+}
+.sources dd { margin: 0; line-height: 1.7; color: var(--muted-88); }
+
+/* ── nothing chosen ───────────────────────────────────────────────────── */
+
+.missingTitle { font-size: 38px; margin: 4px 0 14px; }
+.missingBody { font-size: 15px; line-height: 1.85; color: var(--muted-62); max-width: 46ch; }
+
+/* ── narrow ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 1080px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding: 26px 22px 110px;
+  }
+
+  /* The rail lies down and scrolls sideways, which keeps the jumps without
+     spending a screen's height on them. Sub-entries are dropped: on a phone
+     the list of twelve lexicons is the section itself, one scroll below. */
+  .rail {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    margin: -26px -22px 24px;
+    padding: 10px 22px;
+    background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+    backdrop-filter: blur(9px);
+    border-bottom: 1px solid var(--color-divider);
+  }
+  .railInner {
+    position: static;
+    flex-direction: row;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .railInner::-webkit-scrollbar { display: none; }
+  .railInner > :global(.kicker) { display: none; }
+  .railSub { display: none; }
+  .railLink {
+    border-inline-start: 0;
+    border-bottom: 2px solid transparent;
+    padding: 5px 2px;
+    white-space: nowrap;
+  }
+  .railOn { border-bottom-color: var(--color-accent); }
+
+  .body { max-width: none; }
+  .seg { gap: 14px; padding: 14px 15px; }
+  .segForm { font-size: 29px; min-width: 2.9em; }
+  .workBody { padding: 18px 15px 15px; }
+  .entryArabic { font-size: 21px; line-height: 2.2; text-align: right; }
+  .cog { grid-template-columns: minmax(0, 1fr) auto; }
+  .cogWhen { grid-column: 2; }
+}

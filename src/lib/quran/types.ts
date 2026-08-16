@@ -130,6 +130,25 @@ export interface WordSegments {
   segments: Segment[];
 }
 
+/**
+ * An ayah the root turns up in, with the words that carry it already picked
+ * out. The positions come from the corpus, so marking them on screen is a
+ * matter of counting words rather than of matching letters.
+ */
+export interface RootVerse {
+  key: string;
+  arabic: string;
+  translation: string;
+  /** 1-based word positions in the ayah where this root occurs. */
+  matched: number[];
+}
+
+export interface RootVersePage {
+  verses: RootVerse[];
+  /** Every ayah the root occurs in, not only the ones fetched so far. */
+  total: number;
+}
+
 /** One lexicographer's entry for one root, as a heading with a summary. */
 export interface LexiconEntry {
   id: number;
@@ -176,7 +195,12 @@ export interface RootProfile {
   key: string;
   /** `"ḥ-m-d"`, for a reader who does not read the Arabic yet. */
   romanized: string;
-  occurrences: number;
+  /**
+   * How many ayat carry the root — not how many words do. A root occurring
+   * twice in one ayah counts once, which is what the corpus reports and so is
+   * what the screen is allowed to say.
+   */
+  ayat: number;
   lemmas: string[];
   cognates: Cognate[];
 }

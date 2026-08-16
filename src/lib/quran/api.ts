@@ -133,6 +133,30 @@ export async function fetchVerse(key: string, translationId: number): Promise<Ve
 }
 
 /**
+ * One ayah with its words attached. The reader already holds this for the surah
+ * it is showing, so this is for the screens that arrive at a single ayah cold —
+ * the study page opens on a word and has no surah loaded behind it.
+ */
+export async function fetchVerseWithWords(
+  key: string,
+  translationId: number,
+): Promise<Verse | null> {
+  const params = new URLSearchParams({
+    words: "true",
+    translations: String(translationId),
+    fields: "text_uthmani",
+    translation_fields: "resource_name",
+    word_fields: "text_uthmani,transliteration,location",
+  });
+  try {
+    const j = await get<{ verse: Verse }>(`verses/by_key/${key}?${params}`);
+    return j.verse ?? null;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * The whole surah as Uthmānī text and nothing else — no words, no translation,
  * no audio. This is what the muṣḥaf view reads, and it is a fraction of the
  * weight of the study payload: al-Baqarah is 100 KB here against 1.6 MB there.
@@ -221,18 +245,25 @@ function joinWords(r: RawSearchResult): string {
     .join(" ");
 }
 
-/** Every ayah in which a bare word form occurs. Powers the word study panel. */
+/**
+ * Every ayah in which a bare word form occurs, and how many there are in all.
+ *
+ * The count is the index's own total rather than the length of what came back,
+ * so a page asking "how often does this exact form occur" gets the answer
+ * instead of the size of the sample it was shown.
+ */
 export async function fetchOccurrences(
   form: string,
   size = 8,
-): Promise<{ key: string; text: string }[]> {
+): Promise<{ rows: { key: string; text: string }[]; total: number }> {
   const j = await getUncached<{
     search?: { results?: RawSearchResult[]; total_results?: number };
   }>(`search?q=${encodeURIComponent(form)}&size=${size}&page=0&language=en`);
-  return (j.search?.results ?? []).map((r) => ({
+  const rows = (j.search?.results ?? []).map((r) => ({
     key: r.verse_key,
     text: joinWords(r) || r.text || "",
   }));
+  return { rows, total: j.search?.total_results ?? rows.length };
 }
 
 // ── audio ───────────────────────────────────────────────────────────────────
