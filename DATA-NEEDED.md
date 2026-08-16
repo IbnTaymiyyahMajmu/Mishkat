@@ -81,6 +81,17 @@ names the grammar of each, shows the root with its lemmas and its count across
 the muṣḥaf, and prints the classical lexicon entries for that root — Arabic
 first, translation under it, each under its author's own name and death date.
 
+**And a page for reading it on.** A panel beside the text is the wrong shape for
+several thousand words of Ibn Manẓūr, so `/study/?w=1:2:3` gives one word the
+whole screen: the ayah it stands in with the word marked, the segments set apart
+and colour-keyed by role, the root with its figures and every lemma grown from
+it, every ayah the root occurs in with the carrying words marked, all the
+lexicon entries in full, the Semitic cognates, and the sources. A rail down the
+side says where you are and jumps between them. The panel links into it — into
+the particular entry, if the reader was reading one.
+
+It is one exported page, not 77,430: the word is a query rather than a path.
+
 **Where it comes from.** Two layers, one API:
 
 | Layer | Source |

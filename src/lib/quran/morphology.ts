@@ -111,14 +111,31 @@ const FAMILY: Record<string, string> = {
   "kaAd": "of kāda and its sisters",
 };
 
+/**
+ * Which part of the word a segment is. The corpus states this outright — it is
+ * the first code in every segment — so it can be shown as a colour without
+ * anything being worked out from the letters.
+ */
+export type Role = "prefix" | "stem" | "suffix";
+
 /** What a segment turns out to be once its codes are read together. */
 export interface Grammar {
+  role: Role;
   /** The root, spaced as the corpus spaces it: `"ح م د"`. Empty on affixes. */
   root: string;
   /** The dictionary form. Empty where the corpus records none. */
   lemma: string;
   /** Everything else, in reading order, already in English. */
   traits: string[];
+}
+
+/**
+ * A word with no prefix and no suffix is one segment, and colouring it says
+ * nothing that the single row does not already say. Worth knowing before the
+ * legend is drawn.
+ */
+export function isCompound(grammars: Grammar[]): boolean {
+  return grammars.some((g) => g.role !== "stem");
 }
 
 /**
@@ -130,6 +147,7 @@ export function readGrammar(raw: string, pos: string): Grammar {
   const atoms = (raw || "").split("|").filter(Boolean);
   const has = (a: string) => atoms.includes(a);
 
+  const role: Role = has("PREFIX") ? "prefix" : has("SUFFIX") ? "suffix" : "stem";
   let root = "";
   let lemma = "";
   const traits: string[] = [];
@@ -231,7 +249,7 @@ export function readGrammar(raw: string, pos: string): Grammar {
   // of speech reads better empty than repeating the label beside it.
   if (traits.length === 1 && traits[0].toLowerCase() === pos.toLowerCase()) traits.length = 0;
 
-  return { root, lemma, traits };
+  return { role, root, lemma, traits };
 }
 
 /**

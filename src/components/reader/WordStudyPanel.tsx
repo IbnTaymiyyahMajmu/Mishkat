@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { LexiconEntry, LexiconText, RootProfile, Segment, Verse, Word } from "@/lib/quran/types";
 import { fetchOccurrences } from "@/lib/quran/api";
@@ -9,7 +10,6 @@ import {
   fetchLexicon,
   fetchLexiconText,
   fetchRoot,
-  scanUrl,
 } from "@/lib/quran/lexicon";
 import { readGrammar, romanizeRoot } from "@/lib/quran/morphology";
 import { stripDiacritics } from "@/lib/text";
@@ -62,12 +62,15 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
 
   // Stamped with the word it belongs to, so the panel is never showing one
   // word's occurrences under another word's heading while a fetch is in flight.
-  const [found, setFound] = useState<{ form: string; rows: { key: string; text: string }[] }>({
-    form: "",
-    rows: [],
-  });
+  const [found, setFound] = useState<{
+    form: string;
+    rows: { key: string; text: string }[];
+    total: number;
+  }>({ form: "", rows: [], total: 0 });
 
-  const parts = stamped(segments, `${verseKey}:${word?.position ?? 0}`);
+  /** How the study page addresses one word: `"2:255:4"`. */
+  const studyKey = `${verseKey}:${word?.position ?? 0}`;
+  const parts = stamped(segments, studyKey);
   const stem = parts?.find((s) => s.rootKey);
   const rootKey = stem?.rootKey ?? "";
 
@@ -104,8 +107,8 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
     if (!form) return;
     let alive = true;
     fetchOccurrences(form)
-      .then((rows) => alive && setFound({ form, rows }))
-      .catch(() => alive && setFound({ form, rows: [] }));
+      .then((r) => alive && setFound({ form, rows: r.rows, total: r.total }))
+      .catch(() => alive && setFound({ form, rows: [], total: 0 }));
     return () => {
       alive = false;
     };
@@ -136,6 +139,14 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
         <div className={styles.wordTranslit}>{word.transliteration?.text || ""}</div>
         <div className={styles.wordGloss}>{word.translation?.text || ""}</div>
       </div>
+
+      {/* The panel answers "what is this word" beside the ayah, which is what a
+          column this narrow is good for. Reading Ibn Manẓūr at length is not,
+          so the way through to the page that is built for it sits at the top
+          rather than at the end of a scroll. */}
+      <Link href={`/study/?w=${studyKey}`} className="btn btn-secondary btn-block" style={{ marginTop: 18 }}>
+        Study this word in full
+      </Link>
 
       {/* ── what the word is made of ───────────────────────────────────── */}
       <section className={styles.section}>
@@ -218,7 +229,7 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
               <span className={styles.rootRoman}>{profile?.romanized || romanizeRoot(rootKey)}</span>
               {profile && (
                 <span>
-                  {profile.occurrences.toLocaleString()} occurrences in the Qur&rsquo;an
+                  {profile.ayat.toLocaleString()} ayat carry it
                   {profile.lemmas.length > 0 &&
                     ` · ${profile.lemmas.length} ${profile.lemmas.length === 1 ? "lemma" : "lemmas"}`}
                 </span>
@@ -320,21 +331,18 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
                       )}
                     </div>
 
+                    {/* Straight to this work on the study page, opened at it —
+                        not out of the site. The links to the source and to the
+                        scans live there too, where there is room to say what
+                        they are. */}
                     <footer className={styles.workFoot}>
                       <button className="btn btn-ghost" style={{ fontSize: 12 }} onClick={() => openEntry(w.id)}>
                         Close
                       </button>
                       <div style={{ flex: 1 }} />
-                      {text?.sourceUrl && (
-                        <a
-                          href={text.sourceUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={styles.sourceLink}
-                        >
-                          Read it there ↗
-                        </a>
-                      )}
+                      <Link href={`/study/?w=${studyKey}&work=${w.id}`} className={styles.sourceLink}>
+                        Read this entry in full →
+                      </Link>
                     </footer>
                   </>
                 )}
@@ -343,14 +351,9 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
           })}
 
           <div className={styles.workFoot} style={{ borderTop: 0, paddingLeft: 0, paddingRight: 0 }}>
-            <a
-              href={scanUrl(rootKey)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.sourceLink}
-            >
-              Scanned pages · Lane, Hava, Wehr ↗
-            </a>
+            <Link href={`/study/?w=${studyKey}`} className={styles.sourceLink}>
+              All {works?.length ? `${works.length} ` : ""}entries, set to be read →
+            </Link>
           </div>
         </section>
       )}
@@ -396,7 +399,9 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
         <div className={styles.sectionHead}>
           <div className="kicker kicker-sm">Elsewhere in the Qur&rsquo;an</div>
           {found.form === form && found.rows.length > 0 && (
-            <div className={styles.count}>{found.rows.length} shown</div>
+            <div className={styles.count}>
+              {found.rows.length} of {found.total.toLocaleString()}
+            </div>
           )}
         </div>
 

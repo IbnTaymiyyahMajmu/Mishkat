@@ -1,4 +1,12 @@
-import type { Cognate, LexiconEntry, LexiconText, RootProfile, WordSegments } from "./types";
+import type {
+  Cognate,
+  LexiconEntry,
+  LexiconText,
+  RootProfile,
+  RootVerse,
+  RootVersePage,
+  WordSegments,
+} from "./types";
 
 /**
  * The one place in the application that knows where the morphology and the
@@ -99,6 +107,22 @@ async function get<T>(path: string): Promise<T | null> {
 /** Roots are keyed in Buckwalter, and `$`, `'` and `*` are all real keys. */
 const rootPath = (key: string) => encodeURIComponent(key);
 
+/**
+ * Roots and lemmas are Arabic script by definition, and a handful of them
+ * arrive carrying a stray `^` — the residue of the corpus being transcoded out
+ * of Buckwalter, where a caret has no Arabic to become. Three lemmas in
+ * eighty-odd, so it is a transcoding artefact rather than anything the corpus
+ * means to say.
+ *
+ * Dropping a character that is not Arabic from a field that is only ever
+ * Arabic is a presentation fix and not an editorial one: nothing the source
+ * asserts is altered, and a caret in the middle of رَبَٰئِب would read as a fault
+ * in this site rather than as one upstream.
+ */
+function arabicOnly(s: string): string {
+  return s.replace(/[^\p{Script=Arabic}\p{Mn}\s]/gu, "").trim();
+}
+
 // ── morphology ──────────────────────────────────────────────────────────────
 
 interface RawSegment {
@@ -127,10 +151,10 @@ export async function fetchAyahMorphology(verseKey: string): Promise<WordSegment
       pos: s.pos ?? "",
       // The corpus spaces a root out as `ح م د`; the joined form is what reads
       // as a word, and both are wanted in different places on screen.
-      root: (s.root_arabic ?? "").replace(/\s+/g, ""),
-      rootSpaced: s.root_arabic ?? "",
+      root: arabicOnly(s.root_arabic ?? "").replace(/\s+/g, ""),
+      rootSpaced: arabicOnly(s.root_arabic ?? ""),
       rootKey: s.root_buckwalter ?? "",
-      lemma: s.lemma_arabic ?? "",
+      lemma: arabicOnly(s.lemma_arabic ?? ""),
       raw: s.features_raw ?? "",
     })),
   }));
@@ -239,14 +263,50 @@ export async function fetchRoot(rootKey: string): Promise<RootProfile | null> {
     .sort((a, b) => (a.from ?? 0) - (b.from ?? 0));
 
   return {
-    root: (d.root_arabic ?? "").replace(/\s+/g, ""),
-    rootSpaced: d.root_arabic ?? "",
+    root: arabicOnly(d.root_arabic ?? "").replace(/\s+/g, ""),
+    rootSpaced: arabicOnly(d.root_arabic ?? ""),
     key: d.root_buckwalter ?? rootKey,
     romanized: d.cognate?.transliteration ?? "",
-    occurrences: d.total_occurrences ?? 0,
-    lemmas: (d.lemmas ?? []).map((l) => l.lemma_arabic ?? "").filter(Boolean),
+    // Checked against the ayah count the verses endpoint reports: for every
+    // root tried the two agree exactly, so this counts ayat and not words —
+    // a root can occur twice in one ayah and be counted once here. The screen
+    // says "ayat" for that reason and does not offer a word count it has not
+    // got.
+    ayat: d.total_occurrences ?? 0,
+    lemmas: (d.lemmas ?? []).map((l) => arabicOnly(l.lemma_arabic ?? "")).filter(Boolean),
     cognates,
   };
+}
+
+/**
+ * The ayat a root occurs in, fifty at a time — the corpus caps a page there and
+ * a root like r-b-b runs to 871 of them, which is a list to be walked rather
+ * than a list to be loaded. `total` is the whole count regardless of how much
+ * of it has arrived, so the page can say how far down it is.
+ */
+export async function fetchRootVerses(rootKey: string, offset = 0): Promise<RootVersePage> {
+  const j = await get<{
+    data?: {
+      verses?: {
+        surah?: number;
+        ayah?: number;
+        text_uthmani?: string;
+        translation?: string;
+        matched_positions?: number[];
+      }[];
+    };
+    meta?: { total?: number };
+  }>(`roots/${rootPath(rootKey)}/verses?limit=50&offset=${offset}`);
+
+  const verses: RootVerse[] = (j?.data?.verses ?? [])
+    .filter((v) => v.surah && v.ayah)
+    .map((v) => ({
+      key: `${v.surah}:${v.ayah}`,
+      arabic: v.text_uthmani ?? "",
+      translation: v.translation ?? "",
+      matched: v.matched_positions ?? [],
+    }));
+  return { verses, total: j?.meta?.total ?? verses.length };
 }
 
 /**
