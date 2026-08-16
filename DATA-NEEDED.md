@@ -74,33 +74,49 @@ selection is a good reference for what a serious reader expects.
 
 ---
 
-## 3. Morphology: root, lemma, grammar, iʿrāb
+## 3. Morphology and the lexicons — **connected**
 
-**Status.** Not connected. The word study panel says so explicitly rather than
-inferring anything, and the settings page lists it as absent. The master prompt
-asks for root, lemma, morphology and grammar; only the surface form,
-transliteration and gloss exist today.
+**Status: done.** The word study panel now breaks a word into its segments and
+names the grammar of each, shows the root with its lemmas and its count across
+the muṣḥaf, and prints the classical lexicon entries for that root — Arabic
+first, translation under it, each under its author's own name and death date.
 
-**Why it is deliberately empty.** Deriving a root from a surface form is a
-linguistic claim. The product's stated principle is that nothing is asserted
-without a source, so the fields stay blank until a corpus with a name behind it
-fills them.
+**Where it comes from.** Two layers, one API:
 
-**What to send**, keyed by `surah:ayah:word`:
+| Layer | Source |
+|---|---|
+| Grammar, root, lemma | The Quranic Arabic Corpus (Kais Dukes, Language Research Group, University of Leeds), decoded out of Buckwalter |
+| Lexicons | Twelve classical works by root: al-Jawharī, Ibn Fāris, Ibn Sīda, al-Rāghib al-Iṣfahānī, al-Zamakhsharī, al-Rāzī, **Ibn Manẓūr (Lisān al-ʿArab)**, al-Fayyūmī, **al-Zabīdī (Tāj al-ʿArūs)**, **Lane**, Salmoné, and others |
+| Cognates | Sister-Semitic attestations, kept in their own section and labelled as comparative philology rather than lexicography |
 
-- root (triliteral/quadriliteral), lemma
-- part of speech, and the full morphological tag
-- grammatical role / iʿrāb where the source carries it
-- optionally, a lexicon entry per root (Lane's, al-Muʿjam al-Wasīṭ, etc.)
+Both are served by **al-nuqta** (`al-nuqta.com`), a keyless open API. The one
+file that knows this is `src/lib/quran/lexicon.ts`; replacing it replaces the
+source and touches nothing else.
 
-**Candidate sources.** The Quranic Arabic Corpus (Jāmiʿ al-Qurʾān, Kais Dukes)
-is the obvious one and is the reference dataset for this; check its licence
-terms for your intended use. Some publishers license cleaner sets commercially.
-**Tell me which one you have rights to and I will wire it — I will not
-substitute a different corpus for the one you name.**
+**What is deliberately not taken from it.** The same API also serves
+machine-written prose — `ai_meaning` on a word, `ai-translation` on an ayah,
+`detailed_meaning` and `primary_meaning` on a root. None of it is requested and
+none of it is shown. A claim about the language carries the name of whoever
+made it, or it does not appear. Where a root has no lexicon entry, the panel
+says so and offers the scans instead.
 
-Once this lands, "other occurrences of this word" becomes "other occurrences of
-this **root**", which is the version that is actually useful for study.
+**What is still worth deciding.**
+
+1. **Licence.** The corpus's terms permit use "in any website or application,
+   provided its source is clearly indicated, and a link is made to
+   corpus.quran.com" — both are on the panel and in Settings. al-nuqta
+   describes itself as non-commercial; if this site ever is not, that needs
+   confirming with them.
+2. **Hardening.** Morphology is currently a live call. The corpus is a 3 MB
+   text file that could be baked into the build instead, which would make the
+   breakdown work offline and survive that API being down. Say the word.
+3. **Coverage.** Sampled across the muṣḥaf, 99% of roots have at least one
+   lexicon entry and 87% have Lisān al-ʿArab specifically. The rest fall back
+   to the scanned pages.
+
+**Still open from the original ask:** "other occurrences of this word" is still
+matched on the surface form, not on the root. The root is now known, so this is
+build time rather than data.
 
 ---
 

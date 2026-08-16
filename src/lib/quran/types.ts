@@ -103,6 +103,84 @@ export interface Para {
   rtl: boolean;
 }
 
+/**
+ * A word is not always one thing. `وَبِٱلْحَقِّ` is a conjunction, a preposition,
+ * the article and a noun, and the corpus tags each of those separately — so the
+ * breakdown of a word is a list of segments rather than a single verdict, and
+ * only one of them, the stem, carries a root.
+ */
+export interface Segment {
+  /** The letters of this segment alone, vocalised. */
+  form: string;
+  /** Part of speech as the corpus spells it: `"Noun"`, `"Relative Pronoun"`. */
+  pos: string;
+  /** `"حمد"`, and the same spaced as the corpus writes it. Empty on affixes. */
+  root: string;
+  rootSpaced: string;
+  /** How the lexicons are addressed for this root: `"Hmd"`. */
+  rootKey: string;
+  /** The dictionary form the segment inflects from. */
+  lemma: string;
+  /** The grammar, still in the corpus's own codes. `morphology.ts` reads it. */
+  raw: string;
+}
+
+export interface WordSegments {
+  position: number;
+  segments: Segment[];
+}
+
+/** One lexicographer's entry for one root, as a heading with a summary. */
+export interface LexiconEntry {
+  id: number;
+  /** `"Lisān al-ʿArab"` and `"لسان العرب"`. */
+  name: string;
+  nameArabic: string;
+  author: string;
+  /** The year the author died, CE. The list is read in this order. */
+  died: number | null;
+  /** Whether the work is a lexicon of the Qur'an rather than of the language. */
+  quranic: boolean;
+  /** The entry summarised. The text it summarises arrives separately. */
+  summary: string;
+}
+
+/** The same entry in full, fetched only when a reader opens it. */
+export interface LexiconText {
+  /** The entry as its author set it down. */
+  arabic: string;
+  /** A translation of that Arabic — not a rendering of the summary. */
+  english: string;
+  /** Where the entry can be read outside this site, and where it is scanned. */
+  sourceUrl: string;
+  scanUrl: string;
+}
+
+/**
+ * A word in a sister Semitic language grown from the same ancestral root.
+ * Comparative philology rather than Arabic lexicography, and shown as such.
+ */
+export interface Cognate {
+  word: string;
+  language: string;
+  family: string;
+  meaning: string;
+  /** When the language is attested, in years CE; negative is BCE. */
+  from: number | null;
+  to: number | null;
+}
+
+export interface RootProfile {
+  root: string;
+  rootSpaced: string;
+  key: string;
+  /** `"ḥ-m-d"`, for a reader who does not read the Arabic yet. */
+  romanized: string;
+  occurrences: number;
+  lemmas: string[];
+  cognates: Cognate[];
+}
+
 export interface SearchResult {
   key: string;
   arabic: string;
