@@ -423,11 +423,52 @@
 .moteB { animation-name: ember-b; }
 .moteC { animation-name: ember-c; }
 
-/* Stars do not travel; they are placed where they are and only brighten. */
+/* ── stars ────────────────────────────────────────────────────────────────
+   Stars do not travel. They are placed where they are and scintillate, which
+   is a different thing from blinking: a star wavers around its brightness and
+   never leaves the sky.
+
+   Getting that out of CSS takes two animations per star, and they have to
+   multiply rather than replace one another — so they sit on nested elements.
+   The wrapper carries a slow swell, the core inside it a fast irregular
+   flicker, and what the eye receives is the product of the two opacities. The
+   periods are unrelated (7–17s against 2–5s) and every star starts part-way
+   through its own, so the field never repeats and never marches in step.
+
+   Neither layer reaches zero: each has a floor set per star, `--mk-star-swell`
+   on the wrapper and `--mk-star-floor` on the core. A calm star bottoms out
+   near three quarters of its brightness, a wild one near four tenths. Nothing
+   here ever goes out. */
+
 .star {
   position: absolute;
   border-radius: 50%;
-  animation-name: star;
+  animation-name: swell;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* The star itself. The wrapper's scale reaches this and its glare together, so
+   a brightening star swells slightly as it does — which is what glare does. */
+.starCore {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.scint1 { animation-name: scint-a; }
+.scint2 { animation-name: scint-b; }
+.scint3 { animation-name: scint-c; }
+
+/* The counter-coloured glare on the brightest few, on a third period again, so
+   they drift between cool and warm instead of only between dim and bright. */
+.starChroma {
+  position: absolute;
+  inset: -20%;
+  border-radius: 50%;
+  opacity: 0.45;
+  animation-name: chroma;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
@@ -500,10 +541,63 @@
   74% { opacity: 0.92; }
 }
 
-@keyframes star {
-  0%, 100% { opacity: 0.28; transform: scale(0.85); }
-  45% { opacity: 1; transform: scale(1.15); }
-  70% { opacity: 0.5; transform: scale(0.95); }
+/* The slow half of a star: a long breath under the flicker, with the faint
+   swelling of the glare that goes with it. Eased, because this one is the
+   envelope rather than the noise. */
+@keyframes swell {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  31% { opacity: var(--mk-star-swell); transform: scale(0.94); }
+  57% { opacity: 0.97; transform: scale(1.07); }
+  83% { opacity: calc(var(--mk-star-swell) + 0.09); transform: scale(0.98); }
+}
+
+/* The fast half: three shapes so no two neighbours wobble alike, held at odd
+   percentages so none of them keeps time, and stepped linearly rather than
+   eased — scintillation passes through its values, it does not settle on them.
+   `--mk-star-floor` is how far this star dims, which is how hard it twinkles. */
+@keyframes scint-a {
+  0%, 100% { opacity: 0.96; }
+  13% { opacity: var(--mk-star-floor); }
+  21% { opacity: 0.88; }
+  34% { opacity: 1; }
+  47% { opacity: calc(var(--mk-star-floor) + 0.08); }
+  58% { opacity: 0.93; }
+  69% { opacity: var(--mk-star-floor); }
+  78% { opacity: 1; }
+  91% { opacity: 0.9; }
+}
+
+@keyframes scint-b {
+  0%, 100% { opacity: 1; }
+  7% { opacity: calc(var(--mk-star-floor) + 0.05); }
+  16% { opacity: 0.95; }
+  24% { opacity: var(--mk-star-floor); }
+  33% { opacity: 0.86; }
+  44% { opacity: 0.99; }
+  53% { opacity: calc(var(--mk-star-floor) + 0.12); }
+  62% { opacity: 0.91; }
+  74% { opacity: var(--mk-star-floor); }
+  86% { opacity: 0.97; }
+  93% { opacity: 0.89; }
+}
+
+@keyframes scint-c {
+  0%, 100% { opacity: 0.91; }
+  11% { opacity: calc(var(--mk-star-floor) + 0.14); }
+  27% { opacity: 0.83; }
+  39% { opacity: 1; }
+  51% { opacity: 0.87; }
+  63% { opacity: var(--mk-star-floor); }
+  72% { opacity: 0.96; }
+  87% { opacity: calc(var(--mk-star-floor) + 0.19); }
+}
+
+@keyframes chroma {
+  0%, 100% { opacity: 0.62; }
+  23% { opacity: 0.12; }
+  41% { opacity: 0.8; }
+  66% { opacity: 0.28; }
+  84% { opacity: 1; }
 }
 
 @keyframes smoke {
@@ -544,4 +638,6 @@
   .rayA, .rayC { display: none; }
   .rayB { left: 50%; width: 80%; transform: translateX(-50%) rotate(-3deg); }
   .mote:nth-child(2n) { display: none; }
+  /* Half the field, on a screen where the other half was a pixel wide anyway. */
+  .star:nth-child(2n) { display: none; }
 }
