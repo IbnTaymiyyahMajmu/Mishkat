@@ -36,7 +36,9 @@ interface PlayerContextValue {
   playing: boolean;
   /** The ayah currently loaded in the transport, playing or paused. */
   currentKey: string | null;
+  /** Seconds into the surah, not into the ayah. */
   elapsed: number;
+  /** How long the whole surah runs in this voice. */
   duration: number;
   /** Set when the reciter has no audio for the ayah, or the network refused. */
   error: string | null;
@@ -46,10 +48,28 @@ interface PlayerContextValue {
   toggle: () => void;
   stop: () => void;
   step: (delta: number) => void;
+  /** Move to a place in the surah, which may be in another ayah. */
   seek: (seconds: number) => void;
 }
 
+/**
+ * How long an ayah runs, before it has been heard.
+ *
+ * The corpus carries no duration, but it carries the end of the last word,
+ * which falls within a breath of the end of the recording. That is enough to
+ * lay out the length of a surah before a note of it has been fetched; the true
+ * length replaces the estimate as each recording reports it.
+ */
+function ayahSeconds(verse: Verse): number {
+  const segments = verse.audio?.segments;
+  if (!segments?.length) return 0;
+  return segments[segments.length - 1][3] / 1000;
+}
+
 const Ctx = createContext<PlayerContextValue | null>(null);
+
+/** The ayah playing, the one behind it, and the one fetched ahead. */
+const BUFFER_KEEP = 3;
 
 export function PlayerProvider({ children }: { children: ReactNode }) {
   const { settings, update } = useSettings();
@@ -59,7 +79,7 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   // `load` is rebuilt when its dependencies change; the audio listeners are
   // mounted once, so they reach the current one through this rather than
   // closing over a stale copy.
-  const loadRef = useRef<((key: string, autoplay: boolean) => void) | null>(null);
+  const loadRef = useRef<((key: string, autoplay: boolean, at?: number) => void) | null>(null);
   // An ayah the recitation was on when the reciter changed, waiting for the
   // queue to come back in the new voice. See the note by `setQueue`.
   const resumeRef = useRef<{ key: string; playing: boolean } | null>(null);
@@ -97,8 +117,98 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     window.dispatchEvent(new CustomEvent("mishkat:scroll-to-verse", { detail: { key } }));
   }, []);
 
+  // ── the next ayah, fetched before it is due ───────────────────────────────
+  /**
+   * Every ayah is a separate file on the recitation CDN, so moving to the next
+   * one used to begin with a round trip: the element was handed a URL it had
+   * never seen and stayed silent until enough of it had arrived. Between two
+   * ayahs that is heard as a stutter, and on a phone's connection it is heard
+   * often. So while an ayah plays, the one after it is fetched whole and held
+   * as a blob; when its turn comes the element is handed something already in
+   * memory and carries on in the same breath.
+   */
+  const bufferRef = useRef(new Map<string, string>());
+  const fetchingRef = useRef(new Set<string>());
+  /** The recording in the element, whose buffer is never dropped under it. */
+  const playingUrlRef = useRef<string | null>(null);
+
+  const prefetch = useCallback((url: string) => {
+    const buffers = bufferRef.current;
+    if (buffers.has(url) || fetchingRef.current.has(url)) return;
+    fetchingRef.current.add(url);
+    void fetch(url)
+      .then((res) => (res.ok ? res.blob() : null))
+      .then((blob) => {
+        if (blob) buffers.set(url, URL.createObjectURL(blob));
+        // Insertion order is recitation order, so the oldest entry is the ayah
+        // furthest behind — never the one being recited, which is skipped in
+        // case the reader has stepped back into it.
+        for (const [old, objectUrl] of buffers) {
+          if (buffers.size <= BUFFER_KEEP) break;
+          if (old === playingUrlRef.current) continue;
+          URL.revokeObjectURL(objectUrl);
+          buffers.delete(old);
+        }
+      })
+      .catch(() => {
+        // A prefetch that fails costs nothing: the element is handed the URL
+        // instead, which is what it used to be handed in every case.
+      })
+      .finally(() => fetchingRef.current.delete(url));
+  }, []);
+
+  /** The recording after the current ayah — the wrap-around included, since
+   *  repeating the surah crosses the same seam. */
+  const prefetchNext = useCallback(() => {
+    const verses = queueRef.current.verses;
+    const i = verses.findIndex((v) => v.verse_key === currentRef.current);
+    if (i < 0) return;
+    const next = verses[i + 1] ?? (repeatRef.current === "surah" ? verses[0] : undefined);
+    if (next?.audio?.url) prefetch(audioUrl(next.audio.url));
+  }, [prefetch]);
+
+  const forgetBuffers = useCallback(() => {
+    for (const objectUrl of bufferRef.current.values()) URL.revokeObjectURL(objectUrl);
+    bufferRef.current.clear();
+    playingUrlRef.current = null;
+  }, []);
+
+  // ── the length of the surah ───────────────────────────────────────────────
+  /**
+   * The transport measures the recitation rather than the file in the element:
+   * a reader who has settled into al-Mulk wants to know they are four minutes
+   * into twenty, not six seconds into ten. Every ayah's length is estimated
+   * from its timings up front and corrected the moment its recording is
+   * loaded, so the surah has a length from the first frame and a true one by
+   * the time it has been heard.
+   */
+  const lengthsRef = useRef(new Map<string, number>());
+  /** Seconds of recitation lying before the ayah in the element. */
+  const offsetRef = useRef(0);
+  /** A place within an ayah still loading, applied when it can be. */
+  const pendingSeekRef = useRef<number | null>(null);
+  /**
+   * Whether the recitation is meant to be running, which is not the same as
+   * whether the element happens to be playing this instant: handing it a new
+   * source pauses it until playback has been arranged again. A drag along the
+   * scrub bar asks for a dozen places in a second, and each one has to know
+   * that the reader is listening — the element, mid-load, would say otherwise.
+   */
+  const wantsPlayRef = useRef(false);
+
+  const remeasure = useCallback(() => {
+    let total = 0;
+    let before = 0;
+    for (const v of queueRef.current.verses) {
+      if (v.verse_key === currentRef.current) before = total;
+      total += lengthsRef.current.get(v.verse_key) ?? ayahSeconds(v);
+    }
+    offsetRef.current = before;
+    setDuration(total);
+  }, []);
+
   const load = useCallback(
-    (key: string, autoplay: boolean) => {
+    (key: string, autoplay: boolean, at = 0) => {
       const verse = verseAt(key);
       const el = audioRef.current;
       if (!el) return;
@@ -111,11 +221,15 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
       currentRef.current = key;
       setCurrentKey(key);
       setOpen(true);
-      el.src = audioUrl(verse.audio.url);
+      const url = audioUrl(verse.audio.url);
+      playingUrlRef.current = url;
+      el.src = bufferRef.current.get(url) ?? url;
       el.playbackRate = speedRef.current;
-      setElapsed(0);
-      setDuration(0);
+      pendingSeekRef.current = at > 0 ? at : null;
+      remeasure();
+      setElapsed(offsetRef.current + at);
       if (autoplay) {
+        wantsPlayRef.current = true;
         void el.play().catch(() => {
           // Autoplay policies: the reader must have gestured. The transport is
           // open and paused, which is a state they can act on.
@@ -124,7 +238,7 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
       }
       requestScroll(key);
     },
-    [requestScroll, verseAt],
+    [remeasure, requestScroll, verseAt],
   );
 
   const play = useCallback((key: string) => load(key, true), [load]);
@@ -144,8 +258,10 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     if (!el) return;
     if (el.paused) {
       if (!currentRef.current) return;
+      wantsPlayRef.current = true;
       void el.play().catch(() => setPlaying(false));
     } else {
+      wantsPlayRef.current = false;
       el.pause();
     }
   }, []);
@@ -158,6 +274,11 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
       el.load();
     }
     currentRef.current = null;
+    wantsPlayRef.current = false;
+    forgetBuffers();
+    lengthsRef.current.clear();
+    offsetRef.current = 0;
+    pendingSeekRef.current = null;
     highlight.setRecite(null);
     setPlaying(false);
     setOpen(false);
@@ -165,14 +286,39 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     setElapsed(0);
     setDuration(0);
     setError(null);
-  }, []);
+  }, [forgetBuffers]);
 
-  const seek = useCallback((seconds: number) => {
-    const el = audioRef.current;
-    if (el && Number.isFinite(el.duration)) {
-      el.currentTime = Math.min(Math.max(0, seconds), el.duration);
-    }
-  }, []);
+  /** The scrub bar spans the surah, so the place asked for is often in another
+   *  ayah: find the one it falls in and, if it is not the one playing, take up
+   *  the recitation there. */
+  const seek = useCallback(
+    (seconds: number) => {
+      const el = audioRef.current;
+      const verses = queueRef.current.verses;
+      if (!el || !verses.length) return;
+      const target = Math.max(0, seconds);
+      let before = 0;
+      for (let i = 0; i < verses.length; i += 1) {
+        const verse = verses[i];
+        const length = lengthsRef.current.get(verse.verse_key) ?? ayahSeconds(verse);
+        // The last ayah catches anything past the end, so dragging to the far
+        // right lands on the close of the surah rather than nowhere.
+        if (target < before + length || i === verses.length - 1) {
+          const into = target - before;
+          if (verse.verse_key === currentRef.current) {
+            el.currentTime = Number.isFinite(el.duration)
+              ? Math.min(Math.max(0, into), el.duration)
+              : Math.max(0, into);
+          } else {
+            load(verse.verse_key, wantsPlayRef.current, into);
+          }
+          return;
+        }
+        before += length;
+      }
+    },
+    [load],
+  );
 
   const setQueue = useCallback(
     (queue: PlayerQueue) => {
@@ -185,6 +331,10 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
         stop();
         return;
       }
+      // Lengths are a property of the recording, so a queue arriving in a new
+      // voice is measured again from the timings that came with it.
+      lengthsRef.current.clear();
+      remeasure();
       // A queue that arrived because the reciter changed. The surah has to be
       // fetched again for the new voice's recordings, so the ayah was put aside
       // when the reciter was picked and is taken up again here — in the same
@@ -196,7 +346,7 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
         loadRef.current?.(resume.key, resume.playing);
       }
     },
-    [stop],
+    [remeasure, stop],
   );
 
   // ── the element and its events ────────────────────────────────────────────
@@ -207,15 +357,31 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
 
     const onPlay = () => setPlaying(true);
     const onPause = () => setPlaying(false);
-    const onLoaded = () => setDuration(el.duration || 0);
+    const onLoaded = () => {
+      const key = currentRef.current;
+      // The estimate has served its turn for this ayah: the recording itself
+      // now says how long it is.
+      if (key && Number.isFinite(el.duration)) lengthsRef.current.set(key, el.duration);
+      const at = pendingSeekRef.current;
+      pendingSeekRef.current = null;
+      if (at != null) el.currentTime = Math.min(Math.max(0, at), el.duration || at);
+      remeasure();
+      setElapsed(offsetRef.current + el.currentTime);
+    };
     const onError = () => {
       setError("That recitation could not be loaded.");
       setPlaying(false);
     };
 
+    // The next ayah is fetched once this one has stopped competing for the
+    // connection: when the browser says it can play through, and failing that
+    // a couple of seconds in, since not every mobile browser says so.
+    const onCanPlayThrough = () => prefetchNext();
+
     const onTimeUpdate = () => {
-      setElapsed(el.currentTime);
+      setElapsed(offsetRef.current + el.currentTime);
       paintRecitedWord(el.currentTime);
+      if (el.currentTime > 2) prefetchNext();
     };
 
     const paintRecitedWord = (seconds: number) => {
@@ -258,12 +424,15 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
         loadRef.current?.(verses[0].verse_key, true);
         return;
       }
+      // The surah is finished: nothing is meant to be playing until asked.
+      wantsPlayRef.current = false;
       setPlaying(false);
     };
 
     el.addEventListener("play", onPlay);
     el.addEventListener("pause", onPause);
     el.addEventListener("loadedmetadata", onLoaded);
+    el.addEventListener("canplaythrough", onCanPlayThrough);
     el.addEventListener("timeupdate", onTimeUpdate);
     el.addEventListener("ended", onEnded);
     el.addEventListener("error", onError);
@@ -272,14 +441,16 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
       el.removeEventListener("play", onPlay);
       el.removeEventListener("pause", onPause);
       el.removeEventListener("loadedmetadata", onLoaded);
+      el.removeEventListener("canplaythrough", onCanPlayThrough);
       el.removeEventListener("timeupdate", onTimeUpdate);
       el.removeEventListener("ended", onEnded);
       el.removeEventListener("error", onError);
       el.pause();
       audioRef.current = null;
+      forgetBuffers();
       highlight.setRecite(null);
     };
-  }, []);
+  }, [prefetchNext, forgetBuffers, remeasure]);
 
   useEffect(() => {
     loadRef.current = load;

@@ -268,7 +268,15 @@ export async function fetchOccurrences(
 
 // ── audio ───────────────────────────────────────────────────────────────────
 
-/** `"Alafasy/mp3/112001.mp3"` → an absolute URL on the recitation CDN. */
+/**
+ * `"Alafasy/mp3/112001.mp3"` → an absolute URL on the recitation CDN.
+ *
+ * Some reciters are not held on that CDN at all, and the corpus gives their
+ * recordings as absolute or protocol-relative URLs elsewhere. Those are already
+ * whole addresses and must be left alone rather than hung off the CDN.
+ */
 export function audioUrl(path: string): string {
-  return path.startsWith("http") ? path : AUDIO_CDN + path;
+  if (path.startsWith("http")) return path;
+  if (path.startsWith("//")) return `https:${path}`;
+  return AUDIO_CDN + path;
 }
