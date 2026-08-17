@@ -19,6 +19,10 @@ const nextConfig: NextConfig = {
   // hosts expect when they resolve a directory URL.
   trailingSlash: true,
   reactStrictMode: true,
+  // Next's dev badge sits in the bottom-left corner, which is where the
+  // transport puts play. It never ships — the export has no dev server behind
+  // it — but while developing it covers the control it is sitting on.
+  devIndicators: false,
 };
 
 export default nextConfig;
