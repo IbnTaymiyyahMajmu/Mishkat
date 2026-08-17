@@ -103,9 +103,13 @@ export function formatDate(ts: number): string {
   });
 }
 
+/** Minutes and seconds, and the hour too once there is one — a surah read
+ *  whole runs past the hour long before al-Baqarah. */
 export function formatClock(seconds: number): string {
   if (!Number.isFinite(seconds) || seconds < 0) seconds = 0;
-  const m = Math.floor(seconds / 60);
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor(seconds / 60) % 60;
   const s = Math.floor(seconds % 60);
-  return `${m}:${String(s).padStart(2, "0")}`;
+  const mm = h ? String(m).padStart(2, "0") : String(m);
+  return `${h ? `${h}:` : ""}${mm}:${String(s).padStart(2, "0")}`;
 }
