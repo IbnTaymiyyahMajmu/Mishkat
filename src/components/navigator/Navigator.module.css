@@ -1,0 +1,495 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   The navigator — every surah and every ayah, from wherever the reader is.
+
+   Drawn on the same ground and in the same ink as the search overlay, because
+   to the reader they are two sheets of one kind: one finds a phrase, the other
+   goes to a place. On a wide screen it is a dialog over the text. On a phone it
+   comes down from the top edge rather than up from the bottom, and that is on
+   purpose: the box for typing a number is at the top of it, and a sheet that
+   rose from the bottom would put that box behind the keyboard it summons.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(18, 14, 9, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 7vh 20px 20px;
+  animation: fade 160ms ease both;
+}
+
+.panel {
+  width: min(780px, 100%);
+  height: min(640px, 84vh);
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 26px 64px rgba(18, 14, 9, 0.42);
+  overflow: hidden;
+  animation: sheet 200ms ease both;
+}
+
+/* — the box — */
+.head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 14px 14px 18px;
+  border-bottom: 1px solid var(--color-divider);
+  flex: none;
+}
+
+.headIcon { flex: none; color: var(--color-accent); }
+
+.input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--font-body);
+  /* Sixteen and over, or a phone zooms the page in on focus. */
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--color-text);
+  caret-color: var(--color-accent);
+  outline: none;
+}
+.input::placeholder { color: var(--muted-45); font-style: italic; }
+
+.clear {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  flex: none;
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--muted-45);
+}
+.clear:hover {
+  background: color-mix(in srgb, var(--color-text) 8%, transparent);
+  color: var(--color-text);
+}
+
+.close {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  flex: none;
+  background: none;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-55);
+}
+.close:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+/* — picking: the surahs on one side, the ayat of the one picked on the other — */
+.browse {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+}
+
+.surahs,
+.ayat {
+  position: relative; /* what the opening scroll is measured against */
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.surahs { border-inline-end: 1px solid var(--color-divider); }
+
+.surah {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--color-divider);
+  box-shadow: inset 3px 0 0 transparent;
+  padding: 9px 14px 9px 16px;
+  cursor: pointer;
+  color: var(--color-text);
+  font-family: inherit;
+  transition: background 120ms ease;
+}
+.surah:hover { background: color-mix(in srgb, var(--color-accent) 6%, transparent); }
+.surahOn,
+.surahOn:hover {
+  background: color-mix(in srgb, var(--color-accent) 11%, transparent);
+  box-shadow: inset 3px 0 0 var(--color-accent);
+}
+
+.surahNum {
+  flex: none;
+  min-width: 24px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-accent);
+}
+
+.surahText { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+
+.surahName {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 15px;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.surahSub {
+  font-size: 10.5px;
+  color: var(--muted-45);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* A surah the reader has a place in says so, in the accent: these are the
+   ones they are most likely to be looking for. */
+.surahAt { color: var(--color-accent-700); }
+
+.surahArabic {
+  flex: none;
+  font-family: var(--font-amiri), serif;
+  font-size: 17px;
+  color: var(--muted-62);
+}
+
+/* — the ayat — */
+.ayat { padding: 0 16px 16px; }
+
+.ayatHead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 0 11px;
+  margin-bottom: 12px;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.ayatTitle { flex: 1; min-width: 0; }
+
+.ayatName {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.ayatArabic {
+  font-family: var(--font-amiri), serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--muted-62);
+}
+
+.ayatSub { font-size: 11px; color: var(--muted-55); font-variant-numeric: tabular-nums; }
+
+.open { flex: none; font-size: 12.5px; padding: 6px 13px; white-space: nowrap; }
+
+/* Places with a name come before the numbers: nobody remembers that the
+   Throne Verse is 255 as readily as they recognise its name. */
+.shortcuts { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+
+.shortcut {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  max-width: 100%;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.3;
+  text-align: left;
+  color: var(--color-text);
+  background: color-mix(in srgb, var(--mk-gold) 9%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mk-gold) 34%, transparent);
+  border-radius: 99px;
+  padding: 5px 12px 5px 6px;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+.shortcut:hover {
+  background: color-mix(in srgb, var(--mk-gold) 18%, transparent);
+  border-color: var(--color-accent);
+}
+
+.shortcutAyah {
+  flex: none;
+  min-width: 26px;
+  padding: 1px 6px;
+  border-radius: 99px;
+  background: var(--color-bg);
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  color: var(--color-accent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+  gap: 6px;
+}
+
+/* Each ayah is a place to put a thumb, so each is the size of one. */
+.cell {
+  position: relative;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 14.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-72);
+  transition: background 110ms ease, border-color 110ms ease, color 110ms ease;
+}
+.cell:hover {
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+.cell:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+
+.cellStop { background: var(--tint); color: var(--color-text); }
+
+.cellHere,
+.cellHere:hover {
+  border-color: var(--color-accent);
+  box-shadow: inset 0 0 0 1px var(--color-accent);
+  color: var(--color-accent);
+}
+
+.dot {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background: var(--mk-gold);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-top: 14px;
+  font-size: 11px;
+  color: var(--muted-55);
+}
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+
+.key {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  border: 1px solid var(--color-divider);
+}
+.keyHere { border-color: var(--color-accent); box-shadow: inset 0 0 0 1px var(--color-accent); }
+.keyStop { background: var(--tint); }
+.keyDot {
+  width: 5px;
+  height: 5px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--mk-gold);
+}
+
+/* — typing: what the words in the box could mean, the likeliest first — */
+.answers {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.answer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--color-divider);
+  box-shadow: inset 3px 0 0 transparent;
+  padding: 13px 18px;
+  cursor: pointer;
+  color: var(--color-text);
+  font-family: inherit;
+}
+.answerOn {
+  background: color-mix(in srgb, var(--color-accent) 9%, transparent);
+  box-shadow: inset 3px 0 0 var(--color-accent);
+}
+
+.answerKind {
+  flex: none;
+  min-width: 46px;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-800);
+  background: var(--color-accent-100);
+  border-radius: 3px;
+  padding: 3px 7px;
+}
+
+.answerText { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+
+.answerTitle {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 17px;
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+}
+
+.answerDetail { font-size: 12px; color: var(--muted-55); font-variant-numeric: tabular-nums; }
+
+.answerArabic {
+  flex: none;
+  font-family: var(--font-amiri), serif;
+  font-size: 19px;
+  color: var(--muted-62);
+}
+
+.answerGo {
+  flex: none;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.none {
+  padding: 46px 24px;
+  text-align: center;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--muted-55);
+}
+.none b { font-weight: 600; color: var(--color-text); }
+
+/* — the foot — */
+.foot {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 9px 18px;
+  border-top: 1px solid var(--color-divider);
+  flex: none;
+  font-size: 11px;
+  color: var(--muted-45);
+}
+
+.footNote { flex: 1; min-width: 0; }
+
+.keys { display: flex; align-items: center; gap: 6px; flex: none; }
+
+.kbd {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 10px;
+  border: 1px solid var(--color-divider);
+  border-radius: 3px;
+  padding: 1px 5px;
+  margin-left: 6px;
+}
+
+/* The shared curves, declared locally because a module cannot reference a
+   global keyframe — see the note in globals.css. */
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes sheet {
+  from { transform: translateY(18px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes drop {
+  from { transform: translateY(-18px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+/* A phone. The sheet is the width of the screen and hangs from its top edge;
+   the names of the surahs keep to one line and give up their Arabic, which the
+   ayat pane states for the one picked; and the keyboard hints go, since there
+   is no keyboard to press them on. */
+@media (max-width: 700px) {
+  .backdrop { padding: 0; }
+  .panel {
+    width: 100%;
+    height: min(86dvh, 700px);
+    border-width: 0 0 1px;
+    border-radius: 0 0 12px 12px;
+    animation-name: drop;
+    padding-top: env(safe-area-inset-top);
+  }
+  .head { padding: 12px 12px 12px 14px; gap: 10px; }
+  .browse { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+  .surah { padding: 9px 8px 9px 12px; gap: 8px; }
+  .surahNum { min-width: 20px; font-size: 11.5px; }
+  .surahName { font-size: 14.5px; }
+  .surahArabic { display: none; }
+  .ayat { padding: 0 12px 14px; }
+  .ayatHead { padding-top: 11px; }
+  .ayatName { font-size: 16.5px; }
+  .ayatArabic { display: none; }
+  .ayatMeaning { display: none; }
+  /* Five to a row on the narrowest phone: al-Baqarah is 286 of these, and at
+     three to a row it was a scroll nearly as long as the one this replaces. */
+  .grid { grid-template-columns: repeat(auto-fill, minmax(36px, 1fr)); gap: 5px; }
+  .cell { height: 44px; }
+  .answer { padding: 13px 14px; gap: 11px; }
+  .answerArabic { display: none; }
+  .keys { display: none; }
+  .foot { padding: 8px 14px; }
+}

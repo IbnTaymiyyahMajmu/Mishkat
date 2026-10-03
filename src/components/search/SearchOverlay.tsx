@@ -83,10 +83,16 @@ function SearchDialog({ seed }: { seed: string }) {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeSearch();
+      if (e.key !== "Escape") return;
+      // The dialog is on top, so Escape is its to answer and no one else's. It
+      // used to carry on down to the study panel behind, and one press closed
+      // the search and the tafsir the reader had open underneath it.
+      e.stopPropagation();
+      closeSearch();
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    // Capture, on the window: ahead of every other listener for the key.
+    window.addEventListener("keydown", onKey, true);
+    return () => window.removeEventListener("keydown", onKey, true);
   }, [closeSearch]);
 
   // Debounced, and cancelled by sequence number so a slow early query can never
@@ -165,9 +171,14 @@ function SearchDialog({ seed }: { seed: string }) {
     });
   }, [results, scope, needle]);
 
-  /** A surah named, or numbered, rather than a phrase to look for. */
+  /**
+   * A surah named, or numbered, rather than a phrase to look for. A number is
+   * answered at any length: nine surahs have one digit, and the two-letter
+   * minimum that suits a phrase had put all nine out of reach.
+   */
+  const numbered = /^\d{1,3}$/.test(trimmed);
   const chapterHits = useMemo(() => {
-    if (idle) return [] as Chapter[];
+    if (idle && !numbered) return [] as Chapter[];
     const matches = (c: Chapter) => {
       if (String(c.id) === trimmed) return true;
       if (needle.length < 3) return false;
@@ -178,7 +189,7 @@ function SearchDialog({ seed }: { seed: string }) {
       );
     };
     return chapters.filter(matches).slice(0, 4);
-  }, [chapters, idle, trimmed, needle]);
+  }, [chapters, idle, numbered, trimmed, needle]);
 
   // Clamped rather than reset in an effect: when a longer result list is
   // replaced by a shorter one the selection simply moves to the last row,
@@ -240,7 +251,9 @@ function SearchDialog({ seed }: { seed: string }) {
   const empty = searched && shown.length === 0 && chapterHits.length === 0 && scope !== "tafsir";
 
   const note = idle
-    ? "Type two letters or more"
+    ? chapterHits.length
+      ? "Press ↵ to open the surah"
+      : "Type two letters or more"
     : busy
       ? "Searching…"
       : scope === "all"

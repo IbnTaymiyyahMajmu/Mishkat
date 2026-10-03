@@ -21,6 +21,22 @@ const JUZ_END = [
   "33:30", "36:27", "39:31", "41:46", "45:37", "51:30", "57:29", "66:12", "77:50", "114:6",
 ];
 
+/** Where a juz opens: `juzStart(30)` is 78:1. */
+export function juzStart(n: number): { surah: number; ayah: number } | null {
+  const key = JUZ_START[n - 1];
+  if (!key) return null;
+  const [surah, ayah] = key.split(":").map(Number);
+  return { surah, ayah };
+}
+
+/** The juz that open inside this surah — at its head, or partway through it. */
+export function juzStartsIn(surah: number): { n: number; ayah: number }[] {
+  return JUZ_START.flatMap((key, i) => {
+    const [s, ayah] = key.split(":").map(Number);
+    return s === surah ? [{ n: i + 1, ayah }] : [];
+  });
+}
+
 export interface JuzRow {
   n: number;
   /** Where it opens, as a verse key — what a link to the juz points at. */

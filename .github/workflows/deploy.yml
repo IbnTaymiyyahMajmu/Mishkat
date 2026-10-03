@@ -40,9 +40,25 @@ jobs:
       - run: npm run typecheck
       - run: npm run lint
 
+      # The tafsir library is this site's own copy of tafsir.app's. Read it back
+      # and check it against its record before publishing: a work that is listed
+      # but incomplete would show the reader a passage that is not there.
+      - name: Check the tafsir library is whole
+        run: npm run mirror:tafsir -- --verify
+
       - name: Build the static export
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          # Where tafsir.app's passages are read from, if anywhere. Unset, the
+          # tafsir panel links to tafsir.app instead of showing its text — see
+          # src/lib/quran/tafsirApp.ts. Set it under Settings → Variables.
+          NEXT_PUBLIC_TAFSIR_APP_BASE: ${{ vars.TAFSIR_APP_BASE }}
+          # The address of the relay that holds the Quran Foundation credentials
+          # (scripts/qf-relay.mjs). Unset, the corpus is read from the open
+          # api.quran.com, as it always has been — see src/lib/quran/api.ts.
+          # This is the relay's address and nothing more: the client secret is
+          # the relay's own, and must never be a variable of this build.
+          NEXT_PUBLIC_QF_RELAY: ${{ vars.QF_RELAY }}
         run: npm run build
 
       - name: Check the export is complete

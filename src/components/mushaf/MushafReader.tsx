@@ -1,17 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { fetchMushaf, fetchRecitation } from "@/lib/quran/api";
+import { fetchMushaf, fetchRecitation, fetchVerse } from "@/lib/quran/api";
 import type { Verse } from "@/lib/quran/types";
 import { useChapters } from "@/lib/store/chapters";
 import { THEMES, useSettings } from "@/lib/store/settings";
 import { useLibrary } from "@/lib/store/library";
-import { usePlayer } from "@/lib/audio/player";
+import { usePlayerControls, usePlayerStatus } from "@/lib/audio/player";
 import { useToast } from "@/components/Toast";
 import { arabicNumber, plainText } from "@/lib/text";
 import { ARABIC_FONTS } from "@/lib/quran/resources";
+import { translationName } from "@/lib/quran/translations";
 import styles from "./MushafReader.module.css";
 
 const SIZES = [30, 36, 42, 48, 56, 64];
@@ -37,7 +38,8 @@ export function MushafReader({ surah }: { surah: number }) {
   const { byId } = useChapters();
   const { settings, update } = useSettings();
   const { isBookmarked, toggleBookmark } = useLibrary();
-  const player = usePlayer();
+  const controls = usePlayerControls();
+  const { open: playerOpen, currentKey } = usePlayerStatus();
 
   const [selected, setSelected] = useState<string | null>(null);
   const [nonce, setNonce] = useState(0);
@@ -101,15 +103,55 @@ export function MushafReader({ surah }: { surah: number }) {
       setPreparingAudio(true);
       try {
         const withAudio = await fetchRecitation(surah, settings.reciterId);
-        player.setQueue({ surah, verses: withAudio });
-        player.play(verseKey);
+        controls.setQueue({ surah, verses: withAudio });
+        controls.play(verseKey);
       } catch {
         toast("That recitation could not be loaded.");
       } finally {
         setPreparingAudio(false);
       }
     },
-    [surah, settings.reciterId, player, toast],
+    [surah, settings.reciterId, controls, toast],
+  );
+
+  // The page shows which ayah is being recited and keeps it in view, as the
+  // study reader does. Without this the muṣḥaf played a surah and gave no sign
+  // of where in it the reciter was.
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const reciting = currentKey && Number(currentKey.split(":")[0]) === surah ? currentKey : null;
+  useEffect(() => {
+    if (!reciting || !settings.follow) return;
+    bodyRef.current
+      ?.querySelector(`[data-key="${CSS.escape(reciting)}"]`)
+      ?.scrollIntoView({ block: "center", behavior: "smooth" });
+  }, [reciting, settings.follow]);
+
+  // This view fetches the Arabic alone, so a bookmark made here has no
+  // translation to take with it — and was being saved without one, to sit on
+  // the bookmarks page as the only card with nothing under the Arabic. The one
+  // ayah is fetched in the reader's translation when it is bookmarked.
+  const bookmark = useCallback(
+    async (verse: Verse) => {
+      if (isBookmarked(verse.verse_key)) {
+        toggleBookmark({ verseKey: verse.verse_key, surah, arabic: "", translation: "", translator: "" });
+        toast("Bookmark removed");
+        return;
+      }
+      const translated = (await fetchVerse(verse.verse_key, settings.translationId))?.translations?.[0];
+      toggleBookmark({
+        verseKey: verse.verse_key,
+        surah,
+        arabic: verse.text_uthmani,
+        translation: plainText(translated?.text),
+        translator: translated?.text
+          ? translated.resource_name ||
+            translationName(settings.translationId) ||
+            ""
+          : "",
+      });
+      toast(`Ayah ${verse.verse_key} bookmarked`);
+    },
+    [isBookmarked, toggleBookmark, surah, settings.translationId, toast],
   );
 
   const prev = byId(surah - 1);
@@ -207,6 +249,7 @@ export function MushafReader({ surah }: { surah: number }) {
             the shape of a printed page rather than a list of rows. */}
         {!loading && !failed && (
           <div
+            ref={bodyRef}
             className={styles.body}
             dir="rtl"
             lang="ar"
@@ -221,7 +264,13 @@ export function MushafReader({ surah }: { surah: number }) {
               <span
                 key={v.verse_key}
                 data-key={v.verse_key}
-                className={`${styles.ayah} ${selected === v.verse_key ? styles.ayahOn : ""}`}
+                className={[
+                  styles.ayah,
+                  selected === v.verse_key && styles.ayahOn,
+                  reciting === v.verse_key && styles.ayahReciting,
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
@@ -268,7 +317,7 @@ export function MushafReader({ surah }: { surah: number }) {
       {/* Tapping an ayah does not break the page apart; it raises a small bar
           with the things you would want at that moment. */}
       {selectedVerse && (
-        <div className={styles.selection}>
+        <div className={`${styles.selection} ${playerOpen ? styles.selectionRaised : ""}`}>
           <span className={styles.selectionKey}>{selectedVerse.verse_key}</span>
           <button
             className="btn btn-ghost"
@@ -281,19 +330,13 @@ export function MushafReader({ surah }: { surah: number }) {
           <button
             className="btn btn-ghost"
             style={{ fontSize: 12 }}
-            onClick={() => {
-              const added = toggleBookmark({
-                verseKey: selectedVerse.verse_key,
-                surah,
-                arabic: selectedVerse.text_uthmani,
-                translation: plainText(selectedVerse.translations?.[0]?.text),
-                translator: "",
-              });
-              toast(added ? `Ayah ${selectedVerse.verse_key} bookmarked` : "Bookmark removed");
-            }}
+            onClick={() => void bookmark(selectedVerse)}
           >
             {isBookmarked(selectedVerse.verse_key) ? "Bookmarked" : "Bookmark"}
           </button>
+          <Link href={`/tafsir/?v=${selectedVerse.verse_key}`} className="btn btn-ghost" style={{ fontSize: 12 }}>
+            Tafsir
+          </Link>
           <Link href={`/read/${surah}/#${selectedVerse.verse_key}`} className="btn btn-ghost" style={{ fontSize: 12 }}>
             Open in study view
           </Link>

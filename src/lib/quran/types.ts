@@ -78,23 +78,11 @@ export interface TranslationResource {
   short: string;
 }
 
-export interface TafsirResource {
-  id: number;
-  name: string;
-  author: string;
-  lang: "en" | "ar";
-}
-
 export interface Reciter {
   id: number;
   label: string;
   /** Whether the corpus carries word timings for this reciter. */
   timed: boolean;
-}
-
-export interface TafsirPassage {
-  paras: Para[];
-  failed?: boolean;
 }
 
 export interface Para {

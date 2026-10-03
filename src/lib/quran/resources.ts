@@ -1,33 +1,56 @@
-import type { Reciter, TafsirResource, TranslationResource } from "./types";
+import type { Reciter, TranslationResource } from "./types";
 
 /**
- * The works this build is connected to. Each entry is a deliberate editorial
- * choice, not the whole catalogue the corpus offers: the reader is asked to
- * pick between a handful of well-known translations rather than to audit a
- * list of a hundred. Adding a work is a one-line change here.
+ * The translations this build knows by name without asking.
+ *
+ * The whole catalogue — some 125 translations in seventy languages — is read
+ * from the corpus when the library is opened (`translations.ts`), because it
+ * changes: translations are added, and withdrawn. These are the well-known
+ * English ones, named here for two reasons. They lead their shelf, in this
+ * order, so that a reader who has never chosen a translation is not handed a
+ * list of a hundred to audit. And they are named as the reader knows them
+ * rather than as the corpus files them — "Marmaduke Pickthall", not
+ * "M. Pickthall" — before the catalogue has arrived and after.
  */
 export const TRANSLATIONS: TranslationResource[] = [
   { id: 20, label: "Saheeh International", short: "Saheeh International" },
   { id: 85, label: "M.A.S. Abdel Haleem", short: "Abdel Haleem" },
-  { id: 131, label: "The Clear Qur’an · Khattab", short: "Mustafa Khattab" },
+  // Not the corpus's any longer: read from files. See `translationFiles.ts`.
+  { id: 131, label: "The Clear Qur’an · Mustafa Khattab", short: "Mustafa Khattab" },
   { id: 84, label: "Mufti Taqi Usmani", short: "T. Usmani" },
   { id: 19, label: "Marmaduke Pickthall", short: "M. Pickthall" },
   { id: 22, label: "Abdullah Yusuf Ali", short: "A. Yusuf Ali" },
+  { id: 203, label: "al-Hilālī & Khān", short: "Hilālī & Khān" },
+  { id: 149, label: "Bridges’ translation · Fadel Soliman", short: "Bridges" },
+  { id: 95, label: "Abul Aʿlā Maudūdī · Tafhīm", short: "Maudūdī" },
 ];
 
 export const DEFAULT_TRANSLATION = 20;
 
-export const TAFSIRS: TafsirResource[] = [
-  { id: 169, name: "Tafsīr Ibn Kathīr (abridged)", author: "Ismāʿīl ibn Kathīr (d. 774 AH)", lang: "en" },
-  { id: 168, name: "Maʿārif al-Qurʾān", author: "Mufti Muhammad Shafi (d. 1976)", lang: "en" },
-  { id: 817, name: "Tazkirul Qurʾān", author: "Wahiduddin Khan (d. 2021)", lang: "en" },
-  { id: 91, name: "Taysīr al-Karīm al-Raḥmān", author: "ʿAbd al-Raḥmān al-Saʿdī (d. 1376 AH)", lang: "ar" },
-  { id: 15, name: "Jāmiʿ al-bayān", author: "Muḥammad ibn Jarīr al-Ṭabarī (d. 310 AH)", lang: "ar" },
-  { id: 90, name: "al-Jāmiʿ li-aḥkām al-Qurʾān", author: "Muḥammad al-Qurṭubī (d. 671 AH)", lang: "ar" },
-  { id: 16, name: "al-Tafsīr al-Muyassar", author: "King Fahd Complex", lang: "ar" },
-];
+/** How many translations can be set under an ayah at once. */
+export const MAX_TRANSLATIONS = 4;
 
-export const DEFAULT_TAFSIRS = [169];
+/**
+ * The languages the meaning under each word can be given in. These are the
+ * ones the corpus has glossed word by word; asked for any other, it answers
+ * in English without saying so.
+ */
+export const GLOSS_LANGUAGES = [
+  { id: "en", label: "English" },
+  { id: "ur", label: "اردو", name: "Urdu" },
+  { id: "bn", label: "বাংলা", name: "Bengali" },
+  { id: "hi", label: "हिन्दी", name: "Hindi" },
+  { id: "id", label: "Indonesia", name: "Indonesian" },
+  { id: "tr", label: "Türkçe", name: "Turkish" },
+  { id: "fa", label: "فارسی", name: "Persian" },
+  { id: "ta", label: "தமிழ்", name: "Tamil" },
+  { id: "inh", label: "ГӀалгӀай", name: "Ingush" },
+] as const;
+
+export const DEFAULT_GLOSS_LANGUAGE = "en";
+
+// The works of tafsir are in `tafsir.ts`: they come from three places now, and
+// that file is where the three are made into one library.
 
 /**
  * Every reciter here carries word-level timings in the corpus, so recitation

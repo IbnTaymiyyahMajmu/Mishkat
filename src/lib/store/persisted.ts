@@ -28,15 +28,20 @@ export function createPersistedStore<T>(
 
   const notify = () => listeners.forEach((l) => l());
 
+  const readRaw = (): string | null | undefined => {
+    try {
+      return localStorage.getItem(key);
+    } catch {
+      return undefined; // private mode
+    }
+  };
+
   const getSnapshot = (): T => {
     if (typeof localStorage === "undefined") return fallback;
-    let raw: string | null = null;
-    try {
-      raw = localStorage.getItem(key);
-    } catch {
-      return fallback; // private mode
-    }
-    if (raw === cachedRaw) return cachedValue;
+    const raw = readRaw();
+    // Storage that cannot be read has nothing to say, so whatever is held —
+    // the fallback, or a value set this session — stands.
+    if (raw === undefined || raw === cachedRaw) return cachedValue;
     cachedRaw = raw;
     try {
       cachedValue = raw ? revive(JSON.parse(raw), fallback) : fallback;
@@ -68,8 +73,11 @@ export function createPersistedStore<T>(
         cachedValue = next;
       } catch {
         // Storage refused; hold the value for this session so the interface
-        // still responds to what the reader just chose.
-        cachedRaw = undefined;
+        // still responds to what the reader just chose. It is held against
+        // what storage says *now*, so the next read finds nothing changed and
+        // keeps it — pinned to nothing, it was thrown away by the very next
+        // render in favour of the stale stored value.
+        cachedRaw = readRaw();
         cachedValue = next;
       }
       notify();

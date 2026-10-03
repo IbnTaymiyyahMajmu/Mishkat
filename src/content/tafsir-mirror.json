@@ -1,0 +1,141 @@
+{
+  "format": 1,
+  "source": "https://tafsir.app",
+  "works": {
+    "adwaa-albayan": {
+      "passages": 2320,
+      "ayat": 2320,
+      "chars": 9180676,
+      "bytes": 17176993,
+      "files": 160,
+      "sha256": "da1bbd1d4e6b4273a337228ee5652913daee367d3d55de3ee932b774908cba58",
+      "mirroredAt": "2026-10-01T20:30:30.715Z"
+    },
+    "albaydawee": {
+      "passages": 3329,
+      "ayat": 6236,
+      "chars": 3928264,
+      "bytes": 7438421,
+      "files": 123,
+      "sha256": "6031c90f6b57e3817a2aada213ad914c6be52364fde0a0f9693ab08c1244fbc8",
+      "mirroredAt": "2026-10-01T20:27:31.307Z"
+    },
+    "aldur-almanthoor": {
+      "passages": 2640,
+      "ayat": 5346,
+      "chars": 12986225,
+      "bytes": 24250016,
+      "files": 186,
+      "sha256": "13f65e4d8c41ae9a55af63a65f3aec42f1b9e264c0740f09ee37c566984b6b01",
+      "mirroredAt": "2026-10-01T20:28:36.731Z"
+    },
+    "alrazi": {
+      "passages": 2969,
+      "ayat": 6236,
+      "chars": 23017938,
+      "bytes": 43105223,
+      "files": 268,
+      "sha256": "803d40f4b280b7398b9320f187fe4b11a48bb4450bf19a41e573a4527ec745bf",
+      "mirroredAt": "2026-10-01T20:27:30.957Z"
+    },
+    "baghawi": {
+      "passages": 2152,
+      "ayat": 6236,
+      "chars": 7733454,
+      "bytes": 14439204,
+      "files": 141,
+      "sha256": "368305dd3b6c0c298e59ea77acb1f8553e4e45ed656110c08f9bd43ee263f6d3",
+      "mirroredAt": "2026-10-01T20:26:38.782Z"
+    },
+    "fath-alqadeer": {
+      "passages": 861,
+      "ayat": 6236,
+      "chars": 10971807,
+      "bytes": 20532894,
+      "files": 169,
+      "sha256": "f6ad2604ae90eb24c63f9a07ad9c7a74d7e41cecaaa866043122c28851e5d78d",
+      "mirroredAt": "2026-10-01T20:28:52.326Z"
+    },
+    "ibn-aashoor": {
+      "passages": 3923,
+      "ayat": 6236,
+      "chars": 23386288,
+      "bytes": 43854362,
+      "files": 267,
+      "sha256": "d5e0ceb94a5b1acc1d3b07167627b8ef29501261ba02e869ffa782b177e09129",
+      "mirroredAt": "2026-10-01T20:29:57.971Z"
+    },
+    "ibn-alqayyim": {
+      "passages": 1389,
+      "ayat": 2067,
+      "chars": 10140494,
+      "bytes": 18742319,
+      "files": 164,
+      "sha256": "2aa01263da42959b767364038cccb80e7d1193e0a2dcc8618c293744b5b55c3b",
+      "mirroredAt": "2026-10-01T20:27:54.656Z"
+    },
+    "ibn-katheer": {
+      "passages": 1911,
+      "ayat": 6236,
+      "chars": 13377106,
+      "bytes": 24828328,
+      "files": 190,
+      "sha256": "72eacdabdee76b36f168b3d422a35f133912af81a5460efa3a054a2280818e6a",
+      "mirroredAt": "2026-10-01T20:27:29.480Z"
+    },
+    "ibn-uthaymeen": {
+      "passages": 1667,
+      "ayat": 3456,
+      "chars": 20761107,
+      "bytes": 37697564,
+      "files": 246,
+      "sha256": "8471bb985dd5790acb0cf2b8cb346c40b7acc2d37d062f4090211fc2f9f6bcde",
+      "mirroredAt": "2026-10-01T20:30:59.989Z"
+    },
+    "jalalayn": {
+      "passages": 6010,
+      "ayat": 6010,
+      "chars": 1434199,
+      "bytes": 2811228,
+      "files": 115,
+      "sha256": "121a42ffd95c6580e74c553328519785d412203fb748cc40077dc03ad0d64f00",
+      "mirroredAt": "2026-10-01T22:19:03.294Z"
+    },
+    "mukhtasar": {
+      "passages": 6218,
+      "ayat": 6236,
+      "chars": 1240970,
+      "bytes": 2326357,
+      "files": 114,
+      "sha256": "1bd02bad9c5c388ef790e3c97d89116d075c98130b4adefb099473c57a1af5a8",
+      "mirroredAt": "2026-10-01T22:17:43.778Z"
+    },
+    "qurtubi": {
+      "passages": 3259,
+      "ayat": 6234,
+      "chars": 17304685,
+      "bytes": 32253052,
+      "files": 218,
+      "sha256": "edfe5332c738ae3f953c76eb97e9fb88d9991a51d399ee182561061ee108c42b",
+      "mirroredAt": "2026-10-01T20:26:43.648Z"
+    },
+    "tabari": {
+      "passages": 3636,
+      "ayat": 6236,
+      "chars": 20548808,
+      "bytes": 36995027,
+      "files": 250,
+      "sha256": "d90e8a193933bd721d2669fc06eefa1a2802df084bc95a16b74f6202ed2deac4",
+      "mirroredAt": "2026-10-01T20:26:38.371Z"
+    },
+    "zad-almaseer": {
+      "passages": 2184,
+      "ayat": 6236,
+      "chars": 5456810,
+      "bytes": 10202189,
+      "files": 132,
+      "sha256": "8f0f610c39fe3fe589cbf7fc447fbeac4e5beb4297aa8dc4376be42616582458",
+      "mirroredAt": "2026-10-01T20:27:29.907Z"
+    }
+  }
+}

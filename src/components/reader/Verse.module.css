@@ -152,6 +152,18 @@
   margin-top: 1px;
 }
 
+/* A meaning in Urdu or Persian is Arabic script, and is set in the face the
+   site keeps for it: the heading face has no such letters, and what the
+   system put in their place was heavier and smaller than the line it sat on. */
+.gloss:lang(ur),
+.gloss:lang(fa) {
+  font-family: var(--font-noto-naskh), var(--font-amiri), serif;
+  font-weight: 400;
+  font-size: 14.5px;
+  line-height: 1.7;
+  opacity: 0.78;
+}
+
 .endDisc {
   align-self: flex-start;
   margin-top: calc(var(--arabic-size) * 0.42);
@@ -175,15 +187,53 @@
   margin-top: 16px;
 }
 
+/* One translation of the ayah. Where the reader keeps several, each stands on
+   its own under its translator's name, with air between it and the next. */
+.rendering + .rendering { margin-top: 18px; }
+
 .translationText {
-  font-size: var(--trans-size);
-  line-height: 1.85;
+  /* A right-to-left script is set a little larger and looser; the translation
+     says so through these two, and is otherwise the reader's chosen size. */
+  font-size: calc(var(--trans-size) * var(--script-scale, 1));
+  line-height: var(--script-leading, 1.85);
   margin: 0 0 6px;
   text-align: justify;
   hyphens: auto;
   text-wrap: pretty;
   color: var(--muted-88);
 }
+
+.translationFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 14px;
+}
+
+.footLinks {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-inline-start: auto;
+}
+
+.tafsirLink {
+  flex: none;
+  padding: 2px 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  transition: border-color 140ms ease;
+}
+.tafsirLink:hover,
+.tafsirLink:focus-visible { border-bottom-color: var(--color-accent); }
 
 .translator {
   font-size: 10.5px;

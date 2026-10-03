@@ -327,26 +327,89 @@
   text-align: right;
 }
 
-.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+/* — tafsir: the bar that stays in reach —
+   The tabs and the way to the next ayah are pinned to the top of the panel, so
+   that a reader forty paragraphs into al-Rāzī can change work, or move on,
+   without climbing back up to do it. */
+.tafsirBar {
+  position: sticky;
+  top: -20px;
+  z-index: 3;
+  margin: 14px -18px 16px;
+  padding: 12px 18px 9px;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-divider);
+}
 
-.chip {
-  font-size: 11px;
-  letter-spacing: 0.02em;
-  padding: 4px 10px;
-  border-radius: 3px;
-  cursor: pointer;
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 9px;
+  font-size: 12px;
+  color: var(--muted-55);
+}
+
+.step {
+  min-width: 44px;
+  height: 28px;
+  padding: 0 8px;
+  background: none;
   border: 1px solid var(--color-divider);
-  background: transparent;
-  color: var(--muted-62);
-  font-family: var(--font-body);
-  text-align: left;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-accent);
+  transition: background 120ms ease, border-color 120ms ease;
 }
-.chip:hover { border-color: var(--color-accent); }
-.chipOn {
+.step:hover:not(:disabled) {
   border-color: var(--color-accent);
-  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
-  color: var(--color-accent-800);
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
 }
+.step:disabled { opacity: 0.35; cursor: default; }
+
+.stepHere {
+  padding: 0 4px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--muted-72);
+}
+
+.stepGap { flex: 1; }
+
+.sizer { display: inline-flex; }
+.sizer button {
+  width: 30px;
+  height: 28px;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--color-divider);
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12px;
+  color: var(--muted-72);
+}
+.sizer button:first-child { border-radius: var(--radius-md) 0 0 var(--radius-md); }
+.sizer button:last-child { border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-left: -1px; }
+.sizer button:hover:not(:disabled) { color: var(--color-accent); border-color: var(--color-accent); position: relative; }
+.sizer button:disabled { opacity: 0.35; cursor: default; }
+
+.fullPage {
+  margin-inline-start: 4px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12.5px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.fullPage:hover { text-decoration: underline; }
 
 .work {
   margin-top: 20px;
@@ -386,13 +449,6 @@
   font-size: 19px;
   line-height: 2.05;
   text-align: right;
-}
-
-.tafsirHeading {
-  font-family: var(--font-heading);
-  font-weight: var(--font-heading-weight);
-  font-size: 15px;
-  text-align: left;
 }
 
 .workFoot {

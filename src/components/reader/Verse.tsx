@@ -1,9 +1,11 @@
 "use client";
 
-import { memo } from "react";
+import { memo, useMemo } from "react";
 import type { Verse as VerseModel, Word } from "@/lib/quran/types";
+import type { Rendering } from "@/lib/quran/useSurahTranslations";
 import { arabicNumber } from "@/lib/text";
 import { wordDomId } from "@/lib/highlight";
+import { TranslationText } from "@/components/translations/TranslationText";
 import styles from "./Verse.module.css";
 
 export interface VerseHandlers {
@@ -12,6 +14,7 @@ export interface VerseHandlers {
   onBookmark: (verse: VerseModel) => void;
   onNote: (key: string) => void;
   onTafsir: (key: string) => void;
+  onTranslations: (key: string) => void;
   onCopyArabic: (verse: VerseModel) => void;
   onCopyTranslation: (verse: VerseModel) => void;
   onShare: (key: string) => void;
@@ -19,13 +22,21 @@ export interface VerseHandlers {
 
 interface Props {
   verse: VerseModel;
-  words: Word[];
-  translation: string;
-  translator: string;
+  /**
+   * The translations set under this ayah, in the reader's order. Laid over the
+   * text rather than carried in it — see `useSurahTranslations` — and the same
+   * list from one render to the next unless a translation actually changed.
+   */
+  translations: Rendering[];
   layout: "rows" | "stacked";
   showTranslit: boolean;
   showWbw: boolean;
+  /** The language the word meanings are in, so each is set as that language. */
+  glossLanguage: string;
   showTranslation: boolean;
+  /** The ayah loaded in the transport, whether or not it is sounding. */
+  current: boolean;
+  /** …and whether it is. The button says what pressing it will do. */
   playing: boolean;
   bookmarked: boolean;
   noteCount: number;
@@ -35,13 +46,13 @@ interface Props {
 
 function VerseImpl({
   verse,
-  words,
-  translation,
-  translator,
+  translations,
   layout,
   showTranslit,
   showWbw,
+  glossLanguage,
   showTranslation,
+  current,
   playing,
   bookmarked,
   noteCount,
@@ -51,11 +62,17 @@ function VerseImpl({
   const key = verse.verse_key;
   const number = arabicNumber(verse.verse_number);
 
+  // Worked out here, from the ayah, rather than handed in already worked out.
+  // A filtered list is a new list every time it is made, so passing one in as
+  // a prop made every ayah look changed on every render of the reader and
+  // `memo` below never once got to say no.
+  const words = useMemo(() => verse.words.filter((w) => w.char_type_name === "word"), [verse]);
+
   return (
     <article
       id={`ayah-${key}`}
       data-verse={key}
-      className={[styles.verse, playing && styles.playing, flash && styles.flash]
+      className={[styles.verse, current && styles.playing, flash && styles.flash]
         .filter(Boolean)
         .join(" ")}
       aria-label={`Ayah ${key}`}
@@ -146,6 +163,7 @@ function VerseImpl({
           tightly the columns are packed, not whether they align. */}
       <div
         dir="rtl"
+        translate="no"
         className={`${styles.words} ${layout === "stacked" ? styles.wordsSpaced : styles.wordsFlowing}`}
       >
         {words.map((w) => (
@@ -163,7 +181,8 @@ function VerseImpl({
               </span>
             )}
             {showWbw && (
-              <span dir="ltr" className={styles.gloss}>
+              // The meaning's own direction: it may be Urdu or Persian now.
+              <span dir="auto" lang={glossLanguage} className={styles.gloss}>
                 {w.translation?.text || "—"}
               </span>
             )}
@@ -174,10 +193,35 @@ function VerseImpl({
         </span>
       </div>
 
-      {showTranslation && translation && (
+      {showTranslation && translations.length > 0 && (
         <div className={styles.translation}>
-          <p className={styles.translationText}>{translation}</p>
-          <div className={styles.translator}>Translation of the meaning · {translator}</div>
+          {translations.map((t, i) => (
+            <div key={t.id} className={styles.rendering}>
+              <TranslationText
+                text={t.text}
+                footnotes={t.footnotes}
+                lang={t.lang}
+                className={styles.translationText}
+              />
+              <div className={styles.translationFoot}>
+                <span className={styles.translator}>Translation of the meaning · {t.name}</span>
+                {/* Under the last of them, the two things a reader of a
+                    translation wants next: how others put it, and what it
+                    means. The tafsir is also one of the icons above, but an
+                    open book among eight icons is a thing to be found. */}
+                {i === translations.length - 1 && (
+                  <span className={styles.footLinks}>
+                    <button className={styles.tafsirLink} onClick={() => handlers.onTranslations(key)}>
+                      Other translations
+                    </button>
+                    <button className={styles.tafsirLink} onClick={() => handlers.onTafsir(key)}>
+                      Tafsir <span aria-hidden="true">→</span>
+                    </button>
+                  </span>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
       )}
     </article>

@@ -1,0 +1,577 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   Tafsir: the tabs, the library, and a passage set to be read.
+
+   Shared by the panel beside the text and by the page a passage is given to
+   itself, so that a work looks the same wherever it is opened. Every size in a
+   passage is multiplied by `--tafsir-scale`, which the reader sets: tafsir is
+   read at length, by people of every age, on screens of every size, and the
+   right size is the one they choose.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* — the tabs — */
+
+.tabsRow {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  min-width: 0;
+}
+
+.tabs {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  /* The strip fades out where it runs on, so a reader can see there is more. */
+  mask-image: linear-gradient(to right, #000 calc(100% - 22px), transparent);
+  padding-inline-end: 18px;
+}
+.tabs::-webkit-scrollbar { display: none; }
+
+.tab {
+  flex: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 7px 12px;
+  background: none;
+  border: 1px solid var(--color-divider);
+  border-radius: 99px;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 14px;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--muted-72);
+  transition: background 130ms ease, border-color 130ms ease, color 130ms ease;
+}
+.tab:hover { border-color: var(--color-accent); color: var(--color-text); }
+.tabOn,
+.tabOn:hover {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 13%, transparent);
+  color: var(--color-accent-800);
+}
+:global(:root[data-theme="night"]) .tabOn { color: var(--color-accent); }
+
+.tabLang {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  color: var(--muted-45);
+}
+
+.choose {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  background: none;
+  border: 1px solid var(--color-divider);
+  border-radius: 99px;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12.5px;
+  white-space: nowrap;
+  color: var(--color-accent);
+  transition: background 130ms ease, border-color 130ms ease;
+}
+.choose:hover,
+.chooseOn {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+}
+
+/* — the language —
+   The first thing the library asks. Two halves of one control, the shelf in
+   front lit, each saying how many works it holds. */
+
+.langs {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  padding: 3px;
+  border: 1px solid var(--color-divider);
+  border-radius: 999px;
+}
+
+.lang {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 32px;
+  padding: 0 12px;
+  line-height: 1;
+  background: none;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 14px;
+  color: var(--muted-62);
+  transition: background 140ms ease, color 140ms ease;
+}
+.lang:hover { color: var(--color-text); }
+.langOn,
+.langOn:hover {
+  background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+  color: var(--color-accent-800);
+}
+.lang:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+
+.langCount {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-45);
+}
+.langOn .langCount { color: inherit; opacity: 0.7; }
+
+/* — the library — */
+
+.library { display: flex; flex-direction: column; }
+
+.groupNote {
+  margin: 10px 2px 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted-55);
+}
+
+/* Within a language, the works fall into a few runs, each under its own
+   small heading: what is short, what is long, the mother works, and the one
+   work that stands for each other kind of tafsir. */
+.section { margin-top: 22px; }
+
+.sectionTitle {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 8px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.sectionArabic {
+  font-family: var(--font-amiri), serif;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0;
+  color: var(--muted-45);
+}
+
+.entry {
+  display: flex;
+  align-items: stretch;
+  border-top: 1px solid var(--color-divider);
+  box-shadow: inset 3px 0 0 transparent;
+}
+.entry:last-child { border-bottom: 1px solid var(--color-divider); }
+.entryOn {
+  background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+  box-shadow: inset 3px 0 0 var(--color-accent);
+}
+
+.entryMain {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 8px 13px 14px;
+  text-align: left;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--color-text);
+  font-family: inherit;
+  transition: background 120ms ease;
+}
+.entryMain:hover { background: color-mix(in srgb, var(--color-accent) 6%, transparent); }
+.entryMain:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+.entryKind {
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--muted-45);
+}
+
+.entryTop {
+  display: flex;
+  align-items: baseline;
+  gap: 4px 10px;
+  min-width: 0;
+}
+
+.entryShort {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 17px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.entryEra {
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-45);
+  white-space: nowrap;
+}
+
+.entryArabic {
+  /* To the far side of the row. Stated physically: the name is set right to
+     left, and its own inline start is the side it is already on. */
+  margin-left: auto;
+  min-width: 0;
+  font-family: var(--font-amiri), serif;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--muted-55);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.entryName { font-size: 12.5px; color: var(--muted-72); line-height: 1.5; }
+.entryEnglish { font-style: italic; color: var(--muted-55); }
+
+.entryAbout { margin-top: 1px; font-size: 13px; line-height: 1.6; color: var(--muted-72); }
+
+/* Held in English as well: a fact about the work, said under what it is. */
+.entryAlso { font-size: 11.5px; line-height: 1.5; color: var(--color-accent); }
+
+.keep {
+  flex: none;
+  width: 44px;
+  display: grid;
+  place-items: center;
+  background: none;
+  border: 0;
+  border-inline-start: 1px solid var(--color-divider);
+  cursor: pointer;
+  color: var(--muted-45);
+  opacity: 0.75;
+  transition: background 120ms ease, color 120ms ease, opacity 120ms ease;
+}
+.keep:hover { background: color-mix(in srgb, var(--color-accent) 9%, transparent); color: var(--color-accent); opacity: 1; }
+.keepOn { color: var(--color-accent); opacity: 1; }
+.keep:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+/* — one work, on one ayah — */
+
+.reading { min-width: 0; }
+
+.workHead {
+  padding-bottom: 13px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.workNames {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.workName {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 21px;
+  line-height: 1.3;
+}
+
+.workNameArabic {
+  flex: none;
+  font-family: var(--font-amiri), serif;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--muted-55);
+  white-space: nowrap;
+}
+
+/* The title in English, under the title: what the Arabic says. */
+.workEnglish {
+  margin-top: 1px;
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted-62);
+}
+
+.workCredit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 9px;
+  margin-top: 5px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted-55);
+}
+
+.workKind {
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  color: var(--color-accent-800);
+  background: var(--color-accent-100);
+  border-radius: 3px;
+  padding: 2px 6px;
+}
+
+/* What can be done with the work, in one line: its other language, what it
+   is, the editor's notes, a second work beside it. Quiet, because none of it
+   is what the reader came for. */
+.workTools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 16px;
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.tool {
+  padding: 2px 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  font: inherit;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+.tool:hover { border-bottom-color: color-mix(in srgb, var(--color-accent) 60%, transparent); }
+.tool[aria-expanded="true"],
+.tool[aria-pressed="true"] { border-bottom-color: var(--color-accent); }
+.tool:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+.toolsEnd { margin-inline-start: auto; }
+
+/* One work in its two languages. The one being read is lit and does nothing;
+   the other is the press. */
+.langSwitch {
+  display: inline-flex;
+  border: 1px solid var(--color-divider);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.langSwitch button {
+  min-height: 28px;
+  padding: 0 13px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  color: var(--muted-62);
+  transition: background 140ms ease, color 140ms ease;
+}
+.langSwitch button:hover { color: var(--color-text); }
+.langSwitch button[aria-pressed="true"] {
+  background: var(--color-accent-100);
+  color: var(--color-accent-800);
+  cursor: default;
+}
+.langSwitch button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+/* What is said about a work, as against what the work says about the ayah:
+   on a faint ground, so it reads as the dust-jacket and not as the first page. */
+.about {
+  margin-bottom: 16px;
+  padding: 14px 16px 6px;
+  border: 1px solid color-mix(in srgb, var(--mk-gold) 30%, transparent);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--mk-gold) 6%, transparent);
+  max-height: 52vh;
+  overflow-y: auto;
+}
+
+.aboutLead {
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted-88);
+}
+
+.rangeNote {
+  margin: 0 0 14px;
+  padding: 8px 12px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--muted-72);
+  border-inline-start: 2px solid var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 6%, transparent);
+}
+
+/* — the text — */
+
+.para {
+  margin: 0 0 0.85em;
+  color: var(--muted-88);
+}
+
+.arabic {
+  font-family: var(--font-amiri), serif;
+  font-size: calc(20px * var(--tafsir-scale, 1));
+  line-height: 2.05;
+  text-align: var(--tafsir-align, start);
+}
+
+.latin {
+  font-family: var(--font-body);
+  font-size: calc(15.5px * var(--tafsir-scale, 1));
+  line-height: 1.82;
+  hyphens: auto;
+}
+
+/* The words being commented on, as against the comment. */
+.quran { color: var(--color-accent-700); }
+
+/* The editor of the printed edition, speaking inside the author's paragraph. */
+.editorNote {
+  font-size: 0.74em;
+  color: var(--muted-55);
+}
+.editorNote::before { content: " ["; }
+.editorNote::after { content: "] "; }
+
+/* Where an editor's note stands, folded: its number, raised, to be pressed. */
+.noteMark {
+  display: inline-block;
+  min-width: 1.5em;
+  margin: 0 0.1em;
+  padding: 0.25em 0.2em;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  vertical-align: super;
+  font-family: var(--font-body);
+  font-size: 0.5em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  direction: ltr;
+  color: var(--color-accent);
+  border-radius: 3px;
+}
+/* A mark stays on the line with the word it follows. */
+.noteTie { white-space: nowrap; }
+
+.noteMark:hover,
+.noteMark[aria-expanded="true"] { background: color-mix(in srgb, var(--color-accent) 16%, transparent); }
+.noteMark:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+
+.headingArabic {
+  margin-top: 1.1em;
+  font-weight: 700;
+  color: var(--color-text);
+  text-align: start;
+}
+
+.heading {
+  margin-top: 1.2em;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: calc(18px * var(--tafsir-scale, 1));
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+.verseLine {
+  text-align: center;
+  color: var(--color-text);
+}
+
+.rule {
+  margin: 0.2em 0 1em;
+  text-align: center;
+  letter-spacing: 0.5em;
+  color: color-mix(in srgb, var(--color-accent) 60%, transparent);
+}
+
+.more { margin: 6px 0 4px; font-size: 13px; }
+
+/* — while it is fetched, and when there is nothing — */
+
+.skeleton { display: flex; flex-direction: column; gap: 12px; padding: 6px 0 14px; }
+.skeleton span {
+  height: 12px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--color-text) 9%, transparent);
+  animation: breathe 1.3s ease-in-out infinite;
+}
+.skeleton span:nth-child(2) { width: 94%; animation-delay: 120ms; }
+.skeleton span:nth-child(3) { width: 98%; animation-delay: 240ms; }
+.skeleton span:nth-child(4) { width: 61%; animation-delay: 360ms; }
+
+.state {
+  padding: 26px 8px 22px;
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--muted-62);
+}
+.state p { margin: 0 0 12px; }
+
+.alternatives {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+}
+.alternatives span { margin-inline-end: 4px; color: var(--muted-55); }
+.alternatives :global(.btn) { font-size: 12.5px; padding: 5px 12px; }
+
+.quiet { margin: 0 0 8px; font-size: 12.5px; color: var(--muted-55); }
+
+.workFoot {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 11px;
+  border-top: 1px solid var(--color-divider);
+}
+
+.footNote { font-size: 11px; line-height: 1.6; color: var(--muted-45); }
+.footGap { flex: 1; }
+
+.source {
+  flex: none;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton span { animation: none; }
+  .tabs { scroll-behavior: auto; }
+}
