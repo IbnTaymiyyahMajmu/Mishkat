@@ -1,0 +1,418 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   Translations: a translation set as its translator wrote it, and the library
+   they are chosen from.
+
+   Shared by the reader, the panel beside it and the settings page, so that a
+   translation looks the same wherever it is met.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* — the text —
+   The size and measure belong to wherever it is set; what is said here is
+   only what is true of a translation anywhere. */
+
+.text { margin: 0; }
+
+/* A translation in a right-to-left script is set in the face the site keeps
+   for Arabic-script prose, and a little larger: Naskh at the size of Latin
+   body text is smaller on the eye than the Latin is.
+
+   The class is put on by the component, which reads the direction off the
+   text itself. `:dir(rtl)` would say the same thing in one line, but the
+   build rewrites it into a list of languages for older browsers — and then it
+   is the language that is matched, not the script: Urdu written in Latin
+   letters was set in Naskh, and Sindhi, whose code the corpus does not give,
+   was not. */
+.rtl {
+  font-family: var(--font-noto-naskh), var(--font-amiri), serif;
+  /* Larger and looser by these, rather than by a size of its own: the size is
+     set by wherever the translation is being read, and this multiplies it. */
+  --script-scale: 1.16;
+  --script-leading: 2.05;
+  hyphens: manual;
+}
+
+/* Words the translator supplied to make the English stand. Italic, as they
+   are printed, and a shade quieter: they are his, not the Arabic's. */
+.supplied { font-style: italic; opacity: 0.82; }
+
+/* A raised mark that is not a footnote — Bridges' "sg" and "pl" on "you". */
+.mark {
+  font-family: var(--font-heading);
+  font-size: 0.62em;
+  letter-spacing: 0.04em;
+  line-height: 0;
+  opacity: 0.6;
+  padding-inline: 1px;
+}
+
+/* A footnote mark. Raised without disturbing the line it stands on, and with
+   more to press than there is to see: the figure is a few pixels wide and a
+   thumb is not. */
+.note {
+  position: relative;
+  display: inline-block;
+  margin: -0.5em 0;
+  padding: 0.5em 0.3em;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 0.7em;
+  line-height: 1;
+  vertical-align: 0.5em;
+  color: var(--color-accent);
+  text-indent: 0;
+}
+.note:hover,
+.noteOn { text-decoration: underline; text-underline-offset: 2px; }
+.note:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -3px; border-radius: 3px; }
+
+/* — the notes, opened —
+   Under the ayah they belong to, in the order they stand in it. */
+
+.notes {
+  list-style: none;
+  margin: 8px 0 4px;
+  padding: 9px 12px 9px 6px;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-accent) 7%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  animation: open 180ms ease both;
+}
+
+.noteRow { display: flex; align-items: baseline; gap: 4px; }
+
+.noteMark {
+  flex: none;
+  min-width: 24px;
+  padding: 2px 4px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  color: var(--color-accent);
+}
+.noteMark:hover { text-decoration: line-through; }
+
+.noteText {
+  flex: 1;
+  min-width: 0;
+  font-size: calc(max(12.5px, 0.88em) * var(--script-scale, 1));
+  line-height: var(--script-leading, 1.7);
+  color: var(--muted-72);
+  text-wrap: pretty;
+}
+
+@keyframes open {
+  from { opacity: 0; transform: translateY(-3px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notes { animation: none; }
+}
+
+/* ── the library ─────────────────────────────────────────────────────────── */
+
+.library { display: flex; flex-direction: column; min-width: 0; }
+
+.waiting,
+.absent {
+  margin: 0;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--muted-55);
+}
+.waiting { margin: 18px 0; }
+
+.unreached {
+  margin: 18px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted-72);
+}
+.unreached p { margin: 0; }
+
+/* — what is already chosen — */
+
+.kept {
+  padding: 11px 12px 6px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+}
+
+.keptTitle {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 0 4px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.keptCount {
+  font-family: var(--font-body);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-45);
+}
+
+.keptList { list-style: none; margin: 0; padding: 0; }
+
+.keptRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  border-top: 1px solid var(--color-divider);
+}
+.keptRow:first-child { border-top: 0; }
+
+.keptOrder {
+  flex: none;
+  width: 18px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  color: var(--muted-45);
+}
+
+.keptName {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 15px;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.keptLang {
+  margin-inline-start: 8px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--muted-45);
+}
+
+.keptAct {
+  flex: none;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 7px;
+  display: inline-grid;
+  place-items: center;
+  background: none;
+  border: 0;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12px;
+  color: var(--muted-55);
+  transition: background 120ms ease, color 120ms ease;
+}
+.keptAct:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  color: var(--color-accent);
+}
+.keptAct:disabled { opacity: 0.3; cursor: default; }
+
+/* — which language — */
+
+.pick {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.pickLabel {
+  flex: none;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.selectWrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+/* The chevron is drawn, because the browser's own is taken off with the rest
+   of its dressing — and each browser's was a different one. */
+.selectWrap::after {
+  content: "";
+  position: absolute;
+  inset-inline-end: 13px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin-top: -5px;
+  border-right: 1.5px solid var(--color-accent);
+  border-bottom: 1.5px solid var(--color-accent);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+.select {
+  width: 100%;
+  height: 38px;
+  padding: 0 34px 0 12px;
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 15px;
+  color: var(--color-text);
+  text-overflow: ellipsis;
+}
+.select:hover { border-color: var(--color-accent); }
+.select:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+/* The list itself is the browser's, and is painted on the browser's ground. */
+.select option { background: var(--color-bg); color: var(--color-text); }
+
+/* The ayah being rendered, where it is not already beside the reader. */
+.ayah {
+  margin: 16px 0 0;
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 25px;
+  line-height: 2.1;
+  text-align: right;
+  padding-bottom: var(--quran-descender-pad);
+}
+
+.hint {
+  margin: 10px 2px 12px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted-55);
+}
+
+/* — one translation, on the ayah — */
+
+.entry {
+  display: flex;
+  align-items: stretch;
+  border-top: 1px solid var(--color-divider);
+  box-shadow: inset 3px 0 0 transparent;
+}
+.entry:last-of-type { border-bottom: 1px solid var(--color-divider); }
+.entryOn {
+  background: color-mix(in srgb, var(--color-accent) 7%, transparent);
+  box-shadow: inset 3px 0 0 var(--color-accent);
+}
+
+.entryBody {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 10px 14px 14px;
+}
+
+.entryHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 10px;
+  margin-bottom: 6px;
+}
+
+.entryName {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.entryAuthor { font-size: 11.5px; color: var(--muted-55); }
+
+.entryPlace {
+  margin-inline-start: auto;
+  font-family: var(--font-heading);
+  font-size: 9.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+.entryText {
+  font-size: calc(14px * var(--script-scale, 1));
+  line-height: var(--script-leading, 1.8);
+  color: var(--muted-88);
+  text-wrap: pretty;
+}
+
+.entrySource {
+  margin: 7px 0 0;
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--muted-55);
+}
+
+.entryLead {
+  margin-top: 8px;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12.5px;
+  color: var(--color-accent);
+}
+.entryLead:hover { border-bottom-color: var(--color-accent); }
+
+.keep {
+  flex: none;
+  width: 44px;
+  display: grid;
+  place-items: center;
+  background: none;
+  border: 0;
+  border-inline-start: 1px solid var(--color-divider);
+  cursor: pointer;
+  color: var(--muted-45);
+  opacity: 0.75;
+  transition: background 120ms ease, color 120ms ease, opacity 120ms ease;
+}
+.keep:hover { background: color-mix(in srgb, var(--color-accent) 9%, transparent); color: var(--color-accent); opacity: 1; }
+.keepOn { color: var(--color-accent); opacity: 1; }
+.keep:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+.credit {
+  margin: 18px 2px 0;
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--muted-45);
+}

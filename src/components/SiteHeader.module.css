@@ -180,6 +180,11 @@
   .header { gap: 8px; }
   .brandName { display: none; }
   .navLink { font-size: 13px; padding: 6px 5px; }
+  /* The menu runs on past the edge of a phone, and fades there to say so. */
+  .nav {
+    mask-image: linear-gradient(to right, #000 calc(100% - 18px), transparent);
+    padding-inline-end: 14px;
+  }
   /* The three lamps lose their pill and tighten up rather than disappearing:
      the light is the one thing a reader is most likely to want changed on a
      phone, which is where they are most likely to be reading in the dark. */

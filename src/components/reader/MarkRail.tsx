@@ -41,11 +41,13 @@ interface Props {
   verses: Verse[];
   /** Total ayat, known from the chapter table before the text has arrived. */
   total: number;
+  /** A passage being looped in this surah, drawn so its extent can be seen. */
+  loop: { from: number; to: number } | null;
   scrollerRef: React.RefObject<HTMLDivElement | null>;
   onJump: (ayah: number) => void;
 }
 
-export function MarkRail({ surah, verses, total, scrollerRef, onJump }: Props) {
+export function MarkRail({ surah, verses, total, loop, scrollerRef, onJump }: Props) {
   const railRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const fillRef = useRef<HTMLDivElement>(null);
@@ -66,7 +68,12 @@ export function MarkRail({ surah, verses, total, scrollerRef, onJump }: Props) {
   // must not follow you down the page as you read.
   const [checkpoint] = useState(() => (typeof window === "undefined" ? null : readStop(surah)));
 
-  const n = verses.length || total;
+  // The surah's own length, not however much of it has arrived. A long surah
+  // comes in pages, and measuring the rail against the pages so far redrew it
+  // six times over as al-Baqarah loaded — every mark sliding up the rail and
+  // the reader's own position with them. The chapter table knows the length
+  // from the start; what has arrived is the fallback for when it does not.
+  const n = Math.max(total, verses.length);
   const pctOf = useCallback((ayah: number) => (n > 1 ? ((ayah - 1) / (n - 1)) * 100 : 0), [n]);
 
   const bands = useMemo(() => juzBands(verses), [verses]);
@@ -260,7 +267,17 @@ export function MarkRail({ surah, verses, total, scrollerRef, onJump }: Props) {
     paint();
   }, [paint, verses.length]);
 
-  useEffect(() => () => void (saveTimer.current && clearTimeout(saveTimer.current)), []);
+  // Leaving within a second of stopping used to lose the stopping place: the
+  // write was still waiting on its timer and the timer was simply cancelled.
+  // The place is known, so it is written on the way out instead.
+  useEffect(
+    () => () => {
+      if (!saveTimer.current) return;
+      clearTimeout(saveTimer.current);
+      writeStop(surah, atRef.current);
+    },
+    [surah],
+  );
 
   // ── dragging ──────────────────────────────────────────────────────────────
   const onPointerDown = useCallback(
@@ -274,16 +291,24 @@ export function MarkRail({ surah, verses, total, scrollerRef, onJump }: Props) {
       const move = (ev: PointerEvent) => {
         if (draggingRef.current) showAt(ayahAtY(ev.clientY));
       };
-      const up = (ev: PointerEvent) => {
+      const done = () => {
         draggingRef.current = false;
         window.removeEventListener("pointermove", move);
         window.removeEventListener("pointerup", up);
+        window.removeEventListener("pointercancel", done);
+        hide();
+      };
+      const up = (ev: PointerEvent) => {
         const to = ayahAtY(ev.clientY);
         if (to !== from) onJump(to);
-        hide();
+        done();
       };
       window.addEventListener("pointermove", move);
       window.addEventListener("pointerup", up);
+      // A drag the browser takes over — a touch it decides is a scroll — ends
+      // in a cancel and never in an up. Without this the rail stayed in mid-
+      // drag for good, its preview card stuck open over the text.
+      window.addEventListener("pointercancel", done);
     },
     [ayahAtY, showAt, onJump, hide],
   );
@@ -343,6 +368,17 @@ export function MarkRail({ surah, verses, total, scrollerRef, onJump }: Props) {
             style={{ top: `${pctOf(b.from)}%`, height: `${pctOf(b.to) - pctOf(b.from)}%` }}
           />
         ))}
+
+        {/* The passage being looped, so it is seen as a stretch of the surah. */}
+        {loop && (
+          <span
+            className={styles.loop}
+            style={{
+              top: `${pctOf(Math.min(loop.from, n))}%`,
+              height: `${pctOf(Math.min(loop.to, n)) - pctOf(Math.min(loop.from, n))}%`,
+            }}
+          />
+        )}
 
         {/* Every place a reciter is meant to break. */}
         {stops.map((ayah) => (

@@ -6,7 +6,7 @@ import type { Note, NoteQuote } from "@/lib/store/types";
 import { insertQuote, pruneQuotes, quoteFromVerse, quotedKeys } from "@/lib/notes";
 import { fetchVerse } from "@/lib/quran/api";
 import { useSettings } from "@/lib/store/settings";
-import { TRANSLATIONS } from "@/lib/quran/resources";
+import { translationName } from "@/lib/quran/translations";
 import { isValidVerseKey } from "@/lib/text";
 import styles from "./NoteComposer.module.css";
 
@@ -50,10 +50,14 @@ export function NoteComposer({ surah, anchorVerseKey, loadedVerses, editing, onS
   }, [editing?.id]);
 
   const translatorFallback =
-    TRANSLATIONS.find((t) => t.id === settings.translationId)?.label ?? "Translation";
+    translationName(settings.translationId) || "Translation";
 
   /** Add an ayah's text to the note at the caret, snapshotting it as we go. */
-  const addQuote = async (verseKey: string) => {
+  const addQuote = async (reference: string) => {
+    // Read as the search box reads a reference: 2:255, 2.255, 2-255 or 2 255.
+    // A phone's keyboard does not always offer the colon.
+    const parts = /^(\d{1,3})\s*[:.\-\s]\s*(\d{1,3})$/.exec(reference.trim());
+    const verseKey = parts ? `${+parts[1]}:${+parts[2]}` : "";
     if (!isValidVerseKey(verseKey)) {
       setPickerError("Use a reference like 2:255.");
       return;
@@ -73,7 +77,11 @@ export function NoteComposer({ surah, anchorVerseKey, loadedVerses, editing, onS
       const quote = quoteFromVerse(verse, translatorFallback);
       const el = textareaRef.current;
       const caret = el ? el.selectionStart : caretRef.current;
-      const next = insertQuote(body, caret, verseKey);
+      // The note as it stands now, off the page. Fetching the ayah can take a
+      // moment, and whatever was typed in that moment is not in the `body`
+      // this function began with — inserting into that put the quote in and
+      // took the last few words out.
+      const next = insertQuote(el ? el.value : body, caret, verseKey);
       setBody(next.body);
       setQuotes((prev) => [...prev.filter((q) => q.verseKey !== verseKey), quote]);
       setPickerOpen(false);
@@ -172,7 +180,6 @@ export function NoteComposer({ surah, anchorVerseKey, loadedVerses, editing, onS
                 }
               }}
               placeholder="2:255"
-              inputMode="numeric"
             />
             <button
               type="button"

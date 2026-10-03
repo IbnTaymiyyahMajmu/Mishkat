@@ -145,6 +145,54 @@
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chips .chip { font-size: 12px; padding: 6px 12px; }
 
+/* — memorising a passage —
+   Which ayat, then how they are gone over. The two ends of the passage and the
+   button that starts it sit on one line, because together they are one
+   sentence: from here, to here, begin. */
+.passage {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px 12px;
+  margin-bottom: 12px;
+}
+.passage .chip { font-size: 12px; padding: 7px 14px; }
+
+.end { display: flex; flex-direction: column; gap: 4px; }
+
+.endLabel,
+.habitLabel {
+  font-size: 11px;
+  color: var(--muted-55);
+}
+
+.select {
+  min-width: 76px;
+  min-height: 32px;
+  padding: 4px 8px;
+  font: inherit;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+.select:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
+.select:focus-visible { border-color: var(--color-accent); outline-offset: 0; }
+
+.habits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+}
+.habit { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+
+/* The silence left for reciting back is the one moment the transport is
+   speaking to the reader rather than reporting, so it is said in the accent. */
+.nowTurn { color: var(--color-accent); }
+
 /* The shared sheet curve, declared locally because a module cannot reference a
    global keyframe — see the note in globals.css. */
 @keyframes sheet {

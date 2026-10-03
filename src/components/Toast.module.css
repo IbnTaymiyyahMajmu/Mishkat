@@ -1,8 +1,14 @@
+/* Centred by being a row the width of the screen, rather than by being hung
+   from its middle: hung from the middle, a message has only half the screen to
+   be as wide as, and one with something to explain was cut off on a phone. */
 .region {
   position: fixed;
-  left: 50%;
+  left: 0;
+  right: 0;
   bottom: 96px;
-  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  padding: 0 14px;
   z-index: 95;
   pointer-events: none;
 }
@@ -15,7 +21,11 @@
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   animation: sheet 180ms ease both;
-  white-space: nowrap;
+  /* One line while it fits on one; a longer message folds and stays centred. */
+  max-width: 34rem;
+  line-height: 1.5;
+  text-align: center;
+  text-wrap: balance;
 }
 
 :global(:root[data-theme="night"]) .toast {

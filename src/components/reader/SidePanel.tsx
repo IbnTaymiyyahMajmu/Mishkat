@@ -3,7 +3,7 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import styles from "./SidePanel.module.css";
 
-export type PanelMode = "word" | "tafsir" | "notes";
+export type PanelMode = "word" | "translations" | "tafsir" | "notes";
 
 export interface PanelState {
   mode: PanelMode;
@@ -13,6 +13,7 @@ export interface PanelState {
 
 const KICKER: Record<PanelMode, string> = {
   word: "Word study",
+  translations: "Translations",
   tafsir: "Tafsir",
   notes: "Notes",
 };
@@ -51,7 +52,7 @@ export function SidePanel({ state, title, onSwitch, onClose, children }: Props) 
     scrollRef.current?.scrollTo({ top: 0 });
   }, [state.mode, state.verseKey, state.wordPosition]);
 
-  const modes: PanelMode[] = ["word", "tafsir", "notes"];
+  const modes: PanelMode[] = ["word", "translations", "tafsir", "notes"];
 
   return (
     <aside ref={ref} className={styles.panel} aria-label={`${KICKER[state.mode]} for ${state.verseKey}`}>

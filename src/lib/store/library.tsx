@@ -10,7 +10,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { LocalBackend, normalise, type LibraryBackend } from "./backend";
+import { LocalBackend, mergeLibraries, normalise, type LibraryBackend } from "./backend";
 import {
   emptyLibrary,
   live,
@@ -62,30 +62,44 @@ export function LibraryProvider({
   const backendRef = useRef<LibraryBackend>(backend ?? new LocalBackend());
   const [snapshot, setSnapshot] = useState<LibrarySnapshot>(emptyLibrary);
   const [ready, setReady] = useState(false);
+  /**
+   * The library as of this instant, which the state above is only as of the
+   * last render. A mutation is worked out against this — so two in one tick
+   * build on each other, a caller can be told what its own change did, and
+   * saving is something a mutation does rather than a side effect buried in a
+   * state updater that React is free to run twice, or later.
+   */
+  const latestRef = useRef<LibrarySnapshot>(snapshot);
+
+  const adopt = useCallback((next: LibrarySnapshot) => {
+    latestRef.current = next;
+    setSnapshot(next);
+  }, []);
 
   useEffect(() => {
     const b = backendRef.current;
     let alive = true;
     b.load().then((s) => {
       if (!alive) return;
-      setSnapshot(s);
+      adopt(s);
       setReady(true);
     });
-    const unsubscribe = b.subscribe((s) => alive && setSnapshot(s));
+    const unsubscribe = b.subscribe((s) => alive && adopt(s));
     return () => {
       alive = false;
       unsubscribe();
     };
-  }, []);
+  }, [adopt]);
 
   /** Every mutation goes through here, so persistence is never forgotten. */
-  const commit = useCallback((fn: (s: LibrarySnapshot) => LibrarySnapshot) => {
-    setSnapshot((prev) => {
-      const next = { ...fn(prev), updatedAt: Date.now() };
+  const commit = useCallback(
+    (fn: (s: LibrarySnapshot) => LibrarySnapshot) => {
+      const next = { ...fn(latestRef.current), updatedAt: Date.now() };
+      adopt(next);
       void backendRef.current.save(next);
-      return next;
-    });
-  }, []);
+    },
+    [adopt],
+  );
 
   const bookmarks = useMemo(
     () => live(snapshot.bookmarks).sort((a, b) => b.createdAt - a.createdAt),
@@ -102,7 +116,10 @@ export function LibraryProvider({
 
   const toggleBookmark = useCallback<LibraryContextValue["toggleBookmark"]>(
     (input) => {
-      const had = bookmarkKeys.has(input.verseKey);
+      // Asked of the library as it is now rather than as it was last rendered:
+      // two presses in quick succession are a bookmark made and removed, not
+      // two bookmarks on the one ayah.
+      const had = live(latestRef.current.bookmarks).some((b) => b.verseKey === input.verseKey);
       const now = Date.now();
       commit((s) => {
         if (had) {
@@ -120,7 +137,7 @@ export function LibraryProvider({
       });
       return !had;
     },
-    [bookmarkKeys, commit],
+    [commit],
   );
 
   const removeBookmark = useCallback(
@@ -204,20 +221,35 @@ export function LibraryProvider({
   const importJson = useCallback<LibraryContextValue["importJson"]>(
     (text, mode) => {
       const incoming = normalise(JSON.parse(text));
-      let added = { bookmarks: 0, notes: 0 };
-      commit((s) => {
-        if (mode === "replace") {
-          added = { bookmarks: incoming.bookmarks.length, notes: incoming.notes.length };
-          return incoming;
-        }
-        const haveB = new Set(s.bookmarks.map((b) => b.id));
-        const haveN = new Set(s.notes.map((n) => n.id));
-        const newB = incoming.bookmarks.filter((b) => !haveB.has(b.id));
-        const newN = incoming.notes.filter((n) => !haveN.has(n.id));
-        added = { bookmarks: newB.length, notes: newN.length };
-        return { ...s, bookmarks: [...newB, ...s.bookmarks], notes: [...newN, ...s.notes] };
-      });
-      return added;
+      const before = latestRef.current;
+
+      // What is reported is what the reader can now see that they could not
+      // see before. An export carries tombstones — deleted rows, kept so a
+      // later sync can propagate the deletion — and counting those told a
+      // reader that three notes had been imported when none had appeared.
+      const merging = mode === "merge";
+      const seenBookmarks = new Set(merging ? live(before.bookmarks).map((b) => b.id) : []);
+      const seenNotes = new Set(merging ? live(before.notes).map((n) => n.id) : []);
+
+      let next = incoming;
+      if (merging) {
+        // Two devices that bookmarked the same ayah did it under two ids. One
+        // ayah is one bookmark, so the copy already here is the one kept.
+        const marked = new Set(live(before.bookmarks).map((b) => b.verseKey));
+        const known = new Set(before.bookmarks.map((b) => b.id));
+        next = mergeLibraries(before, {
+          ...incoming,
+          bookmarks: incoming.bookmarks.filter(
+            (b) => known.has(b.id) || !!b.deletedAt || !marked.has(b.verseKey),
+          ),
+        });
+      }
+
+      commit(() => next);
+      return {
+        bookmarks: live(next.bookmarks).filter((b) => !seenBookmarks.has(b.id)).length,
+        notes: live(next.notes).filter((n) => !seenNotes.has(n.id)).length,
+      };
     },
     [commit],
   );

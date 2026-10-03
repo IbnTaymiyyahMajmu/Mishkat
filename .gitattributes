@@ -1,0 +1,4 @@
+# The tafsir library copied from tafsir.app (see public/tafsir/SOURCE.md).
+# Stored byte for byte as written — no line-ending conversion — and left out of
+# diffs and language statistics: it is data, several hundred megabytes of it.
+public/tafsir/** -text -diff linguist-generated=true

@@ -1,0 +1,440 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   Tafsir, given a page.
+
+   Three things, top to bottom: a bar that says which ayah this is and moves
+   between ayat; the ayah itself; and the passage — in a measure a person can
+   read at length, with the library down the side of it. Below 1040px there is
+   no room for a side, so the library folds into the tabs that sit above the
+   passage, exactly as it does in the panel beside the text.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* — the bar — */
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 14;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 0 22px;
+  min-height: 46px;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.back {
+  justify-self: start;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.place {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  min-height: 34px;
+  padding: 4px 14px;
+  background: none;
+  border: 0;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  transition: background 140ms ease;
+}
+.place:hover { background: color-mix(in srgb, var(--color-accent) 8%, transparent); }
+.place svg { align-self: center; color: var(--color-accent); flex: none; }
+
+.placeSurah {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-weight: var(--font-heading-weight);
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.placeNumber { font-size: 12px; font-variant-numeric: tabular-nums; color: var(--color-accent); }
+
+.placeAyah {
+  font-size: 12.5px;
+  letter-spacing: 0.03em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--muted-55);
+}
+
+.barTools { justify-self: end; display: flex; align-items: center; gap: 6px; }
+
+.step {
+  height: 30px;
+  min-width: 40px;
+  padding: 0 9px;
+  background: none;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--color-accent);
+  transition: background 120ms ease, border-color 120ms ease;
+}
+.step:hover:not(:disabled) {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+}
+.step:disabled { opacity: 0.35; cursor: default; }
+
+.sizer { display: inline-flex; margin-inline-start: 6px; }
+.sizer button {
+  width: 32px;
+  height: 30px;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--color-divider);
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12.5px;
+  color: var(--muted-72);
+}
+.sizer button:first-child { border-radius: var(--radius-md) 0 0 var(--radius-md); }
+.sizer button:last-child { border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-left: -1px; }
+.sizer button:hover:not(:disabled) { color: var(--color-accent); border-color: var(--color-accent); position: relative; }
+.sizer button:disabled { opacity: 0.35; cursor: default; }
+
+/* — the two columns of the page — */
+
+.layout {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 44px;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 30px 32px 150px;
+}
+
+.body { min-width: 0; }
+
+/* — the rail —
+   The library as an outline, one language at a time: the run a work belongs
+   to, then the work. A row is two lines — the name it is known by, and one
+   thing more about it — and what that second thing is depends on the run: who
+   it is by, or, where the run is one work of each kind, the kind. The work
+   being read is the only filled row; one set beside it says so in a word. */
+
+.rail { position: relative; }
+
+.railInner {
+  position: sticky; /* and so also what the rows' offsets are measured from */
+  top: 66px;
+  max-height: calc(100dvh - var(--header-h) - 96px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-inline-end: 6px;
+  scrollbar-width: thin;
+}
+
+.railSection { margin-top: 18px; }
+
+.railHeading {
+  margin-bottom: 6px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.railRow {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 5px 10px 6px 12px;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-inline-start: 2px solid var(--color-divider);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  cursor: pointer;
+  color: var(--color-text);
+  font-family: inherit;
+  transition: border-color 140ms ease, background 140ms ease;
+}
+.railRow:hover {
+  border-inline-start-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  background: color-mix(in srgb, var(--color-text) 4%, transparent);
+}
+.railRow:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+.railOn,
+.railOn:hover {
+  border-inline-start-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 11%, transparent);
+}
+.railBeside { border-inline-start-color: color-mix(in srgb, var(--color-accent) 55%, transparent); }
+
+.railLead {
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--muted-45);
+}
+
+.railShort {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 15px;
+  line-height: 1.3;
+  color: var(--muted-88);
+}
+.railOn .railShort { color: var(--color-accent-800); }
+
+.railBy {
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--muted-45);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.railAlso {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 9.5px;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+/* — the ayah — */
+
+.ayah {
+  text-align: center;
+  padding: 2px 0 26px;
+  margin-bottom: 26px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.ayahKey {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.ayahArabic {
+  margin: 12px auto 0;
+  max-width: 880px;
+  font-family: var(--arabic-font);
+  font-size: clamp(26px, 3.4vw, 38px);
+  line-height: 2.05;
+  padding-bottom: var(--quran-descender-pad);
+  color: var(--color-text);
+}
+
+.ayahEnglish {
+  margin: 6px auto 0;
+  max-width: 62ch;
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--muted-88);
+}
+
+.ayahCredit {
+  margin-top: 8px;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  color: var(--muted-45);
+}
+
+.ayahPending { margin: 18px 0 0; font-size: 13px; color: var(--muted-45); }
+
+/* A long ayah, held to its opening lines until asked for. */
+.ayahFolded {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+/* The Arabic keeps room under its last line for the marks that hang below it,
+   and the top of the next line shows through that room. So the fold fades out
+   over it, and reads as a passage running on rather than as one cut off. */
+.ayahArabic.ayahFolded {
+  -webkit-mask-image: linear-gradient(#000 calc(100% - 0.75em), transparent);
+  mask-image: linear-gradient(#000 calc(100% - 0.75em), transparent);
+}
+
+.ayahUnfold {
+  margin-top: 10px;
+  padding: 2px 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12.5px;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+}
+.ayahUnfold:hover { border-bottom-color: var(--color-accent); }
+
+/* — the passage, or two — */
+
+/* Pinned under the bar, so another work is in reach from the foot of a long
+   passage as it is from the head of it. */
+.tabs {
+  display: none;
+  position: sticky;
+  top: 46px;
+  z-index: 6;
+  margin: 0 -22px 20px;
+  padding: 10px 22px;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+/* The second work is chosen from the first one's own line of tools. */
+.beside {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted-55);
+}
+
+.besideSelect {
+  max-width: 190px;
+  min-height: 28px;
+  padding: 2px 6px;
+  font: inherit;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+.besideSelect:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
+.besideSelect:focus-visible { border-color: var(--color-accent); outline-offset: 0; }
+
+.chooser { max-width: 760px; margin: 0 auto; }
+
+/* A measure wide enough to be justified is; anything narrower is set ragged,
+   since Arabic is justified by its spaces and a short line shows every one. */
+.columns { max-width: 760px; margin: 0 auto; --tafsir-align: justify; }
+
+.columnsTwo {
+  max-width: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 44px;
+  align-items: start;
+}
+.columnsTwo .column + .column {
+  padding-inline-start: 44px;
+  margin-inline-start: -22px;
+  border-inline-start: 1px solid var(--color-divider);
+}
+
+.column { position: relative; min-width: 0; }
+
+/* With two works open each says which it is, so that "close" is plainly
+   attached to the one it closes and the two headings still sit level. */
+.columnLabel {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 10px;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.closeSecond {
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: 0.08em;
+  color: var(--muted-55);
+}
+.closeSecond:hover { color: var(--color-accent); }
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 760px;
+  margin: 44px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-divider);
+}
+.columnsTwo + .foot { max-width: none; }
+.foot :global(.btn) { font-size: 13px; }
+
+/* Two works side by side want width. Where there is not enough, one goes
+   under the other, each still under its own heading. */
+.columnsTwo { --tafsir-align: start; }
+
+@media (max-width: 1240px) {
+  .columnsTwo { grid-template-columns: 1fr; gap: 40px; max-width: 760px; --tafsir-align: justify; }
+  .columnsTwo .column + .column {
+    padding-inline-start: 0;
+    margin-inline-start: 0;
+    border-inline-start: 0;
+    padding-top: 30px;
+    border-top: 1px solid var(--color-divider);
+  }
+  .columnsTwo + .foot { max-width: 760px; }
+}
+
+@media (max-width: 1040px) {
+  .layout { grid-template-columns: 1fr; gap: 0; padding: 22px 22px 150px; }
+  .rail { display: none; }
+  .tabs { display: block; }
+}
+
+@media (max-width: 640px) {
+  .bar { grid-template-columns: auto 1fr auto; padding: 0 10px; gap: 4px; }
+  .backLabel { display: none; }
+  .back { font-size: 17px; padding: 6px 8px; }
+  .place { gap: 8px; padding: 4px 6px; min-width: 0; justify-self: center; }
+  .placeSurah { font-size: 14px; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .placeAyah { font-size: 11.5px; }
+  .stepLabel { display: none; }
+  .step { min-width: 34px; padding: 0 6px; font-size: 16px; }
+  .sizer { display: none; }
+  .layout { padding: 18px 16px 150px; }
+  .tabs { margin-inline: -16px; padding-inline: 16px; }
+  .ayah { padding-bottom: 16px; margin-bottom: 0; border-bottom: 0; }
+  .beside { display: none; }
+  .columns, .columnsTwo { --tafsir-align: start; }
+  .ayahArabic { font-size: 25px; line-height: 2; }
+  .ayahEnglish { font-size: 14.5px; }
+  .foot { margin-top: 32px; }
+}

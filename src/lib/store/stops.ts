@@ -26,6 +26,15 @@ function read(): Stops {
   }
 }
 
+/** Every surah the reader has a place in, and the ayah they reached in each. */
+export function readStops(): Record<number, number> {
+  const out: Record<number, number> = {};
+  for (const [surah, at] of Object.entries(read())) {
+    if (typeof at === "number" && at > 1) out[Number(surah)] = at;
+  }
+  return out;
+}
+
 /** The ayah the reader had reached in this surah, or null if they never have. */
 export function readStop(surah: number): number | null {
   const at = read()[String(surah)];

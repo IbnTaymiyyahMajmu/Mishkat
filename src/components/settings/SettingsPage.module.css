@@ -153,3 +153,12 @@
   .grid { grid-template-columns: 1fr; }
   .layer { white-space: normal; }
 }
+
+/* The tafsir library is long, and a settings page is not the place to scroll
+   through all of it to reach what is underneath: it has its own height. */
+.tafsirLibrary {
+  max-height: min(640px, 80vh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-inline-end: 6px;
+}

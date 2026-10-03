@@ -34,13 +34,18 @@
 .close { width: 30px; height: 30px; flex: none; }
 .close:hover { background: color-mix(in srgb, var(--color-text) 8%, transparent); }
 
+/* Four tabs fit beside the text and on most phones. On the narrowest the row
+   runs on rather than folding, and is drawn along with a thumb. */
 .tabs {
   display: flex;
   gap: 2px;
   padding: 0 16px;
   border-bottom: 1px solid var(--color-divider);
   flex: none;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+.tabs::-webkit-scrollbar { display: none; }
 
 .tab {
   font-family: var(--font-heading);
@@ -55,6 +60,8 @@
   padding: 6px 10px;
   cursor: pointer;
   margin-bottom: -1px;
+  flex: none;
+  white-space: nowrap;
 }
 .tab:hover { color: var(--color-accent); }
 .tabOn { color: var(--color-accent); border-bottom-color: var(--color-accent); }
@@ -94,4 +101,11 @@
     animation: sheet 220ms ease both;
     padding-bottom: env(safe-area-inset-bottom);
   }
+}
+
+/* Four tabs across a phone: drawn a little closer, so the last is not cut by
+   the edge of the sheet. */
+@media (max-width: 420px) {
+  .tabs { padding: 0 12px; gap: 0; }
+  .tab { padding: 6px 8px; letter-spacing: 0.03em; }
 }

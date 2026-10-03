@@ -60,6 +60,11 @@ export const metadata: Metadata = {
   description:
     "Read the Qur'an in full, see every word's meaning and transliteration light up together, open the classical tafsir beside it, write your own notes, and keep your place.",
   applicationName: "Mishkāt",
+  // The browser is asked not to offer to translate these pages. A machine
+  // rendering of a translation of the Qur'an is a third hand on the text, and
+  // not one anybody reviewed; the translations here are their translators'.
+  // The Quran Foundation asks this of every site that shows its corpus.
+  other: { google: "notranslate" },
 };
 
 export const viewport: Viewport = {

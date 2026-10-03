@@ -11,6 +11,80 @@
   position: relative;
 }
 
+/* — where the reader is —
+   One line pinned to the top of the text: the surah, the ayah at the top of
+   the screen, and under them a hairline that fills as the surah is read. The
+   whole line is a button, and what it opens goes anywhere in the muṣḥaf. It is
+   the ground's own colour and carries no shadow, so over the text it reads as
+   the top edge of the page rather than as something laid on it. */
+.placeBar {
+  position: sticky;
+  top: 0;
+  z-index: 12;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.place {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 16px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  transition: background 140ms ease;
+}
+.place:hover { background: color-mix(in srgb, var(--color-accent) 6%, transparent); }
+.place:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+.placeSurah {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+  font-weight: var(--font-heading-weight);
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.placeNumber {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-accent);
+}
+
+.placeAyah {
+  flex: none;
+  font-size: 12.5px;
+  letter-spacing: 0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-55);
+}
+
+.placeChevron {
+  flex: none;
+  align-self: center;
+  color: var(--color-accent);
+}
+
+.placeFill {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--color-accent);
+  transition: width 260ms ease;
+  pointer-events: none;
+}
+
 .column {
   max-width: var(--reader-max);
   margin: 0 auto;
@@ -55,6 +129,22 @@
 .error {
   padding: 40px 0;
   text-align: center;
+}
+
+/* Something the reader should know that is not a failure of the page: a
+   translation that could not be had, with the Arabic standing regardless. */
+.notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 14px;
+  margin: 18px 0 0;
+  padding: 9px 14px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--muted-72);
 }
 .error p {
   font-size: 14px;

@@ -6,20 +6,24 @@ import { useRouter } from "next/navigation";
 import { useSettings } from "@/lib/store/settings";
 import { useChapters } from "@/lib/store/chapters";
 import { useLibrary } from "@/lib/store/library";
-import { usePlayer } from "@/lib/audio/player";
+import { usePlayerControls, usePlayerStatus } from "@/lib/audio/player";
 import { useSurah } from "@/lib/quran/useSurah";
+import { NO_RENDERINGS, useSurahTranslations } from "@/lib/quran/useSurahTranslations";
+import { translationName } from "@/lib/quran/translations";
 import { highlight, parseWordDomId } from "@/lib/highlight";
-import { plainText } from "@/lib/text";
-import { TRANSLATIONS } from "@/lib/quran/resources";
+import { isValidVerseKey, plainText } from "@/lib/text";
 import { SCROLL_TO_VERSE, type ScrollToVerseDetail } from "@/lib/useGoToVerse";
 import { useToast } from "@/components/Toast";
+import { Navigator } from "@/components/navigator/Navigator";
 import { Verse, type VerseHandlers } from "./Verse";
 import { MarkRail } from "./MarkRail";
 import { SurahHeader } from "./SurahHeader";
 import { SidePanel, type PanelMode, type PanelState } from "./SidePanel";
 import { WordStudyPanel } from "./WordStudyPanel";
 import { TafsirPanel } from "./TafsirPanel";
+import { TranslationsPanel } from "./TranslationsPanel";
 import { NotesPanel } from "./NotesPanel";
+import { useTranslationShelf } from "@/components/translations/useTranslationShelf";
 import type { Verse as VerseModel } from "@/lib/quran/types";
 import styles from "./Reader.module.css";
 
@@ -32,33 +36,48 @@ export function Reader({ surah }: { surah: number }) {
   const { settings, update, setLastRead } = useSettings();
   const { byId } = useChapters();
   const { isBookmarked, toggleBookmark, noteCount } = useLibrary();
-  const player = usePlayer();
+  // The controls and the status, and not the clock: this component is the
+  // whole surah, and must not be rendered again for every quarter-second of a
+  // recitation it is only sitting beside.
+  const controls = usePlayerControls();
+  const { currentKey, playing, loop } = usePlayerStatus();
 
   const { verses, loading, loadingMore, error, info, reload } = useSurah(
     surah,
-    settings.translationId,
     settings.reciterId,
+    settings.glossLanguage,
   );
+
+  // The translations are laid over the text rather than fetched with it, so
+  // choosing another changes what is under the Arabic and leaves the Arabic
+  // where it is. The shelf is read through its hook, which is also what takes
+  // a withdrawn translation off it and says so.
+  const { ids: translationIds } = useTranslationShelf();
+  const translations = useSurahTranslations(surah, translationIds);
+  const renderings = translations.byVerse;
+  // For the handlers below, which are made once and must not be made again —
+  // and every ayah re-rendered — each time a translation arrives.
+  const renderingsRef = useRef(renderings);
+  useEffect(() => {
+    renderingsRef.current = renderings;
+  }, [renderings]);
 
   const [limit, setLimit] = useState(CHUNK);
   const [panel, setPanel] = useState<PanelState | null>(null);
   const [composeOnOpen, setComposeOnOpen] = useState(false);
   const [flashKey, setFlashKey] = useState<string | null>(null);
+  const [navigating, setNavigating] = useState(false);
+  /** The ayah at the top of the screen, for the bar that says where that is. */
+  const [placeKey, setPlaceKey] = useState<string | null>(null);
+  const placeBarRef = useRef<HTMLDivElement>(null);
 
   const [, setScrollNonce] = useState(0);
   const scrollerRef = useRef<HTMLDivElement>(null);
   const pendingScroll = useRef<{ key: string; flash: boolean } | null>(null);
   const flashTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // A deep link — /read/2/#2:255 — from a search result, a bookmark or a share.
-  // Read once, on the first client render; the component is keyed on the surah,
-  // so "once" is once per surah.
-  const [initialHash] = useState<string | null>(() => {
-    if (typeof window === "undefined") return null;
-    const hash = window.location.hash.replace("#", "");
-    return /^\d{1,3}:\d{1,3}$/.test(hash) ? hash : null;
-  });
-  const claimedHash = useRef(false);
+  /** The topmost ayah on screen, as last noted. Where the reader is. */
+  const topKeyRef = useRef<string | null>(null);
+  const placeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const chapter = byId(surah);
   const chapterName = chapter?.name_simple ?? `Surah ${surah}`;
@@ -91,6 +110,13 @@ export function Reader({ surah }: { surah: number }) {
     if (id) highlight.setHover(id);
   }, []);
 
+  // Focus leaving a word puts it out, as the pointer leaving it does: tabbing
+  // on out of the text used to leave the last word lit for the rest of the visit.
+  const onFocusOut = useCallback((e: React.FocusEvent) => {
+    const id = wordIdFrom(e);
+    if (id && id === highlight.hovered) highlight.setHover(null);
+  }, []);
+
   const tappedRef = useRef<string | null>(null);
 
   const onWordClick = useCallback((e: React.MouseEvent) => {
@@ -113,12 +139,46 @@ export function Reader({ surah }: { surah: number }) {
     setPanel({ mode: "word", verseKey: parsed.verseKey, wordPosition: parsed.position });
   }, []);
 
+  // ── the place the reader has got to ───────────────────────────────────────
+  //
+  // Noted a few times a second while scrolling and written only when it has
+  // actually changed. It used to be worked out, written to storage and
+  // announced to every screen on each scroll event — sixty times a second,
+  // each one re-rendering the surah to record an ayah that had not changed.
+  const recordPlace = useCallback(() => {
+    placeTimer.current = null;
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+    for (const el of scroller.querySelectorAll<HTMLElement>("[data-verse]")) {
+      if (el.offsetTop + el.offsetHeight > scroller.scrollTop + 80) {
+        const key = el.getAttribute("data-verse");
+        if (key && key !== topKeyRef.current) {
+          topKeyRef.current = key;
+          setPlaceKey(key);
+          // …so "continue reading" returns here.
+          setLastRead({ surah, verseKey: key });
+        }
+        return;
+      }
+    }
+  }, [surah, setLastRead]);
+
+  useEffect(() => () => void (placeTimer.current && clearTimeout(placeTimer.current)), []);
+
   // ── chunked rendering ─────────────────────────────────────────────────────
-  const onScroll = useCallback((e: React.UIEvent<HTMLDivElement>) => {
-    const el = e.currentTarget;
-    if (el.scrollHeight - el.scrollTop - el.clientHeight > 900) return;
-    setLimit((l) => l + CHUNK);
-  }, []);
+  const count = verses.length;
+  const onScroll = useCallback(
+    (e: React.UIEvent<HTMLDivElement>) => {
+      const el = e.currentTarget;
+      // Only while there is more to show: at the foot of a surah there is not,
+      // and counting on regardless re-rendered the reader for nothing.
+      if (el.scrollHeight - el.scrollTop - el.clientHeight <= 900) {
+        setLimit((l) => (l < count ? l + CHUNK : l));
+      }
+      if (!placeTimer.current) placeTimer.current = setTimeout(recordPlace, 200);
+    },
+    [count, recordPlace],
+  );
 
   const shown = useMemo(() => verses.slice(0, limit), [verses, limit]);
 
@@ -139,11 +199,6 @@ export function Reader({ surah }: { surah: number }) {
   // before the ayah existed be honoured once it does.
   // eslint-disable-next-line react-hooks/exhaustive-deps -- deliberately every commit; see above
   useLayoutEffect(() => {
-    if (!claimedHash.current) {
-      claimedHash.current = true;
-      if (initialHash) pendingScroll.current = { key: initialHash, flash: true };
-    }
-
     const pending = pendingScroll.current;
     const scroller = scrollerRef.current;
     if (!pending || !scroller) return;
@@ -163,11 +218,16 @@ export function Reader({ surah }: { surah: number }) {
     if (!el) return;
 
     pendingScroll.current = null;
-    const top = Math.max(0, el.offsetTop - 24);
+    // Under the bar that is pinned to the top of the text, not behind it.
+    const top = Math.max(0, el.offsetTop - 24 - (placeBarRef.current?.offsetHeight ?? 0));
     // Gliding smoothly across a hundred thousand pixels is not a journey anyone
     // asked for; a jump is what "take me to 2:255" means.
     const far = Math.abs(scroller.scrollTop - top) > 2400;
     scroller.scrollTo({ top, behavior: far ? "auto" : "smooth" });
+    // The place is noted once the reader has arrived, whether or not the
+    // browser reports the move as a scroll — it does not always, for a jump.
+    if (placeTimer.current) clearTimeout(placeTimer.current);
+    placeTimer.current = setTimeout(recordPlace, far ? 80 : 500);
 
     if (pending.flash) {
       setFlashKey(pending.key);
@@ -189,34 +249,103 @@ export function Reader({ surah }: { surah: number }) {
 
   useEffect(() => () => void (flashTimer.current && clearTimeout(flashTimer.current)), []);
 
-  // ── the place the reader left off ─────────────────────────────────────────
+  // A deep link — /read/2/#2:255 — from a search result, a bookmark, the juz
+  // list or a share.
+  //
+  // Read in an effect, and not while rendering. Arriving from another page of
+  // the site, this component is rendered *before* the address bar is moved on,
+  // so at render the hash is still the previous page's — usually none — and
+  // every link into the middle of a surah opened it at the top. By the time an
+  // effect runs the address is the one that was asked for. Opening the page
+  // cold happened to work, which is how it went unnoticed.
   useEffect(() => {
-    if (loading || !verses.length) return;
-    setLastRead({ surah, verseKey: null });
-  }, [loading, verses.length, surah, setLastRead]);
-
-  const onScrollEnd = useCallback(() => {
-    const scroller = scrollerRef.current;
-    if (!scroller) return;
-    // Remember the topmost ayah on screen, so "continue reading" returns here.
-    const articles = scroller.querySelectorAll<HTMLElement>("[data-verse]");
-    for (const el of articles) {
-      if (el.offsetTop + el.offsetHeight > scroller.scrollTop + 80) {
-        const key = el.getAttribute("data-verse");
-        if (key) setLastRead({ surah, verseKey: key });
-        return;
+    const fromAddress = () => {
+      let hash = window.location.hash.slice(1);
+      try {
+        hash = decodeURIComponent(hash);
+      } catch {
+        /* not an address this site wrote; the test below will turn it away */
       }
-    }
-  }, [surah, setLastRead]);
+      if (isValidVerseKey(hash) && hash.startsWith(`${surah}:`)) scrollToVerse(hash, true);
+    };
+    fromAddress();
+    window.addEventListener("hashchange", fromAddress);
+    return () => window.removeEventListener("hashchange", fromAddress);
+  }, [surah, scrollToVerse]);
+
+  // ── the place the reader left off ─────────────────────────────────────────
+  //
+  // Opening a surah makes it the one to continue — once, and only until the
+  // reader has got somewhere in it. This used to run again as each page of a
+  // long surah arrived, wiping the ayah they had already scrolled to.
+  const arrived = !loading && verses.length > 0;
+  useEffect(() => {
+    if (arrived && !topKeyRef.current) setLastRead({ surah, verseKey: null });
+  }, [arrived, surah, setLastRead]);
+
+  // A new voice, or the word meanings in another language, is the same surah
+  // fetched again, and the text is taken down while it is. The reader is put
+  // back where they were rather than left at the head of al-Baqarah for having
+  // changed a setting.
+  const edition = `${settings.reciterId}:${settings.glossLanguage}`;
+  const editionRef = useRef(edition);
+  useEffect(() => {
+    if (editionRef.current === edition) return;
+    editionRef.current = edition;
+    if (topKeyRef.current) scrollToVerse(topKeyRef.current, false);
+  }, [edition, scrollToVerse]);
 
   // ── the transport's queue ─────────────────────────────────────────────────
   useEffect(() => {
-    player.setQueue({ surah, verses });
-  }, [surah, verses, player]);
+    controls.setQueue({ surah, verses });
+  }, [surah, verses, controls]);
+
+  // ── going somewhere else ──────────────────────────────────────────────────
+  //
+  // An ayah of this surah is a scroll; anywhere else is the other surah's page,
+  // opened at the ayah. Either way the address says where the reader now is.
+  const goTo = useCallback(
+    (toSurah: number, ayah: number | null) => {
+      setNavigating(false);
+      if (toSurah !== surah) {
+        router.push(ayah && ayah > 1 ? `/read/${toSurah}/#${toSurah}:${ayah}` : `/read/${toSurah}/`);
+        return;
+      }
+      if (ayah == null) {
+        window.history.replaceState(null, "", window.location.pathname);
+        scrollerRef.current?.scrollTo({ top: 0 });
+        return;
+      }
+      const key = `${surah}:${ayah}`;
+      window.history.replaceState(null, "", `#${key}`);
+      scrollToVerse(key, true);
+    },
+    [router, surah, scrollToVerse],
+  );
+
+  const closeNavigator = useCallback(() => setNavigating(false), []);
+
+  // `g`, as in "go to" — the same reach from a keyboard that the bar gives a thumb.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "g" || e.metaKey || e.ctrlKey || e.altKey) return;
+      const el = e.target as HTMLElement | null;
+      const typing =
+        !!el &&
+        (el.tagName === "INPUT" || el.tagName === "TEXTAREA" || el.tagName === "SELECT" || el.isContentEditable);
+      if (typing) return;
+      e.preventDefault();
+      setNavigating(true);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   // ── ayah actions ──────────────────────────────────────────────────────────
-  const translatorName =
-    TRANSLATIONS.find((t) => t.id === settings.translationId)?.label ?? "Translation";
+  //
+  // An ayah is bookmarked, copied and quoted in the first of the reader's
+  // translations: the one they read first is the one they mean.
+  const firstRendering = useCallback((key: string) => renderingsRef.current.get(key)?.[0], []);
 
   const copy = useCallback(
     async (text: string, message: string) => {
@@ -232,22 +361,23 @@ export function Reader({ surah }: { surah: number }) {
 
   const handlers = useMemo<VerseHandlers>(
     () => ({
-      onPlay: (key) => {
-        if (player.currentKey === key) player.toggle();
-        else player.play(key);
-      },
+      onPlay: (key) => controls.playOrPause(key),
       onRepeat: (key) => {
+        // One ayah over and over is its own request, and takes over from a
+        // passage that was being looped.
+        controls.endLoop();
         update({ repeat: "ayah" });
-        player.play(key);
+        controls.play(key);
         toast(`Repeating ${key}`);
       },
       onBookmark: (verse) => {
+        const first = firstRendering(verse.verse_key);
         const added = toggleBookmark({
           verseKey: verse.verse_key,
           surah,
           arabic: verse.text_uthmani,
-          translation: plainText(verse.translations?.[0]?.text),
-          translator: verse.translations?.[0]?.resource_name ?? translatorName,
+          translation: plainText(first?.text),
+          translator: first?.name ?? "",
         });
         toast(added ? `Ayah ${verse.verse_key} bookmarked` : "Bookmark removed");
       },
@@ -259,16 +389,23 @@ export function Reader({ surah }: { surah: number }) {
         setComposeOnOpen(false);
         setPanel({ mode: "tafsir", verseKey: key });
       },
+      onTranslations: (key) => {
+        setComposeOnOpen(false);
+        setPanel({ mode: "translations", verseKey: key });
+      },
       onCopyArabic: (verse) => void copy(verse.text_uthmani, "Arabic copied"),
-      onCopyTranslation: (verse) =>
-        void copy(
-          `${plainText(verse.translations?.[0]?.text)}\n— ${verse.translations?.[0]?.resource_name ?? translatorName}, ${verse.verse_key}`,
-          "Translation copied",
-        ),
+      onCopyTranslation: (verse) => {
+        const first = firstRendering(verse.verse_key);
+        if (!first) {
+          toast("The translation has not arrived yet.");
+          return;
+        }
+        void copy(`${plainText(first.text)}\n— ${first.name}, ${verse.verse_key}`, "Translation copied");
+      },
       onShare: (key) =>
         void copy(`${location.origin}${location.pathname}#${key}`, `Link to ${key} copied`),
     }),
-    [player, update, toast, toggleBookmark, surah, translatorName, copy],
+    [controls, update, toast, toggleBookmark, surah, firstRendering, copy],
   );
 
   // ── panel contents ────────────────────────────────────────────────────────
@@ -280,16 +417,47 @@ export function Reader({ surah }: { surah: number }) {
       ? panelVerse?.words.find((w) => w.position === panel.wordPosition)
       : undefined;
 
+  // The panel stepping to another ayah takes the text with it: what is being
+  // explained and what is on screen stay the same ayah.
+  const movePanel = useCallback(
+    (key: string) => {
+      setPanel((p) => (p ? { mode: p.mode, verseKey: key } : p));
+      window.history.replaceState(null, "", `#${key}`);
+      scrollToVerse(key, true);
+    },
+    [scrollToVerse],
+  );
+
   const switchPanel = useCallback((mode: PanelMode) => {
     setComposeOnOpen(false);
     setPanel((p) => (p ? { ...p, mode } : p));
   }, []);
+
+  // The notes panel quotes ayat out of what is already on screen, translation
+  // and all. Made only while it is open: it is a copy of the surah.
+  const notesOpen = panel?.mode === "notes";
+  const quotable = useMemo(
+    () =>
+      notesOpen
+        ? verses.map((v) => {
+            const first = renderings.get(v.verse_key)?.[0];
+            return first
+              ? { ...v, translations: [{ resource_id: first.id, resource_name: first.name, text: first.text }] }
+              : v;
+          })
+        : verses,
+    [notesOpen, verses, renderings],
+  );
 
   const panelTitle = panel
     ? panel.mode === "word"
       ? panelWord?.translation?.text || panel.verseKey
       : `${chapterName} ${panel.verseKey}`
     : "";
+
+  const placeAyah = placeKey ? Number(placeKey.split(":")[1]) : 1;
+  const ayahCount = chapter?.verses_count ?? verses.length;
+  const through = ayahCount > 1 ? ((placeAyah - 1) / (ayahCount - 1)) * 100 : 0;
 
   const prev = byId(surah - 1);
   const next = byId(surah + 1);
@@ -301,6 +469,7 @@ export function Reader({ surah }: { surah: number }) {
           surah={surah}
           verses={verses}
           total={chapter?.verses_count ?? verses.length}
+          loop={loop && loop.surah === surah ? loop : null}
           scrollerRef={scrollerRef}
           onJump={(ayah) => scrollToVerse(`${surah}:${ayah}`, false)}
         />
@@ -309,15 +478,39 @@ export function Reader({ surah }: { surah: number }) {
       <div
         ref={scrollerRef}
         className={styles.scroller}
-        onScroll={(e) => {
-          onScroll(e);
-          onScrollEnd();
-        }}
+        onScroll={onScroll}
         onMouseOver={onPointerOver}
         onMouseOut={onPointerOut}
         onFocus={onFocusIn}
+        onBlur={onFocusOut}
         onClick={onWordClick}
       >
+        {/* Where the reader is, and the way to anywhere else. Pinned, so it is
+            in reach at ayah 200 as it is at ayah 1 — on a phone, where there is
+            no rail, this and its hairline are the whole of that. */}
+        <div ref={placeBarRef} className={styles.placeBar}>
+          <button
+            className={styles.place}
+            onClick={() => setNavigating(true)}
+            aria-haspopup="dialog"
+            aria-label={`${chapterName}, ayah ${placeAyah}${ayahCount ? ` of ${ayahCount}` : ""}. Go to another ayah or surah`}
+            title="Go to an ayah or another surah (g)"
+          >
+            <span className={styles.placeSurah}>
+              <span className={styles.placeNumber}>{surah}</span>
+              {chapterName}
+            </span>
+            <span className={styles.placeAyah}>
+              Ayah {placeAyah}
+              {ayahCount ? ` of ${ayahCount}` : ""}
+            </span>
+            <svg className={styles.placeChevron} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <span className={styles.placeFill} style={{ width: `${through}%` }} aria-hidden="true" />
+        </div>
+
         <div className={styles.column}>
           <div className={styles.topBar}>
             <button
@@ -373,18 +566,32 @@ export function Reader({ surah }: { surah: number }) {
             </div>
           )}
 
+          {/* A translation that could not be had is said once, here, rather
+              than left as a silence under every ayah. */}
+          {settings.showTranslation && translations.failed.length > 0 && !loading && (
+            <div className={styles.notice} role="status">
+              <span>
+                {translations.failed.map((id) => translationName(id) || "A translation").join(", ")} could
+                not be reached.
+              </span>
+              <button onClick={translations.retry} className="btn btn-ghost" style={{ fontSize: 13 }}>
+                Try again
+              </button>
+            </div>
+          )}
+
           {shown.map((verse) => (
             <Verse
               key={verse.verse_key}
               verse={verse}
-              words={verse.words.filter((w) => w.char_type_name === "word")}
-              translation={plainText(verse.translations?.[0]?.text)}
-              translator={verse.translations?.[0]?.resource_name ?? translatorName}
+              translations={renderings.get(verse.verse_key) ?? NO_RENDERINGS}
               layout={settings.layout}
               showTranslit={settings.showTranslit}
               showWbw={settings.showWbw}
+              glossLanguage={settings.glossLanguage}
               showTranslation={settings.showTranslation}
-              playing={player.currentKey === verse.verse_key}
+              current={currentKey === verse.verse_key}
+              playing={playing && currentKey === verse.verse_key}
               bookmarked={isBookmarked(verse.verse_key)}
               noteCount={noteCount(verse.verse_key)}
               flash={flashKey === verse.verse_key}
@@ -418,6 +625,10 @@ export function Reader({ surah }: { surah: number }) {
         </div>
       </div>
 
+      {navigating && (
+        <Navigator surah={surah} ayah={placeAyah} onGo={goTo} onClose={closeNavigator} />
+      )}
+
       {panel && (
         <SidePanel state={panel} title={panelTitle} onSwitch={switchPanel} onClose={() => setPanel(null)}>
           {panel.mode === "word" && (
@@ -428,14 +639,29 @@ export function Reader({ surah }: { surah: number }) {
               onOpenTafsir={() => switchPanel("tafsir")}
             />
           )}
-          {panel.mode === "tafsir" && <TafsirPanel verse={panelVerse} verseKey={panel.verseKey} />}
+          {panel.mode === "tafsir" && (
+            <TafsirPanel
+              verse={panelVerse}
+              verseKey={panel.verseKey}
+              ayahCount={ayahCount}
+              onMove={movePanel}
+            />
+          )}
+          {panel.mode === "translations" && (
+            <TranslationsPanel
+              verse={panelVerse}
+              verseKey={panel.verseKey}
+              ayahCount={ayahCount}
+              onMove={movePanel}
+            />
+          )}
           {panel.mode === "notes" && (
             <NotesPanel
               key={`${panel.verseKey}:${composeOnOpen}`}
               surah={surah}
               surahName={chapterName}
               verseKey={panel.verseKey}
-              loadedVerses={verses}
+              loadedVerses={quotable}
               composeOnOpen={composeOnOpen}
             />
           )}

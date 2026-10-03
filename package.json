@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "gen:surahs": "node scripts/generate-surah-names.mjs"
+    "gen:surahs": "node scripts/generate-surah-names.mjs",
+    "mirror:tafsir": "node scripts/mirror-tafsir.mjs",
+    "relay:qf": "node scripts/qf-relay.mjs"
   },
   "dependencies": {
     "next": "16.3.0",

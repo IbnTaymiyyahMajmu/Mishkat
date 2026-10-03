@@ -104,11 +104,12 @@ export function Home() {
             </article>
             <article>
               <div className={styles.columnKicker}>Tafsir</div>
-              <h3 className={styles.columnTitle}>Seven works, side by side, never merged</h3>
+              <h3 className={styles.columnTitle}>The great works, side by side, never merged</h3>
               <p className={styles.columnText}>
-                Ibn Kathīr, al-Ṭabarī, al-Qurṭubī, al-Saʿdī and others open beside the ayah. Each
-                passage keeps its book, its author and a link to the source. Where two differ, the
-                difference stays visible.
+                Al-Ṭabarī, al-Qurṭubī, Ibn Kathīr, al-Rāzī and the rest of the classical library
+                in Arabic, and shorter works in English, open beside the ayah or on a page of their
+                own. Each passage keeps its book, its author and a link to the source. Where two
+                differ, the difference stays visible.
               </p>
             </article>
             <article>

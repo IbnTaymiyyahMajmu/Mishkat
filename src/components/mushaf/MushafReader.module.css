@@ -129,6 +129,9 @@
 .ayah:hover { background: color-mix(in srgb, var(--color-accent) 7%, transparent); }
 .ayahOn { background: color-mix(in srgb, var(--color-accent) 14%, transparent); }
 .ayah:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+/* The ayah being recited. Ink rather than a wash, so it reads as the place the
+   voice has reached and not as a second selection. */
+.ayahReciting { color: var(--color-accent-800); }
 
 /* The ayah marker: a rosette-sized disc set inline, at a fraction of the
    running text so it separates without interrupting. */
@@ -195,6 +198,11 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+/* The transport sits along the bottom edge once something is playing, and the
+   bar was left underneath it — pressing Play covered the bar it was pressed on.
+   It clears the toast as well, which is set just above the transport. */
+.selectionRaised { bottom: calc(142px + env(safe-area-inset-bottom)); }
 
 .selectionKey {
   font-family: var(--font-heading);

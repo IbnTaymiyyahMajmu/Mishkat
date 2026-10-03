@@ -22,7 +22,7 @@ export const NAMED: Record<string, string> = {
   "2:285": "The closing two of al-Baqarah — before sleep",
   "3:190": "The ayat of the night prayer",
   "18:1": "The first ten — for Friday",
-  "18:100": "The last ten — for Friday",
+  "18:101": "The last ten — for Friday",
   "36:1": "Yā Sīn",
   "55:1": "Al-Raḥmān",
   "59:22": "The closing ayat of al-Ḥashr",

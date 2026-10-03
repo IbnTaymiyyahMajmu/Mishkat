@@ -24,6 +24,14 @@ import { useSettings } from "../store/settings";
  * segments per ayah — `[index, position, startMs, endMs]` — and the same
  * painter that handles hover paints the recited word, so following the
  * recitation and following the mouse are one mechanism, not two.
+ *
+ * What the player knows is handed out in three pieces rather than one, because
+ * they change at three very different rates. The controls never change. The
+ * status — which ayah, playing or not — changes once an ayah. The clock changes
+ * four times a second. A screen that only wants to know which ayah is being
+ * recited must not be re-rendered by the clock: the reader is thousands of
+ * nodes, and it was being rebuilt on every tick of a recitation it was merely
+ * sitting beside.
  */
 
 export interface PlayerQueue {
@@ -31,25 +39,71 @@ export interface PlayerQueue {
   verses: Verse[];
 }
 
-interface PlayerContextValue {
-  open: boolean;
-  playing: boolean;
-  /** The ayah currently loaded in the transport, playing or paused. */
-  currentKey: string | null;
-  /** Seconds into the surah, not into the ayah. */
-  elapsed: number;
-  /** How long the whole surah runs in this voice. */
-  duration: number;
-  /** Set when the reciter has no audio for the ayah, or the network refused. */
-  error: string | null;
+/**
+ * A passage gone over until it is known.
+ *
+ * This is how the Qur'an is memorised: a few ayat, each one heard several
+ * times, then the run of them several times over, and — for anyone doing it
+ * properly — a silence after each in which to say it back.
+ */
+export interface PassageLoop {
+  surah: number;
+  /** Ayah numbers, both inclusive. */
+  from: number;
+  to: number;
+  /** How many times each ayah is recited before the next one. */
+  each: number;
+  /** How many times the passage is gone through; 0 is until it is stopped. */
+  times: number;
+  /** Leave a silence as long as the ayah after it, to recite it back in. */
+  echo: boolean;
+}
 
+/** Where a loop has got to: which hearing of the ayah, which pass of the passage. */
+export interface LoopPlace {
+  turn: number;
+  pass: number;
+}
+
+export interface PlayerControls {
   setQueue: (queue: PlayerQueue) => void;
   play: (verseKey: string) => void;
+  /** What an ayah's own button does: pause it if it is the one loaded, else play it. */
+  playOrPause: (verseKey: string) => void;
   toggle: () => void;
   stop: () => void;
   step: (delta: number) => void;
   /** Move to a place in the surah, which may be in another ayah. */
   seek: (seconds: number) => void;
+  /**
+   * Loop a passage. `begin` takes the recitation to the head of it and starts;
+   * without it the loop is adjusted where it stands, which is what changing a
+   * count halfway through should do.
+   */
+  loopPassage: (loop: Omit<PassageLoop, "surah">, begin: boolean) => void;
+  endLoop: () => void;
+  /** From this ayah to the end of its rukūʿ — a passage with a natural close. */
+  passageAround: (verseKey: string | null) => { from: number; to: number } | null;
+}
+
+export interface PlayerStatus {
+  open: boolean;
+  playing: boolean;
+  /** The ayah currently loaded in the transport, playing or paused. */
+  currentKey: string | null;
+  /** Set when the reciter has no audio for the ayah, or the network refused. */
+  error: string | null;
+  loop: PassageLoop | null;
+  loopAt: LoopPlace;
+  /** In the silence after an ayah, left for the reader to recite it back. */
+  echoing: boolean;
+}
+
+export interface PlayerProgress {
+  /** Seconds into the surah, not into the ayah. */
+  elapsed: number;
+  /** How long the whole surah runs in this voice. */
+  duration: number;
 }
 
 /**
@@ -63,26 +117,31 @@ interface PlayerContextValue {
 function ayahSeconds(verse: Verse): number {
   const segments = verse.audio?.segments;
   if (!segments?.length) return 0;
-  return segments[segments.length - 1][3] / 1000;
+  // A segment can arrive short of its end time, and one of those must not turn
+  // the length of the whole surah into NaN. `api.ts` has already made numbers
+  // of the timings some reciters are served with as strings.
+  const end = Number(segments[segments.length - 1][3]);
+  return Number.isFinite(end) ? end / 1000 : 0;
 }
 
-const Ctx = createContext<PlayerContextValue | null>(null);
+function within(loop: PassageLoop, verse: Verse): boolean {
+  return verse.verse_number >= loop.from && verse.verse_number <= loop.to;
+}
+
+const ControlsCtx = createContext<PlayerControls | null>(null);
+const StatusCtx = createContext<PlayerStatus | null>(null);
+const ProgressCtx = createContext<PlayerProgress | null>(null);
 
 /** The ayah playing, the one behind it, and the one fetched ahead. */
 const BUFFER_KEEP = 3;
 
+const START: LoopPlace = { turn: 1, pass: 1 };
+
 export function PlayerProvider({ children }: { children: ReactNode }) {
-  const { settings, update } = useSettings();
+  const { settings } = useSettings();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const queueRef = useRef<PlayerQueue>({ surah: 0, verses: [] });
   const currentRef = useRef<string | null>(null);
-  // `load` is rebuilt when its dependencies change; the audio listeners are
-  // mounted once, so they reach the current one through this rather than
-  // closing over a stale copy.
-  const loadRef = useRef<((key: string, autoplay: boolean, at?: number) => void) | null>(null);
-  // An ayah the recitation was on when the reciter changed, waiting for the
-  // queue to come back in the new voice. See the note by `setQueue`.
-  const resumeRef = useRef<{ key: string; playing: boolean } | null>(null);
 
   const [open, setOpen] = useState(false);
   const [playing, setPlaying] = useState(false);
@@ -90,6 +149,9 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   const [elapsed, setElapsed] = useState(0);
   const [duration, setDuration] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const [loop, setLoop] = useState<PassageLoop | null>(null);
+  const [loopAt, setLoopAt] = useState<LoopPlace>(START);
+  const [echoing, setEchoing] = useState(false);
 
   // Settings the audio callbacks read. Kept in refs so changing the speed or
   // the repeat mode never re-subscribes the element's event listeners — and
@@ -104,6 +166,32 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     repeatRef.current = settings.repeat;
     followRef.current = settings.follow;
   }, [settings.speed, settings.repeat, settings.follow]);
+
+  // The loop is read by the element's callbacks and shown by the transport, so
+  // it is held twice: the ref is the truth the callbacks act on, the state is
+  // what the screen is told.
+  const loopRef = useRef<PassageLoop | null>(null);
+  const loopAtRef = useRef<LoopPlace>(START);
+  const echoTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  /** Paused in the silence after an ayah: resuming moves on, it does not replay. */
+  const heldRef = useRef(false);
+
+  const moveLoop = useCallback((at: LoopPlace) => {
+    loopAtRef.current = at;
+    setLoopAt(at);
+  }, []);
+
+  const dropLoop = useCallback(() => {
+    loopRef.current = null;
+    setLoop(null);
+    moveLoop(START);
+  }, [moveLoop]);
+
+  const clearEcho = useCallback(() => {
+    if (echoTimerRef.current) clearTimeout(echoTimerRef.current);
+    echoTimerRef.current = null;
+    setEchoing(false);
+  }, []);
 
   const verseAt = useCallback((key: string | null) => {
     if (!key) return undefined;
@@ -131,15 +219,20 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   const fetchingRef = useRef(new Set<string>());
   /** The recording in the element, whose buffer is never dropped under it. */
   const playingUrlRef = useRef<string | null>(null);
+  /** Turned over when the buffers are dropped, so a fetch still in the air
+   *  when that happens does not land a blob nobody will ever release. */
+  const bufferEraRef = useRef(0);
 
   const prefetch = useCallback((url: string) => {
     const buffers = bufferRef.current;
     if (buffers.has(url) || fetchingRef.current.has(url)) return;
     fetchingRef.current.add(url);
+    const era = bufferEraRef.current;
     void fetch(url)
       .then((res) => (res.ok ? res.blob() : null))
       .then((blob) => {
-        if (blob) buffers.set(url, URL.createObjectURL(blob));
+        if (!blob || era !== bufferEraRef.current) return;
+        buffers.set(url, URL.createObjectURL(blob));
         // Insertion order is recitation order, so the oldest entry is the ayah
         // furthest behind — never the one being recited, which is skipped in
         // case the reader has stepped back into it.
@@ -157,19 +250,27 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
       .finally(() => fetchingRef.current.delete(url));
   }, []);
 
-  /** The recording after the current ayah — the wrap-around included, since
-   *  repeating the surah crosses the same seam. */
+  /** The recording that will be wanted after the current ayah — the head of
+   *  a looped passage and the wrap-around of a repeated surah included, since
+   *  both cross the same seam. */
   const prefetchNext = useCallback(() => {
     const verses = queueRef.current.verses;
     const i = verses.findIndex((v) => v.verse_key === currentRef.current);
     if (i < 0) return;
-    const next = verses[i + 1] ?? (repeatRef.current === "surah" ? verses[0] : undefined);
-    if (next?.audio?.url) prefetch(audioUrl(next.audio.url));
+    const active = loopRef.current;
+    let next: Verse | undefined = verses[i + 1];
+    if (active && within(active, verses[i])) {
+      if (!next || !within(active, next)) next = verses.find((v) => within(active, v));
+    } else if (!next && repeatRef.current === "surah") {
+      next = verses[0];
+    }
+    if (next?.audio?.url && next !== verses[i]) prefetch(audioUrl(next.audio.url));
   }, [prefetch]);
 
   const forgetBuffers = useCallback(() => {
     for (const objectUrl of bufferRef.current.values()) URL.revokeObjectURL(objectUrl);
     bufferRef.current.clear();
+    bufferEraRef.current += 1;
     playingUrlRef.current = null;
   }, []);
 
@@ -181,6 +282,11 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
    * from its timings up front and corrected the moment its recording is
    * loaded, so the surah has a length from the first frame and a true one by
    * the time it has been heard.
+   *
+   * A true length is a property of the recording, so it is kept against the
+   * recording's address rather than against the ayah: a queue arriving in
+   * another voice simply finds nothing measured yet, and nothing has to be
+   * thrown away when the same queue is handed over a second time.
    */
   const lengthsRef = useRef(new Map<string, number>());
   /** Seconds of recitation lying before the ayah in the element. */
@@ -196,31 +302,68 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
    */
   const wantsPlayRef = useRef(false);
 
+  const lengthOf = useCallback((verse: Verse) => {
+    const url = verse.audio?.url;
+    return (url ? lengthsRef.current.get(audioUrl(url)) : undefined) ?? ayahSeconds(verse);
+  }, []);
+
   const remeasure = useCallback(() => {
     let total = 0;
     let before = 0;
     for (const v of queueRef.current.verses) {
       if (v.verse_key === currentRef.current) before = total;
-      total += lengthsRef.current.get(v.verse_key) ?? ayahSeconds(v);
+      total += lengthOf(v);
     }
     offsetRef.current = before;
     setDuration(total);
+  }, [lengthOf]);
+
+  /** `play()` is refused when the reader has not gestured, and abandoned when
+   *  a newer source or a pause overtakes it. Only the first is news. */
+  const refused = useCallback((reason: unknown) => {
+    if ((reason as { name?: string } | null)?.name === "AbortError") return;
+    // Autoplay policies: the reader must have gestured. The transport is open
+    // and paused, which is a state they can act on.
+    wantsPlayRef.current = false;
+    setPlaying(false);
   }, []);
 
   const load = useCallback(
     (key: string, autoplay: boolean, at = 0) => {
-      const verse = verseAt(key);
       const el = audioRef.current;
       if (!el) return;
+      const verse = verseAt(key);
+      clearEcho();
+      heldRef.current = false;
+
+      // Going anywhere outside a looped passage is leaving it. Moving within
+      // it starts the count for the ayah arrived at.
+      const active = loopRef.current;
+      if (active) {
+        if (!verse || !within(active, verse)) dropLoop();
+        else if (key !== currentRef.current) moveLoop({ turn: 1, pass: loopAtRef.current.pass });
+      }
+
+      currentRef.current = key;
+      setCurrentKey(key);
+      setOpen(true);
+
       if (!verse?.audio?.url) {
+        // Said in the transport, which is why it is opened first: with it shut
+        // the message had nowhere to appear and the button did nothing at all.
+        el.pause();
+        el.removeAttribute("src");
+        el.load();
+        playingUrlRef.current = null;
+        wantsPlayRef.current = false;
+        remeasure();
+        setElapsed(offsetRef.current);
         setError("This reciter has no recording for that ayah.");
         setPlaying(false);
         return;
       }
+
       setError(null);
-      currentRef.current = key;
-      setCurrentKey(key);
-      setOpen(true);
       const url = audioUrl(verse.audio.url);
       playingUrlRef.current = url;
       el.src = bufferRef.current.get(url) ?? url;
@@ -230,24 +373,95 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
       setElapsed(offsetRef.current + at);
       if (autoplay) {
         wantsPlayRef.current = true;
-        void el.play().catch(() => {
-          // Autoplay policies: the reader must have gestured. The transport is
-          // open and paused, which is a state they can act on.
-          setPlaying(false);
-        });
+        void el.play().catch(refused);
       }
-      requestScroll(key);
     },
-    [remeasure, requestScroll, verseAt],
+    [clearEcho, dropLoop, moveLoop, refused, remeasure, verseAt],
   );
 
   const play = useCallback((key: string) => load(key, true), [load]);
+
+  // ── what follows an ayah ──────────────────────────────────────────────────
+  /**
+   * Decided in one place, because three things ask it: the recording ending,
+   * the silence after it running out, and a reader resuming from that silence.
+   */
+  const advance = useCallback(() => {
+    const el = audioRef.current;
+    if (!el) return;
+    const key = currentRef.current;
+    const verses = queueRef.current.verses;
+    const i = verses.findIndex((v) => v.verse_key === key);
+    const here = verses[i];
+
+    const again = () => {
+      el.currentTime = 0;
+      void el.play().catch(refused);
+    };
+    const rest = () => {
+      // Nothing is meant to be playing until asked.
+      wantsPlayRef.current = false;
+      setPlaying(false);
+    };
+
+    const active = loopRef.current;
+    if (active && here && within(active, here)) {
+      const at = loopAtRef.current;
+      if (at.turn < active.each) {
+        moveLoop({ turn: at.turn + 1, pass: at.pass });
+        again();
+        return;
+      }
+      const next = verses[i + 1];
+      if (next && within(active, next)) {
+        load(next.verse_key, true);
+        return;
+      }
+      const head = verses.find((v) => within(active, v)) ?? here;
+      if (active.times === 0 || at.pass < active.times) {
+        moveLoop({ turn: 1, pass: at.pass + 1 });
+        if (head.verse_key === key) again();
+        else load(head.verse_key, true);
+        return;
+      }
+      // Every pass asked for has been made. The passage is left cued at its
+      // head, so pressing play goes over it again rather than off into the
+      // rest of the surah.
+      moveLoop(START);
+      load(head.verse_key, false);
+      rest();
+      return;
+    }
+
+    if (repeatRef.current === "ayah" && here) {
+      again();
+      return;
+    }
+    const next = verses[i + 1];
+    if (here && next) {
+      load(next.verse_key, true);
+      return;
+    }
+    if (here && repeatRef.current === "surah" && verses[0]) {
+      load(verses[0].verse_key, true);
+      return;
+    }
+    rest();
+  }, [load, moveLoop, refused]);
 
   const step = useCallback(
     (delta: number) => {
       const verses = queueRef.current.verses;
       const i = verses.findIndex((v) => v.verse_key === currentRef.current);
-      const next = verses[i + delta];
+      if (i < 0) return;
+      let next = verses[i + delta];
+      // Stepping off the end of a looped passage comes round to its other end:
+      // the buttons move within what is being memorised.
+      const active = loopRef.current;
+      if (active && within(active, verses[i]) && (!next || !within(active, next))) {
+        const inside = verses.filter((v) => within(active, v));
+        next = delta > 0 ? inside[0] : inside[inside.length - 1];
+      }
       if (next) load(next.verse_key, true);
     },
     [load],
@@ -256,15 +470,38 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   const toggle = useCallback(() => {
     const el = audioRef.current;
     if (!el) return;
+    // In the silence left for reciting back nothing is sounding, but the
+    // session is running — so this is a pause, and it is the silence it stops.
+    if (echoTimerRef.current) {
+      clearEcho();
+      heldRef.current = true;
+      wantsPlayRef.current = false;
+      setPlaying(false);
+      return;
+    }
     if (el.paused) {
       if (!currentRef.current) return;
       wantsPlayRef.current = true;
-      void el.play().catch(() => setPlaying(false));
+      if (heldRef.current) {
+        heldRef.current = false;
+        setPlaying(true);
+        advance();
+        return;
+      }
+      void el.play().catch(refused);
     } else {
       wantsPlayRef.current = false;
       el.pause();
     }
-  }, []);
+  }, [advance, clearEcho, refused]);
+
+  const playOrPause = useCallback(
+    (key: string) => {
+      if (key === currentRef.current && playingUrlRef.current) toggle();
+      else load(key, true);
+    },
+    [load, toggle],
+  );
 
   const stop = useCallback(() => {
     const el = audioRef.current;
@@ -275,8 +512,10 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     }
     currentRef.current = null;
     wantsPlayRef.current = false;
+    heldRef.current = false;
+    clearEcho();
+    dropLoop();
     forgetBuffers();
-    lengthsRef.current.clear();
     offsetRef.current = 0;
     pendingSeekRef.current = null;
     highlight.setRecite(null);
@@ -286,7 +525,7 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     setElapsed(0);
     setDuration(0);
     setError(null);
-  }, [forgetBuffers]);
+  }, [clearEcho, dropLoop, forgetBuffers]);
 
   /** The scrub bar spans the surah, so the place asked for is often in another
    *  ayah: find the one it falls in and, if it is not the one playing, take up
@@ -300,15 +539,21 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
       let before = 0;
       for (let i = 0; i < verses.length; i += 1) {
         const verse = verses[i];
-        const length = lengthsRef.current.get(verse.verse_key) ?? ayahSeconds(verse);
+        const length = lengthOf(verse);
         // The last ayah catches anything past the end, so dragging to the far
         // right lands on the close of the surah rather than nowhere.
         if (target < before + length || i === verses.length - 1) {
           const into = target - before;
-          if (verse.verse_key === currentRef.current) {
+          if (verse.verse_key === currentRef.current && playingUrlRef.current) {
             el.currentTime = Number.isFinite(el.duration)
               ? Math.min(Math.max(0, into), el.duration)
               : Math.max(0, into);
+            // Dragged back into an ayah whose silence was running: it is being
+            // listened to again, so the silence is over.
+            const waiting = !!echoTimerRef.current;
+            clearEcho();
+            heldRef.current = false;
+            if (waiting) void el.play().catch(refused);
           } else {
             load(verse.verse_key, wantsPlayRef.current, into);
           }
@@ -317,36 +562,116 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
         before += length;
       }
     },
-    [load],
+    [clearEcho, lengthOf, load, refused],
   );
 
   const setQueue = useCallback(
     (queue: PlayerQueue) => {
       const changedSurah = queue.surah !== queueRef.current.surah;
-      queueRef.current = queue;
+      const current = currentRef.current;
+
       // Moving to another surah abandons the recitation rather than playing an
       // ayah the reader is no longer looking at.
-      if (changedSurah && currentRef.current) {
-        resumeRef.current = null;
+      if (changedSurah && current) {
+        queueRef.current = queue;
         stop();
         return;
       }
-      // Lengths are a property of the recording, so a queue arriving in a new
-      // voice is measured again from the timings that came with it.
-      lengthsRef.current.clear();
+
+      if (current) {
+        // The same surah, arriving again — a new translation, a new voice, or
+        // the reader opening the surah the muṣḥaf view was already reciting.
+        // It comes in pages, and until it holds the ayah being recited it is
+        // not a queue this recitation can be moved onto: what follows that
+        // ayah would be whatever happened to have arrived. So the queue in
+        // hand is kept until the new one can take over.
+        const arrived = queue.verses.find((v) => v.verse_key === current);
+        if (!arrived) return;
+        queueRef.current = queue;
+        remeasure();
+        // A different recording for the same ayah is a different voice. It is
+        // taken up here — in the same place, in the new voice — and until now
+        // the previous one was still playing, so the change is a handover
+        // rather than a silence.
+        const url = arrived.audio?.url ? audioUrl(arrived.audio.url) : null;
+        if (url && url !== playingUrlRef.current) load(current, wantsPlayRef.current);
+        return;
+      }
+
+      queueRef.current = queue;
       remeasure();
-      // A queue that arrived because the reciter changed. The surah has to be
-      // fetched again for the new voice's recordings, so the ayah was put aside
-      // when the reciter was picked and is taken up again here — in the same
-      // place, in the new voice. Until this lands the previous recitation is
-      // still playing, so the change is a handover rather than a silence.
-      const resume = resumeRef.current;
-      if (resume && queue.verses.some((v) => v.verse_key === resume.key && v.audio?.url)) {
-        resumeRef.current = null;
-        loadRef.current?.(resume.key, resume.playing);
+    },
+    [load, remeasure, stop],
+  );
+
+  // ── looping a passage ─────────────────────────────────────────────────────
+  const loopPassage = useCallback<PlayerControls["loopPassage"]>(
+    (want, begin) => {
+      const verses = queueRef.current.verses;
+      const from = Math.max(1, Math.min(want.from, want.to));
+      const to = Math.max(from, Math.max(want.from, want.to));
+      const next: PassageLoop = {
+        surah: queueRef.current.surah,
+        from,
+        to,
+        each: Math.max(1, Math.round(want.each) || 1),
+        times: Math.max(0, Math.round(want.times) || 0),
+        echo: !!want.echo,
+      };
+      const head = verses.find((v) => within(next, v));
+      if (!head) return;
+
+      loopRef.current = next;
+      setLoop(next);
+
+      if (begin) {
+        moveLoop(START);
+        load(head.verse_key, true);
+        return;
+      }
+
+      // Adjusted where it stands: the counts are pulled back inside the new
+      // limits, and the recitation moves only if it has been left outside.
+      const at = loopAtRef.current;
+      moveLoop({
+        turn: Math.min(at.turn, next.each),
+        pass: next.times ? Math.min(at.pass, next.times) : at.pass,
+      });
+      const here = verseAt(currentRef.current);
+      if (!here || !within(next, here)) {
+        load(head.verse_key, wantsPlayRef.current);
+      } else if (!next.echo && echoTimerRef.current) {
+        clearEcho();
+        advance();
       }
     },
-    [remeasure, stop],
+    [advance, clearEcho, load, moveLoop, verseAt],
+  );
+
+  const endLoop = useCallback(() => {
+    if (!loopRef.current) return;
+    const waiting = !!echoTimerRef.current;
+    clearEcho();
+    dropLoop();
+    // Ended in the silence after an ayah: the recitation carries on from there
+    // as it ordinarily would, rather than sitting in a silence with no end.
+    if (waiting) advance();
+  }, [advance, clearEcho, dropLoop]);
+
+  const passageAround = useCallback<PlayerControls["passageAround"]>(
+    (key) => {
+      const verses = queueRef.current.verses;
+      const here = verseAt(key) ?? verses[0];
+      if (!here) return null;
+      let to = here.verse_number;
+      if (here.ruku_number != null) {
+        for (const v of verses) {
+          if (v.ruku_number === here.ruku_number && v.verse_number > to) to = v.verse_number;
+        }
+      }
+      return { from: here.verse_number, to };
+    },
+    [verseAt],
   );
 
   // ── the element and its events ────────────────────────────────────────────
@@ -356,12 +681,19 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     audioRef.current = el;
 
     const onPlay = () => setPlaying(true);
-    const onPause = () => setPlaying(false);
+    const onPause = () => {
+      // A recording reaching its end pauses the element on the way to saying
+      // it has ended. That is not the reader pausing: what happens next is for
+      // `advance` to decide, and reporting a pause in between made the play
+      // button blink once for every ayah.
+      if (el.ended) return;
+      setPlaying(false);
+    };
     const onLoaded = () => {
-      const key = currentRef.current;
+      const url = playingUrlRef.current;
       // The estimate has served its turn for this ayah: the recording itself
       // now says how long it is.
-      if (key && Number.isFinite(el.duration)) lengthsRef.current.set(key, el.duration);
+      if (url && Number.isFinite(el.duration)) lengthsRef.current.set(url, el.duration);
       const at = pendingSeekRef.current;
       pendingSeekRef.current = null;
       if (at != null) el.currentTime = Math.min(Math.max(0, at), el.duration || at);
@@ -369,6 +701,9 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
       setElapsed(offsetRef.current + el.currentTime);
     };
     const onError = () => {
+      // Emptying the element on purpose is not a failure to load anything.
+      if (!playingUrlRef.current) return;
+      wantsPlayRef.current = false;
       setError("That recitation could not be loaded.");
       setPlaying(false);
     };
@@ -404,29 +739,26 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     };
 
     const onEnded = () => {
-      const repeat = repeatRef.current;
-      const key = currentRef.current;
-      const verses = queueRef.current.verses;
       highlight.setRecite(null);
-
-      if (repeat === "ayah" && key) {
-        el.currentTime = 0;
-        void el.play().catch(() => setPlaying(false));
+      const active = loopRef.current;
+      const here = queueRef.current.verses.find((v) => v.verse_key === currentRef.current);
+      if (active?.echo && here && within(active, here)) {
+        // As long as the ayah took to hear, at the pace it was heard at: long
+        // enough to say it back, and it scales with the ayah without asking
+        // the reader to set a number of seconds.
+        const length = Number.isFinite(el.duration) ? el.duration : ayahSeconds(here);
+        setEchoing(true);
+        echoTimerRef.current = setTimeout(
+          () => {
+            echoTimerRef.current = null;
+            setEchoing(false);
+            advance();
+          },
+          Math.max(1, length / (el.playbackRate || 1)) * 1000,
+        );
         return;
       }
-      const i = verses.findIndex((v) => v.verse_key === key);
-      const next = verses[i + 1];
-      if (next) {
-        loadRef.current?.(next.verse_key, true);
-        return;
-      }
-      if (repeat === "surah" && verses[0]) {
-        loadRef.current?.(verses[0].verse_key, true);
-        return;
-      }
-      // The surah is finished: nothing is meant to be playing until asked.
-      wantsPlayRef.current = false;
-      setPlaying(false);
+      advance();
     };
 
     el.addEventListener("play", onPlay);
@@ -447,35 +779,26 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
       el.removeEventListener("error", onError);
       el.pause();
       audioRef.current = null;
+      if (echoTimerRef.current) clearTimeout(echoTimerRef.current);
+      echoTimerRef.current = null;
       forgetBuffers();
       highlight.setRecite(null);
     };
-  }, [prefetchNext, forgetBuffers, remeasure]);
+  }, [advance, prefetchNext, forgetBuffers, remeasure]);
 
   useEffect(() => {
-    loadRef.current = load;
-  }, [load]);
-
-  useEffect(() => {
-    if (audioRef.current) audioRef.current.playbackRate = settings.speed;
+    const el = audioRef.current;
+    if (!el) return;
+    // Both: handing the element a new source resets its rate to the default.
+    el.defaultPlaybackRate = settings.speed;
+    el.playbackRate = settings.speed;
   }, [settings.speed]);
 
-  // Scroll to the ayah as the recitation moves to it.
-  useEffect(() => {
-    if (currentKey) requestScroll(currentKey);
-  }, [currentKey, requestScroll]);
-
-  // Changing reciter mid-recitation keeps the place rather than losing it: the
-  // ayah is set aside here, and `setQueue` picks it up when the surah comes
-  // back carrying the new reciter's recordings.
-  const reciterRef = useRef(settings.reciterId);
-  useEffect(() => {
-    if (reciterRef.current === settings.reciterId) return;
-    reciterRef.current = settings.reciterId;
-    const key = currentRef.current;
-    if (key) resumeRef.current = { key, playing: !audioRef.current?.paused };
-  }, [settings.reciterId]);
-
+  // Scroll to the ayah as the recitation moves to it — and when following is
+  // switched back on, to wherever the recitation has got to meanwhile. Not on
+  // every load: an ayah being repeated is already where it was, and a reader
+  // who has scrolled away to look something up should not be pulled back to
+  // it each time it comes round.
   useEffect(() => {
     if (!settings.follow) return;
     if (currentKey) requestScroll(currentKey);
@@ -485,8 +808,11 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (typeof navigator === "undefined" || !("mediaSession" in navigator)) return;
     const ms = navigator.mediaSession;
-    ms.setActionHandler("play", () => toggle());
-    ms.setActionHandler("pause", () => toggle());
+    // The keys say which they mean, so each does only that: a "pause" from a
+    // headset that is already paused must not start the recitation.
+    const running = () => !!echoTimerRef.current || audioRef.current?.paused === false;
+    ms.setActionHandler("play", () => void (running() || toggle()));
+    ms.setActionHandler("pause", () => void (running() && toggle()));
     ms.setActionHandler("previoustrack", () => step(-1));
     ms.setActionHandler("nexttrack", () => step(1));
     return () => {
@@ -497,20 +823,41 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     };
   }, [toggle, step]);
 
-  const value = useMemo(
-    () => ({ open, playing, currentKey, elapsed, duration, error, setQueue, play, toggle, stop, step, seek }),
-    [open, playing, currentKey, elapsed, duration, error, setQueue, play, toggle, stop, step, seek],
+  const controls = useMemo<PlayerControls>(
+    () => ({ setQueue, play, playOrPause, toggle, stop, step, seek, loopPassage, endLoop, passageAround }),
+    [setQueue, play, playOrPause, toggle, stop, step, seek, loopPassage, endLoop, passageAround],
   );
+  const status = useMemo<PlayerStatus>(
+    () => ({ open, playing, currentKey, error, loop, loopAt, echoing }),
+    [open, playing, currentKey, error, loop, loopAt, echoing],
+  );
+  const progress = useMemo<PlayerProgress>(() => ({ elapsed, duration }), [elapsed, duration]);
 
-  // Speed and repeat live in settings so they survive a reload; the transport
-  // reads them from there rather than keeping a second copy.
-  void update;
-
-  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
+  return (
+    <ControlsCtx.Provider value={controls}>
+      <StatusCtx.Provider value={status}>
+        <ProgressCtx.Provider value={progress}>{children}</ProgressCtx.Provider>
+      </StatusCtx.Provider>
+    </ControlsCtx.Provider>
+  );
 }
 
-export function usePlayer(): PlayerContextValue {
-  const ctx = useContext(Ctx);
-  if (!ctx) throw new Error("usePlayer must be used inside <PlayerProvider>");
-  return ctx;
+function need<T>(value: T | null, hook: string): T {
+  if (!value) throw new Error(`${hook} must be used inside <PlayerProvider>`);
+  return value;
+}
+
+/** What can be done to the recitation. The same object for the whole session. */
+export function usePlayerControls(): PlayerControls {
+  return need(useContext(ControlsCtx), "usePlayerControls");
+}
+
+/** Which ayah, and whether it is sounding. Changes about once an ayah. */
+export function usePlayerStatus(): PlayerStatus {
+  return need(useContext(StatusCtx), "usePlayerStatus");
+}
+
+/** The clock. Changes several times a second — only the transport wants it. */
+export function usePlayerProgress(): PlayerProgress {
+  return need(useContext(ProgressCtx), "usePlayerProgress");
 }
