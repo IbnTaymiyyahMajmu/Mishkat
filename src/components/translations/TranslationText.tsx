@@ -3,6 +3,7 @@
 import { useCallback, useMemo, useState } from "react";
 import { fetchFootnote } from "@/lib/quran/api";
 import { parseTranslation, plainNote, readsRightToLeft } from "@/lib/quran/translations";
+import { useT } from "@/lib/i18n";
 import styles from "./Translation.module.css";
 
 interface Props {
@@ -30,6 +31,7 @@ interface Props {
  * and not in a box over the text being read.
  */
 export function TranslationText({ text, footnotes, lang, className }: Props) {
+  const t = useT();
   const pieces = useMemo(() => parseTranslation(text), [text]);
   const rtl = useMemo(() => readsRightToLeft(pieces), [pieces]);
   const [open, setOpen] = useState<string[]>([]);
@@ -80,7 +82,7 @@ export function TranslationText({ text, footnotes, lang, className }: Props) {
               type="button"
               className={`${styles.note} ${open.includes(p.id) ? styles.noteOn : ""}`}
               aria-expanded={open.includes(p.id)}
-              aria-label={`Translator’s footnote ${p.mark}`}
+              aria-label={t("translations.footnote", { mark: p.mark })}
               onClick={() => toggle(p.id)}
             >
               {p.mark}
@@ -90,7 +92,7 @@ export function TranslationText({ text, footnotes, lang, className }: Props) {
       </p>
 
       {notes.length > 0 && (
-        <ol className={styles.notes} aria-label="Translator’s footnotes">
+        <ol className={styles.notes} aria-label={t("translations.footnotes")}>
           {notes.map((p) => {
             if (p.kind !== "note") return null;
             const raw = footnotes?.[p.id] ?? fetched[p.id];
@@ -102,8 +104,8 @@ export function TranslationText({ text, footnotes, lang, className }: Props) {
                   type="button"
                   className={styles.noteMark}
                   onClick={() => toggle(p.id)}
-                  aria-label={`Close footnote ${p.mark}`}
-                  title="Close"
+                  aria-label={t("translations.closeFootnote", { mark: p.mark })}
+                  title={t("common.close")}
                 >
                   {p.mark}
                 </button>
@@ -114,7 +116,7 @@ export function TranslationText({ text, footnotes, lang, className }: Props) {
                   translate="no"
                 >
                   {raw === null
-                    ? "This note could not be reached."
+                    ? t("translations.noteUnreached")
                     : raw === undefined
                       ? "…"
                       : plainNote(raw)}

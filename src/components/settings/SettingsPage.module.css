@@ -117,7 +117,7 @@
 .knob {
   position: absolute;
   top: 2px;
-  left: 2px;
+  inset-inline-start: 2px;
   width: 13px;
   height: 13px;
   border-radius: 50%;
@@ -125,7 +125,7 @@
   transition: all 160ms ease;
 }
 .trackOn .knob {
-  left: 17px;
+  inset-inline-start: 17px;
   background: var(--color-accent);
 }
 
@@ -161,4 +161,16 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   padding-inline-end: 6px;
+}
+
+/* A language named in its own script. On an English page these chips are set
+   in a Latin face with no Arabic letters in it, and the names that most need
+   to be found — by a reader who cannot read the rest of the page — would be
+   the smallest and roughest things on it. */
+.chip [lang="ps"],
+.chip [lang="fa"],
+.chip [lang="ur"] {
+  font-family: var(--font-noto-sans-arabic), var(--font-noto-naskh), sans-serif;
+  font-size: 1.1em;
+  line-height: 1.2;
 }

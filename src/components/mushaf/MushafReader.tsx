@@ -13,6 +13,8 @@ import { useToast } from "@/components/Toast";
 import { arabicNumber, plainText } from "@/lib/text";
 import { ARABIC_FONTS } from "@/lib/quran/resources";
 import { translationName } from "@/lib/quran/translations";
+import { useLocale } from "@/lib/i18n";
+import { useSurahNames } from "@/lib/i18n/surah";
 import styles from "./MushafReader.module.css";
 
 const SIZES = [30, 36, 42, 48, 56, 64];
@@ -35,6 +37,8 @@ const NO_VERSES: Verse[] = [];
 export function MushafReader({ surah }: { surah: number }) {
   const router = useRouter();
   const toast = useToast();
+  const { t, arrows } = useLocale();
+  const names = useSurahNames();
   const { byId } = useChapters();
   const { settings, update } = useSettings();
   const { isBookmarked, toggleBookmark } = useLibrary();
@@ -58,7 +62,7 @@ export function MushafReader({ surah }: { surah: number }) {
   const loading = !fresh;
 
   const chapter = byId(surah);
-  const chapterName = chapter?.name_simple ?? `Surah ${surah}`;
+  const chapterName = names.name(surah);
 
   useEffect(() => {
     let alive = true;
@@ -106,12 +110,12 @@ export function MushafReader({ surah }: { surah: number }) {
         controls.setQueue({ surah, verses: withAudio });
         controls.play(verseKey);
       } catch {
-        toast("That recitation could not be loaded.");
+        toast(t("player.failed"));
       } finally {
         setPreparingAudio(false);
       }
     },
-    [surah, settings.reciterId, controls, toast],
+    [surah, settings.reciterId, controls, toast, t],
   );
 
   // The page shows which ayah is being recited and keeps it in view, as the
@@ -134,7 +138,7 @@ export function MushafReader({ surah }: { surah: number }) {
     async (verse: Verse) => {
       if (isBookmarked(verse.verse_key)) {
         toggleBookmark({ verseKey: verse.verse_key, surah, arabic: "", translation: "", translator: "" });
-        toast("Bookmark removed");
+        toast(t("toast.bookmarkRemoved"));
         return;
       }
       const translated = (await fetchVerse(verse.verse_key, settings.translationId))?.translations?.[0];
@@ -149,29 +153,30 @@ export function MushafReader({ surah }: { surah: number }) {
             ""
           : "",
       });
-      toast(`Ayah ${verse.verse_key} bookmarked`);
+      toast(t("toast.bookmarked", { key: verse.verse_key }));
     },
-    [isBookmarked, toggleBookmark, surah, settings.translationId, toast],
+    [isBookmarked, toggleBookmark, surah, settings.translationId, toast, t],
   );
 
-  const prev = byId(surah - 1);
-  const next = byId(surah + 1);
+  const prevName = surah > 1 ? names.name(surah - 1) : "";
+  const nextName = surah < 114 ? names.name(surah + 1) : "";
+  const nextLight = THEMES[(THEMES.indexOf(settings.theme) + 1) % THEMES.length];
 
   return (
     <div className={styles.wrap}>
       <div className={styles.bar}>
         <Link href={`/read/${surah}/`} className="btn btn-secondary" style={{ fontSize: 12, padding: "5px 12px" }}>
-          ← Study view
+          {arrows.prev} {t("mushaf.study")}
         </Link>
 
         <div className={styles.barCentre}>
-          <div className={styles.sizes} role="group" aria-label="Arabic size">
+          <div className={styles.sizes} role="group" aria-label={t("mushaf.size")}>
             <button
               className="btn btn-icon"
               style={{ width: 28, height: 28 }}
               onClick={() => changeSize(SIZES[Math.max(0, SIZES.indexOf(size) - 1)])}
               disabled={size === SIZES[0]}
-              aria-label="Smaller Arabic"
+              aria-label={t("mushaf.smaller")}
             >
               −
             </button>
@@ -181,13 +186,13 @@ export function MushafReader({ surah }: { surah: number }) {
               style={{ width: 28, height: 28 }}
               onClick={() => changeSize(SIZES[Math.min(SIZES.length - 1, SIZES.indexOf(size) + 1)])}
               disabled={size === SIZES[SIZES.length - 1]}
-              aria-label="Larger Arabic"
+              aria-label={t("mushaf.larger")}
             >
               +
             </button>
           </div>
 
-          <div className={styles.fonts} role="group" aria-label="Arabic typeface">
+          <div className={styles.fonts} role="group" aria-label={t("mushaf.typeface")}>
             {ARABIC_FONTS.map((f) => (
               <button
                 key={f.id}
@@ -202,13 +207,11 @@ export function MushafReader({ surah }: { surah: number }) {
           {/* The muṣḥaf bar has no room for three lamps, so here the light is a
               cycle: pressing it names the light it is about to move to. */}
           <button
-            onClick={() =>
-              update({ theme: THEMES[(THEMES.indexOf(settings.theme) + 1) % THEMES.length] })
-            }
+            onClick={() => update({ theme: nextLight })}
             className="btn btn-secondary"
-            style={{ fontSize: 12, padding: "5px 12px", textTransform: "capitalize" }}
+            style={{ fontSize: 12, padding: "5px 12px" }}
           >
-            {THEMES[(THEMES.indexOf(settings.theme) + 1) % THEMES.length]}
+            {t(`light.${nextLight}.short`)}
           </button>
         </div>
 
@@ -218,7 +221,7 @@ export function MushafReader({ surah }: { surah: number }) {
           style={{ fontSize: 13 }}
           disabled={surah >= 114}
         >
-          {next?.name_simple ?? ""} →
+          {nextName} {arrows.next}
         </button>
       </div>
 
@@ -226,7 +229,9 @@ export function MushafReader({ surah }: { surah: number }) {
         <header className={styles.head}>
           <div className={styles.headArabic}>{chapter?.name_arabic ?? ""}</div>
           <div className={styles.headName}>
-            {chapterName} · {chapter?.verses_count ?? verses.length} ayat
+            {/* The name is already over this line, in Arabic, where that is the
+                only name the surah is given. */}
+            {[names.arabic ? t("common.surahN", { n: surah }) : chapterName, t("common.ayat", { count: chapter?.verses_count ?? verses.length })].join(" · ")}
           </div>
         </header>
 
@@ -234,13 +239,13 @@ export function MushafReader({ surah }: { surah: number }) {
           <div className={styles.bismillah}>بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</div>
         )}
 
-        {loading && <p className={styles.state}>Loading the text…</p>}
+        {loading && <p className={styles.state}>{t("common.loadingText")}</p>}
 
         {failed && (
           <div className={styles.state}>
-            <p>The text could not be reached.</p>
+            <p>{t("mushaf.unreached")}</p>
             <button className="btn btn-primary" onClick={() => setNonce((n) => n + 1)}>
-              Try again
+              {t("common.tryAgain")}
             </button>
           </div>
         )}
@@ -279,7 +284,7 @@ export function MushafReader({ surah }: { surah: number }) {
                     setSelected((c) => (c === v.verse_key ? null : v.verse_key));
                   }
                 }}
-                aria-label={`Ayah ${v.verse_key}`}
+                aria-label={t("verse.label", { key: v.verse_key })}
               >
                 {v.text_uthmani}
                 <span className={styles.marker} aria-hidden="true">
@@ -293,21 +298,21 @@ export function MushafReader({ surah }: { surah: number }) {
         {!loading && !failed && verses.length > 0 && (
           <footer className={styles.foot}>
             <span className={styles.footMark}>۞</span>
-            <div className={styles.footText}>End of {chapterName}</div>
+            <div className={styles.footText}>{t("reader.end", { surah: chapterName })}</div>
             <div className={styles.footNav}>
               <button
                 className="btn btn-secondary"
                 onClick={() => router.push(`/read/${surah - 1}/mushaf/`)}
                 disabled={surah <= 1}
               >
-                ← {prev?.name_simple ?? ""}
+                {arrows.prev} {prevName}
               </button>
               <button
                 className="btn btn-primary"
                 onClick={() => router.push(`/read/${surah + 1}/mushaf/`)}
                 disabled={surah >= 114}
               >
-                {next?.name_simple ?? ""} →
+                {nextName} {arrows.next}
               </button>
             </div>
           </footer>
@@ -325,22 +330,22 @@ export function MushafReader({ surah }: { surah: number }) {
             onClick={() => void playFrom(selectedVerse.verse_key)}
             disabled={preparingAudio}
           >
-            {preparingAudio ? "Loading…" : "Play"}
+            {preparingAudio ? t("common.loading") : t("mushaf.play")}
           </button>
           <button
             className="btn btn-ghost"
             style={{ fontSize: 12 }}
             onClick={() => void bookmark(selectedVerse)}
           >
-            {isBookmarked(selectedVerse.verse_key) ? "Bookmarked" : "Bookmark"}
+            {t(isBookmarked(selectedVerse.verse_key) ? "mushaf.bookmarked" : "mushaf.bookmark")}
           </button>
           <Link href={`/tafsir/?v=${selectedVerse.verse_key}`} className="btn btn-ghost" style={{ fontSize: 12 }}>
-            Tafsir
+            {t("common.tafsir")}
           </Link>
           <Link href={`/read/${surah}/#${selectedVerse.verse_key}`} className="btn btn-ghost" style={{ fontSize: 12 }}>
-            Open in study view
+            {t("mushaf.openStudy")}
           </Link>
-          <button className={styles.selectionClose} onClick={() => setSelected(null)} aria-label="Clear selection">
+          <button className={styles.selectionClose} onClick={() => setSelected(null)} aria-label={t("mushaf.clear")}>
             ✕
           </button>
         </div>

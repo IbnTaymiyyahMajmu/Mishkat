@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
+import { useT, type MessageKey } from "@/lib/i18n";
 import styles from "./SidePanel.module.css";
 
 export type PanelMode = "word" | "translations" | "tafsir" | "notes";
@@ -11,11 +12,11 @@ export interface PanelState {
   wordPosition?: number;
 }
 
-const KICKER: Record<PanelMode, string> = {
-  word: "Word study",
-  translations: "Translations",
-  tafsir: "Tafsir",
-  notes: "Notes",
+const KICKER: Record<PanelMode, MessageKey> = {
+  word: "panel.word",
+  translations: "panel.translations",
+  tafsir: "panel.tafsir",
+  notes: "panel.notes",
 };
 
 interface Props {
@@ -36,6 +37,7 @@ interface Props {
  */
 export function SidePanel({ state, title, onSwitch, onClose, children }: Props) {
   const ref = useRef<HTMLElement>(null);
+  const t = useT();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -55,13 +57,13 @@ export function SidePanel({ state, title, onSwitch, onClose, children }: Props) 
   const modes: PanelMode[] = ["word", "translations", "tafsir", "notes"];
 
   return (
-    <aside ref={ref} className={styles.panel} aria-label={`${KICKER[state.mode]} for ${state.verseKey}`}>
+    <aside ref={ref} className={styles.panel} aria-label={t("panel.label", { kind: t(KICKER[state.mode]), key: state.verseKey })}>
       <div className={styles.head}>
         <div className={styles.headText}>
-          <div className={`kicker kicker-sm ${styles.kicker}`}>{KICKER[state.mode]}</div>
+          <div className={`kicker kicker-sm ${styles.kicker}`}>{t(KICKER[state.mode])}</div>
           <div className={styles.title}>{title}</div>
         </div>
-        <button onClick={onClose} className={`btn btn-icon ${styles.close}`} aria-label="Close the study panel">
+        <button onClick={onClose} className={`btn btn-icon ${styles.close}`} aria-label={t("panel.close")}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
             <path d="M18 6 6 18" />
             <path d="m6 6 12 12" />
@@ -69,7 +71,7 @@ export function SidePanel({ state, title, onSwitch, onClose, children }: Props) 
         </button>
       </div>
 
-      <div className={styles.tabs} role="tablist" aria-label="Study view">
+      <div className={styles.tabs} role="tablist" aria-label={t("panel.tabs")}>
         {modes.map((mode) => (
           <button
             key={mode}
@@ -78,7 +80,7 @@ export function SidePanel({ state, title, onSwitch, onClose, children }: Props) 
             onClick={() => onSwitch(mode)}
             className={`${styles.tab} ${state.mode === mode ? styles.tabOn : ""}`}
           >
-            {KICKER[mode]}
+            {t(KICKER[mode])}
           </button>
         ))}
       </div>

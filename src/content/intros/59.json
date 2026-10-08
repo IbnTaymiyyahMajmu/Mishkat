@@ -1,0 +1,161 @@
+{
+  "surah": 59,
+  "epithet": "The exile of the Banū al-Naḍīr",
+  "lede": "A fortified tribe that no one thought could be moved left Madinan soil without a battle. The surah tells how — and then, in its last three ayat, gathers more of the names of Allah than any other passage in the Qurʾan.",
+  "names": [
+    {
+      "arabic": "الحشر",
+      "name": "al-Ḥashr",
+      "meaning": "The Gathering",
+      "note": "From its second ayah: He drove them from their homes “at the first gathering” — their mustering into exile."
+    },
+    {
+      "arabic": "سورة بني النضير",
+      "name": "Sūrat Banī al-Naḍīr",
+      "meaning": "The Surah of the Banū al-Naḍīr",
+      "note": "The name Ibn ʿAbbās preferred. Saʿīd ibn Jubayr said: I said to Ibn ʿAbbās, “Sūrat al-Ḥashr?” He said: “It was sent down about the Banū al-Naḍīr” (al-Bukhārī 4882)."
+    }
+  ],
+  "revelation": {
+    "place": "madinah",
+    "verdict": "Madinan, by agreement",
+    "detail": "It is Madinan without disagreement, and the commentators say that all of it was sent down concerning the Banū al-Naḍīr. Their expulsion took place in the fourth year of the Hijrah, after Uḥud.",
+    "period": "madinah-early",
+    "when": "Madinah, the fourth year of the Hijrah: the siege and exile of the Banū al-Naḍīr",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَهِيَ مَدَنِيَّةٌ كُلُّها بِإجْماعِهِمْ وَذَكَرَ المُفَسِّرُونَ أنَّ جَمِيعَها أُنْزِلَتْ في بَنِي النَّضِيرِ. وكانَ ابْنُ عَبّاسٍ يُسَمِّي هَذِهِ السُّورَةَ \"سُورَةَ بَنِي النَّضِيرِ"
+      },
+      {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "عَنْ سَعِيدٍ بْنِ جُبَيْرٍ قَالَ: قُلْتُ لِابْنِ عَبَّاسٍ: سُورَةُ الْحَشْرِ؟ قَالَ: أُنْزِلَتْ فِي بَنِي النَّضِيرِ"
+      }
+    ]
+  },
+  "setting": [
+    "When the Prophet ﷺ came to Madinah he made a covenant with its three Jewish tribes: they would not fight him nor help anyone against him. The Banū al-Naḍīr lived on the southern edge of the oasis, in strongholds among their date-palms.",
+    "In the fourth year he went to them with a few of his Companions to ask their help with a payment of blood-money that the covenant obliged them to share in. They agreed, and sat him down by a wall — and while he waited, they resolved to kill him, one of them going up to drop a millstone on his head. He was told of it by revelation, rose at once, and went back to the city. Then he sent to them: leave my town.",
+    "They prepared to go. But ʿAbd Allāh ibn Ubayy, the leader of the hypocrites, sent word: stay — if you are fought, we will fight beside you, and if you are driven out, we will leave with you. So they shut themselves in. The Muslims besieged them; the help never came; and they sued for terms. They were allowed to leave with what their camels could carry, apart from weapons. They pulled down the lintels and beams of their own houses to take with them, and went — most to Khaybar, some to Syria.",
+    "The surah is a commentary on those days. It tells the believers that they had not thought it possible, and that the tribe had thought their forts would hold against Allah. It settles the question of the land they left, which had been taken without a fight: it is not divided as battle spoils but placed at the Messenger’s ﷺ disposal for those in need — and in saying who has a claim on it, it draws a portrait of the Emigrants, the Helpers, and all who come after them."
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        5,
+        5
+      ],
+      "title": "The palm trees",
+      "text": "The Messenger of Allah ﷺ burned and cut down palms of the Banū al-Naḍīr during the siege, at al-Buwayrah. So there came down: “Whatever palm you cut down or left standing on its roots, it was by Allah’s leave.”",
+      "source": "Ibn ʿUmar: al-Bukhārī (4031) and Muslim (1746)."
+    },
+    {
+      "ayat": [
+        9,
+        9
+      ],
+      "title": "“They prefer others to themselves”",
+      "text": "A hungry man came to the Prophet ﷺ, and there was nothing in his houses but water. A man of the Anṣār took the guest home; his wife had only the children’s supper. They put the children to sleep, set the food before the guest, and put out the lamp so that he would think they were eating with him. In the morning the Prophet ﷺ said: “Allah marvelled at what the two of you did last night.” And Allah sent down: “They give them preference over themselves, even though they are in need.”",
+      "source": "Abū Hurayrah: al-Bukhārī (3798) and Muslim (2054)."
+    }
+  ],
+  "aim": "To make manifest Allah’s power and might in bringing low the Jews and the hypocrites and exposing their division — set against the unity of the believers.",
+  "themes": [
+    "The Banū al-Naḍīr",
+    "The hypocrites’ false promises",
+    "The Emigrants and the Helpers",
+    "Preferring others to oneself",
+    "Accounting for tomorrow",
+    "The names of Allah"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 5,
+      "title": "The expulsion",
+      "summary": "It is He who drove out the disbelievers among the People of the Book from their homes at the first gathering. You did not think they would leave, and they thought their fortresses would protect them from Allah; but Allah came upon them from where they had not reckoned, and cast terror into their hearts, so that they ruined their houses with their own hands and the hands of the believers. So take heed, you who have eyes."
+    },
+    {
+      "from": 6,
+      "to": 10,
+      "title": "The land they left, and who has a claim on it",
+      "summary": "What Allah restored to His Messenger from them, you spurred neither horse nor camel for. It is for Allah and the Messenger, the near kin, the orphans, the needy and the traveller — so that it does not merely circulate among the rich of you. Whatever the Messenger gives you, take; whatever he forbids you, leave. It is for the poor Emigrants, driven from their homes and property; and for those who were settled in the home and in faith before them, who love those who emigrate to them and prefer them over themselves; and for those who come after them, saying: “Our Lord, forgive us and our brothers who went before us in faith.”"
+    },
+    {
+      "from": 11,
+      "to": 17,
+      "title": "The promise that was not kept",
+      "summary": "Have you not seen the hypocrites saying to their brothers among the People of the Book: “If you are driven out we shall go with you, and if you are fought we shall help you”? Allah bears witness that they are liars. You are more feared in their hearts than Allah. You think them united, but their hearts are divided. They are like Satan when he says to man, “Disbelieve,” and then says, “I am quit of you.”"
+    },
+    {
+      "from": 18,
+      "to": 21,
+      "title": "Look to tomorrow",
+      "summary": "O you who believe: be mindful of Allah, and let every soul look to what it has sent ahead for tomorrow (59:18). Do not be like those who forgot Allah, so that He made them forget themselves. Had We sent down this Qurʾan upon a mountain, you would have seen it humbled, split apart from the fear of Allah."
+    },
+    {
+      "from": 22,
+      "to": 24,
+      "title": "He is Allah",
+      "summary": "He is Allah, besides whom there is no god: Knower of the unseen and the seen, the Entirely Merciful, the Especially Merciful. He is Allah, besides whom there is no god: the King, the Holy, the Flawless, the Giver of security, the Watchful, the Almighty, the Compeller, the Supreme. He is Allah, the Creator, the Maker, the Fashioner. His are the most beautiful names."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 18,
+    "why": "The surah’s lesson for the believers, drawn from what they had just watched happen to others: look to what you have sent ahead."
+  },
+  "virtues": [
+    {
+      "text": "The Prophet ﷺ used to recite the Musabbiḥāt before he lay down to sleep, and would say: “In them is an ayah that is better than a thousand ayat.” Al-Ḥashr is one of them.",
+      "narrator": "al-ʿIrbāḍ ibn Sāriyah",
+      "source": "Jāmiʿ al-Tirmidhī, 2921",
+      "refs": [
+        {
+          "book": "tirmidhi",
+          "number": "2921"
+        }
+      ],
+      "grade": "Ḥasan gharīb, said al-Tirmidhī. Al-Albānī graded this narration ḥasan, and the same report in Abū Dāwūd (5057) weak"
+    }
+  ],
+  "virtuesNote": "The report that whoever recites the last three ayat of al-Ḥashr in the morning has seventy thousand angels praying for him until evening (al-Tirmidhī 2922) is weak; al-Tirmidhī called it gharīb and al-Albānī grades it ḍaʿīf. The report al-Qurṭubī quotes at the head of the surah, of everything in creation praying for its reciter, has no sound chain.",
+  "before": "Al-Mujādilah described hypocrites who took as allies a people under Allah’s anger, and called them the party of Satan. Al-Ḥashr shows that alliance tested, and the likeness of Satan applied.",
+  "after": "Al-Ḥashr dealt with enemies within the oasis. Al-Mumtaḥanah turns to the enemy at Makkah, and to a believer who, in a weak hour, wrote to them.",
+  "notable": [
+    {
+      "ayah": 7,
+      "label": "Whatever the Messenger gives you, take"
+    },
+    {
+      "ayah": 9,
+      "label": "They prefer others to themselves"
+    },
+    {
+      "ayah": 10,
+      "label": "“Forgive us and our brothers who went before us in faith”"
+    },
+    {
+      "ayah": 18,
+      "label": "Let every soul look to what it has sent ahead"
+    },
+    {
+      "ayah": 21,
+      "label": "Had We sent this Qurʾan down upon a mountain"
+    },
+    {
+      "ayah": 22,
+      "to": 24,
+      "label": "The most beautiful names"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "Ibn Isḥāq’s account, as the commentators relay it",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; Jāmiʿ al-Tirmidhī"
+  ]
+}

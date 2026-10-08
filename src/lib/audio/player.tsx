@@ -12,6 +12,7 @@ import {
 } from "react";
 import { audioUrl } from "../quran/api";
 import type { Verse } from "../quran/types";
+import type { MessageKey } from "../i18n/types";
 import { highlight, wordDomId } from "../highlight";
 import { useSettings } from "../store/settings";
 
@@ -91,8 +92,11 @@ export interface PlayerStatus {
   playing: boolean;
   /** The ayah currently loaded in the transport, playing or paused. */
   currentKey: string | null;
-  /** Set when the reciter has no audio for the ayah, or the network refused. */
-  error: string | null;
+  /**
+   * Set when the reciter has no audio for the ayah, or the network refused: a
+   * sentence the transport says in the language the reader reads.
+   */
+  error: MessageKey | null;
   loop: PassageLoop | null;
   loopAt: LoopPlace;
   /** In the silence after an ayah, left for the reader to recite it back. */
@@ -148,7 +152,7 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   const [currentKey, setCurrentKey] = useState<string | null>(null);
   const [elapsed, setElapsed] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<MessageKey | null>(null);
   const [loop, setLoop] = useState<PassageLoop | null>(null);
   const [loopAt, setLoopAt] = useState<LoopPlace>(START);
   const [echoing, setEchoing] = useState(false);
@@ -358,7 +362,7 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
         wantsPlayRef.current = false;
         remeasure();
         setElapsed(offsetRef.current);
-        setError("This reciter has no recording for that ayah.");
+        setError("player.noRecording");
         setPlaying(false);
         return;
       }
@@ -704,7 +708,7 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
       // Emptying the element on purpose is not a failure to load anything.
       if (!playingUrlRef.current) return;
       wantsPlayRef.current = false;
-      setError("That recitation could not be loaded.");
+      setError("player.failed");
       setPlaying(false);
     };
 

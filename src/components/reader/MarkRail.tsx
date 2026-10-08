@@ -13,6 +13,7 @@ import {
 } from "@/lib/quran/marks";
 import { readStop, writeStop } from "@/lib/store/stops";
 import type { Verse } from "@/lib/quran/types";
+import { useT } from "@/lib/i18n";
 import styles from "./MarkRail.module.css";
 
 /**
@@ -48,6 +49,7 @@ interface Props {
 }
 
 export function MarkRail({ surah, verses, total, loop, scrollerRef, onJump }: Props) {
+  const t = useT();
   const railRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const fillRef = useRef<HTMLDivElement>(null);
@@ -83,7 +85,7 @@ export function MarkRail({ surah, verses, total, loop, scrollerRef, onJump }: Pr
   const clusters = useMemo(() => {
     const marks: Mark[] = [...sajdaMarks(surah, verses), ...namedMarks(surah, n)];
     if (checkpoint && checkpoint <= n) {
-      marks.push({ ayah: checkpoint, kind: "stop", label: "Where you last stopped" });
+      marks.push({ ayah: checkpoint, kind: "stop", label: "rail.stopped" });
     }
     return cluster(marks, n, MERGE_PCT);
   }, [verses, surah, n, checkpoint]);
@@ -113,11 +115,11 @@ export function MarkRail({ surah, verses, total, loop, scrollerRef, onJump }: Pr
       const found = clusters
         .flatMap((c) => c.items)
         .filter((m) => m.ayah === ayah)
-        .map((m) => (m.kind === "sajda" ? `۩ ${m.label}` : m.label));
+        .map((m) => (m.kind === "sajda" ? `۩ ${t(m.label)}` : t(m.label)));
       if (found.length) return found.join("  ·  ");
-      return stops.includes(ayah) ? "The end of a rukūʿ — a place to stop" : "";
+      return stops.includes(ayah) ? t("rail.ruku") : "";
     },
-    [clusters, stops],
+    [clusters, stops, t],
   );
 
   // ── the preview, painted directly ─────────────────────────────────────────
@@ -135,7 +137,8 @@ export function MarkRail({ surah, verses, total, loop, scrollerRef, onJump }: Pr
       }
       if (previewKickerRef.current) {
         const j = verseAt(ayah)?.juz_number;
-        previewKickerRef.current.textContent = kicker ?? `Ayah ${ayah}${j ? ` · Juz ${j}` : ""}`;
+        previewKickerRef.current.textContent =
+          kicker ?? [t("common.ayahN", { n: ayah }), j ? t("common.juzN", { n: j }) : ""].filter(Boolean).join(" · ");
       }
       if (previewTextRef.current) previewTextRef.current.textContent = opening(ayah);
       if (previewNoteRef.current) {
@@ -166,7 +169,7 @@ export function MarkRail({ surah, verses, total, loop, scrollerRef, onJump }: Pr
           : Math.min(Math.max(top, lowest), highest);
       card.style.top = `${held - track.offsetTop}px`;
     },
-    [pctOf, verseAt, opening, noteFor],
+    [pctOf, verseAt, opening, noteFor, t],
   );
 
   const showGroup = useCallback(
@@ -175,11 +178,11 @@ export function MarkRail({ surah, verses, total, loop, scrollerRef, onJump }: Pr
       const last = c.items[c.items.length - 1].ayah;
       showAt(
         first,
-        c.items.map((m) => `Ayah ${m.ayah} — ${m.label}`).join("  ·  "),
-        first === last ? `Ayah ${first}` : `Ayah ${first}–${last}`,
+        c.items.map((m) => t("rail.mark", { ayah: m.ayah, label: t(m.label) })).join("  ·  "),
+        first === last ? t("common.ayahN", { n: first }) : t("common.ayahRange", { from: first, to: last }),
       );
     },
-    [showAt],
+    [showAt, t],
   );
 
   const hide = useCallback(() => {
@@ -232,7 +235,7 @@ export function MarkRail({ surah, verses, total, loop, scrollerRef, onJump }: Pr
     if (readoutRef.current) readoutRef.current.textContent = `${at} / ${n}`;
     if (sliderRef.current) {
       sliderRef.current.setAttribute("aria-valuenow", String(at));
-      sliderRef.current.setAttribute("aria-valuetext", `Ayah ${at} of ${n}`);
+      sliderRef.current.setAttribute("aria-valuetext", t("common.ayahOf", { n: at, total: n }));
     }
 
     // A juz label the marker has drawn level with steps aside rather than being
@@ -251,7 +254,7 @@ export function MarkRail({ surah, verses, total, loop, scrollerRef, onJump }: Pr
       if (saveTimer.current) clearTimeout(saveTimer.current);
       saveTimer.current = setTimeout(() => writeStop(surah, at), 900);
     }
-  }, [scrollerRef, pctOf, n, surah]);
+  }, [scrollerRef, pctOf, n, surah, t]);
 
   useEffect(() => {
     const scroller = scrollerRef.current;
@@ -344,7 +347,7 @@ export function MarkRail({ surah, verses, total, loop, scrollerRef, onJump }: Pr
         className={styles.slider}
         role="slider"
         tabIndex={0}
-        aria-label={`Move through the surah — ${n} ayat`}
+        aria-label={t("rail.slider", { count: n })}
         aria-valuemin={1}
         aria-valuemax={n}
         aria-valuenow={1}
@@ -401,12 +404,12 @@ export function MarkRail({ surah, verses, total, loop, scrollerRef, onJump }: Pr
               onBlur={hide}
               aria-label={
                 one
-                  ? `Ayah ${one.ayah} — ${one.label}`
+                  ? t("rail.mark", { ayah: one.ayah, label: t(one.label) })
                   : first.ayah === last.ayah
                     ? // Several marks on one ayah — Āyat al-Kursī is also where
                       // a great many readers stop — so name the ayah once.
-                      `Ayah ${first.ayah} — ${c.items.map((m) => m.label).join(" · ")}`
-                    : `${c.items.length} marks, ayah ${first.ayah} to ${last.ayah}`
+                      t("rail.mark", { ayah: first.ayah, label: c.items.map((m) => t(m.label)).join(" · ") })
+                    : t("rail.marks", { count: c.items.length, from: first.ayah, to: last.ayah })
               }
             >
               {one?.kind === "sajda" && <span className={styles.sajda}>۩</span>}
@@ -427,13 +430,13 @@ export function MarkRail({ surah, verses, total, loop, scrollerRef, onJump }: Pr
             style={{ top: `${pctOf(j.ayah)}%` }}
             data-juz-pct={pctOf(j.ayah)}
             onClick={() => onJump(j.ayah)}
-            onPointerEnter={() => showAt(j.ayah, `Juz ${j.n} begins here`)}
+            onPointerEnter={() => showAt(j.ayah, t("rail.juzBegins", { n: j.n }))}
             onPointerLeave={hide}
-            onFocus={() => showAt(j.ayah, `Juz ${j.n} begins here`)}
+            onFocus={() => showAt(j.ayah, t("rail.juzBegins", { n: j.n }))}
             onBlur={hide}
-            aria-label={`Juz ${j.n} begins at ayah ${j.ayah}`}
+            aria-label={t("rail.juzBeginsAt", { n: j.n, ayah: j.ayah })}
           >
-            Juz {j.n}
+            {t("common.juzN", { n: j.n })}
           </button>
         ))}
 

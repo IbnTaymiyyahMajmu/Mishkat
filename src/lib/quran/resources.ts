@@ -55,19 +55,23 @@ export const DEFAULT_GLOSS_LANGUAGE = "en";
 /**
  * Every reciter here carries word-level timings in the corpus, so recitation
  * can follow the text word by word rather than ayah by ayah.
+ *
+ * Each is named twice: in Latin letters, and as the name is written. A reader
+ * of Pashto or Persian is shown the second — the first is a transliteration
+ * of it, made for readers who cannot read the original.
  */
 export const RECITERS: Reciter[] = [
-  { id: 7, label: "Mishary Rashid al-ʿAfasy", timed: true },
-  { id: 2, label: "ʿAbd al-Bāsiṭ ʿAbd al-Ṣamad · Murattal", timed: true },
-  { id: 1, label: "ʿAbd al-Bāsiṭ ʿAbd al-Ṣamad · Mujawwad", timed: true },
-  { id: 6, label: "Maḥmūd Khalīl al-Ḥuṣarī", timed: true },
-  { id: 12, label: "Maḥmūd Khalīl al-Ḥuṣarī · Muʿallim", timed: true },
-  { id: 9, label: "Muhammad Ṣiddīq al-Minshāwī", timed: true },
-  { id: 3, label: "ʿAbd al-Raḥmān al-Sudays", timed: true },
-  { id: 4, label: "Abū Bakr al-Shāṭrī", timed: true },
-  { id: 5, label: "Hānī al-Rifāʿī", timed: true },
-  { id: 10, label: "Saʿūd al-Shuraym", timed: true },
-  { id: 11, label: "Muḥammad al-Ṭablāwī", timed: true },
+  { id: 7, label: "Mishary Rashid al-ʿAfasy", labelArabic: "مشاري راشد العفاسي", timed: true },
+  { id: 2, label: "ʿAbd al-Bāsiṭ ʿAbd al-Ṣamad · Murattal", labelArabic: "عبد الباسط عبد الصمد · مرتّل", timed: true },
+  { id: 1, label: "ʿAbd al-Bāsiṭ ʿAbd al-Ṣamad · Mujawwad", labelArabic: "عبد الباسط عبد الصمد · مجوّد", timed: true },
+  { id: 6, label: "Maḥmūd Khalīl al-Ḥuṣarī", labelArabic: "محمود خليل الحصري", timed: true },
+  { id: 12, label: "Maḥmūd Khalīl al-Ḥuṣarī · Muʿallim", labelArabic: "محمود خليل الحصري · معلّم", timed: true },
+  { id: 9, label: "Muhammad Ṣiddīq al-Minshāwī", labelArabic: "محمد صديق المنشاوي", timed: true },
+  { id: 3, label: "ʿAbd al-Raḥmān al-Sudays", labelArabic: "عبد الرحمن السديس", timed: true },
+  { id: 4, label: "Abū Bakr al-Shāṭrī", labelArabic: "أبو بكر الشاطري", timed: true },
+  { id: 5, label: "Hānī al-Rifāʿī", labelArabic: "هاني الرفاعي", timed: true },
+  { id: 10, label: "Saʿūd al-Shuraym", labelArabic: "سعود الشريم", timed: true },
+  { id: 11, label: "Muḥammad al-Ṭablāwī", labelArabic: "محمد الطبلاوي", timed: true },
 ];
 
 export const DEFAULT_RECITER = 7;

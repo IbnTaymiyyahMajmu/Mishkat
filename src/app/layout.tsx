@@ -5,12 +5,14 @@ import {
   Cormorant_Garamond,
   Lora,
   Noto_Naskh_Arabic,
+  Noto_Sans_Arabic,
   Scheherazade_New,
 } from "next/font/google";
 import "./globals.css";
 import { AppShell } from "@/components/AppShell";
 import { InlineScript } from "@/components/InlineScript";
 import { Providers } from "@/components/Providers";
+import { LOCALE_BOOTSTRAP } from "@/lib/i18n/locales";
 
 /* Self-hosted at build time by next/font: the pages make no request to a font
    CDN, which keeps the reader's visit between them and their host. */
@@ -52,6 +54,19 @@ const notoNaskh = Noto_Naskh_Arabic({
   display: "swap",
 });
 
+/* The face the interface itself is set in where its language is written in
+   Arabic script — Pashto, Persian. The two Latin faces above have no such
+   letters, and the Naskh is drawn for prose at reading size: at the ten and
+   eleven pixels of a label it closes up. This one is drawn for labels. It is
+   not preloaded, so a reader of English never fetches it. */
+const notoSansArabic = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  weight: ["400", "600"],
+  variable: "--font-noto-sans-arabic",
+  display: "swap",
+  preload: false,
+});
+
 export const metadata: Metadata = {
   title: {
     default: "Mishkāt · Read the Qur'an",
@@ -79,8 +94,12 @@ export const viewport: Viewport = {
 /* Runs in <head>, synchronously, while the browser is still parsing the
    document — so the reader's light is on the element before anything is
    painted, rather than a frame after React hydrates. The settings store reads
-   the same key through useSyncExternalStore, so the two always agree. */
-const THEME_BOOTSTRAP = `(function(){try{var s=JSON.parse(localStorage.getItem('mishkat.settings.v1')||'{}');if(s.theme==='day'||s.theme==='night')document.documentElement.dataset.theme=s.theme;if(s.arabicSize)document.documentElement.style.setProperty('--arabic-size',s.arabicSize+'px');}catch(e){}})()`;
+   the same key through useSyncExternalStore, so the two always agree.
+
+   The language is set here too, and for the same reason: see LOCALE_BOOTSTRAP.
+   It is tried separately, so that storage which cannot be read still leaves a
+   reader with their device's language rather than with none. */
+const BOOTSTRAP = `(function(){var d=document.documentElement,s={};try{s=JSON.parse(localStorage.getItem('mishkat.settings.v1')||'{}')||{};if(s.theme==='day'||s.theme==='night')d.dataset.theme=s.theme;if(s.arabicSize)d.style.setProperty('--arabic-size',s.arabicSize+'px');}catch(e){s={}}try{${LOCALE_BOOTSTRAP}}catch(e){}})()`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const fontVars = [
@@ -90,12 +109,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     amiriQuran.variable,
     scheherazade.variable,
     notoNaskh.variable,
+    notoSansArabic.variable,
   ].join(" ");
 
   return (
     <html lang="en" className={fontVars} data-theme="evening" suppressHydrationWarning>
       <head>
-        <InlineScript>{THEME_BOOTSTRAP}</InlineScript>
+        <InlineScript>{BOOTSTRAP}</InlineScript>
       </head>
       <body>
         <Providers>

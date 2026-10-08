@@ -1,0 +1,131 @@
+{
+  "surah": 89,
+  "epithet": "The dawn, the tyrants, and the soul at peace",
+  "lede": "It opens with oaths by sacred time, recalls three civilisations that thought themselves untouchable, corrects the way people read their own good and bad fortune — and ends with the most longed-for words in the Qurʾan: O soul at peace, return to your Lord.",
+  "names": [
+    {
+      "arabic": "الفجر",
+      "name": "al-Fajr",
+      "meaning": "The Dawn",
+      "note": "After the oath it opens with: the breaking of the darkness from the morning, as Ibn ʿAbbās explained it."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "Ibn al-Jawzī records agreement that all of it is Makkan, and al-Qurṭubī gives no other view. The traditional order places it tenth, among the earliest surahs.",
+    "period": "makkah-early",
+    "when": "The first years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ الفَجْرِ وَهِيَ مَكِّيَّةٌ كُلُّها بِإجْماعِهِمْ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ \"الْفَجْرِ\" مَكِّيَّةٌ، وَهِيَ ثَلَاثُونَ آيَةً"
+      }
+    ]
+  },
+  "setting": [
+    "No occasion is reported for the surah as a whole. It came to Makkah early, when the men who ran the city took their wealth and standing as proof that they were in the right, and the poverty of the first believers as proof that those were not.",
+    "The surah takes that reasoning apart. First it sets before them three powers far greater than Quraysh. ʿĀd of Iram, of the lofty pillars, whose like had not been created in the land. Thamūd, who hewed the rock in the valley. Pharaoh of the stakes. All of them overstepped, and filled the land with corruption; and your Lord poured upon them a scourge of punishment. Your Lord is ever on the watch.",
+    "Then it names the mistake directly. When his Lord tries the human being by honouring him and giving him ease, he says, “My Lord has honoured me.” When He tries him by straitening his provision, he says, “My Lord has humiliated me.” No. Neither is the measure. The measure is what you did with it — and the charge follows at once: you do not honour the orphan, you do not urge one another to feed the poor, you devour inheritance whole, and you love wealth with a boundless love."
+  ],
+  "occasions": [],
+  "aim": "To set out the scenes of divine greatness and power in the universe and in the states of man, and to show the end of those deluded by what they have.",
+  "themes": [
+    "Sacred time",
+    "ʿĀd, Thamūd and Pharaoh",
+    "Wealth as a test",
+    "The orphan and the poor",
+    "The soul at peace"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 5,
+      "title": "The oaths",
+      "summary": "By the dawn, and ten nights, and the even and the odd, and the night as it passes: is there not in that an oath for one of understanding? The ten nights are the first ten of Dhū l-Ḥijjah in the saying of Ibn ʿAbbās and most of the early commentators."
+    },
+    {
+      "from": 6,
+      "to": 14,
+      "title": "Three powers",
+      "summary": "Have you not seen how your Lord dealt with ʿĀd — Iram of the pillars; with Thamūd, who carved the rocks in the valley; and with Pharaoh of the stakes? They transgressed in the lands and spread much corruption, so your Lord poured on them a scourge of punishment. Your Lord is ever watchful."
+    },
+    {
+      "from": 15,
+      "to": 20,
+      "title": "The wrong measure",
+      "summary": "As for man: when his Lord tests him with honour and favour, he says, “My Lord has honoured me”; when He tests him by restricting his provision, he says, “My Lord has humiliated me.” No — you do not honour the orphan, nor urge the feeding of the poor; you consume inheritance greedily, and love wealth with immense love."
+    },
+    {
+      "from": 21,
+      "to": 26,
+      "title": "The Day he remembers",
+      "summary": "No — when the earth is pounded to dust, and your Lord comes, and the angels, rank upon rank, and Hell that Day is brought near: on that Day man will remember, but what use will remembering be? He will say, “If only I had sent something ahead for my life.” None punishes as He will punish that Day, and none binds as He will bind."
+    },
+    {
+      "from": 27,
+      "to": 30,
+      "title": "The soul at peace",
+      "summary": "O soul at peace: return to your Lord, well pleased and well pleasing. Enter among My servants. Enter My Paradise."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 27,
+    "why": "With the three ayat after it, the address every believer hopes to hear — at death, and again at the Resurrection."
+  },
+  "virtues": [
+    {
+      "text": "On the ten nights, as the majority read them: “There are no days in which righteous deeds are more beloved to Allah than these ten days.” They said: “Not even jihād in the way of Allah?” He ﷺ said: “Not even jihād in the way of Allah — except a man who goes out with his life and his wealth and returns with neither.”",
+      "narrator": "Ibn ʿAbbās",
+      "source": "Ṣaḥīḥ al-Bukhārī, 969 · Jāmiʿ al-Tirmidhī, 757",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "969"
+        },
+        {
+          "book": "tirmidhi",
+          "number": "757"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    }
+  ],
+  "before": "Al-Ghāshiyah asked whether they had looked at the camel, the sky, the mountains and the earth. Al-Fajr asks whether they have seen how their Lord dealt with those who built on that earth and defied Him.",
+  "after": "Al-Fajr rebukes those who do not honour the orphan or feed the poor. Al-Balad names exactly that as the steep road a person must climb: freeing a slave, feeding an orphan or a destitute man on a day of hunger.",
+  "notable": [
+    {
+      "ayah": 1,
+      "to": 2,
+      "label": "By the dawn, and ten nights"
+    },
+    {
+      "ayah": 14,
+      "label": "Your Lord is ever watchful"
+    },
+    {
+      "ayah": 15,
+      "to": 16,
+      "label": "“My Lord has honoured me… humiliated me”"
+    },
+    {
+      "ayah": 27,
+      "to": 30,
+      "label": "O soul at peace"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "al-Ṭabarī, Jāmiʿ al-Bayān",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī"
+  ]
+}

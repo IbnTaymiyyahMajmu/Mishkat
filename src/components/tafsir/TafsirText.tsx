@@ -3,6 +3,7 @@
 import { Fragment, useState } from "react";
 import type { Para } from "@/lib/quran/types";
 import { EDITOR_NOTE, SECTION_BREAK } from "@/lib/quran/tafsirApp";
+import { useT, type Translate } from "@/lib/i18n";
 import styles from "./Tafsir.module.css";
 
 /**
@@ -66,6 +67,7 @@ interface Notes {
   /** The notes opened one at a time, by their number in the passage. */
   open: ReadonlySet<number>;
   toggle: (n: number) => void;
+  t: Translate;
 }
 
 function Prose({ text, first, notes }: { text: string; first: number; notes: Notes }) {
@@ -90,14 +92,14 @@ function Prose({ text, first, notes }: { text: string; first: number; notes: Not
                   className={styles.noteMark}
                   onClick={() => notes.toggle(n)}
                   aria-expanded={shown}
-                  aria-label={`Footnote ${n}, by the editor of the printed edition`}
+                  aria-label={notes.t("tafsir.footnote", { n })}
                 >
                   {n}
                 </button>
               </span>
             )}
             {shown && (
-              <span className={styles.editorNote} title="A footnote by the editor of the printed edition">
+              <span className={styles.editorNote} title={notes.t("tafsir.footnoteTitle")}>
                 {part}
               </span>
             )}
@@ -109,9 +111,11 @@ function Prose({ text, first, notes }: { text: string; first: number; notes: Not
 }
 
 export function TafsirText({ paras, foldNotes = false }: { paras: Para[]; foldNotes?: boolean }) {
+  const t = useT();
   const [open, setOpen] = useState<ReadonlySet<number>>(() => new Set());
   const notes: Notes = {
     folded: foldNotes,
+    t,
     open,
     toggle: (n) =>
       setOpen((held) => {

@@ -1,0 +1,164 @@
+{
+  "surah": 46,
+  "epithet": "The sand-dunes of ʿĀd, and the jinn who listened",
+  "lede": "The last of the seven Ḥā Mīm surahs. A cloud rolls towards a proud people who think it is rain. A band of jinn hears the Qurʾan and tells one another to be silent. And a man of forty prays the prayer of someone who has finally grown up.",
+  "names": [
+    {
+      "arabic": "الأحقاف",
+      "name": "al-Aḥqāf",
+      "meaning": "The Sand-Dunes",
+      "note": "From its twenty-first ayah: the long, curving dunes of southern Arabia, between Oman and Ḥaḍramawt, where the people of ʿĀd lived and where Hūd warned them."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by the majority",
+    "detail": "It is Makkan in the saying of Ibn ʿAbbās, al-Ḥasan, Mujāhid, ʿIkrimah, Qatādah and the majority; al-Qurṭubī calls it Makkan in the saying of them all. One ayah, the tenth, is reported from Ibn ʿAbbās and Qatādah to be Madinan, because the witness from the Children of Israel that it mentions was understood to be ʿAbd Allāh ibn Salām; Muqātil added the thirty-fifth. It is the seventh and last of the Ḥawāmīm, and the traditional order places it sixty-sixth.",
+    "period": "makkah-late",
+    "when": "The later years in Makkah — about the time the jinn heard the Qurʾan at Nakhlah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "رَوى العَوْفِيُّ وابْنُ أبِي طَلْحَةَ عَنِ ابْنِ عَبّاسٍ أنَّها مَكِّيَّةٌ، وبِهِ قالَ الحَسَنُ، ومُجاهِدٌ، وعِكْرِمَةُ، وقَتادَةَ، والجُمْهُورُ. ورُوِيَ عَنِ ابْنِ عَبّاسٍ وقَتادَةَ أنَّهُما قالا: فِيها آيَةٌ مَدَنِيَّةٌ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْأَحْقَافِ مَكِّيَّةٌ فِي قَوْلِ جميعهم"
+      }
+    ]
+  },
+  "setting": [
+    "By the late Makkan years the Prophet ﷺ had been called a sorcerer, a forger and a novelty. This surah has him answer the last charge in a line of great modesty: “Say: I am no new thing among the messengers, and I do not know what will be done with me or with you. I only follow what is revealed to me.”",
+    "It then gives Quraysh three mirrors. The first is ʿĀd. They were greater than Makkah in every way — “We had established them in what We have not established you” — and when the punishment came they mistook it for a blessing. They saw a cloud advancing on their valleys and said, “This is a cloud bringing us rain.” No: it is what you asked to be hastened, a wind in which is a painful punishment. ʿĀʾishah says that whenever the Prophet ﷺ saw cloud or wind, the change could be seen in his face; and when she asked him why, he recalled those very words.",
+    "The second is a group of jinn. Passing by as he recited, they said to one another, “Listen in silence”; and when it was finished they returned to their people as warners: “We have heard a Book sent down after Mūsā, confirming what came before it, guiding to the truth.” It is the same event told at length in Sūrat al-Jinn. Creatures of another kind had believed on one hearing.",
+    "The third is drawn from inside a household: a child grown to full strength who, at forty, asks his Lord to make him grateful for what was given to him and to his parents — and beside him a son who says “Uff!” to his parents when they plead with him to believe."
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        10,
+        10
+      ],
+      "title": "A witness from the Children of Israel",
+      "text": "Saʿd ibn Abī Waqqāṣ said: “I never heard the Prophet ﷺ say of anyone walking the earth that he was of the people of Paradise, except ʿAbd Allāh ibn Salām. And about him this ayah was revealed: ‘and a witness from the Children of Israel has testified to the like of it.’”",
+      "source": "Saʿd ibn Abī Waqqāṣ: al-Bukhārī (3812) and Muslim (2483). Others held the ayah Makkan and the witness to be Mūsā."
+    },
+    {
+      "ayat": [
+        29,
+        32
+      ],
+      "title": "The jinn at Nakhlah",
+      "text": "A party of jinn was turned towards the Prophet ﷺ and heard him reciting. They listened in silence, believed, and went back to warn their people. The event is the one narrated by Ibn ʿAbbās for Sūrat al-Jinn.",
+      "source": "Ibn ʿAbbās: al-Bukhārī (4921) and Muslim (449)."
+    }
+  ],
+  "aim": "To establish the proof against the deniers and warn them of punishment — which is why the word “warning” recurs in it.",
+  "themes": [
+    "The helplessness of what is worshipped besides Allah",
+    "The Prophet ﷺ no novelty",
+    "Kindness to parents",
+    "ʿĀd at the dunes",
+    "The jinn who believed",
+    "The patience of the messengers of resolve"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 6,
+      "title": "What have they created?",
+      "summary": "Ḥā Mīm. We did not create the heavens and the earth except in truth and for an appointed term. Say: have you considered what you call upon besides Allah — show me what they have created of the earth; or have they a share in the heavens? Who is further astray than one who calls on those who will not answer him until the Day of Resurrection, and who are unaware of his calling?"
+    },
+    {
+      "from": 7,
+      "to": 14,
+      "title": "No new thing among the messengers",
+      "summary": "When Our clear ayat are recited they say, “This is plain magic,” or, “He has invented it.” Say: I am no novelty among the messengers, and I do not know what will be done with me or with you. Have you considered: if it is from Allah and you reject it, while a witness from the Children of Israel has testified to its like and believed? Before it was the Book of Mūsā, a guide and a mercy. Those who say, “Our Lord is Allah,” and then stand firm — no fear shall be upon them."
+    },
+    {
+      "from": 15,
+      "to": 20,
+      "title": "Two sons",
+      "summary": "We have enjoined on man goodness to his parents: his mother carried him in hardship and bore him in hardship. When he reaches full strength and reaches forty years he says: “My Lord, inspire me to be grateful for Your favour upon me and upon my parents, and to do right such as pleases You, and make my offspring righteous” (46:15). And the one who says to his parents, “Uff to you! Do you promise me that I shall be brought out?”"
+    },
+    {
+      "from": 21,
+      "to": 28,
+      "title": "ʿĀd at the dunes",
+      "summary": "Remember the brother of ʿĀd, when he warned his people at the sand-dunes. They said: bring us what you threaten us with. When they saw it as a cloud approaching their valleys they said, “This is a cloud that will give us rain.” No — it is what you sought to hasten: a wind bringing a painful punishment, destroying everything by the command of its Lord. Morning found nothing to be seen but their dwellings. We had established them as We have not established you."
+    },
+    {
+      "from": 29,
+      "to": 32,
+      "title": "The jinn who listened",
+      "summary": "We turned towards you a group of jinn, listening to the Qurʾan. When they were in its presence they said, “Be silent.” When it was ended they returned to their people as warners: “Our people, we have heard a Book sent down after Mūsā, confirming what was before it. Our people, answer the one who calls to Allah.”"
+    },
+    {
+      "from": 33,
+      "to": 35,
+      "title": "Be patient",
+      "summary": "Do they not see that Allah, who created the heavens and the earth and was not wearied by creating them, is able to give life to the dead? So be patient, as the messengers of firm resolve were patient, and do not seek to hasten it for them. On the Day they see what they are promised, it will be as though they had stayed but an hour of a day."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 15,
+    "why": "The prayer of maturity — said at forty, for one’s parents, oneself and one’s children all at once."
+  },
+  "virtues": [
+    {
+      "text": "ʿĀʾishah said: “I never saw the Messenger of Allah ﷺ laugh so fully that I could see his uvula; he would only smile. And when he saw cloud or wind, it could be seen in his face.” She asked him about it and he said: “ʿĀʾishah, what assures me that there is not punishment in it? A people were punished by the wind; a people saw the punishment and said: ‘This is a cloud bringing us rain.’”",
+      "narrator": "ʿĀʾishah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4829 · Ṣaḥīḥ Muslim, 899",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4829"
+        },
+        {
+          "book": "muslim",
+          "number": "899"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    }
+  ],
+  "before": "Al-Jāthiyah closed with the majesty of the Lord of the heavens and the earth. Al-Aḥqāf opens by asking what share anyone else has in either.",
+  "after": "Al-Aḥqāf ends by telling the Prophet ﷺ to be patient and not to hasten the matter for the disbelievers. The next surah, which bears his name, belongs to Madinah — where the time for patience alone had passed.",
+  "notable": [
+    {
+      "ayah": 9,
+      "label": "“I am no new thing among the messengers”"
+    },
+    {
+      "ayah": 13,
+      "label": "“Our Lord is Allah” — and then stand firm"
+    },
+    {
+      "ayah": 15,
+      "label": "The prayer at forty"
+    },
+    {
+      "ayah": 24,
+      "to": 25,
+      "label": "“This is a cloud bringing us rain”"
+    },
+    {
+      "ayah": 29,
+      "to": 31,
+      "label": "The jinn who listened"
+    },
+    {
+      "ayah": 35,
+      "label": "As the messengers of firm resolve were patient"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

@@ -1,7 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { TAFSIR_SHELVES, tafsirWork, type TafsirLang, type TafsirWork } from "@/lib/quran/tafsir";
+import { tafsirWork, type TafsirLang, type TafsirWork } from "@/lib/quran/tafsir";
+import { useT } from "@/lib/i18n";
+import { useTafsirSay } from "./useTafsirSay";
 import styles from "./Tafsir.module.css";
 
 /**
@@ -27,23 +29,32 @@ export function TafsirTabs({
   onChoose: () => void;
 }) {
   const stripRef = useRef<HTMLDivElement>(null);
+  const t = useT();
+  const say = useTafsirSay();
 
   // The tab being read is kept in sight: on a phone the strip scrolls, and a
-  // work chosen from the library may be off its far end.
+  // work chosen from the library may be off its far end. Measured on screen
+  // rather than by offsets, so that it holds whichever way the strip runs: a
+  // strip read right to left scrolls in negative numbers, and the offsets this
+  // used to be worked out from assumed it never did.
   useEffect(() => {
     const strip = stripRef.current;
     const tab = strip?.querySelector<HTMLElement>('[aria-selected="true"]');
     if (!strip || !tab) return;
-    const left = tab.offsetLeft - 12;
-    // …and clear of the fade the strip ends in, not only of its edge.
-    const right = tab.offsetLeft + tab.offsetWidth + 30;
-    if (left < strip.scrollLeft) strip.scrollLeft = left;
-    else if (right > strip.scrollLeft + strip.clientWidth) strip.scrollLeft = right - strip.clientWidth;
+    const box = strip.getBoundingClientRect();
+    const at = tab.getBoundingClientRect();
+    // …and clear of the fade the strip ends in, not only of its edge. The
+    // fade is at the far end, which is the left one on a page read that way.
+    const rtl = getComputedStyle(strip).direction === "rtl";
+    const left = at.left - (rtl ? 30 : 12) - box.left;
+    const right = at.right + (rtl ? 12 : 30) - box.right;
+    if (left < 0) strip.scrollLeft += left;
+    else if (right > 0) strip.scrollLeft += right;
   }, [active, works.length]);
 
   return (
     <div className={styles.tabsRow}>
-      <div className={styles.tabs} role="tablist" aria-label="Works of tafsir" ref={stripRef}>
+      <div className={styles.tabs} role="tablist" aria-label={t("tafsir.works")} ref={stripRef}>
         {works.map((w) => (
           <button
             key={w.id}
@@ -51,10 +62,10 @@ export function TafsirTabs({
             aria-selected={!choosing && active === w.id}
             className={`${styles.tab} ${!choosing && active === w.id ? styles.tabOn : ""}`}
             onClick={() => onPick(w.id)}
-            title={`${w.name} — ${w.credit}`}
+            title={`${say.name(w)} — ${say.credit(w)}`}
           >
-            {w.short}
-            <span className={styles.tabLang}>{w.lang === "ar" ? "ع" : "EN"}</span>
+            {say.short(w)}
+            <span className={styles.tabLang}>{say.badge(w.lang)}</span>
           </button>
         ))}
       </div>
@@ -62,13 +73,13 @@ export function TafsirTabs({
         className={`${styles.choose} ${choosing ? styles.chooseOn : ""}`}
         onClick={onChoose}
         aria-expanded={choosing}
-        title="Every work in the library"
+        title={t("tafsir.everyWork")}
       >
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
           <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
         </svg>
-        {choosing ? "Done" : "All works"}
+        {choosing ? t("tafsir.done") : t("tafsir.allWorks")}
       </button>
     </div>
   );
@@ -82,9 +93,10 @@ export function TafsirTabs({
  * stands for as long as the same work is being read.
  */
 export function useShelfLanguage(active: TafsirWork | undefined) {
+  const { shelves } = useTafsirSay();
   const anchor = active?.id ?? "";
   const [chosen, setChosen] = useState<{ for: string; lang: TafsirLang } | null>(null);
-  const lang: TafsirLang = chosen?.for === anchor ? chosen.lang : (active?.lang ?? "en");
+  const lang: TafsirLang = chosen?.for === anchor ? chosen.lang : (active?.lang ?? shelves[0]?.lang ?? "en");
   const choose = useCallback((next: TafsirLang) => setChosen({ for: anchor, lang: next }), [anchor]);
   return [lang, choose] as const;
 }
@@ -94,9 +106,11 @@ export function useShelfLanguage(active: TafsirWork | undefined) {
  * Everything under it is one shelf, which is a list short enough to take in.
  */
 export function TafsirLanguages({ lang, onLang }: { lang: TafsirLang; onLang: (lang: TafsirLang) => void }) {
+  const t = useT();
+  const say = useTafsirSay();
   return (
-    <div className={styles.langs} role="tablist" aria-label="The language of the works">
-      {TAFSIR_SHELVES.map((s) => (
+    <div className={styles.langs} role="tablist" aria-label={t("tafsir.languages")}>
+      {say.shelves.map((s) => (
         <button
           key={s.id}
           role="tab"
@@ -104,7 +118,7 @@ export function TafsirLanguages({ lang, onLang }: { lang: TafsirLang; onLang: (l
           className={`${styles.lang} ${s.lang === lang ? styles.langOn : ""}`}
           onClick={() => onLang(s.lang)}
         >
-          {s.label}
+          {say.language(s.lang)}
           <span className={styles.langCount}>{s.works.length}</span>
         </button>
       ))}
@@ -139,19 +153,21 @@ export function TafsirLibrary({
   onPick?: (id: string) => void;
   onToggle: (id: string) => void;
 }) {
+  const t = useT();
+  const say = useTafsirSay();
   const [lang, setLang] = useShelfLanguage(tafsirWork(active));
-  const group = TAFSIR_SHELVES.find((s) => s.lang === lang) ?? TAFSIR_SHELVES[0];
+  const group = say.shelves.find((s) => s.lang === lang) ?? say.shelves[0];
   if (!group) return null;
 
   return (
     <div className={styles.library}>
       <TafsirLanguages lang={group.lang} onLang={setLang} />
-      <p className={styles.groupNote}>{group.note}</p>
+      <p className={styles.groupNote}>{say.shelfNote(group)}</p>
 
       {group.sections.map((section) => (
         <section key={section.id} className={styles.section}>
           <h3 className={styles.sectionTitle}>
-            {section.title}
+            {say.section(section)}
             {section.titleArabic && (
               <span className={styles.sectionArabic} dir="rtl" lang="ar">
                 {section.titleArabic}
@@ -161,39 +177,46 @@ export function TafsirLibrary({
 
           {section.works.map((w) => {
             const kept = shelf.includes(w.id);
+            const other = w.lang === "ar" ? say.counterpart(w) : undefined;
+            const arabic = say.arabic(w);
+            const title = say.title(w);
             return (
               <div key={w.id} className={`${styles.entry} ${active === w.id ? styles.entryOn : ""}`}>
                 <button
                   className={styles.entryMain}
                   onClick={() => (onPick ? onPick(w.id) : onToggle(w.id))}
                   aria-current={active === w.id ? "true" : undefined}
-                  title={w.credit}
+                  title={say.credit(w)}
                 >
                   {/* Where a section is one work of each kind, the kind leads:
                       it is the reason the work is on the list. */}
-                  {section.lead === "kind" && <span className={styles.entryKind}>{w.kind}</span>}
+                  {section.lead === "kind" && <span className={styles.entryKind}>{say.kind(w)}</span>}
                   <span className={styles.entryTop}>
-                    <span className={styles.entryShort}>{w.short}</span>
-                    {w.era && <span className={styles.entryEra}>{w.era}</span>}
-                    {w.nameArabic && (
+                    <span className={styles.entryShort}>{say.short(w)}</span>
+                    {say.era(w) && <span className={styles.entryEra}>{say.era(w)}</span>}
+                    {arabic && (
                       <span className={styles.entryArabic} dir="rtl" lang="ar">
-                        {w.nameArabic}
+                        {arabic}
                       </span>
                     )}
                   </span>
                   <span className={styles.entryName}>
-                    {w.name}
-                    {w.nameEnglish && <span className={styles.entryEnglish}> — {w.nameEnglish}</span>}
+                    {say.name(w)}
+                    {title && <span className={styles.entryEnglish}> — {title}</span>}
                   </span>
-                  <span className={styles.entryAbout}>{w.about}</span>
-                  {w.pair && w.lang === "ar" && <span className={styles.entryAlso}>Also here in English</span>}
+                  <span className={styles.entryAbout}>{say.about(w)}</span>
+                  {other && (
+                    <span className={styles.entryAlso}>
+                      {t("tafsir.alsoHere", { language: say.language(other.work.lang) })}
+                    </span>
+                  )}
                 </button>
                 <button
                   className={`${styles.keep} ${kept ? styles.keepOn : ""}`}
                   onClick={() => onToggle(w.id)}
                   aria-pressed={kept}
-                  aria-label={kept ? `Remove ${w.short} from your tabs` : `Keep ${w.short} among your tabs`}
-                  title={kept ? "Among your tabs — press to put away" : "Keep among your tabs"}
+                  aria-label={t(kept ? "tafsir.remove" : "tafsir.keep", { work: say.short(w) })}
+                  title={t(kept ? "tafsir.keptTitle" : "tafsir.keepTitle")}
                 >
                   <svg width="15" height="15" viewBox="0 0 24 24" fill={kept ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M12 17v5" />

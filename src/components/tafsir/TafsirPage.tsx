@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { fetchVerse } from "@/lib/quran/api";
-import { TAFSIR_SHELVES, tafsirWork } from "@/lib/quran/tafsir";
+import { tafsirWork } from "@/lib/quran/tafsir";
 import { translationName } from "@/lib/quran/translations";
 import { SURAH_NAMES } from "@/lib/quran/surahNames";
 import type { Verse } from "@/lib/quran/types";
@@ -12,8 +12,11 @@ import { useChapters } from "@/lib/store/chapters";
 import { useSettings } from "@/lib/store/settings";
 import { isValidVerseKey, plainText } from "@/lib/text";
 import { Navigator } from "@/components/navigator/Navigator";
+import { useLocale } from "@/lib/i18n";
+import { useSurahNames } from "@/lib/i18n/surah";
 import { TafsirReading } from "./TafsirReading";
 import { TafsirLanguages, TafsirLibrary, TafsirTabs, useShelfLanguage } from "./TafsirShelf";
+import { useTafsirSay } from "./useTafsirSay";
 import { useTafsirShelf } from "./useTafsirShelf";
 import styles from "./TafsirPage.module.css";
 
@@ -40,6 +43,9 @@ export function TafsirPage() {
   const params = useSearchParams();
   const { settings, lastRead } = useSettings();
   const { byId } = useChapters();
+  const { t, arrows } = useLocale();
+  const names = useSurahNames();
+  const say = useTafsirSay();
   const { shelf, works, active, pick, toggle, scale, resize } = useTafsirShelf();
 
   // ── which ayah ────────────────────────────────────────────────────────────
@@ -55,8 +61,9 @@ export function TafsirPage() {
     (n: number) => byId(n)?.verses_count ?? SURAH_NAMES[n - 1]?.ayat ?? 0,
     [byId],
   );
-  const surahName = byId(surah)?.name_simple ?? SURAH_NAMES[surah - 1]?.english ?? `Surah ${surah}`;
+  const surahName = names.name(surah);
   const total = ayatIn(surah);
+  const placeLabel = total ? t("common.ayahOf", { n: ayah, total }) : t("common.ayahN", { n: ayah });
 
   // ── which works ───────────────────────────────────────────────────────────
   const primary = tafsirWork(params.get("w")) ?? active;
@@ -66,7 +73,7 @@ export function TafsirPage() {
   const [choosing, setChoosing] = useState(false);
   const [navigating, setNavigating] = useState(false);
   const [railLang, setRailLang] = useShelfLanguage(primary);
-  const railShelf = TAFSIR_SHELVES.find((s) => s.lang === railLang) ?? TAFSIR_SHELVES[0];
+  const railShelf = say.shelves.find((s) => s.lang === railLang) ?? say.shelves[0];
   const [range, setRange] = useState<{ key: string; from: number; to: number } | null>(null);
   const shellRef = useRef<HTMLDivElement>(null);
   const railRef = useRef<HTMLDivElement>(null);
@@ -188,24 +195,21 @@ export function TafsirPage() {
       {/* ── where this is, and the way to anywhere else ────────────────── */}
       <div className={styles.bar}>
         <Link href={`/read/${surah}/#${verseKey}`} className={styles.back}>
-          ← <span className={styles.backLabel}>Back to the text</span>
+          {arrows.prev} <span className={styles.backLabel}>{t("tafsir.back")}</span>
         </Link>
 
         <button
           className={styles.place}
           onClick={() => setNavigating(true)}
           aria-haspopup="dialog"
-          aria-label={`${surahName}, ayah ${ayah}${total ? ` of ${total}` : ""}. Go to another ayah or surah`}
-          title="Go to an ayah or another surah (g)"
+          aria-label={`${surahName}, ${placeLabel}. ${t("goto.open")}`}
+          title={t("goto.title")}
         >
           <span className={styles.placeSurah}>
             <span className={styles.placeNumber}>{surah}</span>
             {surahName}
           </span>
-          <span className={styles.placeAyah}>
-            Ayah {ayah}
-            {total ? ` of ${total}` : ""}
-          </span>
+          <span className={styles.placeAyah}>{placeLabel}</span>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="m6 9 6 6 6-6" />
           </svg>
@@ -216,7 +220,7 @@ export function TafsirPage() {
             className={styles.step}
             onClick={() => prevKey && go({ v: prevKey })}
             disabled={!prevKey}
-            title="The ayah before (p)"
+            title={t("tafsir.before")}
           >
             ‹ <span className={styles.stepLabel}>{prevKey ?? ""}</span>
           </button>
@@ -224,15 +228,15 @@ export function TafsirPage() {
             className={styles.step}
             onClick={() => nextKey && go({ v: nextKey })}
             disabled={!nextKey}
-            title="The ayah after (n)"
+            title={t("tafsir.after")}
           >
             <span className={styles.stepLabel}>{nextKey ?? ""}</span> ›
           </button>
-          <span className={styles.sizer} role="group" aria-label="Text size">
-            <button onClick={() => resize(-1)} disabled={scale <= 0.86} aria-label="Smaller text">
+          <span className={styles.sizer} role="group" aria-label={t("tafsir.textSize")}>
+            <button onClick={() => resize(-1)} disabled={scale <= 0.86} aria-label={t("tafsir.smaller")}>
               A−
             </button>
-            <button onClick={() => resize(1)} disabled={scale >= 1.59} aria-label="Larger text">
+            <button onClick={() => resize(1)} disabled={scale >= 1.59} aria-label={t("tafsir.larger")}>
               A+
             </button>
           </span>
@@ -241,13 +245,15 @@ export function TafsirPage() {
 
       <div className={styles.layout}>
         {/* ── the library, down the side ──────────────────────────────── */}
-        <nav className={styles.rail} aria-label="Works of tafsir">
+        <nav className={styles.rail} aria-label={t("tafsir.works")}>
           <div className={styles.railInner} ref={railRef}>
             <TafsirLanguages lang={railLang} onLang={setRailLang} />
             {railShelf?.sections.map((section) => (
               <div key={section.id} className={styles.railSection}>
-                <div className={styles.railHeading}>{section.title}</div>
-                {section.works.map((w) => (
+                <div className={styles.railHeading}>{say.section(section)}</div>
+                {section.works.map((w) => {
+                  const also = w.lang === "ar" ? say.counterpart(w) : undefined;
+                  return (
                   <button
                     key={w.id}
                     className={[
@@ -259,19 +265,24 @@ export function TafsirPage() {
                       .join(" ")}
                     onClick={() => read(w.id)}
                     aria-current={primary?.id === w.id ? "true" : undefined}
-                    title={`${w.name}${w.nameEnglish ? ` — ${w.nameEnglish}` : ""}. ${w.credit}. ${w.about}`}
+                    title={`${say.name(w)}${say.title(w) ? ` — ${say.title(w)}` : ""}. ${say.credit(w)}. ${say.about(w)}`}
                   >
                     {/* Where a section is one work of each kind, the kind
                         leads: it is the reason the work is on the list. */}
-                    {section.lead === "kind" && <span className={styles.railLead}>{w.kind}</span>}
+                    {section.lead === "kind" && <span className={styles.railLead}>{say.kind(w)}</span>}
                     <span className={styles.railShort}>
-                      {w.short}
-                      {w.pair && w.lang === "ar" && <span className={styles.railAlso}>+ English</span>}
-                      {second?.id === w.id && <span className={styles.railAlso}>beside</span>}
+                      {say.short(w)}
+                      {also && (
+                        <span className={styles.railAlso}>
+                          {t("tafsir.also", { language: say.language(also.work.lang) })}
+                        </span>
+                      )}
+                      {second?.id === w.id && <span className={styles.railAlso}>{t("tafsir.besideTag")}</span>}
                     </span>
-                    {section.lead === "by" && <span className={styles.railBy}>{w.by}</span>}
+                    {section.lead === "by" && <span className={styles.railBy}>{say.by(w)}</span>}
                   </button>
-                ))}
+                  );
+                })}
               </div>
             ))}
           </div>
@@ -291,10 +302,10 @@ export function TafsirPage() {
                 </p>
                 {translation?.text && (
                   <>
-                    <p className={`${styles.ayahEnglish} ${folded ? styles.ayahFolded : ""}`}>
+                    <p className={`${styles.ayahEnglish} ${folded ? styles.ayahFolded : ""}`} dir="auto">
                       {plainText(translation.text)}
                     </p>
-                    <div className={styles.ayahCredit}>Translation of the meaning · {translator}</div>
+                    <div className={styles.ayahCredit}>{t("common.translationOf", { name: translator })}</div>
                   </>
                 )}
                 {long && (
@@ -303,13 +314,13 @@ export function TafsirPage() {
                     onClick={() => setUnfolded(folded ? verseKey : "")}
                     aria-expanded={!folded}
                   >
-                    {folded ? "Show the whole ayah" : "Fold the ayah"}
+                    {folded ? t("tafsir.unfold") : t("tafsir.fold")}
                   </button>
                 )}
               </>
             )}
             {shownVerse === null && (
-              <p className={styles.ayahPending}>The ayah itself could not be reached; the tafsir below does not depend on it.</p>
+              <p className={styles.ayahPending}>{t("tafsir.ayahUnreached")}</p>
             )}
           </header>
 
@@ -333,7 +344,7 @@ export function TafsirPage() {
             <div className={`${styles.columns} ${second ? styles.columnsTwo : ""}`}>
               {primary && (
                 <div className={styles.column}>
-                  {second && <div className={styles.columnLabel}>Reading</div>}
+                  {second && <div className={styles.columnLabel}>{t("tafsir.reading")}</div>}
                   <TafsirReading
                     key={primary.id}
                     work={primary}
@@ -341,27 +352,26 @@ export function TafsirPage() {
                     onRange={onRange}
                     alternatives={works.filter((w) => w.id !== primary.id)}
                     onPick={read}
-                    onBeside={second?.id === primary.pair?.id ? undefined : (id) => go({ c: id })}
+                    onBeside={second?.id === say.counterpart(primary)?.work.id ? undefined : (id) => go({ c: id })}
                     // Setting two works side by side is the site's whole promise
                     // about tafsir, so the way to do it has its name on it. It
                     // wants a page's width, and is left out where there is none.
                     tools={
                       <label className={styles.beside}>
-                        Read beside it
+                        {t("tafsir.readBeside")}
                         <select
                           className={styles.besideSelect}
                           value={second?.id ?? ""}
                           onChange={(e) => go({ c: e.target.value || null })}
                         >
-                          <option value="">Nothing</option>
-                          {TAFSIR_SHELVES.map((group) => (
-                            <optgroup key={group.id} label={group.title}>
+                          <option value="">{t("tafsir.nothing")}</option>
+                          {say.shelves.map((group) => (
+                            <optgroup key={group.id} label={t("tafsir.in", { language: say.language(group.lang) })}>
                               {group.works
                                 .filter((w) => w.id !== primary.id)
                                 .map((w) => (
                                   <option key={w.id} value={w.id}>
-                                    {w.short}
-                                    {w.lang === "ar" && w.nameEnglish ? ` — ${w.nameEnglish}` : ` — ${w.kind}`}
+                                    {say.short(w)} — {(w.lang === "ar" && (say.title(w) || say.by(w))) || say.kind(w)}
                                   </option>
                                 ))}
                             </optgroup>
@@ -375,9 +385,9 @@ export function TafsirPage() {
               {second && (
                 <div className={styles.column}>
                   <div className={styles.columnLabel}>
-                    Beside it
+                    {t("tafsir.besideIt")}
                     <button className={styles.closeSecond} onClick={() => go({ c: null })}>
-                      Close ✕
+                      {t("common.close")} ✕
                     </button>
                   </div>
                   <TafsirReading key={second.id} work={second} verseKey={verseKey} />
@@ -389,13 +399,13 @@ export function TafsirPage() {
           {!choosing && (
             <footer className={styles.foot}>
               <button className="btn btn-secondary" onClick={() => prevKey && go({ v: prevKey })} disabled={!prevKey}>
-                ← {prevKey ?? "The beginning"}
+                {arrows.prev} {prevKey ?? t("tafsir.beginning")}
               </button>
               <Link href={`/read/${surah}/#${verseKey}`} className="btn btn-ghost">
-                Back to the text
+                {t("tafsir.back")}
               </Link>
               <button className="btn btn-primary" onClick={() => nextKey && go({ v: nextKey })} disabled={!nextKey}>
-                {nextKey ?? "The end"} →
+                {nextKey ?? t("tafsir.end")} {arrows.next}
               </button>
             </footer>
           )}

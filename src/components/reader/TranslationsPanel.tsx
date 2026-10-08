@@ -2,6 +2,7 @@
 
 import type { Verse } from "@/lib/quran/types";
 import { TranslationLibrary } from "@/components/translations/TranslationLibrary";
+import { useT } from "@/lib/i18n";
 import styles from "./Panels.module.css";
 
 interface Props {
@@ -27,6 +28,7 @@ export function TranslationsPanel({ verse, verseKey, ayahCount, onMove }: Props)
   const [surah, ayahText] = verseKey.split(":");
   const ayah = Number(ayahText);
   const total = Math.max(ayahCount, ayah);
+  const t = useT();
 
   return (
     <>
@@ -42,18 +44,18 @@ export function TranslationsPanel({ verse, verseKey, ayahCount, onMove }: Props)
             className={styles.step}
             onClick={() => onMove(`${surah}:${ayah - 1}`)}
             disabled={ayah <= 1}
-            aria-label={`Previous: ayah ${ayah - 1}`}
+            aria-label={t("panel.prev", { n: ayah - 1 })}
           >
             ‹ {ayah > 1 ? ayah - 1 : ""}
           </button>
           <span className={styles.stepHere}>
-            Ayah {ayah} of {total}
+            {t("common.ayahOf", { n: ayah, total })}
           </span>
           <button
             className={styles.step}
             onClick={() => onMove(`${surah}:${ayah + 1}`)}
             disabled={ayah >= total}
-            aria-label={`Next: ayah ${ayah + 1}`}
+            aria-label={t("panel.next", { n: ayah + 1 })}
           >
             {ayah < total ? ayah + 1 : ""} ›
           </button>

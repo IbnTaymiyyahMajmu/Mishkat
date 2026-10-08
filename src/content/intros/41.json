@@ -1,0 +1,157 @@
+{
+  "surah": 41,
+  "epithet": "A Book whose ayat are set out in detail",
+  "lede": "Quraysh sent their most eloquent man to buy the Prophet ﷺ off. He let him finish, then recited the opening of this surah — until the envoy put a hand over his mouth and begged him to stop. He went back and told them: leave this man alone.",
+  "names": [
+    {
+      "arabic": "فصّلت",
+      "name": "Fuṣṣilat",
+      "meaning": "Set Out in Detail",
+      "note": "From its third ayah: “a Book whose ayat have been set out in detail, an Arabic Qurʾan, for people who know.”"
+    },
+    {
+      "arabic": "حم السجدة",
+      "name": "Ḥā Mīm al-Sajdah",
+      "meaning": "Ḥā Mīm of the Prostration",
+      "note": "The name it most often has in the early books, to tell it from the other Ḥā Mīm surahs and from Sūrat al-Sajdah: it contains an ayah of prostration. Ibn al-Jawzī heads it al-Sajdah, and adds Sajdat al-Muʾmin and al-Maṣābīḥ, the Lamps."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "It is Makkan in the saying of all; Ibn al-Jawzī and al-Qurṭubī both record the agreement. It is the second of the Ḥawāmīm, and the traditional order places it sixty-first. The meeting with ʿUtbah ibn Rabīʿah, at which its opening was recited, took place after Ḥamzah had accepted Islam and while the Muslims were growing in number.",
+    "period": "makkah-late",
+    "when": "The later years in Makkah, when Quraysh turned from abuse to offers",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ السَّجْدَةِ مَكِّيَّةٌ [كُلُّها] بِإجْماعِهِمْ، ويُقالُ لَها: سَجْدَةُ المُؤْمِنِ، ويُقالُ لَها: المَصابِيحُ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ فُصِّلَتْ مَكِّيَّةٌ فِي قَوْلِ الْجَمِيعِ وَهِيَ أربع وخمسون"
+      }
+    ]
+  },
+  "setting": [
+    "Ibn Kathīr gives the story at the head of the surah, from several routes. Quraysh met and said: find us the man most learned in sorcery, soothsaying and poetry, and let him go to this man who has split our community and reviled our religion, and see what answer he gets. They said: we know of no one but ʿUtbah ibn Rabīʿah.",
+    "ʿUtbah went to him. If you want wealth, he said, we will collect for you until you are the richest of us. If you want honour, we will make you our chief. If you want kingship, we will make you king. And if this thing that comes to you is a spirit you cannot shake off, we will pay for physicians until you are cured. The Messenger of Allah ﷺ waited until he had finished. “Have you done, Abū al-Walīd?” “Yes.” “Then listen to me.” And he recited: “Ḥā Mīm. A sending down from the Most Merciful, the Especially Merciful. A Book whose ayat are set out in detail…” — on, until he reached: “But if they turn away, say: I have warned you of a thunderbolt like the thunderbolt of ʿĀd and Thamūd.” ʿUtbah put his hand over the Prophet’s ﷺ mouth and implored him by their kinship to stop.",
+    "He went back changed. “I have heard words such as, by Allah, I have never heard. It is not poetry, nor sorcery, nor soothsaying. Men of Quraysh, take my advice: leave this man to what he is about.” They said: he has bewitched you with his tongue.",
+    "The surah describes exactly the people ʿUtbah returned to. “Our hearts are under covers from what you call us to; in our ears is deafness; and between us and you is a veil.” And later: “Do not listen to this Qurʾan; drown it in noise, so that you may prevail.” Against that it sets the calm of those who say, “Our Lord is Allah,” and then stand firm — and a rule for answering hostility that is among the highest things the Qurʾan teaches: repel with what is better, and the one between whom and you there was enmity will be as though he were a close friend."
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        1,
+        13
+      ],
+      "title": "ʿUtbah ibn Rabīʿah",
+      "text": "ʿUtbah came to the Prophet ﷺ on behalf of Quraysh with offers of wealth, leadership and kingship. When he had finished, the Messenger of Allah ﷺ recited to him from the beginning of this surah as far as the warning of “a thunderbolt like the thunderbolt of ʿĀd and Thamūd”, and ʿUtbah put his hand on his mouth and adjured him by their kinship to stop.",
+      "source": "Ibn Kathīr, from Jābir ibn ʿAbd Allāh through ʿAbd ibn Ḥumayd, Abū Yaʿlā and al-Baghawī, and from Ibn Isḥāq.",
+      "evidence": {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "فَقَالُوا: مَا نَعْلَمُ أَحَدًا غَيْرَ عتبة ابن رَبِيعَةَ. فَقَالُوا: أَنْتَ يَا أَبَا الْوَلِيدِ. فَأَتَاهُ عُتْبَةُ فَقَالَ: يَا مُحَمَّدُ، أَنْتَ خَيْرٌ أَمْ عَبْدُ اللَّهِ؟ فَسَكَتَ رَسُولُ اللَّهِ ﷺ"
+      }
+    }
+  ],
+  "aim": "To show how those who turn away from the Qurʾan are to be treated gently — by making plain that the Qurʾan is the truth, and what turning from it leads to.",
+  "themes": [
+    "The Qurʾan in clear Arabic",
+    "Turning away",
+    "The creation of the heavens and the earth",
+    "The limbs bearing witness",
+    "Steadfastness",
+    "Repelling evil with what is better",
+    "Signs in the horizons and in themselves"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 8,
+      "title": "The Book, and their answer",
+      "summary": "Ḥā Mīm. A sending down from the Most Merciful: a Book whose ayat are set out in detail, an Arabic Qurʾan, for people who know — bringing good news and warning. But most of them turn away. They say: “Our hearts are under covers from what you call us to, in our ears is deafness, and between us and you is a veil.” Say: I am only a human being like you; it is revealed to me that your God is One God."
+    },
+    {
+      "from": 9,
+      "to": 18,
+      "title": "The Creator, and the thunderbolt",
+      "summary": "Say: do you really disbelieve in Him who created the earth in two days? He set mountains on it and measured out its sustenance in four days. Then He turned to the heaven when it was smoke, and said to it and to the earth, “Come, willingly or unwillingly.” They said, “We come, willingly.” If they turn away, say: I warn you of a thunderbolt like that of ʿĀd and Thamūd. ʿĀd said, “Who is mightier than us?” Thamūd We guided, and they preferred blindness."
+    },
+    {
+      "from": 19,
+      "to": 29,
+      "title": "Their own skins will testify",
+      "summary": "The Day the enemies of Allah are gathered to the Fire, their hearing, their sight and their skins will testify against them. They will say to their skins, “Why did you testify against us?” — “Allah, who gives speech to everything, has given us speech.” Those who disbelieve say, “Do not listen to this Qurʾan, and make noise in it, so that you may prevail.”"
+    },
+    {
+      "from": 30,
+      "to": 36,
+      "title": "Those who stand firm",
+      "summary": "Those who say, “Our Lord is Allah,” and then stand firm — the angels descend upon them: “Do not fear and do not grieve; rejoice in the Garden you were promised.” Who is better in speech than one who calls to Allah, does right, and says, “I am of those who submit”? Good and evil are not equal. Repel with what is better, and the one between whom and you was enmity will be as a close friend. None are granted this but the patient."
+    },
+    {
+      "from": 37,
+      "to": 46,
+      "title": "His signs, and His Book",
+      "summary": "Among His signs are the night and the day, the sun and the moon: do not prostrate to the sun or the moon, but prostrate to Allah who created them. Among His signs: you see the earth lying still, and when We send down water it stirs and swells. It is a mighty Book; falsehood cannot come at it from before it or from behind it. Nothing is said to you but what was said to the messengers before you. Say: for those who believe it is guidance and healing."
+    },
+    {
+      "from": 47,
+      "to": 54,
+      "title": "Until it is clear to them",
+      "summary": "To Him is referred the knowledge of the Hour. Man does not weary of asking for good, and if evil touches him he despairs. We shall show them Our signs in the horizons and in themselves, until it becomes clear to them that it is the truth (41:53). Is it not enough that your Lord is witness over all things?"
+    }
+  ],
+  "keyAyah": {
+    "ayah": 34,
+    "why": "The answer to hostility that the Prophet ﷺ himself gave in the scene with which the surah begins: he listened to the end, and then spoke."
+  },
+  "virtues": [],
+  "before": "Ghāfir ended with peoples who rejoiced in the knowledge they had and so refused their messengers. Fuṣṣilat opens with a people given a Book in their own tongue, who answer: our hearts are covered.",
+  "after": "Fuṣṣilat is about the Book. Al-Shūrā is about the revelation of it: “Thus does He reveal to you, and to those before you.”",
+  "notable": [
+    {
+      "ayah": 3,
+      "label": "A Book whose ayat are set out in detail"
+    },
+    {
+      "ayah": 11,
+      "label": "“We come, willingly”"
+    },
+    {
+      "ayah": 20,
+      "to": 21,
+      "label": "Their hearing, sight and skins testify"
+    },
+    {
+      "ayah": 30,
+      "label": "“Our Lord is Allah” — and then stand firm"
+    },
+    {
+      "ayah": 33,
+      "label": "Who is better in speech than one who calls to Allah?"
+    },
+    {
+      "ayah": 34,
+      "label": "Repel with what is better"
+    },
+    {
+      "ayah": 38,
+      "label": "An ayah of prostration"
+    },
+    {
+      "ayah": 53,
+      "label": "Signs in the horizons and in themselves"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn Isḥāq’s account, as the commentators relay it",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr"
+  ]
+}

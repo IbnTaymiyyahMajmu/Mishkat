@@ -14,9 +14,12 @@ import { highlight, parseWordDomId } from "@/lib/highlight";
 import { isValidVerseKey, plainText } from "@/lib/text";
 import { SCROLL_TO_VERSE, type ScrollToVerseDetail } from "@/lib/useGoToVerse";
 import { useToast } from "@/components/Toast";
+import { useLocale } from "@/lib/i18n";
+import { useSurahNames } from "@/lib/i18n/surah";
 import { Navigator } from "@/components/navigator/Navigator";
 import { Verse, type VerseHandlers } from "./Verse";
 import { MarkRail } from "./MarkRail";
+import type { IntroTeaser } from "@/lib/intros/types";
 import { SurahHeader } from "./SurahHeader";
 import { SidePanel, type PanelMode, type PanelState } from "./SidePanel";
 import { WordStudyPanel } from "./WordStudyPanel";
@@ -30,9 +33,11 @@ import styles from "./Reader.module.css";
 /** How many ayat are added to the DOM at a time. */
 const CHUNK = 12;
 
-export function Reader({ surah }: { surah: number }) {
+export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser | null }) {
   const router = useRouter();
   const toast = useToast();
+  const { t, arrows } = useLocale();
+  const names = useSurahNames();
   const { settings, update, setLastRead } = useSettings();
   const { byId } = useChapters();
   const { isBookmarked, toggleBookmark, noteCount } = useLibrary();
@@ -42,7 +47,7 @@ export function Reader({ surah }: { surah: number }) {
   const controls = usePlayerControls();
   const { currentKey, playing, loop } = usePlayerStatus();
 
-  const { verses, loading, loadingMore, error, info, reload } = useSurah(
+  const { verses, loading, loadingMore, error, reload } = useSurah(
     surah,
     settings.reciterId,
     settings.glossLanguage,
@@ -80,7 +85,7 @@ export function Reader({ surah }: { surah: number }) {
   const placeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const chapter = byId(surah);
-  const chapterName = chapter?.name_simple ?? `Surah ${surah}`;
+  const chapterName = names.name(surah);
 
   // ── word highlighting ─────────────────────────────────────────────────────
   useEffect(() => highlight.acquire(), []);
@@ -353,10 +358,10 @@ export function Reader({ surah }: { surah: number }) {
         await navigator.clipboard.writeText(text);
         toast(message);
       } catch {
-        toast("Your browser refused the clipboard.");
+        toast(t("toast.clipboard"));
       }
     },
-    [toast],
+    [toast, t],
   );
 
   const handlers = useMemo<VerseHandlers>(
@@ -368,7 +373,7 @@ export function Reader({ surah }: { surah: number }) {
         controls.endLoop();
         update({ repeat: "ayah" });
         controls.play(key);
-        toast(`Repeating ${key}`);
+        toast(t("toast.repeating", { key }));
       },
       onBookmark: (verse) => {
         const first = firstRendering(verse.verse_key);
@@ -379,7 +384,7 @@ export function Reader({ surah }: { surah: number }) {
           translation: plainText(first?.text),
           translator: first?.name ?? "",
         });
-        toast(added ? `Ayah ${verse.verse_key} bookmarked` : "Bookmark removed");
+        toast(added ? t("toast.bookmarked", { key: verse.verse_key }) : t("toast.bookmarkRemoved"));
       },
       onNote: (key) => {
         setComposeOnOpen(true);
@@ -393,19 +398,19 @@ export function Reader({ surah }: { surah: number }) {
         setComposeOnOpen(false);
         setPanel({ mode: "translations", verseKey: key });
       },
-      onCopyArabic: (verse) => void copy(verse.text_uthmani, "Arabic copied"),
+      onCopyArabic: (verse) => void copy(verse.text_uthmani, t("toast.arabicCopied")),
       onCopyTranslation: (verse) => {
         const first = firstRendering(verse.verse_key);
         if (!first) {
-          toast("The translation has not arrived yet.");
+          toast(t("toast.translationPending"));
           return;
         }
-        void copy(`${plainText(first.text)}\n— ${first.name}, ${verse.verse_key}`, "Translation copied");
+        void copy(`${plainText(first.text)}\n— ${first.name}, ${verse.verse_key}`, t("toast.translationCopied"));
       },
       onShare: (key) =>
-        void copy(`${location.origin}${location.pathname}#${key}`, `Link to ${key} copied`),
+        void copy(`${location.origin}${location.pathname}#${key}`, t("toast.linkCopied", { key })),
     }),
-    [controls, update, toast, toggleBookmark, surah, firstRendering, copy],
+    [controls, update, toast, toggleBookmark, surah, firstRendering, copy, t],
   );
 
   // ── panel contents ────────────────────────────────────────────────────────
@@ -459,8 +464,11 @@ export function Reader({ surah }: { surah: number }) {
   const ayahCount = chapter?.verses_count ?? verses.length;
   const through = ayahCount > 1 ? ((placeAyah - 1) / (ayahCount - 1)) * 100 : 0;
 
-  const prev = byId(surah - 1);
-  const next = byId(surah + 1);
+  const prevName = surah > 1 ? names.name(surah - 1) : "";
+  const nextName = surah < 114 ? names.name(surah + 1) : "";
+  const placeLabel = ayahCount
+    ? t("common.ayahOf", { n: placeAyah, total: ayahCount })
+    : t("common.ayahN", { n: placeAyah });
 
   return (
     <div className={styles.layout}>
@@ -493,17 +501,14 @@ export function Reader({ surah }: { surah: number }) {
             className={styles.place}
             onClick={() => setNavigating(true)}
             aria-haspopup="dialog"
-            aria-label={`${chapterName}, ayah ${placeAyah}${ayahCount ? ` of ${ayahCount}` : ""}. Go to another ayah or surah`}
-            title="Go to an ayah or another surah (g)"
+            aria-label={`${chapterName}, ${placeLabel}. ${t("goto.open")}`}
+            title={t("goto.title")}
           >
             <span className={styles.placeSurah}>
               <span className={styles.placeNumber}>{surah}</span>
               {chapterName}
             </span>
-            <span className={styles.placeAyah}>
-              Ayah {placeAyah}
-              {ayahCount ? ` of ${ayahCount}` : ""}
-            </span>
+            <span className={styles.placeAyah}>{placeLabel}</span>
             <svg className={styles.placeChevron} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="m6 9 6 6 6-6" />
             </svg>
@@ -519,13 +524,13 @@ export function Reader({ surah }: { surah: number }) {
               style={{ fontSize: 13 }}
               disabled={surah <= 1}
             >
-              ← {prev?.name_simple ?? ""}
+              {arrows.prev} {prevName}
             </button>
 
             <div className={styles.topBarCentre}>
               {/* The muṣḥaf is one click away, not five toggles away. */}
               <Link href={`/read/${surah}/mushaf/`} className="btn btn-secondary" style={{ fontSize: 12, padding: "5px 12px" }}>
-                Muṣḥaf view
+                {t("reader.mushafView")}
               </Link>
               <button
                 onClick={() => {
@@ -535,7 +540,7 @@ export function Reader({ surah }: { surah: number }) {
                 className={`btn btn-secondary ${panel?.mode === "notes" ? "btn-on" : ""}`}
                 style={{ fontSize: 12, padding: "5px 12px" }}
               >
-                Notes
+                {t("reader.notes")}
               </button>
             </div>
 
@@ -545,23 +550,23 @@ export function Reader({ surah }: { surah: number }) {
               style={{ fontSize: 13 }}
               disabled={surah >= 114}
             >
-              {next?.name_simple ?? ""} →
+              {nextName} {arrows.next}
             </button>
           </div>
 
-          <SurahHeader surah={surah} chapter={chapter} corpusInfo={info} />
+          <SurahHeader surah={surah} chapter={chapter} teaser={teaser} />
 
           {chapter?.bismillah_pre && !loading && (
             <div className={styles.bismillah}>بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</div>
           )}
 
-          {loading && <div className={styles.loading}>Loading the text…</div>}
+          {loading && <div className={styles.loading}>{t("common.loadingText")}</div>}
 
           {error && (
             <div className={styles.error}>
-              <p>{error}</p>
+              <p>{t(error)}</p>
               <button onClick={reload} className="btn btn-primary">
-                Try again
+                {t("common.tryAgain")}
               </button>
             </div>
           )}
@@ -571,11 +576,12 @@ export function Reader({ surah }: { surah: number }) {
           {settings.showTranslation && translations.failed.length > 0 && !loading && (
             <div className={styles.notice} role="status">
               <span>
-                {translations.failed.map((id) => translationName(id) || "A translation").join(", ")} could
-                not be reached.
+                {t("reader.unreached", {
+                  names: translations.failed.map((id) => translationName(id) || t("reader.aTranslation")).join(", "),
+                })}
               </span>
               <button onClick={translations.retry} className="btn btn-ghost" style={{ fontSize: 13 }}>
-                Try again
+                {t("common.tryAgain")}
               </button>
             </div>
           )}
@@ -603,21 +609,21 @@ export function Reader({ surah }: { surah: number }) {
             <div className={styles.more}>
               <span className={styles.moreRule} />
               <button onClick={() => setLimit((l) => l + CHUNK * 2)} className="btn btn-secondary" style={{ fontSize: 13 }}>
-                Show the next ayat · {Math.min(limit, verses.length)} of {verses.length} shown
+                {t("reader.showMore", { shown: Math.min(limit, verses.length), total: verses.length })}
               </button>
               <span className={styles.moreRule} />
             </div>
           )}
 
-          {loadingMore && <div className={styles.loadingMore}>Loading more ayat…</div>}
+          {loadingMore && <div className={styles.loadingMore}>{t("reader.loadingMore")}</div>}
 
           {!loading && !loadingMore && verses.length > 0 && limit >= verses.length && (
             <div className={styles.end}>
               <div className={styles.endMark}>۞</div>
-              <div className={styles.endText}>End of {chapterName}</div>
+              <div className={styles.endText}>{t("reader.end", { surah: chapterName })}</div>
               {surah < 114 && (
                 <button onClick={() => router.push(`/read/${surah + 1}/`)} className="btn btn-primary" style={{ marginTop: 18 }}>
-                  Continue to {next?.name_simple ?? "the next surah"} →
+                  {t("reader.continue", { surah: nextName || t("reader.nextSurah") })} {arrows.next}
                 </button>
               )}
             </div>

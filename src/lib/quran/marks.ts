@@ -1,3 +1,4 @@
+import type { MessageKey } from "../i18n/types";
 import type { Verse } from "./types";
 
 /**
@@ -15,21 +16,25 @@ import type { Verse } from "./types";
  * could not be anything else.
  */
 
-/** Ayat that readers come back to by name rather than by number. */
-export const NAMED: Record<string, string> = {
-  "2:201": "Rabbanā ātinā — the duʿāʾ",
-  "2:255": "Āyat al-Kursī",
-  "2:285": "The closing two of al-Baqarah — before sleep",
-  "3:190": "The ayat of the night prayer",
-  "18:1": "The first ten — for Friday",
-  "18:101": "The last ten — for Friday",
-  "36:1": "Yā Sīn",
-  "55:1": "Al-Raḥmān",
-  "59:22": "The closing ayat of al-Ḥashr",
-  "67:1": "Al-Mulk — before sleep",
-  "112:1": "Al-Ikhlāṣ — the three before sleep",
-  "113:1": "Al-Falaq — the three before sleep",
-  "114:1": "An-Nās — the three before sleep",
+/**
+ * Ayat that readers come back to by name rather than by number. What each is
+ * called is said in the reader's language — "named.*" in lib/i18n/messages —
+ * so what is kept here is which ayat they are.
+ */
+export const NAMED: Record<string, MessageKey> = {
+  "2:201": "named.2:201",
+  "2:255": "named.2:255",
+  "2:285": "named.2:285",
+  "3:190": "named.3:190",
+  "18:1": "named.18:1",
+  "18:101": "named.18:101",
+  "36:1": "named.36:1",
+  "55:1": "named.55:1",
+  "59:22": "named.59:22",
+  "67:1": "named.67:1",
+  "112:1": "named.112:1",
+  "113:1": "named.113:1",
+  "114:1": "named.114:1",
 };
 
 /**
@@ -41,7 +46,8 @@ export type MarkKind = "sajda" | "named" | "stop";
 export interface Mark {
   ayah: number;
   kind: MarkKind;
-  label: string;
+  /** What the mark is, as a sentence the screen says in the reader's language. */
+  label: MessageKey;
 }
 
 export interface JuzBreak {
@@ -63,8 +69,8 @@ export interface Band {
  * not fifteen. Marking it and saying whose it is leaves the reader with the
  * disagreement rather than with one school's answer presented as the fact.
  */
-const DISPUTED_SAJDA: Record<string, string> = {
-  "22:77": "A place of prostration in the Shāfiʿī reckoning",
+const DISPUTED_SAJDA: Record<string, MessageKey> = {
+  "22:77": "mark.sajdaShafii",
 };
 
 /**
@@ -78,7 +84,7 @@ export function sajdaMarks(surah: number, verses: Verse[]): Mark[] {
     .map((v) => ({
       ayah: v.verse_number,
       kind: "sajda" as const,
-      label: "A place of prostration",
+      label: "mark.sajda" as const,
     }));
 
   for (const [key, label] of Object.entries(DISPUTED_SAJDA)) {

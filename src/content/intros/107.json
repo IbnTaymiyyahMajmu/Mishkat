@@ -1,0 +1,95 @@
+{
+  "surah": 107,
+  "epithet": "What denying the Reckoning looks like",
+  "lede": "It does not look like an argument about the next life. It looks like an orphan pushed away from the door, a prayer said for show, and a neighbour refused the loan of a pot.",
+  "names": [
+    {
+      "arabic": "الماعون",
+      "name": "al-Māʿūn",
+      "meaning": "Small Kindnesses",
+      "note": "After its last word: the small things people lend one another without a thought — a bucket, an axe, a cooking pot, salt, water. ʿAlī and Ibn ʿUmar are also reported to have said it means the zakāh."
+    },
+    {
+      "arabic": "أرأيت",
+      "name": "Araʾayta",
+      "meaning": "“Have you seen…”",
+      "note": "Its opening word. Ibn al-Jawzī gives this as its other name."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by the majority",
+    "detail": "Ibn al-Jawzī gives the majority view as Makkan, with a report from Ibn ʿAbbās and Qatādah that it is Madinan. He also records a third saying that explains the other two: that its first half came down in Makkah about al-ʿĀṣ ibn Wāʾil, and its second half in Madinah about the hypocrite ʿAbd Allāh ibn Ubayy. The surah’s own turn bears this out — its first three ayat describe an open denier, its last four people who pray.",
+    "period": "makkah-early",
+    "when": "The early years in Makkah; its closing ayat, on one view, in Madinah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَفِيها قَوْلانِ. أحَدُهُما: مَكِّيَّةٌ، قالَهُ الجُمْهُورُ. والثّانِي: مَدَنِيَّةٌ، رُوِيَ عَنِ ابْنِ عَبّاسٍ، وقَتادَةَ. وقالَ هِبَةَ اللَّهِ المُفَسِّرُ: نَزَلَ نِصْفُها بِمَكَّةَ في العاصِ بْنِ وائِلٍ، ونِصْفُها بِالمَدِينَةِ في عَبْدِ اللَّهِ بْنِ أبِي المُنافِقِ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "وَهِيَ مَكِّيَّةٌ فِي قَوْلِ عَطَاءٍ وَجَابِرٍ وَأَحَدِ قولي ابن عباس. وَمَدَنِيَّةٌ فِي قَوْلٍ لَهُ آخَرَ وَهُوَ قَوْلُ قتادة وغيره. وهي سبع آيات"
+      }
+    ]
+  },
+  "setting": [
+    "In Makkah, to “deny the dīn” — the Recompense — was the stated position of the men who ran the city. This surah does not debate them. It asks the listener to look at one of them and describes what he does: he shoves the orphan aside, and he does not so much as encourage anyone else to feed the poor. The commentators name several men it was said to be about; the point is that the belief and the behaviour are one thing.",
+    "Then, without a pause, it turns to people who do pray — and pronounces woe on them too. They are heedless of their prayer: the Companions explained this as letting its time go by. They do it to be seen. And they withhold al-māʿūn, the smallest neighbourly help. That is a description of the hypocrites, who did not exist as a group until Madinah, which is why some of the early scholars placed these ayat there.",
+    "Read together, the two halves make a single measure. Faith in the Last Day shows in how a person treats those who can give him nothing back, and in a prayer that is offered when no one is watching."
+  ],
+  "occasions": [],
+  "aim": "To set out the character of those who deny the religion and the next life — as a warning to the believers, and a condemnation of the disbelievers.",
+  "themes": [
+    "Denial of the Reckoning",
+    "The orphan and the poor",
+    "Prayer",
+    "Showing off",
+    "Small kindnesses"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 3,
+      "title": "The denier",
+      "summary": "Have you seen the one who denies the Recompense? That is the one who drives away the orphan, and does not urge the feeding of the poor."
+    },
+    {
+      "from": 4,
+      "to": 7,
+      "title": "Those who pray, and do not",
+      "summary": "So woe to those who pray — who are heedless of their prayer, who do it to be seen, and who withhold the smallest kindness."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 4,
+    "why": "The most startling ayah in the surah if it is read alone, and the reason it must not be: the woe is completed by the three ayat that follow."
+  },
+  "virtues": [],
+  "before": "Quraysh were reminded that Allah fed them against hunger. Al-Māʿūn is about those who will not feed anyone else.",
+  "after": "This surah describes a man who gives nothing, prays for show, and withholds. Al-Kawthar addresses the one who was given abundance and is told: pray to your Lord, and sacrifice.",
+  "notable": [
+    {
+      "ayah": 2,
+      "label": "The one who drives away the orphan"
+    },
+    {
+      "ayah": 4,
+      "to": 5,
+      "label": "Those heedless of their prayer"
+    },
+    {
+      "ayah": 7,
+      "label": "And withhold small kindnesses"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "al-Ṭabarī, Jāmiʿ al-Bayān",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr"
+  ]
+}

@@ -1,3 +1,4 @@
+import type { Translate } from "./i18n/types";
 import type { Note, NoteQuote } from "./store/types";
 import type { Verse } from "./quran/types";
 import { plainText } from "./text";
@@ -87,14 +88,14 @@ export function pruneQuotes(body: string, quotes: NoteQuote[]): NoteQuote[] {
 }
 
 /** A one-line summary for a note that was never given a title. */
-export function noteHeadline(note: Note): string {
+export function noteHeadline(note: Note, t: Translate): string {
   if (note.title.trim()) return note.title.trim();
   const firstText = parseNoteBody(note.body, note.quotes).find((s) => s.kind === "text");
   if (firstText && firstText.kind === "text") {
     const line = firstText.text.trim().split("\n")[0];
     return line.length > 72 ? `${line.slice(0, 71)}…` : line;
   }
-  return note.verseKey ? `Note on ${note.verseKey}` : `Note on surah ${note.surah}`;
+  return note.verseKey ? t("notes.headlineAyah", { key: note.verseKey }) : t("notes.headlineSurah", { n: note.surah });
 }
 
 export function noteMatches(note: Note, query: string): boolean {

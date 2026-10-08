@@ -1,0 +1,115 @@
+{
+  "surah": 105,
+  "epithet": "The year Makkah was defended without a defender",
+  "lede": "An army with an elephant at its head marched on the Kaʿbah, and the people of Makkah went up into the hills and left it. What happened next they all remembered — it was within their own lifetimes — and the surah only has to ask: have you not seen?",
+  "names": [
+    {
+      "arabic": "الفيل",
+      "name": "al-Fīl",
+      "meaning": "The Elephant",
+      "note": "After the Companions of the Elephant — Abrahah’s army, named for the animal that marched with it and that the Arabs had never seen in war."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "It is Makkan without disagreement; both Ibn al-Jawzī and al-Qurṭubī record the agreement. The event it recalls took place before the Prophet ﷺ was sent — in the year of his birth, on the best-known view.",
+    "period": "makkah-early",
+    "when": "The early years in Makkah — some forty years after the event it recalls",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ الفِيلِ مَكِّيَّةٌ بِإجْماعِهِمْ"
+      },
+      {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "وَلَكِنْ كَانَ هَذَا مِنْ بَابِ الْإِرْهَاصِ وَالتَّوْطِئَةِ لِمَبْعَثِ رَسُولُ اللَّهِ ﷺ، فَإِنَّهُ فِي ذَلِكَ الْعَامِ وُلِدَ عَلَى أَشْهَرِ الْأَقْوَالِ"
+      }
+    ]
+  },
+  "setting": [
+    "Abrahah was the Abyssinian governor of Yemen. He had built a great church in Ṣanʿāʾ and meant the pilgrimage of the Arabs to come to it instead of to Makkah; and when that did not happen — the reports say an Arab defiled the building — he swore to pull the Kaʿbah down, and set out north with an army and an elephant.",
+    "Quraysh could not fight him and did not try. On the way his men seized the camels of ʿAbd al-Muṭṭalib, the Prophet’s ﷺ grandfather and the chief of Makkah, who came to ask for them back. Abrahah was astonished: I have come to destroy the House that is your religion and your fathers’, and you speak to me about camels? ʿAbd al-Muṭṭalib’s answer is one of the most quoted sentences in the sīrah: I am the lord of the camels. The House has a Lord who will defend it. Then he and his people withdrew to the mountains.",
+    "The elephant, the reports say, knelt and would not go forward towards Makkah. Then birds came, in flocks, each carrying stones of baked clay, and the army was destroyed where it stood: left like straw that has been eaten.",
+    "The Arabs dated their years from it — the Year of the Elephant. When this surah was recited in Makkah there were men still alive who had seen it, and none of them contradicted it. The point was plain to them: the House had been saved by its Lord, at a time when not one person in the city worshipped Him alone. It had not been saved for the sake of their idols. Ibn Kathīr says it outright: this was a preparation for the sending of the Messenger ﷺ, who was born that same year."
+  ],
+  "occasions": [],
+  "aim": "To show Allah’s power to protect His Sacred House — as a reminder, and as a favour to be acknowledged.",
+  "themes": [
+    "Allah’s protection of the Kaʿbah",
+    "The fate of the arrogant",
+    "A favour to Quraysh"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 2,
+      "title": "Have you not seen?",
+      "summary": "Have you not seen how your Lord dealt with the Companions of the Elephant? Did He not make their plot go astray?"
+    },
+    {
+      "from": 3,
+      "to": 5,
+      "title": "How",
+      "summary": "He sent against them birds, in flocks, pelting them with stones of baked clay, and made them like eaten straw."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 1,
+    "why": "The question the surah rests on. It is addressed to the Prophet ﷺ, and through him to a city that had watched it happen."
+  },
+  "virtues": [
+    {
+      "text": "On the way to al-Ḥudaybiyah the Prophet’s ﷺ she-camel knelt and would not rise, and the people said she had turned stubborn. He said: “She has not turned stubborn, and that is not her nature. The One who held back the elephant has held her back.”",
+      "arabic": "حَبَسَهَا حَابِسُ الْفِيلِ",
+      "narrator": "al-Miswar ibn Makhramah and Marwān",
+      "source": "Ṣaḥīḥ al-Bukhārī, 2731",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "2731"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "On the day Makkah was conquered he ﷺ said: “Allah held back the elephant from Makkah, and has given His Messenger and the believers authority over it.”",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 2434 · Ṣaḥīḥ Muslim, 1355",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "2434"
+        },
+        {
+          "book": "muslim",
+          "number": "1355"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    }
+  ],
+  "before": "Al-Humazah showed one man who trusted in what he had gathered. Al-Fīl shows an army that did.",
+  "after": "Quraysh follows so closely that it reads as the consequence: He did that to the Companions of the Elephant — so that Quraysh might go on living in safety. Let them worship the Lord of this House.",
+  "notable": [
+    {
+      "ayah": 1,
+      "label": "How your Lord dealt with the Companions of the Elephant"
+    },
+    {
+      "ayah": 3,
+      "to": 4,
+      "label": "Birds in flocks, with stones of baked clay"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn Isḥāq’s account, as the commentators relay it",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

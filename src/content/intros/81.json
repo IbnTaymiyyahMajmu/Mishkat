@@ -1,0 +1,137 @@
+{
+  "surah": 81,
+  "epithet": "The Day, as if you were watching it",
+  "lede": "Twelve times it says “when” — the sun, the stars, the mountains, the seas — before it says what then. The Prophet ﷺ said that whoever wishes to look at the Day of Resurrection as though with his own eyes should recite it.",
+  "names": [
+    {
+      "arabic": "التكوير",
+      "name": "al-Takwīr",
+      "meaning": "The Folding Up",
+      "note": "From its first ayah: when the sun is kuwwirat — wound up like a turban, its light gone. In the hadith it is called by its opening words, Idhā l-shamsu kuwwirat."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "It is Makkan in the saying of all: Ibn al-Jawzī and al-Qurṭubī both say so. The traditional order places it seventh, among the very first surahs — when the charge it answers in its second half, that the Messenger ﷺ was possessed, was new.",
+    "period": "makkah-early",
+    "when": "The first years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ التَّكْوِيرِ وَهِيَ مَكِّيَّةٌ كُلُّها بِإجْماعِهِمْ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ التَّكْوِيرِ مَكِّيَّةٌ فِي قَوْلِ الْجَمِيعِ. وَهِيَ تِسْعٌ وَعِشْرُونَ آيَةً"
+      }
+    ]
+  },
+  "setting": [
+    "When the Prophet ﷺ first recited the Qurʾan in public, the people of Makkah had to call it something. It was not poetry as they knew poetry. So they reached for the two explanations their world offered for a man who suddenly spoke in a way no one else could: he was a soothsayer, to whom a jinn brought words from the sky — or he was majnūn, possessed.",
+    "This surah is an answer to both, and it gives the answer in an order worth noticing. First, the end of the world, in a single unbroken sentence fourteen ayat long. Among its scenes is one aimed straight at Arabian custom: the infant girl, buried alive by her father for shame or for fear of poverty, is asked for what crime she was killed. She is asked — not he. He is not worth addressing.",
+    "Then come three oaths, by the stars as they withdraw, the night as it lifts, the dawn as it breathes; and then the chain by which these words have arrived. They are the speech of a noble messenger — Jibrīl — strong, established with the Lord of the Throne, obeyed in the heavens, trustworthy. Your companion is not mad. He saw him on the clear horizon. And this is not the word of any devil."
+  ],
+  "occasions": [],
+  "aim": "To picture the Resurrection as the unravelling of a universe that had been so firmly made.",
+  "themes": [
+    "The Last Day",
+    "The buried infant girl",
+    "Jibrīl",
+    "The truth of the revelation",
+    "Allah’s will"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 14,
+      "title": "Twelve signs, and one result",
+      "summary": "When the sun is folded up, the stars fall, the mountains are set moving; when the camels ten months pregnant are left untended, the wild beasts are herded together, the seas set boiling; when the souls are paired, and the girl buried alive is asked for what sin she was killed; when the records are laid open, the sky is stripped away, Hell is set ablaze and Paradise brought near — a soul will know what it has brought."
+    },
+    {
+      "from": 15,
+      "to": 21,
+      "title": "Who carried these words",
+      "summary": "I swear by the stars that slip back, that run and hide; by the night as it departs, and the dawn as it draws breath: this is the word of a noble messenger, possessed of strength, secure in rank with the Owner of the Throne, obeyed there, and trusted."
+    },
+    {
+      "from": 22,
+      "to": 25,
+      "title": "And who received them",
+      "summary": "Your companion is not mad. He did see him, on the clear horizon. He does not grudge what he knows of the unseen. And it is not the word of an accursed devil."
+    },
+    {
+      "from": 26,
+      "to": 29,
+      "title": "So where are you going?",
+      "summary": "It is nothing but a reminder to all the worlds — to whoever among you wills to take a straight path. And you do not will, unless Allah wills, the Lord of the worlds."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 14,
+    "why": "The single clause that fourteen ayat have been leading to. After every upheaval in the heavens and the earth, the outcome is personal."
+  },
+  "virtues": [
+    {
+      "text": "“Whoever would be glad to look at the Day of Resurrection as though seeing it with his own eyes, let him recite ‘When the sun is folded up’, ‘When the sky breaks apart’ and ‘When the sky is split open’.”",
+      "arabic": "مَنْ سَرَّهُ أَنْ يَنْظُرَ إِلَى يَوْمِ الْقِيَامَةِ كَأَنَّهُ رَأْىُ عَيْنٍ",
+      "narrator": "ʿAbd Allāh ibn ʿUmar",
+      "source": "Jāmiʿ al-Tirmidhī, 3333",
+      "refs": [
+        {
+          "book": "tirmidhi",
+          "number": "3333"
+        }
+      ],
+      "grade": "Ḥasan gharīb, said al-Tirmidhī; ṣaḥīḥ according to al-Albānī",
+      "evidence": {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "مِن حَدِيثِ عَبْدِ اللهِ بْنِ عُمَرَ، قالَ: قالَ رَسُولُ اللَّهِ ﷺ: «مَن أحَبَّ أنْ يَنْظُرَ إلى يَوْمِ القِيامَةِ فَلْيَقْرَأْ قَوْلَهُ تَعالى: ﴿إذا الشَّمْسُ كُوِّرَتْ"
+      }
+    },
+    {
+      "text": "“Hūd, al-Wāqiʿah, al-Mursalāt, ‘ʿAmma yatasāʾalūn’ and ‘Idhā l-shamsu kuwwirat’ have turned me grey.”",
+      "narrator": "Ibn ʿAbbās",
+      "source": "Jāmiʿ al-Tirmidhī, 3297",
+      "refs": [
+        {
+          "book": "tirmidhi",
+          "number": "3297"
+        }
+      ],
+      "grade": "Ḥasan gharīb, said al-Tirmidhī; ṣaḥīḥ according to al-Albānī"
+    }
+  ],
+  "before": "ʿAbasa ended on the faces of the Day — bright, or covered in dust. Al-Takwīr goes back to the Day’s first moment and brings it on.",
+  "after": "Al-Infiṭār is its twin: the same opening, the sky and stars and seas and graves, and then a question put to the human being directly — what deceived you about your generous Lord?",
+  "notable": [
+    {
+      "ayah": 8,
+      "to": 9,
+      "label": "The girl buried alive is asked"
+    },
+    {
+      "ayah": 14,
+      "label": "A soul will know what it has brought"
+    },
+    {
+      "ayah": 19,
+      "to": 21,
+      "label": "The word of a noble messenger"
+    },
+    {
+      "ayah": 29,
+      "label": "You do not will unless Allah wills"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Jāmiʿ al-Tirmidhī"
+  ]
+}

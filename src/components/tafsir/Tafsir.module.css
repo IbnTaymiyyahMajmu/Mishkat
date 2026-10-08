@@ -30,6 +30,10 @@
   mask-image: linear-gradient(to right, #000 calc(100% - 22px), transparent);
   padding-inline-end: 18px;
 }
+/* …at the end it runs on past, which is the left one read right to left. */
+:global([dir="rtl"]) .tabs {
+  mask-image: linear-gradient(to left, #000 calc(100% - 22px), transparent);
+}
 .tabs::-webkit-scrollbar { display: none; }
 
 .tab {
@@ -193,8 +197,9 @@
   display: flex;
   flex-direction: column;
   gap: 3px;
-  padding: 12px 8px 13px 14px;
-  text-align: left;
+  padding-block: 12px 13px;
+  padding-inline: 14px 8px;
+  text-align: start;
   background: none;
   border: 0;
   cursor: pointer;
@@ -236,7 +241,7 @@
 .entryArabic {
   /* To the far side of the row. Stated physically: the name is set right to
      left, and its own inline start is the side it is already on. */
-  margin-left: auto;
+  margin-inline-start: auto;
   min-width: 0;
   font-family: var(--font-amiri), serif;
   font-size: 16px;

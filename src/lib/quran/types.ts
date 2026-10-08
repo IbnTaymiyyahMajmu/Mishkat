@@ -81,6 +81,8 @@ export interface TranslationResource {
 export interface Reciter {
   id: number;
   label: string;
+  /** The same name as it is written, for a reader of an Arabic script. */
+  labelArabic: string;
   /** Whether the corpus carries word timings for this reciter. */
   timed: boolean;
 }
@@ -197,5 +199,6 @@ export interface SearchResult {
   key: string;
   arabic: string;
   snippet: string;
-  kind: "Reference" | "Qur'an text" | "Translation";
+  /** What matched. Named on screen in the reader's language: "search.kind.*". */
+  kind: "reference" | "quran" | "translation";
 }

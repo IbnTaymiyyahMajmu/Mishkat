@@ -1,0 +1,167 @@
+{
+  "surah": 113,
+  "epithet": "Refuge with the Lord of the daybreak",
+  "lede": "There is harm in the world that a person cannot see coming and cannot fight: the dark, the spell, the envious eye. This surah does not explain it away. It teaches five lines to say, and Whom to say them to.",
+  "names": [
+    {
+      "arabic": "الفلق",
+      "name": "al-Falaq",
+      "meaning": "The Daybreak",
+      "note": "After the Lord it seeks refuge with: the Lord of the falaq, the splitting of the dark by the dawn — and, more widely, of everything that Allah splits open and brings out."
+    },
+    {
+      "arabic": "المعوّذتان",
+      "name": "al-Muʿawwidhatān",
+      "meaning": "The Two Surahs of Refuge",
+      "note": "The name this surah shares with al-Nās. The Prophet ﷺ recited them as a pair and spoke of them together (Muslim 814)."
+    }
+  ],
+  "revelation": {
+    "place": "disputed",
+    "verdict": "Differed over",
+    "detail": "Two views are reported, and both from Ibn ʿAbbās. That it is Madinan is his saying in the report of Abū Ṣāliḥ, and Qatādah’s; that it is Makkan is his saying in the report of Kurayb, and that of al-Ḥasan, ʿAṭāʾ, ʿIkrimah and Jābir. Ibn al-Jawzī judges the first the sounder, on the strength of the reports that the two surahs of refuge came down when the Prophet ﷺ was bewitched in Madinah. The muṣḥaf heads it Makkan.",
+    "period": "makkah-early",
+    "when": "Either the early years in Makkah, or — on the view Ibn al-Jawzī prefers — Madinah, at the time of the spell",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَفِيها قَوْلانِ. أحَدُهُما: مَدَنِيَّةٌ، رَواهُ أبُو صالِحٍ عَنِ ابْنِ عَبّاسٍ، وبِهِ قالَ قَتادَةُ في آخَرِينَ. والثّانِي: مَكِّيَّةٌ، رَواهُ كُرَيْبٌ عَنِ ابْنِ عَبّاسٍ، وبِهِ قالَ الحَسَنُ، وعَطاءٌ، وعِكْرِمَةُ، وجابِرٌ. والأوَّلُ أصَحُّ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "وَهِيَ مَكِّيَّةٌ فِي قَوْلِ الْحَسَنِ وَعِكْرِمَةَ وَعَطَاءٍ وَجَابِرٍ. وَمَدَنِيَّةٌ فِي أَحَدِ قَوْلَيِ ابْنِ عَبَّاسٍ وَقَتَادَةَ. وهي خمس آيات"
+      }
+    ]
+  },
+  "setting": [
+    "The Arabs before Islam lived in fear of the unseen and went to anything they thought could shield them from it: amulets, soothsayers, the jinn of a valley they were about to cross. One of the first things the revelation did was to gather all of that fear and point it at one address.",
+    "The commentators connect the two surahs of refuge with a particular event in Madinah. A man named Labīd ibn al-Aʿṣam worked a spell on the Prophet ﷺ, using a comb and strands of hair, knotted and hidden in a well; for a time he ﷺ would think he had done a thing when he had not. The spell itself is narrated by ʿĀʾishah in al-Bukhārī and Muslim. That these two surahs came down on that occasion, and that the knots came undone as they were recited, is in reports outside the two Ṣaḥīḥs — and it is on them that the view that the surahs are Madinan rests.",
+    "Whenever they came down, what is certain is how he used them afterwards. He recited them over himself in illness, before sleep, morning and evening, and after each prayer, and left every other formula of protection for them."
+  ],
+  "occasions": [
+    {
+      "title": "The spell of Labīd ibn al-Aʿṣam",
+      "text": "Ibn al-Jawzī relates from the commentators that the Messenger of Allah ﷺ was bewitched, and the two surahs of refuge were sent down to him. The bewitching is established in the two Ṣaḥīḥs (al-Bukhārī 5763, Muslim 2189); the link to the revelation of these surahs is not in them.",
+      "source": "Ibn al-Jawzī, Zād al-Masīr, at the head of the surah.",
+      "evidence": {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "أنَّ رَسُولَ اللَّهِ ﷺ سُحِرَ وهو مَعَ عائِشَةَ، فَنَزَلَتْ عَلَيْهِ المُعَوِّذَتانِ"
+      }
+    }
+  ],
+  "aim": "To take shelter and hold fast to Allah against the evils that come from outside.",
+  "themes": [
+    "Seeking refuge in Allah",
+    "Sorcery",
+    "Envy",
+    "Protection"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 1,
+      "title": "With Whom",
+      "summary": "Say: I seek refuge with the Lord of the daybreak — the One who splits the night with the morning, and so can dispel any darkness."
+    },
+    {
+      "from": 2,
+      "to": 5,
+      "title": "From what",
+      "summary": "From the evil of what He has created — which takes in everything; then three that are singled out because they come unseen: the darkness when it settles; those who blow on knots; and the envier when he envies."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 1,
+    "why": "One attribute is named, and four evils. In al-Nās it is the reverse: three attributes, against one."
+  },
+  "virtues": [
+    {
+      "text": "“Have you not seen the ayat that were sent down tonight, the like of which has never been seen? ‘Say: I seek refuge with the Lord of the daybreak’ and ‘Say: I seek refuge with the Lord of mankind’.”",
+      "arabic": "أَلَمْ تَرَ آيَاتٍ أُنْزِلَتِ اللَّيْلَةَ لَمْ يُرَ مِثْلُهُنَّ قَطُّ",
+      "narrator": "ʿUqbah ibn ʿĀmir",
+      "source": "Ṣaḥīḥ Muslim, 814",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "814"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "When the Messenger of Allah ﷺ was unwell he would recite the surahs of refuge over himself and blow. When his pain grew severe I would recite over him and wipe him with his own hand, hoping for its blessing.",
+      "narrator": "ʿĀʾishah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 5016 · Ṣaḥīḥ Muslim, 2192",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "5016"
+        },
+        {
+          "book": "muslim",
+          "number": "2192"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "The Messenger of Allah ﷺ used to seek refuge from the jinn and from the evil eye, until the two surahs of refuge came down. When they came down he took to them, and left everything else.",
+      "narrator": "Abū Saʿīd al-Khudrī",
+      "source": "Jāmiʿ al-Tirmidhī, 2058 · Sunan Ibn Mājah, 3511",
+      "refs": [
+        {
+          "book": "tirmidhi",
+          "number": "2058"
+        },
+        {
+          "book": "ibnmajah",
+          "number": "3511"
+        }
+      ],
+      "grade": "Ḥasan gharīb, said al-Tirmidhī; ṣaḥīḥ according to al-Albānī"
+    },
+    {
+      "text": "“The Messenger of Allah ﷺ commanded me to recite the surahs of refuge at the end of every prayer.”",
+      "narrator": "ʿUqbah ibn ʿĀmir",
+      "source": "Sunan Abī Dāwūd, 1523 · Sunan al-Nasāʾī, 1336",
+      "refs": [
+        {
+          "book": "abudawud",
+          "number": "1523"
+        },
+        {
+          "book": "nasai",
+          "number": "1336"
+        }
+      ],
+      "grade": "Ṣaḥīḥ according to al-Albānī"
+    }
+  ],
+  "before": "Al-Ikhlāṣ said who Allah is. The two surahs that follow turn to Him, on that basis, for protection.",
+  "after": "Al-Falaq seeks refuge from the harm that comes at a person from outside. Al-Nās seeks it from the one that works from inside — the whisper in the breast.",
+  "notable": [
+    {
+      "ayah": 1,
+      "label": "The Lord of the daybreak"
+    },
+    {
+      "ayah": 4,
+      "label": "Those who blow on knots"
+    },
+    {
+      "ayah": 5,
+      "label": "The envier when he envies"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "Ibn al-Qayyim, on the two surahs of refuge",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; the Sunan"
+  ]
+}

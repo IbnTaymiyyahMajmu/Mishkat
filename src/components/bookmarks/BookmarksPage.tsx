@@ -3,10 +3,9 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useLibrary } from "@/lib/store/library";
-import { useChapters } from "@/lib/store/chapters";
 import { useToast } from "@/components/Toast";
-import { SURAH_NAMES } from "@/lib/quran/surahNames";
-import { formatDate } from "@/lib/text";
+import { useLocale } from "@/lib/i18n";
+import { useSurahNames } from "@/lib/i18n/surah";
 import { useGoToVerse } from "@/lib/useGoToVerse";
 import styles from "./BookmarksPage.module.css";
 
@@ -14,12 +13,13 @@ type Order = "recent" | "mushaf";
 
 export function BookmarksPage() {
   const { bookmarks, ready, removeBookmark } = useLibrary();
-  const { byId } = useChapters();
   const goToVerse = useGoToVerse();
   const toast = useToast();
+  const { t, date, arrows } = useLocale();
+  const names = useSurahNames();
   const [order, setOrder] = useState<Order>("recent");
 
-  const surahName = (n: number) => byId(n)?.name_simple ?? SURAH_NAMES[n - 1]?.english ?? `Surah ${n}`;
+  const surahName = names.name;
 
   const rows =
     order === "recent"
@@ -34,10 +34,10 @@ export function BookmarksPage() {
     <div className="page-shell">
       <div className={styles.body}>
         <header className={styles.head}>
-          <div className="kicker">Saved</div>
-          <h1 className={styles.title}>Bookmarks</h1>
+          <div className="kicker">{t("bookmarks.kicker")}</div>
+          <h1 className={styles.title}>{t("bookmarks.title")}</h1>
           <p className={styles.sub}>
-            Stored on this device only. Nothing about your reading leaves the browser.
+            {t("bookmarks.sub")}
           </p>
         </header>
 
@@ -47,17 +47,17 @@ export function BookmarksPage() {
               className={`${styles.order} ${order === "recent" ? styles.orderOn : ""}`}
               onClick={() => setOrder("recent")}
             >
-              Most recent
+              {t("bookmarks.recent")}
             </button>
             <button
               className={`${styles.order} ${order === "mushaf" ? styles.orderOn : ""}`}
               onClick={() => setOrder("mushaf")}
             >
-              Muṣḥaf order
+              {t("bookmarks.mushaf")}
             </button>
             <div style={{ flex: 1 }} />
             <span className={styles.count}>
-              {bookmarks.length} {bookmarks.length === 1 ? "ayah" : "ayat"}
+              {t("common.ayat", { count: bookmarks.length })}
             </span>
           </div>
         )}
@@ -65,9 +65,9 @@ export function BookmarksPage() {
         {ready && bookmarks.length === 0 && (
           <div className={styles.empty}>
             <div className={styles.emptyMark}>۞</div>
-            <p className={styles.emptyText}>No ayat saved yet.</p>
+            <p className={styles.emptyText}>{t("bookmarks.empty")}</p>
             <Link href="/read/1/" className="btn btn-primary">
-              Open the reader
+              {t("common.openReader")}
             </Link>
           </div>
         )}
@@ -80,16 +80,16 @@ export function BookmarksPage() {
               </span>
               <span className={styles.cardSurah}>{surahName(b.surah)}</span>
               <span className={styles.cardRule} />
-              <span className={styles.cardWhen}>{formatDate(b.createdAt)}</span>
+              <span className={styles.cardWhen}>{date(b.createdAt)}</span>
               <button
                 className="btn btn-ghost"
                 style={{ fontSize: 11 }}
                 onClick={() => {
                   removeBookmark(b.id);
-                  toast("Bookmark removed");
+                  toast(t("toast.bookmarkRemoved"));
                 }}
               >
-                Remove
+                {t("bookmarks.remove")}
               </button>
             </div>
 
@@ -97,7 +97,11 @@ export function BookmarksPage() {
               {b.arabic}
             </div>
 
-            {b.translation && <p className={styles.cardTranslation}>{b.translation}</p>}
+            {b.translation && (
+              <p className={styles.cardTranslation} dir="auto">
+                {b.translation}
+              </p>
+            )}
             {b.translator && <div className={styles.cardTranslator}>{b.translator}</div>}
 
             <button
@@ -105,7 +109,7 @@ export function BookmarksPage() {
               style={{ fontSize: 12, padding: "5px 12px", marginTop: 12 }}
               onClick={() => goToVerse(b.verseKey)}
             >
-              Return to this ayah →
+              {t("bookmarks.return")} {arrows.next}
             </button>
           </article>
         ))}

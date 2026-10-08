@@ -1,0 +1,137 @@
+{
+  "surah": 44,
+  "epithet": "A blessed night, and a smoke the sky will bring",
+  "lede": "It begins on the night the Qurʾan was sent down and every wise decree is set out. Then it warns of a day when the sky will bring a visible smoke that covers the people — and tells of Pharaoh, for whom neither the heaven nor the earth wept.",
+  "names": [
+    {
+      "arabic": "الدخان",
+      "name": "al-Dukhān",
+      "meaning": "The Smoke",
+      "note": "From its tenth ayah. It is also called Ḥā Mīm al-Dukhān: it is the fifth of the seven surahs that open with the letters Ḥā Mīm."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "Ibn al-Jawzī records agreement that all of it is Makkan; al-Qurṭubī says the same and mentions one ayah, the fifteenth, that was excepted by some. The traditional order places it sixty-fourth, among the Ḥawāmīm, which came down together and in the order in which they stand in the muṣḥaf.",
+    "period": "makkah-late",
+    "when": "The later years in Makkah, when a famine had fallen on Quraysh",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ الدُّخانِ وَهِيَ مَكِّيَّةٌ كُلُّها بِإجْماعِهِمْ"
+      },
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "أحَدُهُما: أنَّها لَيْلَةُ القَدْرِ، وهو قَوْلُ الأكْثَرِينَ. ورَوى عِكْرِمَةُ عَنِ ابْنِ عَبّاسٍ قالَ: أُنْزِلَ القُرْآنُ مِن عِنْدِ الرَّحْمَنِ لَيْلَةَ القَدْرِ جُمْلَةً واحِدَةً، فَوُضِعَ في السَّماءِ الدُّنْيا، ثُمَّ أُنْزِلَ نُجُومًا"
+      }
+    ]
+  },
+  "setting": [
+    "The “blessed night” of its third ayah is the Night of Decree, in the saying of most of the scholars: the night in which the Qurʾan was sent down, and in which every matter of wisdom for the coming year is made distinct.",
+    "Of the smoke, two explanations have come down from the Companions, and both are sound in their transmission. ʿAbd Allāh ibn Masʿūd held that it had already happened. When Quraysh proved obstinate, the Prophet ﷺ prayed against them for years like the years of Yūsuf; a drought took them until they ate bones and carrion, and a man would look up at the sky and see, between himself and it, something like smoke from the weakness of his hunger. Abū Sufyān came and asked him to pray for relief. “We shall remove the punishment a little; you will surely return” — and they did return; and “the Day We seize with the greatest seizing” was the day of Badr.",
+    "ʿAlī, Ibn ʿAbbās and others held that the smoke is yet to come: one of the great signs before the Hour, which the Prophet ﷺ named among ten in the hadith of Ḥudhayfah ibn Asīd in Ṣaḥīḥ Muslim. Ibn Kathīr prefers this, because the ayah calls it “a clear smoke” that “covers the people”.",
+    "Whichever is meant, the surah’s example for Quraysh is Pharaoh’s people. They, too, asked for the punishment to be lifted and promised to believe. They left behind gardens and springs, fields and fine dwellings — and another people inherited them."
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        10,
+        16
+      ],
+      "title": "The famine of Quraysh",
+      "text": "“This was because when Quraysh were defiant towards the Prophet ﷺ, he prayed against them for years like the years of Yūsuf. Drought and hardship struck them until they ate bones, and a man would look at the sky and see between him and it the like of smoke, from exhaustion. So Allah sent down: ‘Then watch for the Day when the sky brings a clear smoke.’” They asked for relief and were given it, and went back to what they had been upon.",
+      "source": "ʿAbd Allāh ibn Masʿūd: al-Bukhārī (4821) and Muslim (2798)."
+    }
+  ],
+  "aim": "To warn of the awaited punishment, by making the deniers fear both the punishment of this world and that of the next.",
+  "themes": [
+    "The blessed night",
+    "The smoke",
+    "Pharaoh and the Children of Israel",
+    "The Day of Decision",
+    "The tree of Zaqqūm",
+    "The secure station of the mindful"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 8,
+      "title": "The night it was sent down",
+      "summary": "Ḥā Mīm. By the clear Book: We sent it down on a blessed night — We are ever warning — in which every wise matter is made distinct, by a command from Us; a mercy from your Lord, the Lord of the heavens and the earth and what is between them. There is no god but He: He gives life and causes death."
+    },
+    {
+      "from": 9,
+      "to": 16,
+      "title": "The smoke",
+      "summary": "Yet they are in doubt, playing. So watch for the Day when the sky brings a clear smoke that envelops the people: “This is a painful punishment. Our Lord, lift the punishment from us; we believe.” How can a reminder reach them, when a clear Messenger has already come to them and they turned away, saying, “One taught by others, a madman”? We shall lift it a little — and you will go back. The Day We seize with the greatest seizing, We shall take retribution."
+    },
+    {
+      "from": 17,
+      "to": 33,
+      "title": "Pharaoh’s people",
+      "summary": "Before them We tried the people of Pharaoh, and a noble messenger came to them: “Hand over to me the servants of Allah.” Then: “Set out with My servants by night; you will be pursued. And leave the sea at rest.” How many gardens and springs they left behind, and fields and fine stations, and comfort they used to enjoy — and We made another people inherit it. Neither the heaven nor the earth wept for them. We saved the Children of Israel from the humiliating torment, and chose them, knowingly, above the people of their time."
+    },
+    {
+      "from": 34,
+      "to": 42,
+      "title": "“There is only our first death”",
+      "summary": "These people say: there is nothing but our first death, and we shall not be raised; bring back our fathers, if you are truthful. Are they better, or the people of Tubbaʿ and those before them? We did not create the heavens and the earth and what is between them in play. The Day of Decision is the appointed time for them all — the Day no friend can avail a friend, except those on whom Allah has mercy."
+    },
+    {
+      "from": 43,
+      "to": 50,
+      "title": "The tree of Zaqqūm",
+      "summary": "The tree of Zaqqūm is the food of the sinful: like molten brass it boils in the bellies. “Seize him and drag him into the midst of the Blaze; pour over his head the torment of scalding water. Taste — you who were the mighty, the noble.”"
+    },
+    {
+      "from": 51,
+      "to": 59,
+      "title": "The secure station",
+      "summary": "The mindful will be in a station of security, among gardens and springs, clothed in silk and brocade, facing one another. They will not taste death there, beyond the first death; and He has protected them from the punishment of the Blaze — a bounty from your Lord. We have made it easy in your tongue, that they may take heed. So wait: they too are waiting."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 29,
+    "why": "The epitaph of a civilisation that thought itself the centre of the world: nothing above it or beneath it noticed its passing."
+  },
+  "virtues": [],
+  "virtuesNote": "The reports of special reward for reciting this surah at night or on the night before Friday are not sound. Al-Tirmidhī’s two (2888, 2889) he himself called gharīb and weak in their narrators; al-Albānī grades the first fabricated and the second weak.",
+  "before": "Al-Zukhruf ended: “So turn from them and say, ‘Peace’ — they will come to know” (43:89). Al-Dukhān opens on what they will come to know, and when.",
+  "after": "Al-Dukhān ends: “We have made it easy in your tongue.” Al-Jāthiyah begins with the sending down of that Book, and the signs that stand beside it in the heavens and the earth.",
+  "notable": [
+    {
+      "ayah": 3,
+      "to": 4,
+      "label": "A blessed night, in which every wise matter is made distinct"
+    },
+    {
+      "ayah": 10,
+      "to": 11,
+      "label": "A clear smoke that envelops the people"
+    },
+    {
+      "ayah": 29,
+      "label": "Neither the heaven nor the earth wept for them"
+    },
+    {
+      "ayah": 38,
+      "to": 39,
+      "label": "Not created in play"
+    },
+    {
+      "ayah": 51,
+      "label": "A station of security"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "al-Ṭabarī, Jāmiʿ al-Bayān",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

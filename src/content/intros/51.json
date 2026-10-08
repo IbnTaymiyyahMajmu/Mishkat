@@ -1,0 +1,126 @@
+{
+  "surah": 51,
+  "epithet": "Why jinn and men were created",
+  "lede": "It swears by the winds that scatter, the clouds that carry, the ships that glide and the angels that apportion, that the promise is true. And near its end it states, in a single line, what every human being is for.",
+  "names": [
+    {
+      "arabic": "الذاريات",
+      "name": "al-Dhāriyāt",
+      "meaning": "The Scattering Winds",
+      "note": "After the first thing it swears by: the winds that scatter the dust. ʿAlī ibn Abī Ṭālib, asked about the four oaths from the pulpit at Kūfah, explained them in turn: the winds, the clouds, the ships, and the angels."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "It is Makkan in the saying of all: Ibn al-Jawzī and al-Qurṭubī both record the agreement. The traditional order places it sixty-seventh.",
+    "period": "makkah-late",
+    "when": "The later years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ الذّارِياتِ مَكِّيَّةٌ كُلُّها بِإجْماعِهِمْ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ وَالذَّارِيَاتِ مَكِّيَّةٌ فِي قَوْلِ الْجَمِيعِ، وَهِيَ سِتُّونَ آيَةً"
+      }
+    ]
+  },
+  "setting": [
+    "No occasion is reported for it. It belongs to the years in which the Prophet ﷺ was being answered, as every messenger before him had been, with the two words the surah quotes: “A sorcerer, or a madman.” Did they hand that down to one another? it asks. No — they are simply a people who overstep.",
+    "The surah gives him what such a moment needs: certainty, examples, and a clear statement of his task. The certainty is in the oath — “By the Lord of the heaven and the earth, it is the truth, as surely as you speak.” The examples come quickly: the guests of Ibrāhīm, who were angels on their way to the people of Lūṭ; Mūsā and Pharaoh; ʿĀd and the barren wind; Thamūd; and the people of Nūḥ.",
+    "In its middle is a portrait of the mindful, and it is one of the few places where the Qurʾan describes their nights: “They used to sleep but little of the night, and before dawn they would ask forgiveness; and in their wealth there was a rightful share for the one who asks and the one who is deprived.”",
+    "And then the task, and its ground. Turn away from them — you are not to blame. But go on reminding, for the reminder benefits the believers. “I did not create the jinn and mankind except to worship Me. I want no provision from them, nor do I want them to feed Me. It is Allah who is the Provider, the Possessor of strength, the Firm.”"
+  ],
+  "occasions": [],
+  "aim": "To make created beings know the source of their provision — Allah, the Exalted — so that they flee to Him and make their servitude to Him real.",
+  "themes": [
+    "The certainty of the promise",
+    "The nights of the mindful",
+    "Provision is with Allah",
+    "Ibrāhīm’s guests",
+    "The destroyed peoples",
+    "The purpose of creation"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 14,
+      "title": "The oath",
+      "summary": "By the winds that scatter, the clouds that bear their load, the ships that run with ease and the angels that distribute by command: what you are promised is true, and the Recompense will come to pass. By the sky with its pathways, you are at odds in what you say. Ruined are the conjecturers, who ask, “When is the Day of Recompense?” — the Day they will be tried over the Fire."
+    },
+    {
+      "from": 15,
+      "to": 23,
+      "title": "The mindful, and the signs",
+      "summary": "The mindful will be among gardens and springs, taking what their Lord gives them: before that they were doers of good — sleeping little of the night, asking forgiveness before dawn, and keeping in their wealth a share for the beggar and the deprived. On the earth are signs for those who are certain, and in yourselves: do you not see? And in the heaven is your provision, and what you are promised."
+    },
+    {
+      "from": 24,
+      "to": 37,
+      "title": "The guests of Ibrāhīm",
+      "summary": "Has the story reached you of the honoured guests of Ibrāhīm? They entered and said, “Peace.” He brought a fattened calf; they did not eat; he felt a fear of them. They gave him good news of a knowing boy — and his wife came forward crying out, “A barren old woman!” They said: we have been sent to a guilty people, to send down on them stones of clay. We found there but one household of those who submit."
+    },
+    {
+      "from": 38,
+      "to": 46,
+      "title": "Four more",
+      "summary": "And in Mūsā, when We sent him to Pharaoh, who turned away with his forces and said, “A sorcerer, or a madman.” And in ʿĀd, when We sent against them the barren wind, which left nothing it came upon but made it like decayed ruins. And in Thamūd, whom the thunderbolt seized as they looked on. And the people of Nūḥ before."
+    },
+    {
+      "from": 47,
+      "to": 55,
+      "title": "Flee to Allah",
+      "summary": "We built the heaven with might, and We are its expander; We spread the earth — how excellent a spreader. Of everything We created pairs. So flee to Allah; I am to you from Him a clear warner. No messenger came to those before them but they said, “A sorcerer, or a madman.” So turn from them; you are not to blame. And remind — for the reminder benefits the believers."
+    },
+    {
+      "from": 56,
+      "to": 60,
+      "title": "What they were made for",
+      "summary": "I did not create the jinn and mankind except to worship Me. I want no provision from them, and I do not want them to feed Me. Allah is the Provider, the Possessor of strength, the Firm. Those who do wrong will have a portion like that of their fellows. Woe to those who disbelieve, from their Day that they are promised."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 56,
+    "why": "The Qurʾan’s plainest statement of the purpose of human life."
+  },
+  "virtues": [],
+  "before": "Qāf closed: remind, by the Qurʾan, whoever fears My threat. Al-Dhāriyāt opens by swearing that the threat is real, and repeats the command: remind.",
+  "after": "This surah ends with woe to the disbelievers from their promised Day. Al-Ṭūr opens with five oaths that the punishment of your Lord will fall.",
+  "notable": [
+    {
+      "ayah": 17,
+      "to": 19,
+      "label": "They slept little of the night"
+    },
+    {
+      "ayah": 21,
+      "label": "And in yourselves — do you not see?"
+    },
+    {
+      "ayah": 22,
+      "label": "In the heaven is your provision"
+    },
+    {
+      "ayah": 50,
+      "label": "So flee to Allah"
+    },
+    {
+      "ayah": 55,
+      "label": "Remind, for the reminder benefits the believers"
+    },
+    {
+      "ayah": 56,
+      "label": "Created only to worship Me"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr"
+  ]
+}

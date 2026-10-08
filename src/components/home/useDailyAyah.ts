@@ -29,6 +29,8 @@ export interface DailyAyah {
   arabic: string;
   translation: string;
   translator: string;
+  /** The ayah could not be had; the page says so in the reader's language. */
+  failed?: boolean;
 }
 
 interface Answer {
@@ -77,8 +79,9 @@ export function useDailyAyah(key: string | null): DailyAyah | null {
           : {
               key,
               arabic: "",
-              translation: "This ayah could not be reached just now.",
+              translation: "",
               translator: "",
+              failed: true,
             },
       });
     })();

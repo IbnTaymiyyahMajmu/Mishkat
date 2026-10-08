@@ -1,0 +1,100 @@
+{
+  "surah": 111,
+  "epithet": "The uncle whom kinship could not save",
+  "lede": "The Prophet ﷺ stood on the hill of Ṣafā and called his people to hear the first public warning. His own uncle answered with a curse. The curse was returned in five ayat, and the man lived another ten years without being able to prove them wrong.",
+  "names": [
+    {
+      "arabic": "المسد",
+      "name": "al-Masad",
+      "meaning": "The Palm Fibre",
+      "note": "After its last word: the twisted rope round the neck of Abū Lahab’s wife."
+    },
+    {
+      "arabic": "تبّت",
+      "name": "Tabbat",
+      "meaning": "“Perish…”",
+      "note": "Its opening word, and the name both Ibn al-Jawzī and al-Qurṭubī head it with. It is also called Sūrat Abī Lahab."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "It is Makkan without disagreement, and its occasion is narrated in both Ṣaḥīḥs. The traditional order places it sixth: it came down at the very start of the open call.",
+    "period": "makkah-early",
+    "when": "The day the call was first made in public, from the hill of Ṣafā — about the third year of the mission",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَهِيَ مَكِّيَّةٌ بِإجْماعِهِمْ وَسَبَبُ نُزُولِها ما رَوى البُخارِيُّ ومُسْلِمٌ في \" الصَّحِيحَيْنِ \" مِن حَدِيثِ سَعِيدِ بْنِ جُبَيْرٍ عَنِ ابْنِ عَبّاسٍ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ \"تَبَّتْ\" وَهِيَ مَكِّيَّةٌ بِإِجْمَاعٍ. وَهِيَ خُمْسُ آيات"
+      }
+    ]
+  },
+  "setting": [
+    "For the first years the Prophet ﷺ called people to Islam quietly, one household at a time. Then came the command: “And warn your nearest kindred” (26:214).",
+    "Ibn ʿAbbās tells what he did. He went out and climbed Ṣafā, the low hill beside the Kaʿbah from which a man could be heard across the town, and gave the cry the Arabs used for a dawn attack: Yā ṣabāḥāh! Quraysh gathered. He said: “Tell me — if I told you that cavalry were coming out from the foot of this mountain, would you believe me?” They said: “We have never known you to lie.” He said: “Then I am a warner to you, ahead of a severe punishment.”",
+    "Abū Lahab — ʿAbd al-ʿUzzā ibn ʿAbd al-Muṭṭalib, his father’s brother — spoke first. “May you perish for the rest of the day! Is it for this that you gathered us?” And this surah came down.",
+    "He and his wife Umm Jamīl, the sister of Abū Sufyān, were neighbours of the Prophet ﷺ and among the most persistent of those who harmed him. The surah says that he will enter a blazing fire — which is to say that he will die a disbeliever. He heard it. He had roughly a decade in which to say the words of faith, even insincerely, and call the Qurʾan a liar. He never did. He died after Badr, of a disease that kept his own sons from going near his body."
+  ],
+  "occasions": [
+    {
+      "title": "The call from Ṣafā",
+      "text": "When “And warn your nearest kindred” came down, the Messenger of Allah ﷺ climbed Ṣafā and called out until Quraysh had gathered, and warned them. Abū Lahab said: “May you perish for the rest of this day! Was it for this that you gathered us?” So there came down: “Perish the two hands of Abū Lahab, and perish he.”",
+      "source": "Ibn ʿAbbās: al-Bukhārī (4770, 4971) and Muslim (208)."
+    }
+  ],
+  "aim": "That lineage and standing are of no use alongside disbelief in Allah.",
+  "themes": [
+    "Kinship without faith",
+    "Wealth that does not avail",
+    "Enmity to the Prophet ﷺ"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 3,
+      "title": "Abū Lahab",
+      "summary": "Perish the two hands of Abū Lahab, and perish he. His wealth has not availed him, nor what he earned. He will enter a fire of blazing flame — lahab, the very word he was nicknamed by."
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "title": "His wife",
+      "summary": "And his wife, the carrier of firewood: around her neck, a rope of palm fibre. She carried thorns to strew in the Prophet’s ﷺ path, and carried tales to set people against him; the early commentators give both."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 1,
+    "why": "The curse, turned back on the one who spoke it — the only one of the Prophet’s ﷺ enemies in Makkah to be condemned in the Qurʾan by name."
+  },
+  "virtues": [],
+  "before": "Al-Naṣr shows the end of the mission, with the tribes entering Islam in crowds. Al-Masad shows its first public day, and the nearest of his kin refusing.",
+  "after": "A man’s lineage could not save him. Al-Ikhlāṣ turns to the One who has no lineage at all: He neither begets nor is born.",
+  "notable": [
+    {
+      "ayah": 1,
+      "label": "Perish the hands of Abū Lahab"
+    },
+    {
+      "ayah": 2,
+      "label": "His wealth did not avail him"
+    },
+    {
+      "ayah": 4,
+      "to": 5,
+      "label": "The carrier of firewood"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

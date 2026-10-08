@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useMemo } from "react";
 import { DAILY } from "@/lib/quran/daily";
-import { SURAH_NAMES } from "@/lib/quran/surahNames";
+import { useLocale } from "@/lib/i18n";
+import { useSurahNames } from "@/lib/i18n/surah";
 import { arabicNumber, verseKeyParts } from "@/lib/text";
 import { HomeSurahList } from "./HomeSurahList";
 import { LampSky } from "./LampSky";
@@ -26,6 +27,8 @@ export function Home() {
   const entry = today === null ? null : DAILY[today];
   const surah = entry ? verseKeyParts(entry.key).surah : null;
   const ayah = useDailyAyah(entry?.key ?? null);
+  const { t, arrows } = useLocale();
+  const names = useSurahNames();
 
   const words = useMemo(
     () => (ayah?.arabic ? ayah.arabic.split(/\s+/).filter(Boolean) : []),
@@ -43,9 +46,9 @@ export function Home() {
           </div>
 
           <div className={styles.heroHead}>
-            <span className={styles.kicker}>Ayah of the day</span>
+            <span className={styles.kicker}>{t("home.kicker")}</span>
             <span className={styles.heroHeadGap} />
-            <span className={styles.theme}>{entry?.theme ?? ""}</span>
+            <span className={styles.theme}>{entry ? t(entry.theme) : ""}</span>
           </div>
 
           {ayah ? (
@@ -61,19 +64,26 @@ export function Home() {
                   </span>
                 ))}
               </p>
-              <p className={styles.translation}>{ayah.translation}</p>
+              <p className={styles.translation} dir="auto">
+                {ayah.failed ? t("home.unreached") : ayah.translation}
+              </p>
               <div className={styles.reference}>
-                {referenceLine(ayah.key, ayah.translator)}
+                {/* Named from the baked-in table until the live one lands: the
+                    reference sits directly under the ayah and should not
+                    appear a beat after it. */}
+                {[`${names.name(verseKeyParts(ayah.key).surah)} ${ayah.key}`, ayah.translator]
+                  .filter(Boolean)
+                  .join(" · ")}
               </div>
             </div>
           ) : (
-            <div className={styles.pending}>Turning the page…</div>
+            <div className={styles.pending}>{t("home.turning")}</div>
           )}
 
           {entry && (
             <div className={styles.cta}>
               <Link href={`/read/${surah}/#${entry.key}`} className={styles.ctaLink}>
-                Read it in context →
+                {t("home.cta")} {arrows.next}
               </Link>
             </div>
           )}
@@ -89,37 +99,23 @@ export function Home() {
 
         <section className={styles.editorial}>
           <h2 className={styles.editorialTitle}>
-            The ayah is not a block of text. It is an entry point.
+            {t("home.editorial.title")}
           </h2>
           <div className={styles.columns}>
             <article>
-              <div className={styles.columnKicker}>Word by word</div>
-              <h3 className={styles.columnTitle}>
-                Arabic, transliteration and meaning, linked
-              </h3>
-              <p className={styles.columnText}>
-                Hover a word on desktop or tap it on a phone and the three representations
-                highlight together, with no layout shift. Tap again to open the full word study.
-              </p>
+              <div className={styles.columnKicker}>{t("home.wbw.kicker")}</div>
+              <h3 className={styles.columnTitle}>{t("home.wbw.title")}</h3>
+              <p className={styles.columnText}>{t("home.wbw.text")}</p>
             </article>
             <article>
-              <div className={styles.columnKicker}>Tafsir</div>
-              <h3 className={styles.columnTitle}>The great works, side by side, never merged</h3>
-              <p className={styles.columnText}>
-                Al-Ṭabarī, al-Qurṭubī, Ibn Kathīr, al-Rāzī and the rest of the classical library
-                in Arabic, and shorter works in English, open beside the ayah or on a page of their
-                own. Each passage keeps its book, its author and a link to the source. Where two
-                differ, the difference stays visible.
-              </p>
+              <div className={styles.columnKicker}>{t("home.tafsir.kicker")}</div>
+              <h3 className={styles.columnTitle}>{t("home.tafsir.title")}</h3>
+              <p className={styles.columnText}>{t("home.tafsir.text")}</p>
             </article>
             <article>
-              <div className={styles.columnKicker}>Provenance</div>
-              <h3 className={styles.columnTitle}>Nothing is paraphrased into anonymity</h3>
-              <p className={styles.columnText}>
-                Text is the Uthmānī muṣḥaf from the Quran.com corpus. Translations carry their
-                translator. Where a linguistic field is absent from the dataset, the interface says
-                so rather than filling the gap.
-              </p>
+              <div className={styles.columnKicker}>{t("home.provenance.kicker")}</div>
+              <h3 className={styles.columnTitle}>{t("home.provenance.title")}</h3>
+              <p className={styles.columnText}>{t("home.provenance.text")}</p>
             </article>
           </div>
         </section>
@@ -139,15 +135,4 @@ function wordDelays(i: number, count: number): string {
   const rise = 90 + i * step;
   const sheen = -i * Math.round(7000 / Math.max(1, count));
   return `${rise}ms, ${sheen}ms`;
-}
-
-/**
- * The surah is named from the baked-in table rather than from the live chapter
- * data: the reference sits directly under the ayah and should not appear a beat
- * after it.
- */
-function referenceLine(key: string, translator: string): string {
-  const { surah } = verseKeyParts(key);
-  const name = SURAH_NAMES[surah - 1]?.english ?? `Surah ${surah}`;
-  return translator ? `${name} ${key} · ${translator}` : `${name} ${key}`;
 }

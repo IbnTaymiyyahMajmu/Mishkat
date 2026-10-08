@@ -51,7 +51,11 @@ export interface TafsirAppWork {
   /** The title put into English, for a reader to whom the Arabic says nothing. */
   nameEnglish: string;
   nameArabic: string;
+  /** The author as readers call him, and the book's own title, in Arabic letters. */
+  shortArabic?: string;
+  titleArabic?: string;
   author: string;
+  authorArabic?: string;
   /** One line on what the work is and what to expect of it. */
   about: string;
   /** The year the author died, AH. */

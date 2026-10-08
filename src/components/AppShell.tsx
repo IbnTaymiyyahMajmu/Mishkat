@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { SiteHeader } from "./SiteHeader";
 import { SearchOverlay } from "./search/SearchOverlay";
 import { Transport } from "./Transport";
+import { useT } from "@/lib/i18n";
 import styles from "./AppShell.module.css";
 
 /**
@@ -22,11 +23,12 @@ import styles from "./AppShell.module.css";
  */
 export function AppShell({ children }: { children: ReactNode }) {
   const onHome = (usePathname() || "/") === "/";
+  const t = useT();
 
   return (
     <div className={`${styles.shell} ${onHome ? styles.shellHome : ""}`}>
       <a href="#main" className="skip-link">
-        Skip to the text
+        {t("shell.skip")}
       </a>
       <SiteHeader />
       <main id="main" className={styles.main}>

@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 import type { Para } from "@/lib/quran/types";
-import { tafsirWork, type TafsirWork } from "@/lib/quran/tafsir";
+import type { TafsirWork } from "@/lib/quran/tafsir";
 import { fetchTafsirAppAbout } from "@/lib/quran/tafsirApp";
 import { useSettings } from "@/lib/store/settings";
+import { useT } from "@/lib/i18n";
 import { TafsirText, countEditorNotes } from "./TafsirText";
 import { useTafsirPassage } from "./useTafsirPassage";
+import { useTafsirSay } from "./useTafsirSay";
 import styles from "./Tafsir.module.css";
 
 interface Props {
@@ -39,6 +41,8 @@ interface Props {
  */
 export function TafsirReading({ work, verseKey, opening, onRange, alternatives, onPick, onBeside, tools }: Props) {
   const { settings, update } = useSettings();
+  const t = useT();
+  const say = useTafsirSay();
   const state = useTafsirPassage(work, verseKey);
   const passage = state.status === "ready" ? state.passage : null;
 
@@ -72,57 +76,61 @@ export function TafsirReading({ work, verseKey, opening, onRange, alternatives, 
   const noteCount = countEditorNotes(paras);
 
   // The same work in the other language, where the library holds both.
-  const other = onPick ? tafsirWork(work.pair?.id) : undefined;
+  const other = onPick ? say.counterpart(work) : undefined;
   const hasTools = !!other || !!work.aboutId || noteCount > 0 || !!tools;
+  const arabic = say.arabic(work);
+  const title = say.title(work);
 
   return (
     <article className={styles.reading} lang={work.lang === "ar" ? undefined : "en"}>
       <header className={styles.workHead}>
         <div className={styles.workNames}>
-          <h2 className={styles.workName}>{work.name}</h2>
-          {work.nameArabic && (
+          <h2 className={styles.workName}>{say.name(work)}</h2>
+          {arabic && (
             <span className={styles.workNameArabic} dir="rtl" lang="ar">
-              {work.nameArabic}
+              {arabic}
             </span>
           )}
         </div>
-        {work.nameEnglish && <div className={styles.workEnglish}>{work.nameEnglish}</div>}
+        {title && <div className={styles.workEnglish}>{title}</div>}
         <div className={styles.workCredit}>
-          <span className={styles.workKind}>{work.kind}</span>
-          {work.credit}
+          <span className={styles.workKind}>{say.kind(work)}</span>
+          {say.credit(work)}
         </div>
 
         {hasTools && (
           <div className={styles.workTools}>
-            {/* A work held in both its languages is switched between them as
-                a language is switched anywhere: the one being read is lit,
-                the other is a press away. */}
+            {/* A work held in two languages is switched between them as a
+                language is switched anywhere: the one being read is lit, the
+                other is a press away. The Arabic comes first: it is the work. */}
             {other && onPick && (
               <span
                 className={styles.langSwitch}
                 role="group"
-                aria-label="The language this work is read in"
-                title={work.pair?.note}
+                aria-label={t("tafsir.langSwitch")}
+                title={
+                  other.partial ? t(work.lang === "ar" ? "tafsir.partial.arabic" : "tafsir.partial.translation") : undefined
+                }
               >
-                {(["ar", "en"] as const).map((lang) => (
+                {(work.lang === "ar" ? [work, other.work] : [other.work, work]).map((version) => (
                   <button
-                    key={lang}
-                    aria-pressed={work.lang === lang}
-                    onClick={work.lang === lang ? undefined : () => onPick(other.id)}
+                    key={version.id}
+                    aria-pressed={version.id === work.id}
+                    onClick={version.id === work.id ? undefined : () => onPick(version.id)}
                   >
-                    {lang === "ar" ? "Arabic" : "English"}
+                    {say.language(version.lang)}
                   </button>
                 ))}
               </span>
             )}
             {other && onBeside && (
-              <button className={styles.tool} onClick={() => onBeside(other.id)}>
-                Both, side by side
+              <button className={styles.tool} onClick={() => onBeside(other.work.id)}>
+                {t("tafsir.both")}
               </button>
             )}
             {work.aboutId && (
               <button className={styles.tool} onClick={toggleAbout} aria-expanded={aboutOpen}>
-                About this work
+                {t("tafsir.aboutWork")}
               </button>
             )}
             {noteCount > 0 && (
@@ -130,9 +138,9 @@ export function TafsirReading({ work, verseKey, opening, onRange, alternatives, 
                 className={styles.tool}
                 onClick={() => update({ tafsirNotes: !settings.tafsirNotes })}
                 aria-pressed={settings.tafsirNotes}
-                title="The footnotes of the printed edition's editor"
+                title={t("tafsir.editorTitle")}
               >
-                {settings.tafsirNotes ? "Fold the editor’s notes" : `Show the editor’s notes · ${noteCount}`}
+                {settings.tafsirNotes ? t("tafsir.foldNotes") : t("tafsir.showNotes", { count: noteCount })}
               </button>
             )}
             {tools && <span className={styles.toolsEnd}>{tools}</span>}
@@ -145,15 +153,15 @@ export function TafsirReading({ work, verseKey, opening, onRange, alternatives, 
           passage and stays shut until asked for. */}
       {aboutOpen && (
         <div className={styles.about}>
-          <p className={styles.aboutLead}>{work.about}</p>
-          {said === undefined && <p className={styles.quiet}>Fetching…</p>}
+          <p className={styles.aboutLead}>{say.about(work)}</p>
+          {said === undefined && <p className={styles.quiet}>{t("common.fetching")}</p>}
           {said && <TafsirText paras={said} />}
         </div>
       )}
 
       <div className={styles.passage}>
         {state.status === "loading" && (
-          <div className={styles.skeleton} aria-label="Fetching the passage">
+          <div className={styles.skeleton} aria-label={t("tafsir.fetchingPassage")}>
             <span />
             <span />
             <span />
@@ -163,24 +171,22 @@ export function TafsirReading({ work, verseKey, opening, onRange, alternatives, 
 
         {state.status === "failed" && (
           <div className={styles.state}>
-            <p>That passage could not be reached.</p>
+            <p>{t("tafsir.unreached")}</p>
             <button className="btn btn-secondary" onClick={state.retry}>
-              Try again
+              {t("common.tryAgain")}
             </button>
           </div>
         )}
 
         {passage && paras.length === 0 && (
           <div className={styles.state}>
-            <p>
-              {work.short} has nothing on ayah {ayah}.
-            </p>
+            <p>{t("tafsir.nothingOn", { work: say.short(work), ayah })}</p>
             {alternatives && alternatives.length > 0 && onPick && (
               <div className={styles.alternatives}>
-                <span>Read instead</span>
+                <span>{t("tafsir.readInstead")}</span>
                 {alternatives.slice(0, 4).map((alt) => (
                   <button key={alt.id} className="btn btn-secondary" onClick={() => onPick(alt.id)}>
-                    {alt.short}
+                    {say.short(alt)}
                   </button>
                 ))}
               </div>
@@ -189,16 +195,14 @@ export function TafsirReading({ work, verseKey, opening, onRange, alternatives, 
         )}
 
         {passage && paras.length > 0 && passage.from !== passage.to && (
-          <p className={styles.rangeNote}>
-            The author takes ayat {passage.from}–{passage.to} together. This is his passage on all of them.
-          </p>
+          <p className={styles.rangeNote}>{t("tafsir.together", { from: passage.from, to: passage.to })}</p>
         )}
 
         <TafsirText key={slot} paras={shown} foldNotes={!settings.tafsirNotes} />
 
         {folded && (
           <button className={`btn btn-secondary btn-block ${styles.more}`} onClick={() => setUnfolded(slot)}>
-            Continue reading · {paras.length - shown.length} more paragraphs
+            {t("tafsir.continue", { count: paras.length - shown.length })}
           </button>
         )}
       </div>
@@ -206,10 +210,7 @@ export function TafsirReading({ work, verseKey, opening, onRange, alternatives, 
       {passage && paras.length > 0 && (
         <footer className={styles.workFoot}>
           <span className={styles.footNote}>
-            {noteCount > 0 &&
-              (settings.tafsirNotes
-                ? "Smaller text in brackets is the editor of the printed edition, not the author."
-                : "A small number marks a footnote by the editor of the printed edition; press it to read the note.")}
+            {noteCount > 0 && t(settings.tafsirNotes ? "tafsir.legendShown" : "tafsir.legendFolded")}
           </span>
           <span className={styles.footGap} />
           <a href={work.origin.href(verseKey)} target="_blank" rel="noopener noreferrer" className={styles.source}>

@@ -1,0 +1,112 @@
+{
+  "surah": 86,
+  "epithet": "A watcher over every soul",
+  "lede": "A star that pierces the dark; a drop of fluid; the Day when secrets are put to the test. Seventeen ayat join them into one claim: nothing about a person is unobserved, and the One who made him once can make him again.",
+  "names": [
+    {
+      "arabic": "الطارق",
+      "name": "al-Ṭāriq",
+      "meaning": "The Night-Comer",
+      "note": "After the oath it opens with. Ṭāriq is anyone who arrives by night, and knocks; the surah explains it at once — the piercing star."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "It is Makkan without disagreement: Ibn al-Jawzī records the agreement and al-Qurṭubī gives no other view. The traditional order places it thirty-sixth.",
+    "period": "makkah-middle",
+    "when": "The middle years in Makkah, as Quraysh turned from mockery to plotting",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ الطّارِقِ وَهِيَ مَكِّيَّةٌ كُلُّها بِإجْماعِهِمْ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ \"الطَّارِقِ\" مَكِّيَّةٌ، وَهِيَ سَبْعَ عَشْرَةَ آيَةً"
+      }
+    ]
+  },
+  "setting": [
+    "No occasion is firmly reported for it. A companion named Khālid al-ʿAdwānī relates that he saw the Messenger of Allah ﷺ in the market of Thaqīf, leaning on a bow or a staff, when he came to them seeking their support, and heard him recite “By the sky and the night-comer” to the end; “I memorised it in my days of ignorance, while I was still an idolater, and then recited it in Islam.” That is the journey to Ṭāʾif, in the tenth year of the mission. Imām Aḥmad narrates it, through a chain that is not strong.",
+    "The surah’s closing ayat fit those years. “They are plotting a plot, and I am planning a plan. So give the disbelievers respite — leave them a while.” The men of Makkah were by then meeting to decide how to be rid of him. The Prophet ﷺ is told not to hurry their end.",
+    "Its argument for the Resurrection is the plainest in the Qurʾan. Let the human being look at what he was made from. The One who brought him out of that is able to bring him back."
+  ],
+  "occasions": [],
+  "aim": "To show how penetrating Allah’s watch is, and how far-reaching His power.",
+  "themes": [
+    "Allah’s watch over the soul",
+    "The origin of man",
+    "The Resurrection",
+    "The Qurʾan as a decisive word",
+    "Respite for the plotters"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 4,
+      "title": "The oath",
+      "summary": "By the sky and the night-comer — and what will make you know what the night-comer is? The piercing star. There is no soul without a guardian over it."
+    },
+    {
+      "from": 5,
+      "to": 10,
+      "title": "Where he came from, and where he is going",
+      "summary": "Let man consider what he was created from: a fluid poured out, emerging from between the backbone and the ribs. He is surely able to bring him back — on the Day when secrets are put to the test, and he has no strength and no helper."
+    },
+    {
+      "from": 11,
+      "to": 17,
+      "title": "A word that decides",
+      "summary": "By the sky that sends back the rain and the earth that splits with growth: this is a decisive word, and no jest. They are plotting, and I am planning. So grant the disbelievers respite; leave them for a while."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 9,
+    "why": "The Day everything inward is brought out. A person’s secrets — intentions, beliefs, what he hid — are what will be examined."
+  },
+  "virtues": [
+    {
+      "text": "The Messenger of Allah ﷺ used to recite, in the noon and afternoon prayers, “By the sky with its great stars” and “By the sky and the night-comer”, and surahs like them.",
+      "narrator": "Jābir ibn Samurah",
+      "source": "Sunan Abī Dāwūd, 805 · Jāmiʿ al-Tirmidhī, 307",
+      "refs": [
+        {
+          "book": "abudawud",
+          "number": "805"
+        },
+        {
+          "book": "tirmidhi",
+          "number": "307"
+        }
+      ],
+      "grade": "Ḥasan ṣaḥīḥ, said al-Tirmidhī"
+    }
+  ],
+  "before": "Al-Burūj: Allah surrounds the deniers from behind. Al-Ṭāriq: over every single soul there is a keeper.",
+  "after": "Al-Ṭāriq asks man to look at how he was created. Al-Aʿlā opens by glorifying the One who created and proportioned, measured and guided.",
+  "notable": [
+    {
+      "ayah": 4,
+      "label": "No soul without a guardian over it"
+    },
+    {
+      "ayah": 9,
+      "label": "The Day secrets are put to the test"
+    },
+    {
+      "ayah": 13,
+      "to": 14,
+      "label": "A decisive word, and no jest"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "The Sunan of Abū Dāwūd and al-Tirmidhī; the Musnad of Aḥmad"
+  ]
+}

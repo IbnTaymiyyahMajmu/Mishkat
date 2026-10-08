@@ -1,0 +1,182 @@
+{
+  "surah": 112,
+  "epithet": "A third of the Qurʾan, in four ayat",
+  "lede": "They asked him to describe his Lord — His lineage, what He is made of, whom He inherits from. The answer is fifteen words long, and nothing has ever been added to it.",
+  "names": [
+    {
+      "arabic": "الإخلاص",
+      "name": "al-Ikhlāṣ",
+      "meaning": "Sincerity",
+      "note": "The word does not occur in the surah. It is named for what it does: it sets out the oneness of Allah free of every addition, and whoever holds to it has made his religion purely for Allah."
+    },
+    {
+      "arabic": "قل هو الله أحد",
+      "name": "Qul Huwa Allāhu Aḥad",
+      "meaning": "“Say: He is Allah, One”",
+      "note": "Its opening words, and the name it most often goes by in the hadith: “Qul huwa Allāhu aḥad is equal to a third of the Qurʾan” (Muslim 811)."
+    }
+  ],
+  "revelation": {
+    "place": "disputed",
+    "verdict": "Differed over — Makkan, by most",
+    "detail": "There are two views and both go back to the early generations. That it is Makkan is reported from Ibn Masʿūd, al-Ḥasan, ʿAṭāʾ, ʿIkrimah and Jābir; that it is Madinan, from Ibn ʿAbbās in one of two reports from him, Qatādah, al-Ḍaḥḥāk and al-Suddī. The difference follows the reports of who asked the question it answers: the idolaters of Makkah, or — in the reports from Qatādah and al-Ḍaḥḥāk — a group of the rabbis. Ibn Kathīr gives it as Makkan without qualification, which is also how it is headed in the muṣḥaf, and its subject and brevity are those of the earliest surahs.",
+    "period": "makkah-early",
+    "when": "On the view that it is Makkan: the early years, when the call was to one thing only — who Allah is",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَفِيها قَوْلانِ. أحَدُهُما: أنَّها مَكِّيَّةٌ، قالَهُ ابْنُ مَسْعُودٍ، والحَسَنُ، وعَطاءٌ، وعِكْرِمَةُ، وجابِرٌ. والثّانِي: مَدَنِيَّةٌ، رُوِيَ عَنِ ابْنِ عَبّاسٍ، وقَتادَةَ، والضَّحّاكِ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "مَكِّيَّةٌ فِي قَوْلِ ابْنِ مَسْعُودٍ وَالْحَسَنِ وَعَطَاءٍ وَعِكْرِمَةَ وَجَابِرٍ. وَمَدَنِيَّةٌ فِي أَحَدِ قَوْلَيِ ابْنِ عباس وقتادة والضحاك والسدي. وَهِيَ أَرْبَعُ آيَاتٍ"
+      }
+    ]
+  },
+  "setting": [
+    "The Arabs of Makkah were not atheists. They knew the name of Allah, swore by it, and said that He had made the heavens and the earth. What they could not do was leave Him alone: they gave Him daughters, set lesser gods beside Him as go-betweens, and thought of Him, as they thought of everything, in terms of family and descent. A man was known by his lineage. So when Muḥammad ﷺ called them to worship Allah and nothing else, they asked him the only question they knew how to ask about anyone: whose son is He?",
+    "“Describe your Lord’s lineage to us,” they said — unsub lanā rabbak. The surah came down as the reply. It does not argue. It makes four statements, each closing a door: He is One; He is the One all creation turns to in need, who needs nothing; He has no child and no parent; and nothing is like Him.",
+    "The same question was put again in other mouths — by an Arab chief who asked whether this god was of gold or silver or iron, and, in some reports, by rabbis who asked what kind of thing He was and who would inherit from Him. That is very likely why the early scholars are reported differing over where it came down. The answer was the same wherever it was asked."
+  ],
+  "occasions": [
+    {
+      "title": "“Describe your Lord’s lineage to us”",
+      "text": "The idolaters said to the Prophet ﷺ: “Muḥammad, describe your Lord’s lineage to us.” So Allah sent down: “Say: He is Allah, One; Allah, the Eternal Refuge; He neither begets nor is born; and there is none comparable to Him.”",
+      "source": "From Ubayy ibn Kaʿb: Aḥmad and al-Tirmidhī (3364). Al-Tirmidhī also has it from Abū al-ʿĀliyah without naming Ubayy, and says that form is the sounder; al-Albānī graded the report ḥasan.",
+      "evidence": {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "عَنْ أُبَيِّ بْنِ كَعْبٍ: أَنَّ الْمُشْرِكِينَ قَالُوا لِلنَّبِيِّ ﷺ: يَا مُحَمَّدُ، انْسُبْ لَنَا رَبَّكَ، فَأَنْزَلَ اللَّهُ"
+      }
+    },
+    {
+      "title": "Three reports of who asked",
+      "text": "Ibn al-Jawzī sets the reports side by side. The first is the one above. In the second, from Ibn ʿAbbās, ʿĀmir ibn al-Ṭufayl asked what the Prophet ﷺ was calling to, and on being told, said: “Describe Him to me — is He of gold, or silver, or iron?” In the third, from Qatādah and al-Ḍaḥḥāk, it was a group of rabbis who asked what kind He was, whom He had inherited the world from, and to whom He would leave it.",
+      "source": "Ibn al-Jawzī, Zād al-Masīr, at the head of the surah.",
+      "evidence": {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَفِي سَبَبِ نُزُولِها ثَلاثَةُ أقْوالٍ. أحَدُها: أنَّ المُشْرِكِينَ قالُوا: يا مُحَمَّدُ انْسِبْ لَنا رَبَّكَ، فَنَزَلَتْ هَذِهِ السُّورَةُ، قالَهُ أُبَيُّ بْنُ كَعْبٍ"
+      }
+    }
+  ],
+  "aim": "To affirm that Allah alone possesses perfection and divinity, and that He is far above every deficiency.",
+  "themes": [
+    "Tawḥīd",
+    "The names of Allah",
+    "Refuting shirk"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 2,
+      "title": "Who He is",
+      "summary": "“Say: He is Allah, One. Allah, al-Ṣamad.” Aḥad — one with no second, in His essence, His attributes and His right to be worshipped. Al-Ṣamad — the Master whose lordship is complete, to whom every creature turns in its need, while He needs none of them."
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "title": "What He is far above",
+      "summary": "“He neither begets nor is born, and there is none comparable to Him.” No child — against those who gave Him daughters, and those who said the Messiah or ʿUzayr was His son. No origin. And no equal: nothing to compare Him with, nothing that shares in what is His."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 1,
+    "why": "The first statement, which the other three unfold. The Prophet ﷺ heard a man reciting it and said, “It has become due” — Paradise (al-Tirmidhī 2897)."
+  },
+  "virtues": [
+    {
+      "text": "A man heard another reciting “Qul huwa Allāhu aḥad”, repeating it over and over. In the morning he came to the Messenger of Allah ﷺ and mentioned it, as though he thought it little. He ﷺ said: “By the One in whose hand is my soul, it is equal to a third of the Qurʾan.”",
+      "arabic": "وَالَّذِي نَفْسِي بِيَدِهِ إِنَّهَا لَتَعْدِلُ ثُلُثَ الْقُرْآنِ",
+      "narrator": "Abū Saʿīd al-Khudrī",
+      "source": "Ṣaḥīḥ al-Bukhārī, 5013",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "5013"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "“Is any one of you unable to recite a third of the Qurʾan in a night?” They said: “How could anyone recite a third of the Qurʾan?” He said: “Qul huwa Allāhu aḥad is equal to a third of the Qurʾan.”",
+      "arabic": "قُلْ هُوَ اللَّهُ أَحَدٌ تَعْدِلُ ثُلُثَ الْقُرْآنِ",
+      "narrator": "Abū al-Dardāʾ",
+      "source": "Ṣaḥīḥ Muslim, 811",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "811"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "The Prophet ﷺ sent a man at the head of an expedition, and he would lead his companions in prayer and end his recitation each time with “Qul huwa Allāhu aḥad”. When they returned they mentioned it, and he ﷺ said: “Ask him why he does that.” He said: “Because it is the description of the Most Merciful, and I love to recite it.” The Prophet ﷺ said: “Tell him that Allah loves him.”",
+      "arabic": "أَخْبِرُوهُ أَنَّ اللَّهَ يُحِبُّهُ",
+      "narrator": "ʿĀʾishah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 7375 · Ṣaḥīḥ Muslim, 813",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "7375"
+        },
+        {
+          "book": "muslim",
+          "number": "813"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "When the Prophet ﷺ went to his bed each night he would bring his palms together, blow into them, and recite into them “Qul huwa Allāhu aḥad”, “Qul aʿūdhu bi-rabbi l-falaq” and “Qul aʿūdhu bi-rabbi n-nās”; then he would wipe with them whatever he could of his body, beginning with his head and his face and the front of his body. He would do that three times.",
+      "narrator": "ʿĀʾishah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 5017",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "5017"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "“Qul huwa Allāhu aḥad and the two surahs of refuge, when evening comes and when morning comes, three times: they will suffice you against everything.”",
+      "narrator": "ʿAbd Allāh ibn Khubayb",
+      "source": "Sunan Abī Dāwūd, 5082 · Jāmiʿ al-Tirmidhī, 3575",
+      "refs": [
+        {
+          "book": "abudawud",
+          "number": "5082"
+        },
+        {
+          "book": "tirmidhi",
+          "number": "3575"
+        }
+      ],
+      "grade": "Ḥasan ṣaḥīḥ gharīb, said al-Tirmidhī; ḥasan according to al-Albānī"
+    }
+  ],
+  "before": "Al-Masad shows a man whose lineage could not save him — the Prophet’s ﷺ own uncle, lost with his wealth and all he earned. Al-Ikhlāṣ follows with the One who has no lineage at all, and to whom lineage is nothing.",
+  "after": "Having said who Allah is, the muṣḥaf closes with two surahs that turn to Him for protection: al-Falaq, from the harm that comes from outside, and al-Nās, from the whisper that comes from within. The Prophet ﷺ recited the three together, morning, evening and before sleep.",
+  "notable": [
+    {
+      "ayah": 1,
+      "label": "Aḥad — the One"
+    },
+    {
+      "ayah": 2,
+      "label": "Al-Ṣamad — the Eternal Refuge"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Ṭabarī, Jāmiʿ al-Bayān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; the Sunan of Abū Dāwūd and al-Tirmidhī"
+  ]
+}

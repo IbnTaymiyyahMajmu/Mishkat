@@ -8,6 +8,7 @@ import { TafsirReading } from "@/components/tafsir/TafsirReading";
 import { TafsirLibrary, TafsirTabs } from "@/components/tafsir/TafsirShelf";
 import { useTafsirShelf } from "@/components/tafsir/useTafsirShelf";
 import shared from "@/components/tafsir/Tafsir.module.css";
+import { useT } from "@/lib/i18n";
 import styles from "./Panels.module.css";
 
 interface Props {
@@ -39,6 +40,7 @@ interface Props {
  */
 export function TafsirPanel({ verse, verseKey, ayahCount, onMove }: Props) {
   const router = useRouter();
+  const t = useT();
   const { shelf, works, active, pick, toggle, scale, resize } = useTafsirShelf();
   const [choosing, setChoosing] = useState(false);
   /** The ayat the passage on screen covers, once it has said. */
@@ -91,38 +93,38 @@ export function TafsirPanel({ verse, verseKey, ayahCount, onMove }: Props) {
             className={styles.step}
             onClick={() => onMove(`${surah}:${prev}`)}
             disabled={prev < 1}
-            aria-label={`Previous: ayah ${prev}`}
+            aria-label={t("panel.prev", { n: prev })}
           >
             ‹ {prev >= 1 ? prev : ""}
           </button>
           <span className={styles.stepHere}>
-            Ayah {ayah} of {total}
+            {t("common.ayahOf", { n: ayah, total })}
           </span>
           <button
             className={styles.step}
             onClick={() => onMove(`${surah}:${next}`)}
             disabled={next > total}
-            aria-label={`Next: ayah ${next}`}
+            aria-label={t("panel.next", { n: next })}
           >
             {next <= total ? next : ""} ›
           </button>
 
           <span className={styles.stepGap} />
 
-          <span className={styles.sizer} role="group" aria-label="Text size">
-            <button onClick={() => resize(-1)} disabled={scale <= 0.86} aria-label="Smaller text">
+          <span className={styles.sizer} role="group" aria-label={t("tafsir.textSize")}>
+            <button onClick={() => resize(-1)} disabled={scale <= 0.86} aria-label={t("tafsir.smaller")}>
               A−
             </button>
-            <button onClick={() => resize(1)} disabled={scale >= 1.59} aria-label="Larger text">
+            <button onClick={() => resize(1)} disabled={scale >= 1.59} aria-label={t("tafsir.larger")}>
               A+
             </button>
           </span>
           <Link
             href={`/tafsir/?v=${verseKey}${active ? `&w=${encodeURIComponent(active.id)}` : ""}`}
             className={styles.fullPage}
-            title="Read this on a page of its own"
+            title={t("tafsir.fullPageTitle")}
           >
-            Full page ↗
+            {t("tafsir.fullPage")} ↗
           </Link>
         </div>
       </div>
@@ -157,8 +159,7 @@ export function TafsirPanel({ verse, verseKey, ayahCount, onMove }: Props) {
 
       {!choosing && (
         <p className={shared.footNote} style={{ marginTop: 18 }}>
-          Each work is shown under its own book and author, as published. Where two differ, both stand:
-          nothing here is merged into a single answer.
+          {t("tafsir.promise")}
         </p>
       )}
     </div>

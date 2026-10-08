@@ -1,0 +1,240 @@
+{
+  "surah": 12,
+  "epithet": "The best of stories",
+  "lede": "Every other prophet’s story in the Qurʾan is told in pieces, scattered across many surahs. This one is told once, whole, from a boy’s dream to its fulfilment decades later — the well, the slave-market, the locked door, the prison, the granaries of Egypt — and it ends with the brothers who threw him away standing before him, asking for charity.",
+  "names": [
+    {
+      "arabic": "يوسف",
+      "name": "Yūsuf",
+      "meaning": "Joseph",
+      "note": "After the prophet whose life is its single subject. Outside this surah he is named only twice in the whole Qurʾan."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "Ibn al-Jawzī records consensus that it is Makkan, and al-Qurṭubī says Makkan, all of it, noting a report that excepts four ayat. The traditional order places it fifty-third, directly after Yūnus and Hūd — which puts it in the last years before the Hijrah, the period in which the Prophet ﷺ lost Khadījah and his uncle Abū Ṭālib and was driven out of al-Ṭāʾif. Al-Qurṭubī records what the scholars observed about it: Allah repeated the stories of the prophets in the Qurʾan in differing words and at differing lengths, but told the story of Yūsuf and did not repeat it.",
+    "period": "makkah-late",
+    "when": "The last years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "فَصْلٌ في نُزُولِها هِيَ مَكِّيَّةٌ بِالإجْماعِ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "وَذَكَرَ اللَّهُ أَقَاصِيصَ الْأَنْبِيَاءِ فِي الْقُرْآنِ وَكَرَّرَهَا بِمَعْنًى وَاحِدٍ فِي وُجُوهٍ مُخْتَلِفَةٍ، بِأَلْفَاظٍ مُتَبَايِنَةٍ عَلَى دَرَجَاتِ الْبَلَاغَةِ، وَقَدْ ذَكَرَ قِصَّةَ يُوسُفَ وَلَمْ يُكَرِّرْهَا"
+      }
+    ]
+  },
+  "setting": [
+    "Saʿd ibn Abī Waqqāṣ said: the Qurʾan was sent down to the Messenger of Allah ﷺ, and he recited it to them for a time. Then they said: Messenger of Allah, if only you would tell us stories. And Allah sent down: “Alif Lām Rā. These are the ayat of the clear Book… We relate to you the best of stories.”",
+    "Consider who was listening. The believers in Makkah were a few people with no protector, some of whom had been thrown out by their own families. The man reciting to them had been called a liar by his own tribe; if the traditional order holds, he had lately buried his wife and his guardian within a short time of one another, and did not yet know that a city to the north would take him in. To them the surah tells of a boy who was envied by his brothers for nothing he had done, dropped into a well, sold “for a paltry price, a few silver coins,” accused by the woman of the house he served, and left in prison for years by a man who had promised to mention him — and who came out of it as the keeper of the storehouses of the land. “Thus We established Yūsuf in the land… And Allah prevails in His purpose, but most people do not know.”",
+    "It is built with great care. It opens with a dream — eleven stars and the sun and the moon, bowing — and closes with the same dream come true: “Father, this is the meaning of my dream of long ago; my Lord has made it real.” A shirt appears three times: stained with false blood, as evidence for a lie; torn from behind, as evidence of the truth; and at last laid over an old man’s face, giving him back his sight. At the centre of the story, in the prison, with two condemned men waiting on his every word, Yūsuf puts off the answer they want and gives them the one they need: “My two companions of the prison — are many different lords better, or Allah, the One, the Irresistible?”",
+    "Beside him throughout stands his father. Yaʿqūb is told his son is dead and answers, “Patience is beautiful.” Years later he loses a second son and says it again. His eyes turn white with grief, and when his sons reproach him he says: “I complain of my anguish and my sorrow only to Allah” — the ayah at which ʿUmar was heard sobbing from the back rows as he led the dawn prayer. And then the instruction that defines him: “My sons, go and search for Yūsuf and his brother, and do not despair of relief from Allah.”",
+    "When the brothers finally learn who the minister is, and wait for what he will do, he says: “No reproach upon you today. May Allah forgive you; He is the most merciful of the merciful.” The Prophet ﷺ entered Makkah as its conqueror eight years after the Hijrah, with the people who had hunted him gathered before him."
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        1,
+        3
+      ],
+      "title": "“If only you would tell us stories”",
+      "text": "“The Qurʾan was sent down upon the Messenger of Allah ﷺ, and he recited it to them for a time. They said: ‘Messenger of Allah, if only you would relate stories to us.’ So Allah sent down: ‘Alif Lām Rā. These are the ayat of the clear Book,’ to His saying: ‘We relate to you the best of stories.’”",
+      "source": "Saʿd ibn Abī Waqqāṣ: related by Ibn Ḥibbān and al-Ḥākim, and cited by Ibn al-Jawzī and al-Qurṭubī.",
+      "evidence": {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "أُنْزِلَ القُرْآنُ عَلى رَسُولِ اللَّهِ ﷺ فَتَلاهُ، عَلَيْهِمْ زَمانًا، فَقالُوا: يا رَسُولَ اللَّهِ، لَوْ قَصَصْتَ عَلَيْنا، فَأنْزَلَ اللَّهُ تَعالى"
+      }
+    }
+  ],
+  "aim": "The promise of establishment after plain trial — to steady the Prophet ﷺ and the believers, and as a pledge to them.",
+  "themes": [
+    "A dream and its fulfilment",
+    "Envy within a family",
+    "Beautiful patience",
+    "Chastity under temptation",
+    "Calling to Allah from prison",
+    "Allah prevails in His purpose",
+    "Do not despair of relief from Allah",
+    "Forgiveness in the hour of power"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 6,
+      "title": "The dream",
+      "summary": "Alif Lām Rā. These are the ayat of the clear Book. We relate to you the best of stories. When Yūsuf said to his father: “Father, I saw eleven stars, and the sun and the moon; I saw them prostrating to me.” He said: “My son, do not tell your dream to your brothers, lest they plot against you. Thus your Lord will choose you, and teach you the interpretation of events.”"
+    },
+    {
+      "from": 7,
+      "to": 20,
+      "title": "The well",
+      "summary": "In Yūsuf and his brothers are signs for those who ask. They said: “Yūsuf and his brother are dearer to our father than we are. Kill Yūsuf, or cast him out to some land.” One said: “Do not kill him; throw him into the depths of the well.” They came to their father at night, weeping, and brought his shirt with false blood. He said: “No — your souls have made something seem fair to you. Patience is beautiful.” A caravan came, and they sold him for a paltry price."
+    },
+    {
+      "from": 21,
+      "to": 34,
+      "title": "The house in Egypt",
+      "summary": "The Egyptian who bought him said to his wife: “Make his stay honourable.” She in whose house he was sought to seduce him; she bolted the doors and said: “Come.” He said: “Allah forbid!” They raced to the door, and she tore his shirt from behind. A witness from her household said: “If his shirt is torn from behind, she has lied.” The women of the city talked; she invited them, and when they saw him they cut their hands. He said: “My Lord, prison is dearer to me than what they call me to.”"
+    },
+    {
+      "from": 35,
+      "to": 42,
+      "title": "The prison",
+      "summary": "Two young men entered the prison with him, and each told a dream. He said: “I have left the creed of a people who do not believe in Allah, and followed the creed of my fathers, Ibrāhīm, Isḥāq and Yaʿqūb. My two companions of the prison: are many different lords better, or Allah, the One, the Irresistible? Judgement belongs to none but Allah.” Then he told them their dreams. He said to the one he thought would be saved: “Mention me to your lord.” But Satan made him forget, and he stayed in prison some years."
+    },
+    {
+      "from": 43,
+      "to": 57,
+      "title": "The king’s dream",
+      "summary": "The king said: “I see seven fat cows being eaten by seven lean ones.” They said: “A muddle of dreams.” The one who had been saved remembered, after a time. “Yūsuf, man of truth!” He would not leave until he was cleared: “Ask him about the women who cut their hands.” The wife of the minister said: “Now the truth has come to light. It was I who sought to seduce him.” He said: “Set me over the storehouses of the land; I am a knowing guardian.” Thus We established Yūsuf in the land."
+    },
+    {
+      "from": 58,
+      "to": 68,
+      "title": "The brothers come to Egypt",
+      "summary": "Yūsuf’s brothers came and entered before him; he knew them, and they did not know him. “Bring me a brother of yours from your father; if you do not, there is no measure for you with me.” Their father said: “Shall I trust you with him as I trusted you with his brother before? Allah is the best guardian.” He took their solemn pledge, and said: “My sons, do not enter by one gate, but by different gates. I can avail you nothing against Allah.”"
+    },
+    {
+      "from": 69,
+      "to": 87,
+      "title": "The cup, and a father’s grief",
+      "summary": "He took his brother aside: “I am your brother; do not grieve.” The king’s cup was found in the brother’s pack. They said: “If he steals — a brother of his stole before.” Yūsuf kept it to himself. The eldest said: “I shall not leave this land.” Their father turned from them and said: “Alas, my grief for Yūsuf!” and his eyes turned white with sorrow. “I complain of my anguish and my sorrow only to Allah. My sons, go and search for Yūsuf and his brother, and do not despair of relief from Allah” (12:87)."
+    },
+    {
+      "from": 88,
+      "to": 101,
+      "title": "“I am Yūsuf”",
+      "summary": "They said: “Mighty one, hardship has touched us and our family; be charitable to us.” He said: “Do you know what you did to Yūsuf and his brother?” — “Are you indeed Yūsuf?” — “I am Yūsuf, and this is my brother. Whoever is mindful and patient — Allah does not let the reward of the good be lost. No reproach upon you today.” The shirt was cast over his father’s face, and he saw again. He raised his parents upon the throne, and they fell down before him. “My Lord, You have given me dominion… Take my soul as one submitted, and join me with the righteous.”"
+    },
+    {
+      "from": 102,
+      "to": 111,
+      "title": "The lesson",
+      "summary": "That is of the news of the unseen, which We reveal to you; you were not with them when they resolved on their plan. Most people will not believe, however eager you are. Say: this is my way; I call to Allah upon clear sight, I and whoever follows me. Until, when the messengers despaired and thought they had been denied, Our help came to them. In their stories there is a lesson for people of understanding. It is no invented tale, but a confirmation of what came before it."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 90,
+    "why": "The moment of recognition — and, in his own words, Yūsuf’s account of how he came through it all: mindfulness of Allah, and patience."
+  },
+  "virtues": [
+    {
+      "text": "“The noble, son of the noble, son of the noble, son of the noble: Yūsuf, son of Yaʿqūb, son of Isḥāq, son of Ibrāhīm.”",
+      "arabic": "الْكَرِيمُ ابْنُ الْكَرِيمِ ابْنِ الْكَرِيمِ ابْنِ الْكَرِيمِ يُوسُفُ بْنُ يَعْقُوبَ بْنِ إِسْحَاقَ بْنِ إِبْرَاهِيمَ",
+      "narrator": "ʿAbd Allāh ibn ʿUmar",
+      "source": "Ṣaḥīḥ al-Bukhārī, 3390",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "3390"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "“Had I stayed in prison as long as Yūsuf stayed, I would have answered the one who came to call me.” — said in praise of Yūsuf’s patience, who would not walk out of the prison until his name had been cleared.",
+      "arabic": "وَلَوْ لَبِثْتُ فِي السِّجْنِ مَا لَبِثَ يُوسُفُ لأَجَبْتُ الدَّاعِيَ",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4694 · Ṣaḥīḥ Muslim, 151",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4694"
+        },
+        {
+          "book": "muslim",
+          "number": "151"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "Of the night he was taken up through the heavens, he ﷺ said: “The third heaven was opened to us, and there was Yūsuf. He had been given half of all beauty. He welcomed me, and prayed for good for me.”",
+      "arabic": "إِذَا هُوَ قَدْ أُعْطِيَ شَطْرَ الْحُسْنِ",
+      "narrator": "Anas ibn Mālik",
+      "source": "Ṣaḥīḥ Muslim, 162",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "162"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    }
+  ],
+  "virtuesNote": "Ibn Kathīr opens his commentary on the surah with the report often quoted for its merit — “Teach your slaves Sūrat Yūsuf, for any Muslim who recites it or teaches it to his household will have the pangs of death eased” — and rejects it: one of its narrators was abandoned, another is unknown, and the chain is weak altogether. That the Prophet ﷺ spoke Yūsuf’s words, “No reproach upon you today,” to Quraysh at the conquest of Makkah is told in the books of sīrah; the likeness of the two moments does not depend on it.",
+  "before": "Hūd ended by explaining why the stories of the messengers are told: to make the Prophet’s heart firm. Yūsuf is that explanation carried out, in one story told to its end.",
+  "after": "Yūsuf ends: “a guidance and a mercy for people who believe.” Al-Raʿd opens: “What has been sent down to you from your Lord is the truth; but most people do not believe.”",
+  "notable": [
+    {
+      "ayah": 3,
+      "label": "The best of stories"
+    },
+    {
+      "ayah": 4,
+      "label": "Eleven stars, the sun and the moon"
+    },
+    {
+      "ayah": 18,
+      "label": "“Patience is beautiful”"
+    },
+    {
+      "ayah": 21,
+      "label": "Allah prevails in His purpose"
+    },
+    {
+      "ayah": 23,
+      "to": 24,
+      "label": "“Allah forbid!”"
+    },
+    {
+      "ayah": 33,
+      "label": "“Prison is dearer to me”"
+    },
+    {
+      "ayah": 39,
+      "to": 40,
+      "label": "Yūsuf preaches in the prison"
+    },
+    {
+      "ayah": 53,
+      "label": "The soul that urges to evil"
+    },
+    {
+      "ayah": 86,
+      "to": 87,
+      "label": "“I complain only to Allah” — and do not despair"
+    },
+    {
+      "ayah": 90,
+      "to": 92,
+      "label": "“I am Yūsuf… No reproach upon you today”"
+    },
+    {
+      "ayah": 100,
+      "to": 101,
+      "label": "The dream fulfilled, and his prayer"
+    },
+    {
+      "ayah": 108,
+      "label": "“This is my way”"
+    },
+    {
+      "ayah": 111,
+      "label": "A lesson for people of understanding"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

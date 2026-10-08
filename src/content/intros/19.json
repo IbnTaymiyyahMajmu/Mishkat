@@ -1,0 +1,187 @@
+{
+  "surah": 19,
+  "epithet": "The surah that made the Negus weep",
+  "lede": "A group of refugees stood before the Christian king of Abyssinia, and their spokesman recited from this surah the story of Maryam and her son. The king wept until his beard was wet, and said: this, and what Mūsā brought, come from one niche.",
+  "names": [
+    {
+      "arabic": "مريم",
+      "name": "Maryam",
+      "meaning": "Mary",
+      "note": "After Maryam, the mother of ʿĪsā, whose story it tells. She is the only woman named in the Qurʾan, and this is the only surah named after a woman. It is also called by the five letters it opens with: Kāf Hā Yā ʿAyn Ṣād."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "Ibn al-Jawzī records agreement that it is Makkan, without any disagreement he knew of, and al-Qurṭubī says the same. Isolated sayings except its ayah of prostration, or two ayat after it. It was already known to the Muslims who emigrated to Abyssinia in the fifth year of the mission, for Jaʿfar recited from it there; Ibn Masʿūd counted it among the earliest surahs he learned. The traditional order places it forty-fourth.",
+    "period": "makkah-middle",
+    "when": "Makkah, before the emigration to Abyssinia — the fifth year of the mission or earlier",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ مَرْيَمَ وَهِيَ مَكِّيَّةٌ بِإجْماعِهِمْ مِن غَيْرِ خِلافٍ عَلِمْناهُ"
+      },
+      {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "وَقَدْ رَوَى مُحَمَّدُ بْنُ إِسْحَاقَ فِي السِّيرَةِ مِنْ حَدِيثِ أُمِّ سَلَمَةَ، وَأَحْمَدَ بْنِ حَنْبَلٍ عَنِ ابْنِ مَسْعُودٍ فِي قِصَّةِ الْهِجْرَةِ إِلَى أَرْضِ الْحَبَشَةِ مِنْ مَكَّةَ: أَنَّ جَعْفَرَ بْنَ أَبِي طَالِبٍ رَضِيَ اللَّهُ عَنْهُ، قَرَأَ صَدْرَ هَذِهِ السُّورَةِ عَلَى النَّجَاشِيِّ وَأَصْحَابِهِ"
+      }
+    ]
+  },
+  "setting": [
+    "When the persecution in Makkah became more than the weaker Muslims could bear, the Prophet ﷺ told them to cross the sea to Abyssinia, where a Christian king ruled under whom no one was wronged. Quraysh sent two envoys after them with gifts for the king and his bishops, to have them sent back.",
+    "Umm Salamah, who was there, tells what happened. The Negus summoned the Muslims and asked what this religion was for which they had left their people and yet had not entered his. Jaʿfar ibn Abī Ṭālib answered him — we were a people of ignorance, worshipping idols, eating carrion, until Allah sent us a messenger from among ourselves — and the king asked whether he had with him anything of what the man had brought. Jaʿfar recited from the opening of this surah. The Negus wept until his beard was wet, and his bishops wept until their scrolls were wet. “This and what Mūsā brought,” he said, “come from one niche. Go: by Allah, I will never hand them over.”",
+    "The surah was made to be heard by such an audience. It tells of Zakariyyā, old and childless, calling on his Lord in secret, and of Yaḥyā given to him. It tells of Maryam, withdrawn to an eastern place, visited by the angel, driven by the pains of birth to the trunk of a palm-tree and wishing she had died before this. And when she comes back to her people carrying the child, and they say what people would say, she only points — and the infant speaks: “I am the servant of Allah. He has given me the Book and made me a prophet.” His first word about himself is the word that settles everything the Christians disputed.",
+    "One name runs through the whole surah: al-Raḥmān, the Most Merciful — sixteen times, more than in any other. It opens, “A mention of the mercy of your Lord to His servant Zakariyyā,” and it closes with the promise that for those who believe and do right, the Most Merciful will appoint love."
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        64,
+        64
+      ],
+      "title": "“We do not descend except by your Lord’s command”",
+      "text": "The Messenger of Allah ﷺ said to Jibrīl: “What keeps you from visiting us more often than you do?” Then there came down: “We do not descend except by the command of your Lord. To Him belongs what is before us and what is behind us.”",
+      "source": "Ibn ʿAbbās: al-Bukhārī (4731)."
+    },
+    {
+      "ayat": [
+        77,
+        80
+      ],
+      "title": "Khabbāb and his debt",
+      "text": "Khabbāb said: “I was a blacksmith, and al-ʿĀṣ ibn Wāʾil owed me a debt. I went to collect it, and he said: ‘I will not pay you until you disbelieve in Muḥammad.’ I said: ‘I will not disbelieve until you die and are raised.’ He said: ‘Then leave me until I die and am raised; I shall be given wealth and children, and I will pay you then.’” And there came down: “Have you seen the one who disbelieves in Our signs and says, ‘I shall surely be given wealth and children’?”",
+      "source": "Khabbāb ibn al-Aratt: al-Bukhārī (4732) and Muslim (2795)."
+    }
+  ],
+  "aim": "To show the manifestations of Allah’s mercy to those near to Him — such as the gift of a righteous child — and to declare Him far above having a child or a helper, in refutation of those who invent lies.",
+  "themes": [
+    "The mercy of the Most Merciful",
+    "Zakariyyā and Yaḥyā",
+    "Maryam and the birth of ʿĪsā",
+    "ʿĪsā, the servant of Allah",
+    "Ibrāhīm and his father",
+    "The enormity of ascribing a son to Allah"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 15,
+      "title": "Zakariyyā and Yaḥyā",
+      "summary": "Kāf Hā Yā ʿAyn Ṣād. A mention of the mercy of your Lord to His servant Zakariyyā, when he called on his Lord in secret: “My Lord, my bones have weakened and my head is aflame with grey, and I have never, in calling on You, been disappointed. Grant me an heir.” — “Zakariyyā, We give you good news of a boy whose name is Yaḥyā.” We gave him judgement while still a child; and peace upon him the day he was born, the day he dies, and the day he is raised alive."
+    },
+    {
+      "from": 16,
+      "to": 40,
+      "title": "Maryam and ʿĪsā",
+      "summary": "Mention in the Book Maryam, when she withdrew from her family to an eastern place. We sent to her Our spirit, who appeared to her as a man: “I am only a messenger of your Lord, to give you a pure boy.” The pains of childbirth drove her to the trunk of the palm: “Would that I had died before this.” She brought him to her people; they said, “Sister of Hārūn, your father was not a bad man.” She pointed to him. He said: “I am the servant of Allah.” Such is ʿĪsā, son of Maryam: the word of truth about which they dispute. It is not for Allah to take a son. Warn them of the Day of Regret."
+    },
+    {
+      "from": 41,
+      "to": 50,
+      "title": "Ibrāhīm and his father",
+      "summary": "Mention in the Book Ibrāhīm: “Father, why do you worship what neither hears nor sees? Father, do not worship Satan.” — “Do you turn from my gods, Ibrāhīm? If you do not stop, I will stone you.” — “Peace be upon you. I will ask my Lord to forgive you.” When he had left them and what they worshipped, We gave him Isḥāq and Yaʿqūb."
+    },
+    {
+      "from": 51,
+      "to": 65,
+      "title": "The line of the prophets",
+      "summary": "Mūsā, whom We called from the right side of the Mount; Ismāʿīl, true to his promise, who enjoined on his family the prayer and the zakāh; Idrīs, whom We raised to a high station. When the ayat of the Most Merciful were recited to them, they fell down prostrating and weeping. But after them came successors who neglected the prayer and followed their desires. — We do not descend except by your Lord’s command."
+    },
+    {
+      "from": 66,
+      "to": 87,
+      "title": "The doubter and the boaster",
+      "summary": "Man says, “When I am dead, shall I be brought out alive?” Does he not remember that We created him before, when he was nothing? There is none of you but will come to it. Have you seen the one who disbelieves in Our signs and says, “I shall be given wealth and children”? Has he looked into the unseen? The Day We gather the mindful to the Most Merciful as an honoured delegation, and drive the guilty to Hell, thirsting."
+    },
+    {
+      "from": 88,
+      "to": 98,
+      "title": "“The Most Merciful has taken a son”",
+      "summary": "They say, “The Most Merciful has taken a son.” You have brought a monstrous thing: the heavens almost burst at it, the earth splits and the mountains fall in ruin, that they ascribe a son to the Most Merciful. Everyone in the heavens and the earth comes to the Most Merciful only as a servant. Those who believe and do right — the Most Merciful will appoint for them love. We have made it easy in your tongue only that you may give good news to the mindful."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 30,
+    "why": "The first words of ʿĪsā, spoken from the cradle. Before anything else he says what he is: the servant of Allah."
+  },
+  "virtues": [
+    {
+      "text": "Ibn Masʿūd said of Banī Isrāʾīl, al-Kahf, Maryam, Ṭā-Hā and al-Anbiyāʾ: “They are among the first and finest, and they are my oldest wealth” — among the earliest surahs he learned.",
+      "arabic": "هُنَّ مِنَ الْعِتَاقِ الأُوَلِ وَهُنَّ مِنْ تِلاَدِي",
+      "narrator": "ʿAbd Allāh ibn Masʿūd",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4739",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4739"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "“Death will be brought in the form of a white ram, and a caller will call: ‘People of the Garden!’ They will crane their necks and look… Then it will be slaughtered, and he will say: ‘People of the Garden, eternity and no death; people of the Fire, eternity and no death.’” Then he recited: “And warn them of the Day of Regret, when the matter is decided, while they are heedless.”",
+      "narrator": "Abū Saʿīd al-Khudrī",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4730 · Ṣaḥīḥ Muslim, 2849",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4730"
+        },
+        {
+          "book": "muslim",
+          "number": "2849"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    }
+  ],
+  "before": "Al-Kahf opened by warning those who say Allah has taken a son, and told of wonders — sleepers kept alive for three centuries. Maryam continues with wonders of birth, and ends on the same warning.",
+  "after": "Maryam closes: We have made it easy in your tongue, to give good news and to warn. Ṭā-Hā opens: We have not sent down the Qurʾan to you that you should be distressed.",
+  "notable": [
+    {
+      "ayah": 4,
+      "label": "Zakariyyā’s prayer"
+    },
+    {
+      "ayah": 23,
+      "to": 26,
+      "label": "Maryam at the trunk of the palm"
+    },
+    {
+      "ayah": 30,
+      "to": 33,
+      "label": "ʿĪsā speaks in the cradle"
+    },
+    {
+      "ayah": 42,
+      "to": 47,
+      "label": "Ibrāhīm and his father"
+    },
+    {
+      "ayah": 58,
+      "label": "An ayah of prostration"
+    },
+    {
+      "ayah": 64,
+      "label": "We do not descend except by your Lord’s command"
+    },
+    {
+      "ayah": 93,
+      "label": "All come to the Most Merciful as servants"
+    },
+    {
+      "ayah": 96,
+      "label": "The Most Merciful will appoint for them love"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn Isḥāq’s account of the emigration to Abyssinia, from Umm Salamah",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

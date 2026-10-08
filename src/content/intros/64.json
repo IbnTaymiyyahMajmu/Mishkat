@@ -1,0 +1,163 @@
+{
+  "surah": 64,
+  "epithet": "The Day of gain and loss",
+  "lede": "On that Day everyone finds out what his bargain was worth. The surah names it Yawm al-Taghābun — and then speaks, with unusual tenderness, to believers whose own families had been the thing that held them back.",
+  "names": [
+    {
+      "arabic": "التغابن",
+      "name": "al-Taghābun",
+      "meaning": "Mutual Loss and Gain",
+      "note": "From its ninth ayah: the Day of Taghābun. Ghabn is to be cheated in a sale. On that Day the people of the Fire find that they sold what was lasting for what was not, and the people of the Garden take what the others could have had."
+    }
+  ],
+  "revelation": {
+    "place": "madinah",
+    "verdict": "Madinan, by the majority — and differed over",
+    "detail": "The majority hold it Madinan — Ibn al-Jawzī names Ibn ʿAbbās, al-Ḥasan, Mujāhid, ʿIkrimah and Qatādah. Al-Ḍaḥḥāk held it Makkan; and ʿAṭāʾ ibn Yasār said it is Makkan except for three ayat near its end (64:14–16), which came down in Madinah. That last view fits the surah’s make-up: its first half reads like the Makkan surahs, arguing creation and resurrection, and its close addresses believers about their wives and children. Ibn Kathīr gives it as Madinan and notes the other saying.",
+    "period": "madinah-middle",
+    "when": "Madinah, on the majority’s view — its closing ayat about men who had been held back in Makkah by their families",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَفِيها قَوْلانِ. أحَدُهُما: أنَّها مَدَنِيَّةٌ، قالَهُ الجُمْهُورُ، مِنهُمُ ابْنُ عَبّاسٍ، والحَسَنُ، ومُجاهِدٌ، وعِكْرِمَةُ، وقَتادَةُ. والثّانِي: أنَّها مَكِّيَّةٌ، قالَهُ الضَّحّاكُ. وقالَ عَطاءُ بْنُ يَسارٍ: هي مَكِّيَّةٌ إلّا ثَلاثَ آياتٍ مِنها نَزَلْنَ بِالمَدِينَةِ"
+      },
+      {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "تَفْسِيرُ سُورَةِ التَّغَابُنِ وَهِيَ مَدَنِيَّةٌ، وَقِيلَ: مَكِّيَّةٌ"
+      }
+    ]
+  },
+  "setting": [
+    "It is the last of the Musabbiḥāt, the surahs that open by declaring that all things glorify Allah, and its first ten ayat are a compact statement of the faith: He created you, and among you are disbelievers and believers; He knows what you conceal; earlier peoples denied their messengers and tasted the result; those who disbelieve claim they will not be raised — say: yes, by my Lord, you will.",
+    "Then it gives the Day a name found nowhere else in the Qurʾan, and passes to a subject that only a living community could raise. Ibn ʿAbbās was asked about the ayah, “O you who believe, among your wives and your children there are enemies to you.” He said: these were men of Makkah who accepted Islam and wanted to come to the Prophet ﷺ, but their wives and children would not let them go. When at last they did come, they saw how far the others had advanced in understanding of the religion, and were minded to punish their families. So Allah sent down the ayah — and its ending: “but if you pardon, overlook and forgive, then Allah is Forgiving, Merciful.”",
+    "The surah does not ask a believer to love his family less. It asks him to know that they are a test, and to fear Allah “as much as you are able” — a phrase that became one of the governing principles of the law."
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        14,
+        14
+      ],
+      "title": "The families that held them back",
+      "text": "“These were men who had accepted Islam among the people of Makkah and wanted to come to the Prophet ﷺ, but their wives and children refused to let them. When they did come to the Messenger of Allah ﷺ and saw that the people had gained understanding in the religion, they resolved to punish them. So Allah sent down: ‘O you who believe, among your wives and your children are enemies to you, so beware of them…’”",
+      "source": "Ibn ʿAbbās: al-Tirmidhī (3317), who called it ḥasan ṣaḥīḥ; ḥasan according to al-Albānī."
+    },
+    {
+      "ayat": [
+        15,
+        15
+      ],
+      "title": "From the pulpit",
+      "text": "The Prophet ﷺ was addressing the people when al-Ḥasan and al-Ḥusayn came in, two small boys in red shirts, walking and stumbling. He came down from the pulpit, picked them up and set them in front of him, and said: “Allah spoke the truth: ‘Your wealth and your children are only a trial.’ I looked at these two boys walking and stumbling, and could not bear it until I had broken off my words and lifted them up.”",
+      "source": "Buraydah: al-Tirmidhī (3774), Abū Dāwūd (1109) and al-Nasāʾī (1413); ṣaḥīḥ according to al-Albānī."
+    }
+  ],
+  "aim": "To recall the loss of the disbelievers and their ruin on the Day of Resurrection — as a warning against disbelief and its people.",
+  "themes": [
+    "The Day of Mutual Loss and Gain",
+    "Belief in the Resurrection",
+    "Decree and trust in Allah",
+    "Family as a test",
+    "Fearing Allah as one is able",
+    "Spending"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 4,
+      "title": "The Creator and His knowledge",
+      "summary": "All that is in the heavens and the earth glorifies Allah; His is the dominion and His the praise. It is He who created you, and among you is the disbeliever and among you the believer. He formed you and made your forms well. He knows what you conceal and what you reveal."
+    },
+    {
+      "from": 5,
+      "to": 7,
+      "title": "Those before, and the claim of those now",
+      "summary": "Has the news not reached you of those who disbelieved before, and tasted the ill result of their affair? Their messengers came with clear proofs, and they said, “Shall mere humans guide us?” Those who disbelieve claim that they will never be raised. Say: yes, by my Lord, you will be raised, and then told what you did."
+    },
+    {
+      "from": 8,
+      "to": 10,
+      "title": "The Day of Taghābun",
+      "summary": "So believe in Allah and His Messenger, and in the Light We have sent down. The Day He gathers you for the Day of Gathering — that is the Day of Mutual Loss and Gain. Whoever believes in Allah and does right, He will remit his misdeeds and admit him to gardens; and those who disbelieve and deny are the people of the Fire."
+    },
+    {
+      "from": 11,
+      "to": 13,
+      "title": "Nothing strikes but by His leave",
+      "summary": "No misfortune strikes except by Allah’s leave, and whoever believes in Allah, He guides his heart. Obey Allah and obey the Messenger. Allah — there is no god but He; so in Allah let the believers put their trust."
+    },
+    {
+      "from": 14,
+      "to": 18,
+      "title": "Family, wealth, and what is asked",
+      "summary": "O you who believe, among your wives and children are enemies to you, so be on your guard; yet if you pardon, overlook and forgive, Allah is Forgiving, Merciful. Your wealth and your children are only a trial, and with Allah is a great reward. So be mindful of Allah as much as you are able (64:16); listen, obey, and spend — it is better for yourselves. Whoever is saved from the greed of his own soul, those are the successful. If you lend Allah a goodly loan, He will multiply it for you and forgive you."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 16,
+    "why": "The measure of what Allah asks: all that a person can do, and no more. The scholars built a whole principle of the law on it."
+  },
+  "virtues": [
+    {
+      "text": "The Prophet ﷺ came down from the pulpit to lift up al-Ḥasan and al-Ḥusayn, who had come in stumbling, and said: “Allah spoke the truth: ‘Your wealth and your children are only a trial.’”",
+      "narrator": "Buraydah ibn al-Ḥuṣayb",
+      "source": "Jāmiʿ al-Tirmidhī, 3774 · Sunan Abī Dāwūd, 1109",
+      "refs": [
+        {
+          "book": "tirmidhi",
+          "number": "3774"
+        },
+        {
+          "book": "abudawud",
+          "number": "1109"
+        }
+      ],
+      "grade": "Ṣaḥīḥ according to al-Albānī"
+    },
+    {
+      "text": "The Prophet ﷺ used to recite the Musabbiḥāt before he lay down to sleep. Al-Taghābun is the last of them in the muṣḥaf.",
+      "narrator": "al-ʿIrbāḍ ibn Sāriyah",
+      "source": "Jāmiʿ al-Tirmidhī, 2921",
+      "refs": [
+        {
+          "book": "tirmidhi",
+          "number": "2921"
+        }
+      ],
+      "grade": "Ḥasan gharīb, said al-Tirmidhī. Al-Albānī graded this narration ḥasan, and the same report in Abū Dāwūd (5057) weak"
+    }
+  ],
+  "before": "Al-Munāfiqūn ended: do not let your wealth and your children distract you from the remembrance of Allah. Al-Taghābun goes further: they are a trial, and some of them may be working against you.",
+  "after": "Al-Taghābun told husbands to pardon and overlook. Al-Ṭalāq deals with the case where a marriage ends all the same — and how it is to be ended.",
+  "notable": [
+    {
+      "ayah": 2,
+      "label": "Among you the disbeliever, and among you the believer"
+    },
+    {
+      "ayah": 9,
+      "label": "The Day of Mutual Loss and Gain"
+    },
+    {
+      "ayah": 11,
+      "label": "Whoever believes in Allah, He guides his heart"
+    },
+    {
+      "ayah": 15,
+      "label": "Your wealth and your children are a trial"
+    },
+    {
+      "ayah": 16,
+      "label": "Be mindful of Allah as much as you are able"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "The Sunan of al-Tirmidhī, Abū Dāwūd and al-Nasāʾī"
+  ]
+}

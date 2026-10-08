@@ -1,0 +1,118 @@
+{
+  "surah": 93,
+  "epithet": "“Your Lord has not forsaken you”",
+  "lede": "The revelation had stopped, and in Makkah they were saying that his Lord had tired of him. Then the silence broke with an oath by the morning light — and the gentlest words in the Qurʾan.",
+  "names": [
+    {
+      "arabic": "الضحى",
+      "name": "al-Ḍuḥā",
+      "meaning": "The Morning Brightness",
+      "note": "After the oath it opens with: the forenoon, when the sun has risen high and the day is at its clearest. It is the name the Prophet ﷺ used when he told Muʿādh which surahs to lead the people with (Muslim 465)."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "Ibn al-Jawzī and al-Qurṭubī both record agreement that it is Makkan, and the commentators are also agreed on its occasion: it came down after the revelation had been withheld for a time. They differ only over why the pause happened and how long it lasted — reports range from a few nights to forty days.",
+    "period": "makkah-early",
+    "when": "The first years in Makkah, after a pause in the revelation",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَهِيَ مَكِّيَّةٌ كُلُّها بِإجْماعِهِمْ اتَّفَقَ المُفَسِّرُونَ: عَلى أنَّ هَذِهِ [السُّورَةَ] نَزَلَتْ بَعْدَ انْقِطاعِ الوَحْيِ مُدَّةً"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "مَكِّيَّةٌ بِاتِّفَاقٍ. وَهِيَ إِحْدَى عَشْرَةَ آيَةً"
+      }
+    ]
+  },
+  "setting": [
+    "The first revelations had come, and with them a way of living: he ﷺ would stand in prayer through part of the night, and Jibrīl would come to him. Then, for a stretch of nights, Jibrīl did not come.",
+    "It did not go unnoticed. Makkah was a small town and his enemies were watching for exactly this. Jundub ibn Sufyān tells it: the Messenger of Allah ﷺ fell ill and did not rise for two or three nights, and a woman came to him and said, “Muḥammad, I think your devil has left you; I have not seen him near you for two or three nights.” In another wording the idolaters said, “Muḥammad has been bidden farewell.”",
+    "The answer came by an oath — by the brightness of the morning, and by the night when it grows still — as if to say that the pause was to revelation what the night is to the day: not an ending, and not a sign of displeasure. Then the denial, in so many words: your Lord has not taken leave of you, and He does not hate you."
+  ],
+  "occasions": [
+    {
+      "title": "“I think your devil has left you”",
+      "text": "The Messenger of Allah ﷺ was unwell and did not stand in prayer for two or three nights. A woman came and said: “Muḥammad, I hope your devil has left you; I have not seen him come near you for two or three nights.” So Allah sent down: “By the morning brightness, and by the night when it is still: your Lord has not forsaken you, nor does He hate you.”",
+      "source": "Jundub ibn Sufyān al-Bajalī: al-Bukhārī (4950) and Muslim (1797)."
+    }
+  ],
+  "aim": "To recall Allah’s care for His Prophet ﷺ and His favour to him in the gift of revelation and its continuing — a comfort to him, and a reminder to the believers to give thanks.",
+  "themes": [
+    "Consolation",
+    "Allah’s care",
+    "Gratitude",
+    "The orphan and the poor"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 3,
+      "title": "The oath, and the denial",
+      "summary": "By the morning brightness and by the night when it settles: your Lord has not left you, and He is not displeased with you. The day and the night are sworn by together because both are His, and one follows the other."
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "title": "The promise",
+      "summary": "What is to come is better for you than what has been, and your Lord will give to you until you are content (93:5). It is said of the next life first of all, and it held in this one too: every later stage of his mission was better than the one before it."
+    },
+    {
+      "from": 6,
+      "to": 8,
+      "title": "Three reminders",
+      "summary": "Did He not find you an orphan, and give you shelter? Find you unaware of the Book and the faith, and guide you? Find you in need, and make you self-sufficient? The proof that He will not abandon him is that He never has."
+    },
+    {
+      "from": 9,
+      "to": 11,
+      "title": "Three duties",
+      "summary": "Each answers one of the favours. So the orphan — do not oppress him. The one who asks — do not turn him away. And the favour of your Lord — speak of it."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 3,
+    "why": "The sentence the whole surah was sent to say, and the one that answered the taunt word for word."
+  },
+  "virtues": [
+    {
+      "text": "When Muʿādh led his people in the night prayer and made it long, the Prophet ﷺ said to him: “Recite ‘By the sun and its brightness’, ‘By the morning brightness’, ‘By the night when it covers’ and ‘Glorify the name of your Lord, the Most High’.”",
+      "narrator": "Jābir ibn ʿAbd Allāh",
+      "source": "Ṣaḥīḥ Muslim, 465",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "465"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    }
+  ],
+  "before": "Al-Layl closes with a promise to the one who gives for his Lord’s sake alone: “and he will be content” (92:21). Al-Ḍuḥā makes the same promise to the Prophet ﷺ himself (93:5). One opens by swearing by the night, the other by the morning.",
+  "after": "Al-Sharḥ carries straight on, in the same voice and to the same listener, with three more favours: “Did We not open your chest for you?” The two read as one address.",
+  "notable": [
+    {
+      "ayah": 3,
+      "label": "Your Lord has not forsaken you"
+    },
+    {
+      "ayah": 5,
+      "label": "He will give you, and you will be content"
+    },
+    {
+      "ayah": 11,
+      "label": "Speak of your Lord’s favour"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

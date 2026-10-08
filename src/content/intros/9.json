@@ -1,0 +1,312 @@
+{
+  "surah": 9,
+  "epithet": "The surah that left no one hidden",
+  "lede": "It is the only surah that does not begin with the name of Allah, the Merciful. It opens instead with a notice of four months, read out to the pilgrims at Minā. And yet it is named Repentance — after three men who told the truth about themselves, were shunned for fifty nights, and were forgiven by name.",
+  "names": [
+    {
+      "arabic": "التوبة",
+      "name": "al-Tawbah",
+      "meaning": "Repentance",
+      "note": "After the turning of Allah towards the Prophet ﷺ, the Emigrants and the Helpers, and towards the three who had stayed behind (9:117–118)."
+    },
+    {
+      "arabic": "براءة",
+      "name": "Barāʾah",
+      "meaning": "The Disavowal",
+      "note": "Its first word. The Companions most often called it by this name."
+    },
+    {
+      "arabic": "الفاضحة",
+      "name": "al-Fāḍiḥah",
+      "meaning": "The Exposer",
+      "note": "Ibn ʿAbbās’s name for it. Ibn al-Jawzī counts nine names in all, most of them in this vein: the Searcher, the Scatterer, the Digger — because of what it brought out about the hypocrites."
+    }
+  ],
+  "revelation": {
+    "place": "madinah",
+    "verdict": "Madinan, by agreement — the last surah",
+    "detail": "Ibn al-Jawzī records agreement that it is Madinan, apart from a saying about its two closing ayat; al-Qurṭubī says Madinan by consensus. Al-Barāʾ ibn ʿĀzib said that it was the last surah to be revealed, and Ibn Kathīr opens with that: it is among the last of what came down upon the Messenger of Allah ﷺ. It belongs to the ninth year after the Hijrah — the expedition to Tabūk in the summer, and the Pilgrimage at the end of that year, at which its opening was proclaimed. The traditional order places it one hundred and thirteenth.",
+    "period": "madinah-late",
+    "when": "Madinah, the ninth year — around the expedition to Tabūk, and the Pilgrimage that followed",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "هِيَ مَدَنِيَّةٌ بِإجْماعِهِمْ، سِوى الآَيَتَيْنِ في آَخِرِها"
+      },
+      {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "هَذِهِ السُّورَةُ الْكَرِيمَةُ مِنْ أَوَاخِرِ مَا نَزَلَ عَلَى رَسُولِ اللَّهِ ﷺ"
+      },
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "فَقالَ: إنِّي لَأسْمَعُ عُهُودًا تُنْبَذُ، ووَصايا تُنَفَّذُ"
+      }
+    ]
+  },
+  "setting": [
+    "Ibn al-Jawzī tells of a desert Arab who heard this surah recited and said: I think this is among the last of what came down. How do you know? they asked. He said: I hear covenants being cast off, and final instructions being given. That is its character exactly. Makkah had been open for a year. What remained was to close three accounts.",
+    "The first was with the idolaters of Arabia, some of whom held treaties and had not kept them. In the ninth year the Prophet ﷺ sent Abū Bakr to lead the Pilgrimage. Abū Hurayrah was among those he set to call out at Minā on the Day of Sacrifice: after this year no idolater shall make the Pilgrimage, and no one shall go round the House naked. Then ʿAlī was sent after them, to recite the opening of this surah to the gathering: “A disavowal from Allah and His Messenger… Travel the land for four months.” Those who had kept faith were to have their treaties honoured to the end of their term; and if any idolater asked for protection, he was to be given it “until he hears the word of Allah; then convey him to his place of safety.”",
+    "The second was the expedition to Tabūk, against the Byzantine frontier. It came at the worst possible time: high summer, a march of many days, and the dates in Madinah just ripening. The surah calls it “the hour of difficulty.” “What is the matter with you, that when you are told, ‘Go forth in the way of Allah,’ you cling heavily to the earth?”",
+    "The third account was the one Tabūk opened: the hypocrites. Makkah had tested people by persecution; this test was only inconvenience, and it sorted Madinah more finely than any battle had. Ibn ʿAbbās said of this surah: “It is the Exposer. It kept coming down — ‘and among them… and among them…’ — until they thought it would leave no one unmentioned.” The one who asks to be excused lest he be tempted; the ones who find fault with how the charity is shared; the ones who say “he is all ears”; the ones who built a mosque to divide the believers. Their excuses are recorded as they made them.",
+    "And three sincere men had stayed behind with no excuse at all. When the army returned, the hypocrites came with their oaths and were let go. Kaʿb ibn Mālik says he knew that no lie would save him, and told the truth: “By Allah, I had no excuse.” He and his two companions were then cut off — no one spoke to them, for fifty nights — until the earth, vast as it is, closed in on them. On the fiftieth morning Kaʿb heard a man shouting from the top of Mount Salʿ: “Kaʿb ibn Mālik, good news!” He fell down in prostration. When he reached the mosque the Prophet’s face was shining: “Rejoice in the best day that has come to you since your mother bore you.” It is for that day that the surah is named."
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        1,
+        3
+      ],
+      "title": "The proclamation at the Pilgrimage",
+      "text": "Abū Hurayrah said: “Abū Bakr sent me, in that Pilgrimage, among the criers he sent out on the Day of Sacrifice to announce at Minā: no idolater shall make the Pilgrimage after this year, and no one shall go round the House naked.” Then the Messenger of Allah ﷺ sent ʿAlī ibn Abī Ṭālib after him, and ordered him to proclaim Barāʾah. “And ʿAlī called out with us among the people at Minā on the Day of Sacrifice.”",
+      "source": "Abū Hurayrah: al-Bukhārī (4655, 4656) and Muslim (1347)."
+    },
+    {
+      "ayat": [
+        79,
+        79
+      ],
+      "title": "The half-measure of dates",
+      "text": "“When we were commanded to give charity, we used to hire ourselves out as porters. Abū ʿAqīl brought half a measure, and another man brought more than that. The hypocrites said: ‘Allah has no need of this one’s charity; and that other one did it only to be seen.’ So there came down: ‘Those who find fault with the believers who give freely, and with those who find nothing but their own toil.’”",
+      "source": "Abū Masʿūd al-Anṣārī: al-Bukhārī (4668) and Muslim (1018)."
+    },
+    {
+      "ayat": [
+        80,
+        84
+      ],
+      "title": "The funeral of ʿAbd Allāh ibn Ubayy",
+      "text": "When ʿAbd Allāh ibn Ubayy died, his son came and asked the Messenger of Allah ﷺ for his shirt to shroud his father in, and asked him to pray over him. He rose to pray, and ʿUmar took hold of his garment: “Messenger of Allah, will you pray over him, when your Lord has forbidden you?” He said: “Allah has only given me a choice: ‘Ask forgiveness for them, or do not; if you ask forgiveness for them seventy times…’ — and I shall go beyond seventy.” He prayed over him. Then Allah sent down: “Never pray over any of them who dies, nor stand at his grave.”",
+      "source": "Ibn ʿUmar: al-Bukhārī (4670) and Muslim (2400)."
+    },
+    {
+      "ayat": [
+        108,
+        108
+      ],
+      "title": "The people of Qubāʾ",
+      "text": "“This ayah came down about the people of Qubāʾ: ‘In it are men who love to purify themselves.’ They used to cleanse themselves with water, and so this ayah came down about them.”",
+      "source": "Abū Hurayrah: Abū Dāwūd (44) and al-Tirmidhī (3100); ṣaḥīḥ according to al-Albānī."
+    },
+    {
+      "ayat": [
+        113,
+        113
+      ],
+      "title": "The death of Abū Ṭālib",
+      "text": "When death came to Abū Ṭālib, the Prophet ﷺ went in to him; Abū Jahl and ʿAbd Allāh ibn Abī Umayyah were with him. He said: “Uncle, say ‘There is no god but Allah’ — a word by which I may plead for you before Allah.” The two said: “Abū Ṭālib, will you turn away from the religion of ʿAbd al-Muṭṭalib?” The Prophet ﷺ said: “I shall go on asking forgiveness for you, so long as I am not forbidden.” Then there came down: “It is not for the Prophet and those who believe to ask forgiveness for the idolaters, even if they are near kin.”",
+      "source": "Al-Musayyab ibn Ḥazn: al-Bukhārī (4675) and Muslim (24)."
+    },
+    {
+      "ayat": [
+        117,
+        119
+      ],
+      "title": "The three who were left behind",
+      "text": "Kaʿb said: “I had prayed the dawn prayer on the morning of the fiftieth night, on the roof of one of our houses, sitting in the state Allah has described — my own soul closed in on me, and the earth, vast as it is, closed in on me — when I heard the voice of a man who had climbed Mount Salʿ, calling at the top of his voice: ‘Kaʿb ibn Mālik, good news!’ I fell down prostrate, and knew that relief had come.” When he greeted the Messenger of Allah ﷺ, whose face was shining with joy, he said: “Rejoice in the best day that has passed over you since your mother bore you.”",
+      "source": "Kaʿb ibn Mālik: al-Bukhārī (4418) and Muslim (2769)."
+    }
+  ],
+  "aim": "To lay bare the state of each group: a clear break with the disbelievers, the exposing of the hypocrites, and the marking out of the believers.",
+  "themes": [
+    "The disavowal, and the four months",
+    "Who may tend the mosques of Allah",
+    "Ḥunayn",
+    "The call to Tabūk",
+    "The cave",
+    "The hypocrites, portrait by portrait",
+    "The eight who receive the zakāh",
+    "The mosque of harm and the mosque of piety",
+    "The three who were forgiven"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 16,
+      "title": "The disavowal",
+      "summary": "A disavowal from Allah and His Messenger to those idolaters with whom you made a treaty: travel the land for four months. A proclamation to the people on the day of the greater Pilgrimage — except those who have not failed you in anything: fulfil their treaty to the end of its term. If any of the idolaters seeks your protection, grant it, so that he may hear the word of Allah; then convey him to his place of safety. How can there be a treaty, when if they gain the upper hand over you they respect neither kinship nor covenant?"
+    },
+    {
+      "from": 17,
+      "to": 28,
+      "title": "Whose mosques, and whose loyalty",
+      "summary": "It is not for the idolaters to tend the mosques of Allah. Only he tends the mosques of Allah who believes in Allah and the Last Day. Do you count giving water to the pilgrims as equal to one who believes and strives? Say: if your fathers, your sons, your brothers, your spouses, your wealth and your dwellings are dearer to you than Allah and His Messenger, then wait. Allah helped you on many fields, and on the day of Ḥunayn, when your numbers pleased you and availed you nothing."
+    },
+    {
+      "from": 29,
+      "to": 37,
+      "title": "The People of the Book, and the sacred months",
+      "summary": "Fight those of the People of the Book who do not believe, until they pay the jizyah. They have taken their rabbis and monks as lords besides Allah. They wish to put out the light of Allah with their mouths. Those who hoard gold and silver and do not spend it in the way of Allah — give them news of a painful punishment. The number of months with Allah is twelve, of which four are sacred."
+    },
+    {
+      "from": 38,
+      "to": 59,
+      "title": "The call to Tabūk",
+      "summary": "O you who believe, what is the matter with you, that when you are told, “Go forth in the way of Allah,” you cling heavily to the earth? If you do not help him, Allah already helped him: when the two of them were in the cave, and he said to his companion, “Do not grieve; Allah is with us” (9:40). Go forth, light and heavy. Had it been a near gain and an easy journey, they would have followed you. Among them is he who says, “Give me leave, and do not put me to trial.” Say: nothing will befall us but what Allah has decreed for us."
+    },
+    {
+      "from": 60,
+      "to": 72,
+      "title": "The zakāh, and the two kinds of people",
+      "summary": "The charities are only for the poor and the needy, those who collect them, those whose hearts are to be won, the freeing of slaves, debtors, the way of Allah, and the traveller. Among them are those who hurt the Prophet and say, “He is all ears.” If you ask them, they say, “We were only talking idly and jesting.” The hypocrite men and women are of one another: they enjoin wrong and forbid right. The believing men and women are allies of one another: they enjoin right and forbid wrong."
+    },
+    {
+      "from": 73,
+      "to": 96,
+      "title": "Excuses",
+      "summary": "Among them is he who pledged to Allah: “If He gives us of His bounty, we shall surely give charity.” Those who find fault with the believers who give freely. Ask forgiveness for them, or do not: if you ask seventy times, Allah will not forgive them. They said, “Do not go forth in the heat.” Say: the fire of Hell is fiercer in heat. Never pray over any of them who dies. There is no blame on the weak, nor on the sick — nor on those who, when they came to you to be given mounts, turned back with their eyes overflowing with tears."
+    },
+    {
+      "from": 97,
+      "to": 110,
+      "title": "The desert Arabs, and the two mosques",
+      "summary": "The desert Arabs are harsher in disbelief and hypocrisy; yet among them are those who believe in Allah and the Last Day. The foremost, the first of the Emigrants and the Helpers, and those who followed them in goodness — Allah is pleased with them. Others have confessed their sins: they mixed a good deed with another that was bad. Take from their wealth a charity to cleanse them. And those who took a mosque to cause harm: never stand in it. A mosque founded on mindfulness from the first day is worthier that you stand in it."
+    },
+    {
+      "from": 111,
+      "to": 122,
+      "title": "The purchase, and the three",
+      "summary": "Allah has purchased from the believers their lives and their wealth, in exchange for the Garden. It is not for the Prophet and those who believe to ask forgiveness for the idolaters. Allah has turned to the Prophet, the Emigrants and the Helpers who followed him in the hour of difficulty; and to the three who were left behind, until the earth, vast as it is, closed in on them. O you who believe, be mindful of Allah, and be with the truthful (9:119). Let a party from every group go forth to gain understanding in the religion."
+    },
+    {
+      "from": 123,
+      "to": 129,
+      "title": "The close",
+      "summary": "Whenever a surah is sent down, some of them say, “Which of you has this increased in faith?” As for those who believe, it increases them in faith. There has come to you a Messenger from among yourselves: grievous to him is what you suffer; he is anxious over you; to the believers gentle and merciful. If they turn away, say: “Allah is enough for me. There is no god but He. In Him I have put my trust, and He is the Lord of the mighty Throne.”"
+    }
+  ],
+  "keyAyah": {
+    "ayah": 119,
+    "why": "The moral drawn from the three. Kaʿb said: Allah saved me only by truthfulness, and part of my repentance is that I shall speak nothing but the truth for as long as I live."
+  },
+  "virtues": [
+    {
+      "text": "Al-Barāʾ said: “The last ayah to come down was ‘They ask you for a ruling: say, Allah gives you a ruling about one who leaves neither parent nor child’; and the last surah to come down was Barāʾah.”",
+      "arabic": "وَآخِرُ سُورَةٍ نَزَلَتْ بَرَاءَةٌ",
+      "narrator": "Al-Barāʾ ibn ʿĀzib",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4654",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4654"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "Saʿīd ibn Jubayr said: I said to Ibn ʿAbbās: “Sūrat al-Tawbah?” He said: “Al-Tawbah — it is the Exposer. It kept coming down, ‘and among them… and among them…’, until they thought that it would leave not one of them unmentioned.”",
+      "arabic": "التَّوْبَةُ هِيَ الْفَاضِحَةُ",
+      "narrator": "Ibn ʿAbbās",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4882 · Ṣaḥīḥ Muslim, 3031",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4882"
+        },
+        {
+          "book": "muslim",
+          "number": "3031"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "Abū Bakr said: I said to the Prophet ﷺ while I was in the cave: “If one of them looked beneath his feet, he would see us.” He said: “What do you think, Abū Bakr, of two — when Allah is their third?”",
+      "arabic": "مَا ظَنُّكَ يَا أَبَا بَكْرٍ بِاثْنَيْنِ اللَّهُ ثَالِثُهُمَا",
+      "narrator": "Abū Bakr al-Ṣiddīq",
+      "source": "Ṣaḥīḥ al-Bukhārī, 3653 · Ṣaḥīḥ Muslim, 2381",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "3653"
+        },
+        {
+          "book": "muslim",
+          "number": "2381"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "Zayd ibn Thābit, charged by Abū Bakr with gathering the Qurʾan after the battle of al-Yamāmah, said: “I searched for the Qurʾan, collecting it from palm-stalks, flat stones and the hearts of men, until I found the end of Sūrat al-Tawbah with Abū Khuzaymah al-Anṣārī, and with no one else: ‘There has come to you a Messenger from among yourselves…’ to the close of Barāʾah.”",
+      "narrator": "Zayd ibn Thābit",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4679",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4679"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    }
+  ],
+  "virtuesNote": "Why no basmalah stands at its head: Ibn Kathīr gives the reason that is certain — the Companions did not write one there in the master copy, and in that they are followed. As to why they did not, al-Qurṭubī lists five opinions. The best known is ʿUthmān’s reply to Ibn ʿAbbās, that its subject resembled that of al-Anfāl and the Prophet ﷺ died without saying whether it was part of it (al-Tirmidhī 3086, Abū Dāwūd 786); al-Tirmidhī graded it ḥasan, and al-Albānī weak. Another, related from ʿAlī, is that the basmalah is a grant of security, and this surah came down with the lifting of it.",
+  "before": "Al-Anfāl is about Badr, the first campaign; al-Tawbah about Tabūk, the last. Al-Anfāl ended with the bonds between believers; al-Tawbah begins by dissolving the bonds with those who broke faith.",
+  "after": "Al-Tawbah is the last of the long Madinan surahs at the front of the muṣḥaf. With Yūnus the order turns back to Makkah, and to a run of surahs named after prophets.",
+  "notable": [
+    {
+      "ayah": 6,
+      "label": "Protection for the one who asks to hear"
+    },
+    {
+      "ayah": 18,
+      "label": "Who tends the mosques of Allah"
+    },
+    {
+      "ayah": 24,
+      "label": "If these are dearer to you"
+    },
+    {
+      "ayah": 25,
+      "to": 26,
+      "label": "The day of Ḥunayn"
+    },
+    {
+      "ayah": 40,
+      "label": "“Do not grieve; Allah is with us”"
+    },
+    {
+      "ayah": 51,
+      "label": "Nothing will befall us but what Allah has decreed"
+    },
+    {
+      "ayah": 60,
+      "label": "The eight who receive the zakāh"
+    },
+    {
+      "ayah": 71,
+      "label": "Believing men and women, allies of one another"
+    },
+    {
+      "ayah": 100,
+      "label": "The foremost of the Emigrants and Helpers"
+    },
+    {
+      "ayah": 108,
+      "label": "The mosque founded on mindfulness"
+    },
+    {
+      "ayah": 111,
+      "label": "The purchase"
+    },
+    {
+      "ayah": 118,
+      "to": 119,
+      "label": "The three, and the truthful"
+    },
+    {
+      "ayah": 128,
+      "to": 129,
+      "label": "“There has come to you a Messenger”"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; the Sunan of Abū Dāwūd and al-Tirmidhī"
+  ]
+}

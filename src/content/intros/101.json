@@ -1,0 +1,89 @@
+{
+  "surah": 101,
+  "epithet": "The blow that strikes the hearts",
+  "lede": "A single word, said three times before anything is explained. Then two pictures of the Day — people as moths, mountains as wool — and one question that decides everything: how heavy are your scales?",
+  "names": [
+    {
+      "arabic": "القارعة",
+      "name": "al-Qāriʿah",
+      "meaning": "The Striking Calamity",
+      "note": "One of the names of the Day of Resurrection: that which strikes — the ears with its sound, the hearts with its terror. The surah opens with it."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "Ibn al-Jawzī and al-Qurṭubī both record agreement that it is Makkan, and nothing is reported to the contrary. The traditional order places it thirtieth, among the surahs of the first years.",
+    "period": "makkah-early",
+    "when": "The early years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ القارِعَةِ وَهِيَ مَكِّيَّةٌ بِإجْماعِهِمْ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "تَفْسِيرُ سُورَةِ \"الْقَارِعَةِ\" وَهِيَ مَكِّيَّةٌ بِإِجْمَاعٍ"
+      }
+    ]
+  },
+  "setting": [
+    "No occasion is reported for it. It is one of a run of short Makkan surahs — al-Zalzalah, al-ʿĀdiyāt, this one, al-Takāthur — that leave argument aside and simply put the Last Day in front of people who denied it.",
+    "Its method is the one the Qurʾan uses when it wants a thing to land: it names it, asks what it is, and then asks what could ever make you know what it is. Only then does it answer, and the answer is two images taken from what the Arabs saw every day. Moths, thick around a fire at night, flying into one another with no direction. And wool, pulled apart and carded until it floats — that is what will become of the mountains they thought were the most fixed things in the world.",
+    "After that there is no more description. There are only two outcomes, and they turn on a scale."
+  ],
+  "occasions": [],
+  "aim": "To strike the hearts, so that the terror of the Resurrection is felt as present.",
+  "themes": [
+    "The Last Day",
+    "The scales",
+    "Paradise and the Fire"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 3,
+      "title": "The name",
+      "summary": "The Striking Calamity. What is the Striking Calamity? And what will make you know what the Striking Calamity is?"
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "title": "The Day",
+      "summary": "The Day when people will be like moths, scattered, and the mountains like wool, carded."
+    },
+    {
+      "from": 6,
+      "to": 11,
+      "title": "The scales",
+      "summary": "The one whose scales are heavy will be in a life of contentment. The one whose scales are light — his home is the Pit. And what will make you know what that is? A fire, blazing."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 6,
+    "why": "Where the surah turns from the scene to the person in it. The scales are real, and the Prophet ﷺ taught what weighs most in them."
+  },
+  "virtues": [],
+  "before": "Al-ʿĀdiyāt ended with the graves overturned and their Lord aware of what the hearts held. Al-Qāriʿah shows the next moment: the Day, and the weighing.",
+  "after": "Al-Takāthur explains how the scales come to be light: people were busy piling up more, until they reached their graves.",
+  "notable": [
+    {
+      "ayah": 4,
+      "to": 5,
+      "label": "People like moths, mountains like wool"
+    },
+    {
+      "ayah": 6,
+      "to": 9,
+      "label": "The heavy scales and the light"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr"
+  ]
+}

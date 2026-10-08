@@ -1,0 +1,144 @@
+{
+  "surah": 55,
+  "epithet": "Which of your Lord’s favours will you deny?",
+  "lede": "Quraysh asked, “And what is the Most Merciful?” This surah opens with that name standing alone as an ayah, and answers by listing what He has given — to mankind and to the jinn together — with one question returning thirty-one times.",
+  "names": [
+    {
+      "arabic": "الرحمن",
+      "name": "al-Raḥmān",
+      "meaning": "The Most Merciful",
+      "note": "After the name of Allah that is its first ayah. It is the only surah that opens with one of His names standing by itself."
+    }
+  ],
+  "revelation": {
+    "place": "disputed",
+    "verdict": "Differed over — Makkan, by the majority",
+    "detail": "Ibn al-Jawzī gives two views. That it is Makkan is reported from Ibn ʿAbbās through Ibn Abī Ṭalḥah, and is the saying of al-Ḥasan, ʿAṭāʾ, Muqātil and the majority; al-Qurṭubī adds ʿUrwah ibn al-Zubayr, ʿIkrimah and Jābir, and Ibn Kathīr gives it as Makkan. That it is Madinan is reported from Ibn ʿAbbās through ʿAṭiyyah, and from Ibn Masʿūd — and that is how the muṣḥaf heads it, the traditional order placing it ninety-seventh. Its manner throughout is that of the Makkan surahs.",
+    "period": "makkah-middle",
+    "when": "On the majority’s view: Makkah, when the idolaters had refused the very name al-Raḥmān",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَفِي نُزُولِها قَوْلانِ. أحَدُهُما: أنَّها مَكِّيَّةٌ، رَواهُ ابْنُ أبِي طَلْحَةَ عَنِ ابْنِ عَبّاسٍ، وبِهِ قالَ الحَسَنُ، وعَطاءٌ، ومُقاتِلٌ، والجُمْهُورُ"
+      },
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "والثّانِي: أنَّها مَدَنِيَّةٌ، رَواهُ عَطِيَّةُ عَنِ ابْنِ عَبّاسٍ. وبِهِ قالَ ابْنُ مَسْعُودٍ"
+      }
+    ]
+  },
+  "setting": [
+    "The idolaters of Makkah knew the name Allah. The name al-Raḥmān they affected not to know. “When it is said to them, ‘Prostrate to the Most Merciful,’ they say: ‘And what is the Most Merciful?’” (25:60). Ibn al-Jawzī relates from Muqātil that this surah came down in reply.",
+    "The reply is not a definition. It is a list. Al-Raḥmān: He taught the Qurʾan; He created man; He taught him to express himself. The sun and the moon run to a reckoning. The sky was raised and the balance set. The earth was laid out for living creatures, with its fruit and palms and grain. And after each gift, the question — addressed, unusually, to two hearers: “Then which of the favours of your Lord will you two deny?” The two are mankind and the jinn, whom the surah names together throughout.",
+    "The Prophet ﷺ once recited it to his Companions from beginning to end, and they sat silent. He said: “I recited it to the jinn on the night of the jinn, and they made a better response than you. Each time I came to ‘Then which of the favours of your Lord will you two deny?’ they said: ‘Not one of Your favours do we deny, our Lord; to You belongs all praise.’”",
+    "The surah moves through three circles: the favours of this world; the passing away of everything on it, and the reckoning; and then the next world — the Fire briefly, and at length four gardens, two for those who feared the standing before their Lord, and two below them. Its last ayah returns to where it began: “Blessed is the name of your Lord, Owner of Majesty and Honour.”"
+  ],
+  "occasions": [],
+  "aim": "To make known the dazzling favours of Allah and the manifest traces of His mercy in this world and the next — to draw towards faith, and warn against ingratitude.",
+  "themes": [
+    "The mercy of Allah",
+    "The Qurʾan as the first favour",
+    "The balance",
+    "Mankind and the jinn addressed together",
+    "Everything perishes but His Face",
+    "The four gardens"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 13,
+      "title": "The first favours",
+      "summary": "The Most Merciful: He taught the Qurʾan, created man, and taught him clear speech. The sun and the moon run by a reckoning; the stars and the trees prostrate. He raised the sky and set the balance — so do not transgress in the balance. And the earth He laid down for creatures, with fruit, sheathed palms, husked grain and fragrant plants. Then which of the favours of your Lord will you two deny?"
+    },
+    {
+      "from": 14,
+      "to": 25,
+      "title": "The two created kinds, and the two seas",
+      "summary": "He created man from dry clay like pottery, and the jinn from a smokeless flame of fire. Lord of the two risings and the two settings. He let loose the two seas, meeting; between them is a barrier they do not pass. From them come pearl and coral; and His are the ships, raised up on the sea like mountains."
+    },
+    {
+      "from": 26,
+      "to": 30,
+      "title": "All that is on it will perish",
+      "summary": "Everyone upon it will pass away, and there will remain the Face of your Lord, Owner of Majesty and Honour. All who are in the heavens and the earth ask of Him; every day He is engaged in some matter."
+    },
+    {
+      "from": 31,
+      "to": 45,
+      "title": "The reckoning",
+      "summary": "We shall attend to you, you two weighty hosts. O company of jinn and men, if you are able to pass beyond the regions of the heavens and the earth, then pass: you will not pass except by authority. When the sky is split and turns rose-red like oil — on that Day none will need to be asked about his sin. The guilty will be known by their marks, and seized by the forelocks and the feet. This is the Hell that the guilty deny."
+    },
+    {
+      "from": 46,
+      "to": 61,
+      "title": "Two gardens",
+      "summary": "For whoever feared the standing before his Lord there are two gardens: of spreading branches; in each, two flowing springs, and of every fruit two kinds. They recline on couches lined with brocade, the fruit of both gardens hanging near; in them are those of modest gaze, as though they were rubies and coral. Is the reward of excellence anything but excellence?"
+    },
+    {
+      "from": 62,
+      "to": 78,
+      "title": "And two more",
+      "summary": "And below these, two other gardens: dark green; in each, two gushing springs; fruit, date-palms and pomegranates; good and beautiful companions, sheltered in pavilions; reclining on green cushions and fine carpets. Blessed is the name of your Lord, Owner of Majesty and Honour."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 60,
+    "why": "The rule of the whole surah turned into a single question: whoever does what is best is met with what is best."
+  },
+  "virtues": [
+    {
+      "text": "The Messenger of Allah ﷺ went out to his Companions and recited Sūrat al-Raḥmān to them from beginning to end, and they were silent. He said: “I recited it to the jinn on the night of the jinn, and they responded better than you. Whenever I came to ‘Then which of the favours of your Lord will you two deny?’ they said: ‘Not one of Your favours do we deny, our Lord; Yours is the praise.’”",
+      "arabic": "لاَ بِشَيْءٍ مِنْ نِعَمِكَ رَبَّنَا نُكَذِّبُ فَلَكَ الْحَمْدُ",
+      "narrator": "Jābir ibn ʿAbd Allāh",
+      "source": "Jāmiʿ al-Tirmidhī, 3291",
+      "refs": [
+        {
+          "book": "tirmidhi",
+          "number": "3291"
+        }
+      ],
+      "grade": "Gharīb, said al-Tirmidhī; ḥasan according to al-Albānī"
+    }
+  ],
+  "virtuesNote": "The saying that “everything has a bride, and the bride of the Qurʾan is al-Raḥmān” is not established; al-Albānī judged it munkar.",
+  "before": "Al-Qamar ended with the mindful seated near a Sovereign, Omnipotent. Al-Raḥmān opens with His mercy, and where al-Qamar had five times recounted punishment, it thirty-one times recounts favour.",
+  "after": "Al-Raḥmān described two gardens, and two below them. Al-Wāqiʿah names those who dwell in each — the Foremost, and the People of the Right — and adds the People of the Left.",
+  "notable": [
+    {
+      "ayah": 1,
+      "to": 4,
+      "label": "The Most Merciful taught the Qurʾan"
+    },
+    {
+      "ayah": 7,
+      "to": 9,
+      "label": "He set the balance"
+    },
+    {
+      "ayah": 13,
+      "label": "Which of your Lord’s favours will you deny?"
+    },
+    {
+      "ayah": 26,
+      "to": 27,
+      "label": "All will perish; the Face of your Lord remains"
+    },
+    {
+      "ayah": 46,
+      "label": "For whoever feared the standing before his Lord, two gardens"
+    },
+    {
+      "ayah": 60,
+      "label": "Is the reward of excellence anything but excellence?"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Jāmiʿ al-Tirmidhī"
+  ]
+}

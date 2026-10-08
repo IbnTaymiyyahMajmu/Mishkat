@@ -1,0 +1,119 @@
+{
+  "surah": 71,
+  "epithet": "Nine hundred and fifty years of calling",
+  "lede": "The only surah given over entirely to one prophet’s account of his own mission. Nūḥ tells his Lord how he called his people — by night and by day, in public and in private — and how they answered: with their fingers in their ears.",
+  "names": [
+    {
+      "arabic": "نوح",
+      "name": "Nūḥ",
+      "meaning": "Noah",
+      "note": "After the prophet whose story fills it from the first ayah to the last. It is also called by its opening words, Innā arsalnā Nūḥan."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "Ibn al-Jawzī records agreement that all of it is Makkan; al-Qurṭubī and Ibn Kathīr give it as Makkan without mention of any other view. The traditional order places it seventy-first.",
+    "period": "makkah-late",
+    "when": "The later years in Makkah, when the Prophet ﷺ had called his people for a decade and most had refused",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ نُوحٍ وَهِيَ مَكِّيَّةٌ كُلُّها بِإجْماعِهِمْ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ نُوحٍ مَكِّيَّةٌ، وَهِيَ ثَمَانٍ وَعِشْرُونَ آيَةً"
+      }
+    ]
+  },
+  "setting": [
+    "By the time this surah came down the Messenger of Allah ﷺ had spent years calling the people of Makkah, and could count those who had answered. The men of influence would not listen and would not let others listen. It is to someone in that position that the story of Nūḥ is told — not the Flood, which takes one ayah here, but the calling.",
+    "Nūḥ stayed among his people a thousand years less fifty (29:14). The surah lets him describe it himself. I called them night and day, and my calling only made them run further. Every time I called them, so that You might forgive them, they put their fingers in their ears and pulled their garments over their heads. I called them openly; then I spoke to them in public and in private. And he tells what he said: ask your Lord’s forgiveness — He is ever forgiving — and He will send the sky upon you in abundant rain, and give you wealth and sons, gardens and rivers.",
+    "What kept them from it was their attachment to five names. Do not abandon your gods, their leaders said: do not abandon Wadd, nor Suwāʿ, nor Yaghūth and Yaʿūq and Nasr. Ibn ʿAbbās explains who these were: righteous men of Nūḥ’s people. When they died, Satan prompted their people to set up images where they used to sit and call them by their names; and when that generation had passed and knowledge was lost, they were worshipped. The same idols, he says, later came to the Arabs — and the people of Makkah knew those names."
+  ],
+  "occasions": [],
+  "aim": "The patience of those who call to Allah and their struggle in calling, through the story of Nūḥ — to steady the believers, and to threaten the deniers.",
+  "themes": [
+    "Calling to Allah",
+    "Patience",
+    "Seeking forgiveness",
+    "The origin of idolatry",
+    "The Flood"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 4,
+      "title": "The mission",
+      "summary": "We sent Nūḥ to his people: warn them before a painful punishment comes. He said: I am a clear warner to you — worship Allah, be mindful of Him, and obey me; He will forgive you your sins and grant you respite to an appointed term."
+    },
+    {
+      "from": 5,
+      "to": 20,
+      "title": "His account to his Lord",
+      "summary": "My Lord, I called my people night and day, and it only increased their flight. I said: seek forgiveness of your Lord, He is ever forgiving; He will send rain upon you, and give you wealth and sons, gardens and rivers. What is the matter with you, that you have no awe of Allah’s majesty, when He created you stage by stage? Do you not see how He made seven heavens, the moon a light and the sun a lamp; grew you from the earth, and will return you to it; and spread the earth for you to travel its wide roads?"
+    },
+    {
+      "from": 21,
+      "to": 24,
+      "title": "Their answer",
+      "summary": "My Lord, they have disobeyed me and followed those whose wealth and children only add to their loss. They have plotted a mighty plot, and said: do not leave your gods — not Wadd, nor Suwāʿ, nor Yaghūth and Yaʿūq and Nasr. They have led many astray."
+    },
+    {
+      "from": 25,
+      "to": 28,
+      "title": "The end, and his prayer",
+      "summary": "Because of their sins they were drowned, and made to enter a fire. And Nūḥ said: my Lord, leave not one of the disbelievers on the earth; if You leave them they will mislead Your servants. My Lord, forgive me and my parents, and whoever enters my house as a believer, and the believing men and the believing women."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 10,
+    "why": "The heart of what he preached for nine and a half centuries: ask your Lord’s forgiveness. The early Muslims took the three ayat after it as the remedy for drought and want."
+  },
+  "virtues": [
+    {
+      "text": "“The idols that were among the people of Nūḥ came to be among the Arabs afterwards… They are the names of righteous men from the people of Nūḥ. When they died, Satan inspired their people to set up images in the gatherings where they used to sit, and to call them by their names. They did so, and they were not worshipped — until those people had died and knowledge was forgotten; then they were worshipped.”",
+      "narrator": "Ibn ʿAbbās",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4920",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4920"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    }
+  ],
+  "before": "Al-Maʿārij told the Prophet ﷺ: be patient, with a beautiful patience (70:5). Nūḥ shows what that looked like over a thousand years less fifty.",
+  "after": "Human beings refused Nūḥ for centuries. In al-Jinn, a party of jinn hear the Qurʾan once and say: we have believed in it.",
+  "notable": [
+    {
+      "ayah": 5,
+      "to": 9,
+      "label": "“I called them night and day”"
+    },
+    {
+      "ayah": 10,
+      "to": 12,
+      "label": "Seek forgiveness, and He will send rain upon you"
+    },
+    {
+      "ayah": 23,
+      "label": "Wadd, Suwāʿ, Yaghūth, Yaʿūq and Nasr"
+    },
+    {
+      "ayah": 28,
+      "label": "Nūḥ’s prayer for the believers"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī"
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "surah": 8,
+  "epithet": "The surah of Badr",
+  "lede": "Three hundred men went out after a caravan and met an army three times their number. By midday the leaders of Quraysh lay dead in the sand. The surah came down afterwards, while the victors were quarrelling over the spoils — and it tells them, point by point, who actually won the battle.",
+  "names": [
+    {
+      "arabic": "الأنفال",
+      "name": "al-Anfāl",
+      "meaning": "The Spoils",
+      "note": "From its first ayah: “They ask you about the spoils.” Anfāl are what is gained over and above the purpose — and the surah treats them as exactly that."
+    },
+    {
+      "arabic": "سورة بدر",
+      "name": "Sūrat Badr",
+      "meaning": "The Surah of Badr",
+      "note": "Saʿīd ibn Jubayr said to Ibn ʿAbbās: “Sūrat al-Anfāl?” He said: “That is Sūrat Badr.”"
+    }
+  ],
+  "revelation": {
+    "place": "madinah",
+    "verdict": "Madinan, by agreement — about Badr",
+    "detail": "Ibn al-Jawzī records agreement that it is Madinan; al-Qurṭubī calls it “Madinan, of Badr,” in the saying of al-Ḥasan, ʿIkrimah, Jābir and ʿAṭāʾ. Ibn ʿAbbās, asked about it, said simply that it came down about Badr. The battle was fought on the seventeenth of Ramaḍān in the second year after the Hijrah. A report from Ibn ʿAbbās counts seven of its ayat, from “When those who disbelieved plotted against you” (8:30), as Makkan; they recall a Makkan event, but belong with the rest. The traditional order places it eighty-eighth, directly after al-Baqarah.",
+    "period": "madinah-early",
+    "when": "Madinah, after Badr — Ramaḍān of the second year",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ الأنْفالِ وَهِيَ مَدَنِيَّةٌ بِإجْماعِهِمْ"
+      },
+      {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "قُلْتُ لِابْنِ عَبَّاسٍ: سُورَةُ الْأَنْفَالِ؟ قَالَ نَزَلَتْ فِي بَدْرٍ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْأَنْفَالِ مَدَنِيَّةٌ بَدْرِيَّةٌ فِي قَوْلِ الْحَسَنِ وَعِكْرِمَةَ وَجَابِرٍ وَعَطَاءٍ"
+      }
+    ]
+  },
+  "setting": [
+    "They had not gone out to fight. The Prophet ﷺ left Madinah with a little over three hundred men, two horses and seventy camels shared between them, to intercept a caravan of Quraysh returning from Syria. The caravan slipped away along the coast; what came up from Makkah instead was an army of about a thousand. At the wells of Badr the two met.",
+    "ʿUmar describes what happened before the fighting began. The Prophet ﷺ looked at the idolaters, a thousand of them, and at his own companions, and turned to face the qiblah. He stretched out his hands and began calling on his Lord: “O Allah, fulfil for me what You have promised me. O Allah, if this band of the people of Islam is destroyed, You will not be worshipped on the earth.” He went on, hands outstretched, until his cloak slipped from his shoulders. Abū Bakr came, put it back, and held him from behind: “Prophet of Allah, enough of your pleading with your Lord; He will fulfil what He has promised you.” And there came down: “When you sought help from your Lord, and He answered you: I shall reinforce you with a thousand of the angels, rank on rank.”",
+    "It was over in a morning. Seventy of Quraysh were killed — Abū Jahl among them — and seventy taken captive. And then the winners began to argue. ʿUbādah ibn al-Ṣāmit, who was there, says there were three groups: those who had chased the enemy, those who had stood guard round the Prophet ﷺ, and those who had gathered up the camp; and each said the spoils were theirs.",
+    "The surah opens with their question and disposes of it in half a line: “They ask you about the spoils. Say: the spoils are for Allah and the Messenger.” It does not say how they are to be divided until forty ayat later. First it has something else to settle — what a believer is. “The believers are only those whose hearts tremble when Allah is mentioned; and when His ayat are recited to them, it increases them in faith; and upon their Lord they rely.”",
+    "Then it goes back over the battle and corrects their memory of it. You went out unwillingly, some of you, as though being driven to death. You wanted the unarmed party. You were made drowsy, and rained on, to steady you. “You did not kill them, but Allah killed them; and you did not throw, when you threw, but Allah threw.” It turns to Quraysh — who had prayed, “O Allah, if this is the truth from You, then rain down stones upon us” — and at the end to the captives, over whom the Prophet ﷺ and Abū Bakr were found weeping the next day."
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        1,
+        1
+      ],
+      "title": "The quarrel over the spoils",
+      "text": "On the day of Badr the Messenger of Allah ﷺ said: “Whoever does such-and-such shall have such-and-such of the spoils.” The young men went forward, and the elders kept to the banners. When Allah gave them victory, the elders said: “We were your support; had you been driven back, you would have fallen back on us. Do not take the spoils and leave us out.” The young men refused: “The Messenger of Allah ﷺ assigned it to us.” Then Allah sent down: “They ask you about the spoils…”",
+      "source": "Ibn ʿAbbās: Abū Dāwūd (2737); ṣaḥīḥ according to al-Albānī. Saʿd ibn Abī Waqqāṣ relates it of a sword he asked for that day: Muslim (1748).",
+      "evidence": {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "فَأمّا المَشْيَخَةُ، فَثَبَتُوا تَحْتَ الرّاياتِ، وأمّا الشُّبّانُ، فَسارَعُوا إلى القَتْلِ والغَنائِمِ، فَقالَ المَشْيَخَةُ لَلشُّبّانِ: أشْرِكُونا مَعَكم، فَإنّا كُنّا لَكم رِدَءًا"
+      }
+    },
+    {
+      "ayat": [
+        9,
+        9
+      ],
+      "title": "The plea before the battle",
+      "text": "On the day of Badr the Messenger of Allah ﷺ looked at the idolaters — they were a thousand, and his companions three hundred and nineteen. He faced the qiblah, stretched out his hands and called upon his Lord: “O Allah, fulfil for me what You promised me. O Allah, bring about what You promised me. O Allah, if this band of the people of Islam perishes, You will not be worshipped on the earth.” He kept on until his cloak fell from his shoulders. Then Allah sent down: “When you sought help from your Lord, and He answered you.”",
+      "source": "ʿUmar ibn al-Khaṭṭāb: Muslim (1763)."
+    },
+    {
+      "ayat": [
+        32,
+        33
+      ],
+      "title": "Abū Jahl’s prayer",
+      "text": "Abū Jahl said: “O Allah, if this is the truth from You, then rain down upon us stones from the sky, or bring us a painful punishment.” Then there came down: “Allah would not punish them while you were among them; and Allah would not punish them while they seek forgiveness.”",
+      "source": "Anas ibn Mālik: al-Bukhārī (4648) and Muslim (2796)."
+    },
+    {
+      "ayat": [
+        65,
+        66
+      ],
+      "title": "One against ten, lightened to one against two",
+      "text": "When “If there are twenty of you who are patient, they will overcome two hundred” came down, it bore hard on the Muslims that one should not flee from ten. Then the lightening came: “Now Allah has lightened it for you, knowing that there is weakness in you: if there are a hundred of you who are patient, they will overcome two hundred.”",
+      "source": "Ibn ʿAbbās: al-Bukhārī (4653)."
+    },
+    {
+      "ayat": [
+        67,
+        68
+      ],
+      "title": "The captives",
+      "text": "When they had taken the captives, the Messenger of Allah ﷺ asked Abū Bakr and ʿUmar what they thought. Abū Bakr said: “They are cousins and kinsmen; take a ransom from them, and it will be strength for us, and perhaps Allah will guide them.” ʿUmar said: “I do not think as Abū Bakr thinks: hand them to us to strike their necks.” He inclined to what Abū Bakr said. The next day ʿUmar came and found the two of them sitting, weeping; and Allah had sent down: “It is not for a prophet to have captives until he has thoroughly subdued the land.”",
+      "source": "ʿUmar ibn al-Khaṭṭāb: Muslim (1763)."
+    }
+  ],
+  "aim": "To set out the rulings of striving in the way of Allah, and what brings victory and what brings defeat — through the battle of Badr.",
+  "themes": [
+    "The spoils belong to Allah and the Messenger",
+    "What a believer is",
+    "The help that came at Badr",
+    "“You did not throw when you threw”",
+    "Obedience and unity",
+    "The plot against the Prophet ﷺ in Makkah",
+    "Treaties and their keeping",
+    "The captives",
+    "Emigrants and Helpers"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 4,
+      "title": "The question, and the real answer",
+      "summary": "They ask you about the spoils. Say: the spoils are for Allah and the Messenger; so be mindful of Allah, and set things right between you. The believers are only those whose hearts tremble when Allah is mentioned; and when His ayat are recited to them, it increases them in faith; and upon their Lord they rely — who keep up the prayer, and spend of what We have provided them. Those are the believers, truly."
+    },
+    {
+      "from": 5,
+      "to": 19,
+      "title": "How Badr was won",
+      "summary": "As your Lord brought you out of your home in truth, though a party of the believers were unwilling. You wished that the unarmed one should be yours. When you sought help from your Lord and He answered: “I shall reinforce you with a thousand of the angels.” He covered you with drowsiness as security from Him, and sent down water upon you from the sky. Do not turn your backs to them. You did not kill them, but Allah killed them; and you did not throw, when you threw, but Allah threw (8:17)."
+    },
+    {
+      "from": 20,
+      "to": 29,
+      "title": "Respond to what gives you life",
+      "summary": "O you who believe, obey Allah and His Messenger. Respond to Allah and to the Messenger when he calls you to what gives you life; and know that Allah comes between a man and his heart. Beware a trial that will not strike only those of you who do wrong. Remember when you were few, held weak in the land, afraid that people would snatch you away — and He sheltered you. Do not betray Allah and the Messenger. If you are mindful of Allah, He will give you a criterion."
+    },
+    {
+      "from": 30,
+      "to": 40,
+      "title": "Quraysh",
+      "summary": "When those who disbelieved plotted against you, to confine you, or kill you, or drive you out — they plotted, and Allah plotted, and Allah is the best of plotters. They said: “O Allah, if this is the truth from You, rain down stones upon us.” Allah would not punish them while you were among them. Their prayer at the House was nothing but whistling and clapping. They spend their wealth to bar people from the way of Allah; they will spend it, then it will be a regret for them. Say to those who disbelieve: if they desist, what is past will be forgiven them."
+    },
+    {
+      "from": 41,
+      "to": 54,
+      "title": "The fifth, and the day of the Criterion",
+      "summary": "Know that whatever you gain, a fifth of it is for Allah and the Messenger, the near kin, the orphans, the needy and the traveller. You were on the near bank and they on the far, and the caravan below you — that he who perished might perish upon clear proof. When you meet a force, stand firm and remember Allah much. Obey Allah and His Messenger, and do not quarrel, or you will lose heart and your strength will depart. Allah would not change a favour He had bestowed on a people until they change what is in themselves."
+    },
+    {
+      "from": 55,
+      "to": 66,
+      "title": "Treaties, strength and peace",
+      "summary": "Those with whom you made a covenant, and they break it every time. If you fear treachery from a people, throw their treaty back to them on equal terms. Prepare against them what force you can. If they incline to peace, incline to it, and rely on Allah. He it is who strengthened you with His help and with the believers, and joined their hearts: had you spent all that is on the earth, you could not have joined their hearts. O Prophet, Allah is enough for you, and those of the believers who follow you."
+    },
+    {
+      "from": 67,
+      "to": 75,
+      "title": "The captives, and who belongs to whom",
+      "summary": "It is not for a prophet to have captives until he has thoroughly subdued the land. O Prophet, say to the captives in your hands: if Allah knows any good in your hearts, He will give you better than what was taken from you. Those who believed, emigrated and strove, and those who gave shelter and help — they are allies of one another. If they seek your help in religion, you must help. Those who disbelieve are allies of one another. And those bound by kinship are nearer to one another in the Book of Allah."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 2,
+    "why": "They asked who should have the spoils. This is what they were told first: a description of the believer in which the spoils do not appear."
+  },
+  "virtues": [
+    {
+      "text": "Saʿīd ibn Jubayr said: I said to Ibn ʿAbbās: “Sūrat al-Anfāl?” He said: “It came down about Badr.”",
+      "narrator": "Ibn ʿAbbās",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4645",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4645"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "Abū Saʿīd ibn al-Muʿallā said: I was praying, and the Messenger of Allah ﷺ passed by and called me; I did not go to him until I had finished. He said: “What kept you from coming? Has Allah not said: ‘O you who believe, respond to Allah and to the Messenger when he calls you’?”",
+      "narrator": "Abū Saʿīd ibn al-Muʿallā",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4647",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4647"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "ʿUqbah ibn ʿĀmir said: I heard the Messenger of Allah ﷺ say, upon the pulpit: “‘Prepare against them what force you can.’ Truly, force is archery. Truly, force is archery. Truly, force is archery.”",
+      "arabic": "أَلاَ إِنَّ الْقُوَّةَ الرَّمْىُ",
+      "narrator": "ʿUqbah ibn ʿĀmir",
+      "source": "Ṣaḥīḥ Muslim, 1917",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "1917"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    }
+  ],
+  "before": "Al-Aʿrāf told how Mūsā and those held weak with him were saved, and their oppressor drowned. Al-Anfāl is the same story in this community’s own life.",
+  "after": "Al-Anfāl is the first great campaign, and al-Tawbah the last. The two were set side by side in the muṣḥaf, with no basmalah written between them.",
+  "notable": [
+    {
+      "ayah": 2,
+      "to": 4,
+      "label": "Who the believers are"
+    },
+    {
+      "ayah": 9,
+      "label": "A thousand angels"
+    },
+    {
+      "ayah": 17,
+      "label": "“You did not throw when you threw”"
+    },
+    {
+      "ayah": 24,
+      "label": "Respond to what gives you life"
+    },
+    {
+      "ayah": 30,
+      "label": "The plot in Makkah"
+    },
+    {
+      "ayah": 33,
+      "label": "Not punished while seeking forgiveness"
+    },
+    {
+      "ayah": 41,
+      "label": "The fifth"
+    },
+    {
+      "ayah": 46,
+      "label": "Do not quarrel, or you will lose heart"
+    },
+    {
+      "ayah": 53,
+      "label": "Until they change what is in themselves"
+    },
+    {
+      "ayah": 60,
+      "to": 61,
+      "label": "Prepare — and incline to peace"
+    },
+    {
+      "ayah": 63,
+      "label": "He joined their hearts"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; Sunan Abī Dāwūd"
+  ]
+}

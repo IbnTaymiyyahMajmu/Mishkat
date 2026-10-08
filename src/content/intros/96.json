@@ -1,0 +1,159 @@
+{
+  "surah": 96,
+  "epithet": "The first words of the revelation",
+  "lede": "A cave above Makkah, a night in Ramaḍān, a man who could not read — and an angel saying: Read. Five ayat came down that night. Everything else in the muṣḥaf came after them.",
+  "names": [
+    {
+      "arabic": "العلق",
+      "name": "al-ʿAlaq",
+      "meaning": "The Clinging Clot",
+      "note": "After what it says the human being was made from (96:2)."
+    },
+    {
+      "arabic": "اقرأ",
+      "name": "Iqraʾ",
+      "meaning": "“Read”",
+      "note": "Its first word, and the name Ibn Kathīr heads it with. The Companions called it by its opening: “We prostrated with the Messenger of Allah ﷺ in ‘Idhā l-samāʾu nshaqqat’ and ‘Iqraʾ bi-smi rabbik’” (Muslim 578)."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement — the first to come down",
+    "detail": "It is Makkan without disagreement, and its first five ayat are the first of the Qurʾan to be revealed, as ʿĀʾishah relates in the two Ṣaḥīḥs. The rest of the surah came later, once the Prophet ﷺ had begun to pray openly at the Kaʿbah and Abū Jahl had set himself to stop him. So the surah that stands first in the order of revelation was itself completed in two parts.",
+    "period": "makkah-early",
+    "when": "The first revelation: the cave of Ḥirāʾ, in Ramaḍān, thirteen years before the Hijrah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وهي مَكِّيَّةٌ بِإجْماعِهِمْ وَهِيَ أوَّلُ ما نَزَلَ مِنَ القُرْآنِ. وقِيلَ: إنَّها نَزَلَتْ عَلَيْهِ في أوَّلِ الوَحْيِ خَمْسُ آياتٍ مِنها، ثُمَّ نَزَلَ باقِيها في أبِي جَهْلٍ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "وَهِيَ مَكِّيَّةٌ بِإِجْمَاعٍ وَهِيَ أَوَّلُ مَا نَزَلَ مِنَ الْقُرْآنِ فِي قَوْلِ أَبِي مُوسَى وَعَائِشَةِ رَضِيَ اللَّهُ عَنْهُمَا. وَهِيَ تِسْعَ عشرة آية"
+      }
+    ]
+  },
+  "setting": [
+    "ʿĀʾishah tells how it began. The first sign of revelation to the Messenger of Allah ﷺ was true dreams: he would see nothing in his sleep that did not come about like the break of day. Then solitude was made dear to him, and he would withdraw to the cave of Ḥirāʾ and give himself to worship there for nights on end, taking provisions with him, before going back to Khadījah for more.",
+    "So it was until the truth came to him in the cave. The angel came and said, “Read.” He said, “I am not one who reads.” The angel took hold of him and pressed him until he could bear no more, then released him and said, “Read.” He gave the same answer, and was pressed a second time, and a third. Then the angel said: “Read, in the name of your Lord who created — created the human being from a clinging clot. Read, and your Lord is the Most Generous, who taught by the pen, taught the human being what he did not know.”",
+    "He went home with his heart pounding and said, “Cover me, cover me.” When the fear had left him he told Khadījah what had happened and said, “I feared for myself.” She said: “No, by Allah — Allah will never disgrace you. You keep the ties of kinship, you carry the weak, you give to the one who has nothing, you honour the guest, and you help those struck by misfortune.” Then she took him to her cousin Waraqah ibn Nawfal, an old man who had become a Christian and read the scriptures, and he said: “This is the Nāmūs that Allah sent down upon Mūsā.”",
+    "The second half of the surah is from a different day. The Prophet ﷺ was by then praying at the Kaʿbah in the sight of Quraysh, and Abū Jahl swore that if he saw Muḥammad put his face to the ground there he would tread on his neck. He came towards him as he prayed — and they saw him fall back, shielding himself with his hands. “Between me and him,” he said, “was a trench of fire, and terror, and wings.”"
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        1,
+        5
+      ],
+      "title": "The beginning of revelation",
+      "text": "The angel came to him ﷺ in the cave of Ḥirāʾ, pressed him three times, and recited to him the first five ayat of this surah. He returned to Khadījah trembling, and she took him to Waraqah ibn Nawfal.",
+      "source": "ʿĀʾishah: al-Bukhārī (3) and Muslim (160).",
+      "evidence": {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "عَنْ عَائِشَةَ قَالَتْ: أَوَّلُ مَا بُدِئَ بِهِ رَسُولُ اللَّهِ ﷺ مِنَ الْوَحْيِ الرُّؤْيَا الصَّادِقَةُ فِي النَّوْمِ، فَكَانَ لَا يَرَى رُؤْيَا إِلَّا جَاءَتْ مِثْلَ فَلَق الصُّبْحِ"
+      }
+    },
+    {
+      "ayat": [
+        6,
+        19
+      ],
+      "title": "Abū Jahl at the Kaʿbah",
+      "text": "Abū Jahl said: “Does Muḥammad put his face in the dust among you? By al-Lāt and al-ʿUzzā, if I see him doing that I will tread on his neck.” He came to do it while the Prophet ﷺ was praying, and suddenly turned on his heels. The Prophet ﷺ said: “Had he come near me, the angels would have torn him limb from limb.” And Allah sent down: “No! Man transgresses…” to the end of the surah.",
+      "source": "Abū Hurayrah: Muslim (2797). Ibn ʿAbbās reports the same threat in al-Bukhārī (4958)."
+    }
+  ],
+  "aim": "To show that the human being is made complete by knowledge and revelation, which bind the servant to his Lord in humility — and is diminished by going against them.",
+  "themes": [
+    "Revelation",
+    "Knowledge",
+    "Creation",
+    "Arrogance",
+    "Prostration"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 5,
+      "title": "Read",
+      "summary": "The first revelation. Read in the name of your Lord who created, who made the human being from a clinging clot; read, and your Lord is the Most Generous, who taught by the pen what man did not know. The first thing said to the last Prophet ﷺ is a command to read, and the first favours named are creation and teaching."
+    },
+    {
+      "from": 6,
+      "to": 8,
+      "title": "What goes wrong",
+      "summary": "No — man oversteps all bounds, once he sees himself as needing no one. The cure is one sentence: to your Lord is the return."
+    },
+    {
+      "from": 9,
+      "to": 14,
+      "title": "The one who forbids a servant from praying",
+      "summary": "Have you seen him — the one who forbids a servant when he prays? What if that servant is upon guidance, or enjoins piety? What if this one denies and turns away? Does he not know that Allah sees?"
+    },
+    {
+      "from": 15,
+      "to": 19,
+      "title": "The threat, and the last command",
+      "summary": "If he does not stop, We will seize him by the forelock — a lying, sinful forelock. Let him call his council; We will call the guards of Hell. No: do not obey him. Prostrate, and draw near. It is an ayah of prostration, and the Prophet ﷺ prostrated at it."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 1,
+    "why": "The first word of the revelation, to a man who said he could not do what it asked — and was then given the means."
+  },
+  "virtues": [
+    {
+      "text": "“We prostrated with the Messenger of Allah ﷺ in ‘When the sky is split open’ and ‘Read, in the name of your Lord’.”",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ Muslim, 578",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "578"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "“The nearest a servant comes to his Lord is when he is prostrating, so make much supplication then.” The surah’s last words are: prostrate, and draw near.",
+      "arabic": "أَقْرَبُ مَا يَكُونُ الْعَبْدُ مِنْ رَبِّهِ وَهُوَ سَاجِدٌ",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ Muslim, 482",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "482"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    }
+  ],
+  "before": "Al-Tīn said the human being was created in the finest form (95:4). Al-ʿAlaq says what he was created from (96:2), and what raised him from the one to the other: his Lord taught him.",
+  "after": "Al-Qadr answers the question this surah leaves open — when did that first reading come down? “We sent it down on the Night of Decree.”",
+  "notable": [
+    {
+      "ayah": 1,
+      "to": 5,
+      "label": "The first revelation"
+    },
+    {
+      "ayah": 6,
+      "to": 7,
+      "label": "Man transgresses when he thinks himself self-sufficient"
+    },
+    {
+      "ayah": 19,
+      "label": "Prostrate, and draw near — an ayah of prostration"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

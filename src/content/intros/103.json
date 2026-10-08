@@ -1,0 +1,91 @@
+{
+  "surah": 103,
+  "epithet": "Three ayat that would have been enough",
+  "lede": "An oath by time, a verdict on the whole human race, and four conditions for being excepted from it. Al-Shāfiʿī said that if people reflected on this surah alone, it would suffice them.",
+  "names": [
+    {
+      "arabic": "العصر",
+      "name": "al-ʿAṣr",
+      "meaning": "Time",
+      "note": "After the oath it opens with. Al-ʿaṣr is time itself, the age in which the deeds of the children of Ādam take place — this is the well-known view, from Ibn ʿAbbās. It was also said to be the late afternoon, or the afternoon prayer."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by the majority",
+    "detail": "That it is Makkan is the saying of Ibn ʿAbbās, Ibn al-Zubayr and the majority; that it is Madinan is reported from Mujāhid, Qatādah and Muqātil. The muṣḥaf heads it Makkan, and the traditional order places it thirteenth — among the very first surahs.",
+    "period": "makkah-early",
+    "when": "The first years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَفِيها قَوْلانِ. أحَدُهُما: أنَّها مَكِّيَّةٌ، قالَهُ ابْنُ عَبّاسٍ، وابْنُ الزُّبَيْرِ، والجُمْهُورُ. والثّانِي: مَدَنِيَّةٌ، قالَهُ مُجاهِدٌ، وقَتادَةُ، ومُقاتِلٌ"
+      }
+    ]
+  },
+  "setting": [
+    "No occasion is reported for it, and it needs none: it is addressed to everyone who has ever had a lifetime to spend.",
+    "It came down in a town of traders, and it speaks their language. Khusr is a merchant’s word — loss, the capital gone and nothing to show for it. The surah swears by time, which is every person’s capital, that the human being is in exactly that position: spending what he cannot get back. Then it names the only trade that shows a profit, and it has four parts. Two a person does for himself — to believe, and to do what is right. Two he does with others — to urge one another to the truth, and to urge one another to patience in holding to it.",
+    "The Companions took it as a summary of everything they had been taught. Two of them, it is reported, would not part company after meeting until one had recited it to the other."
+  ],
+  "occasions": [],
+  "aim": "To set out what profit and loss in life really are, and to draw attention to the worth of the time a person is given.",
+  "themes": [
+    "Time",
+    "Loss and profit",
+    "Faith and deeds",
+    "Truth",
+    "Patience"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 2,
+      "title": "The oath, and the verdict",
+      "summary": "By time: the human being is in loss. All of them — the word takes in every person — until the exception is made."
+    },
+    {
+      "from": 3,
+      "to": 3,
+      "title": "The exception",
+      "summary": "Except those who believe, and do righteous deeds, and counsel one another to the truth, and counsel one another to patience. Knowledge, then action, then calling others to it, then bearing what comes of that."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 3,
+    "why": "Four conditions, and none of them optional. The last two mean that no one is saved alone."
+  },
+  "virtues": [
+    {
+      "text": "“When two men from among the Companions of the Messenger of Allah ﷺ met, they would not part until one of them had recited Sūrat al-ʿAṣr to the other, to its end; then one would give the other the greeting of peace.”",
+      "narrator": "Abū Madīnah al-Dārimī",
+      "source": "al-Ṭabarānī, al-Muʿjam al-Awsaṭ — as Ibn Kathīr gives it at the head of the surah",
+      "grade": "Ṣaḥīḥ according to al-Albānī (al-Silsilah al-Ṣaḥīḥah, 2648)",
+      "evidence": {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "كَانَ الرَّجُلَانِ مِنْ أَصْحَابِ رَسُولِ اللَّهِ ﷺ إِذَا الْتَقَيَا، لَمْ يَتَفَرَّقَا إِلَّا عَلَى أَنْ يَقْرَأَ أَحَدُهُمَا عَلَى الْآخَرِ \"سُورَةَ الْعَصْرِ\" إِلَى آخِرِهَا، ثُمَّ يُسَلِّمُ أَحَدُهُمَا عَلَى الْآخَرِ . وَقَالَ الشَّافِعِيُّ، رَحِمَهُ اللَّهُ: لَوْ تَدَبَّرَ النَّاسُ هَذِهِ السُّورَةَ، لَوَسِعَتْهُمْ"
+      }
+    }
+  ],
+  "before": "Al-Takāthur described the loss: a life used up in gathering more. Al-ʿAṣr states it as a rule, and gives the way out of it.",
+  "after": "Al-Humazah shows one of the losers at close range — the man who slanders others and counts his money, thinking it will make him last.",
+  "notable": [
+    {
+      "ayah": 1,
+      "label": "By time"
+    },
+    {
+      "ayah": 3,
+      "label": "Faith, right action, truth and patience"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "Ibn al-Qayyim, as gathered in his tafsir",
+    "al-Mukhtaṣar fī al-Tafsīr"
+  ]
+}

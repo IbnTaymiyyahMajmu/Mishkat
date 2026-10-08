@@ -1,0 +1,180 @@
+{
+  "surah": 1,
+  "epithet": "The Opening — the Mother of the Book",
+  "lede": "Seven ayat that every prayer stands on. The servant praises his Lord, binds himself to Him alone, and asks for one thing: to be shown the way. The rest of the Qurʾan is the answer to that request.",
+  "names": [
+    {
+      "arabic": "الفاتحة",
+      "name": "al-Fātiḥah",
+      "meaning": "The Opening",
+      "note": "In full, Fātiḥat al-Kitāb, the Opening of the Book: the muṣḥaf is opened with it in writing and the prayer is opened with it in recitation. The Prophet ﷺ used the name himself: “There is no prayer for one who does not recite Fātiḥat al-Kitāb” (al-Bukhārī 756, Muslim 394)."
+    },
+    {
+      "arabic": "أمّ القرآن",
+      "name": "Umm al-Qurʾān",
+      "meaning": "The Mother of the Qurʾan",
+      "note": "Also Umm al-Kitāb. The mother of a thing is its source and what the rest returns to. The Prophet ﷺ said: “Umm al-Qurʾān is the seven oft-repeated and the mighty Qurʾan” (al-Bukhārī 4704)."
+    },
+    {
+      "arabic": "السبع المثاني",
+      "name": "al-Sabʿ al-Mathānī",
+      "meaning": "The Seven Oft-Repeated",
+      "note": "Seven ayat, returned to in every unit of every prayer. It is the name Allah gives it in Sūrat al-Ḥijr (15:87), as the Prophet ﷺ explained to Abū Saʿīd ibn al-Muʿallā (al-Bukhārī 4474)."
+    },
+    {
+      "arabic": "الصلاة",
+      "name": "al-Ṣalāh",
+      "meaning": "The Prayer",
+      "note": "In the ḥadīth qudsī Allah calls the surah itself “the prayer”: “I have divided the prayer between Myself and My servant in two halves” (Muslim 395) — because the prayer is not valid without it."
+    },
+    {
+      "arabic": "الرقية",
+      "name": "al-Ruqyah",
+      "meaning": "The Cure",
+      "note": "A Companion recited it over a man who had been stung and he recovered; the Prophet ﷺ asked him, “And how did you know that it is a ruqyah?” (al-Bukhārī 2276, Muslim 2201)."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, on the sounder view",
+    "detail": "Ibn ʿAbbās, Qatādah and Abū al-ʿĀliyah held that it came down in Makkah. Abū Hurayrah, Mujāhid, ʿAṭāʾ ibn Yasār and al-Zuhrī held that it came down in Madinah, and it was also said that it came down twice. Ibn Kathīr and al-Qurṭubī both judge the first view the stronger, for a reason that is hard to answer: Sūrat al-Ḥijr is Makkan by agreement, and it already speaks of “seven of the oft-repeated” as something given (15:87). The prayer, too, was made obligatory in Makkah, and no prayer in Islam is known to have been prayed without these ayat. It has seven ayat without disagreement; the reciters differ only over whether the basmalah is the first of them.",
+    "period": "makkah-early",
+    "when": "The first years in Makkah — it is as old as the prayer itself",
+    "evidence": [
+      {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "وَهِيَ مَكِّيَّةٌ، قَالَهُ ابْنُ عَبَّاسٍ وَقَتَادَةُ وَأَبُو الْعَالِيَةِ، وَقِيلَ مَدَنِيَّةٌ، قَالَهُ أَبُو هُرَيْرَةَ وَمُجَاهِدٌ وَعَطَاءُ بْنُ يَسَارٍ وَالزُّهْرِيُّ. وَيُقَالُ: نَزَلَتْ مَرَّتَيْنِ: مَرَّةً بِمَكَّةَ، وَمَرَّةً بِالْمَدِينَةِ، وَالْأَوَّلُ أَشْبَهُ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "وَالْحِجْرُ مَكِّيَّةٌ بِإِجْمَاعٍ. وَلَا خِلَافَ أَنَّ فَرْضَ الصَّلَاةِ كَانَ بِمَكَّةَ. وَمَا حُفِظَ أَنَّهُ كَانَ فِي الْإِسْلَامِ قَطُّ صَلَاةٌ بِغَيْرِ\" الْحَمْدُ لِلَّهِ رَبِّ الْعالَمِينَ"
+      }
+    ]
+  },
+  "setting": [
+    "No single event is transmitted as the occasion of al-Fātiḥah. It belongs to the first years in Makkah, when the believers were a handful and prayed where they would not be seen, and its story is the story of the prayer: wherever the prayer was, this was in it.",
+    "That is the setting worth holding on to. The first Muslims had no law yet, no city, no qiblah of their own. What they had was a way of standing before Allah — praising Him, saying that He alone is worshipped and He alone is asked, and asking Him for the road. Everything that came down over the next twenty-three years came down to people who were already saying these words many times a day.",
+    "It was not the first revelation: that was the opening of al-ʿAlaq, in the cave of Ḥirāʾ. But it was placed first in the muṣḥaf, by the Prophet’s ﷺ own arrangement, and it has been the first thing a Muslim learns of the Qurʾan ever since."
+  ],
+  "occasions": [],
+  "aim": "To turn a person wholly towards Allah, in complete servitude to Him alone.",
+  "themes": [
+    "Praise",
+    "Tawḥīd",
+    "Worship",
+    "Seeking help",
+    "Guidance"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 1,
+      "title": "In the name of Allah",
+      "summary": "The basmalah, counted as the first ayah of the surah in the Kufan numbering this muṣḥaf follows. The servant begins by Allah’s name and by nothing of his own."
+    },
+    {
+      "from": 2,
+      "to": 4,
+      "title": "Praise",
+      "summary": "All praise belongs to Allah: Lord of all the worlds, the Entirely Merciful, the Especially Merciful, Master of the Day of Recompense. Lordship, mercy and judgement — who He is, before anything is asked of Him. In the ḥadīth qudsī, this half is His."
+    },
+    {
+      "from": 5,
+      "to": 5,
+      "title": "The covenant",
+      "summary": "“You alone we worship, and You alone we ask for help.” The hinge of the surah, and of the religion: worship is for none but Him, and it is not achieved except by His help. Of this ayah Allah says, “This is between Me and My servant.”"
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "title": "The request",
+      "summary": "“Guide us to the straight path” — the path of those He has favoured, not of those who earned anger, nor of those who went astray. The Prophet ﷺ named the first as the Jews and the second as the Christians (al-Tirmidhī 2954): knowing the truth and leaving it, and worshipping without knowledge."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 5,
+    "why": "The whole surah turns on it. What comes before it is praise of Allah; what comes after it is the servant’s request; and this is the pledge between the two."
+  },
+  "virtues": [
+    {
+      "text": "The Prophet ﷺ said to Abū Saʿīd ibn al-Muʿallā: “I will teach you a surah that is the greatest surah in the Qurʾan before you leave the mosque.” Then he said: “‘Al-ḥamdu lillāhi rabbi l-ʿālamīn’ — it is the seven oft-repeated, and the mighty Qurʾan that I have been given.”",
+      "arabic": "لأُعَلِّمَنَّكَ سُورَةً هِيَ أَعْظَمُ السُّوَرِ فِي الْقُرْآنِ",
+      "narrator": "Abū Saʿīd ibn al-Muʿallā",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4474",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4474"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "Allah said: “I have divided the prayer between Myself and My servant in two halves, and My servant shall have what he asks. When the servant says, ‘All praise is for Allah, Lord of the worlds,’ Allah says: My servant has praised Me…” — and so on through the surah, until: “This is for My servant, and My servant shall have what he asked.”",
+      "arabic": "قَسَمْتُ الصَّلاَةَ بَيْنِي وَبَيْنَ عَبْدِي نِصْفَيْنِ وَلِعَبْدِي مَا سَأَلَ",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ Muslim, 395",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "395"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "While Jibrīl was sitting with the Prophet ﷺ he heard a sound above him and raised his head. An angel had come down who had never come down before, and he said: “Rejoice in two lights that you have been given and that no prophet before you was given: Fātiḥat al-Kitāb, and the closing ayat of Sūrat al-Baqarah. You will not recite a letter of them without being given it.”",
+      "narrator": "Ibn ʿAbbās",
+      "source": "Ṣaḥīḥ Muslim, 806",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "806"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "“There is no prayer for one who does not recite the Opening of the Book.”",
+      "arabic": "لاَ صَلاَةَ لِمَنْ لَمْ يَقْرَأْ بِفَاتِحَةِ الْكِتَابِ",
+      "narrator": "ʿUbādah ibn al-Ṣāmit",
+      "source": "Ṣaḥīḥ al-Bukhārī, 756 · Ṣaḥīḥ Muslim, 394",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "756"
+        },
+        {
+          "book": "muslim",
+          "number": "394"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    }
+  ],
+  "after": "Al-Baqarah opens by answering it. The servant has just asked, “Guide us to the straight path”; the next words in the muṣḥaf are “This is the Book about which there is no doubt, a guidance for those mindful of Allah” (2:2).",
+  "notable": [
+    {
+      "ayah": 2,
+      "label": "Al-ḥamdu lillāh — the praise"
+    },
+    {
+      "ayah": 5,
+      "label": "You alone we worship, You alone we ask for help"
+    },
+    {
+      "ayah": 6,
+      "to": 7,
+      "label": "The supplication for guidance"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Baghawī, Maʿālim al-Tanzīl",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

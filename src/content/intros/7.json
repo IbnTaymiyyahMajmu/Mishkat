@@ -1,0 +1,247 @@
+{
+  "surah": 7,
+  "epithet": "From the Garden to the Heights",
+  "lede": "The longest surah revealed in Makkah. It starts at the first confrontation there ever was — Iblīs refusing to bow, and swearing to lie in wait on the straight path — and follows that one quarrel down through Nūḥ, Hūd, Ṣāliḥ, Lūṭ, Shuʿayb and Mūsā, to the people standing on the Heights between the Garden and the Fire.",
+  "names": [
+    {
+      "arabic": "الأعراف",
+      "name": "al-Aʿrāf",
+      "meaning": "The Heights",
+      "note": "After the elevated barrier between the Garden and the Fire, and the people upon it who can see both (7:46–48)."
+    },
+    {
+      "arabic": "طولى الطوليين",
+      "name": "Ṭūlā al-Ṭūlayayn",
+      "meaning": "The longer of the two long ones",
+      "note": "So Zayd ibn Thābit called what he had heard the Prophet ﷺ recite in the sunset prayer; asked what he meant, he said: al-Aʿrāf."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan",
+    "detail": "Three students of Ibn ʿAbbās — al-ʿAwfī, Ibn Abī Ṭalḥah and Abū Ṣāliḥ — relate from him that it is Makkan, and it is the saying of al-Ḥasan, Mujāhid, ʿIkrimah, ʿAṭāʾ, Jābir ibn Zayd and Qatādah. A report from Ibn ʿAbbās and Qatādah excepts five ayat beginning “Ask them about the town that stood by the sea” (7:163), and al-Qurṭubī gives the exception as eight. The traditional order places it thirty-ninth, after Ṣād.",
+    "period": "makkah-middle",
+    "when": "The middle years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "رَوى العَوْفِيُّ، وابْنُ أبِي طَلْحَةُ، وأبُو صالِحٍ عَنِ ابْنِ عَبّاسٍ، أنَّ سُورَةَ (الأعْرافِ) مِنَ المَكِّيِّ، وهَذا قَوْلُ الحَسَنِ، ومُجاهِدٍ، وعِكْرِمَةَ، وعَطاءٍ، وجابِرِ بْنِ زَيْدٍ، وقَتادَةَ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "وَرَوَى النَّسَائِيُّ عَنْ عَائِشَةَ أَنَّ رَسُولَ اللَّهِ ﷺ قَرَأَ فِي صَلَاةِ الْمَغْرِبِ بِسُورَةِ الْأَعْرَافِ، فَرَّقَهَا فِي رَكْعَتَيْنِ"
+      }
+    ]
+  },
+  "setting": [
+    "It begins by speaking to the Prophet ﷺ about his own chest: “A Book sent down to you — so let there be no tightness in your breast because of it — that you may warn by it.” What follows is the long view that makes the tightness bearable. The opposition he is facing in Makkah did not begin in Makkah.",
+    "It began with Ādam. Iblīs is told to bow and refuses: “I am better than he; You created me from fire, and him from clay.” Cast out, he asks for time and is given it, and says what he means to do with it: “I shall lie in wait for them on Your straight path; then I shall come at them from before them and behind them, from their right and their left.” Ādam and his wife are deceived, and stripped of what covered them. But where Iblīs had argued, they say: “Our Lord, we have wronged ourselves; and if You do not forgive us and have mercy on us, we shall surely be among the lost.” Two responses to having done wrong — and the rest of the surah follows the two lines down through history.",
+    "Four times in a row it then calls out, “O children of Ādam,” a form of address found almost nowhere else in the Qurʾan: We have sent down clothing to you; do not let Satan seduce you as he drove your parents from the Garden; take your adornment at every place of prayer; when messengers come to you from among yourselves. The third of those was aimed at a custom of the idolaters. Ibn ʿAbbās relates that people used to go round the Kaʿbah naked.",
+    "Then the messengers, one after another, each with the same first sentence: “My people, worship Allah; you have no god but Him.” Nūḥ, Hūd, Ṣāliḥ, Lūṭ, Shuʿayb — and each time the chiefs answer for the people, and each time the story ends the same way. The surah pauses to state the rule: “Had the people of the towns believed and been mindful, We would have opened upon them blessings from the sky and the earth.” Then comes Mūsā, at greater length than all the others together: Pharaoh and the sorcerers, the plagues, the sea — and after the sea, a people who had barely crossed before they asked for an idol.",
+    "In the middle of that story, in a surah sent down while the Muslims were still a small band in one valley, stands a sentence addressed to the whole of humanity: “Say: O mankind, I am the Messenger of Allah to you all.”"
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        31,
+        31
+      ],
+      "title": "“Take your adornment at every place of prayer”",
+      "text": "“A woman used to go round the House naked, and say: ‘Who will lend me a covering to go round in?’ and she would say: ‘Today some of it shows, or all of it, and what shows of it I do not make lawful.’ So this ayah came down: ‘Take your adornment at every place of prayer.’”",
+      "source": "Ibn ʿAbbās: Muslim (3028)."
+    }
+  ],
+  "aim": "To show the way the struggle between faith and disbelief runs, and how it ends — by setting out the lives of the prophets with their peoples.",
+  "themes": [
+    "Ādam and Iblīs",
+    "“O children of Ādam”",
+    "The people of the Heights",
+    "Five messengers, one sentence",
+    "Mūsā, Pharaoh and the sorcerers",
+    "The calf, and the seventy",
+    "The unlettered Prophet, sent to all mankind",
+    "“Am I not your Lord?”",
+    "The Most Beautiful Names"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 10,
+      "title": "No tightness in your breast",
+      "summary": "Alif Lām Mīm Ṣād. A Book sent down to you — so let there be no tightness in your breast because of it — that you may warn by it, and as a reminder to the believers. Follow what has been sent down to you from your Lord. How many a town We destroyed: Our might came upon them by night, or while they rested at midday. The weighing that Day is the truth. We established you on the earth and made for you in it a livelihood; little thanks do you give."
+    },
+    {
+      "from": 11,
+      "to": 25,
+      "title": "Ādam and Iblīs",
+      "summary": "We created you, then shaped you, then said to the angels, “Prostrate to Ādam.” They prostrated, except Iblīs: “I am better than he.” — “Go down from it; it is not for you to be arrogant here.” — “Because You have sent me astray, I shall lie in wait for them on Your straight path.” He whispered to the two of them, and swore he was a sincere adviser. When they tasted of the tree their nakedness became apparent to them. They said: “Our Lord, we have wronged ourselves; if You do not forgive us and have mercy on us, we shall surely be among the lost” (7:23)."
+    },
+    {
+      "from": 26,
+      "to": 39,
+      "title": "O children of Ādam",
+      "summary": "O children of Ādam, We have sent down to you clothing to cover your nakedness, and as adornment; but the clothing of mindfulness — that is best. O children of Ādam, do not let Satan seduce you as he brought your parents out of the Garden. O children of Ādam, take your adornment at every place of prayer; eat and drink, and do not be excessive. Say: who has forbidden the adornment of Allah which He brought out for His servants? O children of Ādam, when messengers come to you from among yourselves."
+    },
+    {
+      "from": 40,
+      "to": 58,
+      "title": "The Garden, the Fire, and the Heights",
+      "summary": "The gates of heaven will not be opened to those who deny Our ayat. Those who believe will say: “Praise be to Allah, who guided us to this; we would not have been guided had Allah not guided us.” Between the two is a barrier, and on the Heights are men who recognise each by their marks. The people of the Fire call: “Pour some water upon us.” Your Lord is Allah, who created the heavens and the earth in six days, then rose over the Throne. Call upon your Lord humbly and in secret."
+    },
+    {
+      "from": 59,
+      "to": 102,
+      "title": "Five messengers, and the rule",
+      "summary": "We sent Nūḥ to his people: “My people, worship Allah; you have no god but Him.” And to ʿĀd their brother Hūd; to Thamūd their brother Ṣāliḥ — “this is the she-camel of Allah, a sign for you”; and Lūṭ; and to Madyan their brother Shuʿayb: “Give full measure and weight.” The chiefs who were arrogant said: “We shall drive you out, Shuʿayb.” Had the people of the towns believed and been mindful, We would have opened upon them blessings from the sky and the earth. Did they feel secure from the plan of Allah?"
+    },
+    {
+      "from": 103,
+      "to": 137,
+      "title": "Mūsā and Pharaoh",
+      "summary": "Then We sent Mūsā with Our signs to Pharaoh. He threw down his staff, and it was a serpent, plain to see. The sorcerers bewitched the eyes of the people; then the staff swallowed up what they had faked, and the sorcerers fell down prostrating: “We believe in the Lord of the worlds.” — “I shall cut off your hands and feet on opposite sides.” — “Our Lord, pour upon us patience.” We sent upon them the flood, locusts, lice, frogs and blood. And We made the people who had been held weak inherit the east and the west of the land."
+    },
+    {
+      "from": 138,
+      "to": 171,
+      "title": "After the sea",
+      "summary": "We brought the Children of Israel across the sea, and they said: “Mūsā, make for us a god, as they have gods.” Mūsā said: “My Lord, show me, that I may look upon You.” — “You will not see Me; but look at the mountain.” The people of Mūsā took, after him, a calf made of their ornaments. He chose seventy men. “My mercy encompasses all things; I shall ordain it for those who follow the Messenger, the unlettered Prophet, whom they find written with them in the Torah and the Gospel.” Say: O mankind, I am the Messenger of Allah to you all. Ask them about the town by the sea, when they broke the Sabbath."
+    },
+    {
+      "from": 172,
+      "to": 188,
+      "title": "The covenant, and the Names",
+      "summary": "When your Lord took from the children of Ādam, from their loins, their descendants, and made them testify about themselves: “Am I not your Lord?” They said: “Yes; we bear witness.” Recite to them the story of the one to whom We gave Our ayat, and he slipped out of them. To Allah belong the Most Beautiful Names; so call on Him by them. They ask you about the Hour: when will it arrive? Say: I have no power to benefit or harm myself, except as Allah wills."
+    },
+    {
+      "from": 189,
+      "to": 206,
+      "title": "The close",
+      "summary": "He it is who created you from a single soul. Do they associate with Him those who create nothing, and are themselves created? Take to forgiveness, enjoin what is right, and turn away from the ignorant. If a prompting from Satan should prompt you, seek refuge in Allah. When the Qurʾan is recited, listen to it and be silent, that you may receive mercy. Remember your Lord within yourself, humbly and in awe. Those who are near your Lord are not too proud to worship Him; they glorify Him, and to Him they prostrate."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 23,
+    "why": "The first prayer of the first human beings. Iblīs, told he had done wrong, argued; they said this — and the difference between the two is the subject of the surah."
+  },
+  "virtues": [
+    {
+      "text": "ʿĀʾishah said that the Messenger of Allah ﷺ recited Sūrat al-Aʿrāf in the sunset prayer, dividing it between the two rakʿahs.",
+      "narrator": "ʿĀʾishah",
+      "source": "Sunan al-Nasāʾī, 991",
+      "refs": [
+        {
+          "book": "nasai",
+          "number": "991"
+        }
+      ],
+      "grade": "Ṣaḥīḥ according to al-Albānī"
+    },
+    {
+      "text": "Zayd ibn Thābit said to Marwān: “Why do you recite the short surahs in the sunset prayer? I heard the Prophet ﷺ recite in it the longer of the two long ones.” He was asked: “What is the longer of the two long ones?” He said: “Al-Aʿrāf.”",
+      "narrator": "Zayd ibn Thābit",
+      "source": "Ṣaḥīḥ al-Bukhārī, 764 · Sunan Abī Dāwūd, 812",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "764"
+        },
+        {
+          "book": "abudawud",
+          "number": "812"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "ʿUyaynah ibn Ḥiṣn came in to ʿUmar and said: “Son of al-Khaṭṭāb, by Allah, you do not give us much, nor judge between us with justice.” ʿUmar grew so angry that he was about to strike him. Al-Ḥurr ibn Qays said: “Commander of the Faithful, Allah said to His Prophet ﷺ: ‘Take to forgiveness, enjoin what is right, and turn away from the ignorant’ — and this is one of the ignorant.” By Allah, ʿUmar did not go beyond it when it was recited to him. He was one who stopped at the Book of Allah.",
+      "arabic": "وَكَانَ وَقَّافًا عِنْدَ كِتَابِ اللَّهِ",
+      "narrator": "Ibn ʿAbbās",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4642",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4642"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    }
+  ],
+  "virtuesNote": "Its last ayah is the first ayah of prostration in the order of the muṣḥaf.",
+  "before": "Al-Anʿām made the case for tawḥīd by argument, and ended: “He it is who has made you successors on the earth.” Al-Aʿrāf shows the successions — people after people — and what each did with the same call.",
+  "after": "Al-Aʿrāf tells how Allah gave victory to Mūsā and those held weak with him. Al-Anfāl is about the day He did the same for this community: Badr.",
+  "notable": [
+    {
+      "ayah": 12,
+      "label": "“I am better than he”"
+    },
+    {
+      "ayah": 16,
+      "to": 17,
+      "label": "“I shall lie in wait for them”"
+    },
+    {
+      "ayah": 23,
+      "label": "“Our Lord, we have wronged ourselves”"
+    },
+    {
+      "ayah": 26,
+      "label": "The clothing of mindfulness"
+    },
+    {
+      "ayah": 31,
+      "label": "Adornment at every place of prayer"
+    },
+    {
+      "ayah": 43,
+      "label": "“Praise be to Allah, who guided us to this”"
+    },
+    {
+      "ayah": 46,
+      "to": 48,
+      "label": "The people of the Heights"
+    },
+    {
+      "ayah": 54,
+      "to": 56,
+      "label": "He rose over the Throne; call on Him humbly"
+    },
+    {
+      "ayah": 96,
+      "label": "Had the people of the towns believed"
+    },
+    {
+      "ayah": 143,
+      "label": "“My Lord, show me, that I may look upon You”"
+    },
+    {
+      "ayah": 156,
+      "to": 158,
+      "label": "Mercy, and the unlettered Prophet"
+    },
+    {
+      "ayah": 172,
+      "label": "“Am I not your Lord?”"
+    },
+    {
+      "ayah": 180,
+      "label": "The Most Beautiful Names"
+    },
+    {
+      "ayah": 199,
+      "label": "Take to forgiveness"
+    },
+    {
+      "ayah": 206,
+      "label": "The first ayah of prostration"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; the Sunan of Abū Dāwūd and al-Nasāʾī"
+  ]
+}

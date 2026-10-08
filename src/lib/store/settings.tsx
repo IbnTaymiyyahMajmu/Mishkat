@@ -21,6 +21,7 @@ import {
   type ArabicFontId,
 } from "../quran/resources";
 import { DEFAULT_TAFSIR_SHELF, reviveTafsirShelf, tafsirWork } from "../quran/tafsir";
+import { DEFAULT_LOCALE, isLocale, type LocaleId } from "../i18n/locales";
 import { createPersistedStore } from "./persisted";
 
 export type Layout = "rows" | "stacked";
@@ -32,6 +33,13 @@ export type Theme = "day" | "evening" | "night";
 export const THEMES: Theme[] = ["day", "evening", "night"];
 
 export interface Settings {
+  /**
+   * The language the site itself speaks: its menus, its labels, its messages.
+   * That and nothing more — it is not the language of the translation under an
+   * ayah, which is `translationIds`, and changing it changes none of the
+   * settings below.
+   */
+  locale: LocaleId;
   /**
    * The translations set under each ayah, in the order they are set: any of
    * the corpus's, in any language, by its id there. Which ids are still
@@ -92,6 +100,7 @@ export interface LastRead {
 }
 
 export const DEFAULT_SETTINGS: Settings = {
+  locale: DEFAULT_LOCALE,
   translationIds: [DEFAULT_TRANSLATION],
   translationId: DEFAULT_TRANSLATION,
   glossLanguage: DEFAULT_GLOSS_LANGUAGE,
@@ -145,6 +154,7 @@ function sanitise(stored: unknown, fallback: Settings): Settings {
   );
   return {
     ...rest,
+    locale: isLocale(s.locale) ? s.locale : fallback.locale,
     translationIds,
     translationId: translationIds[0],
     glossLanguage: GLOSS_LANGUAGES.some((g) => g.id === s.glossLanguage) ? s.glossLanguage : fallback.glossLanguage,
@@ -299,7 +309,12 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     [],
   );
 
-  const reset = useCallback(() => settingsStore.set(DEFAULT_SETTINGS), []);
+  // The language the site is in is not a reading setting, and is kept: a
+  // reader putting the type size back should not find the page in English.
+  const reset = useCallback(
+    () => settingsStore.set({ ...DEFAULT_SETTINGS, locale: settingsStore.getSnapshot().locale }),
+    [],
+  );
   const setLastRead = useCallback((v: LastRead) => lastReadStore.set(v), []);
 
   const value = useMemo(

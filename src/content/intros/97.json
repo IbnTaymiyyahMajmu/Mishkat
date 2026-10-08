@@ -1,0 +1,141 @@
+{
+  "surah": 97,
+  "epithet": "A night better than a thousand months",
+  "lede": "Five ayat about a single night: the one in which the Qurʾan came down, in which the angels descend, and which is peace until the dawn rises. It returns every year, and no one is told which night it is.",
+  "names": [
+    {
+      "arabic": "القدر",
+      "name": "al-Qadr",
+      "meaning": "The Decree",
+      "note": "After Laylat al-Qadr, the night it is about. Qadr is both decree — the night in which the year’s affairs are set out — and worth: a night of immense standing."
+    },
+    {
+      "arabic": "إنا أنزلناه",
+      "name": "Innā Anzalnāh",
+      "meaning": "“We sent it down”",
+      "note": "Its opening words, by which it is often called."
+    }
+  ],
+  "revelation": {
+    "place": "disputed",
+    "verdict": "Differed over",
+    "detail": "This is one of the surahs the scholars do not agree on, and they do not even agree on which view is the majority’s. Ibn al-Jawzī gives two sayings: that it is Makkan, reported by Abū Ṣāliḥ from Ibn ʿAbbās, and that it is Madinan, held by al-Ḍaḥḥāk and Muqātil — and then notes that al-Māwardī called the first the view of most, and al-Thaʿlabī the second. Al-Qurṭubī reports the same disagreement. The muṣḥaf heads it Makkan, and the traditional order places it twenty-fifth, among the early surahs.",
+    "period": "makkah-early",
+    "when": "On the view that it is Makkan: the early years, soon after the revelation it describes had begun",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَفِيها قَوْلانِ. أحَدُهُما: أنَّها مَكِّيَّةٌ، رَواهُ أبُو صالِحٍ عَنِ ابْنِ عَبّاسٍ. والثّانِي: مَدَنِيَّةٌ، قالَهُ الضَّحّاكُ، ومُقاتِلٌ. قالَ الماوَرْدِيُّ: والأوَّلُ قَوْلُ الأكْثَرِينَ. وقالَ الثَّعْلَبِيُّ: الثّانِي قَوْلُ الأكْثَرِينَ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "وَهِيَ مَدَنِيَّةٌ فِي قَوْلِ أَكْثَرِ الْمُفَسِّرِينَ ذَكَرهُ الثَّعْلَبِيُّ. وَحَكَى الْمَاوَرْدِيُّ عَكْسَهُ"
+      }
+    ]
+  },
+  "setting": [
+    "Whichever city it came down in, its subject is the night the revelation began. Al-ʿAlaq, before it in the muṣḥaf, holds the first words that were revealed; this surah says when: “We sent it down on the Night of Decree.” The month is named elsewhere — Ramaḍān (2:185) — and the night is called blessed (44:3).",
+    "Ibn ʿAbbās explained the sending down in two stages: the Qurʾan was sent down all at once on that night from the Preserved Tablet to the lowest heaven, and then came down to the Messenger of Allah ﷺ piece by piece over twenty-three years, as events called for it.",
+    "The night was not left behind in the past. It comes each year in Ramaḍān, and the Prophet ﷺ would strive in the last ten nights of the month as he strove at no other time, and told his Companions to look for it in the odd nights among them."
+  ],
+  "occasions": [],
+  "aim": "To make known the greatness of the Night of Decree, its merit, and what was sent down in it.",
+  "themes": [
+    "The Qurʾan",
+    "Laylat al-Qadr",
+    "Angels",
+    "Worship"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 3,
+      "title": "The night",
+      "summary": "We sent it down on the Night of Decree. And what will make you know what the Night of Decree is? The Night of Decree is better than a thousand months — worship in it is better than the worship of some eighty-three years in which it does not fall."
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "title": "What happens in it",
+      "summary": "The angels and the Spirit — Jibrīl — descend in it by their Lord’s leave, with every decree. It is peace, until the rising of the dawn."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 3,
+    "why": "The measure of the night: a single one of it outweighs a long lifetime without it."
+  },
+  "virtues": [
+    {
+      "text": "“Whoever stands in prayer on the Night of Decree out of faith and in hope of reward will have his past sins forgiven.”",
+      "arabic": "مَنْ قَامَ لَيْلَةَ الْقَدْرِ إِيمَانًا وَاحْتِسَابًا غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 1901 · Ṣaḥīḥ Muslim, 760",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "1901"
+        },
+        {
+          "book": "muslim",
+          "number": "760"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "“Seek the Night of Decree in the odd nights of the last ten of Ramaḍān.”",
+      "narrator": "ʿĀʾishah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 2017",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "2017"
+        }
+      ],
+      "grade": "Ṣaḥīḥ"
+    },
+    {
+      "text": "ʿĀʾishah asked: “Messenger of Allah, if I know which night is the Night of Decree, what should I say in it?” He said: “Say: O Allah, You are Pardoning and love to pardon, so pardon me.”",
+      "arabic": "اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي",
+      "narrator": "ʿĀʾishah",
+      "source": "Jāmiʿ al-Tirmidhī, 3513 · Sunan Ibn Mājah, 3850",
+      "refs": [
+        {
+          "book": "tirmidhi",
+          "number": "3513"
+        },
+        {
+          "book": "ibnmajah",
+          "number": "3850"
+        }
+      ],
+      "grade": "Ḥasan ṣaḥīḥ, said al-Tirmidhī; ṣaḥīḥ according to al-Albānī"
+    }
+  ],
+  "virtuesNote": "The report that ties “a thousand months” to the length of Umayyad rule (al-Tirmidhī 3350) was called gharīb by al-Tirmidhī himself, and Ibn Kathīr judged it munkar.",
+  "before": "Al-ʿAlaq opens with the first words of the revelation. Al-Qadr says on which night they came.",
+  "after": "Al-Bayyinah turns to what that night began: a Messenger from Allah, reciting purified pages — the clear proof that the People of the Book and the idolaters had been waiting for.",
+  "notable": [
+    {
+      "ayah": 1,
+      "label": "We sent it down on the Night of Decree"
+    },
+    {
+      "ayah": 3,
+      "label": "Better than a thousand months"
+    },
+    {
+      "ayah": 5,
+      "label": "Peace, until the rising of the dawn"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; the Sunan of al-Tirmidhī and Ibn Mājah"
+  ]
+}

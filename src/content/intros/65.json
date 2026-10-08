@@ -1,0 +1,128 @@
+{
+  "surah": 65,
+  "epithet": "The limits of Allah, even in parting",
+  "lede": "A surah of law about the hardest moment in a household — and yet every ruling in it is followed by a promise. Whoever is mindful of Allah, He will make a way out for him, and provide for him from where he does not expect.",
+  "names": [
+    {
+      "arabic": "الطلاق",
+      "name": "al-Ṭalāq",
+      "meaning": "Divorce",
+      "note": "After its subject, named in its first ayah."
+    },
+    {
+      "arabic": "النساء القصرى",
+      "name": "al-Nisāʾ al-Quṣrā",
+      "meaning": "The Shorter Surah of Women",
+      "note": "The name Ibn Masʿūd gave it, beside the long Sūrat al-Nisāʾ: “The shorter Sūrat al-Nisāʾ was sent down after the longer” (al-Bukhārī 4910). Ibn al-Jawzī records it."
+    }
+  ],
+  "revelation": {
+    "place": "madinah",
+    "verdict": "Madinan, by agreement",
+    "detail": "It is Madinan in the saying of all. It came down after al-Baqarah, whose rulings on divorce and the waiting period it completes — as Ibn Masʿūd pointed out when the waiting period of a pregnant widow was being disputed.",
+    "period": "madinah-middle",
+    "when": "Madinah, after the rulings of al-Baqarah on divorce had been in force for some years",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ الطَّلاقِ وَتُسَمّى سُورَةَ النِّساءِ القُصْرى، وهي مَدَنِيَّةٌ كُلُّها بِإجْماعِهِمْ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ الطَّلَاقِ مَدَنِيَّةٌ فِي قَوْلِ الْجَمِيعِ. وَهِيَ إِحْدَى عَشْرَةَ آيَةً، أَوِ اثْنَتَا عَشْرَةَ آيَةً"
+      }
+    ]
+  },
+  "setting": [
+    "Before Islam a man could divorce his wife and take her back as often as he pleased, leaving her neither married nor free. Al-Baqarah had already set a limit to that. This surah regulates how a divorce is to be carried out, and it is addressed first to the Prophet ﷺ himself, by title — “O Prophet, when you divorce women” — and through him to the whole community.",
+    "Its first ruling was explained by an incident. ʿAbd Allāh ibn ʿUmar divorced his wife while she was in her monthly course. ʿUmar asked the Messenger of Allah ﷺ about it. He was displeased, and said: “Tell him to take her back, and keep her until she is pure, then has her course, then is pure again. Then, if he wishes, he may keep her, and if he wishes, divorce her before touching her. That is the waiting period for which Allah commanded that women be divorced.”",
+    "What the surah then sets out is a procedure with a purpose. A divorce is to be given at a time when the waiting period can begin at once, so that it is not prolonged. The period is to be counted exactly. She is not to be turned out of her home during it, nor to leave — “you do not know: perhaps Allah will bring about, after that, a new situation.” At its end there is to be either honourable retention or honourable parting, before two just witnesses. And the classes that al-Baqarah had not covered are given their periods: the woman past the age of courses, the one who has not had them, and the one who is pregnant.",
+    "Through all of it runs a refrain on what mindfulness of Allah brings, and five things are promised for it: a way out; provision unlooked for; ease in one’s affair; the remission of sins; a great reward."
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        1,
+        1
+      ],
+      "title": "Ibn ʿUmar’s divorce",
+      "text": "Ibn ʿUmar divorced his wife during her course, in the time of the Messenger of Allah ﷺ. ʿUmar asked him about it, and he said: “Command him to take her back, then keep her until she becomes pure, then menstruates, then becomes pure. Then if he wishes he may keep her, and if he wishes he may divorce her before he touches her. That is the waiting period for which Allah has commanded that women be divorced.”",
+      "source": "ʿAbd Allāh ibn ʿUmar: al-Bukhārī (5251) and Muslim (1471)."
+    }
+  ],
+  "aim": "To impress the gravity of divorce and its limits, and to show the outcome of mindfulness of Allah and of overstepping His bounds.",
+  "themes": [
+    "The procedure of divorce",
+    "The waiting period",
+    "Maintenance and housing",
+    "Mindfulness of Allah and its fruits",
+    "Reliance on Allah"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 3,
+      "title": "How a divorce is given",
+      "summary": "O Prophet, when you divorce women, divorce them for their waiting period, and count the period, and be mindful of Allah your Lord. Do not turn them out of their houses, nor should they leave. When they have reached their term, either keep them honourably or part from them honourably, and call two just men among you to witness. Whoever is mindful of Allah, He will make a way out for him and provide for him from where he does not reckon; and whoever relies on Allah, He is enough for him."
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "title": "The waiting periods",
+      "summary": "For those of your women who no longer expect courses, their period is three months, and likewise for those who have not had them. For those who are pregnant, their term is until they deliver. Whoever is mindful of Allah, He will make his affair easy for him."
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "title": "Housing and provision",
+      "summary": "Lodge them where you live, according to your means, and do not harass them to make things hard for them. If they are pregnant, provide for them until they deliver; and if they nurse your child, give them their due. Let the man of plenty spend from his plenty, and the man whose provision is narrow spend from what Allah has given him. Allah burdens no soul beyond what He has given it. Allah will bring about, after hardship, ease."
+    },
+    {
+      "from": 8,
+      "to": 10,
+      "title": "Towns that defied their Lord",
+      "summary": "How many a town rebelled against the command of its Lord and His messengers, and We called it to a stern account. So be mindful of Allah, you who have understanding and have believed."
+    },
+    {
+      "from": 11,
+      "to": 12,
+      "title": "The light, and the One who sent it",
+      "summary": "A Messenger reciting to you the clear ayat of Allah, to bring those who believe and do right out of darkness into light. It is Allah who created seven heavens, and of the earth their like; the command descends among them — that you may know that Allah has power over all things, and that Allah encompasses all things in knowledge."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 2,
+    "why": "With the opening of the ayah after it, the promise the surah is remembered for — given in the middle of a ruling on divorce, to people at their most constrained."
+  },
+  "virtues": [],
+  "before": "Al-Taghābun warned that within a household there may be a trial, and urged pardon. Al-Ṭalāq gives the rule for when a marriage ends, and holds both sides to the limits of Allah as it does.",
+  "after": "Al-Ṭalāq begins “O Prophet” and legislates for every household. Al-Taḥrīm begins “O Prophet” and enters his own.",
+  "notable": [
+    {
+      "ayah": 1,
+      "label": "Divorce them for their waiting period"
+    },
+    {
+      "ayah": 2,
+      "to": 3,
+      "label": "A way out, and provision from where he does not expect"
+    },
+    {
+      "ayah": 4,
+      "label": "The waiting period of the pregnant"
+    },
+    {
+      "ayah": 7,
+      "label": "Allah burdens no soul beyond what He has given it"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

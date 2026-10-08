@@ -1,0 +1,98 @@
+{
+  "surah": 94,
+  "epithet": "With hardship comes ease",
+  "lede": "Eight short ayat spoken to a man carrying the heaviest charge ever given to anyone. They count what has already been lifted from him, and then say the same sentence twice, so that it cannot be missed.",
+  "names": [
+    {
+      "arabic": "الشرح",
+      "name": "al-Sharḥ",
+      "meaning": "The Opening of the Chest",
+      "note": "From its first ayah. It is as often called al-Inshirāḥ, which is the heading Ibn al-Jawzī gives it."
+    },
+    {
+      "arabic": "ألم نشرح",
+      "name": "Alam Nashraḥ",
+      "meaning": "“Did We not open…”",
+      "note": "Its opening words, and the name al-Qurṭubī heads it with."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "There is no difference over it: Ibn al-Jawzī records the agreement of the commentators, and al-Qurṭubī says it is Makkan in the saying of all of them. It follows al-Ḍuḥā in the order of revelation as it does in the muṣḥaf, and continues the same address.",
+    "period": "makkah-early",
+    "when": "The first years in Makkah, close after al-Ḍuḥā",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ الِانْشِراحِ مَكِّيَّةٌ كُلُّها بِإجْماعِهِمْ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "مَكِّيَّةٌ فِي قَوْلِ الْجَمِيعِ. وَهِيَ ثَمَانِي آيَاتٍ"
+      }
+    ]
+  },
+  "setting": [
+    "No particular incident is transmitted for it. Its setting is the one al-Ḍuḥā describes: the opening years of the call, with the Prophet ﷺ almost alone, mocked in his own town, and bearing a message that he knew would set him against everyone he had grown up among.",
+    "Where al-Ḍuḥā reminded him of what his Lord had done for him as a child and a young man, this surah speaks of what He has done for him as a messenger: opened his chest to hold what was being sent down, taken off him the load that was bending his back, and raised his name — so that, as the early commentators said, Allah is not mentioned in the call to prayer, in the testimony of faith or in the prayer itself without him being mentioned too."
+  ],
+  "occasions": [],
+  "aim": "To recall how Allah completed His favour to His Prophet ﷺ by removing grief, constraint and hardship from him — and what that calls for in return.",
+  "themes": [
+    "Consolation",
+    "Ease after hardship",
+    "Devotion"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 4,
+      "title": "Three favours",
+      "summary": "Did We not open your chest for you, lift from you the burden that weighed on your back, and raise your mention high? Each is put as a question whose answer he already knows."
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "title": "The rule",
+      "summary": "“For indeed, with hardship comes ease. Indeed, with hardship comes ease.” Said twice. The early scholars pointed out that the hardship is the same one both times — it has the definite article — while the ease is named afresh, and so they said: one hardship will never overcome two eases."
+    },
+    {
+      "from": 7,
+      "to": 8,
+      "title": "What to do with it",
+      "summary": "So when you are free of one task, stand up for the next — and to your Lord alone turn your longing. The answer to relief is not rest but worship."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 6,
+    "why": "The second saying of it. Ease does not come after the hardship in these ayat; it comes with it."
+  },
+  "virtues": [],
+  "before": "Al-Ḍuḥā listed three favours from before his mission — shelter, guidance, sufficiency. Al-Sharḥ lists three from within it. They are so much of a piece that some of the early scholars are reported to have recited them without a break.",
+  "after": "Al-Tīn turns from the best of men to man as such: made in the finest form, and then brought to the lowest of the low unless he believes and does right.",
+  "notable": [
+    {
+      "ayah": 1,
+      "label": "Did We not open your chest?"
+    },
+    {
+      "ayah": 4,
+      "label": "And raised your mention"
+    },
+    {
+      "ayah": 5,
+      "to": 6,
+      "label": "With hardship comes ease"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "al-Ṭabarī, Jāmiʿ al-Bayān",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr"
+  ]
+}

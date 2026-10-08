@@ -1,3 +1,4 @@
+import type { Translate } from "../i18n/types";
 import { foldToText } from "../match";
 import { juzStart } from "./juz";
 
@@ -18,6 +19,17 @@ export interface SurahRow {
   arabic: string;
   meaning: string;
   ayat: number;
+}
+
+/**
+ * How an answer is put into words: the language it is said in, and what this
+ * reader calls a surah. A surah is *found* by any of its names — Latin,
+ * Arabic, or what the name means — whichever of them the screen shows.
+ */
+export interface GotoWords {
+  t: Translate;
+  name: (id: number) => string;
+  meaning: (id: number) => string;
 }
 
 export interface Destination {
@@ -59,7 +71,8 @@ function bare(name: string): string {
 }
 
 function surahsNamed(name: string, surahs: SurahRow[]): SurahRow[] {
-  const q = plain(name.replace(/^\s*(surah|surat|sura|سورة)\s+/i, ""));
+  // The word for a surah, in the languages the site speaks, is not part of its name.
+  const q = plain(name.replace(/^\s*(surah|surat|sura|سورة|سورت|سوره)\s+/i, ""));
   if (q.length < 2) return [];
 
   // The whole name first, then names beginning that way, then names that
@@ -82,26 +95,28 @@ function surahsNamed(name: string, surahs: SurahRow[]): SurahRow[] {
     .map((r) => r.row);
 }
 
-const toSurah = (row: SurahRow): Destination => ({
+const toSurah = (row: SurahRow, say: GotoWords): Destination => ({
   surah: row.id,
   ayah: null,
   kind: "surah",
-  title: `${row.id} · ${row.english}`,
-  detail: `${row.meaning} · ${row.ayat} ayat · from the beginning`,
+  title: `${row.id} · ${say.name(row.id)}`,
+  detail: [say.meaning(row.id), say.t("common.ayat", { count: row.ayat }), say.t("goto.fromBeginning")]
+    .filter(Boolean)
+    .join(" · "),
 });
 
-const toAyah = (row: SurahRow, ayah: number): Destination => ({
+const toAyah = (row: SurahRow, ayah: number, say: GotoWords): Destination => ({
   surah: row.id,
   ayah,
   kind: "ayah",
-  title: `${row.english} ${row.id}:${ayah}`,
-  detail: `Ayah ${ayah} of ${row.ayat}`,
+  title: `${say.name(row.id)} ${row.id}:${ayah}`,
+  detail: say.t("common.ayahOf", { n: ayah, total: row.ayat }),
 });
 
 /** The ayah if the surah has one of that number; otherwise the surah, saying why. */
-function toPlace(row: SurahRow, ayah: number): Destination {
-  if (ayah >= 1 && ayah <= row.ayat) return toAyah(row, ayah);
-  return { ...toSurah(row), detail: `${row.english} has ${row.ayat} ayat — open it from the beginning` };
+function toPlace(row: SurahRow, ayah: number, say: GotoWords): Destination {
+  if (ayah >= 1 && ayah <= row.ayat) return toAyah(row, ayah, say);
+  return { ...toSurah(row, say), detail: say.t("goto.tooFew", { surah: say.name(row.id), count: row.ayat }) };
 }
 
 /**
@@ -110,13 +125,13 @@ function toPlace(row: SurahRow, ayah: number): Destination {
  * `here` is the surah a bare number is read as an ayah of: the one the reader
  * is in, or the one they have picked out of the list.
  */
-export function resolveGoto(query: string, surahs: SurahRow[], here: number): Destination[] {
+export function resolveGoto(query: string, surahs: SurahRow[], here: number, say: GotoWords): Destination[] {
   const raw = query.trim();
   if (!raw) return [];
   const byId = (id: number) => surahs.find((s) => s.id === id);
 
   // juz 30, juz' 2, j30 — the thirty parts are a way of finding a place too.
-  const juz = /^(?:juz['’]?|para|sipara|j)\s*(\d{1,2})$/i.exec(raw);
+  const juz = /^(?:juz['’]?|yuz|para|sipara|جزء|جز|پاره|سپاره|j)\s*(\d{1,2})$/i.exec(raw);
   if (juz) {
     const start = juzStart(+juz[1]);
     const row = start && byId(start.surah);
@@ -126,8 +141,8 @@ export function resolveGoto(query: string, surahs: SurahRow[], here: number): De
         surah: start.surah,
         ayah: start.ayah === 1 ? null : start.ayah,
         kind: "juz",
-        title: `Juz ${+juz[1]}`,
-        detail: `Begins at ${row.english} ${start.surah}:${start.ayah}`,
+        title: say.t("common.juzN", { n: +juz[1] }),
+        detail: say.t("goto.juzBeginsAt", { surah: say.name(row.id), key: `${start.surah}:${start.ayah}` }),
       },
     ];
   }
@@ -136,7 +151,7 @@ export function resolveGoto(query: string, surahs: SurahRow[], here: number): De
   const pair = /^(\d{1,3})\s*[:.,\-/\s]\s*(\d{1,3})$/.exec(raw);
   if (pair) {
     const row = byId(+pair[1]);
-    return row ? [toPlace(row, +pair[2])] : [];
+    return row ? [toPlace(row, +pair[2], say)] : [];
   }
 
   // A number alone is an ayah of the surah in hand first — that is the commoner
@@ -147,13 +162,13 @@ export function resolveGoto(query: string, surahs: SurahRow[], here: number): De
     const current = byId(here);
     if (current && n >= 1 && n <= current.ayat) {
       out.push({
-        ...toAyah(current, n),
-        title: `Ayah ${n}`,
-        detail: `of ${current.english} · ${current.id}:${n}`,
+        ...toAyah(current, n, say),
+        title: say.t("common.ayahN", { n }),
+        detail: say.t("goto.ofSurah", { surah: say.name(current.id), key: `${current.id}:${n}` }),
       });
     }
     const numbered = byId(n);
-    if (numbered) out.push(toSurah(numbered));
+    if (numbered) out.push(toSurah(numbered, say));
     return out;
   }
 
@@ -161,5 +176,5 @@ export function resolveGoto(query: string, surahs: SurahRow[], here: number): De
   const named = /^(.*?\D)[\s:.,\-/]*(\d{1,3})?$/.exec(raw);
   if (!named) return [];
   const matches = surahsNamed(named[1], surahs).slice(0, 7);
-  return matches.map((row) => (named[2] ? toPlace(row, +named[2]) : toSurah(row)));
+  return matches.map((row) => (named[2] ? toPlace(row, +named[2], say) : toSurah(row, say)));
 }
