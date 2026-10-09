@@ -50,7 +50,11 @@
   stroke: color-mix(in srgb, var(--mk-hero-ink) 58%, transparent);
   stroke-width: 1.3;
   stroke-linecap: round;
-  animation: fade 1400ms ease both 500ms;
+}
+/* Pricked in one after another, the way round the surah is read. */
+.ticks path {
+  animation: fade 380ms ease both;
+  animation-delay: calc(450ms + var(--k, 0) * 1500ms);
 }
 .ticksThin { stroke-width: 0.75; }
 
@@ -74,12 +78,38 @@
   fill: color-mix(in srgb, var(--mk-gold) 62%, transparent);
   stroke: transparent;
   stroke-width: 6;
-  transition: fill 180ms ease;
+  transform-origin: 300px 300px;
+  transition:
+    fill 180ms ease,
+    transform 260ms cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 .bandOdd path { fill: color-mix(in srgb, var(--mk-gold) 34%, transparent); }
 .bandOn path,
 .band:focus-visible path {
   fill: var(--mk-gold-pale);
+  transform: scale(1.014);
+}
+
+/* A light that goes once round the band from the top, the way the surah
+   runs, as the last of the gilding. The circle is turned and mirrored so that
+   its own beginning is the surah's. */
+.comet {
+  fill: none;
+  stroke: var(--mk-gold-pale);
+  stroke-width: 20;
+  stroke-dasharray: 0.075 1;
+  stroke-dashoffset: 0.075;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: 300px 300px;
+  transform: rotate(-90deg) scaleY(-1);
+  animation: orbit 2700ms cubic-bezier(0.45, 0, 0.2, 1) 1300ms both;
+}
+
+/* The glow behind it all breathes, slowly. */
+.halo {
+  transform-origin: 300px 300px;
+  animation: breathe 9s ease-in-out 2200ms infinite;
 }
 .band:focus-visible path {
   stroke: color-mix(in srgb, var(--mk-gold-pale) 40%, transparent);
@@ -138,6 +168,16 @@
 @keyframes fade {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+@keyframes orbit {
+  0% { opacity: 0; stroke-dashoffset: 0.075; }
+  14% { opacity: 0.6; }
+  82% { opacity: 0.5; }
+  100% { opacity: 0; stroke-dashoffset: -1; }
+}
+@keyframes breathe {
+  0%, 100% { opacity: 1; transform: none; }
+  50% { opacity: 0.72; transform: scale(1.035); }
 }
 @keyframes turn {
   to { transform: rotate(360deg); }

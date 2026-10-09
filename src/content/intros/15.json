@@ -13,9 +13,9 @@
   "revelation": {
     "place": "makkah",
     "verdict": "Makkan, by agreement",
-    "detail": "Ibn al-Jawzī says it is Makkan, all of it, without any disagreement he knew of, and Ibn Kathīr heads it Makkan. The traditional order places it fifty-fourth, directly after Yūsuf. One of its ayat points earlier: Ibn Kathīr cites from Ibn Masʿūd that the Prophet ﷺ went on calling people in secret until “So proclaim what you are commanded” came down, and then he and his Companions came out into the open — which would tie that ayah to the end of the first, hidden years of the mission.",
+    "detail": "Ibn al-Jawzī says it is Makkan, all of it, without any disagreement he knew of, and Ibn Kathīr heads it Makkan. The traditional order places it fifty-fourth, directly after Yūsuf.",
     "period": "makkah-middle",
-    "when": "Makkah — its command to proclaim is tied to the end of the secret call",
+    "when": "The middle years in Makkah",
     "evidence": [
       {
         "work": "zad-almaseer",
@@ -24,8 +24,28 @@
       },
       {
         "work": "ibn-katheer",
-        "ayah": 94,
-        "quote": "عَنْ عَبْدِ اللَّهِ بْنِ مَسْعُودٍ: مَا زَالَ النَّبِيُّ ﷺ مُسْتَخْفِيًا، حَتَّى نَزَلَتْ: ﴿فَاصْدَعْ بِمَا تُؤْمَرُ﴾ فَخَرَجَ هُوَ وَأَصْحَابُهُ"
+        "ayah": 1,
+        "quote": "تَفْسِيرُ سُورَةِ الْحِجْرِ وَهِيَ مَكِّيَّةٌ"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةِ الْحِجْرِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ النَّحّاسُ في «ناسِخِهِ»، وابْنُ مَرْدُوَيْهِ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ الحِجْرِ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by al-Naḥḥās and Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ بِالِاتِّفاقِ كَما قالَ القُرْطُبِيُّ",
+        "says": "Makkan, by agreement, citing al-Qurṭubī."
       }
     ]
   },
@@ -36,22 +56,7 @@
     "At its centre the surah gives a two-sided announcement, and at once illustrates both sides. “Tell My servants that I am the Forgiving, the Merciful — and that My punishment is the painful punishment.” The same angels come to Ibrāhīm with news of a son, and go on to the towns of Lūṭ. “Who despairs of the mercy of his Lord but those who are astray?”",
     "Its last passage is spoken directly to the Prophet ﷺ. “We have given you seven of the oft-repeated, and the mighty Qurʾan” — so do not look with longing at what others have been given. “So proclaim what you are commanded, and turn away from the idolaters. We are enough for you against the mockers.” And then, with a tenderness that is easy to miss: “We know that your breast is straitened by what they say. So glorify your Lord with praise, and be among those who prostrate, and worship your Lord until the certain end comes to you.”"
   ],
-  "occasions": [
-    {
-      "ayat": [
-        94,
-        95
-      ],
-      "title": "The end of the hidden years",
-      "text": "“The Prophet ﷺ continued in concealment until ‘So proclaim what you are commanded’ came down. Then he came out, he and his Companions.”",
-      "source": "Abū ʿUbaydah, from his father ʿAbd Allāh ibn Masʿūd — cited by Ibn Kathīr. Abū ʿUbaydah did not hear directly from his father.",
-      "evidence": {
-        "work": "ibn-katheer",
-        "ayah": 94,
-        "quote": "مَا زَالَ النَّبِيُّ ﷺ مُسْتَخْفِيًا، حَتَّى نَزَلَتْ: ﴿فَاصْدَعْ بِمَا تُؤْمَرُ﴾ فَخَرَجَ هُوَ وَأَصْحَابُهُ"
-      }
-    }
-  ],
+  "occasions": [],
   "aim": "To warn those who deny of the punishment, by showing scenes of those who were destroyed — as a caution to those addressed, and to steady the believers.",
   "themes": [
     "The Reminder, guarded",
@@ -112,7 +117,8 @@
           "number": "4704"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "Abū Saʿīd ibn al-Muʿallā said: the Prophet ﷺ said to me, “Shall I not teach you the greatest surah in the Qurʾan before I leave the mosque?” Then, as he was about to leave, I reminded him, and he said: “‘Praise be to Allah, Lord of the worlds’ — it is the seven oft-repeated, and the mighty Qurʾan that I have been given.”",
@@ -124,7 +130,8 @@
           "number": "4703"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "The Messenger of Allah ﷺ said to his Companions as they passed al-Ḥijr: “Do not enter upon these people who were punished, unless you are weeping. If you are not weeping, do not enter upon them, lest there befall you what befell them.”",
@@ -136,7 +143,8 @@
           "number": "4702"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "virtuesNote": "Ibn Kathīr notes that the Companions differed over what “the seven oft-repeated” are. Ibn Masʿūd, Ibn ʿUmar and Ibn ʿAbbās are among those reported to have said: the seven long surahs. The hadith above, in al-Bukhārī, identifies them as al-Fātiḥah; Ibn Kathīr calls it an explicit text on the matter, while allowing that the description may extend to the long surahs as well.",

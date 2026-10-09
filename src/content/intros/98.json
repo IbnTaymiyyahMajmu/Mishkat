@@ -33,6 +33,26 @@
         "ayah": 1,
         "quote": "وَهِيَ مَكِّيَّةٌ فِي قَوْلِ يَحْيَى بْنُ سَلَّامٍ. وَمَدَنِيَّةٌ، فِي قَوْلِ ابْنِ عَبَّاسٍ وَالْجُمْهُورِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْبَيِّنَةِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿لَمْ يَكُنِ﴾ بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَدَنِيَّةٌ في قَوْلِ الجُمْهُورِ، وقِيلَ مَكِّيَّةٌ",
+        "says": "Madinan, in the saying of the majority; a saying that it is Makkan is also mentioned."
+      }
     ]
   },
   "setting": [
@@ -86,10 +106,10 @@
           "number": "799"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
-  "virtuesNote": "Al-Qurṭubī notes at the head of the surah that a hadith has come about its particular merit which is not sound.",
   "before": "Al-Qadr told of the night the Book was sent down. Al-Bayyinah tells of the one who brought it, and of how those it reached divided over him.",
   "after": "This surah ends on the reward of those who fear their Lord. Al-Zalzalah shows the Day on which that reward is weighed, down to an atom’s weight.",
   "notable": [

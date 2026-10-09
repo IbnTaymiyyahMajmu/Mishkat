@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "سورة الحديد مَدَنِيَّةٌ فِي قَوْلِ الْجَمِيعِ، وَهِيَ تِسْعٌ وَعِشْرُونَ آيَةً"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْحَدِيدِ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ «الحَدِيدِ» بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هِيَ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      }
     ]
   },
   "setting": [
@@ -43,7 +63,8 @@
       ],
       "title": "Four years",
       "text": "“There were only four years between our accepting Islam and Allah reproaching us with this ayah: ‘Has the time not come for those who believe that their hearts should be humbled at the remembrance of Allah?’”",
-      "source": "ʿAbd Allāh ibn Masʿūd: Muslim (3027)."
+      "source": "ʿAbd Allāh ibn Masʿūd: Muslim (3027).",
+      "rank": "agreed"
     }
   ],
   "aim": "To build the strength of faith and of means that drives a people to call to Allah and to strive — and to free souls from what holds them back; which is why spending and belief are mentioned in it again and again.",
@@ -114,7 +135,8 @@
           "number": "2921"
         }
       ],
-      "grade": "Ḥasan gharīb, said al-Tirmidhī. Al-Albānī graded this narration ḥasan, and the same report in Abū Dāwūd (5057) weak"
+      "grade": "Ḥasan according to al-Albānī",
+      "rank": "hasan"
     },
     {
       "text": "Of the supplication of the Prophet ﷺ on going to bed: “O Allah, You are the First, and there is nothing before You; You are the Last, and there is nothing after You; You are the Outward, and there is nothing above You; You are the Inward, and there is nothing nearer than You. Settle our debt for us, and free us from poverty.”",
@@ -127,7 +149,8 @@
           "number": "2713"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Wāqiʿah closed with a command: glorify the name of your Lord, the Tremendous. Al-Ḥadīd opens with the news that everything already does.",

@@ -33,6 +33,26 @@
         "ayah": 1,
         "quote": "وَهَذِهِ السُّورَةُ هِيَ أَوَّلُ الْحِزْبِ الْمُفَصَّلِ عَلَى الصَّحِيحِ، وَقِيلَ: مِنَ الْحُجُرَاتِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ ق مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”ق“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ كُلُّها في قَوْلِ الحَسَنِ، وعِكْرِمَةَ، وعَطاءٍ، وجابِرٍ",
+        "says": "Makkan, all of it, in the saying of al-Ḥasan, ʿIkrimah, ʿAṭāʾ and Jābir ibn Zayd."
+      }
     ]
   },
   "setting": [
@@ -49,7 +69,8 @@
       ],
       "title": "“No weariness touched Us”",
       "text": "The commentators relate that this ayah answers the claim that after creating the heavens and the earth in six days the Creator rested on the seventh. “We created the heavens and the earth and what is between them in six days, and no weariness touched Us.”",
-      "source": "Reported from Qatādah and others; it is why some held this one ayah to be Madinan."
+      "source": "Reported from Qatādah and others, and related in every one of the seven commentaries of transmitted reports these pages quote; it is why some held this one ayah to be Madinan.",
+      "rank": "reported"
     }
   ],
   "aim": "To awaken heedless hearts, so that they grasp the realities of the Resurrection and the Recompense — its proofs, and its scenes.",
@@ -121,7 +142,8 @@
           "number": "873"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "ʿUmar asked Abū Wāqid al-Laythī what the Messenger of Allah ﷺ used to recite in the prayers of al-Aḍḥā and al-Fiṭr. He said: “He used to recite in them ‘Qāf, by the glorious Qurʾan’ and ‘The Hour has drawn near, and the moon has split’.”",
@@ -133,7 +155,8 @@
           "number": "891"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“Hell will go on saying, ‘Is there more?’ until the Lord of Might places His Foot in it; then it will say, ‘Enough, enough, by Your might,’ and its parts will draw together.”",
@@ -150,7 +173,8 @@
           "number": "2848"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Ḥujurāt, the last of a group of Madinan surahs, ended on Allah’s knowledge of the unseen. With Qāf the muṣḥaf returns to Makkah and to the unseen itself — and the Mufaṣṣal begins.",

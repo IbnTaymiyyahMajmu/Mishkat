@@ -27,11 +27,25 @@
         "ayah": 1,
         "quote": "سُورَةُ الرُّومِ مَكِّيَّةٌ كُلُّهَا مِنْ غَيْرِ خِلَافٍ، وهي ستون آية"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الرُّومِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُوَيْهِ، والبَيْهَقِيُّ في ”الدَّلائِلِ“، مِن طُرُقٍ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”الرُّومِ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī, through several chains."
+      }
     ]
   },
   "setting": [
     "The two great powers of the age were at war. The Persians, under Khusraw, overran the Byzantine provinces of the Near East, took Damascus and then Jerusalem, and drove the emperor Heraclius back until, as Ibn Kathīr tells it, he was besieged in his own capital.",
-    "In Makkah the news divided people along a line they all understood. Ibn al-Jawzī gives it from the commentators: the Persians had no scripture, denied the Resurrection and worshipped idols; the Byzantines were a people of a Book. So the idolaters rejoiced and said to the Muslims: you are people of a scripture, and the Christians are people of a scripture; our brothers the Persians have beaten your brothers — and if you fight us, we shall beat you.",
+    "In Makkah the news divided people along a line they all understood. Ibn al-Jawzī gives it from the commentators: the Persians had no scripture, denied the Resurrection and worshipped idols; the Byzantines were a people of a Book.{reported} So the idolaters rejoiced and said to the Muslims: you are people of a scripture, and the Christians are people of a scripture; our brothers the Persians have beaten your brothers — and if you fight us, we shall beat you.",
     "The surah came down: “The Byzantines have been defeated, in the nearest land. But they, after their defeat, will overcome — within a few years.” The word used, biḍʿ, means a number from three to nine. Abū Bakr went out and announced it, and the idolaters challenged him to a wager, in the days before such wagers were forbidden. He first fixed too short a term, and the Prophet ﷺ told him to lengthen it: “Why did you not make it less than ten?”",
     "Nothing could have looked less likely. And yet within that span Heraclius struck back, broke the Persian armies and recovered what had been lost. Abū Saʿīd al-Khudrī said: on the day of Badr the Byzantines prevailed over the Persians, and the believers were glad of it — as the ayah had said they would be: “and on that day the believers will rejoice, in the help of Allah.”",
     "From that sign in history the surah turns to signs that need no news to carry them. Six times it says, “And among His signs…”: your creation from dust; mates made from yourselves, with affection and mercy placed between you; the difference of your tongues and colours; your sleep and your seeking of His bounty; the lightning and the rain; the standing of the heaven and the earth by His command."
@@ -43,8 +57,15 @@
         5
       ],
       "title": "Abū Bakr’s wager",
-      "text": "The idolaters liked the Persians to prevail over the Byzantines, because they too were people of idols; the Muslims liked the Byzantines to prevail, because they were people of a Book. They mentioned it to Abū Bakr, and he to the Messenger of Allah ﷺ, who said: “They will indeed be victorious.” Abū Bakr told them, and they said: set a term between us. He set five years, and they did not prevail. He mentioned that to the Prophet ﷺ, who said: “Why did you not make it less than ten?”",
-      "source": "Ibn ʿAbbās: Aḥmad and al-Tirmidhī (3193), who graded it ḥasan ṣaḥīḥ gharīb. Ibn Kathīr gives it at the head of the surah.",
+      "text": "Niyār ibn Mukram al-Aslamī said: when “Alif Lām Mīm. The Byzantines have been defeated, in the nearest land; and after their defeat they will prevail, within a few years” came down, the Persians had the upper hand over the Byzantines. The Muslims wished the Byzantines to prevail, because they and the Byzantines were both people of a Book — and of that Allah says, “On that day the believers will rejoice in the help of Allah.” Quraysh wished the Persians to prevail, because neither they nor the Persians had a Book or believed in the Resurrection.",
+      "story": [
+        "When Allah sent these ayat down, Abū Bakr al-Ṣiddīq went out crying them aloud through the quarters of Makkah. Some men of Quraysh said to him: “Then let that stand between us and you. Your companion claims that the Byzantines will defeat the Persians within a few years. Will you not wager with us on it?” He said: “I will.” That was before wagering was forbidden. So Abū Bakr and the idolaters laid down their stakes, and they said to him: “How long do you make ‘a few’? It is from three years to nine; so name a middle term between us at which it ends.” And they fixed six years between them.",
+        "The six years passed before the Byzantines prevailed, and the idolaters took Abū Bakr’s stake. When the seventh year came, the Byzantines defeated the Persians. The Muslims blamed Abū Bakr for having named six years, since Allah had said “within a few years”. And at that, said Niyār, many people entered Islam.",
+        "Ibn ʿAbbās tells of the same wager, with a term of five years. When it ran out and they had not yet prevailed, it was mentioned to the Prophet ﷺ, who said: “Why did you not set it further off?” — at something under ten, the narrator thought he said; for “a few”, Saʿīd ibn Jubayr explained, is what is less than ten. Then the Byzantines prevailed; and Sufyān al-Thawrī had heard that it was on the day of Badr."
+      ],
+      "source": "Niyār ibn Mukram al-Aslamī: al-Tirmidhī (3194); ḥasan according to al-Albānī. Ibn ʿAbbās: Aḥmad and al-Tirmidhī (3193); ṣaḥīḥ according to al-Albānī.",
+      "rank": "sahih",
+      "caveat": "Both gradings are al-Albānī’s as an index of his Ṣaḥīḥ Sunan al-Tirmidhī records them; they have not yet been checked here against the printed book. He grades Ibn ʿAbbās’s report of the wager ṣaḥīḥ, and Niyār’s, from which the account is told in full, ḥasan.",
       "evidence": {
         "work": "ibn-katheer",
         "ayah": 1,
@@ -120,7 +141,8 @@
           "number": "2658"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“On the day of Badr the Byzantines prevailed over the Persians, and that pleased the believers. Then there came down: ‘Alif Lām Mīm. The Byzantines have been defeated…’ to ‘the believers will rejoice in the help of Allah.’”",
@@ -132,7 +154,8 @@
           "number": "3192"
         }
       ],
-      "grade": "Ḥasan gharīb, said al-Tirmidhī; ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     }
   ],
   "before": "Al-ʿAnkabūt ended: Allah is with those who do good. Al-Rūm opens with the believers’ side in the world losing — and the announcement that it will not stay so.",

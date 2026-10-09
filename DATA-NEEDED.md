@@ -26,13 +26,41 @@ the page:
   (`npm run gen:facts`). The order is the one printed in the Egyptian muṣḥaf of
   1924, which goes back to Ibn ʿAbbās through Jābir ibn Zayd; the page says so,
   and says that the scholars differed over some of it.
-- **Quoted.** Arabic from the tafsir library this site holds a copy of — mostly
-  Ibn al-Jawzī's *Zād al-Masīr*, al-Qurṭubī and Ibn Kathīr, on where a surah
-  came down and what it came down about; and the sentence with which
-  *al-Mukhtaṣar fī al-Tafsīr* states each surah's purpose. None of it is typed
-  from memory: `npm run lock:intros` finds each quotation in the copy and
-  prints the copy's own text. 277 quotations are held this way, and the deploy
-  refuses to publish if one of them can no longer be found.
+- **Quoted.** Arabic from the tafsir library this site holds a copy of: Ibn
+  al-Jawzī's *Zād al-Masīr*, al-Qurṭubī and Ibn Kathīr on where a surah came
+  down and what it came down about; under them, the same finding as
+  al-Baghawī heads the surah, as al-Suyūṭī gathers the reports from the
+  Companions in *al-Durr al-Manthūr*, and as al-Shawkānī sums it up; and the
+  sentence with which *al-Mukhtaṣar fī al-Tafsīr* states each surah's purpose.
+  None of it is typed from memory: `npm run lock:intros` finds each quotation
+  in the copy and prints the copy's own text. 591 quotations are held this
+  way, and the deploy refuses to publish if one of them can no longer be found.
+- **Only from Ahl al-Sunnah.** The works an introduction may quote are a fixed
+  list (`src/content/README.md`), and the same script refuses a quotation from
+  anything outside it. Four works the library holds are left off it on purpose.
+- **Nothing weaker passes for ṣaḥīḥ.** Every narration and every occasion of
+  revelation carries how it stands, and anything that is not ṣaḥīḥ says so
+  beside it in a sentence: ḥasan, a Companion's own saying, related by the
+  commentators without a graded chain. Outside al-Bukhārī and Muslim the
+  grading followed is al-Albānī's. A sentence of the account that tells of a
+  report below ṣaḥīḥ ends with a small sign, with a key under the account.
+  Every quotation from al-Qurṭubī says under it that he is quoted for what he
+  relates and not for creed.
+- **Nothing weak is there at all.** By the owner's ruling a weak or fabricated
+  report is neither given nor mentioned — not even to say that it is weak.
+- **The stories are told in full, from the hadith.** Seventeen accounts —
+  Kaʿb ibn Mālik and the fifty nights, the slander, al-Ḥudaybiyah, the Night
+  Journey, Mūsā and al-Khiḍr, the boy and the king, the beginning of
+  revelation among them — run to several paragraphs each. Each was written
+  with the Arabic text of the hadith open, by its number, and tells nothing
+  its narrator did not.
+- **A grading not yet seen in its book says so.** Nine gradings, taken from an
+  index of al-Albānī's works or (twice) from al-Ḥākim, are underlined, with
+  the reason under a small sign beside them.
+- **What is not certain says so.** A date or a figure that is in doubt is
+  followed by a small question mark; resting on it, or touching it, gives the
+  reason. The place in the order of revelation and the "early, middle, late"
+  under the timeline carry one on every page.
 - **Written.** The English: the setting, the map of the surah passage by
   passage, the account of each occasion of revelation, the note on what is and
   is not authentically narrated. **I wrote this**, from the works each page
@@ -41,12 +69,13 @@ the page:
 **What I need from you: someone of knowledge to read them.** This is the
 important one. The quotations are checked by machine and the numbers are
 generated, but the prose is mine, and prose about the Book of Allah should not
-stand on my reading alone. In particular:
+stand on my reading alone. **`INTROS-REVIEW.md` sets out every open question,
+one by one, with the page it is on** — start there. In outline:
 
 | What to check | Why |
 |---|---|
-| **Hadith gradings** — 194 narrations across the 114 pages | I gave only what I found graded authentic, and named the grader where it is not al-Bukhārī or Muslim (usually al-Albānī, as the open hadith corpus records him). A scholar may weigh some differently. |
-| **Hadith numbers in Ṣaḥīḥ Muslim** | Every reference to al-Bukhārī, al-Tirmidhī, Abū Dāwūd, al-Nasāʾī and Ibn Mājah was checked by number against an open corpus. That corpus numbers Muslim differently, so for Muslim I could confirm only that the text exists in the collection, not that ʿAbd al-Bāqī's number is the one I gave. |
+| **Hadith gradings** — 193 narrations across the 114 pages | 147 are in al-Bukhārī or Muslim. The rest carry al-Albānī's grading — for the four Sunan as the open hadith corpus records him, for a handful from his other books as a search found them. Two have only al-Ḥākim's grading. The review sheet lists each. |
+| **Hadith numbers** | Every reference to the six books was checked by number against an open corpus — Ṣaḥīḥ Muslim included, by ʿAbd al-Bāqī's numbering. Two Muslim numbers (2483 and 2656) could not be confirmed there, because the corpus itself is out of step at those two places. |
 | **Makkan or Madinan**, where it is differed over | Eleven surahs are marked "differed over" (among them al-Ḥajj, al-Raʿd, al-Raḥmān, al-Insān, al-Muṭaffifīn). For these the page reports the sayings and does not choose. For the rest I followed the majority as Ibn al-Jawzī and al-Qurṭubī give it. |
 | **The period within Makkah or Madinah** | "Early", "middle" and "late" are my estimate from the surah's place in the order and from what it mentions. It is the softest claim on the page. |
 | **Renderings of the ayat** inside the prose | These are my own paraphrases, written to read well in a sentence. The reader's chosen translation is what appears under the ayat themselves. |
@@ -56,11 +85,11 @@ A correction is an edit to one JSON file — `src/content/intros/<n>.json`,
 schema in `src/content/README.md` — followed by `npm run lock:intros`.
 
 **What is not there, deliberately.** Popular reports on the merit of a surah
-that are weak or fabricated are not given as merits. Where such a report is
-widely quoted — the hadith that Yā-Sīn is "the heart of the Qurʾan", the
-report that ten ayat opening al-Muʾminūn guarantee the Garden — the page names
-it and says why it is left out; twenty-nine pages carry such a note. Twenty surahs have nothing authentic narrated about them in
-particular, and their pages say that rather than fill the space.
+that are weak or fabricated are not given, and are not named either: the
+pages used to carry a note saying which widely quoted reports were unsound,
+and by the owner's ruling those notes were taken out. Twenty surahs have
+nothing authentic narrated about them in particular, and their pages say that
+rather than fill the space.
 
 **Language.** The introductions are in English only. The navigation around
 them follows the site language; the prose does not, and I have not translated
@@ -644,7 +673,7 @@ meanings or the tafsir, which stay as the reader has them; and outside English
 a surah is named in Arabic alone.
 
 **What I need from you: a reader for each language.** I wrote all three
-translations, some 725 sentences each, and nobody who speaks the language has
+translations, some 748 sentences each, and nobody who speaks the language has
 read them. In order of how much I would trust them unread:
 
 | Language | File | What to know |

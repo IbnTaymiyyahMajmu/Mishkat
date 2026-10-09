@@ -27,19 +27,43 @@
         "ayah": 1,
         "quote": "سُورَةُ الْجِنِّ مَكِّيَّةٌ فِي قَوْلِ الْجَمِيعِ. وَهِيَ ثمان وعشرون آية"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْجِنِّ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ الجِنِّ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ",
+        "says": "Makkan."
+      }
     ]
   },
   "setting": [
     "The Arabs believed in the jinn and feared them. A traveller stopping for the night in an empty valley would call out, “I seek the protection of the lord of this valley,” meaning its chief jinn. Soothsayers claimed that jinn brought them news stolen from the sky. Some tribes said the jinn were kin to Allah. The whole unseen world, as they imagined it, was a rival authority.",
     "Ibn ʿAbbās relates what happened. The Prophet ﷺ set out with some of his Companions for the market of ʿUkāẓ. By then the devils had been cut off from the news of heaven, and shooting stars were loosed against them; they said to one another, something has happened — search the east of the earth and the west. A party of them, heading towards Tihāmah, came upon him at Nakhlah as he led his Companions in the dawn prayer. When they heard the Qurʾan they listened closely, and said: this is what has come between us and the news of heaven. They went back to their people: “We have heard a wondrous Qurʾan.” Ibn ʿAbbās adds: he did not recite to the jinn and did not see them; it was revealed to him what they had said.",
-    "Ibn Isḥāq places their listening at Nakhlah on his return from Ṭāʾif, in the tenth year of the mission — when the people of that town had stoned him out of it. If so, the news that came with this surah was a consolation: the humans had driven him off, and the jinn believed.",
+    "Ibn Isḥāq places their listening at Nakhlah on his return from Ṭāʾif, in the tenth year of the mission — when the people of that town had stoned him out of it.{reported} If so, the news that came with this surah was a consolation: the humans had driven him off, and the jinn believed.",
     "What the jinn say takes every Arab belief about them apart, in their own voices. Our Lord has taken neither wife nor son. Our fools used to say outrageous things about Him. People sought refuge with us and it only made them worse. We tried the heaven and found it full of guards. We do not know the unseen. And among us are those who submit and those who do wrong, as among you."
   ],
   "occasions": [
     {
       "title": "The dawn prayer at Nakhlah",
-      "text": "A group of jinn, sent out to discover why the sky had been closed to them, found the Prophet ﷺ praying the dawn prayer with his Companions at Nakhlah, on his way to the market of ʿUkāẓ. They listened to the Qurʾan, believed, and returned to warn their people. Allah then revealed to His Prophet: “Say: it has been revealed to me that a group of the jinn listened.”",
-      "source": "Ibn ʿAbbās: al-Bukhārī (773, 4921) and Muslim (449)."
+      "text": "Ibn ʿAbbās said: the Prophet ﷺ set out with a group of his Companions, making for the market of ʿUkāẓ. By then the devils had been barred from the news of heaven, and shooting stars were being sent against them. They went back to their people, who said: “What has happened to you?” — “We have been barred from the news of heaven, and shooting stars have been sent against us.” They said: “Nothing has come between you and the news of heaven but something that has newly happened. Travel the east of the earth and its west, and see what it is.”",
+      "story": [
+        "Those of them who had set out towards Tihāmah came upon the Prophet ﷺ at Nakhlah, on his way to ʿUkāẓ, as he was leading his Companions in the dawn prayer. When they heard the Qurʾan they listened to it closely, and said: “This, by Allah, is what has come between you and the news of heaven.” And so they went back to their people and said: “Our people, we have heard a wondrous Qurʾan. It guides to right conduct, and we have believed in it, and we shall never associate anyone with our Lord.” Then Allah sent down upon His Prophet ﷺ: “Say: it has been revealed to me that a group of the jinn listened.” What was revealed to him was what the jinn had said."
+      ],
+      "source": "Ibn ʿAbbās: al-Bukhārī (773, 4921) and Muslim (449).",
+      "rank": "agreed"
     }
   ],
   "aim": "To confirm that the Qurʾan was sent down and is from Allah, through the belief of the jinn in it — and to refute what the idolaters claimed about them.",
@@ -102,7 +126,8 @@
           "number": "449"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Nūḥ’s people heard the call for centuries and blocked their ears. The jinn of this surah heard it once.",

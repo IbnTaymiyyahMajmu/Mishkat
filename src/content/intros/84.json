@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "سُورَةُ الِانْشِقَاقِ مَكِّيَّةٌ فِي قَوْلِ الْجَمِيعِ وَهِيَ خَمْسٌ وَعِشْرُونَ آيَةً"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الِانْشِقَاقِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ الِانْشِقاقُ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ بِلا خِلافٍ",
+        "says": "Makkan, by agreement."
+      }
     ]
   },
   "setting": [
@@ -88,7 +108,8 @@
           "number": "578"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "The Prophet ﷺ said: “Whoever is called to account will be punished.” ʿĀʾishah said: “Does Allah not say, ‘He will be given an easy reckoning’?” He said: “That is only the presentation. But whoever is examined closely in the reckoning is ruined.”",
@@ -104,7 +125,8 @@
           "number": "2876"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Muṭaffifīn told where the two records are kept. Al-Inshiqāq shows them given out.",

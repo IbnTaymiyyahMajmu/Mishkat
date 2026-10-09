@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "مَكِّيَّةٌ كُلُّهَا فِي قَوْلِ الْجَمِيعِ، وَهِيَ ثَلَاثٌ وتسعون آية"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ النَّمْلِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُوَيْهِ، والبَيْهَقِيُّ في ”الدَّلائِلِ“، عَنِ ابْنِ عَبّاسٍ قالَ: أُنْزِلَتْ سُورَةُ ”النَّمْلِ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "قالَ القُرْطُبِيُّ: وهي مَكِّيَّةٌ كُلُّها في قَوْلِ الجَمِيعِ",
+        "says": "Makkan, by agreement, citing al-Qurṭubī."
+      }
     ]
   },
   "setting": [
@@ -108,7 +128,8 @@
           "number": "2241"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Shuʿarāʾ told the stories of seven prophets, each ending in the destruction of those who denied. Al-Naml tells of prophets who were given power and knowledge — and of a ruler who believed.",

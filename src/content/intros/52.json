@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "عَنْ مُحَمَّدِ بْنِ جُبَير بْنِ مُطْعِمٍ، عَنْ أَبِيهِ: سَمِعْتُ النَّبِيُّ ﷺ يَقْرَأُ فِي الْمَغْرِبِ بِالطُّورِ، فَمَا سَمِعْتُ أَحَدًا أَحْسَنَ صَوْتًا -أَوْ قِرَاءَةً-مِنْهُ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الطُّورِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”الطُّورِ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ، قالَ القُرْطُبِيُّ: في قَوْلِ الجَمِيعِ",
+        "says": "Makkan, by agreement, citing al-Qurṭubī."
+      }
     ]
   },
   "setting": [
@@ -92,7 +112,8 @@
           "number": "4854"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“I heard the Messenger of Allah ﷺ recite al-Ṭūr in the sunset prayer.”",
@@ -108,7 +129,8 @@
           "number": "463"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Dhāriyāt opened with an oath that what you are promised is true, and ended with woe to the disbelievers from their Day. Al-Ṭūr opens with five more oaths that the punishment will fall.",

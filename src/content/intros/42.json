@@ -33,6 +33,26 @@
         "ayah": 1,
         "quote": "سُورَةُ الشُّورَى مَكِّيَّةٌ فِي قَوْلِ الْحَسَنِ وَعِكْرِمَةَ وَعَطَاءٍ وَجَابِرٍ. وَقَالَ ابْنُ عَبَّاسٍ وَقَتَادَةُ: إِلَّا أَرْبَعَ آيَاتٍ مِنْهَا أُنْزِلَتْ بِالْمَدِينَةِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الشُّورَى مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهْ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ ﴿حم﴾ ﴿عسق﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "ورُوِيَ عَنِ ابْنِ عَبّاسٍ، وقَتادَةَ أنَّها مَكِّيَّةٌ إلّا أرْبَعَ آياتٍ مِنها أُنْزِلَتْ بِالمَدِينَةِ",
+        "says": "It is related from Ibn ʿAbbās and Qatādah that it is Makkan, except four ayat that came down in Madinah."
+      }
     ]
   },
   "setting": [
@@ -49,7 +69,8 @@
       ],
       "title": "“Affection through kinship”",
       "text": "Ibn ʿAbbās was asked about “except affection through kinship”. Saʿīd ibn Jubayr said: “The kin of the family of Muḥammad ﷺ.” Ibn ʿAbbās said: “You have been hasty. There was no branch of Quraysh in which the Prophet ﷺ did not have kinship. He said: only that you keep the tie of kinship that is between me and you.”",
-      "source": "Ibn ʿAbbās: al-Bukhārī (4818)."
+      "source": "Ibn ʿAbbās: al-Bukhārī (4818).",
+      "rank": "agreed"
     }
   ],
   "aim": "To set out the reality of revelation and of the message of Muḥammad ﷺ — that it continues the revelation given to the prophets.",

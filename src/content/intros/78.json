@@ -33,11 +33,31 @@
         "ayah": 1,
         "quote": "سُورَةُ (عَمَّ) مَكِّيَّةٌ وَتُسَمَّى سُورَةُ (النَّبَأِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ النَّبَأِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿عَمَّ يَتَساءَلُونَ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ عِنْدَ الجَمِيعِ",
+        "says": "Makkan, by agreement."
+      }
     ]
   },
   "setting": [
     "Of everything the Prophet ﷺ taught in Makkah, the point his people found hardest was not the oneness of Allah — they half admitted that — but the return to life. Bones that had crumbled, raised and questioned: they asked one another about it in their gatherings, some denying it outright, some unsure, some mocking.",
-    "Ibn al-Jawzī gives the occasion from the commentators in a sentence: when the Messenger of Allah ﷺ was sent, the idolaters began questioning one another — what is this that he has brought? — and arguing and disputing over it, and the surah came down.",
+    "Ibn al-Jawzī gives the occasion from the commentators in a sentence: when the Messenger of Allah ﷺ was sent, the idolaters began questioning one another — what is this that he has brought? — and arguing and disputing over it, and the surah came down.{reported}",
     "It does not join the argument. It says twice, “No — they will come to know,” and then asks them to look around: the earth laid out like a bed, the mountains driven in like tent-pegs, sleep, night and day, the lamp of the sun, the rain. Whoever arranged all of that for a purpose did not make its inhabitants for none. Then comes the appointment itself — the Day of Decision — and what waits on either side of it."
   ],
   "occasions": [
@@ -48,7 +68,8 @@
       ],
       "title": "What they were asking one another",
       "text": "When the Messenger of Allah ﷺ was sent, the idolaters took to questioning one another — “What is it that he has brought?” — and arguing and quarrelling over what he had been sent with. So this was revealed.",
-      "source": "Ibn al-Jawzī, from the commentators.",
+      "source": "Ibn al-Jawzī, from the commentators. Al-Ṭabarī, al-Suyūṭī and al-Shawkānī relate it too.",
+      "rank": "reported",
       "evidence": {
         "work": "zad-almaseer",
         "ayah": 1,
@@ -117,7 +138,8 @@
           "number": "3297"
         }
       ],
-      "grade": "Ḥasan gharīb, said al-Tirmidhī; ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     }
   ],
   "before": "Al-Mursalāt ends by asking the deniers: “In what message after this will they believe?” (77:50). Al-Nabaʾ opens on those same people, still asking one another about it.",

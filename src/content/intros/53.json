@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "وهَذِهِ أوَّلُ سُورَةٍ أعْلَنَها رَسُولُ اللَّهِ ﷺ بِمَكَّةَ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ النَّجْمِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهْ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ «النَّجْمِ» بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ جَمِيعُها في قَوْلِ الجُمْهُورِ",
+        "says": "Makkan, in the saying of the majority."
+      }
     ]
   },
   "setting": [
@@ -102,7 +122,8 @@
           "number": "576"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“The Prophet ﷺ prostrated at al-Najm, and with him prostrated the Muslims and the idolaters, the jinn and mankind.”",
@@ -114,7 +135,8 @@
           "number": "1071"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "On “two bows’ length or nearer; and He revealed to His servant what He revealed”: Ibn Masʿūd said that he ﷺ saw Jibrīl, who had six hundred wings.",
@@ -130,10 +152,10 @@
           "number": "174"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
-  "virtuesNote": "The story told in some books to explain why the idolaters prostrated — that words in praise of their goddesses were cast into the recitation — has no sound chain. Ibn Kathīr says of its routes, at the place in Sūrat al-Ḥajj where it is cited, that they are all disconnected and that he has not seen it with a sound, connected chain.",
   "before": "Al-Ṭūr closed with glorification at the setting of the stars. Al-Najm opens: by the star when it sets.",
   "after": "Al-Najm ends: the Approaching has drawn near. Al-Qamar begins: the Hour has drawn near, and the moon has split.",
   "notable": [

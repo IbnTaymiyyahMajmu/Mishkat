@@ -32,6 +32,26 @@
         "ayah": 98,
         "quote": "وقالَ قَتادَةُ: لَمْ يَكُنْ هَذا لِأُمَّةٍ آمَنَتْ عِنْدَ نُزُولِ العَذابِ، إلّا لِقَوْمِ يُونُسَ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ يُونُسَ عَلَيْهِ الصَّلَاةُ وَالسَّلَامُ مَكِّيَّةٌ إِلَّا ثَلَاثَ آيَاتٍ",
+        "says": "Makkan, except three ayat."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ النَّحّاسُ وأبُو الشَّيْخِ، وابْنُ مَرْدُويَهْ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”يُونُسَ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by al-Naḥḥās, Abū al-Shaykh and Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ إلّا ثَلاثَ آياتٍ مِن قَوْلِهِ: ﴿فَإنْ كُنْتَ في شَكٍّ﴾ إلى آخِرِهِنَّ",
+        "says": "Makkan, except three ayat, from “If you are in doubt” (10:94) onward."
+      }
     ]
   },
   "setting": [
@@ -114,7 +134,8 @@
           "number": "181"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "ʿUbādah ibn al-Ṣāmit asked the Messenger of Allah ﷺ about “For them is good news in the life of this world.” He said: “It is the righteous dream, which the believer sees, or which is seen for him.”",
@@ -126,7 +147,8 @@
           "number": "2275"
         }
       ],
-      "grade": "Ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     },
     {
       "text": "“When Allah drowned Pharaoh, he said: ‘I believe that there is no god but He in whom the Children of Israel believe.’ Jibrīl said: ‘Muḥammad, if only you had seen me taking the mud of the sea and thrusting it into his mouth, for fear that mercy would reach him.’”",
@@ -138,7 +160,8 @@
           "number": "3107"
         }
       ],
-      "grade": "Ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     }
   ],
   "before": "Al-Tawbah closed: “There has come to you a Messenger from among yourselves.” Yūnus opens with the people who found precisely that hard to accept: “a man from among them.”",

@@ -21,7 +21,7 @@
     "verdict": "Makkan, by agreement",
     "detail": "Ibn al-Jawzī records it as Makkan from Ibn ʿAbbās, al-Ḥasan, Mujāhid and Qatādah, and calls this the agreement of the commentators, without any difference he knew of. Two exceptions are reported and neither is the stronger view: that ayah 28 came down in Madinah, and — from Muqātil — that its opening as far as ayah 8, and ayat 107–108, did. Al-Qurṭubī mentions the claim about the opening and answers it in three words: the first view is sounder.",
     "period": "makkah-late",
-    "when": "The later years in Makkah, when Quraysh had begun to look beyond the city for a way to refute him",
+    "when": "The later years in Makkah",
     "evidence": [
       {
         "work": "zad-almaseer",
@@ -33,39 +33,29 @@
         "ayah": 1,
         "quote": "وَهِيَ مَكِّيَّةٌ فِي قَوْلِ جَمِيعِ الْمُفَسِّرِينَ. رُوِيَ عَنْ فِرْقَةٍ أَنَّ أَوَّلَ السُّورَةِ نَزَلَ بِالْمَدِينَةِ إِلَى قَوْلِهِ: \"جُرُزاً\"، وَالْأَوَّلُ أَصَحُّ"
       }
+    ],
+    "attested": [
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ النَّحّاسُ في ”ناسِخِهِ“، وابْنُ مَرْدُويَهْ، عَنِ اِبْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”الكَهْفِ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by al-Naḥḥās and Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "قالَ القُرْطُبِيُّ: وهي مَكِّيَّةٌ في قَوْلِ جَمِيعِ المُفَسِّرِينَ",
+        "says": "Makkan, by agreement, citing al-Qurṭubī."
+      }
     ]
   },
   "setting": [
-    "By the time this surah came down the argument in Makkah had been running for years, and Quraysh had run out of answers of their own. They could not call the Qurʾan poetry; they had poets, and it was not that. They could not call him a liar; they had named him the Trustworthy themselves. So they went looking for help from people who knew about prophets.",
-    "Ibn Isḥāq tells it this way. Quraysh sent two of their men, al-Naḍr ibn al-Ḥārith and ʿUqbah ibn Abī Muʿayṭ, to the Jewish rabbis of Yathrib — “for they are the people of the first Book, and they have knowledge of the prophets that we do not.” The rabbis gave them a test of three questions. Ask him about some young men who went away in the first age, for theirs was a strange story. Ask him about a man who travelled until he reached the east of the earth and the west of it. And ask him about the spirit. If he answers, he is a prophet who has been sent; if he does not, he is a man making things up.",
-    "They put the questions to him, and the Messenger of Allah ﷺ said, “I will tell you tomorrow” — and did not say, “if Allah wills.” Then revelation stopped. Fifteen nights passed without Jibrīl coming to him, until the people of Makkah were saying that Muḥammad had promised them tomorrow and it was now the fifteenth day; and the silence weighed on him. Then Jibrīl came with this surah: the young men of the cave, the traveller Dhū al-Qarnayn — and within it a correction, gentle and permanent, about how a servant speaks of tomorrow (18:23). The answer about the spirit is in al-Isrāʾ (17:85).",
-    "The report is the one the commentators give for the surah, and it explains its shape as nothing else does. Its chain is not strong — Ibn Isḥāq has it from “an old man of the people of Egypt” whom he does not name — so it is told as what is reported, not as what is established. What is not in doubt is the hour: a small community under pressure, being asked to give up either its faith or its place in the city, and being shown people before them who had faced the same choice."
+    "It came down in the later years in Makkah, when the argument had been running for a long time. Quraysh had run out of answers of their own: they could not call the Qurʾan poetry — they had poets, and it was not that; they could not call him a liar — they had named him the Trustworthy themselves. What they still had was power, and the believers were a small community under pressure, being asked to give up either its faith or its place in the city.",
+    "To such people the surah shows others who faced the same choice. Young men who left their city and took shelter in a cave, saying: “Our Lord, grant us mercy from Yourself, and provide for us right guidance in our affair.” A man with two gardens who forgot who had given them. Mūsā, a messenger of resolve, travelling to learn from a servant of Allah who had been taught what he had not. And a ruler given the means to everything, who reached the setting place of the sun and its rising, and said of his greatest work: “This is a mercy from my Lord.”",
+    "Four trials, then — of faith, of wealth, of knowledge and of power — and in the middle of them the one who stands behind every trial, refusing to bow (18:50). The Prophet ﷺ tied the surah to the last and greatest of them: whoever keeps ten ayat of its opening by heart, he said, will be protected from the Dajjāl.",
+    "Within the stories it sets a correction, gentle and permanent, about how a servant speaks of tomorrow: “Do not say of anything, ‘I shall do that tomorrow,’ without ‘if Allah wills’” (18:23). And it tells the Prophet ﷺ whose company to keep: “Keep yourself patient with those who call upon their Lord morning and evening, seeking His Face, and do not let your eyes pass beyond them” (18:28)."
   ],
   "occasions": [
-    {
-      "title": "Three questions from the rabbis",
-      "text": "Quraysh, on the advice of the rabbis of Yathrib, asked the Prophet ﷺ about the young men of the first age, the man who reached east and west, and the spirit. The surah came down with the first two answers after revelation had been withheld for fifteen nights.",
-      "source": "Ibn Isḥāq, from Ibn ʿAbbās, as Ibn Kathīr gives it at the head of the surah. Its chain passes through a narrator who is not named.",
-      "evidence": {
-        "work": "ibn-katheer",
-        "ayah": 1,
-        "quote": "بَعَثَتْ قُرَيْشٌ النَّضْرَ بْنَ الْحَارِثِ، وَعُقْبَةَ بْنَ أَبِي مُعَيط، إِلَى أَحْبَارِ يَهُودَ بِالْمَدِينَةِ، فَقَالُوا لَهُمْ: سَلُوهُمْ عَنْ مُحَمَّدٍ، وَصِفُوا لَهُمْ صِفَتَهُ، وَأَخْبِرُوهُمْ بِقَوْلِهِ؛ فَإِنَّهُمْ أَهْلُ الْكِتَابِ الْأَوَّلِ، وَعِنْدَهُمْ مَا لَيْسَ عِنْدَنَا مِنْ عِلْمِ الْأَنْبِيَاءِ"
-      }
-    },
-    {
-      "ayat": [
-        23,
-        24
-      ],
-      "title": "“I will tell you tomorrow”",
-      "text": "He ﷺ had promised an answer for the next day without saying “if Allah wills”, and the revelation was held back. These two ayat came down with the answer: never say of anything, “I will do that tomorrow,” without adding, “if Allah wills” — and remember your Lord when you forget.",
-      "source": "Ibn Kathīr, on these ayat, referring back to Ibn Isḥāq’s report.",
-      "evidence": {
-        "work": "ibn-katheer",
-        "ayah": 23,
-        "quote": "وَقَدْ تَقَدَّمَ فِي أَوَّلِ السُّورَةِ ذِكْرُ سَبَبِ نُزُولِ هَذِهِ الْآيَةِ فِي قَوْلِ النَّبِيِّ ﷺ، لَمَّا سُئِلَ عَنْ قِصَّةِ أَصْحَابِ الْكَهْفِ: \"غَدًا أُجِيبُكُمْ\". فَتَأَخَّرَ الْوَحْيُ خَمْسَةَ عَشَرَ يَوْمًا"
-      }
-    },
     {
       "ayat": [
         28,
@@ -73,12 +63,30 @@
       ],
       "title": "The nobles and the poor",
       "text": "The leading men of Quraysh asked the Prophet ﷺ to sit with them alone and to keep the poorer believers — Bilāl, ʿAmmār, Ṣuhayb, Khabbāb, Ibn Masʿūd — in a gathering of their own. He was told instead to keep himself patiently with those who call upon their Lord morning and evening. Saʿd ibn Abī Waqqāṣ describes the same demand in Ṣaḥīḥ Muslim (2413), concerning the sister ayah in al-Anʿām (6:52).",
-      "source": "Ibn Kathīr, who introduces it with “it is said”.",
+      "source": "Ibn Kathīr, who introduces it with “it is said”. Al-Ṭabarī, al-Baghawī, Ibn al-Jawzī, al-Qurṭubī and al-Suyūṭī relate it too.",
+      "rank": "reported",
       "evidence": {
         "work": "ibn-katheer",
         "ayah": 28,
         "quote": "يُقَالُ: إِنَّهَا نَزَلَتْ فِي أَشْرَافِ قُرَيْشٍ، حِينَ طَلَبُوا مِنَ النَّبِيِّ ﷺ أَنْ يَجْلِسَ مَعَهُمْ وَحْدَهُ وَلَا يُجَالِسَهُمْ بِضُعَفَاءِ أَصْحَابِهِ كَبِلَالٍ وَعَمَّارٍ وَصُهَيْبٍ"
       }
+    },
+    {
+      "ayat": [
+        60,
+        82
+      ],
+      "title": "Mūsā and al-Khiḍr, as he ﷺ told it",
+      "text": "Ubayy ibn Kaʿb heard the Messenger of Allah ﷺ tell what lay behind the journey. Mūsā stood up to address the Children of Israel and was asked: who is the most knowing of people? He said: “I am.” Allah reproved him, because he had not referred the knowledge back to Him, and revealed to him: “I have a servant at the meeting of the two seas who knows more than you.” Mūsā said: “My Lord, how can I reach him?” He was told to carry a fish in a basket: wherever he lost the fish, there the man would be.",
+      "story": [
+        "He set out with his young attendant, Yūshaʿ ibn Nūn. At the rock they laid down their heads and slept. The fish stirred in the basket, slipped out of it and fell into the sea, and Allah held back the flow of the water from it, so that it stood over its path like an arch. When Mūsā woke, his companion forgot to tell him. They walked on for the rest of that day and through the night, and the next morning Mūsā said: “Bring us our meal; this journey of ours has wearied us” — and he had felt no weariness, the Prophet ﷺ said, until he had passed the place Allah had commanded. The young man remembered: at the rock he had forgotten the fish, and it had taken its way into the sea, a thing to wonder at. “That is what we were seeking,” said Mūsā, and they turned back, following their own footprints.",
+        "At the rock was a man wrapped in a garment. Mūsā greeted him, and al-Khiḍr said: “And how is there a greeting of peace in your land?” — “I am Mūsā.” — “Mūsā of the Children of Israel?” — “Yes. I have come to you so that you may teach me something of the right guidance you have been taught.” He said: “You will not be able to bear with me patiently. Mūsā, I have a knowledge from the knowledge of Allah which He has taught me and which you do not know; and you have a knowledge from the knowledge of Allah which He has taught you and which I do not know.” Mūsā promised patience, and al-Khiḍr set his condition: if you follow me, ask me about nothing until I speak of it to you myself.",
+        "They walked along the shore. A ship passed, and its people recognised al-Khiḍr and took them aboard without a fare. Before Mūsā knew it he had prised out one of the ship’s planks with an adze. “People who carried us for nothing — and you go to their ship and breach it, to drown those aboard?” — “Did I not say you would not be able to bear with me?” — “Do not hold me to what I forgot.” The first, said the Messenger of Allah ﷺ, was forgetfulness on Mūsā’s part. Then a sparrow came and perched on the edge of the ship and dipped its beak once into the sea, and al-Khiḍr said to him: “My knowledge and your knowledge, beside the knowledge of Allah, are no more than what this sparrow has taken from the sea.”",
+        "They left the ship, and as they walked on the shore al-Khiḍr saw a boy playing with other boys, and killed him. “Have you killed an innocent soul, when he had killed no one?” — and this, he ﷺ said, was harder than the first. Mūsā said: “If I ask you about anything after this, keep me with you no longer.” They came to a town and asked its people for food, and were refused hospitality; and there they found a wall, leaning, about to fall, and al-Khiḍr set it straight with his hand. Mūsā said: “People we came to who would not feed us or take us in — had you wished, you could have taken a wage for it.” He said: “This is the parting between me and you,” and told him the meaning of the three things he had not been able to bear.",
+        "And the Messenger of Allah ﷺ said: “We would have loved Mūsā to have been patient, so that Allah might have told us more of what passed between them.”"
+      ],
+      "source": "Ubayy ibn Kaʿb, through Ibn ʿAbbās: al-Bukhārī (4725) and Muslim (2380).",
+      "rank": "agreed"
     }
   ],
   "aim": "To set out how a believer is to deal with trials, and to give living examples of it.",
@@ -162,7 +170,8 @@
           "number": "809"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "In the long hadith of the Dajjāl: “Whoever among you lives to see him, let him recite over him the opening ayat of Sūrat al-Kahf.”",
@@ -174,7 +183,8 @@
           "number": "2937"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "A man was reciting Sūrat al-Kahf with a horse tethered beside him, and a cloud came over him and drew nearer and nearer until the horse began to shy. In the morning he told the Prophet ﷺ, who said: “That was the tranquillity, descending for the Qurʾan.”",
@@ -191,16 +201,18 @@
           "number": "795"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“Whoever recites Sūrat al-Kahf on the day of Friday, a light will shine for him between the two Fridays.”",
       "narrator": "Abū Saʿīd al-Khudrī",
       "source": "al-Ḥākim, al-Mustadrak · al-Bayhaqī, al-Sunan al-Kubrā",
-      "grade": "Ṣaḥīḥ according to al-Albānī (Ṣaḥīḥ al-Jāmiʿ, 6470). A number of the hadith scholars, al-Nasāʾī among them, held the stronger form to be the saying of Abū Saʿīd himself — which, on a matter that cannot be known by opinion, carries the weight of a Prophetic report."
+      "grade": "Ṣaḥīḥ according to al-Albānī (Ṣaḥīḥ al-Jāmiʿ, 6470)",
+      "rank": "sahih",
+      "caveat": "This is al-Albānī’s grading as an index of his works records it; it has not yet been checked here against the printed book."
     }
   ],
-  "virtuesNote": "Not everything repeated about this surah is established. The report that seventy thousand angels escorted it as it came down, which al-Qurṭubī relays from al-Thaʿlabī, comes through Isḥāq ibn Abī Farwah, a narrator the hadith scholars abandoned.",
   "before": "Al-Isrāʾ closes on praise — “All praise is for Allah, who has not taken a son” (17:111) — and al-Kahf opens on praise and warns those who say that He has (18:4). The three questions are answered across the pair: the spirit there (17:85), the young men and the traveller here.",
   "after": "Maryam carries on with wonders that only Allah’s power explains: a son to Zakariyyā in old age, and a son to Maryam with no father at all. And the saying that al-Kahf opened by condemning — that Allah has taken a son — is where Maryam ends (19:88).",
   "notable": [

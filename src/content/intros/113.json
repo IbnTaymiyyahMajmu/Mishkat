@@ -33,18 +33,34 @@
         "ayah": 1,
         "quote": "وَهِيَ مَكِّيَّةٌ فِي قَوْلِ الْحَسَنِ وَعِكْرِمَةَ وَعَطَاءٍ وَجَابِرٍ. وَمَدَنِيَّةٌ فِي أَحَدِ قَوْلَيِ ابْنِ عَبَّاسٍ وَقَتَادَةَ. وهي خمس آيات"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْفَلَقِ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ في قَوْلِ الحَسَنِ، وعِكْرِمَةَ، وعَطاءٍ، وجابِرٍ، ومَدَنِيَّةٌ في أحَدِ قَوْلَيِ ابْنِ عَبّاسٍ، وقَتادَةَ",
+        "says": "Makkan in the saying of al-Ḥasan, ʿIkrimah, ʿAṭāʾ and Jābir; Madinan in one of two reports from Ibn ʿAbbās, and in the saying of Qatādah."
+      }
     ]
   },
   "setting": [
     "The Arabs before Islam lived in fear of the unseen and went to anything they thought could shield them from it: amulets, soothsayers, the jinn of a valley they were about to cross. One of the first things the revelation did was to gather all of that fear and point it at one address.",
-    "The commentators connect the two surahs of refuge with a particular event in Madinah. A man named Labīd ibn al-Aʿṣam worked a spell on the Prophet ﷺ, using a comb and strands of hair, knotted and hidden in a well; for a time he ﷺ would think he had done a thing when he had not. The spell itself is narrated by ʿĀʾishah in al-Bukhārī and Muslim. That these two surahs came down on that occasion, and that the knots came undone as they were recited, is in reports outside the two Ṣaḥīḥs — and it is on them that the view that the surahs are Madinan rests.",
+    "The two surahs of refuge are tied to a particular event in Madinah. A man named Labīd ibn al-Aʿṣam worked a spell on the Prophet ﷺ, using a comb and strands of hair, knotted and hidden in a well; for a time he ﷺ would think he had done a thing when he had not. The spell itself is narrated by ʿĀʾishah in al-Bukhārī and Muslim. That Jibrīl brought these two surahs down to him on that occasion is in the report of Zayd ibn Arqam, outside the two Ṣaḥīḥs and graded ṣaḥīḥ by al-Albānī — and it is on this that the view that the surahs are Madinan rests.",
     "Whenever they came down, what is certain is how he used them afterwards. He recited them over himself in illness, before sleep, morning and evening, and after each prayer, and left every other formula of protection for them."
   ],
   "occasions": [
     {
       "title": "The spell of Labīd ibn al-Aʿṣam",
-      "text": "Ibn al-Jawzī relates from the commentators that the Messenger of Allah ﷺ was bewitched, and the two surahs of refuge were sent down to him. The bewitching is established in the two Ṣaḥīḥs (al-Bukhārī 5763, Muslim 2189); the link to the revelation of these surahs is not in them.",
-      "source": "Ibn al-Jawzī, Zād al-Masīr, at the head of the surah.",
+      "text": "Zayd ibn Arqam relates that a man of the Jews worked a spell upon the Prophet ﷺ, and he was ill from it for some days. Then Jibrīl came to him, bringing down the two surahs of refuge, and told him of the spell and of the well in which it lay. It was sent for and its knots were undone, and he ﷺ rose as though released from a bond. ʿĀʾishah relates the bewitching in the two Ṣaḥīḥs, and names the man: Labīd ibn al-Aʿṣam.",
+      "source": "Zayd ibn Arqam: ʿAbd ibn Ḥumayd and al-Ṭabarānī — and, without mention of the two surahs, al-Nasāʾī (4080) and Aḥmad; ṣaḥīḥ according to al-Albānī (al-Silsilah al-Ṣaḥīḥah, 2761). The bewitching itself: al-Bukhārī (5763) and Muslim (2189), from ʿĀʾishah.",
+      "rank": "sahih",
+      "caveat": "This is al-Albānī’s grading as an index of his works records it; it has not yet been checked here against the printed book.",
       "evidence": {
         "work": "zad-almaseer",
         "ayah": 1,
@@ -89,7 +105,8 @@
           "number": "814"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "When the Messenger of Allah ﷺ was unwell he would recite the surahs of refuge over himself and blow. When his pain grew severe I would recite over him and wipe him with his own hand, hoping for its blessing.",
@@ -105,7 +122,8 @@
           "number": "2192"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "The Messenger of Allah ﷺ used to seek refuge from the jinn and from the evil eye, until the two surahs of refuge came down. When they came down he took to them, and left everything else.",
@@ -121,7 +139,8 @@
           "number": "3511"
         }
       ],
-      "grade": "Ḥasan gharīb, said al-Tirmidhī; ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     },
     {
       "text": "“The Messenger of Allah ﷺ commanded me to recite the surahs of refuge at the end of every prayer.”",
@@ -137,7 +156,8 @@
           "number": "1336"
         }
       ],
-      "grade": "Ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     }
   ],
   "before": "Al-Ikhlāṣ said who Allah is. The two surahs that follow turn to Him, on that basis, for protection.",

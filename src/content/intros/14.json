@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "مَكِّيَّةٌ كُلُّهَا فِي قَوْلِ الْحَسَنِ وَعِكْرِمَةَ وَجَابِرٍ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةِ إِبْرَاهِيمَ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُوَيْهِ، عَنِ ابْنِ عَبّاسٍ قالَ نَزَلَتْ سُورَةُ إبْراهِيمَ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ كَما أخْرَجَهُ ابْنُ مَرْدَوَيْهِ عَنِ ابْنِ عَبّاسٍ",
+        "says": "Makkan, as Ibn Mardawayh records from Ibn ʿAbbās."
+      }
     ]
   },
   "setting": [
@@ -104,7 +124,8 @@
           "number": "2811"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“When the Muslim is questioned in the grave, he bears witness that there is no god but Allah, and that Muḥammad is the Messenger of Allah. That is His saying: ‘Allah keeps firm those who believe, with the firm word, in the life of this world and in the next.’”",
@@ -121,7 +142,8 @@
           "number": "2871"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "ʿĀʾishah said: I asked the Messenger of Allah ﷺ about His saying, “The Day the earth is changed to another earth, and the heavens” — “Where will the people be that Day, Messenger of Allah?” He said: “On the Bridge.”",
@@ -133,7 +155,8 @@
           "number": "2791"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "Ibn ʿAbbās said of “those who exchanged the favour of Allah for ingratitude”: “They are the disbelievers of the people of Makkah.”",
@@ -145,7 +168,8 @@
           "number": "4700"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Raʿd ended with the disbelievers’ verdict: “You are not a messenger.” Sūrat Ibrāhīm begins with Allah’s: a Book sent down to you, to bring mankind into the light.",

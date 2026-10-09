@@ -33,18 +33,33 @@
         "ayah": 1,
         "quote": "مَكِّيَّةٌ فِي قَوْلِ ابْنِ مَسْعُودٍ وَالْحَسَنِ وَعَطَاءٍ وَعِكْرِمَةَ وَجَابِرٍ. وَمَدَنِيَّةٌ فِي أَحَدِ قَوْلَيِ ابْنِ عباس وقتادة والضحاك والسدي. وَهِيَ أَرْبَعُ آيَاتٍ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْإِخْلَاصِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ في قَوْلِ ابْنِ مَسْعُودٍ، والحَسَنِ، وعَطاءٍ، وعِكْرِمَةَ، وجابِرٍ، ومَدَنِيَّةٌ في أحَدِ قَوْلَيِ ابْنِ عَبّاسٍ، وقَتادَةَ، والضَّحّاكِ، والسُّدِّيِّ",
+        "says": "Makkan in the saying of Ibn Masʿūd, al-Ḥasan, ʿAṭāʾ, ʿIkrimah and Jābir; Madinan in one of two reports from Ibn ʿAbbās, and in the saying of Qatādah, al-Ḍaḥḥāk and al-Suddī."
+      }
     ]
   },
   "setting": [
     "The Arabs of Makkah were not atheists. They knew the name of Allah, swore by it, and said that He had made the heavens and the earth. What they could not do was leave Him alone: they gave Him daughters, set lesser gods beside Him as go-betweens, and thought of Him, as they thought of everything, in terms of family and descent. A man was known by his lineage. So when Muḥammad ﷺ called them to worship Allah and nothing else, they asked him the only question they knew how to ask about anyone: whose son is He?",
     "“Describe your Lord’s lineage to us,” they said — unsub lanā rabbak. The surah came down as the reply. It does not argue. It makes four statements, each closing a door: He is One; He is the One all creation turns to in need, who needs nothing; He has no child and no parent; and nothing is like Him.",
-    "The same question was put again in other mouths — by an Arab chief who asked whether this god was of gold or silver or iron, and, in some reports, by rabbis who asked what kind of thing He was and who would inherit from Him. That is very likely why the early scholars are reported differing over where it came down. The answer was the same wherever it was asked."
+    "The same question was put again in other mouths — by an Arab chief who asked whether this god was of gold or silver or iron, and, in some reports, by rabbis who asked what kind of thing He was and who would inherit from Him.{reported} That is very likely why the early scholars are reported differing over where it came down. The answer was the same wherever it was asked."
   ],
   "occasions": [
     {
       "title": "“Describe your Lord’s lineage to us”",
       "text": "The idolaters said to the Prophet ﷺ: “Muḥammad, describe your Lord’s lineage to us.” So Allah sent down: “Say: He is Allah, One; Allah, the Eternal Refuge; He neither begets nor is born; and there is none comparable to Him.”",
       "source": "From Ubayy ibn Kaʿb: Aḥmad and al-Tirmidhī (3364). Al-Tirmidhī also has it from Abū al-ʿĀliyah without naming Ubayy, and says that form is the sounder; al-Albānī graded the report ḥasan.",
+      "rank": "hasan",
       "evidence": {
         "work": "ibn-katheer",
         "ayah": 1,
@@ -55,6 +70,7 @@
       "title": "Three reports of who asked",
       "text": "Ibn al-Jawzī sets the reports side by side. The first is the one above. In the second, from Ibn ʿAbbās, ʿĀmir ibn al-Ṭufayl asked what the Prophet ﷺ was calling to, and on being told, said: “Describe Him to me — is He of gold, or silver, or iron?” In the third, from Qatādah and al-Ḍaḥḥāk, it was a group of rabbis who asked what kind He was, whom He had inherited the world from, and to whom He would leave it.",
       "source": "Ibn al-Jawzī, Zād al-Masīr, at the head of the surah.",
+      "rank": "reported",
       "evidence": {
         "work": "zad-almaseer",
         "ayah": 1,
@@ -98,7 +114,8 @@
           "number": "5013"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“Is any one of you unable to recite a third of the Qurʾan in a night?” They said: “How could anyone recite a third of the Qurʾan?” He said: “Qul huwa Allāhu aḥad is equal to a third of the Qurʾan.”",
@@ -111,7 +128,8 @@
           "number": "811"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "The Prophet ﷺ sent a man at the head of an expedition, and he would lead his companions in prayer and end his recitation each time with “Qul huwa Allāhu aḥad”. When they returned they mentioned it, and he ﷺ said: “Ask him why he does that.” He said: “Because it is the description of the Most Merciful, and I love to recite it.” The Prophet ﷺ said: “Tell him that Allah loves him.”",
@@ -128,7 +146,8 @@
           "number": "813"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "When the Prophet ﷺ went to his bed each night he would bring his palms together, blow into them, and recite into them “Qul huwa Allāhu aḥad”, “Qul aʿūdhu bi-rabbi l-falaq” and “Qul aʿūdhu bi-rabbi n-nās”; then he would wipe with them whatever he could of his body, beginning with his head and his face and the front of his body. He would do that three times.",
@@ -140,7 +159,8 @@
           "number": "5017"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“Qul huwa Allāhu aḥad and the two surahs of refuge, when evening comes and when morning comes, three times: they will suffice you against everything.”",
@@ -156,7 +176,8 @@
           "number": "3575"
         }
       ],
-      "grade": "Ḥasan ṣaḥīḥ gharīb, said al-Tirmidhī; ḥasan according to al-Albānī"
+      "grade": "Ḥasan according to al-Albānī",
+      "rank": "hasan"
     }
   ],
   "before": "Al-Masad shows a man whose lineage could not save him — the Prophet’s ﷺ own uncle, lost with his wealth and all he earned. Al-Ikhlāṣ follows with the One who has no lineage at all, and to whom lineage is nothing.",

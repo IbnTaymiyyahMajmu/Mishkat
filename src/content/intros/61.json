@@ -33,11 +33,37 @@
         "ayah": 1,
         "quote": "سورة الصف مَدَنِيَّةٌ فِي قَوْلِ الْجَمِيعِ، فِيمَا ذَكَرَ الْمَاوَرْدِيُّ. وَقِيلَ: إِنَّهَا مَكِّيَّةٌ، ذَكَرَهُ النَّحَّاسُ عَنِ ابْنِ عباس. وهي أربع عشرة آية"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الصَّفِّ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ «الصَّفِّ» بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ النَّحّاسُ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ «الصَّفِّ» بِمَكَّةَ",
+        "says": "Ibn ʿAbbās, in another report: it came down in Makkah. Recorded by al-Naḥḥās."
+      }
     ]
   },
   "setting": [
     "ʿAbd Allāh ibn Salām relates how it came down. “A group of us, Companions of the Messenger of Allah ﷺ, were sitting and talking, and we said: if only we knew which deed is most beloved to Allah, we would do it. Then Allah sent down: ‘All that is in the heavens and the earth glorifies Allah… O you who believe, why do you say what you do not do?’” And he said: the Messenger of Allah ﷺ recited it to us, to the end.",
-    "The answer to their wish turned out to be the hardest thing: to stand in the line of battle and not break. And the surah begins by pointing out that it is easier to wish than to do. Other reports the commentators gather say the same from another side — that some had asked for fighting to be prescribed and then hung back when it was.",
+    "The answer to their wish turned out to be the hardest thing: to stand in the line of battle and not break. And the surah begins by pointing out that it is easier to wish than to do. Other reports the commentators gather say the same from another side — that some had asked for fighting to be prescribed and then hung back when it was.{reported}",
     "Two prophets are then brought as witnesses to what a community can do to its messenger. Mūsā: “My people, why do you hurt me, when you know that I am the messenger of Allah to you?” And ʿĪsā, who came confirming the Torah and giving good news of a messenger to come after him, whose name is Aḥmad — and who was called a sorcerer for it.",
     "It closes by naming the bargain. Believe in Allah and His Messenger, and strive in His cause with your wealth and your lives: He will forgive you and admit you to gardens. “And another thing that you love: help from Allah, and a victory near at hand.”"
   ],
@@ -46,6 +72,7 @@
       "title": "“If only we knew which deed Allah loves most”",
       "text": "“We sat, a group of the Companions of the Messenger of Allah ﷺ, and said: if we knew which of the deeds is most beloved to Allah, we would do it. So Allah sent down this surah, and the Messenger of Allah ﷺ recited it to us.”",
       "source": "ʿAbd Allāh ibn Salām: al-Tirmidhī (3309) and Aḥmad; its chain is ṣaḥīḥ according to al-Albānī.",
+      "rank": "sahih",
       "evidence": {
         "work": "zad-almaseer",
         "ayah": 1,
@@ -108,7 +135,8 @@
           "number": "2354"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "ʿAbd Allāh ibn Salām said: the Messenger of Allah ﷺ recited this surah to us, to its end. Each narrator in the chain then says the same of the one before him.",
@@ -120,7 +148,8 @@
           "number": "3309"
         }
       ],
-      "grade": "Its chain is ṣaḥīḥ according to al-Albānī"
+      "grade": "Its chain is ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     }
   ],
   "before": "Al-Mumtaḥanah set out whom the believers may not take as allies. Al-Ṣaff sets out what is asked of them in place of talk: to stand together.",

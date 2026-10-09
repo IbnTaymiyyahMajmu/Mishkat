@@ -33,12 +33,32 @@
         "ayah": 1,
         "quote": "مَكِّيَّةٌ فِي قَوْلِ الْحَسَنِ وَعِكْرِمَةَ وَعَطَاءٍ وَجَابِرٍ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْقَلَمِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ النَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿ن والقَلَمِ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ في قَوْلِ الحَسَنِ، وعِكْرِمَةَ، وعَطاءٍ، وجابِرٍ",
+        "says": "Makkan, in the saying of al-Ḥasan, ʿIkrimah, ʿAṭāʾ and Jābir ibn Zayd."
+      }
     ]
   },
   "setting": [
     "For forty years the people of Makkah had known Muḥammad ﷺ as the most truthful and level-headed man among them. Then he told them that an angel had come to him with words from the Lord of the worlds, and they needed an explanation that did not involve believing him. The first one they found was majnūn — possessed.",
     "This surah meets that word in its second ayah and returns to it in its second-last. In between it says three things to him. You are not mad. You will have a reward that never ends. And you are upon a tremendous character. When ʿĀʾishah was later asked what his character was, she answered with a sentence that points straight back here: his character was the Qurʾan.",
-    "It then turns to the men behind the slander and tells him not to give way to them: “They wish you would soften, so that they would soften.” One of them is described so exactly — the habitual swearer, the scandal-monger, the one who blocks every good, coarse and base-born — that the commentators give his name; most say al-Walīd ibn al-Mughīrah.",
+    "It then turns to the men behind the slander and tells him not to give way to them: “They wish you would soften, so that they would soften.” One of them is described so exactly — the habitual swearer, the scandal-monger, the one who blocks every good, coarse and base-born — that the commentators give his name; most say al-Walīd ibn al-Mughīrah.{reported}",
     "And it tells a story for people who think their wealth is their own doing: the owners of a garden who vowed to harvest it at dawn before the poor could come, and did not say “if Allah wills”. They found it black and bare. Quraysh, too, had been given a garden."
   ],
   "occasions": [],
@@ -99,7 +119,8 @@
           "number": "746"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "On “the Day the shin is laid bare”: “Our Lord will uncover His shin, and every believing man and woman will prostrate to Him. There will remain those who used to prostrate in the world to be seen and heard of: they will go to prostrate, and their backs will become a single plate.”",
@@ -111,7 +132,8 @@
           "number": "4919"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Mulk ended with what the Prophet ﷺ was to say to those who denied him. Al-Qalam opens with what his Lord says of him.",

@@ -27,12 +27,32 @@
         "ayah": 1,
         "quote": "مَكِّيَّةٌ. وَقِيلَ: مَدَنِيَّةٌ. وَهِيَ إِحْدَى وَعِشْرُونَ آيَةً بإجماع"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ اللَّيْلِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿واللَّيْلِ إذا يَغْشى﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ عِنْدَ الجُمْهُورِ، وقِيلَ مَدَنِيَّةٌ",
+        "says": "Makkan, in the saying of the majority; a saying that it is Madinan is also mentioned."
+      }
     ]
   },
   "setting": [
     "In the first years in Makkah the Muslims with no clan to defend them were at the mercy of their owners. Bilāl was dragged out to the midday sand by Umayyah ibn Khalaf with a boulder set on his chest, and answered every demand with one word: Aḥad, Aḥad — One, One.",
-    "Abū Bakr was a merchant, and he began to spend his fortune buying such people and setting them free: Bilāl, ʿĀmir ibn Fuhayrah, Zinnīrah, al-Nahdiyyah and her daughter, and others. His father, Abū Quḥāfah, who had not yet accepted Islam, is reported to have said to him: I see you freeing weak slaves — why not free strong men who could protect you? He answered that he was only seeking what is with Allah.",
-    "The last five ayat of the surah describe a man who gives his wealth to purify himself, who owes no one a favour that he is repaying, and who seeks nothing but the Face of his Lord, the Most High. Ibn Kathīr writes that more than one of the commentators said these ayat came down about Abū Bakr al-Ṣiddīq, and that some reported the agreement of the commentators on it; and he adds that the wording is general, and Abū Bakr is simply the first of the community to whom it applies."
+    "Abū Bakr was a merchant, and he began to spend his fortune buying such people and setting them free: Bilāl, ʿĀmir ibn Fuhayrah, Zinnīrah, al-Nahdiyyah and her daughter, and others. His father, Abū Quḥāfah, who had not yet accepted Islam, is reported to have said to him: I see you freeing weak slaves — why not free strong men who could protect you?{reported} He answered that he was only seeking what is with Allah.",
+    "The last five ayat of the surah describe a man who gives his wealth to purify himself, who owes no one a favour that he is repaying, and who seeks nothing but the Face of his Lord, the Most High. Ibn Kathīr writes that more than one of the commentators said these ayat came down about Abū Bakr al-Ṣiddīq, and that some reported the agreement of the commentators on it; and he adds that the wording is general, and Abū Bakr is simply the first of the community to whom it applies.{reported}"
   ],
   "occasions": [
     {
@@ -43,6 +63,7 @@
       "title": "Abū Bakr al-Ṣiddīq",
       "text": "More than one of the commentators has said that these ayat came down about Abū Bakr al-Ṣiddīq — may Allah be pleased with him — so much so that some of them reported agreement on it. There is no doubt that he is included in them, and is the foremost of the community in their general meaning.",
       "source": "Ibn Kathīr, on these ayat.",
+      "rank": "reported",
       "evidence": {
         "work": "ibn-katheer",
         "ayah": 17,
@@ -104,7 +125,8 @@
           "number": "2647"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Shams: he has succeeded who purifies the soul. Al-Layl shows the purifying being done — a man giving his wealth “to purify himself” (92:18).",

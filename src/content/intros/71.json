@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "سُورَةُ نُوحٍ مَكِّيَّةٌ، وَهِيَ ثَمَانٍ وَعِشْرُونَ آيَةً"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ نُوحٍ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ «نُوحٍ» بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ وابْنُ مَرْدَوَيْهِ عَنْ عَبْدِ اللَّهِ بْنِ الزُّبَيْرِ قالَ: نَزَلَتْ سُورَةُ ﴿إنّا أرْسَلْنا نُوحًا﴾ بِمَكَّةَ",
+        "says": "Ibn al-Zubayr: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās and Ibn Mardawayh."
+      }
     ]
   },
   "setting": [
@@ -84,7 +104,8 @@
           "number": "4920"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Maʿārij told the Prophet ﷺ: be patient, with a beautiful patience (70:5). Nūḥ shows what that looked like over a thousand years less fifty.",

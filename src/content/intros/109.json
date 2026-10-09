@@ -33,18 +33,39 @@
         "ayah": 1,
         "quote": "وَهِيَ مَكِّيَّةٌ فِي قَوْلِ ابْنِ مَسْعُودٍ وَالْحَسَنِ وَعِكْرِمَةَ. وَمَدَنِيَّةٌ فِي أَحَدِ قَوْلَيِ ابْنِ عَبَّاسٍ وقتادة والضحاك. وهي ست آيات"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْكَافِرُونَ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿قُلْ يا أيُّها الكافِرُونَ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ في قَوْلِ ابْنِ مَسْعُودٍ، والحَسَنِ، وعِكْرِمَةَ",
+        "says": "Makkan, in the saying of Ibn Masʿūd, al-Ḥasan and ʿIkrimah."
+      }
     ]
   },
   "setting": [
     "The idolaters of Makkah did not ask Muḥammad ﷺ to stop believing in Allah. They believed in Allah themselves. What they could not accept was that He be worshipped alone, with their gods left out — and so the compromises they offered were always about that.",
-    "The reports name the men: al-Walīd ibn al-Mughīrah, al-ʿĀṣ ibn Wāʾil, al-Aswad ibn al-Muṭṭalib, Umayyah ibn Khalaf. In one account they went through his uncle al-ʿAbbās; in another they came to him themselves. Come, they said: you worship what we worship for a year, and we will worship what you worship for a year. If what you have is better, we will have had our share of it; and if what we have is better, you will have had yours.",
+    "The reports name the men: al-Walīd ibn al-Mughīrah, al-ʿĀṣ ibn Wāʾil, al-Aswad ibn al-Muṭṭalib, Umayyah ibn Khalaf.{reported} In one account they went through his uncle al-ʿAbbās; in another they came to him themselves. Come, they said: you worship what we worship for a year, and we will worship what you worship for a year. If what you have is better, we will have had our share of it; and if what we have is better, you will have had yours.",
     "By the standards of the time it was a generous offer, and a man seeking position would have taken it. The surah has him refuse it in four different ways — for now and for the future, in what he worships and in how — and then draws the line: to you your religion, and to me mine. It is not a statement that the two are equally valid. It is a declaration that they will never be mixed."
   ],
   "occasions": [
     {
       "title": "A year for a year",
       "text": "In their ignorance they invited the Messenger of Allah ﷺ to worship their idols for a year, and they would worship the One he worshipped for a year. So Allah sent down this surah, commanding His Messenger to declare himself free of their religion altogether.",
-      "source": "Ibn Kathīr, on the surah; Ibn al-Jawzī gives three accounts of who made the offer.",
+      "source": "Ibn Kathīr, on the surah. Al-Ṭabarī, al-Baghawī, al-Qurṭubī, al-Suyūṭī and al-Shawkānī relate it too, and Ibn al-Jawzī gives it as one of three accounts of who made the offer.",
+      "rank": "reported",
       "evidence": {
         "work": "ibn-katheer",
         "ayah": 1,
@@ -93,7 +114,8 @@
           "number": "726"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "In his Pilgrimage he ﷺ recited the same two surahs in the two units of prayer after going round the House.",
@@ -105,7 +127,8 @@
           "number": "1218"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "The Prophet ﷺ said to Nawfal: “Recite ‘Qul yā ayyuhā l-kāfirūn’, then sleep upon its ending, for it is a declaration of freedom from shirk.”",
@@ -122,7 +145,8 @@
           "number": "3403"
         }
       ],
-      "grade": "Ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     }
   ],
   "before": "Al-Kawthar commanded: pray to your Lord, and sacrifice. Al-Kāfirūn has him tell those who do both for other than Allah that he will have no part in it.",

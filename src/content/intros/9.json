@@ -44,10 +44,24 @@
         "ayah": 1,
         "quote": "فَقالَ: إنِّي لَأسْمَعُ عُهُودًا تُنْبَذُ، ووَصايا تُنَفَّذُ"
       }
+    ],
+    "attested": [
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهْ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ التَّوْبَةِ بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هِيَ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      }
     ]
   },
   "setting": [
-    "Ibn al-Jawzī tells of a desert Arab who heard this surah recited and said: I think this is among the last of what came down. How do you know? they asked. He said: I hear covenants being cast off, and final instructions being given. That is its character exactly. Makkah had been open for a year. What remained was to close three accounts.",
+    "Ibn al-Jawzī tells of a desert Arab who heard this surah recited and said: I think this is among the last of what came down.{reported} How do you know? they asked. He said: I hear covenants being cast off, and final instructions being given. That is its character exactly. Makkah had been open for a year. What remained was to close three accounts.",
     "The first was with the idolaters of Arabia, some of whom held treaties and had not kept them. In the ninth year the Prophet ﷺ sent Abū Bakr to lead the Pilgrimage. Abū Hurayrah was among those he set to call out at Minā on the Day of Sacrifice: after this year no idolater shall make the Pilgrimage, and no one shall go round the House naked. Then ʿAlī was sent after them, to recite the opening of this surah to the gathering: “A disavowal from Allah and His Messenger… Travel the land for four months.” Those who had kept faith were to have their treaties honoured to the end of their term; and if any idolater asked for protection, he was to be given it “until he hears the word of Allah; then convey him to his place of safety.”",
     "The second was the expedition to Tabūk, against the Byzantine frontier. It came at the worst possible time: high summer, a march of many days, and the dates in Madinah just ripening. The surah calls it “the hour of difficulty.” “What is the matter with you, that when you are told, ‘Go forth in the way of Allah,’ you cling heavily to the earth?”",
     "The third account was the one Tabūk opened: the hypocrites. Makkah had tested people by persecution; this test was only inconvenience, and it sorted Madinah more finely than any battle had. Ibn ʿAbbās said of this surah: “It is the Exposer. It kept coming down — ‘and among them… and among them…’ — until they thought it would leave no one unmentioned.” The one who asks to be excused lest he be tempted; the ones who find fault with how the charity is shared; the ones who say “he is all ears”; the ones who built a mosque to divide the believers. Their excuses are recorded as they made them.",
@@ -61,7 +75,8 @@
       ],
       "title": "The proclamation at the Pilgrimage",
       "text": "Abū Hurayrah said: “Abū Bakr sent me, in that Pilgrimage, among the criers he sent out on the Day of Sacrifice to announce at Minā: no idolater shall make the Pilgrimage after this year, and no one shall go round the House naked.” Then the Messenger of Allah ﷺ sent ʿAlī ibn Abī Ṭālib after him, and ordered him to proclaim Barāʾah. “And ʿAlī called out with us among the people at Minā on the Day of Sacrifice.”",
-      "source": "Abū Hurayrah: al-Bukhārī (4655, 4656) and Muslim (1347)."
+      "source": "Abū Hurayrah: al-Bukhārī (4655, 4656) and Muslim (1347).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -70,7 +85,8 @@
       ],
       "title": "The half-measure of dates",
       "text": "“When we were commanded to give charity, we used to hire ourselves out as porters. Abū ʿAqīl brought half a measure, and another man brought more than that. The hypocrites said: ‘Allah has no need of this one’s charity; and that other one did it only to be seen.’ So there came down: ‘Those who find fault with the believers who give freely, and with those who find nothing but their own toil.’”",
-      "source": "Abū Masʿūd al-Anṣārī: al-Bukhārī (4668) and Muslim (1018)."
+      "source": "Abū Masʿūd al-Anṣārī: al-Bukhārī (4668) and Muslim (1018).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -79,7 +95,8 @@
       ],
       "title": "The funeral of ʿAbd Allāh ibn Ubayy",
       "text": "When ʿAbd Allāh ibn Ubayy died, his son came and asked the Messenger of Allah ﷺ for his shirt to shroud his father in, and asked him to pray over him. He rose to pray, and ʿUmar took hold of his garment: “Messenger of Allah, will you pray over him, when your Lord has forbidden you?” He said: “Allah has only given me a choice: ‘Ask forgiveness for them, or do not; if you ask forgiveness for them seventy times…’ — and I shall go beyond seventy.” He prayed over him. Then Allah sent down: “Never pray over any of them who dies, nor stand at his grave.”",
-      "source": "Ibn ʿUmar: al-Bukhārī (4670) and Muslim (2400)."
+      "source": "Ibn ʿUmar: al-Bukhārī (4670) and Muslim (2400).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -88,7 +105,8 @@
       ],
       "title": "The people of Qubāʾ",
       "text": "“This ayah came down about the people of Qubāʾ: ‘In it are men who love to purify themselves.’ They used to cleanse themselves with water, and so this ayah came down about them.”",
-      "source": "Abū Hurayrah: Abū Dāwūd (44) and al-Tirmidhī (3100); ṣaḥīḥ according to al-Albānī."
+      "source": "Abū Hurayrah: Abū Dāwūd (44) and al-Tirmidhī (3100); ṣaḥīḥ according to al-Albānī.",
+      "rank": "sahih"
     },
     {
       "ayat": [
@@ -97,7 +115,8 @@
       ],
       "title": "The death of Abū Ṭālib",
       "text": "When death came to Abū Ṭālib, the Prophet ﷺ went in to him; Abū Jahl and ʿAbd Allāh ibn Abī Umayyah were with him. He said: “Uncle, say ‘There is no god but Allah’ — a word by which I may plead for you before Allah.” The two said: “Abū Ṭālib, will you turn away from the religion of ʿAbd al-Muṭṭalib?” The Prophet ﷺ said: “I shall go on asking forgiveness for you, so long as I am not forbidden.” Then there came down: “It is not for the Prophet and those who believe to ask forgiveness for the idolaters, even if they are near kin.”",
-      "source": "Al-Musayyab ibn Ḥazn: al-Bukhārī (4675) and Muslim (24)."
+      "source": "Al-Musayyab ibn Ḥazn: al-Bukhārī (4675) and Muslim (24).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -105,8 +124,19 @@
         119
       ],
       "title": "The three who were left behind",
-      "text": "Kaʿb said: “I had prayed the dawn prayer on the morning of the fiftieth night, on the roof of one of our houses, sitting in the state Allah has described — my own soul closed in on me, and the earth, vast as it is, closed in on me — when I heard the voice of a man who had climbed Mount Salʿ, calling at the top of his voice: ‘Kaʿb ibn Mālik, good news!’ I fell down prostrate, and knew that relief had come.” When he greeted the Messenger of Allah ﷺ, whose face was shining with joy, he said: “Rejoice in the best day that has passed over you since your mother bore you.”",
-      "source": "Kaʿb ibn Mālik: al-Bukhārī (4418) and Muslim (2769)."
+      "text": "Kaʿb ibn Mālik told it himself, when he was old and blind, to the son who led him by the hand. He had missed no campaign with the Messenger of Allah ﷺ but Badr, for which no one was blamed, and he had been at the Pledge of ʿAqabah. When the march on Tabūk was announced he had never been stronger or better off: for the first time in his life he owned two riding camels. It was the height of the heat, the road was long and waterless, the enemy was many — and the fruit of Madinah had just ripened in its shade. Every morning he went out to make ready and came home having done nothing, telling himself he could do it whenever he chose; and so it went on until the army had left, and he was still telling himself he would ride after it.",
+      "story": [
+        "Walking in Madinah afterwards, it grieved him that he saw no one but men known for hypocrisy, or the weak whom Allah had excused. At Tabūk the Prophet ﷺ asked, “What has Kaʿb done?” A man of his own clan said: “His two cloaks have kept him back, Messenger of Allah, and looking at his own shoulders.” Muʿādh ibn Jabal answered him: “What an evil thing you have said. By Allah, Messenger of Allah, we know nothing of him but good.” The Messenger of Allah ﷺ said nothing.",
+        "When Kaʿb heard that the army had turned for home, he began to think of lies, and to ask the shrewd among his family which would get him out of it. When he was told it was almost upon the city, falsehood left him. “I knew I would never come out of it by anything that had a lie in it, and I resolved to tell him the truth.” The Prophet ﷺ prayed two rakʿahs in the mosque, as he did on every return, and sat for the people. Those who had stayed behind — eighty and some men — came with their excuses and their oaths. He accepted what they showed, took their pledge, asked forgiveness for them, and left what was within them to Allah.",
+        "Then Kaʿb came and gave the greeting. He ﷺ smiled the smile of one who is angry, and said: “Come.” And when Kaʿb sat before him: “What kept you back? Had you not bought your mount?” Kaʿb said: “I had. By Allah, were I sitting before anyone else of the people of this world, I would expect to escape his anger with an excuse; I have been given skill in argument. But by Allah, I know that if I tell you a lie today that contents you with me, Allah will soon make you angry with me; and if I tell you the truth and you are displeased with me for it, I hope for Allah’s pardon in it. No, by Allah, I had no excuse. I was never stronger or better off than when I stayed behind.” The Messenger of Allah ﷺ said: “As for this man, he has told the truth. Rise, until Allah decides concerning you.”",
+        "Men of his clan followed him out and reproached him: could he not have made an excuse as the others had, and let the Prophet’s ﷺ prayer for his forgiveness be enough? They pressed him until he nearly went back to call himself a liar. Then he asked whether anyone else had met with the same, and they named two: Murārah ibn al-Rabīʿ and Hilāl ibn Umayyah, righteous men who had fought at Badr. He went on his way.",
+        "The Messenger of Allah ﷺ forbade the Muslims to speak to the three of them. “The people avoided us and changed towards us, until the earth itself became strange to me; it was not the earth I knew.” It lasted fifty nights. His two companions kept to their houses, weeping. Kaʿb, the youngest and hardiest of them, went on attending the prayer and walking the markets, and no one spoke to him. He would greet the Prophet ﷺ where he sat after the prayer and ask himself: did his lips move in answer, or not? He would pray near him and steal a look: when he turned to his prayer, he ﷺ looked towards him; when he looked up, he ﷺ turned away. At last he climbed the garden wall of Abū Qatādah, his cousin and the dearest of people to him, and greeted him, and was not answered. “Abū Qatādah, I ask you by Allah: do you know that I love Allah and His Messenger?” Silence; and again; and at the third asking: “Allah and His Messenger know best.” His eyes overflowed, and he climbed back over the wall.",
+        "In the market a Nabataean from Syria, come to sell grain, was asking for Kaʿb ibn Mālik. He handed him a letter from the king of Ghassān: We have heard that your companion has treated you harshly. Allah has not put you in a place of humiliation or of loss; come to us, and we will console you. “This too is part of the trial,” Kaʿb said, and he took it to the oven and burned it. When forty nights had passed, a messenger came: the Messenger of Allah ﷺ commands you to keep away from your wife. “Am I to divorce her?” — “No; keep apart from her.” He sent her to her family. The wife of Hilāl ibn Umayyah was given leave to go on serving her husband, an old man with no servant, who had not stopped weeping since the day it began.",
+        "On the morning after the fiftieth night Kaʿb prayed the dawn prayer on the roof of his house, and sat there in the state Allah has described: his own soul straitened upon him, and the earth, for all its breadth, straitened too. Then he heard a man shouting from the top of Mount Salʿ at the height of his voice: “Kaʿb ibn Mālik — good news!” He fell down in prostration, and knew that relief had come. The Prophet ﷺ had announced at the dawn prayer that Allah had turned to them. A man spurred a horse towards him, and another ran up the mountain and called out, and the voice was faster than the horse. When its owner reached him Kaʿb took off his two garments and gave them to him for his news — he owned no others that day — and borrowed two to go to the mosque.",
+        "The people met him in group after group, congratulating him. In the mosque Ṭalḥah ibn ʿUbayd Allāh rose and hurried across to take his hand: “By Allah, no other man of the Emigrants rose for me, and I shall never forget it of Ṭalḥah.” The face of the Messenger of Allah ﷺ was shining with joy — when he was glad his face lit up as though it were a piece of the moon — and he said: “Rejoice in the best day that has passed over you since your mother bore you.” Kaʿb asked: “Is it from you, Messenger of Allah, or from Allah?” — “No; it is from Allah.” Kaʿb offered to give away all that he owned, and was told to keep some of it, which would be better for him. And since it was truthfulness that had saved him, he vowed never to speak anything but the truth for as long as he lived. Then Allah sent down: “Allah has turned to the Prophet, the Emigrants and the Helpers…” as far as “O you who believe, be mindful of Allah, and be with the truthful.”"
+      ],
+      "source": "Kaʿb ibn Mālik: al-Bukhārī (4418) and Muslim (2769).",
+      "rank": "agreed"
     }
   ],
   "aim": "To lay bare the state of each group: a clear break with the disbelievers, the exposing of the hypocrites, and the marking out of the believers.",
@@ -193,7 +223,8 @@
           "number": "4654"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "Saʿīd ibn Jubayr said: I said to Ibn ʿAbbās: “Sūrat al-Tawbah?” He said: “Al-Tawbah — it is the Exposer. It kept coming down, ‘and among them… and among them…’, until they thought that it would leave not one of them unmentioned.”",
@@ -210,7 +241,8 @@
           "number": "3031"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "Abū Bakr said: I said to the Prophet ﷺ while I was in the cave: “If one of them looked beneath his feet, he would see us.” He said: “What do you think, Abū Bakr, of two — when Allah is their third?”",
@@ -227,7 +259,8 @@
           "number": "2381"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "Zayd ibn Thābit, charged by Abū Bakr with gathering the Qurʾan after the battle of al-Yamāmah, said: “I searched for the Qurʾan, collecting it from palm-stalks, flat stones and the hearts of men, until I found the end of Sūrat al-Tawbah with Abū Khuzaymah al-Anṣārī, and with no one else: ‘There has come to you a Messenger from among yourselves…’ to the close of Barāʾah.”",
@@ -239,10 +272,11 @@
           "number": "4679"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
-  "virtuesNote": "Why no basmalah stands at its head: Ibn Kathīr gives the reason that is certain — the Companions did not write one there in the master copy, and in that they are followed. As to why they did not, al-Qurṭubī lists five opinions. The best known is ʿUthmān’s reply to Ibn ʿAbbās, that its subject resembled that of al-Anfāl and the Prophet ﷺ died without saying whether it was part of it (al-Tirmidhī 3086, Abū Dāwūd 786); al-Tirmidhī graded it ḥasan, and al-Albānī weak. Another, related from ʿAlī, is that the basmalah is a grant of security, and this surah came down with the lifting of it.",
+  "virtuesNote": "Why no basmalah stands at its head: the Companions did not write one there in the master copy, and in that they are followed. That is the reason Ibn Kathīr gives.",
   "before": "Al-Anfāl is about Badr, the first campaign; al-Tawbah about Tabūk, the last. Al-Anfāl ended with the bonds between believers; al-Tawbah begins by dissolving the bonds with those who broke faith.",
   "after": "Al-Tawbah is the last of the long Madinan surahs at the front of the muṣḥaf. With Yūnus the order turns back to Makkah, and to a run of surahs named after prophets.",
   "notable": [

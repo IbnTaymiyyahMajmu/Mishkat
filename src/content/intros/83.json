@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "والثّالِثُ: أنَّها نَزَلَتْ بَيْنَ مَكَّةَ، والمَدِينَةِ، قالَهُ جابِرُ بْنُ زَيْدٍ وابْنُ السّائِبِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْمُطَفِّفِينَ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ النَّحّاسُ، وابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ المُطَفِّفِينَ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by al-Naḥḥās and Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "قالَ القُرْطُبِيُّ: وهي مَكِّيَّةٌ في قَوْلِ ابْنِ مَسْعُودٍ، والضَّحّاكِ، ومُقاتِلٍ، ومَدَنِيَّةٌ في قَوْلِ الحَسَنِ، وعِكْرِمَةِ",
+        "says": "Citing al-Qurṭubī: Makkan in the saying of Ibn Masʿūd, al-Ḍaḥḥāk and Muqātil; Madinan in the saying of al-Ḥasan and ʿIkrimah."
+      }
     ]
   },
   "setting": [
@@ -43,6 +63,7 @@
       "title": "The markets of Madinah",
       "text": "When the Prophet of Allah ﷺ came to Madinah, they were among the worst of people in measuring. Then Allah sent down: “Woe to those who give short measure,” and they made good their measuring after that.",
       "source": "Ibn ʿAbbās: al-Nasāʾī in al-Sunan al-Kubrā and Ibn Mājah (2223); ḥasan according to al-Albānī.",
+      "rank": "hasan",
       "evidence": {
         "work": "ibn-katheer",
         "ayah": 1,
@@ -103,7 +124,8 @@
           "number": "4244"
         }
       ],
-      "grade": "Ḥasan ṣaḥīḥ, said al-Tirmidhī; ḥasan according to al-Albānī"
+      "grade": "Ḥasan according to al-Albānī",
+      "rank": "hasan"
     },
     {
       "text": "On “the Day mankind will stand before the Lord of the worlds”, the Prophet ﷺ said: “Until one of them is sunk in his own sweat up to the middle of his ears.”",
@@ -119,7 +141,8 @@
           "number": "2862"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Infiṭār spoke of noble scribes recording every deed. Al-Muṭaffifīn opens the two registers they write in.",

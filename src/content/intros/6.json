@@ -13,7 +13,7 @@
   "revelation": {
     "place": "makkah",
     "verdict": "Makkan, by the majority",
-    "detail": "Mujāhid relates from Ibn ʿAbbās that it is among what came down in Makkah, and that is the saying of al-Ḥasan, Qatādah and Jābir ibn Zayd; al-Qurṭubī calls it the saying of the greater number. Reports from Ibn ʿAbbās except between two and six ayat as Madinan, among them “They did not esteem Allah as He deserves” (6:91) and the three ayat of the commandments (6:151–153). It is widely related from him that the surah came down in Makkah at night, all at once, escorted by seventy thousand angels raising their voices in glorification. The traditional order places it fifty-fifth.",
+    "detail": "Mujāhid relates from Ibn ʿAbbās that it is among what came down in Makkah, and that is the saying of al-Ḥasan, Qatādah and Jābir ibn Zayd; al-Qurṭubī calls it the saying of the greater number. Reports from Ibn ʿAbbās except between two and six ayat as Madinan, among them “They did not esteem Allah as He deserves” (6:91) and the three ayat of the commandments (6:151–153). The traditional order places it fifty-fifth.",
     "period": "makkah-late",
     "when": "The later years in Makkah",
     "evidence": [
@@ -26,11 +26,26 @@
         "work": "qurtubi",
         "ayah": 1,
         "quote": "سُورَةُ الْأَنْعَامِ وَهِيَ مَكِّيَّةٌ فِي قَوْلِ الْأَكْثَرِينَ"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْأَنْعَامِ مَكِّيَّةٌ، وَهِيَ مِائَةٌ وَخَمْسٌ وَسِتُّونَ آيَةً",
+        "says": "Makkan."
       },
       {
-        "work": "ibn-katheer",
+        "work": "aldur-almanthoor",
         "ayah": 1,
-        "quote": "عَنِ ابْنِ عَبَّاسٍ، قَالَ: نَزَلَتْ سُورَةُ الْأَنْعَامِ بِمَكَّةَ لَيْلًا جُمْلَةً، حَوْلَهَا سَبْعُونَ أَلْفَ مَلَكٍ يَجْأَرُونَ حَوْلَهَا بِالتَّسْبِيحِ"
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ وأبُو الشَّيْخِ، وابْنُ مَرْدَوَيْهِ والبَيْهَقِيُّ في الدَّلائِلِ عَنِ ابْنِ عَبّاسٍ قالَ: أُنْزِلَتْ سُورَةُ الأنْعامِ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, Abū al-Shaykh, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "قالَ الثَّعْلَبِيُّ: سُورَةُ الأنْعامِ مَكِّيَّةٌ إلّا سِتَّ آياتٍ نَزَلَتْ بِالمَدِينَةِ",
+        "says": "Citing al-Thaʿlabī: Makkan, except six ayat that came down in Madinah."
       }
     ]
   },
@@ -49,7 +64,8 @@
       ],
       "title": "“Do not drive them away”",
       "text": "Saʿd said: “We were six men with the Prophet ﷺ, and the idolaters said to him: ‘Drive these away, so that they do not grow bold with us.’ There were myself, Ibn Masʿūd, a man of Hudhayl, Bilāl, and two men I shall not name. There came into the mind of the Messenger of Allah ﷺ what Allah willed should come, and he thought it over. Then Allah sent down: ‘Do not drive away those who call upon their Lord morning and evening, seeking His Face.’”",
-      "source": "Saʿd ibn Abī Waqqāṣ: Muslim (2413)."
+      "source": "Saʿd ibn Abī Waqqāṣ: Muslim (2413).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -58,7 +74,8 @@
       ],
       "title": "“Which of us has not wronged himself?”",
       "text": "When “Those who believe and do not mix their faith with wrong” came down, it weighed on the Companions, and they said: “Which of us has not wronged himself?” The Messenger of Allah ﷺ said: “It is not as you think. It is only as Luqmān said to his son: ‘My son, do not associate partners with Allah; association is a tremendous wrong.’”",
-      "source": "ʿAbd Allāh ibn Masʿūd: al-Bukhārī (4629) and Muslim (124)."
+      "source": "ʿAbd Allāh ibn Masʿūd: al-Bukhārī (4629) and Muslim (124).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -67,7 +84,8 @@
       ],
       "title": "“What Allah kills, you will not eat?”",
       "text": "Some people came to the Prophet ﷺ and said: “Messenger of Allah, are we to eat what we kill, and not eat what Allah kills?” Then Allah sent down: “So eat of that over which the name of Allah has been mentioned, if you believe in His ayat,” to His saying: “if you were to obey them, you would be idolaters.”",
-      "source": "Ibn ʿAbbās: al-Tirmidhī (3069); ṣaḥīḥ according to al-Albānī."
+      "source": "Ibn ʿAbbās: al-Tirmidhī (3069); ṣaḥīḥ according to al-Albānī.",
+      "rank": "sahih"
     }
   ],
   "aim": "To establish the creed of tawḥīd by rational proofs, and to demolish the beliefs of idolatry.",
@@ -154,7 +172,8 @@
           "number": "4627"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "When this ayah came down — “Say: He is able to send punishment upon you from above you” — the Messenger of Allah ﷺ said: “I seek refuge in Your Face.” “Or from beneath your feet” — he said: “I seek refuge in Your Face.” “Or to confound you in factions and make some of you taste the violence of others” — he said: “This is lighter,” or “This is easier.”",
@@ -166,7 +185,8 @@
           "number": "4628"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“The Hour will not come until the sun rises from its place of setting. When it rises and the people see it, they will all believe — and that is when ‘no soul will benefit from its faith, if it had not believed before.’”",
@@ -182,7 +202,8 @@
           "number": "157"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "Ibn ʿAbbās said: “If it would please you to know the ignorance of the Arabs, read what comes after the hundred and thirtieth ayah of Sūrat al-Anʿām: ‘Lost are those who killed their children in folly, without knowledge.’”",
@@ -194,10 +215,10 @@
           "number": "3524"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
-  "virtuesNote": "The report that the surah came down in a single night with seventy thousand angels is carried by nearly every commentary, and Ibn Kathīr gives several of its chains; their chains have weakness in them, and Ibn al-Ṣalāḥ said he had not seen a sound chain for it. It is given above as what is related, not as established. The saying of Ibn Masʿūd about the three ayat of the commandments — that whoever wishes to see the testament of Muḥammad ﷺ bearing his seal should read them (al-Tirmidhī 3070) — has a weak chain according to al-Albānī.",
   "before": "Al-Māʾidah ended: “To Allah belongs the dominion of the heavens and the earth and what is in them.” Al-Anʿām opens: “Praise be to Allah, who created the heavens and the earth.”",
   "after": "Al-Anʿām argues for tawḥīd from creation. Al-Aʿrāf argues it from history: what became of each people who were called to it and refused.",
   "notable": [

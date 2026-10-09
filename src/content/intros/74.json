@@ -27,13 +27,27 @@
         "ayah": 1,
         "quote": "عَنْ جَابِرٍ أَنَّهُ كَانَ يَقُولُ: أَوَّلُ شَيْءٍ نَزَلَ مِنَ الْقُرْآنِ: ﴿يَا أَيُّهَا الْمُدَّثِّرُ﴾ وَخَالَفَهُ الْجُمْهُورُ فَذَهَبُوا إِلَى أَنَّ أَوَّلَ الْقُرْآنِ نُزُولًا"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْمُدَّثِّرِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، وابْنُ مَرْدُويَهَ والنَّحّاسُ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ المُدَّثِّرِ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, Ibn Mardawayh, al-Naḥḥās and al-Bayhaqī."
+      }
     ]
   },
   "setting": [
     "After the first words in the cave of Ḥirāʾ, the revelation stopped for a time. The Prophet ﷺ described its return himself, as Jābir relates. “While I was walking I heard a voice from the sky. I raised my eyes, and there was the angel who had come to me at Ḥirāʾ, seated on a throne between the sky and the earth. I was struck with awe of him, and went back and said: cover me, cover me.” And Allah sent down: “O you enveloped in your cloak — arise and warn; magnify your Lord; purify your garments; and shun all defilement.” After that, he said, the revelation came strongly and in close succession.",
     "Those first seven ayat are a commission in the fewest possible words: the task, and the character of the one who is to carry it out.",
     "The middle of the surah belongs to a later moment and a particular man. Quraysh needed something to tell the pilgrims who would soon arrive and hear the Qurʾan. They went to al-Walīd ibn al-Mughīrah, the richest and most respected of them, who had himself been shaken by what he heard. The surah describes him at work: he reflected, and he plotted; he looked; he frowned and scowled; he turned away in pride — and said, “This is nothing but magic handed down. This is nothing but the word of a human being.” The reply names where he is going: Saqar. “Over it are nineteen.”",
-    "The number was meant as a test, and it worked as one. Abū Jahl is reported to have mocked it: nineteen — surely ten of you can deal with each of them. The long ayah that follows says exactly this: We have made their number a trial for those who disbelieve, a certainty for those given the Book, and an increase in faith for those who believe."
+    "The number was meant as a test, and it worked as one. Abū Jahl is reported to have mocked it: nineteen — surely ten of you can deal with each of them.{reported} The long ayah that follows says exactly this: We have made their number a trial for those who disbelieve, a certainty for those given the Book, and an increase in faith for those who believe."
   ],
   "occasions": [
     {
@@ -44,6 +58,7 @@
       "title": "After the pause",
       "text": "“I stayed in retreat at Ḥirāʾ for a month. When my retreat was over I came down into the bottom of the valley, and I was called. I looked in front of me and behind me, to my right and to my left, and saw no one. Then I raised my head, and there he was, upon a throne in the air…” He went to Khadījah and said, “Cover me,” and these ayat were sent down.",
       "source": "Jābir ibn ʿAbd Allāh: al-Bukhārī (4922–4926) and Muslim (161).",
+      "rank": "agreed",
       "evidence": {
         "work": "zad-almaseer",
         "ayah": 1,
@@ -57,7 +72,8 @@
       ],
       "title": "Al-Walīd ibn al-Mughīrah",
       "text": "The commentators relate that these ayat came down about al-Walīd ibn al-Mughīrah, whom Quraysh consulted on what to say of the Qurʾan. He admitted that it was not poetry and not the muttering of a soothsayer, and then settled on calling it magic that parts a man from his family.",
-      "source": "Ibn Kathīr and Ibn al-Jawzī, from Ibn ʿAbbās and others; Ibn Isḥāq gives the story at length."
+      "source": "Ibn Kathīr and Ibn al-Jawzī, from Ibn ʿAbbās and others; Ibn Isḥāq gives the story at length. Al-Qurṭubī: “the commentators hold that he is al-Walīd ibn al-Mughīrah.”",
+      "rank": "reported"
     }
   ],
   "aim": "The command to rise and call to Allah — and a threat to those who deny the call.",
@@ -125,7 +141,8 @@
           "number": "161"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Muzzammil told him to stand by night before his Lord. Al-Muddaththir tells him to stand before the people.",

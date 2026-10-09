@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "عَنِ ابْنِ عَبَّاسٍ قَالَ: قَالَ أَبُو بَكْرٍ: يَا رَسُولَ اللَّهِ، قَدْ شبتَ؟ قَالَ: \"شيَّبتني هُودٌ، وَالْوَاقِعَةُ، وَالْمُرْسَلَاتُ، وعَمَّ يَتَسَاءَلُونَ، وَإِذَا الشَّمْسُ كُوِّرَتْ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْوَاقِعَةِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ في «الدَّلائِلِ» عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ «الواقِعَةِ» بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ في قَوْلِ الحَسَنِ، وعِكْرِمَةَ، وجابِرٍ، وعَطاءٍ",
+        "says": "Makkan, in the saying of al-Ḥasan, ʿIkrimah, Jābir ibn Zayd and ʿAṭāʾ."
+      }
     ]
   },
   "setting": [
@@ -43,7 +63,8 @@
       ],
       "title": "Rain, and who is thanked for it",
       "text": "The people were given rain in the time of the Prophet ﷺ, and he said: “Some of the people have risen this morning grateful, and some of them ungrateful. They said: this is Allah’s mercy; and some of them said: such-and-such a rain-star has been true.” Then this was revealed: “I swear by the setting-places of the stars…” until “and you make your provision that you deny.”",
-      "source": "Ibn ʿAbbās: Muslim (73)."
+      "source": "Ibn ʿAbbās: Muslim (73).",
+      "rank": "agreed"
     }
   ],
   "aim": "To strike fear of the Day of Resurrection, establish that it will occur, set out the kinds of people on it, and make plain the recompense of each.",
@@ -115,10 +136,10 @@
           "number": "3297"
         }
       ],
-      "grade": "Ḥasan gharīb, said al-Tirmidhī; ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     }
   ],
-  "virtuesNote": "The widely quoted report that whoever recites al-Wāqiʿah every night will never be touched by poverty is weak; al-Albānī grades it ḍaʿīf (al-Silsilah al-Ḍaʿīfah, 289).",
   "before": "Al-Raḥmān described two pairs of gardens, one above the other. Al-Wāqiʿah says for whom: the higher for the Foremost, the other for the People of the Right — and adds the third company, which al-Raḥmān had called the guilty.",
   "after": "Al-Wāqiʿah ends: glorify the name of your Lord, the Tremendous. Al-Ḥadīd begins: everything in the heavens and the earth glorifies Allah.",
   "notable": [

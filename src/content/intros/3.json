@@ -19,7 +19,7 @@
   "revelation": {
     "place": "madinah",
     "verdict": "Madinan, by agreement",
-    "detail": "Al-Qurṭubī records agreement that it is Madinan. It was not sent down on one occasion. The commentators relate that its opening, to some eighty ayat, came down about the delegation of Najrān — sixty riders, led by the two men called al-ʿĀqib and al-Sayyid, who disputed with the Prophet ﷺ about ʿĪsā; Ibn Kathīr dates their coming to the ninth year. Its long central passage is about the battle of Uḥud, fought in Shawwāl of the third year. The traditional order places it eighty-ninth, after al-Baqarah and al-Anfāl.",
+    "detail": "Al-Qurṭubī records agreement that it is Madinan. It was not sent down on one occasion. The commentators relate that its opening, to some eighty ayat, came down about the delegation of Najrān — sixty riders, led by the two men called al-ʿĀqib and al-Sayyid, who disputed with the Prophet ﷺ about ʿĪsā; Ibn Kathīr dates their coming to the ninth year.{?This is Ibn Kathīr’s dating of the delegation. The middle of the surah is about Uḥud, in the third year; so the surah did not come down at one time, and which part came first is not settled.} Its long central passage is about the battle of Uḥud, fought in Shawwāl of the third year. The traditional order places it eighty-ninth, after al-Baqarah and al-Anfāl.",
     "period": "madinah-early",
     "when": "Madinah — after Uḥud in the third year, with its opening tied to the delegation of Najrān",
     "evidence": [
@@ -38,10 +38,30 @@
         "ayah": 1,
         "quote": "هَذِهِ السُّورَةُ مَدَنِيَّةٌ بِإِجْمَاعٍ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةِ آلِ عِمْرَانَ -مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ في ”فَضائِلِهِ“، والنَّحّاسُ في ”ناسِخِهِ“، والبَيْهَقِيُّ في ”الدَّلائِلِ“، مِن طُرُقٍ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”آلِ عِمْرانَ“ بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, al-Naḥḥās and al-Bayhaqī, through several chains."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَدَنِيَّةٌ، قالَ القُرْطُبِيُّ: بِالإجْماعِ",
+        "says": "Madinan, by agreement, citing al-Qurṭubī."
+      }
     ]
   },
   "setting": [
-    "The Christians of Najrān sent their leading men to Madinah. They came, the commentators relate, sixty riders strong, and pressed one question: if ʿĪsā is not the son of God, then who was his father? The surah does not begin its reply with ʿĪsā. It begins a generation earlier, with a woman — the wife of ʿImrān — vowing the child she carried to the service of Allah, and her dismay at the birth: “My Lord, I have delivered a female.” The girl is Maryam. She grows up in the sanctuary under Zakariyyā’s care, and he finds provision with her that no one has brought. Then the angels come to her with the news of a son. By the time the surah states its conclusion, the listener has watched the whole family grow: “The likeness of ʿĪsā with Allah is as the likeness of Ādam. He created him from dust, then said to him ‘Be’, and he was.”",
+    "The Christians of Najrān sent their leading men to Madinah. They came, the commentators relate, sixty riders strong, and pressed one question: if ʿĪsā is not the son of God, then who was his father?{reported} The surah does not begin its reply with ʿĪsā. It begins a generation earlier, with a woman — the wife of ʿImrān — vowing the child she carried to the service of Allah, and her dismay at the birth: “My Lord, I have delivered a female.” The girl is Maryam. She grows up in the sanctuary under Zakariyyā’s care, and he finds provision with her that no one has brought. Then the angels come to her with the news of a son. By the time the surah states its conclusion, the listener has watched the whole family grow: “The likeness of ʿĪsā with Allah is as the likeness of Ādam. He created him from dust, then said to him ‘Be’, and he was.”",
     "When the argument was finished and they still held back, an ayah came down proposing something beyond argument: let each side bring its sons and its women and itself, and pray together that the curse of Allah fall on whoever is lying. Ḥudhayfah relates that the two leaders had come meaning to do exactly that, and that one said to the other: do not — by Allah, if he is a prophet and we do this, neither we nor our descendants will ever prosper. They asked for terms instead, and for a trustworthy man to be sent back with them. He ﷺ sent Abū ʿUbaydah.",
     "The second event was Uḥud. The Muslims had the battle won; then the archers posted on the hill left their place for the spoils, the Makkan cavalry came round behind, and it became a slaughter. Seventy were killed, Ḥamzah among them. The Prophet’s face was cut and a tooth broken, and a voice cried that Muḥammad had been killed. Some sat down where they were. Nearly sixty ayat (3:121–179) go over that day — without softening it. “Among you were those who wanted this world, and among you were those who wanted the next.”",
     "And at its centre: “Muḥammad is only a messenger; messengers have passed away before him. If he dies or is killed, will you turn back on your heels?” Seven years later, on the morning he ﷺ did die, with ʿUmar refusing to believe it, Abū Bakr stood up and recited that ayah. ʿĀʾishah said: it was as though the people had not known that Allah had sent it down until Abū Bakr recited it.",
@@ -55,7 +75,8 @@
       ],
       "title": "The mutual invocation",
       "text": "Al-ʿĀqib and al-Sayyid, the two chiefs of Najrān, came to the Messenger of Allah ﷺ intending to invoke a curse with him. One said to the other: “Do not do it. By Allah, if he is a prophet and we invoke the curse, we shall not prosper, nor our descendants after us.” They said: “We will give you what you ask of us; send with us a trustworthy man.” He said: “I will send with you a trustworthy man, truly trustworthy.” Then he said: “Stand up, Abū ʿUbaydah ibn al-Jarrāḥ.” And when he stood: “This is the trustworthy one of this community.”",
-      "source": "Ḥudhayfah: al-Bukhārī (4380). Saʿd ibn Abī Waqqāṣ adds that when the ayah came down he ﷺ called ʿAlī, Fāṭimah, Ḥasan and Ḥusayn and said, “O Allah, these are my family”: Muslim (2404)."
+      "source": "Ḥudhayfah: al-Bukhārī (4380). Saʿd ibn Abī Waqqāṣ adds that when the ayah came down he ﷺ called ʿAlī, Fāṭimah, Ḥasan and Ḥusayn and said, “O Allah, these are my family”: Muslim (2404).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -64,7 +85,8 @@
       ],
       "title": "Abū Ṭalḥah’s garden",
       "text": "Abū Ṭalḥah had more date-palms than any of the Helpers in Madinah, and the dearest of his property to him was Bayruḥāʾ, facing the mosque; the Messenger of Allah ﷺ used to go into it and drink its sweet water. When “You will never attain righteousness until you spend of what you love” came down, Abū Ṭalḥah stood and said: “Messenger of Allah, the dearest of my wealth to me is Bayruḥāʾ, and it is charity for Allah.” He said: “Well done! That is a wealth that profits.”",
-      "source": "Anas ibn Mālik: al-Bukhārī (4554) and Muslim (998)."
+      "source": "Anas ibn Mālik: al-Bukhārī (4554) and Muslim (998).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -73,7 +95,8 @@
       ],
       "title": "“You have no say in the matter”",
       "text": "On the day of Uḥud the Prophet’s tooth was broken and his head was gashed. Wiping the blood away, he said: “How can a people prosper who have wounded their Prophet and broken his tooth, while he calls them to Allah?” Then Allah sent down: “You have no say in the matter — whether He turns to them or punishes them.”",
-      "source": "Anas ibn Mālik: Muslim (1791). Ibn ʿUmar relates it of his praying against certain men by name in the dawn prayer: al-Bukhārī (4069)."
+      "source": "Anas ibn Mālik: Muslim (1791). Ibn ʿUmar relates it of his praying against certain men by name in the dawn prayer: al-Bukhārī (4069).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -82,7 +105,8 @@
       ],
       "title": "“Allah is enough for us”",
       "text": "“‘Allah is sufficient for us, and He is the best to rely on’ — Ibrāhīm said it when he was thrown into the fire, and Muḥammad ﷺ said it when they said: ‘The people have gathered against you, so fear them’ — and it only increased them in faith.”",
-      "source": "Ibn ʿAbbās: al-Bukhārī (4563)."
+      "source": "Ibn ʿAbbās: al-Bukhārī (4563).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -91,7 +115,8 @@
       ],
       "title": "Praised for what they did not do",
       "text": "Some men of the hypocrites, in the time of the Messenger of Allah ﷺ, would stay behind when he went out on an expedition, and be glad of their staying. When he returned they made excuses to him and swore oaths, and wished to be praised for what they had not done. So there came down: “Do not think that those who rejoice in what they have done, and love to be praised for what they have not done…”",
-      "source": "Abū Saʿīd al-Khudrī: al-Bukhārī (4567) and Muslim (2777)."
+      "source": "Abū Saʿīd al-Khudrī: al-Bukhārī (4567) and Muslim (2777).",
+      "rank": "agreed"
     }
   ],
   "aim": "Steadfastness upon Islam once it has been completed and made clear, and the answering of the doubts raised by the People of the Book — the Christians in particular.",
@@ -171,7 +196,8 @@
           "number": "804"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“The Qurʾan will be brought on the Day of Resurrection with its people, those who used to act by it; at its head will be Sūrat al-Baqarah and Āl ʿImrān.”",
@@ -183,7 +209,8 @@
           "number": "805"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "Ibn ʿAbbās said: I spent a night at the house of my aunt Maymūnah. The Messenger of Allah ﷺ talked with his family for a while, then slept. When the last third of the night came he sat up, looked at the sky, and recited: “In the creation of the heavens and the earth, and the alternation of night and day, are signs for people of understanding.” Then he rose, made ablution, cleaned his teeth, and prayed.",
@@ -199,7 +226,8 @@
           "number": "763"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "Abū Bakr came out while ʿUmar was speaking to the people, and said: “Whoever among you worshipped Muḥammad — Muḥammad has died. And whoever worshipped Allah — Allah is living and does not die. Allah has said: ‘Muḥammad is only a messenger; messengers have passed away before him…’” By Allah, it was as though the people had not known that Allah had sent down this ayah until Abū Bakr recited it; and everyone took it up from him.",
@@ -211,7 +239,8 @@
           "number": "4454"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Baqarah ended with a prayer: “help us against the disbelieving people.” Āl ʿImrān takes up both fronts of that struggle — the argument with the People of the Book, and the battlefield.",

@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "هَذِهِ آدَابٌ ، أَدَّبَ اللَّهُ بِهَا عِبَادَهُ الْمُؤْمِنِينَ فِيمَا يُعَامِلُونَ بِهِ الرَّسُولَ ﷺ مِنَ التَّوْقِيرِ وَالِاحْتِرَامِ وَالتَّبْجِيلِ وَالْإِعْظَامِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْحُجُرَاتِ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَتْ: نَزَلَتْ سُورَةُ الحُجُراتِ بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَدَنِيَّةٌ",
+        "says": "Madinan."
+      }
     ]
   },
   "setting": [
@@ -43,7 +63,8 @@
       ],
       "title": "Raised voices",
       "text": "“The two best men nearly perished — Abū Bakr and ʿUmar. They raised their voices in the presence of the Prophet ﷺ when the riders of Banū Tamīm came to him: one of them pointed to al-Aqraʿ ibn Ḥābis and the other to another man… and their voices rose. So Allah sent down: ‘O you who believe, do not raise your voices above the voice of the Prophet.’” Ibn al-Zubayr said: after this ayah ʿUmar would not make the Messenger of Allah ﷺ hear him until he asked him to repeat.",
-      "source": "Ibn Abī Mulaykah, from ʿAbd Allāh ibn al-Zubayr: al-Bukhārī (4845)."
+      "source": "Ibn Abī Mulaykah, from ʿAbd Allāh ibn al-Zubayr: al-Bukhārī (4845).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -52,7 +73,8 @@
       ],
       "title": "Thābit ibn Qays",
       "text": "The Prophet ﷺ missed Thābit ibn Qays, and a man found him sitting in his house with his head bowed. “It is bad: I used to raise my voice above the voice of the Prophet ﷺ; my deeds are void and I am of the people of the Fire.” The Prophet ﷺ sent the man back with great good news: “Go to him and say: you are not of the people of the Fire; rather, you are of the people of Paradise.”",
-      "source": "Anas ibn Mālik: al-Bukhārī (4846) and Muslim (119)."
+      "source": "Anas ibn Mālik: al-Bukhārī (4846) and Muslim (119).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -61,7 +83,8 @@
       ],
       "title": "Two parties of believers",
       "text": "It was said to the Prophet ﷺ, “If only you would go to ʿAbd Allāh ibn Ubayy.” He rode to him on a donkey, and Ibn Ubayy said, “Keep away from me; the stink of your donkey offends me.” A man of the Anṣār answered him, each side’s men grew angry, and there were blows with palm-stalks, hands and sandals. “And it has reached us that this was sent down about them: ‘If two parties of the believers fight, make peace between them.’”",
-      "source": "Anas ibn Mālik: al-Bukhārī (2691) and Muslim (1799)."
+      "source": "Anas ibn Mālik: al-Bukhārī (2691) and Muslim (1799).",
+      "rank": "agreed"
     }
   ],
   "aim": "To establish the morals of the Muslim society, and to warn against evil conduct.",
@@ -128,7 +151,8 @@
           "number": "2589"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "It was said: “Messenger of Allah, who is the most noble of people?” He said: “The most mindful of Allah among them.”",
@@ -144,7 +168,8 @@
           "number": "2378"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“Beware of suspicion, for suspicion is the most untruthful of speech. Do not seek out faults, do not spy, do not envy one another, do not turn your backs on one another, and do not hate one another. Be servants of Allah, brothers.”",
@@ -160,7 +185,8 @@
           "number": "2563"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Fatḥ ended by describing the Companions as “merciful among themselves”. Al-Ḥujurāt spells out what that requires.",

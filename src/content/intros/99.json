@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "مَدَنِيَّةٌ فِي قَوْلِ ابْنِ عَبَّاسٍ وَقَتَادَةَ. وَمَكِّيَّةٌ فِي قَوْلِ ابْنِ مَسْعُودٍ وَعَطَاءٍ وَجَابِرٍ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الزَّلْزَلَةِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿إذا زُلْزِلَتِ﴾ بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَدَنِيَّةٌ في قَوْلِ ابْنِ عَبّاسٍ، وقَتادَةَ، ومَكِّيَّةٌ في قَوْلِ ابْنِ مَسْعُودٍ، وعَطاءٍ، وجابِرٍ",
+        "says": "Madinan in the saying of Ibn ʿAbbās and Qatādah; Makkan in the saying of Ibn Masʿūd, ʿAṭāʾ and Jābir."
+      }
     ]
   },
   "setting": [
@@ -81,10 +101,10 @@
           "number": "987"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
-  "virtuesNote": "The reports that reciting this surah equals half, or a quarter, of the Qurʾan are in al-Tirmidhī (2893–2895), who called them gharīb; what they say of this surah in particular is not established, according to al-Albānī.",
   "before": "Al-Bayyinah ended with the reward kept for those who fear their Lord. Al-Zalzalah shows the Day it is handed out, and the scale it is measured on.",
   "after": "Al-ʿĀdiyāt turns to why people forget that Day — ingratitude, and a fierce love of wealth — and ends, as this surah begins, at the opening of the graves.",
   "notable": [

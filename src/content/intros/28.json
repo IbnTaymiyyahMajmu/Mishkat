@@ -27,6 +27,20 @@
         "ayah": 1,
         "quote": "مَكِّيَّةٌ كُلُّهَا فِي قَوْلِ الْحَسَنِ وَعِكْرِمَةَ وَعَطَاءٍ وَقَالَ ابْنُ عَبَّاسٍ وَقَتَادَةُ إِلَّا آيَةً نَزَلَتْ بَيْنَ مَكَّةَ وَالْمَدِينَةِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْقَصَصِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُوَيْهِ، والبَيْهَقِيُّ في ”الدَّلائِلِ“، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”القَصَصِ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      }
     ]
   },
   "setting": [
@@ -43,7 +57,8 @@
       ],
       "title": "Abū Ṭālib",
       "text": "When Abū Ṭālib was dying, the Messenger of Allah ﷺ came to him and found Abū Jahl and ʿAbd Allāh ibn Abī Umayyah with him. He said: “Uncle, say ‘lā ilāha illā Allāh’ — a word by which I can plead for you before Allah.” The two said: “Abū Ṭālib, will you turn from the religion of ʿAbd al-Muṭṭalib?” They kept at him until the last thing he said was that he was upon the religion of ʿAbd al-Muṭṭalib. And Allah sent down about Abū Ṭālib: “You do not guide whom you love, but Allah guides whom He wills.”",
-      "source": "Al-Musayyib ibn Ḥazn: al-Bukhārī (4772) and Muslim (24)."
+      "source": "Al-Musayyib ibn Ḥazn: al-Bukhārī (4772) and Muslim (24).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -52,7 +67,8 @@
       ],
       "title": "At al-Juḥfah",
       "text": "On “He will surely bring you back to a place of return”, Ibn ʿAbbās said: “To Makkah.”",
-      "source": "Ibn ʿAbbās: al-Bukhārī (4773)."
+      "source": "Ibn ʿAbbās: al-Bukhārī (4773).",
+      "rank": "agreed"
     }
   ],
   "aim": "To set out the true scales of power, by showing Allah’s might and His way of helping the oppressed and destroying the arrogant.",

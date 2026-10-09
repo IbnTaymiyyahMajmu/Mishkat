@@ -114,9 +114,9 @@ function letters(text) {
 }
 
 /** The copy's own text for a quotation, or null if the copy does not say it. */
-function locked(quote, source) {
+function locked(quote, source, least = 8) {
   const want = letters(quote).chars;
-  if (want.length < 8) return null;
+  if (want.length < least) return null;
   const have = letters(source);
   const found = have.chars.indexOf(want);
   if (found < 0) return null;
@@ -143,6 +143,31 @@ const aimsFile = JSON.stringify(aims, null, 2) + "\n";
 const aimsNow = existsSync(AIMS) ? await readFile(AIMS, "utf8") : "";
 
 // ── the introductions ───────────────────────────────────────────────────────
+
+/**
+ * The works an introduction may quote: scholars of Ahl al-Sunnah, and no one
+ * else. The copy holds other works as well; they are left out of this list on
+ * purpose, and a quotation from one of them is an error. The reasons, work by
+ * work, are in src/content/README.md.
+ */
+const QUOTABLE = new Set([
+  "mukhtasar",
+  "tabari",
+  "baghawi",
+  "ibn-katheer",
+  "ibn-alqayyim",
+  "zad-almaseer",
+  "aldur-almanthoor",
+  "fath-alqadeer",
+  "adwaa-albayan",
+  "ibn-uthaymeen",
+  "qurtubi",
+]);
+
+/** How a report stands — `Rank` in src/lib/intros/types.ts. */
+const RANKS = ["agreed", "sahih", "hasan", "companion", "disputed", "reported"];
+/** How a source line says a report is in one of the two Ṣaḥīḥs. */
+const IN_THE_TWO = ["al-Bukhārī (", "Muslim (", "al-Bukhārī and Muslim", "Ṣaḥīḥ al-Bukhārī", "Ṣaḥīḥ Muslim"];
 
 const PLACES = ["makkah", "madinah", "disputed"];
 const PERIODS = ["makkah-early", "makkah-middle", "makkah-late", "madinah-early", "madinah-middle", "madinah-late"];
@@ -216,10 +241,24 @@ for (const name of names.sort((a, b) => parseInt(a) - parseInt(b))) {
 
   for (const o of intro.occasions ?? []) {
     if (!text(o.title) || !text(o.text) || !text(o.source)) bad(`an occasion is missing its title, text or source`);
+    if (o.story !== undefined && !(Array.isArray(o.story) && o.story.length && o.story.every(text))) {
+      bad(`the occasion “${o.title}” has a story that is not paragraphs of writing`);
+    }
+    if (o.caveat !== undefined && !(text(o.caveat) && o.caveat.length >= 20)) bad(`the occasion “${o.title}” has a caveat that says nothing`);
     if (o.ayat && !(inSurah(o.ayat[0]) && inSurah(o.ayat[1]) && o.ayat[0] <= o.ayat[1])) bad(`an occasion is about ayat ${o.ayat}`);
+    // Nothing is called ṣaḥīḥ on the strength of a guess: an occasion ranked
+    // as being in the two Ṣaḥīḥs has to say which of them it is in.
+    if (!RANKS.includes(o.rank)) bad(`the occasion “${o.title}” does not say how it stands`);
+    else if (o.rank === "agreed" && !IN_THE_TWO.some((mark) => String(o.source).includes(mark))) {
+      bad(`the occasion “${o.title}” is ranked as in the two Ṣaḥīḥs, and its source names neither`);
+    }
   }
   for (const v of intro.virtues ?? []) {
+    const inTheTwo = (v.refs ?? []).some((ref) => ref.book === "bukhari" || ref.book === "muslim");
+    if (!RANKS.includes(v.rank)) bad(`a narration (${v.source}) does not say how it stands`);
+    else if ((v.rank === "agreed") !== inTheTwo) bad(`a narration (${v.source}) is ranked ${v.rank}, which its references do not bear out`);
     if (!text(v.text) || !text(v.source) || !text(v.grade)) bad(`a narration is missing its text, source or grade`);
+    if (v.caveat !== undefined && !(text(v.caveat) && v.caveat.length >= 20)) bad(`a narration (${v.source}) has a caveat that says nothing`);
     for (const ref of v.refs ?? []) if (!text(ref.book) || !text(ref.number)) bad(`a narration has a reference without a book or a number`);
   }
   for (const n of intro.notable ?? []) {
@@ -234,20 +273,49 @@ for (const name of names.sort((a, b) => parseInt(a) - parseInt(b))) {
     if (!row || Number(a) < 1 || Number(a) > row.ayat) bad(`points at ${s}:${a}, which is not an ayah`);
   }
 
+  // A sentence that tells of a report which is not ṣaḥīḥ ends with a mark of
+  // how the report stands — `{reported}`, `{disputed}`, `{hasan}` — and only
+  // the account of the surah carries them.
+  //
+  // A date or a figure that is not certain is followed by `{?why it is not}`;
+  // the page shows a small sign there, and the reason to whoever rests on it.
+  const marked = [r.detail, r.when, ...(intro.setting ?? [])].join(" ");
+  for (const [, word] of marked.matchAll(/[{]([^}]*)[}]/g)) {
+    if (word.startsWith("?")) {
+      if (word.length < 20) bad(`a doubt is marked without saying why: {${word}}`);
+    } else if (word !== "weak" && !["hasan", "disputed", "reported"].includes(word)) {
+      bad(`a sentence is marked {${word}}, which is not a standing`);
+    }
+  }
+  const unmarked = JSON.stringify({ ...intro, setting: [], revelation: { ...r, detail: "", when: "" } });
+  if (/[{]([?]|hasan[}]|disputed[}]|weak[}]|reported[}])/.test(unmarked)) bad("a mark stands outside the account of the surah");
+  // Weak and fabricated reports are neither given nor mentioned.
+  if ((intro.occasions ?? []).some((o) => o.rank === "weak") || (intro.virtues ?? []).some((v) => v.rank === "weak")) {
+    bad("gives a report ranked weak; a weak report is left out, not marked");
+  }
+  if (marked.includes("{weak}")) bad("tells of a report marked {weak}; a weak report is left out, not marked");
+
   // The quotations, held to the copy.
   const everyQuote = [
     ...(r.evidence ?? []).map((e) => ({ e, surah })),
+    // A heading can be two words long — "هي مكية" — and is still what the book says.
+    ...(r.attested ?? []).map((e) => ({ e, surah, least: 6 })),
     ...(intro.occasions ?? []).flatMap((o) => (o.evidence ? [{ e: o.evidence, surah }] : [])),
     ...(intro.virtues ?? []).flatMap((v) => (v.evidence ? [{ e: v.evidence, surah }] : [])),
   ];
-  for (const { e } of everyQuote) {
+  for (const e of r.attested ?? []) if (!text(e.says)) bad(`an attestation from ${e.work} does not say what it says`);
+  for (const { e, least } of everyQuote) {
     quotes++;
+    if (!QUOTABLE.has(e.work)) {
+      bad(`quotes ${e.work}, which is not among the works an introduction may quote`);
+      continue;
+    }
     const source = await passage(e.work, surah, e.ayah);
     if (source === null) {
       bad(`quotes ${e.work} on ayah ${e.ayah}, which the copy does not hold`);
       continue;
     }
-    const exact = locked(e.quote ?? "", source);
+    const exact = locked(e.quote ?? "", source, least);
     if (exact === null) {
       bad(`${e.work} on ayah ${e.ayah} does not say: ${String(e.quote).slice(0, 70)}…`);
       continue;

@@ -27,6 +27,20 @@
         "ayah": 1,
         "quote": "سُورَةُ الْمُؤْمِنُونَ مَكِّيَّةٌ كُلُّهَا فِي قَوْلِ الْجَمِيعِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْمُؤْمِنُونَ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُوَيْهِ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ بِمَكَّةَ سُورَةُ ”المُؤْمِنِينَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      }
     ]
   },
   "setting": [
@@ -104,7 +118,8 @@
           "number": "4198"
         }
       ],
-      "grade": "Ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     },
     {
       "text": "“When you ask Allah, ask Him for Firdaws: it is the middle of the Garden and the highest part of the Garden; above it is the Throne of the Most Merciful, and from it spring the rivers of the Garden.”",
@@ -117,10 +132,10 @@
           "number": "2790"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
-  "virtuesNote": "The report from ʿUmar that ten ayat were sent down, “whoever upholds them will enter the Garden,” and that he then recited the opening of this surah (al-Tirmidhī 3173), is weak: al-Nasāʾī called it munkar, and al-Albānī grades it ḍaʿīf. Ibn al-Jawzī cites it here from al-Ḥākim.",
   "before": "Al-Ḥajj closed with commands to the believers: bow, prostrate, do good, strive. Al-Muʾminūn opens with the outcome for those who do.",
   "after": "This surah praises those who guard their chastity. Al-Nūr, a Madinan surah, legislates for it: the penalties, the proprieties and the protections of a chaste society.",
   "notable": [

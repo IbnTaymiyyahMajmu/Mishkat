@@ -27,6 +27,20 @@
         "ayah": 1,
         "quote": "هِيَ مَكِّيَّةٌ فِي قَوْلِ الْجُمْهُورِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الشُّعَرَاءِ مَكِّيَّةٌ إِلَّا أَرْبَعَ آيَاتٍ",
+        "says": "Makkan, except four ayat."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، وابْنُ مَرْدُوَيْهِ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”طسم الشُّعَراءِ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays and Ibn Mardawayh."
+      }
     ]
   },
   "setting": [
@@ -44,7 +58,8 @@
       ],
       "title": "The call from al-Ṣafā",
       "text": "When “And warn your nearest kin” was revealed, the Prophet ﷺ went up al-Ṣafā and began to call: “Banū Fihr! Banū ʿAdī!” — the clans of Quraysh — until they had gathered; a man who could not come himself sent someone to see what it was. He said: “Tell me: if I informed you that horsemen in the valley were about to attack you, would you believe me?” They said: “Yes; we have never found you anything but truthful.” He said: “Then I am a warner to you before a severe punishment.” Abū Lahab said: “May you perish for the rest of the day! Is it for this you gathered us?”",
-      "source": "Ibn ʿAbbās: al-Bukhārī (4770) and Muslim (208)."
+      "source": "Ibn ʿAbbās: al-Bukhārī (4770) and Muslim (208).",
+      "rank": "agreed"
     }
   ],
   "aim": "To confront those who persist in denying the Messenger ﷺ and attacking his message, and to show how little their standing is.",
@@ -116,7 +131,8 @@
           "number": "206"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Furqān recorded what Quraysh said against the Messenger, and ended: “You have denied.” Al-Shuʿarāʾ shows him seven who were denied before him.",

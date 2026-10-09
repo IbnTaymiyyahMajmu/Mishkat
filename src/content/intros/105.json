@@ -27,12 +27,26 @@
         "ayah": 1,
         "quote": "وَلَكِنْ كَانَ هَذَا مِنْ بَابِ الْإِرْهَاصِ وَالتَّوْطِئَةِ لِمَبْعَثِ رَسُولُ اللَّهِ ﷺ، فَإِنَّهُ فِي ذَلِكَ الْعَامِ وُلِدَ عَلَى أَشْهَرِ الْأَقْوَالِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْفِيلِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: أنْزَلَ ﴿ألَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      }
     ]
   },
   "setting": [
-    "Abrahah was the Abyssinian governor of Yemen. He had built a great church in Ṣanʿāʾ and meant the pilgrimage of the Arabs to come to it instead of to Makkah; and when that did not happen — the reports say an Arab defiled the building — he swore to pull the Kaʿbah down, and set out north with an army and an elephant.",
+    "Abrahah was the Abyssinian governor of Yemen. He had built a great church in Ṣanʿāʾ and meant the pilgrimage of the Arabs to come to it instead of to Makkah; and when that did not happen — the reports say an Arab defiled the building — he swore to pull the Kaʿbah down, and set out north with an army and an elephant.{reported}",
     "Quraysh could not fight him and did not try. On the way his men seized the camels of ʿAbd al-Muṭṭalib, the Prophet’s ﷺ grandfather and the chief of Makkah, who came to ask for them back. Abrahah was astonished: I have come to destroy the House that is your religion and your fathers’, and you speak to me about camels? ʿAbd al-Muṭṭalib’s answer is one of the most quoted sentences in the sīrah: I am the lord of the camels. The House has a Lord who will defend it. Then he and his people withdrew to the mountains.",
-    "The elephant, the reports say, knelt and would not go forward towards Makkah. Then birds came, in flocks, each carrying stones of baked clay, and the army was destroyed where it stood: left like straw that has been eaten.",
+    "The elephant, the reports say, knelt and would not go forward towards Makkah.{reported} Then birds came, in flocks, each carrying stones of baked clay, and the army was destroyed where it stood: left like straw that has been eaten.",
     "The Arabs dated their years from it — the Year of the Elephant. When this surah was recited in Makkah there were men still alive who had seen it, and none of them contradicted it. The point was plain to them: the House had been saved by its Lord, at a time when not one person in the city worshipped Him alone. It had not been saved for the sake of their idols. Ibn Kathīr says it outright: this was a preparation for the sending of the Messenger ﷺ, who was born that same year."
   ],
   "occasions": [],
@@ -72,7 +86,8 @@
           "number": "2731"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "On the day Makkah was conquered he ﷺ said: “Allah held back the elephant from Makkah, and has given His Messenger and the believers authority over it.”",
@@ -88,7 +103,8 @@
           "number": "1355"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Humazah showed one man who trusted in what he had gathered. Al-Fīl shows an army that did.",

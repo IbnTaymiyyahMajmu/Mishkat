@@ -27,6 +27,20 @@
         "ayah": 1,
         "quote": "سُورَةُ الْأَحْقَافِ مَكِّيَّةٌ فِي قَوْلِ جميعهم"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْأَحْقَافِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهْ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”حم الأحْقافِ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      }
     ]
   },
   "setting": [
@@ -43,7 +57,8 @@
       ],
       "title": "A witness from the Children of Israel",
       "text": "Saʿd ibn Abī Waqqāṣ said: “I never heard the Prophet ﷺ say of anyone walking the earth that he was of the people of Paradise, except ʿAbd Allāh ibn Salām. And about him this ayah was revealed: ‘and a witness from the Children of Israel has testified to the like of it.’”",
-      "source": "Saʿd ibn Abī Waqqāṣ: al-Bukhārī (3812) and Muslim (2483). Others held the ayah Makkan and the witness to be Mūsā."
+      "source": "Saʿd ibn Abī Waqqāṣ: al-Bukhārī (3812) and Muslim (2483). Others held the ayah Makkan and the witness to be Mūsā.",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -52,7 +67,8 @@
       ],
       "title": "The jinn at Nakhlah",
       "text": "A party of jinn was turned towards the Prophet ﷺ and heard him reciting. They listened in silence, believed, and went back to warn their people. The event is the one narrated by Ibn ʿAbbās for Sūrat al-Jinn.",
-      "source": "Ibn ʿAbbās: al-Bukhārī (4921) and Muslim (449)."
+      "source": "Ibn ʿAbbās: al-Bukhārī (4921) and Muslim (449).",
+      "rank": "agreed"
     }
   ],
   "aim": "To establish the proof against the deniers and warn them of punishment — which is why the word “warning” recurs in it.",
@@ -121,7 +137,8 @@
           "number": "899"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Jāthiyah closed with the majesty of the Lord of the heavens and the earth. Al-Aḥqāf opens by asking what share anyone else has in either.",

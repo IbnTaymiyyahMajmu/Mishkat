@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "وَهِيَ مَكِّيَّةٌ فِي قَوْلِ الْجَمِيعِ، وَهِيَ سِتٌّ وَعِشْرُونَ آيَةً"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْغَاشِيَةِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ الغاشِيَةِ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ في قَوْلِ الجُمْهُورِ",
+        "says": "Makkan, in the saying of the majority."
+      }
     ]
   },
   "setting": [
@@ -84,7 +104,8 @@
           "number": "878"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Aʿlā ended by saying the Hereafter is better and more lasting, and that the wretched will enter the greatest Fire. Al-Ghāshiyah shows both.",

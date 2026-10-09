@@ -27,11 +27,24 @@
         "ayah": 1,
         "quote": "سُورَةُ \"الطَّارِقِ\" مَكِّيَّةٌ، وَهِيَ سَبْعَ عَشْرَةَ آيَةً"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الطَّارِقِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ ﴿والسَّماءِ والطّارِقِ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      }
     ]
   },
   "setting": [
-    "No occasion is firmly reported for it. A companion named Khālid al-ʿAdwānī relates that he saw the Messenger of Allah ﷺ in the market of Thaqīf, leaning on a bow or a staff, when he came to them seeking their support, and heard him recite “By the sky and the night-comer” to the end; “I memorised it in my days of ignorance, while I was still an idolater, and then recited it in Islam.” That is the journey to Ṭāʾif, in the tenth year of the mission. Imām Aḥmad narrates it, through a chain that is not strong.",
-    "The surah’s closing ayat fit those years. “They are plotting a plot, and I am planning a plan. So give the disbelievers respite — leave them a while.” The men of Makkah were by then meeting to decide how to be rid of him. The Prophet ﷺ is told not to hurry their end.",
+    "No occasion is reported for it. Its closing ayat fit the years in which Quraysh turned from mockery to plotting: “They are plotting a plot, and I am planning a plan. So give the disbelievers respite — leave them a while.” The Prophet ﷺ is told not to hurry their end.",
     "Its argument for the Resurrection is the plainest in the Qurʾan. Let the human being look at what he was made from. The One who brought him out of that is able to bring him back."
   ],
   "occasions": [],
@@ -82,7 +95,8 @@
           "number": "307"
         }
       ],
-      "grade": "Ḥasan ṣaḥīḥ, said al-Tirmidhī"
+      "grade": "Ḥasan ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     }
   ],
   "before": "Al-Burūj: Allah surrounds the deniers from behind. Al-Ṭāriq: over every single soul there is a keeper.",

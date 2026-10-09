@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, type CSSProperties } from "react";
 import type { Passage } from "@/lib/intros/types";
 import styles from "./Shamsa.module.css";
 
@@ -154,12 +154,12 @@ export function Shamsa({ name, ayahWords, passages, juz, sajdah, active, onActiv
         </clipPath>
       </defs>
 
-      <circle cx={C} cy={C} r={300} fill="url(#shamsa-glow)" />
+      <circle cx={C} cy={C} r={300} fill="url(#shamsa-glow)" className={styles.halo} />
 
       {/* ── the rim: every ayah ─────────────────────────────────────────── */}
       <g className={`${styles.ticks} ${geometry.thin ? styles.ticksThin : ""}`} aria-hidden="true">
         {geometry.ticks.map((d, i) => (
-          <path key={i} d={d} />
+          <path key={i} d={d} style={{ "--k": (i / geometry.ticks.length).toFixed(3) } as CSSProperties} />
         ))}
       </g>
       <g className={styles.marks} aria-hidden="true">
@@ -177,7 +177,7 @@ export function Shamsa({ name, ayahWords, passages, juz, sajdah, active, onActiv
       <circle cx={C} cy={C} r={R.bandOut + 3.5} className={styles.ring} pathLength={1} />
       <circle cx={C} cy={C} r={R.bandIn - 3.5} className={styles.ring} pathLength={1} />
       {geometry.bands.length > 0 ? (
-        <g className={styles.bands}>
+        <g>
           {geometry.bands.map((d, i) => (
             <a
               key={i}
@@ -203,6 +203,9 @@ export function Shamsa({ name, ayahWords, passages, juz, sajdah, active, onActiv
       ) : (
         <circle cx={C} cy={C} r={(R.bandIn + R.bandOut) / 2} className={styles.bandBlank} />
       )}
+
+      {/* A light that goes once round the band, the way the surah is read. */}
+      <circle cx={C} cy={C} r={(R.bandIn + R.bandOut) / 2} className={styles.comet} pathLength={1} aria-hidden="true" />
 
       {/* ── the rosette ─────────────────────────────────────────────────── */}
       <g className={styles.rosette} aria-hidden="true">

@@ -33,6 +33,20 @@
         "ayah": 1,
         "quote": "عَنْ سَعِيدٍ بْنِ جُبَيْرٍ قَالَ: قُلْتُ لِابْنِ عَبَّاسٍ: سُورَةُ الْحَشْرِ؟ قَالَ: أُنْزِلَتْ فِي بَنِي النَّضِيرِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْحَشْرِ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ «الحَشْرِ» بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      }
     ]
   },
   "setting": [
@@ -49,7 +63,8 @@
       ],
       "title": "The palm trees",
       "text": "The Messenger of Allah ﷺ burned and cut down palms of the Banū al-Naḍīr during the siege, at al-Buwayrah. So there came down: “Whatever palm you cut down or left standing on its roots, it was by Allah’s leave.”",
-      "source": "Ibn ʿUmar: al-Bukhārī (4031) and Muslim (1746)."
+      "source": "Ibn ʿUmar: al-Bukhārī (4031) and Muslim (1746).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -58,7 +73,8 @@
       ],
       "title": "“They prefer others to themselves”",
       "text": "A hungry man came to the Prophet ﷺ, and there was nothing in his houses but water. A man of the Anṣār took the guest home; his wife had only the children’s supper. They put the children to sleep, set the food before the guest, and put out the lamp so that he would think they were eating with him. In the morning the Prophet ﷺ said: “Allah marvelled at what the two of you did last night.” And Allah sent down: “They give them preference over themselves, even though they are in need.”",
-      "source": "Abū Hurayrah: al-Bukhārī (3798) and Muslim (2054)."
+      "source": "Abū Hurayrah: al-Bukhārī (3798) and Muslim (2054).",
+      "rank": "agreed"
     }
   ],
   "aim": "To make manifest Allah’s power and might in bringing low the Jews and the hypocrites and exposing their division — set against the unity of the believers.",
@@ -117,10 +133,10 @@
           "number": "2921"
         }
       ],
-      "grade": "Ḥasan gharīb, said al-Tirmidhī. Al-Albānī graded this narration ḥasan, and the same report in Abū Dāwūd (5057) weak"
+      "grade": "Ḥasan according to al-Albānī",
+      "rank": "hasan"
     }
   ],
-  "virtuesNote": "The report that whoever recites the last three ayat of al-Ḥashr in the morning has seventy thousand angels praying for him until evening (al-Tirmidhī 2922) is weak; al-Tirmidhī called it gharīb and al-Albānī grades it ḍaʿīf. The report al-Qurṭubī quotes at the head of the surah, of everything in creation praying for its reciter, has no sound chain.",
   "before": "Al-Mujādilah described hypocrites who took as allies a people under Allah’s anger, and called them the party of Satan. Al-Ḥashr shows that alliance tested, and the likeness of Satan applied.",
   "after": "Al-Ḥashr dealt with enemies within the oasis. Al-Mumtaḥanah turns to the enemy at Makkah, and to a believer who, in a weak hour, wrote to them.",
   "notable": [

@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "سُورَةُ الْمُنَافِقُونَ مَدَنِيَّةٌ فِي قَوْلِ الْجَمِيعِ، وَهِيَ إِحْدَى عَشْرَةَ آيَةً"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْمُنَافِقُونَ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ في «الدَّلائِلِ»، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ «المُنافِقِينَ» بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَدَنِيَّةٌ",
+        "says": "Madinan."
+      }
     ]
   },
   "setting": [
@@ -42,8 +62,13 @@
         8
       ],
       "title": "What Zayd ibn Arqam heard",
-      "text": "“I was on an expedition and heard ʿAbd Allāh ibn Ubayy say: ‘Do not spend on those who are with the Messenger of Allah until they disperse from around him; and if we return, the mightier will drive out the meaner from it.’ I mentioned it to my uncle, who mentioned it to the Prophet ﷺ. He called me and I told him. He sent to ʿAbd Allāh ibn Ubayy and his companions, and they swore they had not said it. So he disbelieved me and believed him… Then Allah sent down: ‘When the hypocrites come to you.’ The Prophet ﷺ sent for me and said: ‘Allah has confirmed you, Zayd.’”",
-      "source": "Zayd ibn Arqam: al-Bukhārī (4900) and Muslim (2772)."
+      "text": "Zayd ibn Arqam said: “I was on a campaign and heard ʿAbd Allāh ibn Ubayy say: ‘Do not spend on those who are with the Messenger of Allah, until they disperse from around him; and if we return, the mightier will drive out the meaner from it.’ I mentioned it to my uncle, and he mentioned it to the Prophet ﷺ, who called me, and I told him. He sent for ʿAbd Allāh ibn Ubayy and his companions, and they swore they had not said it. So the Messenger of Allah ﷺ disbelieved me and believed him, and a grief came over me such as had never come over me before. I sat at home, and my uncle said: ‘What did you want, but that the Messenger of Allah ﷺ should call you a liar and detest you?’ Then Allah sent down: ‘When the hypocrites come to you.’ The Prophet ﷺ sent for me and recited it, and said: ‘Allah has confirmed you, Zayd.’”",
+      "story": [
+        "Jābir ibn ʿAbd Allāh tells what had set it off. They were on a campaign when a man of the Emigrants struck a man of the Helpers from behind. The Helper cried, “Help, Helpers!” and the Emigrant, “Help, Emigrants!” The Messenger of Allah ﷺ heard it and said: “What is this cry of the days of ignorance?” They told him what had happened. He said: “Leave it; it is a foul thing.”",
+        "ʿAbd Allāh ibn Ubayy heard of it and said: “So they have done it? By Allah, if we return to Madinah, the mightier will drive out the meaner from it.” It reached the Prophet ﷺ, and ʿUmar stood up: “Messenger of Allah, let me strike the neck of this hypocrite.” He ﷺ said: “Leave him. Let people not say that Muḥammad kills his companions.”"
+      ],
+      "source": "Zayd ibn Arqam: al-Bukhārī (4900) and Muslim (2772). Jābir ibn ʿAbd Allāh: al-Bukhārī (4905) and Muslim (2584).",
+      "rank": "agreed"
     }
   ],
   "aim": "To expose the hypocrites, their traits and their stance towards Islam and its people — as a warning against them, and against resembling them.",
@@ -95,7 +120,8 @@
           "number": "877"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Jumuʿah reproached people who left the Prophet ﷺ standing for a caravan. Al-Munāfiqūn describes people who stayed, and swore, and lied.",

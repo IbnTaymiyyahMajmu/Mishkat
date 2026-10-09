@@ -27,10 +27,36 @@
         "ayah": 1,
         "quote": "والثّانِي: أنَّها مَدَنِيَّةٌ، رَواهُ عَطِيَّةُ عَنِ ابْنِ عَبّاسٍ. وبِهِ قالَ ابْنُ مَسْعُودٍ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الرَّحْمَنِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ النَّحّاسُ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ «الرَّحْمَنِ» بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by al-Naḥḥās."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "وأخْرَجَ ابْنُ الضُّرَيْسِ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ في «الدَّلائِلِ» عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ «الرَّحْمَنِ» بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās, in another report: it came down in Madinah. Recorded by Ibn al-Ḍurays, Ibn Mardawayh and al-Bayhaqī."
+      }
     ]
   },
   "setting": [
-    "The idolaters of Makkah knew the name Allah. The name al-Raḥmān they affected not to know. “When it is said to them, ‘Prostrate to the Most Merciful,’ they say: ‘And what is the Most Merciful?’” (25:60). Ibn al-Jawzī relates from Muqātil that this surah came down in reply.",
+    "The idolaters of Makkah knew the name Allah. The name al-Raḥmān they affected not to know. “When it is said to them, ‘Prostrate to the Most Merciful,’ they say: ‘And what is the Most Merciful?’” (25:60). Ibn al-Jawzī relates from Muqātil that this surah came down in reply.{reported}",
     "The reply is not a definition. It is a list. Al-Raḥmān: He taught the Qurʾan; He created man; He taught him to express himself. The sun and the moon run to a reckoning. The sky was raised and the balance set. The earth was laid out for living creatures, with its fruit and palms and grain. And after each gift, the question — addressed, unusually, to two hearers: “Then which of the favours of your Lord will you two deny?” The two are mankind and the jinn, whom the surah names together throughout.",
     "The Prophet ﷺ once recited it to his Companions from beginning to end, and they sat silent. He said: “I recited it to the jinn on the night of the jinn, and they made a better response than you. Each time I came to ‘Then which of the favours of your Lord will you two deny?’ they said: ‘Not one of Your favours do we deny, our Lord; to You belongs all praise.’”",
     "The surah moves through three circles: the favours of this world; the passing away of everything on it, and the reckoning; and then the next world — the Fire briefly, and at length four gardens, two for those who feared the standing before their Lord, and two below them. Its last ayah returns to where it began: “Blessed is the name of your Lord, Owner of Majesty and Honour.”"
@@ -99,10 +125,10 @@
           "number": "3291"
         }
       ],
-      "grade": "Gharīb, said al-Tirmidhī; ḥasan according to al-Albānī"
+      "grade": "Ḥasan according to al-Albānī",
+      "rank": "hasan"
     }
   ],
-  "virtuesNote": "The saying that “everything has a bride, and the bride of the Qurʾan is al-Raḥmān” is not established; al-Albānī judged it munkar.",
   "before": "Al-Qamar ended with the mindful seated near a Sovereign, Omnipotent. Al-Raḥmān opens with His mercy, and where al-Qamar had five times recounted punishment, it thirty-one times recounts favour.",
   "after": "Al-Raḥmān described two gardens, and two below them. Al-Wāqiʿah names those who dwell in each — the Foremost, and the People of the Right — and adds the People of the Left.",
   "notable": [

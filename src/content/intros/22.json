@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "وفي رِوايَةٍ أُخْرى عَنِ ابْنِ عَبّاسٍ أنَّها مَدَنِيَّةٌ، إلّا أرْبَعَ آياتٍ نَزَلَتْ بِمَكَّةَ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْحَجِّ مَكِّيَّةٌ غَيْرَ آيَاتٍ",
+        "says": "Makkan, with some ayat excepted."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُوَيْهِ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ الحَجِّ بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "اخْتَلَفَ أهْلُ العِلْمِ، هَلْ هي مَكِّيَّةٌ أوْ مَدَنِيَّةٌ ؟ فَأخْرَجَ ابْنُ مَرْدَوَيْهِ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ الحَجِّ بِالمَدِينَةِ",
+        "says": "The scholars differed over it, Makkan or Madinan. Ibn Mardawayh records from Ibn ʿAbbās that it came down in Madinah."
+      }
     ]
   },
   "setting": [
@@ -43,7 +63,8 @@
       ],
       "title": "The duellists of Badr",
       "text": "Abū Dharr used to swear an oath that this ayah — “These are two adversaries who have disputed about their Lord” — came down about Ḥamzah and his two companions, and ʿUtbah and his two companions, on the day they stepped forward at Badr.",
-      "source": "Abū Dharr: al-Bukhārī (4743) and Muslim (3033)."
+      "source": "Abū Dharr: al-Bukhārī (4743) and Muslim (3033).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -52,7 +73,8 @@
       ],
       "title": "The first permission to fight",
       "text": "“When the Prophet ﷺ was driven out of Makkah, Abū Bakr said: ‘They have driven out their Prophet; they will surely perish.’ Then Allah sent down: ‘Permission is given to those who are fought, because they have been wronged.’ Abū Bakr said: ‘I knew that there would be fighting.’”",
-      "source": "Ibn ʿAbbās: al-Tirmidhī (3171), who graded it ḥasan; its chain is ṣaḥīḥ according to al-Albānī."
+      "source": "Ibn ʿAbbās: al-Tirmidhī (3171), who graded it ḥasan; its chain is ṣaḥīḥ according to al-Albānī.",
+      "rank": "sahih"
     },
     {
       "ayat": [
@@ -61,7 +83,8 @@
       ],
       "title": "Worship “on an edge”",
       "text": "“A man would come to Madinah; if his wife bore a boy and his mares foaled, he would say: this is a good religion. And if his wife did not bear and his mares did not foal, he would say: this is a bad religion.”",
-      "source": "Ibn ʿAbbās: al-Bukhārī (4742)."
+      "source": "Ibn ʿAbbās: al-Bukhārī (4742).",
+      "rank": "agreed"
     }
   ],
   "aim": "To call to reverence and surrender before Allah, by setting out scenes of His greatness and His power.",
@@ -137,10 +160,11 @@
           "number": "222"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
-  "virtuesNote": "The muṣḥaf marks one ayah of prostration in this surah, the eighteenth. A second, at the seventy-seventh, is held by al-Shāfiʿī and Aḥmad, and prostrating twice in al-Ḥajj is reported from ʿUmar and his son. The hadith usually quoted for it — that the surah was “favoured with two prostrations” (Abū Dāwūd 1402, al-Tirmidhī 578) — is weak in its chain: al-Tirmidhī says so himself.",
+  "virtuesNote": "The muṣḥaf marks one ayah of prostration in this surah, the eighteenth. A second, at the seventy-seventh, is held by al-Shāfiʿī and Aḥmad, and prostrating twice in al-Ḥajj is reported from ʿUmar and his son.",
   "before": "Al-Anbiyāʾ began: their reckoning has drawn near. Al-Ḥajj begins with what that Day’s first moment will be like.",
   "after": "Al-Ḥajj ends by commanding the believers to bow, prostrate, do good and strive. Al-Muʾminūn opens: “Successful indeed are the believers” — and says who they are.",
   "notable": [

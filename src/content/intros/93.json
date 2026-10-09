@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "مَكِّيَّةٌ بِاتِّفَاقٍ. وَهِيَ إِحْدَى عَشْرَةَ آيَةً"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الضُّحَى مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ الضُّحى بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ عِنْدَ الجُمْهُورِ، وقِيلَ مَدَنِيَّةٌ",
+        "says": "Makkan, in the saying of the majority; a saying that it is Madinan is also mentioned."
+      }
     ]
   },
   "setting": [
@@ -38,7 +58,8 @@
     {
       "title": "“I think your devil has left you”",
       "text": "The Messenger of Allah ﷺ was unwell and did not stand in prayer for two or three nights. A woman came and said: “Muḥammad, I hope your devil has left you; I have not seen him come near you for two or three nights.” So Allah sent down: “By the morning brightness, and by the night when it is still: your Lord has not forsaken you, nor does He hate you.”",
-      "source": "Jundub ibn Sufyān al-Bajalī: al-Bukhārī (4950) and Muslim (1797)."
+      "source": "Jundub ibn Sufyān al-Bajalī: al-Bukhārī (4950) and Muslim (1797).",
+      "rank": "agreed"
     }
   ],
   "aim": "To recall Allah’s care for His Prophet ﷺ and His favour to him in the gift of revelation and its continuing — a comfort to him, and a reminder to the believers to give thanks.",
@@ -89,7 +110,8 @@
           "number": "465"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Layl closes with a promise to the one who gives for his Lord’s sake alone: “and he will be content” (92:21). Al-Ḍuḥā makes the same promise to the Prophet ﷺ himself (93:5). One opens by swearing by the night, the other by the morning.",

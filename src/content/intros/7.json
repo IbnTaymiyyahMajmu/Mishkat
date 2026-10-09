@@ -33,6 +33,26 @@
         "ayah": 1,
         "quote": "وَرَوَى النَّسَائِيُّ عَنْ عَائِشَةَ أَنَّ رَسُولَ اللَّهِ ﷺ قَرَأَ فِي صَلَاةِ الْمَغْرِبِ بِسُورَةِ الْأَعْرَافِ، فَرَّقَهَا فِي رَكْعَتَيْنِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سورة الأعراف مَكِّيَّةٌ كُلُّهَا إِلَّا خَمْسَ آيَاتٍ",
+        "says": "Makkan, all of it, except five ayat."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ في ناسِخِهِ، وابْنُ مَرْدَوَيْهِ والبَيْهَقِيُّ في الدَّلائِلِ مِن طُرُقٍ، عَنِ ابْنِ عَبّاسٍ قالَ: سُورَةُ الأعْرافِ نَزَلَتْ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī, through several chains."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ إلّا ثَمانِ آياتٍ",
+        "says": "Makkan, except eight ayat."
+      }
     ]
   },
   "setting": [
@@ -50,7 +70,8 @@
       ],
       "title": "“Take your adornment at every place of prayer”",
       "text": "“A woman used to go round the House naked, and say: ‘Who will lend me a covering to go round in?’ and she would say: ‘Today some of it shows, or all of it, and what shows of it I do not make lawful.’ So this ayah came down: ‘Take your adornment at every place of prayer.’”",
-      "source": "Ibn ʿAbbās: Muslim (3028)."
+      "source": "Ibn ʿAbbās: Muslim (3028).",
+      "rank": "agreed"
     }
   ],
   "aim": "To show the way the struggle between faith and disbelief runs, and how it ends — by setting out the lives of the prophets with their peoples.",
@@ -136,7 +157,8 @@
           "number": "991"
         }
       ],
-      "grade": "Ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     },
     {
       "text": "Zayd ibn Thābit said to Marwān: “Why do you recite the short surahs in the sunset prayer? I heard the Prophet ﷺ recite in it the longer of the two long ones.” He was asked: “What is the longer of the two long ones?” He said: “Al-Aʿrāf.”",
@@ -152,7 +174,8 @@
           "number": "812"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "ʿUyaynah ibn Ḥiṣn came in to ʿUmar and said: “Son of al-Khaṭṭāb, by Allah, you do not give us much, nor judge between us with justice.” ʿUmar grew so angry that he was about to strike him. Al-Ḥurr ibn Qays said: “Commander of the Faithful, Allah said to His Prophet ﷺ: ‘Take to forgiveness, enjoin what is right, and turn away from the ignorant’ — and this is one of the ignorant.” By Allah, ʿUmar did not go beyond it when it was recited to him. He was one who stopped at the Book of Allah.",
@@ -165,7 +188,8 @@
           "number": "4642"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "virtuesNote": "Its last ayah is the first ayah of prostration in the order of the muṣḥaf.",

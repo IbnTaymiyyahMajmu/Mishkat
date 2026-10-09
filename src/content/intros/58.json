@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "عَنْ عَائِشَةَ قَالَتْ: الْحَمْدُ لِلَّهِ الَّذِي وَسع سَمْعُهُ الْأَصْوَاتَ، لَقَدْ جَاءَتِ المجادلةُ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْمُجَادَلَةِ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وأبُو الشَّيْخِ في «العَظَمَةِ»، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ «المُجادَلَةِ» بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Abū al-Shaykh, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هِيَ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      }
     ]
   },
   "setting": [
@@ -42,8 +62,13 @@
         4
       ],
       "title": "Khawlah bint Thaʿlabah",
-      "text": "“Blessed is He whose hearing encompasses everything. I could hear the words of Khawlah bint Thaʿlabah, though some of it was hidden from me, as she complained of her husband to the Messenger of Allah ﷺ, saying: ‘Messenger of Allah, he has consumed my youth and I have borne him children, and now that I am old and can bear no more, he has pronounced ẓihār on me. O Allah, I complain to You.’ She did not leave before Jibrīl had come down with these ayat.”",
-      "source": "ʿĀʾishah: al-Nasāʾī (3460) and Ibn Mājah (2063); ṣaḥīḥ according to al-Albānī. Al-Bukhārī cites it without a chain in his Ṣaḥīḥ.",
+      "text": "ʿĀʾishah said: “Blessed is He whose hearing encompasses everything. I could hear the words of Khawlah bint Thaʿlabah, though some of it was hidden from me, as she complained of her husband to the Messenger of Allah ﷺ, saying: ‘Messenger of Allah, he has consumed my youth and I have borne him children, and now that I am old and can bear no more, he has pronounced ẓihār on me. O Allah, I complain to You.’ She did not leave before Jibrīl had come down with these ayat.”",
+      "story": [
+        "She tells it herself, in the report of Abū Dāwūd: “My husband, Aws ibn al-Ṣāmit, pronounced ẓihār upon me, and I came to the Messenger of Allah ﷺ to complain to him. And the Messenger of Allah ﷺ was arguing the matter with me, saying: ‘Be mindful of Allah; he is your cousin.’ I did not leave before the Qurʾan came down: ‘Allah has heard the words of her who disputes with you concerning her husband,’ as far as the expiation.”",
+        "“He said: ‘Let him free a slave.’ I said: He cannot. He said: ‘Then let him fast two months in succession.’ I said: Messenger of Allah, he is an old man; he has not the strength to fast. He said: ‘Then let him feed sixty of the poor.’ I said: He has nothing to give in charity. At that moment a basket of dates was brought to him, and I said: Messenger of Allah, I will help him with another basket. He said: ‘You have done well. Go and feed sixty of the poor with it on his behalf, and go back to your cousin.’”"
+      ],
+      "source": "ʿĀʾishah: al-Nasāʾī (3460) and Ibn Mājah (2063); ṣaḥīḥ according to al-Albānī. Al-Bukhārī cites it without a chain in his Ṣaḥīḥ. Her own account: Abū Dāwūd (2214); ḥasan according to al-Albānī.",
+      "rank": "sahih",
       "evidence": {
         "work": "zad-almaseer",
         "ayah": 1,
@@ -57,7 +82,8 @@
       ],
       "title": "The twisted greeting",
       "text": "Some of the Jews came to the Prophet ﷺ and said, “al-sāmu ʿalaykum” — death be upon you — in place of the greeting of peace. ʿĀʾishah answered them sharply, and he said: “Gently, ʿĀʾishah; Allah loves gentleness in every matter.” The ayah speaks of those who “greet you with what Allah does not greet you with.”",
-      "source": "ʿĀʾishah: al-Bukhārī (6024) and Muslim (2165)."
+      "source": "ʿĀʾishah: al-Bukhārī (6024) and Muslim (2165).",
+      "rank": "agreed"
     }
   ],
   "aim": "To make manifest Allah’s all-embracing knowledge and complete encompassing — to train people to be watchful of Him, and to warn against opposing Him.",
@@ -126,7 +152,8 @@
           "number": "2063"
         }
       ],
-      "grade": "Ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     }
   ],
   "before": "Al-Ḥadīd ended with Allah’s bounty being in His hand alone. Al-Mujādilah begins with that bounty reaching a woman whom no one else could help.",

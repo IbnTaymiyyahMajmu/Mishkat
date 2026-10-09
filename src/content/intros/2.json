@@ -44,6 +44,26 @@
         "ayah": 1,
         "quote": "وَيُقَالُ لَهَا: فُسْطَاطُ الْقُرْآنِ، قَالَهُ خَالِدُ بْنُ مَعْدَانَ. وَذَلِكَ لِعِظَمِهَا وَبِهَائِهَا، وَكَثْرَةِ أَحْكَامِهَا وَمَوَاعِظِهَا"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةِ الْبَقَرَةِ مَدَنِيَّةٌ وَهِيَ مِائَتَانِ وَثَمَانُونَ وَسَبْعُ آيَاتٍ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ في فَضائِلِهِ وأبُو جَعْفَرٍ النَّحّاسُ في ”النّاسِخِ والمَنسُوخِ“، وابْنُ مَرْدُوَيْهِ والبَيْهَقِيُّ في ”دَلائِلِ النُّبُوَّةِ“ مِن طُرُقٍ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ بِالمَدِينَةِ سُورَةُ البَقَرَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī, through several chains."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "قالَ القُرْطُبِيُّ في تَفْسِيرِ سُورَةِ البَقَرَةِ: مَدَنِيَّةٌ نَزَلَتْ في مُدَدٍ شَتّى",
+        "says": "Madinan, citing al-Qurṭubī."
+      }
     ]
   },
   "setting": [
@@ -61,7 +81,8 @@
       ],
       "title": "The change of the qiblah",
       "text": "The Messenger of Allah ﷺ prayed towards Jerusalem for sixteen or seventeen months, and he wished that his qiblah might be towards the House. The first prayer he prayed towards it was the afternoon prayer, and people prayed with him. A man who had prayed with him went out and passed the people of a mosque while they were bowing, and said: “I bear witness by Allah that I have prayed with the Prophet ﷺ towards Makkah.” And they turned round, as they were, towards the House.",
-      "source": "Al-Barāʾ ibn ʿĀzib: al-Bukhārī (4486) and Muslim (525)."
+      "source": "Al-Barāʾ ibn ʿĀzib: al-Bukhārī (4486) and Muslim (525).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -70,7 +91,8 @@
       ],
       "title": "Al-Ṣafā and al-Marwah",
       "text": "ʿUrwah said to ʿĀʾishah: it seems to me there is no harm on one who does not go between them. She said: “How wrong, son of my sister. Had it been as you take it, it would have said: no blame on him if he does not go between them. It was sent down about the Helpers: before Islam they used to dedicate themselves to the idol Manāt, and those who did felt uneasy about going between al-Ṣafā and al-Marwah. When they became Muslims they asked the Messenger of Allah ﷺ about it, and Allah sent down: ‘Al-Ṣafā and al-Marwah are among the symbols of Allah.’”",
-      "source": "ʿĀʾishah: al-Bukhārī (1643) and Muslim (1277)."
+      "source": "ʿĀʾishah: al-Bukhārī (1643) and Muslim (1277).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -79,7 +101,8 @@
       ],
       "title": "The nights of Ramaḍān",
       "text": "“When the fast of Ramaḍān was sent down, they would not approach their wives for the whole of Ramaḍān, and some men were betraying themselves. So Allah sent down: ‘Allah knew that you were betraying yourselves, so He turned to you and pardoned you.’”",
-      "source": "Al-Barāʾ ibn ʿĀzib: al-Bukhārī (4508)."
+      "source": "Al-Barāʾ ibn ʿĀzib: al-Bukhārī (4508).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -88,7 +111,8 @@
       ],
       "title": "“Make it clear to us about wine”",
       "text": "ʿUmar said: “O Allah, make clear to us about wine, with a clarity that heals.” Then the ayah in al-Baqarah came down. He was called and it was recited to him, and he said the same again; then the ayah in al-Nisāʾ came down, and he said it again; then the one in al-Māʾidah: “Will you then desist?” ʿUmar said: “We desist, we desist.”",
-      "source": "ʿUmar ibn al-Khaṭṭāb: al-Tirmidhī (3049); ṣaḥīḥ according to al-Albānī."
+      "source": "ʿUmar ibn al-Khaṭṭāb: al-Tirmidhī (3049); ṣaḥīḥ according to al-Albānī.",
+      "rank": "sahih"
     },
     {
       "ayat": [
@@ -97,7 +121,8 @@
       ],
       "title": "Silence in the prayer",
       "text": "“We used to speak during the prayer — a man would talk to his companion about what he needed — until this ayah came down: ‘Guard the prayers, and the middle prayer, and stand before Allah in devotion.’ Then we were commanded to be silent.”",
-      "source": "Zayd ibn Arqam: al-Bukhārī (4534) and Muslim (539)."
+      "source": "Zayd ibn Arqam: al-Bukhārī (4534) and Muslim (539).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -106,7 +131,8 @@
       ],
       "title": "“We hear and we obey”",
       "text": "When “whether you disclose what is in yourselves or conceal it, Allah will call you to account for it” came down, it bore heavily on the Companions. They came and knelt: “Messenger of Allah, this ayah has been sent down to you and we cannot bear it.” He said: “Do you wish to say as the people of the two Books said before you, ‘We hear and we disobey’? Rather say: ‘We hear and we obey; Your forgiveness, our Lord, and to You is the return.’” When they had recited it and their tongues had yielded to it, Allah sent down after it: “The Messenger believes in what was sent down to him from his Lord, and so do the believers…” and then: “Allah does not burden a soul beyond its capacity.”",
-      "source": "Abū Hurayrah: Muslim (125); and from Ibn ʿAbbās, with “I have done so” after each petition: Muslim (126)."
+      "source": "Abū Hurayrah: Muslim (125); and from Ibn ʿAbbās, with “I have done so” after each petition: Muslim (126).",
+      "rank": "agreed"
     }
   ],
   "aim": "To prepare the community to cultivate the earth and to uphold the religion of Allah, and to set out the kinds of people; in it are the foundations of faith and the universal principles of the Law.",
@@ -217,7 +243,8 @@
           "number": "804"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“Do not make your houses into graveyards. Satan flees from the house in which Sūrat al-Baqarah is recited.”",
@@ -230,7 +257,8 @@
           "number": "780"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "The Messenger of Allah ﷺ said: “Abū l-Mundhir, do you know which ayah of the Book of Allah that you have is greatest?” I said: “Allah — there is no god but He, the Living, the Sustainer.” He struck me on the chest and said: “By Allah, may knowledge delight you, Abū l-Mundhir.”",
@@ -243,7 +271,8 @@
           "number": "810"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "Abū Hurayrah was set to guard the zakāh of Ramaḍān, and for three nights caught a thief taking from it. On the third the thief said: “Let me go, and I will teach you words by which Allah will benefit you. When you go to your bed, recite Āyat al-Kursī to its end: a guardian from Allah will remain over you, and no devil will come near you until morning.” The Prophet ﷺ said: “He told you the truth, though he is a liar. That was a devil.”",
@@ -255,7 +284,8 @@
           "number": "5010"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“Whoever recites the two ayat at the end of Sūrat al-Baqarah in a night, they will suffice him.”",
@@ -272,7 +302,8 @@
           "number": "807"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "While Jibrīl was sitting with the Prophet ﷺ, an angel came down who had never come down before, and said: “Rejoice in two lights that you have been given, which no prophet before you was given: the Opening of the Book, and the closing ayat of Sūrat al-Baqarah. You will not recite a letter of them but you will be given it.”",
@@ -284,10 +315,10 @@
           "number": "806"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
-  "virtuesNote": "The saying that “everything has a summit, and the summit of the Qurʾan is al-Baqarah” is related by al-Tirmidhī as a hadith through a narrator Ibn Kathīr notes to be weak, and the longer report that eighty angels came down with each of its ayat has an unnamed man in its chain. The report that the youngest of a party was made its leader because he knew this surah (al-Tirmidhī 2876), which al-Qurṭubī quotes, is graded weak by al-Albānī.",
   "before": "Al-Fātiḥah asked: “Guide us to the straight path.” Al-Baqarah opens with the answer: “This is the Book in which there is no doubt, a guidance for the mindful.”",
   "after": "The Prophet ﷺ named the two together: the radiant pair. Al-Baqarah speaks at length to the Jews among the People of the Book; Āl ʿImrān turns to the Christians. Both open with Alif Lām Mīm.",
   "notable": [

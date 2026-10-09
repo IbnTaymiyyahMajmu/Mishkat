@@ -33,6 +33,20 @@
         "ayah": 1,
         "quote": "تَفْسِيرُ سُورَةِ السَّجْدَةِ وَهِيَ مَكِّيَّةٌ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ السَّجْدَةِ مَكِّيَّةٌ ، قَالَ عَطَاءٌ: إِلَّا ثَلَاثَ آيَاتٍ",
+        "says": "Makkan; ʿAṭāʾ said: except three ayat."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضَّرِيسِ، وابْنُ مَرْدُوَيْهِ، والبَيْهَقِيُّ في ”الدَّلائِلِ“، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ: ﴿الم﴾ ﴿تَنْزِيلُ﴾ ”السَّجْدَةُ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, Ibn Mardawayh and al-Bayhaqī."
+      }
     ]
   },
   "setting": [
@@ -102,7 +116,8 @@
           "number": "880"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“The Prophet ﷺ would not sleep until he had recited ‘the sending down’ of al-Sajdah, and ‘Blessed is He’.”",
@@ -114,7 +129,8 @@
           "number": "3404"
         }
       ],
-      "grade": "Ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     },
     {
       "text": "“Allah said: I have prepared for My righteous servants what no eye has seen, no ear has heard, and what has never occurred to a human heart.” Abū Hurayrah said: recite, if you wish, “No soul knows what delight of the eyes is hidden for them.”",
@@ -131,7 +147,8 @@
           "number": "2824"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Luqmān ended with five things known only to Allah, the Hour first among them. Al-Sajdah opens with the Book that warns of it, and the question of those who cannot believe they will be raised.",

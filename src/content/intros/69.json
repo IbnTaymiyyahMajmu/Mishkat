@@ -27,13 +27,26 @@
         "ayah": 1,
         "quote": "الحاقةُ مِنْ أَسْمَاءِ يَوْمِ الْقِيَامَةِ؛ لِأَنَّ فِيهَا يَتَحقَّقُ الوَعدُ والوَعيد؛ وَلِهَذَا عَظَّم تَعَالَى أمرَها"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْحَاقَّةِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ «الحاقَّةِ» بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      }
     ]
   },
   "setting": [
     "No occasion is transmitted for the surah. It answers the two things Quraysh said most often in those years: that there would be no Resurrection, and that the Qurʾan was the work of a poet or a soothsayer.",
     "To the first it replies with history they knew. Thamūd and ʿĀd denied the Striking Calamity. Thamūd were destroyed by the overwhelming blast; ʿĀd by a screaming, violent wind that He loosed on them for seven nights and eight days without a break, until you could see the people lying like hollow trunks of palm. Pharaoh, and those before him, and the overturned cities. And the Flood: “When the water overflowed, We carried you in the sailing ship.”",
-    "To the second it replies by oath — by all that you see and all that you do not see — that this is the word of a noble messenger, not a poet’s, not a soothsayer’s, but sent down from the Lord of the worlds. And then a sentence that only the truth could afford to say: had he invented any saying in Our name, We would have seized him by the right hand and cut his life-vein, and not one of you could have shielded him.",
-    "A report in the Musnad of Aḥmad has ʿUmar, before his Islam, standing behind the Prophet ﷺ at the Kaʿbah and hearing this surah; each time he thought, “a poet,” or “a soothsayer,” the next ayah answered him. Its chain is broken — the narrator did not meet ʿUmar — so it is told as a report and not as established."
+    "To the second it replies by oath — by all that you see and all that you do not see — that this is the word of a noble messenger, not a poet’s, not a soothsayer’s, but sent down from the Lord of the worlds. And then a sentence that only the truth could afford to say: had he invented any saying in Our name, We would have seized him by the right hand and cut his life-vein, and not one of you could have shielded him."
   ],
   "occasions": [],
   "aim": "That the Resurrection must come to pass — confirming the truth of the Qurʾan, promising the believers their joy, and threatening the deniers with their regret.",
@@ -81,7 +94,6 @@
     "why": "The moment of joy the whole surah is leading the believer towards — a person so glad of his record that he wants everyone to read it."
   },
   "virtues": [],
-  "virtuesNote": "Al-Qurṭubī cites a report that whoever recites eleven ayat of this surah will be protected from the Dajjāl. That protection is established for the opening of al-Kahf, in Ṣaḥīḥ Muslim; nothing sound is transmitted of it for al-Ḥāqqah.",
   "before": "Al-Qalam said that the punishment of the Hereafter is greater, if only they knew (68:33). Al-Ḥāqqah opens by naming it, and asking what could make you know what it is.",
   "after": "Al-Maʿārij continues with a man who asked for that very punishment to fall, and with the length of the Day on which it will.",
   "notable": [

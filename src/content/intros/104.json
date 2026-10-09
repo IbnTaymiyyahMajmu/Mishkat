@@ -27,18 +27,33 @@
         "ayah": 1,
         "quote": "تَفْسِيرُ سُورَةِ \"الْهُمَزَةِ\" مَكِّيَّةٌ بِإِجْمَاعٍ. وَهِيَ تِسْعُ آيات"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْهُمَزَةِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: أنْزَلَ ﴿ويْلٌ لِكُلِّ هُمَزَةٍ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      }
     ]
   },
   "setting": [
     "The first Muslims in Makkah were, many of them, poor, young, enslaved or without a clan to protect them. The men who opposed the Prophet ﷺ were the opposite of all that, and one of their weapons cost them nothing: ridicule. A wink as a believer walked past; a remark for the others to laugh at; a story told once he had gone.",
-    "The commentators name the men it was said to be about, and the list is itself a picture of the opposition: al-Akhnas ibn Sharīq, in the report from Ibn ʿAbbās; al-ʿĀṣ ibn Wāʾil; al-Walīd ibn al-Mughīrah; Umayyah ibn Khalaf, who tortured Bilāl. Others, Mujāhid among them, said it was not sent down about anyone in particular but about everyone of this description — and the wording supports them: “every” slanderer.",
+    "The commentators name the men it was said to be about, and the list is itself a picture of the opposition: al-Akhnas ibn Sharīq, in the report from Ibn ʿAbbās; al-ʿĀṣ ibn Wāʾil; al-Walīd ibn al-Mughīrah; Umayyah ibn Khalaf, who tortured Bilāl.{reported} Others, Mujāhid among them, said it was not sent down about anyone in particular but about everyone of this description — and the wording supports them: “every” slanderer.",
     "What ties the two halves of his character together is the fourth ayah’s diagnosis. He gathers wealth and counts it over because he thinks it will make him permanent. A man who believes that has nothing to fear from anyone, and so he says what he likes about them."
   ],
   "occasions": [
     {
       "title": "One man, or every such man",
-      "text": "Ibn al-Jawzī sets out the difference. Those who say it came down about a particular person name, among others, al-Akhnas ibn Sharīq — the report of Abū Ṣāliḥ from Ibn ʿAbbās — and al-ʿĀṣ ibn Wāʾil. Those who say it is general take it as it reads.",
-      "source": "Ibn al-Jawzī, Zād al-Masīr, at the head of the surah.",
+      "text": "Ibn al-Jawzī sets out the difference. Those who say it came down about a particular person name, among others, al-Akhnas ibn Sharīq — the report of Abū Ṣāliḥ from Ibn ʿAbbās — and al-ʿĀṣ ibn Wāʾil. Those who say it is general take it as it reads; and that, al-Qurṭubī says, is the saying of the majority. “It is not about anyone in particular,” said Mujāhid, “but about everyone of whom this is the description.”",
+      "source": "Ibn al-Jawzī, Zād al-Masīr, at the head of the surah; al-Qurṭubī, on its first ayah.",
+      "rank": "reported",
       "evidence": {
         "work": "zad-almaseer",
         "ayah": 1,

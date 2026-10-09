@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "تَفْسِيرُ سُورَةِ التَّغَابُنِ وَهِيَ مَدَنِيَّةٌ، وَقِيلَ: مَكِّيَّةٌ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ التَّغَابُنِ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ في «الدَّلائِلِ»، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ «التَّغابُنِ» بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَدَنِيَّةٌ في قَوْلِ الأكْثَرِ",
+        "says": "Madinan, in the saying of most."
+      }
     ]
   },
   "setting": [
@@ -42,7 +62,8 @@
       ],
       "title": "The families that held them back",
       "text": "“These were men who had accepted Islam among the people of Makkah and wanted to come to the Prophet ﷺ, but their wives and children refused to let them. When they did come to the Messenger of Allah ﷺ and saw that the people had gained understanding in the religion, they resolved to punish them. So Allah sent down: ‘O you who believe, among your wives and your children are enemies to you, so beware of them…’”",
-      "source": "Ibn ʿAbbās: al-Tirmidhī (3317), who called it ḥasan ṣaḥīḥ; ḥasan according to al-Albānī."
+      "source": "Ibn ʿAbbās: al-Tirmidhī (3317), who called it ḥasan ṣaḥīḥ; ḥasan according to al-Albānī.",
+      "rank": "hasan"
     },
     {
       "ayat": [
@@ -51,7 +72,8 @@
       ],
       "title": "From the pulpit",
       "text": "The Prophet ﷺ was addressing the people when al-Ḥasan and al-Ḥusayn came in, two small boys in red shirts, walking and stumbling. He came down from the pulpit, picked them up and set them in front of him, and said: “Allah spoke the truth: ‘Your wealth and your children are only a trial.’ I looked at these two boys walking and stumbling, and could not bear it until I had broken off my words and lifted them up.”",
-      "source": "Buraydah: al-Tirmidhī (3774), Abū Dāwūd (1109) and al-Nasāʾī (1413); ṣaḥīḥ according to al-Albānī."
+      "source": "Buraydah: al-Tirmidhī (3774), Abū Dāwūd (1109) and al-Nasāʾī (1413); ṣaḥīḥ according to al-Albānī.",
+      "rank": "sahih"
     }
   ],
   "aim": "To recall the loss of the disbelievers and their ruin on the Day of Resurrection — as a warning against disbelief and its people.",
@@ -114,7 +136,8 @@
           "number": "1109"
         }
       ],
-      "grade": "Ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     },
     {
       "text": "The Prophet ﷺ used to recite the Musabbiḥāt before he lay down to sleep. Al-Taghābun is the last of them in the muṣḥaf.",
@@ -126,7 +149,8 @@
           "number": "2921"
         }
       ],
-      "grade": "Ḥasan gharīb, said al-Tirmidhī. Al-Albānī graded this narration ḥasan, and the same report in Abū Dāwūd (5057) weak"
+      "grade": "Ḥasan according to al-Albānī",
+      "rank": "hasan"
     }
   ],
   "before": "Al-Munāfiqūn ended: do not let your wealth and your children distract you from the remembrance of Allah. Al-Taghābun goes further: they are a trial, and some of them may be working against you.",

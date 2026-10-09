@@ -33,6 +33,26 @@
         "ayah": 1,
         "quote": "وَهِيَ مَكِّيَّةٌ. وَالدَّلِيلُ عَلَى ذَلِكَ مَا رَوَاهُ الْبُخَارِيُّ: حَدَّثَنَا عَبْدَانُ: أَخْبَرَنِي أَبِي، عَنْ شُعْبَةَ، عَنْ أَبِي إِسْحَاقَ، عَنِ الْبَرَاءِ بْنِ عَازِبٍ قَالَ: أَوَّلُ مَنْ قَدِمَ عَلَيْنَا مِنْ أَصْحَابِ النَّبِيِّ ﷺ مُصْعَبُ بْنُ عُمَيْرٍ وَابْنُ أُمِّ مَكْتُومٍ، فَجَعَلَا يُقْرِئَانِنَا الْقُرْآنَ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْأَعْلَى مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿سَبِّحِ اسْمَ رَبِّكَ الأعْلى﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ في قَوْلِ الجُمْهُورِ",
+        "says": "Makkan, in the saying of the majority."
+      }
     ]
   },
   "setting": [
@@ -96,7 +116,8 @@
           "number": "878"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "The Messenger of Allah ﷺ used to pray the witr reciting “Glorify the name of your Lord, the Most High”, “Say: O disbelievers” and “Say: He is Allah, One”.",
@@ -112,7 +133,8 @@
           "number": "1729"
         }
       ],
-      "grade": "Ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     },
     {
       "text": "When Muʿādh lengthened the night prayer for his people, the Prophet ﷺ said to him: “Why did you not pray with ‘Glorify the name of your Lord, the Most High’, ‘By the sun and its brightness’ and ‘By the night when it covers’? Behind you pray the old, the weak and those with needs.”",
@@ -128,7 +150,8 @@
           "number": "465"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Ṭāriq told man to look at what he was created from. Al-Aʿlā begins with the Creator, and how He shaped and guided what He made.",

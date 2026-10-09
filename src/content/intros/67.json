@@ -39,6 +39,26 @@
         "ayah": 1,
         "quote": "سُورَةُ الْمُلْكِ مَكِّيَّةٌ فِي قَوْلِ الْجَمِيعِ. وَتُسَمَّى الْوَاقِيَةُ وَالْمُنْجِيَةُ. وَهِيَ ثَلَاثُونَ آيَةً"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْمُلْكِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ بِمَكَّةَ سُورَةُ «تَبارَكَ» المُلْكِ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ",
+        "says": "Makkan."
+      }
     ]
   },
   "setting": [
@@ -115,7 +135,8 @@
           "number": "1400"
         }
       ],
-      "grade": "Ḥasan, said al-Tirmidhī; ḥasan according to al-Albānī"
+      "grade": "Ḥasan according to al-Albānī",
+      "rank": "hasan"
     },
     {
       "text": "The Prophet ﷺ would not sleep until he had recited “Alif Lām Mīm, the sending down” — al-Sajdah — and “Blessed is He in whose hand is the dominion.”",
@@ -127,16 +148,18 @@
           "number": "3404"
         }
       ],
-      "grade": "Ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     },
     {
       "text": "“Whoever recites ‘Blessed is He in whose hand is the dominion’ every night, Allah will protect him by it from the punishment of the grave. In the time of the Messenger of Allah ﷺ we used to call it the Preventer.”",
       "narrator": "ʿAbd Allāh ibn Masʿūd",
       "source": "al-Nasāʾī, al-Sunan al-Kubrā · al-Ḥākim, al-Mustadrak",
-      "grade": "Ḥasan according to al-Albānī (Ṣaḥīḥ al-Targhīb, 1475); it is the saying of Ibn Masʿūd"
+      "grade": "Ḥasan according to al-Albānī (Ṣaḥīḥ al-Targhīb); a saying of Ibn Masʿūd",
+      "rank": "companion",
+      "caveat": "This is al-Albānī’s grading as an index of his works records it; it has not yet been checked here against the printed book. Two numbers are given for it in Ṣaḥīḥ al-Targhīb, so none is printed."
     }
   ],
-  "virtuesNote": "The story al-Qurṭubī relays from al-Tirmidhī (2890), of a Companion who pitched his tent on a grave and heard this surah being recited from it, was called gharīb by al-Tirmidhī and is weak in its chain according to al-Albānī. A report from Ibn ʿAbbās wishing the surah were in the heart of every believer comes through a narrator Ibn Kathīr calls weak.",
   "before": "Al-Taḥrīm ended with four women — two who were lost though married to prophets, and two who were saved. Al-Mulk opens with the rule behind it: He created death and life to test which of you is best in deed.",
   "after": "Al-Mulk ends by telling the Prophet ﷺ what to say. Al-Qalam begins by telling him what he is: by the grace of your Lord you are not mad, and you are of a tremendous character.",
   "notable": [

@@ -33,6 +33,26 @@
         "ayah": 1,
         "quote": "وَهِيَ مَكِّيَّةٌ بِإِجْمَاعٍ وَهِيَ أَوَّلُ مَا نَزَلَ مِنَ الْقُرْآنِ فِي قَوْلِ أَبِي مُوسَى وَعَائِشَةِ رَضِيَ اللَّهُ عَنْهُمَا. وَهِيَ تِسْعَ عشرة آية"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْعَلَقِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ مِن طُرُقٍ عَنِ ابْنِ عَبّاسٍ قالَ: أوَّلُ ما نَزَلَ مِنَ القُرْآنِ بِمَكَّةَ ﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ",
+        "says": "Ibn ʿAbbās: the first of the Qurʾan to come down, in Makkah, was “Recite in the name of your Lord who created.” Recorded by Ibn Mardawayh, through several chains."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ بِلا خِلافٍ، وهي أوَّلُ ما نَزَلَ مِنَ القُرْآنِ",
+        "says": "Makkan, by agreement; and it is the first of the Qurʾan to come down."
+      }
     ]
   },
   "setting": [
@@ -48,8 +68,14 @@
         5
       ],
       "title": "The beginning of revelation",
-      "text": "The angel came to him ﷺ in the cave of Ḥirāʾ, pressed him three times, and recited to him the first five ayat of this surah. He returned to Khadījah trembling, and she took him to Waraqah ibn Nawfal.",
+      "text": "ʿĀʾishah said: the first of revelation to come to the Messenger of Allah ﷺ was the true dream in sleep; he saw no dream but it came like the breaking of the dawn. Then solitude was made dear to him. He would withdraw to the cave of Ḥirāʾ and give himself to worship there for a number of nights before going back to his family, taking provision for it; then he would return to Khadījah and take provision for the like again — until the truth came to him while he was in the cave of Ḥirāʾ.",
+      "story": [
+        "The angel came to him and said: “Read.” He said: “I am not one who reads.” “He took hold of me and pressed me until I could bear no more. Then he released me and said: Read. I said: I am not one who reads. He took hold of me and pressed me a second time until I could bear no more, then released me and said: Read. I said: I am not one who reads. He took hold of me and pressed me a third time, then released me and said: Read, in the name of your Lord who created — created man from a clinging clot. Read, and your Lord is the Most Generous.”",
+        "The Messenger of Allah ﷺ went back with it, his heart trembling, and came in to Khadījah bint Khuwaylid: “Wrap me up, wrap me up.” They wrapped him until the fear had left him. He told Khadījah what had happened, and said: “I feared for myself.” She said: “Never. By Allah, Allah will never disgrace you. You keep the ties of kinship, you bear the burden of the weak, you give to the one who has nothing, you honour the guest, and you help in the hardships that fall on those in the right.”",
+        "She took him to her cousin Waraqah ibn Nawfal, who had become a Christian in the days of ignorance and used to write the Hebrew script, copying from the Gospel in Hebrew what Allah willed him to copy. He was a very old man and had gone blind. “Cousin,” she said, “listen to your brother’s son.” The Messenger of Allah ﷺ told him what he had seen, and Waraqah said: “This is the Nāmūs that Allah sent down upon Mūsā. Would that I were young in that day; would that I were alive when your people drive you out.” — “Will they drive me out?” — “Yes. No man has ever brought the like of what you have brought without being treated as an enemy. If your day finds me alive, I shall help you with all my strength.” It was not long before Waraqah died; and the revelation paused."
+      ],
       "source": "ʿĀʾishah: al-Bukhārī (3) and Muslim (160).",
+      "rank": "agreed",
       "evidence": {
         "work": "ibn-katheer",
         "ayah": 1,
@@ -63,7 +89,8 @@
       ],
       "title": "Abū Jahl at the Kaʿbah",
       "text": "Abū Jahl said: “Does Muḥammad put his face in the dust among you? By al-Lāt and al-ʿUzzā, if I see him doing that I will tread on his neck.” He came to do it while the Prophet ﷺ was praying, and suddenly turned on his heels. The Prophet ﷺ said: “Had he come near me, the angels would have torn him limb from limb.” And Allah sent down: “No! Man transgresses…” to the end of the surah.",
-      "source": "Abū Hurayrah: Muslim (2797). Ibn ʿAbbās reports the same threat in al-Bukhārī (4958)."
+      "source": "Abū Hurayrah: Muslim (2797). Ibn ʿAbbās reports the same threat in al-Bukhārī (4958).",
+      "rank": "agreed"
     }
   ],
   "aim": "To show that the human being is made complete by knowledge and revelation, which bind the servant to his Lord in humility — and is diminished by going against them.",
@@ -115,7 +142,8 @@
           "number": "578"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“The nearest a servant comes to his Lord is when he is prostrating, so make much supplication then.” The surah’s last words are: prostrate, and draw near.",
@@ -128,7 +156,8 @@
           "number": "482"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Tīn said the human being was created in the finest form (95:4). Al-ʿAlaq says what he was created from (96:2), and what raised him from the one to the other: his Lord taught him.",

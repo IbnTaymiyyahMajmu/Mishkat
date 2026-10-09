@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "تَفْسِيرُ سُورَةِ الْقِيَامَةِ وَهِيَ مَكِّيَّةٌ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْقِيَامَةِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ في الدَّلائِلِ مِن طُرُقٍ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ القِيامَةِ، وفي لَفْظٍ، نَزَلَتْ سُورَةُ ﴿لا أُقْسِمُ بِيَوْمِ القِيامَةِ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī, through several chains."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ بِلا خِلافٍ",
+        "says": "Makkan, by agreement."
+      }
     ]
   },
   "setting": [
@@ -43,7 +63,8 @@
       ],
       "title": "“Do not move your tongue with it”",
       "text": "The Messenger of Allah ﷺ used to suffer hardship when revelation came down, and would move his lips with it. So Allah sent down: “Do not move your tongue with it to hasten it. Its collection and its recitation are upon Us.” After that he would listen when Jibrīl came, and when Jibrīl had gone he would recite it as Jibrīl had.",
-      "source": "Ibn ʿAbbās: al-Bukhārī (5, 4929) and Muslim (448)."
+      "source": "Ibn ʿAbbās: al-Bukhārī (5, 4929) and Muslim (448).",
+      "rank": "agreed"
     }
   ],
   "aim": "To show Allah’s power to gather together what He created of man, and to raise him.",
@@ -112,7 +133,8 @@
           "number": "633"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“When Jibrīl came down with revelation, the Messenger of Allah ﷺ would move his tongue and his lips with it, and it was hard on him… So Allah sent down the ayah in ‘I swear by the Day of Resurrection’: ‘Do not move your tongue with it to hasten it.’”",
@@ -128,7 +150,8 @@
           "number": "448"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Muddaththir ended: no — they do not fear the Hereafter (74:53). Al-Qiyāmah opens by swearing by it.",

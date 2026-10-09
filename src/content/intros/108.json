@@ -27,11 +27,31 @@
         "ayah": 1,
         "quote": "وَهِيَ مَكِّيَّةٌ فِي قَوْلِ ابن عباس والكلبي ومقاتل. ومدنية في قول الحسن وعكرمة ومجاهد وقتادة. وَهِيَ ثَلَاثُ آيَاتٍ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْكَوْثَرِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿إنّا أعْطَيْناكَ الكَوْثَرَ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ في قَوْلِ ابْنِ عَبّاسٍ، والكَلْبِيِّ، ومُقاتِلٍ، ومَدَنِيَّةٌ في قَوْلِ الحَسَنِ، وعِكْرِمَةَ، ومُجاهِدٍ، وقَتادَةَ",
+        "says": "Makkan in the saying of Ibn ʿAbbās, al-Kalbī and Muqātil; Madinan in the saying of al-Ḥasan, ʿIkrimah, Mujāhid and Qatādah."
+      }
     ]
   },
   "setting": [
     "Among the Arabs a man lived on in his sons. They carried his name, defended his honour and kept his memory; a man without them was abtar — docked, cut off, a line that stops. The Prophet’s ﷺ sons died in infancy, and his enemies saw their chance.",
-    "Ibn Kathīr gathers the reports. Ibn ʿAbbās, Mujāhid, Saʿīd ibn Jubayr and Qatādah said it came down about al-ʿĀṣ ibn Wāʾil, who, whenever the Messenger of Allah ﷺ was mentioned, would say: leave him — he is a man cut off, with no descendants; when he dies, his memory will die with him. Others named ʿUqbah ibn Abī Muʿayṭ, or Kaʿb ibn al-Ashraf.",
+    "Ibn Kathīr gathers the reports.{reported} Ibn ʿAbbās, Mujāhid, Saʿīd ibn Jubayr and Qatādah said it came down about al-ʿĀṣ ibn Wāʾil, who, whenever the Messenger of Allah ﷺ was mentioned, would say: leave him — he is a man cut off, with no descendants; when he dies, his memory will die with him. Others named ʿUqbah ibn Abī Muʿayṭ, or Kaʿb ibn al-Ashraf.",
     "The reply is three ayat. We have given you al-Kawthar. So pray to your Lord, and sacrifice — to Him, not as they prayed and sacrificed to their idols. It is the one who hates you who is cut off.",
     "No prediction in the Qurʾan has been more visibly kept. The men who said it are remembered only because of the ayah that answered them. And the one they called cut off is named, with blessing, by people in every country on earth, in every call to prayer, every day."
   ],
@@ -39,7 +59,8 @@
     {
       "title": "“A man cut off”",
       "text": "Al-ʿĀṣ ibn Wāʾil used to say, when the Messenger of Allah ﷺ was mentioned: “Leave him, for he is a man cut off, with no posterity. When he perishes, his mention will end.” So Allah sent down this surah.",
-      "source": "Ibn Kathīr, from Ibn ʿAbbās, Mujāhid, Saʿīd ibn Jubayr and Qatādah, and from Ibn Isḥāq.",
+      "source": "Ibn Kathīr, from Ibn ʿAbbās, Mujāhid, Saʿīd ibn Jubayr and Qatādah, and from Ibn Isḥāq. Al-Ṭabarī, al-Baghawī, Ibn al-Jawzī, al-Qurṭubī, al-Suyūṭī and al-Shawkānī relate it too.",
+      "rank": "reported",
       "evidence": {
         "work": "ibn-katheer",
         "ayah": 1,
@@ -89,7 +110,8 @@
           "number": "400"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“While I was walking in Paradise I came upon a river whose banks were domes of hollowed pearl. I said: What is this, Jibrīl? He said: This is al-Kawthar, which your Lord has given you.”",
@@ -101,7 +123,8 @@
           "number": "6581"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Māʿūn drew a man who gives nothing, prays to be seen, and withholds. Al-Kawthar answers each point: you have been given abundance; pray to your Lord; and sacrifice.",

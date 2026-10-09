@@ -38,6 +38,26 @@
         "ayah": 1,
         "quote": "وَتُسَمَّى سُورَةُ النِّعَمِ بِسَبَبِ مَا عَدَّدَ اللَّهُ فِيهَا مِنْ نِعَمِهِ عَلَى عِبَادِهِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ النَّحْلِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ اِبْنُ مَرْدُويَهْ عَنِ اِبْنِ عَبّاسٍ رَضِيَ اللَّهُ عَنْهُما قالَ: نَزَلَتْ سُورَةُ ”النَّحْلِ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ كُلُّها في قَوْلِ الحَسَنِ، وعِكْرِمَةَ، وعَطاءٍ، وجابِرٍ، ورَواهُ ابْنُ مَرْدَوَيْهِ عَنِ ابْنِ عَبّاسٍ",
+        "says": "Makkan, all of it, in the saying of al-Ḥasan, ʿIkrimah, ʿAṭāʾ and Jābir; Ibn Mardawayh relates it from Ibn ʿAbbās."
+      }
     ]
   },
   "setting": [
@@ -55,7 +75,8 @@
       ],
       "title": "After Uḥud",
       "text": "“On the day of Uḥud, sixty-four of the Helpers were struck down, and six of the Emigrants, among them Ḥamzah; and they were mutilated. The Helpers said: ‘If we have a day like this against them, we shall outdo them.’ When the day of the conquest of Makkah came, Allah sent down: ‘If you punish, then punish with the like of what you were made to suffer; but if you are patient, that is better for the patient.’ A man said: ‘No Quraysh after today!’ The Messenger of Allah ﷺ said: ‘Hold back from the people, except four.’”",
-      "source": "Ubayy ibn Kaʿb: al-Tirmidhī (3129); a ḥasan ṣaḥīḥ chain according to al-Albānī."
+      "source": "Ubayy ibn Kaʿb: al-Tirmidhī (3129); a ḥasan ṣaḥīḥ chain according to al-Albānī.",
+      "rank": "sahih"
     }
   ],
   "aim": "To recall the favours that point to the One who gives them — binding people to worship Him, and warning against the denial of His favour.",
@@ -130,7 +151,9 @@
       "text": "Ibn Masʿūd said: “The most comprehensive ayah in the Qurʾan is in Sūrat al-Naḥl: ‘Allah commands justice and the doing of good…’”",
       "narrator": "ʿAbd Allāh ibn Masʿūd",
       "source": "Al-Ṭabarī, and al-Bukhārī in al-Adab al-Mufrad — quoted by Ibn Kathīr",
-      "grade": "A saying of the Companion, not a hadith of the Prophet ﷺ",
+      "grade": "Its chain is ḥasan according to al-Albānī (Ṣaḥīḥ al-Adab al-Mufrad, 376); a saying of Ibn Masʿūd",
+      "rank": "companion",
+      "caveat": "This is al-Albānī’s grading as an index of his works records it; it has not yet been checked here against the printed book. The number given is the likeliest match, not a certain one.",
       "evidence": {
         "work": "ibn-katheer",
         "ayah": 90,
@@ -152,10 +175,11 @@
           "number": "2217"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
-  "virtuesNote": "The fiftieth ayah is an ayah of prostration. The ninetieth — “Allah commands justice and the doing of good” — is the ayah read at the close of the Friday sermon in much of the Muslim world, a practice commonly traced to the caliph ʿUmar ibn ʿAbd al-ʿAzīz.",
+  "virtuesNote": "The fiftieth ayah is an ayah of prostration. The ninetieth — “Allah commands justice and the doing of good” — is the ayah read at the close of the Friday sermon in much of the Muslim world.",
   "before": "Al-Ḥijr ended with the Prophet ﷺ told to worship until the certain end comes. Al-Naḥl opens: the command of Allah has come.",
   "after": "Al-Naḥl ends: “Allah is with those who are mindful.” Al-Isrāʾ opens with the greatest sign of that nearness: “Glory be to Him who took His servant by night.”",
   "notable": [

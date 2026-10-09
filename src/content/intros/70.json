@@ -33,11 +33,31 @@
         "ayah": 1,
         "quote": "سُورَةُ الْمَعَارِجِ وَهِيَ مَكِّيَّةٌ بِاتِّفَاقٍ. وَهِيَ أَرْبَعٌ وأربعون آية"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْمَعَارِجِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةٌ «سَألَ» بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ",
+        "says": "Makkan."
+      }
     ]
   },
   "setting": [
     "By the later Makkan years the warning of punishment had been repeated so often that the leaders of Quraysh had turned it into a joke. If it is true, they said, then bring it on. The Qurʾan records the very words elsewhere: “O Allah, if this is the truth from You, then rain down stones on us from the sky, or bring us a painful punishment” (8:32).",
-    "Ibn al-Jawzī relates from the commentators that this surah came down about the man who said that — al-Naḍr ibn al-Ḥārith, in the view of Ibn ʿAbbās, Mujāhid and the majority; others said Abū Jahl. A questioner has asked for a punishment that is going to fall.",
+    "Ibn al-Jawzī relates from the commentators that this surah came down about the man who said that — al-Naḍr ibn al-Ḥārith, in the view of Ibn ʿAbbās, Mujāhid and the majority; others said Abū Jahl.{reported} A questioner has asked for a punishment that is going to fall.",
     "The surah does not hurry to oblige him. It tells the Prophet ﷺ to be patient, with a patience that has no complaint in it: they see it as far off, and We see it as near. Then it describes the Day in terms of what will become of human ties — no close friend will ask after his friend, though they are put in sight of each other, and the guilty one would give his children, his wife, his brother, his clan and everyone on earth to buy himself out.",
     "And in the middle it places one of the Qurʾan’s great character sketches. Man was created restless: fretful when harm touches him, tight-fisted when good comes his way. Except — and eight qualities follow, which begin with those who are constant in their prayer and end with those who guard it."
   ],
@@ -50,6 +70,7 @@
       "title": "The man who asked for it",
       "text": "The commentators said it came down about al-Naḍr ibn al-Ḥārith, when he said: “O Allah, if this is the truth from You, then rain down stones upon us from the sky.” This is the position of the majority, among them Ibn ʿAbbās and Mujāhid. Al-Rabīʿ ibn Anas said it was Abū Jahl.",
       "source": "Ibn al-Jawzī, Zād al-Masīr.",
+      "rank": "reported",
       "evidence": {
         "work": "zad-almaseer",
         "ayah": 1,

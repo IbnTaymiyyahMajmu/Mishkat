@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "مَكِّيَّةٌ فِي قَوْلِ الْأَكْثَرِ. وَقَالَ ابْنُ عَبَّاسٍ وَقَتَادَةُ: هِيَ مَدَنِيَّةٌ وَهِيَ ثَمَانِي آيَاتٍ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ التِّينِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: أُنْزِلَتْ سُورَةُ ﴿والتِّينِ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ في قَوْلِ الجُمْهُورِ، ورَوى القُرْطُبِيُّ عَنِ ابْنِ عَبّاسٍ أنَّها مَدَنِيَّةٌ",
+        "says": "Makkan, in the saying of the majority; al-Qurṭubī relates from Ibn ʿAbbās that it is Madinan."
+      }
     ]
   },
   "setting": [
@@ -80,7 +100,8 @@
           "number": "464"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Sharḥ spoke of the most complete of human beings, his chest opened and his mention raised. Al-Tīn speaks of the kind he belongs to, and of the two ends it can come to.",

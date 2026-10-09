@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "سُورَةُ \"الْفَجْرِ\" مَكِّيَّةٌ، وَهِيَ ثَلَاثُونَ آيَةً"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْفَجْرَ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ في ناسِخِهِ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ مِن طُرُقٍ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ ﴿والفَجْرِ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī, through several chains."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ في قَوْلِ الجُمْهُورِ",
+        "says": "Makkan, in the saying of the majority."
+      }
     ]
   },
   "setting": [
@@ -94,7 +114,8 @@
           "number": "757"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Ghāshiyah asked whether they had looked at the camel, the sky, the mountains and the earth. Al-Fajr asks whether they have seen how their Lord dealt with those who built on that earth and defied Him.",

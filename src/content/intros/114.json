@@ -33,6 +33,32 @@
         "ayah": 1,
         "quote": "سُورَةُ \"النَّاسِ\" مِثْلُ \"الْفَلَقِ\" لِأَنَّهَا إِحْدَى الْمُعَوِّذَتَيْنِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ النَّاسِ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنْ عَبْدِ اللهِ بْنِ الزُّبَيْرِ قالَ: أُنْزِلَ بِالمَدِينَةِ ﴿قُلْ أعُوذُ بِرَبِّ النّاسِ",
+        "says": "Ibn al-Zubayr: it came down in Madinah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "والخِلافُ في كَوْنِها مَكِّيَّةً أوْ مَدَنِيَّةً كالخِلافِ الَّذِي تَقَدَّمَ في سُورَةِ الفَلَقِ",
+        "says": "The difference over whether it is Makkan or Madinan is as already described for Sūrat al-Falaq."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: أُنْزِلَ بِمَكَّةَ ﴿قُلْ أعُوذُ بِرَبِّ النّاسِ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      }
     ]
   },
   "setting": [
@@ -76,7 +102,8 @@
           "number": "814"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "Each night when the Prophet ﷺ went to his bed he would bring his palms together, blow into them and recite into them “Qul huwa Allāhu aḥad”, “Qul aʿūdhu bi-rabbi l-falaq” and “Qul aʿūdhu bi-rabbi l-nās”, then wipe with them as much of his body as he could, beginning with his head and face and the front of his body. He would do that three times.",
@@ -88,7 +115,8 @@
           "number": "5017"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“Say ‘Qul huwa Allāhu aḥad’ and the two surahs of refuge three times when evening comes and when morning comes: they will suffice you against everything.”",
@@ -104,7 +132,8 @@
           "number": "3575"
         }
       ],
-      "grade": "Ḥasan ṣaḥīḥ gharīb, said al-Tirmidhī; ḥasan according to al-Albānī"
+      "grade": "Ḥasan according to al-Albānī",
+      "rank": "hasan"
     }
   ],
   "before": "Al-Falaq sought refuge from four evils that come from outside, by one of Allah’s attributes. Al-Nās seeks refuge from one that works within, by three.",

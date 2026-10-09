@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "سُورَةُ الِانْفِطَارِ مَكِّيَّةٌ عِنْدَ الْجَمِيعِ وَهِيَ تِسْعَ عشرة آية"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الِانْفِطَارِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ ﴿إذا السَّماءُ انْفَطَرَتْ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ بِلا خِلافٍ",
+        "says": "Makkan, by agreement."
+      }
     ]
   },
   "setting": [
@@ -83,7 +103,8 @@
           "number": "3333"
         }
       ],
-      "grade": "Ḥasan gharīb, said al-Tirmidhī; ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     }
   ],
   "before": "Al-Takwīr ended: it is a reminder for whoever wills to go straight. Al-Infiṭār asks the one who has not: what deceived you?",

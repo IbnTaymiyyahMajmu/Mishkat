@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "عَنْ عَبْدِ اللَّهِ -هُوَ ابْنُ مَسْعُودٍ-قَالَ: بَيْنَمَا نَحْنُ مَعَ النَّبِيِّ ﷺ، فِي غَارٍ بِمِنًى، إِذْ نَزَلَتْ عَلَيْهِ: \" وَالْمُرْسَلاتِ \" فَإِنَّهُ لَيَتْلُوهَا"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْمُرْسَلَاتِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ المُرْسَلاتِ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ في قَوْلِ الحَسَنِ، وعِكْرِمَةَ، وعَطاءٍ، وجابِرٍ",
+        "says": "Makkan, in the saying of al-Ḥasan, ʿIkrimah, ʿAṭāʾ and Jābir ibn Zayd."
+      }
     ]
   },
   "setting": [
@@ -39,7 +59,8 @@
     {
       "title": "The cave at Minā",
       "text": "“While we were with the Prophet ﷺ in a cave at Minā, ‘Wa-l-mursalāt’ was sent down upon him. He was reciting it and I was receiving it from his mouth, his mouth still moist with it, when a snake leapt out at us…”",
-      "source": "ʿAbd Allāh ibn Masʿūd: al-Bukhārī (1830, 4930) and Muslim (2234)."
+      "source": "ʿAbd Allāh ibn Masʿūd: al-Bukhārī (1830, 4930) and Muslim (2234).",
+      "rank": "agreed"
     }
   ],
   "aim": "To establish the Resurrection by confronting the deniers with proofs — each followed by threat and warning.",
@@ -101,7 +122,8 @@
           "number": "462"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“Hūd, al-Wāqiʿah, al-Mursalāt, ‘ʿAmma yatasāʾalūn’ and ‘Idhā l-shamsu kuwwirat’ have turned me grey.”",
@@ -113,7 +135,8 @@
           "number": "3297"
         }
       ],
-      "grade": "Ḥasan gharīb, said al-Tirmidhī; ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     }
   ],
   "before": "Al-Insān described at length what is prepared for the righteous. Al-Mursalāt turns to those who deny that anything is prepared at all.",

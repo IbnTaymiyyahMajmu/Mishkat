@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "كَانَ سَبَبُ نُزُولِ صَدْرِ هَذِهِ السُّورَةِ الْكَرِيمَةِ قِصَّةَ حَاطِبِ بْنِ أَبِي بَلْتَعَةَ، وَذَلِكَ أَنَّ حَاطِبًا هَذَا كَانَ رَجُلًا مِنَ الْمُهَاجِرِينَ، وَكَانَ مِنْ أَهْلِ بَدْرٍ أَيْضًا"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْمُمْتَحِنَةِ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ «المُمْتَحَنَةِ» بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَدَنِيَّةٌ",
+        "says": "Madinan."
+      }
     ]
   },
   "setting": [
@@ -42,8 +62,13 @@
         3
       ],
       "title": "Ḥāṭib’s letter",
-      "text": "Ḥāṭib ibn Abī Baltaʿah wrote to some of the idolaters of Makkah informing them of the Prophet’s ﷺ plans. The letter was recovered at Rawḍat Khākh; he explained that he had only sought protection for his family; and the Prophet ﷺ accepted his word. Then Allah sent down: “O you who believe, do not take My enemy and your enemy as allies.”",
-      "source": "ʿAlī ibn Abī Ṭālib: al-Bukhārī (4274, 4890) and Muslim (2494)."
+      "text": "ʿAlī said: the Messenger of Allah ﷺ sent me, al-Zubayr and al-Miqdād, and said: “Ride until you come to the meadow of Khākh. There is a woman there, travelling by camel, who has a letter with her; take it from her.” We set off, our horses racing under us, until we reached the meadow, and there was the woman. We said: “Bring out the letter.” She said: “I have no letter.” We said: “You will bring out the letter, or we shall strip you of your clothes.” And she drew it out from the plaits of her hair.",
+      "story": [
+        "We brought it to the Messenger of Allah ﷺ. It was from Ḥāṭib ibn Abī Baltaʿah to some of the idolaters in Makkah, telling them something of what the Messenger of Allah ﷺ intended. He said: “Ḥāṭib, what is this?” He said: “Messenger of Allah, do not be hasty with me. I was a man attached to Quraysh — an ally of theirs, and not one of them by blood. The Emigrants who are with you have kinsmen there who protect their families and their property. Since I lacked that tie of blood among them, I wished to do them a service for which they would protect my kin. I did not do it to turn back from my religion, nor because I am content with disbelief after Islam.” The Messenger of Allah ﷺ said: “He has told you the truth.”",
+        "ʿUmar said: “Messenger of Allah, let me strike the neck of this hypocrite.” He ﷺ said: “He was at Badr. And what do you know? Perhaps Allah looked upon those who were at Badr and said: Do what you will, for I have forgiven you.” And Allah sent down the surah: “O you who believe, do not take My enemy and your enemy as allies, offering them affection…” as far as “he has strayed from the right way.”"
+      ],
+      "source": "ʿAlī ibn Abī Ṭālib: al-Bukhārī (4274, 4890) and Muslim (2494).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -52,7 +77,8 @@
       ],
       "title": "Asmāʾ and her mother",
       "text": "Asmāʾ bint Abī Bakr said: “My mother came to me, while she was still an idolater, in the time of the Messenger of Allah ﷺ. I asked him: my mother has come to me hoping for my kindness — shall I keep ties with her?” He said: “Yes. Keep ties with your mother.”",
-      "source": "Asmāʾ bint Abī Bakr: al-Bukhārī (2620) and Muslim (1003)."
+      "source": "Asmāʾ bint Abī Bakr: al-Bukhārī (2620) and Muslim (1003).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -61,7 +87,8 @@
       ],
       "title": "The women who emigrated",
       "text": "After the truce, believing women came to Madinah as emigrants, and their families demanded them back under its terms. They were examined as to their faith and not returned. ʿĀʾishah said: the Messenger of Allah ﷺ would examine them by this ayah; whoever accepted its conditions, he would say to her, “I have accepted your pledge” — in words only. By Allah, his hand never touched the hand of a woman in taking the pledge.",
-      "source": "ʿĀʾishah: al-Bukhārī (4891) and Muslim (1866)."
+      "source": "ʿĀʾishah: al-Bukhārī (4891) and Muslim (1866).",
+      "rank": "agreed"
     }
   ],
   "aim": "To free the hearts of the believers from loyalty to anything other than the religion of Allah.",

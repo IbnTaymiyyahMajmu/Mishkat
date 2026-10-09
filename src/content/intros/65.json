@@ -33,6 +33,26 @@
         "ayah": 1,
         "quote": "سُورَةُ الطَّلَاقِ مَدَنِيَّةٌ فِي قَوْلِ الْجَمِيعِ. وَهِيَ إِحْدَى عَشْرَةَ آيَةً، أَوِ اثْنَتَا عَشْرَةَ آيَةً"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الطَّلَاقِ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ «الطَّلاقِ» بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَدَنِيَّةٌ، قالَ القُرْطُبِيُّ: في قَوْلِ الجَمِيعِ",
+        "says": "Madinan, by agreement, citing al-Qurṭubī."
+      }
     ]
   },
   "setting": [
@@ -49,7 +69,8 @@
       ],
       "title": "Ibn ʿUmar’s divorce",
       "text": "Ibn ʿUmar divorced his wife during her course, in the time of the Messenger of Allah ﷺ. ʿUmar asked him about it, and he said: “Command him to take her back, then keep her until she becomes pure, then menstruates, then becomes pure. Then if he wishes he may keep her, and if he wishes he may divorce her before he touches her. That is the waiting period for which Allah has commanded that women be divorced.”",
-      "source": "ʿAbd Allāh ibn ʿUmar: al-Bukhārī (5251) and Muslim (1471)."
+      "source": "ʿAbd Allāh ibn ʿUmar: al-Bukhārī (5251) and Muslim (1471).",
+      "rank": "agreed"
     }
   ],
   "aim": "To impress the gravity of divorce and its limits, and to show the outcome of mindfulness of Allah and of overstepping His bounds.",

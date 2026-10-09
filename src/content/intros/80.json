@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "سُورَةُ عَبَسَ مَكِّيَّةٌ فِي قَوْلِ الْجَمِيعِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ عَبَسَ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ في الدَّلائِلِ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ عَبَسَ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ في قَوْلِ الجَمِيعِ",
+        "says": "Makkan, by agreement."
+      }
     ]
   },
   "setting": [
@@ -44,6 +64,7 @@
       "title": "Ibn Umm Maktūm",
       "text": "The Messenger of Allah ﷺ was one day addressing one of the great men of Quraysh, hoping for his Islam, when Ibn Umm Maktūm — one of those who had accepted Islam early — came asking him about something, and pressed him. The Prophet ﷺ wished he would hold off for that hour; he frowned and turned from him to the other. So Allah sent down: “He frowned and turned away, because the blind man came to him.”",
       "source": "Ibn Kathīr, from more than one of the commentators. ʿĀʾishah reports it in al-Tirmidhī (3331), who called the report gharīb; al-Albānī graded its chain ṣaḥīḥ.",
+      "rank": "sahih",
       "evidence": {
         "work": "ibn-katheer",
         "ayah": 1,
@@ -106,7 +127,8 @@
           "number": "3332"
         }
       ],
-      "grade": "Ḥasan ṣaḥīḥ, said al-Tirmidhī"
+      "grade": "Ḥasan ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     }
   ],
   "before": "Al-Nāziʿāt closed with: you are only a warner to whoever fears it (79:45). ʿAbasa opens with the man who feared, and was almost passed over.",

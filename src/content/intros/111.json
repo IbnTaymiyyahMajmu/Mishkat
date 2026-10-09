@@ -33,6 +33,26 @@
         "ayah": 1,
         "quote": "سُورَةُ \"تَبَّتْ\" وَهِيَ مَكِّيَّةٌ بِإِجْمَاعٍ. وَهِيَ خُمْسُ آيات"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْمَسَدِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ ﴿تَبَّتْ يَدا أبِي لَهَبٍ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ بِلا خِلافٍ",
+        "says": "Makkan, by agreement."
+      }
     ]
   },
   "setting": [
@@ -45,7 +65,8 @@
     {
       "title": "The call from Ṣafā",
       "text": "When “And warn your nearest kindred” came down, the Messenger of Allah ﷺ climbed Ṣafā and called out until Quraysh had gathered, and warned them. Abū Lahab said: “May you perish for the rest of this day! Was it for this that you gathered us?” So there came down: “Perish the two hands of Abū Lahab, and perish he.”",
-      "source": "Ibn ʿAbbās: al-Bukhārī (4770, 4971) and Muslim (208)."
+      "source": "Ibn ʿAbbās: al-Bukhārī (4770, 4971) and Muslim (208).",
+      "rank": "agreed"
     }
   ],
   "aim": "That lineage and standing are of no use alongside disbelief in Allah.",

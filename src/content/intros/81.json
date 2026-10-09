@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "سُورَةُ التَّكْوِيرِ مَكِّيَّةٌ فِي قَوْلِ الْجَمِيعِ. وَهِيَ تِسْعٌ وَعِشْرُونَ آيَةً"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ التَّكْوِيرِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿إذا الشَّمْسُ كُوِّرَتْ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ بِلا خِلافٍ",
+        "says": "Makkan, by agreement."
+      }
     ]
   },
   "setting": [
@@ -85,7 +105,8 @@
           "number": "3333"
         }
       ],
-      "grade": "Ḥasan gharīb, said al-Tirmidhī; ṣaḥīḥ according to al-Albānī",
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih",
       "evidence": {
         "work": "zad-almaseer",
         "ayah": 1,
@@ -102,7 +123,8 @@
           "number": "3297"
         }
       ],
-      "grade": "Ḥasan gharīb, said al-Tirmidhī; ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     }
   ],
   "before": "ʿAbasa ended on the faces of the Day — bright, or covered in dust. Al-Takwīr goes back to the Day’s first moment and brings it on.",

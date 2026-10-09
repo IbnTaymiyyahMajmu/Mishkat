@@ -33,6 +33,20 @@
         "ayah": 1,
         "quote": "سُورَةُ الْجَاثِيَةِ مَكِّيَّةٌ كُلُّهَا فِي قَوْلِ الْحَسَنِ وَجَابِرٍ وَعِكْرِمَةَ. وَقَالَ ابْنُ عَبَّاسٍ وَقَتَادَةُ: إِلَّا آيَةً"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْجَاثِيَةِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهْ عَنِ ابْنِ عَبّاسٍ قالَ: أُنْزِلَ بِمَكَّةَ سُورَةُ ”حم الجاثِيَةِ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      }
     ]
   },
   "setting": [
@@ -109,7 +123,8 @@
           "number": "2246"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Dukhān warned Quraysh by the fate of Pharaoh’s people. Al-Jāthiyah goes behind the warning to the outlook that made them deaf to it.",

@@ -22,6 +22,26 @@
         "ayah": 1,
         "quote": "وَفِيها قَوْلانِ. أحَدُهُما: أنَّها مَكِّيَّةٌ، قالَهُ ابْنُ عَبّاسٍ، وابْنُ الزُّبَيْرِ، والجُمْهُورُ. والثّانِي: مَدَنِيَّةٌ، قالَهُ مُجاهِدٌ، وقَتادَةُ، ومُقاتِلٌ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْعَصْرِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿والعَصْرِ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ عِنْدَ الجُمْهُورِ",
+        "says": "Makkan, in the saying of the majority."
+      }
     ]
   },
   "setting": [
@@ -62,6 +82,8 @@
       "narrator": "Abū Madīnah al-Dārimī",
       "source": "al-Ṭabarānī, al-Muʿjam al-Awsaṭ — as Ibn Kathīr gives it at the head of the surah",
       "grade": "Ṣaḥīḥ according to al-Albānī (al-Silsilah al-Ṣaḥīḥah, 2648)",
+      "rank": "sahih",
+      "caveat": "This is al-Albānī’s grading as an index of his works records it; it has not yet been checked here against the printed book.",
       "evidence": {
         "work": "ibn-katheer",
         "ayah": 1,

@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "سُورَةُ التَّحْرِيمِ مَدَنِيَّةٌ فِي قَوْلِ الْجَمِيعِ، وَهِيَ اثْنَتَا عَشْرَةَ آيَةً. وَتُسَمَّى سُورَةَ \"النَّبِيِّ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ التَّحْرِيمِ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ «التَّحْرِيمِ» بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَدَنِيَّةٌ",
+        "says": "Madinan."
+      }
     ]
   },
   "setting": [
@@ -43,7 +63,8 @@
       ],
       "title": "The honey",
       "text": "“The Messenger of Allah ﷺ used to drink honey at the house of Zaynab bint Jaḥsh and stay with her. Ḥafṣah and I agreed that whichever of us he came to would say: have you eaten maghāfīr? I find the smell of maghāfīr on you. He said: ‘No, but I was drinking honey at Zaynab bint Jaḥsh’s, and I will not return to it; I have sworn. Do not tell anyone.’”",
-      "source": "ʿĀʾishah: al-Bukhārī (4912) and Muslim (1474)."
+      "source": "ʿĀʾishah: al-Bukhārī (4912) and Muslim (1474).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -53,6 +74,7 @@
       "title": "Māriyah",
       "text": "The Messenger of Allah ﷺ had a bondwoman with whom he was intimate, and ʿĀʾishah and Ḥafṣah kept at him until he made her forbidden to himself. So Allah sent down: “O Prophet, why do you prohibit what Allah has made lawful for you?”",
       "source": "Anas ibn Mālik: al-Nasāʾī (3959); its chain is ṣaḥīḥ according to al-Albānī.",
+      "rank": "sahih",
       "evidence": {
         "work": "ibn-katheer",
         "ayah": 1,
@@ -65,8 +87,15 @@
         4
       ],
       "title": "The two who backed each other",
-      "text": "Ibn ʿAbbās said: “For a year I wanted to ask ʿUmar ibn al-Khaṭṭāb about an ayah, and could not, out of awe of him” — until he asked on the road back from the Pilgrimage: who were the two women who supported one another against the Prophet ﷺ? ʿUmar said: “They were Ḥafṣah and ʿĀʾishah.”",
-      "source": "Ibn ʿAbbās, from ʿUmar: al-Bukhārī (4913) and Muslim (1479)."
+      "text": "Ibn ʿAbbās said: for a year I wanted to ask ʿUmar ibn al-Khaṭṭāb about an ayah, and could not, out of awe of him — until he went out on the Pilgrimage and I went with him. On the way back he turned aside into the thorn trees for a need of his; I waited for him, then walked on with him, and said: “Commander of the Faithful, who were the two among the wives of the Prophet ﷺ who backed each other against him?” He said: “Those were Ḥafṣah and ʿĀʾishah.”",
+      "story": [
+        "ʿUmar told him to ask about whatever he thought he had knowledge of, and went on: “By Allah, in the days of ignorance we counted women as nothing, until Allah sent down about them what He sent down, and apportioned to them what He apportioned. One day I was turning a matter over, and my wife said: If only you did such-and-such. I said: What is it to you? She said: How strange you are, Ibn al-Khaṭṭāb! You will not be answered back — and your own daughter answers back the Messenger of Allah ﷺ until he spends his day angry.”",
+        "He took up his cloak and went straight to Ḥafṣah. “Daughter, do you answer back the Messenger of Allah ﷺ until he spends his day angry?” She said: “By Allah, we do answer him back.” He said: “Know that I am warning you of the punishment of Allah and the anger of His Messenger. Daughter, do not be misled by the one whose beauty has made her bold, and the love the Messenger of Allah ﷺ has for her” — he meant ʿĀʾishah. Then he went in to Umm Salamah, who was his kinswoman, and spoke to her; and she said: “How strange you are, Ibn al-Khaṭṭāb! You have entered into everything, until now you want to come between the Messenger of Allah ﷺ and his wives.” “By Allah,” he said, “she took me up in a way that broke some of what I was feeling.”",
+        "He had a friend among the Helpers; when one of them was away, the other brought him the news. They were in fear at that time of one of the kings of Ghassān, who was said to be making ready to march on them. One night the friend beat at the door: “Open, open!” — “Has the Ghassānī come?” — “Worse than that. The Messenger of Allah ﷺ has withdrawn from his wives.”",
+        "He found the Messenger of Allah ﷺ in an upper room reached by a ladder, a servant of his at the head of the steps, and was given leave to enter. He told him the whole of this, and when he reached what Umm Salamah had said, the Messenger of Allah ﷺ smiled. He was lying on a mat with nothing between him and it, under his head a leather cushion stuffed with palm fibre; at his feet a heap of tanning leaves, and by his head some hides hung up. “I saw the mark of the mat on his side, and I wept. He said: ‘What makes you weep?’ I said: Messenger of Allah, Chosroes and Caesar live as they live — and you are the Messenger of Allah. He said: ‘Are you not content that this world should be theirs, and the Hereafter ours?’”"
+      ],
+      "source": "Ibn ʿAbbās, from ʿUmar: al-Bukhārī (4913) and Muslim (1479).",
+      "rank": "agreed"
     }
   ],
   "aim": "The upbringing of the Prophet’s ﷺ household, that it may be the model for the family and for society.",
@@ -123,7 +152,8 @@
           "number": "2431"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Ṭalāq legislated for the ending of a marriage. Al-Taḥrīm shows a household kept together — by correction, repentance and an oath undone.",

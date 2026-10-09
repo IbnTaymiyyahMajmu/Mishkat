@@ -22,10 +22,30 @@
         "ayah": 1,
         "quote": "وَهِيَ مَكِّيَّةٌ فِي قَوْلِ جَمِيعِ الْمُفَسِّرِينَ. وَرَوَى الْبُخَارِيُّ أَنَّهَا مَدَنِيَّةٌ. وَهِيَ ثمان آيات"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ التَّكَاثُرِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ بِمَكَّةَ سُورَةُ ﴿ألْهاكُمُ التَّكاثُرُ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ عِنْدَ الجَمِيعِ",
+        "says": "Makkan, by agreement."
+      }
     ]
   },
   "setting": [
-    "Quraysh were merchants, and their society ran on standing: whose clan was larger, whose caravans richer, whose dead more famous. Ibn al-Jawzī relates that two clans — Banū ʿAbd Manāf and Banū Sahm — fell to arguing over which of them had more chiefs and more men, counted their living, and when that did not settle it went out to the graveyard to count their dead.",
+    "Quraysh were merchants, and their society ran on standing: whose clan was larger, whose caravans richer, whose dead more famous. Ibn al-Jawzī relates that two clans — Banū ʿAbd Manāf and Banū Sahm — fell to arguing over which of them had more chiefs and more men, counted their living, and when that did not settle it went out to the graveyard to count their dead.{reported}",
     "Whether or not that was the very occasion, it is the habit the surah names. Alhākum: it has distracted you — taken you away from what mattered. And it will go on doing so until you visit the graves. The Arabic word is visit, and the early Muslims heard what it implies: a visitor does not stay.",
     "Then the tone changes. No — you will come to know. Again, no — you will come to know. If you knew now, with certain knowledge, you would not be as you are. You will see the Fire with your own eyes. And then you will be asked about every comfort you were given."
   ],
@@ -34,6 +54,7 @@
       "title": "Counting the dead",
       "text": "Two reports are given. In one, from Qatādah, some of the Jews said, “We are more than the sons of so-and-so,” and were kept busy with that until they died astray. In the other, two clans of Quraysh, Banū ʿAbd Manāf and Banū Sahm, quarrelled over which had more chiefs and greater numbers, until they went to count those in their graves.",
       "source": "Ibn al-Jawzī, at the head of the surah.",
+      "rank": "reported",
       "evidence": {
         "work": "zad-almaseer",
         "ayah": 1,
@@ -84,7 +105,8 @@
           "number": "2958"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "The Prophet ﷺ, Abū Bakr and ʿUmar went out one day driven by hunger, and a man of the Anṣār brought them dates, slaughtered a sheep for them, and gave them water. When they had eaten and drunk their fill he ﷺ said: “By the One in whose hand is my soul, you will be asked about this delight on the Day of Resurrection.”",
@@ -96,7 +118,8 @@
           "number": "2038"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Qāriʿah ended with the scales, heavy or light. Al-Takāthur says what makes them light: a life spent adding to the wrong side.",

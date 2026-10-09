@@ -32,6 +32,26 @@
         "ayah": 1,
         "quote": "قَالَ العَوْفِي عَنِ ابْنِ عَبَّاسٍ: نَزَلَتْ سورةُ النِّسَاءِ بِالْمَدِينَةِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةِ النِّسَاءِ -مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ في ”فَضائِلِهِ“، والنَّحّاسُ في ”ناسِخِهِ“، وابْنُ مَرْدُوَيْهِ، والبَيْهَقِيُّ في ”الدَّلائِلِ“ مِن طُرُقٍ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”النِّساءِ“ بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī, through several chains."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هِيَ مَدَنِيَّةٌ كُلُّها",
+        "says": "Madinan, all of it."
+      }
     ]
   },
   "setting": [
@@ -49,7 +69,8 @@
       ],
       "title": "The orphan girl and her guardian",
       "text": "ʿUrwah asked ʿĀʾishah about “If you fear that you will not deal justly with the orphans.” She said: “Son of my sister, this is the orphan girl who is in the care of her guardian and shares his property; her wealth and beauty please him, and he wishes to marry her without being fair in her dowry and giving her what another would give. So they were forbidden to marry them unless they dealt justly with them and gave them the highest of what is customary in dowry.”",
-      "source": "ʿĀʾishah: al-Bukhārī (4574) and Muslim (3018)."
+      "source": "ʿĀʾishah: al-Bukhārī (4574) and Muslim (3018).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -58,7 +79,8 @@
       ],
       "title": "The ayah of the shares",
       "text": "Jābir said: “The Prophet ﷺ and Abū Bakr visited me among Banū Salimah, walking. The Prophet ﷺ found me unconscious; he called for water, made ablution from it, then sprinkled it upon me, and I came round. I said: ‘What do you command me to do with my wealth, Messenger of Allah?’ And there came down: ‘Allah charges you concerning your children.’”",
-      "source": "Jābir ibn ʿAbd Allāh: al-Bukhārī (4577) and Muslim (1616)."
+      "source": "Jābir ibn ʿAbd Allāh: al-Bukhārī (4577) and Muslim (1616).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -67,7 +89,8 @@
       ],
       "title": "Women inherited against their will",
       "text": "“When a man died, his heirs had more right to his wife. If one of them wished, he married her; if they wished, they gave her in marriage; and if they wished, they did not. They had more right to her than her own family. So this ayah came down about that.”",
-      "source": "Ibn ʿAbbās: al-Bukhārī (4579)."
+      "source": "Ibn ʿAbbās: al-Bukhārī (4579).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -76,7 +99,8 @@
       ],
       "title": "“Until they make you judge”",
       "text": "Al-Zubayr disputed with a man of the Helpers over a watercourse in the lava field. The Prophet ﷺ said: “Water your land, Zubayr, then let the water run to your neighbour.” The man said: “Is it because he is your cousin, Messenger of Allah?” His face changed, and he said: “Water, Zubayr, then hold the water until it reaches the walls.” Al-Zubayr said: “I think these ayat came down only about that: ‘No, by your Lord, they do not believe until they make you judge in what is disputed among them.’”",
-      "source": "ʿUrwah, from al-Zubayr: al-Bukhārī (4585) and Muslim (2357)."
+      "source": "ʿUrwah, from al-Zubayr: al-Bukhārī (4585) and Muslim (2357).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -85,7 +109,8 @@
       ],
       "title": "The man who gave the greeting",
       "text": "“A man was with a small flock of his, and the Muslims came upon him. He said: ‘Peace be upon you.’ They killed him and took his flock. So Allah sent down: ‘Do not say to one who offers you peace, “You are not a believer,” seeking the goods of this life.’”",
-      "source": "Ibn ʿAbbās: al-Bukhārī (4591) and Muslim (3025)."
+      "source": "Ibn ʿAbbās: al-Bukhārī (4591) and Muslim (3025).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -94,7 +119,8 @@
       ],
       "title": "“Other than those with an injury”",
       "text": "Zayd ibn Thābit said that the Messenger of Allah ﷺ dictated to him: “Not equal are those of the believers who sit and those who strive in the way of Allah.” Ibn Umm Maktūm came while he was dictating it and said: “Messenger of Allah, by Allah, if I were able to strive, I would” — and he was blind. So Allah sent down upon His Messenger ﷺ, while his thigh was upon mine, and it grew so heavy on me that I feared my thigh would be crushed. Then it lifted from him, and Allah had sent down: “other than those with an injury.”",
-      "source": "Zayd ibn Thābit: al-Bukhārī (4592)."
+      "source": "Zayd ibn Thābit: al-Bukhārī (4592).",
+      "rank": "agreed"
     }
   ],
   "aim": "To order the Muslim community from within, by safeguarding social and financial rights — clearing away what remained of the Age of Ignorance, and centring on the rights of women and the weak.",
@@ -178,18 +204,8 @@
           "number": "800"
         }
       ],
-      "grade": "Ṣaḥīḥ"
-    },
-    {
-      "text": "Ibn Masʿūd said: “In Sūrat al-Nisāʾ there are five ayat for which I would not be glad to have this world and all that is in it”: that Allah does not wrong by an atom’s weight (4:40); that if you avoid the major sins, the lesser are remitted (4:31); that Allah forgives what is less than idolatry to whom He wills (4:48); “had they, when they wronged themselves, come to you” (4:64); and “whoever does evil or wrongs himself, then seeks Allah’s forgiveness, will find Allah forgiving and merciful” (4:110).",
-      "narrator": "ʿAbd Allāh ibn Masʿūd",
-      "source": "Al-Ḥākim, al-Mustadrak — quoted by Ibn Kathīr",
-      "grade": "Al-Ḥākim: a sound chain, if ʿAbd al-Raḥmān heard it from his father Ibn Masʿūd — which is disputed",
-      "evidence": {
-        "work": "ibn-katheer",
-        "ayah": 1,
-        "quote": "قَالَ: إِنَّ فِي سُورَةِ النِّسَاءِ لخمسُ آيَاتٍ مَا يَسُرّني أَنَّ لِي بِهَا الدُّنْيَا وَمَا فِيهَا"
-      }
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "Al-Barāʾ said: “The last surah to come down was Barāʾah, and the last ayah to come down was: ‘They ask you for a ruling…’” — the closing ayah of al-Nisāʾ.",
@@ -201,7 +217,8 @@
           "number": "4605"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Āl ʿImrān closed: “be mindful of Allah, that you may succeed.” Al-Nisāʾ opens with the same command, addressed now to all mankind, and grounds it in their common origin.",
@@ -271,6 +288,6 @@
     "Ibn al-Jawzī, Zād al-Masīr",
     "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
     "al-Mukhtaṣar fī al-Tafsīr",
-    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; al-Ḥākim, al-Mustadrak"
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
   ]
 }

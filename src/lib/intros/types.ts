@@ -44,6 +44,8 @@ export interface Evidence {
   ayah: number;
   /** The words. Locked to the mirror's own text, vocalisation and all. */
   quote: string;
+  /** What the words say, in a line of English — for a reader who has no Arabic. */
+  says?: string;
 }
 
 export interface IntroName {
@@ -55,14 +57,47 @@ export interface IntroName {
   note?: string;
 }
 
+/**
+ * How a report stands. The page marks every one, and says a sentence beside
+ * any that is not ṣaḥīḥ, so that a reader is never left to take a weaker
+ * report for a sound one.
+ *
+ * - `agreed` — in al-Bukhārī or Muslim.
+ * - `sahih` — outside them, and graded ṣaḥīḥ: by al-Albānī, or, where no
+ *   grading of his was found, by the scholar the source names.
+ * - `hasan` — graded ḥasan, on the same footing.
+ * - `companion` — a Companion's own saying, not a statement of the Prophet ﷺ.
+ * - `disputed` — the scholars of hadith differ over it.
+ * - `reported` — related by the commentators, with no graded chain.
+ *
+ * There is no rank for a weak report: one known to be weak or fabricated is
+ * neither given nor mentioned, and the lock script refuses it.
+ */
+export type Rank = "agreed" | "sahih" | "hasan" | "companion" | "disputed" | "reported";
+
 /** A report of what a passage came down about — سبب النزول. */
 export interface Occasion {
   /** The ayat it is about, first and last. Absent where it is about the whole surah. */
   ayat?: [number, number];
   title: string;
+  /** The account — or, where there is a `story`, its opening paragraph. */
   text: string;
+  /**
+   * The rest of the account, paragraph by paragraph, where the report is long
+   * enough to be told in full. It is told from the hadith the source names
+   * and from nothing else: no detail is added that the narrator did not give.
+   */
+  story?: string[];
   /** Who reports it, and what is said of the report's strength where that is known. */
   source: string;
+  rank: Rank;
+  /**
+   * Something a reader should know about the grading itself — that it was
+   * taken from an index and not seen in the book, or that it is another
+   * scholar's because none of al-Albānī's was found. Shown beside the
+   * standing, under a small sign.
+   */
+  caveat?: string;
   /** The report as one of the works held here gives it. */
   evidence?: Evidence;
 }
@@ -94,6 +129,9 @@ export interface Virtue {
   refs?: HadithRef[];
   /** How it is graded, and by whom where it is not in the two Ṣaḥīḥs. */
   grade: string;
+  rank: Rank;
+  /** A word about the grading itself, as on an occasion. */
+  caveat?: string;
   /** The report as one of the works held here gives it. */
   evidence?: Evidence;
 }
@@ -116,6 +154,12 @@ export interface Intro {
     /** One line placing it in the life of the Prophet ﷺ. */
     when: string;
     evidence: Evidence[];
+    /**
+     * The same finding as other works record it — al-Baghawī's heading, the
+     * reports al-Suyūṭī gathers from the Companions, al-Shawkānī's summary —
+     * each with its `says`. Shown as a short list under the quotations.
+     */
+    attested?: Evidence[];
   };
   /** What was happening when it came down. A paragraph to a string. */
   setting: string[];

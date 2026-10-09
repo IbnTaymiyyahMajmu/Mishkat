@@ -27,11 +27,31 @@
         "ayah": 1,
         "quote": "وَقَدْ رَوَى مُحَمَّدُ بْنُ إِسْحَاقَ فِي السِّيرَةِ مِنْ حَدِيثِ أُمِّ سَلَمَةَ، وَأَحْمَدَ بْنِ حَنْبَلٍ عَنِ ابْنِ مَسْعُودٍ فِي قِصَّةِ الْهِجْرَةِ إِلَى أَرْضِ الْحَبَشَةِ مِنْ مَكَّةَ: أَنَّ جَعْفَرَ بْنَ أَبِي طَالِبٍ رَضِيَ اللَّهُ عَنْهُ، قَرَأَ صَدْرَ هَذِهِ السُّورَةِ عَلَى النَّجَاشِيِّ وَأَصْحَابِهِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةِ مَرْيَمَ مَكِّيَّةٌ، وَهِيَ ثَمَانٍ وَتِسْعُونَ آيَةً",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ النَّحّاسُ، وابْنُ مَرْدُوَيْهِ عَنِ ابْنِ الزُّبَيْرِ قالَ: أُنْزِلَ بِمَكَّةَ سُورَةُ ”كهيعص",
+        "says": "Ibn al-Zubayr: it came down in Makkah. Recorded by al-Naḥḥās and Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "أخْرَجَ النَّحّاسُ وابْنُ مَرْدَوَيْهِ، عَنِ ابْنِ عَبّاسٍ قالَ: أُنْزِلَتْ بِمَكَّةَ سُورَةُ ( كهيعص",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by al-Naḥḥās and Ibn Mardawayh."
+      }
     ]
   },
   "setting": [
     "When the persecution in Makkah became more than the weaker Muslims could bear, the Prophet ﷺ told them to cross the sea to Abyssinia, where a Christian king ruled under whom no one was wronged. Quraysh sent two envoys after them with gifts for the king and his bishops, to have them sent back.",
-    "Umm Salamah, who was there, tells what happened. The Negus summoned the Muslims and asked what this religion was for which they had left their people and yet had not entered his. Jaʿfar ibn Abī Ṭālib answered him — we were a people of ignorance, worshipping idols, eating carrion, until Allah sent us a messenger from among ourselves — and the king asked whether he had with him anything of what the man had brought. Jaʿfar recited from the opening of this surah. The Negus wept until his beard was wet, and his bishops wept until their scrolls were wet. “This and what Mūsā brought,” he said, “come from one niche. Go: by Allah, I will never hand them over.”",
+    "Umm Salamah, who was there, tells what happened. The Negus summoned the Muslims and asked what this religion was for which they had left their people and yet had not entered his. Jaʿfar ibn Abī Ṭālib answered him — we were a people of ignorance, worshipping idols, eating carrion, until Allah sent us a messenger from among ourselves — and the king asked whether he had with him anything of what the man had brought. Jaʿfar recited from the opening of this surah. The Negus wept until his beard was wet, and his bishops wept until their scrolls were wet. “This and what Mūsā brought,” he said, “come from one niche. Go: by Allah, I will never hand them over.”{?Umm Salamah’s report comes through Ibn Isḥāq and is recorded by Aḥmad. al-Albānī grades its chain ṣaḥīḥ (Fiqh al-Sīrah, p. 115), as cited; this has not yet been checked here against the printed book.}",
     "The surah was made to be heard by such an audience. It tells of Zakariyyā, old and childless, calling on his Lord in secret, and of Yaḥyā given to him. It tells of Maryam, withdrawn to an eastern place, visited by the angel, driven by the pains of birth to the trunk of a palm-tree and wishing she had died before this. And when she comes back to her people carrying the child, and they say what people would say, she only points — and the infant speaks: “I am the servant of Allah. He has given me the Book and made me a prophet.” His first word about himself is the word that settles everything the Christians disputed.",
     "One name runs through the whole surah: al-Raḥmān, the Most Merciful — sixteen times, more than in any other. It opens, “A mention of the mercy of your Lord to His servant Zakariyyā,” and it closes with the promise that for those who believe and do right, the Most Merciful will appoint love."
   ],
@@ -43,7 +63,8 @@
       ],
       "title": "“We do not descend except by your Lord’s command”",
       "text": "The Messenger of Allah ﷺ said to Jibrīl: “What keeps you from visiting us more often than you do?” Then there came down: “We do not descend except by the command of your Lord. To Him belongs what is before us and what is behind us.”",
-      "source": "Ibn ʿAbbās: al-Bukhārī (4731)."
+      "source": "Ibn ʿAbbās: al-Bukhārī (4731).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -52,7 +73,8 @@
       ],
       "title": "Khabbāb and his debt",
       "text": "Khabbāb said: “I was a blacksmith, and al-ʿĀṣ ibn Wāʾil owed me a debt. I went to collect it, and he said: ‘I will not pay you until you disbelieve in Muḥammad.’ I said: ‘I will not disbelieve until you die and are raised.’ He said: ‘Then leave me until I die and am raised; I shall be given wealth and children, and I will pay you then.’” And there came down: “Have you seen the one who disbelieves in Our signs and says, ‘I shall surely be given wealth and children’?”",
-      "source": "Khabbāb ibn al-Aratt: al-Bukhārī (4732) and Muslim (2795)."
+      "source": "Khabbāb ibn al-Aratt: al-Bukhārī (4732) and Muslim (2795).",
+      "rank": "agreed"
     }
   ],
   "aim": "To show the manifestations of Allah’s mercy to those near to Him — such as the gift of a righteous child — and to declare Him far above having a child or a helper, in refutation of those who invent lies.",
@@ -118,7 +140,8 @@
           "number": "4739"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“Death will be brought in the form of a white ram, and a caller will call: ‘People of the Garden!’ They will crane their necks and look… Then it will be slaughtered, and he will say: ‘People of the Garden, eternity and no death; people of the Fire, eternity and no death.’” Then he recited: “And warn them of the Day of Regret, when the matter is decided, while they are heedless.”",
@@ -134,7 +157,8 @@
           "number": "2849"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Kahf opened by warning those who say Allah has taken a son, and told of wonders — sleepers kept alive for three centuries. Maryam continues with wonders of birth, and ends on the same warning.",

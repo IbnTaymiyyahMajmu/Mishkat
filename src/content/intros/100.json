@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "أنَّها الإبِلُ في الحَجِّ، قالَهُ عَلِيٌّ، وابْنُ مَسْعُودٍ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْعَادِيَاتِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ والعادِياتِ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ في قَوْلِ ابْنِ مَسْعُودٍ، وجابِرٍ، والحَسَنِ، وعِكْرِمَةَ، وعَطاءٍ، ومَدَنِيَّةٌ في قَوْلِ ابْنِ عَبّاسٍ، وأنَسِ بْنِ مالِكٍ، وقَتادَةَ",
+        "says": "Makkan in the saying of Ibn Masʿūd, Jābir, al-Ḥasan, ʿIkrimah and ʿAṭāʾ; Madinan in the saying of Ibn ʿAbbās, Anas ibn Mālik and Qatādah."
+      }
     ]
   },
   "setting": [

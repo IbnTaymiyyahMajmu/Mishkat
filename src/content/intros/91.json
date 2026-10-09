@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "سُورَةُ \"الشَّمْسِ\" مَكِّيَّةٌ بِاتِّفَاقٍ، وَهِيَ خَمْسَ عَشْرَةَ آية"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الشَّمْسِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿والشَّمْسِ وضُحاها﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ بِلا خِلافٍ",
+        "says": "Makkan, by agreement."
+      }
     ]
   },
   "setting": [
@@ -79,7 +99,8 @@
           "number": "2722"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "The Prophet ﷺ spoke of the man who hamstrung the she-camel, and said: “There rose to it a man of power and standing among his people, like Abū Zamʿah.”",
@@ -91,7 +112,8 @@
           "number": "4942"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "To Muʿādh, who had made the prayer long for his people: “Why did you not pray with ‘Glorify the name of your Lord, the Most High’, ‘By the sun and its brightness’ and ‘By the night when it covers’?”",
@@ -103,7 +125,8 @@
           "number": "705"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Balad said man was shown the two ways. Al-Shams says where: in his own soul, inspired with its wrong and its right.",

@@ -33,6 +33,26 @@
         "ayah": 1,
         "quote": "تَفْسِيرُ سُورَةِ الزُّمَرِ وَهِيَ مَكِّيَّةٌ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الزُّمَرِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، وابْنُ مَرْدُويَهْ والبَيْهَقِيُّ في ”الدَّلائِلِ“ عَنِ ابْنِ عَبّاسٍ قالَ: أُنْزِلَتْ سُورَةُ ”الزُّمَرِ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "تَفْسِيرُ سُورَةِ الزُّمَرِ وهِيَ مَكِّيَّةٌ في قَوْلِ الحَسَنِ وعِكْرِمَةَ وجابِرِ بْنِ زَيْدٍ",
+        "says": "Makkan, in the saying of al-Ḥasan, ʿIkrimah and Jābir ibn Zayd."
+      }
     ]
   },
   "setting": [
@@ -50,7 +70,8 @@
       ],
       "title": "“If only you told us there is an expiation”",
       "text": "“Some people of the idolaters had killed, and killed much, and had fornicated, and done so much. They came to Muḥammad ﷺ and said: ‘What you say and call to is good, if only you would tell us that there is an expiation for what we have done.’ So there came down: ‘Those who do not call upon another god with Allah…’ and there came down: ‘Say: O My servants who have transgressed against themselves, do not despair of the mercy of Allah.’”",
-      "source": "Ibn ʿAbbās: al-Bukhārī (4810) and Muslim (122)."
+      "source": "Ibn ʿAbbās: al-Bukhārī (4810) and Muslim (122).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -59,7 +80,8 @@
       ],
       "title": "“They have not esteemed Allah as He deserves”",
       "text": "A rabbi came to the Messenger of Allah ﷺ and said: “Muḥammad, we find that Allah will place the heavens on a finger, the earths on a finger, the trees on a finger, the water and the soil on a finger, and the rest of creation on a finger, and say: ‘I am the King.’” The Prophet ﷺ laughed until his molars showed, in confirmation of the rabbi’s words, and then recited: “They have not esteemed Allah with the esteem due to Him, when the whole earth will be in His grip on the Day of Resurrection.”",
-      "source": "ʿAbd Allāh ibn Masʿūd: al-Bukhārī (4811) and Muslim (2786)."
+      "source": "ʿAbd Allāh ibn Masʿūd: al-Bukhārī (4811) and Muslim (2786).",
+      "rank": "agreed"
     }
   ],
   "aim": "The call to tawḥīd and sincerity, the rejection of shirk — and the end of each in the Hereafter.",
@@ -131,7 +153,8 @@
           "number": "2920"
         }
       ],
-      "grade": "Ḥasan gharīb, said al-Tirmidhī; ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     }
   ],
   "before": "Ṣād ended with Iblīs excepting only Allah’s chosen, sincere servants from his oath. Al-Zumar opens with the command to be exactly that: to make the religion sincerely His.",

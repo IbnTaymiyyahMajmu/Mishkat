@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "سُورَةُ الْفَتْحِ مَدَنِيَّةٌ بِإِجْمَاعٍ، وَهِيَ تِسْعٌ وَعِشْرُونَ آيَةً. وَنَزَلَتْ لَيْلًا بَيْنَ مَكَّةَ وَالْمَدِينَةَ فِي شَأْنِ الْحُدَيْبِيَةِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْفَتْحِ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ الفَتْحِ بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَدَنِيَّةٌ",
+        "says": "Madinan."
+      }
     ]
   },
   "setting": [
@@ -43,7 +63,8 @@
       ],
       "title": "“Dearer to me than all the sun rises upon”",
       "text": "The Messenger of Allah ﷺ was travelling by night with ʿUmar at his side. ʿUmar asked him something and he did not reply — three times — and ʿUmar rode ahead, afraid that Qurʾan would come down about him. Then he heard someone calling him, and came back. The Prophet ﷺ said: “Tonight a surah has been sent down to me that is dearer to me than everything on which the sun rises.” Then he recited: “We have given you a clear victory.”",
-      "source": "ʿUmar ibn al-Khaṭṭāb: al-Bukhārī (4177)."
+      "source": "ʿUmar ibn al-Khaṭṭāb: al-Bukhārī (4177).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -52,7 +73,8 @@
       ],
       "title": "“And what is there for us?”",
       "text": "Anas said of “We have given you a clear victory”: it is al-Ḥudaybiyah. His Companions said: “Congratulations, and may it bring you joy. But what is there for us?” So Allah sent down: “That He may admit the believing men and the believing women to gardens beneath which rivers flow.”",
-      "source": "Anas ibn Mālik: al-Bukhārī (4172) and Muslim (1786)."
+      "source": "Anas ibn Mālik: al-Bukhārī (4172) and Muslim (1786).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -61,7 +83,27 @@
       ],
       "title": "Under the tree",
       "text": "Jābir said: “On the day of al-Ḥudaybiyah we were one thousand four hundred, and the Prophet ﷺ said to us: ‘You are the best of the people of the earth.’” And he ﷺ said: “None of those who pledged allegiance under the tree will enter the Fire.”",
-      "source": "Jābir ibn ʿAbd Allāh: al-Bukhārī (4154) and Muslim (1856, 2496)."
+      "source": "Jābir ibn ʿAbd Allāh: al-Bukhārī (4154) and Muslim (1856, 2496).",
+      "rank": "agreed"
+    },
+    {
+      "ayat": [
+        24,
+        26
+      ],
+      "title": "The truce at al-Ḥudaybiyah",
+      "text": "Al-Miswar ibn Makhramah and Marwān tell it. The Messenger of Allah ﷺ set out in the year of al-Ḥudaybiyah, and at the pass from which the road drops down towards Makkah his camel knelt. The people urged her on and she would not rise, and they said: “Al-Qaṣwāʾ has turned stubborn.” He ﷺ said: “Al-Qaṣwāʾ has not turned stubborn, and that is not her nature. He who held back the elephant has held her back.” Then he said: “By Him in whose hand is my soul, they will not ask of me any course in which they honour what Allah has made sacred, but I shall grant it to them.” He urged her and she sprang up, and he turned aside and halted at the far edge of al-Ḥudaybiyah.",
+      "story": [
+        "There was only a shallow pool there, which the people soon drained, and they complained to him of thirst. He drew an arrow from his quiver and told them to set it in the place, and it went on welling up for them until they had all drunk their fill. Budayl ibn Warqāʾ of Khuzāʿah came with word that Quraysh were camped at the waters of al-Ḥudaybiyah and meant to fight him and bar him from the House. He ﷺ said: “We have not come to fight anyone; we have come to make the ʿumrah. War has worn Quraysh down and done them harm. If they wish, I will grant them a term of truce, and they leave the way open between me and the people. If I prevail, they may enter what the people have entered, if they wish; and if not, they will have had their rest. And if they refuse — by Him in whose hand is my soul, I shall fight them for this cause of mine until my neck is severed; and Allah will carry out His command.”",
+        "ʿUrwah ibn Masʿūd came next to speak for Quraysh, and watched the Companions as he talked. He went back and said: “My people, I have been received by kings — by Caesar, by Chosroes, by the Negus — and by Allah, I have never seen a king whose companions honour him as the companions of Muḥammad honour Muḥammad. When he commands them, they race to do it. When he makes his ablution, they almost fight over the water. When he speaks, they lower their voices before him; and they do not look him full in the face, out of reverence for him. He has offered you a sound course. Accept it.”",
+        "Then Suhayl ibn ʿAmr came, and said: “Come, write a document between us and you.” The Prophet ﷺ called the scribe and said: “In the name of Allah, the Most Merciful, the Bestower of mercy.” Suhayl said: “As for ‘the Most Merciful’, by Allah, I do not know what that is. Write: In Your name, O Allah, as you used to write.” The Muslims said: “By Allah, we will write nothing but ‘In the name of Allah, the Most Merciful, the Bestower of mercy.’” The Prophet ﷺ said: “Write: In Your name, O Allah.” Then he said: “This is what Muḥammad, the Messenger of Allah, has agreed.” Suhayl said: “By Allah, if we knew that you were the Messenger of Allah, we would not have barred you from the House or fought you. Write: Muḥammad son of ʿAbd Allāh.” He ﷺ said: “By Allah, I am the Messenger of Allah, even if you call me a liar. Write: Muḥammad son of ʿAbd Allāh.”",
+        "They would not have him reach the House that year — “the Arabs shall not say that we gave way under pressure” — but the next. And Suhayl said: “And that no man of ours comes to you, even if he is of your religion, but you send him back to us.” The Muslims said: “Glory be to Allah! How can he be sent back to the idolaters when he has come as a Muslim?” While they were at this, Abū Jandal, Suhayl’s own son, came stumbling in his chains, having got out by the lower part of Makkah, and threw himself among the Muslims. Suhayl said: “This, Muḥammad, is the first on whom I hold you to it.” He ﷺ said: “We have not yet finished the document.” — “Then, by Allah, I will never make peace with you on anything.” — “Then grant him to me.” — “I will not.” Abū Jandal cried out: “Muslims, am I to be sent back to the idolaters when I have come as a Muslim? Do you not see what I have suffered?” He had been tortured severely for the sake of Allah.",
+        "ʿUmar ibn al-Khaṭṭāb said: “I went to the Prophet of Allah ﷺ and said: Are you not truly the Prophet of Allah? He said: ‘I am.’ I said: Are we not in the right, and our enemy in the wrong? He said: ‘We are.’ I said: Then why should we accept what is low in our religion? He said: ‘I am the Messenger of Allah, and I do not disobey Him, and He is my helper.’ I said: Did you not tell us that we would come to the House and go around it? He said: ‘I did. Did I tell you that we would come to it this year?’ I said: No. He said: ‘Then you will come to it, and you will go around it.’” He took the same questions to Abū Bakr and was given the same answers, word for word, and with them: “Man, he is the Messenger of Allah ﷺ. He does not disobey his Lord, and He is his helper. So hold fast to his stirrup; for by Allah, he is in the right.”",
+        "When the document was done, the Messenger of Allah ﷺ said to his Companions: “Rise, make your sacrifices, and then shave your heads.” By Allah, not a man of them rose, though he said it three times. He went in to Umm Salamah and told her what he had met with from the people. She said: “Prophet of Allah, do you wish it done? Go out, and do not speak a word to any of them until you have sacrificed your animals and called your barber to shave you.” He went out and did so. When they saw it, they rose and sacrificed, and began shaving one another, until they were near to killing one another for grief.",
+        "Back in Madinah, a man of Quraysh named Abū Baṣīr came to him as a Muslim, and two men were sent to fetch him: “The pledge you gave us.” He handed him over. On the road Abū Baṣīr got hold of the sword of one of them and killed him, and the other fled to Madinah. Abū Baṣīr followed: “Prophet of Allah, Allah has discharged your obligation. You returned me to them, and then Allah delivered me from them.” He ﷺ said: “Woe to his mother — a kindler of war, if only he had men with him!” Hearing that, he knew he would be sent back, and went out to the seashore. Abū Jandal slipped away and joined him there, and then every man of Quraysh who accepted Islam, until they were a band; and no caravan of Quraysh set out for Syria but they waylaid it. So Quraysh sent to the Prophet ﷺ, imploring him by Allah and by kinship to send for them: whoever came to him after that would be safe. And Allah sent down: “It is He who withheld their hands from you and your hands from them in the valley of Makkah…” as far as “the fierce pride of the days of ignorance.” Their pride was that they would not acknowledge that he was the Prophet of Allah, nor “In the name of Allah, the Most Merciful, the Bestower of mercy”; and that they stood between him and the House."
+      ],
+      "source": "Al-Miswar ibn Makhramah and Marwān ibn al-Ḥakam: al-Bukhārī (2731, 2732).",
+      "rank": "agreed"
     }
   ],
   "aim": "To recall the divine promise of victory and establishment to His Prophet and to the believers who are true in supporting the religion.",
@@ -133,7 +175,8 @@
           "number": "4177"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“I saw the Messenger of Allah ﷺ on the day of the conquest of Makkah, on his she-camel, reciting Sūrat al-Fatḥ in a quavering, resonant voice.”",
@@ -149,7 +192,8 @@
           "number": "794"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "Al-Barāʾ said: “You count the Victory as the conquest of Makkah — and the conquest of Makkah was a victory. But we count the Victory as the Pledge of Good Pleasure, on the day of al-Ḥudaybiyah.”",
@@ -161,7 +205,8 @@
           "number": "4150"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Sūrat Muḥammad: if you help Allah, He will help you — and do not weaken. Al-Fatḥ is the help arriving, by a road no one expected.",

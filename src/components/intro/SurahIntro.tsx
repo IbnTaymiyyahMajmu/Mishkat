@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { Fragment, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import type { Evidence, HadithRef, Intro, Passage, Period } from "@/lib/intros/types";
+import { Fragment, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import type { Evidence, HadithRef, Intro, Passage, Period, Rank } from "@/lib/intros/types";
 import { juzStartsIn } from "@/lib/quran/juz";
 import { MAKKAN_COUNT, REVELATION_ORDER, SURAH_FACTS } from "@/lib/quran/surahFacts";
 import { SURAH_NAMES } from "@/lib/quran/surahNames";
-import { tafsirWork } from "@/lib/quran/tafsir";
+import { tafsirWork, type TafsirWork } from "@/lib/quran/tafsir";
 import { useLocale, type MessageKey } from "@/lib/i18n";
 import { useSurahNames } from "@/lib/i18n/surah";
 import { ordinal } from "@/lib/text";
@@ -52,6 +52,59 @@ const PLACE: Record<"makkah" | "madinah" | "disputed", MessageKey> = {
   disputed: "intro.place.disputed",
 };
 
+/** How a report stands, in a word or two. */
+const RANK: Record<Rank, MessageKey> = {
+  agreed: "intro.rank.agreed",
+  sahih: "intro.rank.sahih",
+  hasan: "intro.rank.hasan",
+  companion: "intro.rank.companion",
+  disputed: "intro.rank.disputed",
+  reported: "intro.rank.reported",
+};
+
+/**
+ * What is said beside a report that is not ṣaḥīḥ. A reader should never have
+ * to work out for himself that what he is reading is a degree weaker than the
+ * line above it; so the page says it, in a sentence, where the report is.
+ */
+const NOTED: Partial<Record<Rank, MessageKey>> = {
+  hasan: "intro.rank.note.hasan",
+  companion: "intro.rank.note.companion",
+  disputed: "intro.rank.note.disputed",
+  reported: "intro.rank.note.reported",
+};
+
+/**
+ * The works an introduction is written from, oldest first, and how a line in
+ * its list of sources names each. The page shows them as books — title, author
+ * and date — and not as a line of text.
+ */
+const WORKS: [id: string, named: RegExp][] = [
+  ["tabari", /^al-Ṭabarī/],
+  ["baghawi", /^al-Baghawī/],
+  ["zad-almaseer", /^Ibn al-Jawzī/],
+  ["qurtubi", /^al-Qurṭubī/],
+  ["ibn-alqayyim", /^Ibn al-Qayyim/],
+  ["ibn-katheer", /^Ibn Kathīr/],
+  ["aldur-almanthoor", /^al-Suyūṭī/],
+  ["fath-alqadeer", /^al-Shawkānī/],
+  ["adwaa-albayan", /^al-Shinqīṭī/],
+  ["ibn-uthaymeen", /^Ibn ʿUthaymīn/],
+  ["mukhtasar", /^al-Mukhtaṣar/],
+];
+
+/**
+ * Works quoted for what they transmit and for nothing else. Each quotation
+ * from one says so under it, and Sources says why.
+ */
+const REPORTS_ONLY = new Set(["qurtubi"]);
+
+/** A gatherer of reports who does not grade them; neither does the page, and it says so. */
+const UNGRADED = new Set(["aldur-almanthoor"]);
+
+/** What the copy wraps a phrase in, and a quotation taken from inside it does not want. */
+const BRACKETS = "«»“”()[]" + String.fromCharCode(34);
+
 /** The collections sunnah.com numbers the way the scholars cite them. */
 const LOOKUP = new Set(["bukhari", "muslim", "tirmidhi", "abudawud", "nasai", "ibnmajah"]);
 
@@ -72,6 +125,7 @@ interface Stop {
 export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
   const { t, n, arrows, locale } = useLocale();
   const names = useSurahNames();
+  const say = useTafsirSay();
   const facts = SURAH_FACTS[surah - 1];
   const baked = SURAH_NAMES[surah - 1];
   const name = names.name(surah);
@@ -84,6 +138,32 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
     for (const w of ayahWords) sums.push(sums[sums.length - 1] + w);
     return (p: Passage) => (sums[p.to] ?? 0) - (sums[p.from - 1] ?? 0);
   }, [ayahWords]);
+
+  // The books behind the page: every one it quotes, and every one its own
+  // list of sources names. What is left of that list is what is not a tafsir —
+  // the collections of hadith, the sīrah.
+  const { works, others } = useMemo(() => {
+    if (!intro) return { works: [] as TafsirWork[], others: [] as string[] };
+    const quoted = new Set<string>([
+      "mukhtasar",
+      ...intro.revelation.evidence.map((e) => e.work),
+      ...(intro.revelation.attested ?? []).map((e) => e.work),
+      ...intro.occasions.flatMap((o) => (o.evidence ? [o.evidence.work] : [])),
+      ...intro.virtues.flatMap((v) => (v.evidence ? [v.evidence.work] : [])),
+    ]);
+    return {
+      works: WORKS.filter(([id, named]) => quoted.has(id) || intro.sources.some((s) => named.test(s)))
+        .map(([id]) => tafsirWork(`app:${id}`))
+        .filter((w): w is TafsirWork => !!w),
+      others: intro.sources.filter((s) => !WORKS.some(([, named]) => named.test(s))),
+    };
+  }, [intro]);
+
+  // Which marks of standing the account of the surah carries, for the key under it.
+  const marks = useMemo(() => {
+    const told = intro ? [intro.revelation.detail, ...intro.setting].join(" ") : "";
+    return MARKED.filter((rank) => told.includes(`{${rank}}`));
+  }, [intro]);
 
   const juz = useMemo(() => juzStartsIn(surah), [surah]);
   const place = intro?.revelation.place ?? facts.place;
@@ -102,6 +182,8 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
   ];
   const here = useHere(stops.map((s) => s.id));
   const rail = useRef<HTMLDivElement>(null);
+  const page = useRef<HTMLDivElement>(null);
+  useReveal(page, surah);
 
   // On a narrow screen the rail lies down and scrolls sideways, and the stop
   // the reader has reached may be off its edge. Bring it to the middle.
@@ -128,9 +210,11 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
   ];
 
   return (
-    <div className={`page-shell ${styles.shell}`}>
+    <div className={`page-shell ${styles.shell}`} ref={page}>
+      <div className={styles.progress} aria-hidden="true" />
       {/* ── the frontispiece ───────────────────────────────────────────── */}
       <header id="opening" className={styles.hero}>
+        <div className={styles.motes} aria-hidden="true" />
         <div className={styles.heroInner}>
           <Link href={`/read/${surah}/`} className={styles.back}>
             {arrows.prev} {t("intro.back", { surah: name })}
@@ -238,12 +322,14 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
 
         <article className={styles.body}>
           {/* ── where and when ─────────────────────────────────────────── */}
-          <section id="revelation" className={styles.section}>
+          <section id="revelation" className={styles.section} data-reveal="head">
             <div className="kicker">{t("intro.revelation.kicker")}</div>
             {intro ? (
               <div lang="en" dir="ltr" className={styles.written}>
                 <h2 className={styles.title}>{intro.revelation.verdict}</h2>
-                <p className={styles.when}>{intro.revelation.when}</p>
+                <p className={styles.when}>
+                  <Prose text={intro.revelation.when} />
+                </p>
               </div>
             ) : (
               <h2 className={styles.title}>{t(PLACE[facts.place])}</h2>
@@ -261,22 +347,38 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
                 {intro.revelation.evidence.map((e, i) => (
                   <Quoted key={i} surah={surah} evidence={e} />
                 ))}
+                {intro.revelation.attested && intro.revelation.attested.length > 0 && (
+                  <Attested surah={surah} items={intro.revelation.attested} />
+                )}
 
                 <h3 className={styles.subtitle}>{t("intro.setting.title")}</h3>
-                <div lang="en" dir="ltr" className={`${styles.written} ${styles.telling}`}>
+                <div lang="en" dir="ltr" className={`${styles.written} ${styles.telling}`} data-reveal="prose">
                   {intro.setting.map((para, i) => (
                     <p key={i} className={styles.prose}>
                       <Prose text={para} />
                     </p>
                   ))}
                 </div>
+                {marks.length > 0 && (
+                  <ul id="marks" className={styles.marksKey}>
+                    {marks.map((rank) => (
+                      <li key={rank}>
+                        <span className={styles.mark} aria-hidden="true">
+                          {GLYPH[rank]}
+                        </span>
+                        <span className={styles.marksWord}>{t(RANK[rank])}</span>
+                        <span>{t(NOTED[rank] ?? RANK[rank])}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
                 {intro.occasions.length > 0 && (
                   <>
                     <h3 className={styles.subtitle}>{t("intro.occasions.title")}</h3>
-                    <div className={styles.occasions}>
+                    <div>
                       {intro.occasions.map((o, i) => (
-                        <div key={i} className={styles.occasion}>
+                        <div key={i} className={styles.occasion} data-reveal="item">
                           <div className={styles.occasionWhere}>
                             {o.ayat ? (
                               <Link href={`/read/${surah}/#${surah}:${o.ayat[0]}`}>{range(o.ayat[0], o.ayat[1])}</Link>
@@ -286,11 +388,19 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
                           </div>
                           <div lang="en" dir="ltr" className={styles.written}>
                             <h4 className={styles.occasionTitle}>{o.title}</h4>
-                            <p className={styles.prose}>
-                              <Prose text={o.text} />
-                            </p>
+                            <div className={o.story ? styles.account : undefined}>
+                              <p className={styles.prose}>
+                                <Prose text={o.text} />
+                              </p>
+                              {o.story?.map((para, k) => (
+                                <p key={k} className={styles.prose}>
+                                  <Prose text={para} />
+                                </p>
+                              ))}
+                            </div>
                             <p className={styles.attribution}>{o.source}</p>
                           </div>
+                          <Standing rank={o.rank} caveat={o.caveat} />
                           {o.evidence && <Quoted surah={surah} evidence={o.evidence} />}
                         </div>
                       ))}
@@ -302,7 +412,7 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
           </section>
 
           {/* ── what it is for ─────────────────────────────────────────── */}
-          <section id="aim" className={`${styles.section} ${styles.aim}`}>
+          <section id="aim" className={`${styles.section} ${styles.aim}`} data-reveal="aim">
             <div className="kicker">{t("intro.aim.kicker")}</div>
             <p lang="ar" dir="rtl" className={styles.aimArabic}>
               {aimArabic}
@@ -316,7 +426,7 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
               <Link href={`/tafsir/?v=${surah}:1&w=app:mukhtasar`}>{t("intro.aim.credit")}</Link>
             </p>
             {intro && (
-              <ul lang="en" dir="ltr" className={styles.themes} aria-label={t("intro.aim.themes")}>
+              <ul lang="en" dir="ltr" className={styles.themes} aria-label={t("intro.aim.themes")} data-reveal="list">
                 {intro.themes.map((theme) => (
                   <li key={theme} className="tag tag-accent">
                     {theme}
@@ -328,11 +438,11 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
 
           {/* ── passage by passage ─────────────────────────────────────── */}
           {passages.length > 0 && (
-            <section id="map" className={styles.section}>
+            <section id="map" className={styles.section} data-reveal="head">
               <div className="kicker">{t("intro.map.kicker")}</div>
               <h2 className={styles.title}>{t("intro.map.title")}</h2>
 
-              <div className={styles.strip} role="presentation">
+              <div className={styles.strip} role="presentation" data-reveal="strip">
                 {passages.map((p, i) => (
                   <a
                     key={p.from}
@@ -341,7 +451,7 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
                     aria-hidden="true"
                     title={`${range(p.from, p.to)} · ${p.title}`}
                     className={`${styles.stripPart} ${i % 2 ? styles.stripOdd : ""} ${active === i ? styles.stripOn : ""}`}
-                    style={{ flexGrow: Math.max(1, wordsIn(p)) }}
+                    style={{ flexGrow: Math.max(1, wordsIn(p)), "--i": i } as CSSProperties}
                     onMouseEnter={() => setActive(i)}
                   />
                 ))}
@@ -359,6 +469,7 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
                       key={p.from}
                       id={`passage-${p.from}`}
                       className={`${styles.passage} ${active === i ? styles.passageOn : ""}`}
+                      data-reveal="item"
                       onMouseEnter={() => setActive(i)}
                     >
                       <div className={styles.passageWhere}>
@@ -392,14 +503,14 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
 
           {/* ── what is narrated ───────────────────────────────────────── */}
           {intro && (
-            <section id="narrated" className={styles.section}>
+            <section id="narrated" className={styles.section} data-reveal="head">
               <div className="kicker">{t("intro.narrated.kicker")}</div>
               <h2 className={styles.title}>{t("intro.narrated.title")}</h2>
 
               {intro.virtues.length === 0 && <p className={styles.note}>{t("intro.narrated.none")}</p>}
               <div className={styles.narrations}>
                 {intro.virtues.map((v, i) => (
-                  <figure key={i} className={styles.narration}>
+                  <figure key={i} className={styles.narration} data-reveal="item">
                     {v.arabic && (
                       <p lang="ar" dir="rtl" className={styles.narrationArabic}>
                         {v.arabic}
@@ -412,8 +523,14 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
                       <span lang="en" dir="ltr" className={styles.narrationSource}>
                         {[v.narrator && t("intro.narrated.from", { name: v.narrator }), v.source].filter(Boolean).join(" · ")}
                       </span>
-                      <span lang="en" dir="ltr" className={v.grade.length > 34 ? styles.gradeLong : styles.grade}>
+                      <span
+                        lang="en"
+                        dir="ltr"
+                        className={`${v.grade.length > 34 ? styles.gradeLong : styles.grade} ${NOTED[v.rank] ? styles.gradeSoft : ""} ${v.caveat ? styles.flagged : ""}`}
+                        title={v.rank === "sahih" ? t("intro.rank.note.sahih") : undefined}
+                      >
                         {v.grade}
+                        {v.caveat && <Doubt reason={v.caveat} written grading />}
                       </span>
                       {lookups(v.refs).map((ref) => (
                         <a
@@ -427,13 +544,14 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
                         </a>
                       ))}
                     </figcaption>
+                    {NOTED[v.rank] && <Standing rank={v.rank} />}
                     {v.evidence && <Quoted surah={surah} evidence={v.evidence} />}
                   </figure>
                 ))}
               </div>
 
               {intro.virtuesNote && (
-                <aside className={styles.caution}>
+                <aside className={styles.caution} data-reveal="item">
                   <div className="kicker kicker-sm">{t("intro.narrated.caution")}</div>
                   <p lang="en" dir="ltr" className={styles.prose}>
                     {intro.virtuesNote}
@@ -445,12 +563,12 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
 
           {/* ── its names ──────────────────────────────────────────────── */}
           {intro && intro.names.length > 0 && (
-            <section id="names" className={styles.section}>
+            <section id="names" className={styles.section} data-reveal="head">
               <div className="kicker">{t("intro.names.kicker")}</div>
               <h2 className={styles.title}>{t("intro.names.title", { count: intro.names.length })}</h2>
               <div className={styles.names}>
                 {intro.names.map((item) => (
-                  <div key={item.arabic} className={styles.nameCard}>
+                  <div key={item.arabic} className={styles.nameCard} data-reveal="item">
                     <div lang="ar" dir="rtl" className={styles.nameArabicBig}>
                       {item.arabic}
                     </div>
@@ -470,10 +588,10 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
           )}
 
           {/* ── before and after ───────────────────────────────────────── */}
-          <section id="neighbours" className={styles.section}>
+          <section id="neighbours" className={styles.section} data-reveal="head">
             <div className="kicker">{t("intro.neighbours.kicker")}</div>
             <h2 className={styles.title}>{t("intro.neighbours.title")}</h2>
-            <div className={styles.neighbours}>
+            <div className={styles.neighbours} data-reveal="list">
               {surah > 1 && (
                 <Neighbour
                   surah={surah - 1}
@@ -496,7 +614,7 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
             {intro && intro.notable.length > 0 && (
               <>
                 <h3 className={styles.subtitle}>{t("intro.notable.title")}</h3>
-                <ul className={styles.notable}>
+                <ul className={styles.notable} data-reveal="list">
                   {intro.notable.map((item) => (
                     <li key={item.ayah}>
                       <Link href={`/read/${surah}/#${surah}:${item.ayah}`} className={styles.notableLink}>
@@ -517,21 +635,51 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
 
           {/* ── sources ────────────────────────────────────────────────── */}
           {intro && (
-            <section id="sources" className={`${styles.section} ${styles.sources}`}>
+            <section id="sources" className={`${styles.section} ${styles.sources}`} data-reveal="head">
               <div className="kicker">{t("intro.sources.kicker")}</div>
               <h2 className={styles.title}>{t("intro.sources.title")}</h2>
               <p className={styles.prose}>{t("intro.sources.method")}</p>
-              <ul lang="en" dir="ltr" className={styles.sourceList}>
-                {intro.sources.map((source) => (
-                  <li key={source}>{source}</li>
+
+              <h3 className={styles.subtitle}>{t("intro.sources.quoted")}</h3>
+              <ul className={styles.works} data-reveal="list">
+                {works.map((work, i) => (
+                  <li key={work.id} style={{ "--i": i } as CSSProperties}>
+                    <Link href={`/tafsir/?v=${surah}:1&w=${work.id}`} className={styles.work}>
+                      {say.arabic(work) && (
+                        <span lang="ar" dir="rtl" className={styles.workArabic}>
+                          {say.arabic(work)}
+                        </span>
+                      )}
+                      <span className={styles.workName}>{say.name(work)}</span>
+                      <span className={styles.workBy}>{say.credit(work)}</span>
+                    </Link>
+                  </li>
                 ))}
               </ul>
+              <p className={styles.note}>{t("intro.sources.only")}</p>
+              {works.some((work) => REPORTS_ONLY.has(work.id.replace("app:", ""))) && (
+                <p id="on-reports" className={`${styles.note} ${styles.noteMarked}`}>
+                  {t("intro.sources.qurtubi")}
+                </p>
+              )}
+              <p className={styles.note}>{t("intro.sources.grades")}</p>
+
+              {others.length > 0 && (
+                <>
+                  <h3 className={styles.subtitle}>{t("intro.sources.also")}</h3>
+                  <ul lang="en" dir="ltr" className={styles.sourceList}>
+                    {others.map((source) => (
+                      <li key={source}>{source}</li>
+                    ))}
+                  </ul>
+                </>
+              )}
               <p className={styles.note}>{t("intro.river.note")}</p>
             </section>
           )}
 
           {/* ── on into the surah ──────────────────────────────────────── */}
-          <footer className={styles.end}>
+          <footer className={styles.end} data-reveal="end">
             <div lang="ar" dir="rtl" className={styles.endArabic} aria-hidden="true">
               {baked?.arabic}
             </div>
@@ -586,11 +734,18 @@ function River({ surah, period }: { surah: number; period: string }) {
   const after = REVELATION_ORDER[order];
 
   return (
-    <div className={styles.river}>
+    <div className={styles.river} data-reveal="river">
       <div className={styles.riverHead}>
-        <span className={styles.riverHere}>
+        <span>
           {t("intro.river.here", { order: ordinal(order, locale) })}
-          {period ? ` · ${period}` : ""}
+          <Doubt reason={t("intro.river.note")} />
+          {period && (
+            <>
+              {" · "}
+              {period}
+              <Doubt reason={t("intro.period.doubt")} />
+            </>
+          )}
         </span>
       </div>
 
@@ -600,7 +755,7 @@ function River({ surah, period }: { surah: number; period: string }) {
         aria-label={t("intro.river.label", { order })}
         onMouseLeave={() => setPeek(0)}
       >
-        {REVELATION_ORDER.map((id) => {
+        {REVELATION_ORDER.map((id, index) => {
           const f = SURAH_FACTS[id - 1];
           const height = 12 + 88 * (Math.sqrt(f.words) / tallest);
           return (
@@ -615,7 +770,7 @@ function River({ surah, period }: { surah: number; period: string }) {
                 id === surah ? styles.barHere : "",
                 id === peek ? styles.barPeek : "",
               ].join(" ")}
-              style={{ height: `${height}%` }}
+              style={{ height: `${height}%`, "--i": index } as CSSProperties}
               onMouseEnter={() => setPeek(id)}
             />
           );
@@ -677,7 +832,7 @@ function Quoted({ surah, evidence }: { surah: number; evidence: Evidence }) {
   const words = evidence.quote.replace(/["«»“”]/g, "").replace(/\s+/g, " ").trim();
 
   return (
-    <figure className={styles.quoted}>
+    <figure className={styles.quoted} data-reveal="quote">
       <blockquote lang="ar" dir="rtl" className={styles.quotedText}>
         {words}
       </blockquote>
@@ -686,6 +841,11 @@ function Quoted({ surah, evidence }: { surah: number; evidence: Evidence }) {
           <>
             <span>{say.credit(work)}</span>
             <span className={styles.quotedWork}>{say.name(work)}</span>
+            {REPORTS_ONLY.has(evidence.work) && (
+              <a href="#on-reports" className={styles.quotedNote}>
+                {t("intro.evidence.reportsOnly")}
+              </a>
+            )}
             <Link href={`/tafsir/?v=${surah}:${evidence.ayah}&w=${work.id}`} className={styles.quotedLink}>
               {t("intro.evidence.read")} {arrows.next}
             </Link>
@@ -698,6 +858,84 @@ function Quoted({ surah, evidence }: { surah: number; evidence: Evidence }) {
   );
 }
 
+/**
+ * How a report stands, set under it: a word for its standing, and — where it
+ * is anything less than ṣaḥīḥ — a sentence saying what that means.
+ */
+function Standing({ rank, caveat }: { rank: Rank; caveat?: string }) {
+  const { t } = useLocale();
+  const note = NOTED[rank];
+
+  return (
+    <p className={`${styles.standing} ${note ? styles.standingSoft : ""}`}>
+      <span
+        className={`${styles.standingMark} ${caveat ? styles.flagged : ""}`}
+        title={rank === "sahih" ? t("intro.rank.note.sahih") : undefined}
+      >
+        {t(RANK[rank])}
+      </span>
+      {caveat && <Doubt reason={caveat} written grading />}
+      {note && <span className={styles.standingNote}>{t(note)}</span>}
+    </p>
+  );
+}
+
+/**
+ * The same finding as other works record it. A row to a work: who wrote it,
+ * what he says in a line of English, and under that his own words.
+ */
+function Attested({ surah, items }: { surah: number; items: Evidence[] }) {
+  const { t, arrows } = useLocale();
+  const say = useTafsirSay();
+
+  return (
+    <div className={styles.attested} data-reveal="list">
+      <h3 className={styles.attestedTitle}>{t("intro.attested.title")}</h3>
+      <ul className={styles.attestedList}>
+        {items.map((e, i) => {
+          const work = tafsirWork(`app:${e.work}`);
+          const words = [...e.quote]
+            .filter((c) => !BRACKETS.includes(c))
+            .join("")
+            .split(" ")
+            .filter(Boolean)
+            .join(" ");
+          return (
+            <li key={i} className={styles.attestedRow} style={{ "--i": i } as CSSProperties}>
+              <div className={styles.attestedWho}>
+                <span className={styles.attestedAuthor}>{work ? say.short(work) : e.work}</span>
+                {work && <span className={styles.attestedWork}>{say.name(work)}</span>}
+              </div>
+              <div>
+                {e.says && (
+                  <p lang="en" dir="ltr" className={styles.attestedSays}>
+                    <Prose text={e.says} />
+                  </p>
+                )}
+                <p lang="ar" dir="rtl" className={styles.attestedQuote}>
+                  {words}
+                </p>
+                {UNGRADED.has(e.work) && <p className={styles.attestedCaveat}>{t("intro.attested.ungraded")}</p>}
+              </div>
+              {work && (
+                <Link
+                  href={`/tafsir/?v=${surah}:${e.ayah}&w=${work.id}`}
+                  className={styles.attestedLink}
+                  aria-label={`${t("intro.evidence.read")} — ${say.short(work)}`}
+                  title={t("intro.evidence.read")}
+                >
+                  {arrows.next}
+                </Link>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+      <p className={styles.attestedNote}>{t("intro.attested.note")}</p>
+    </div>
+  );
+}
+
 /** One ayah of the surah, in the reader's own translation, and why this one. */
 function KeyAyah({ surah, ayah, why }: { surah: number; ayah: number; why: string }) {
   const { t, arrows } = useLocale();
@@ -705,7 +943,7 @@ function KeyAyah({ surah, ayah, why }: { surah: number; ayah: number; why: strin
   const verse = useDailyAyah(key);
 
   return (
-    <aside className={styles.keyAyah}>
+    <aside className={styles.keyAyah} data-reveal="key">
       <div className="kicker">{t("intro.key.kicker")}</div>
       {verse && !verse.failed && (
         <>
@@ -775,10 +1013,67 @@ function lookups(refs: HadithRef[] | undefined): HadithRef[] {
 const AYAH = /(?<![\d:.])(\d{1,3}):(\d{1,3})(?:[–-](\d{1,3}))?(?![\d:])/g;
 
 /**
+ * `{reported}` at the end of a sentence in the writing: the report that
+ * sentence tells of is not ṣaḥīḥ, and this is how it stands. It is printed as
+ * a small mark, and the key under the account says what each mark means.
+ */
+const MARK = /[{](hasan|disputed|reported|[?][^}]+)[}]/g;
+const MARKED: Rank[] = ["hasan", "disputed", "reported"];
+const GLYPH: Partial<Record<Rank, string>> = { hasan: "○", disputed: "◈", reported: "◇" };
+
+/**
  * A written paragraph, with every ayah it names made into the way to that
- * ayah. The writing says "(18:23)"; the reader should be able to go and look.
+ * ayah, and every mark of a report's standing set in its place. The writing
+ * says "(18:23)"; the reader should be able to go and look.
  */
 function Prose({ text }: { text: string }) {
+  const { t } = useLocale();
+  const out: ReactNode[] = [];
+  let at = 0;
+  for (const m of text.matchAll(MARK)) {
+    const from = m.index ?? 0;
+    if (from > at) out.push(<Linked key={at} text={text.slice(at, from)} />);
+    at = from + m[0].length;
+    // `{?why}` — a date or a figure that is not certain, and the reason.
+    if (m[1].startsWith("?")) {
+      out.push(<Doubt key={`d${from}`} reason={m[1].slice(1)} written />);
+      continue;
+    }
+    const rank = m[1] as Rank;
+    out.push(
+      <a key={`m${from}`} href="#marks" className={styles.mark} title={t(NOTED[rank] ?? RANK[rank])} aria-label={t(RANK[rank])}>
+        {GLYPH[rank]}
+      </a>,
+    );
+  }
+  if (at < text.length) out.push(<Linked key={at} text={text.slice(at)} />);
+  return <Fragment>{out}</Fragment>;
+}
+
+/**
+ * A small sign after something that is not certain — a date, a figure, a
+ * placing — which says why to whoever rests on it. The reason is on the page
+ * for a pointer that hovers, a finger that touches and a reader that tabs;
+ * it is never only a tooltip the browser may or may not show.
+ */
+function Doubt({ reason, written, grading }: { reason: string; written?: boolean; grading?: boolean }) {
+  const { t } = useLocale();
+  return (
+    <span
+      className={styles.doubt}
+      tabIndex={0}
+      role="note"
+      aria-label={`${t(grading ? "intro.caveat.label" : "intro.doubt.label")}: ${reason}`}
+    >
+      <span aria-hidden="true">?</span>
+      <span className={styles.doubtWhy} lang={written ? "en" : undefined} dir={written ? "ltr" : undefined} aria-hidden="true">
+        {reason}
+      </span>
+    </span>
+  );
+}
+
+function Linked({ text }: { text: string }) {
   const out: ReactNode[] = [];
   let at = 0;
   for (const m of text.matchAll(AYAH)) {
@@ -796,6 +1091,47 @@ function Prose({ text }: { text: string }) {
   }
   if (at < text.length) out.push(text.slice(at));
   return <Fragment>{out}</Fragment>;
+}
+
+/**
+ * Lets the page arrive as it is read. Whatever is marked `data-reveal` waits
+ * below the fold and takes its place when it is scrolled to, once; the CSS
+ * says how each kind comes in.
+ *
+ * Nothing waits unless this has run: the mark means something only under
+ * `data-live`, which is set here. So a reader without script, or one who has
+ * asked for less motion, is simply given the page.
+ */
+function useReveal(root: { current: HTMLElement | null }, key: number) {
+  useEffect(() => {
+    const el = root.current;
+    if (!el || !("IntersectionObserver" in window)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const waiting = [...el.querySelectorAll<HTMLElement>("[data-reveal]")];
+    // What is already on the screen is not made to wait for it.
+    const fold = window.innerHeight * 0.94;
+    for (const node of waiting) if (node.getBoundingClientRect().top < fold) node.setAttribute("data-seen", "");
+    el.setAttribute("data-live", "");
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.setAttribute("data-seen", "");
+          io.unobserve(entry.target);
+        }
+      },
+      { rootMargin: "0px 0px -7% 0px" },
+    );
+    for (const node of waiting) if (!node.hasAttribute("data-seen")) io.observe(node);
+
+    return () => {
+      io.disconnect();
+      el.removeAttribute("data-live");
+      for (const node of waiting) node.removeAttribute("data-seen");
+    };
+  }, [root, key]);
 }
 
 /**

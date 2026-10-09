@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "سُورَةُ سَبَأٍ مَكِّيَّةٌ فِي قَوْلِ الْجَمِيعِ، إِلَّا آيَةً وَاحِدَةً اخْتُلِفَ فِيهَا"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ سَبَأٍ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنُّحاسُ، وابْنُ مَرْدُويَهْ والبَيْهَقِيُّ في ”الدَّلائِلِ“ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”سَبَأٍ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "تَفْسِيرُ سُورَةِ سَبَأٍ وهِيَ مَكِّيَّةٌ",
+        "says": "Makkan."
+      }
     ]
   },
   "setting": [
@@ -98,7 +118,8 @@
           "number": "4800"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Aḥzāb ended with man taking up the Trust. Sabaʾ shows two peoples entrusted with great blessings, and what each made of them.",

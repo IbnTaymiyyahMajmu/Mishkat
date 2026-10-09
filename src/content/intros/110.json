@@ -33,6 +33,20 @@
         "ayah": 1,
         "quote": "وَهِيَ مَدَنِيَّةٌ بِإِجْمَاعٍ. وَتُسَمَّى سُورَةَ (التَّوْدِيعِ). وَهِيَ ثَلَاثُ آيَاتٍ. وَهِيَ آخِرُ سُورَةٍ نزَلَتْ جَمِيعًا قَالَهُ ابْنُ عُبَّاسٍ فِي صحيح مسلم"
       }
+    ],
+    "attested": [
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: أُنْزِلَ بِالمَدِينَةِ ﴿إذا جاءَ نَصْرُ اللَّهِ والفَتْحُ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَدَنِيَّةٌ بِلا خِلافٍ",
+        "says": "Madinan, by agreement."
+      }
     ]
   },
   "setting": [
@@ -46,6 +60,7 @@
       "title": "“It is the term of the Messenger of Allah ﷺ”",
       "text": "ʿUmar used to bring Ibn ʿAbbās in with the veterans of Badr. He asked them about this surah, and then asked him. Ibn ʿAbbās said: “It is the term of the Messenger of Allah ﷺ, which He made known to him.” ʿUmar said: “I know of it only what you say.”",
       "source": "Ibn ʿAbbās: al-Bukhārī (4970).",
+      "rank": "agreed",
       "evidence": {
         "work": "ibn-katheer",
         "ayah": 1,
@@ -94,7 +109,8 @@
           "number": "484"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "Ibn ʿAbbās asked ʿUbayd Allāh ibn ʿAbd Allāh ibn ʿUtbah: “Do you know the last surah of the Qurʾan to be sent down all together?” He said: “Yes — ‘When the help of Allah comes, and the opening’.” He said: “You are right.”",
@@ -106,7 +122,8 @@
           "number": "3024"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Kāfirūn drew a line between two religions when the believers were few and weak. Al-Naṣr shows which side of the line the people ended on.",

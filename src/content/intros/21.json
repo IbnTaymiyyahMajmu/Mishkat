@@ -27,10 +27,24 @@
         "ayah": 1,
         "quote": "عَنْ عَبْدِ اللَّهِ قَالَ: بَنُو إِسْرَائِيلَ، وَالْكَهْفُ، وَمَرْيَمُ، وَطه، وَالْأَنْبِيَاءُ، هُنَّ مِنَ الْعِتَاقِ الْأُوَلِ، وَهُنَّ مِنْ تِلَادِي"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْأَنْبِيَاءِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ النَّحّاسُ في ”ناسِخِهِ“، وابْنُ مَرْدُوَيْهِ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ الأنْبِياءِ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by al-Naḥḥās and Ibn Mardawayh."
+      }
     ]
   },
   "setting": [
-    "Its first ayah, Ibn al-Jawzī notes, came down about the disbelievers of Makkah, and it describes a mood: people going about their amusements while the account draws closer. “No fresh reminder comes to them from their Lord but they listen to it as they play, their hearts distracted.”",
+    "Its first ayah, Ibn al-Jawzī notes, came down about the disbelievers of Makkah, and it describes a mood: people going about their amusements while the account draws closer.{reported} “No fresh reminder comes to them from their Lord but they listen to it as they play, their hearts distracted.”",
     "The surah records what they whispered among themselves about the Prophet ﷺ, and the list shows how unsure they were. He is only a human being like you. It is magic. No — muddled dreams. No — he has made it up. No — he is a poet. Let him bring us a sign, as the earlier messengers were sent with signs.",
     "The reply has two parts. The first is argument: had there been gods in the heavens and the earth other than Allah, both would have gone to ruin. The heavens and the earth were a joined mass, and We split them apart, and made from water every living thing. “We did not create the heaven and the earth and what is between them in play.”",
     "The second is the company he belongs to. Ibrāhīm, who broke the idols and was thrown into the fire: “O fire, be coolness and safety for Ibrāhīm.” Lūṭ; Nūḥ; Dāwūd and Sulaymān. Ayyūb: “Harm has touched me, and You are the Most Merciful of the merciful.” Ismāʿīl, Idrīs, Dhū l-Kifl. Dhū l-Nūn — Yūnus — calling out from the darknesses: “There is no god but You; glory be to You; I have been among the wrongdoers.” Zakariyyā: “My Lord, do not leave me alone.” And she who guarded her chastity. After each: “So We answered him.” And then the sentence that binds them: “This community of yours is one community, and I am your Lord, so worship Me.”"
@@ -106,7 +120,8 @@
           "number": "3505"
         }
       ],
-      "grade": "Ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     },
     {
       "text": "The Prophet ﷺ addressed the people: “You will be gathered to Allah barefoot, naked and uncircumcised: ‘As We began the first creation, We shall repeat it — a promise binding upon Us.’ And the first of creation to be clothed on the Day of Resurrection will be Ibrāhīm.”",
@@ -118,7 +133,8 @@
           "number": "4740"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "It was said: “Messenger of Allah, pray against the idolaters.” He said: “I was not sent as one who curses. I was sent only as a mercy.”",
@@ -131,7 +147,8 @@
           "number": "2599"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Ṭā-Hā ended: “Say: everyone is waiting; so wait.” Al-Anbiyāʾ opens by saying how little waiting is left.",

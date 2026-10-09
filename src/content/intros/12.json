@@ -13,7 +13,7 @@
   "revelation": {
     "place": "makkah",
     "verdict": "Makkan, by agreement",
-    "detail": "Ibn al-Jawzī records consensus that it is Makkan, and al-Qurṭubī says Makkan, all of it, noting a report that excepts four ayat. The traditional order places it fifty-third, directly after Yūnus and Hūd — which puts it in the last years before the Hijrah, the period in which the Prophet ﷺ lost Khadījah and his uncle Abū Ṭālib and was driven out of al-Ṭāʾif. Al-Qurṭubī records what the scholars observed about it: Allah repeated the stories of the prophets in the Qurʾan in differing words and at differing lengths, but told the story of Yūsuf and did not repeat it.",
+    "detail": "Ibn al-Jawzī records consensus that it is Makkan, and al-Qurṭubī says Makkan, all of it, noting a report that excepts four ayat. The traditional order places it fifty-third, directly after Yūnus and Hūd — which puts it in the last years before the Hijrah, the period in which the Prophet ﷺ lost Khadījah and his uncle Abū Ṭālib and was driven out of al-Ṭāʾif.{?No report dates this surah. That it belongs to those years follows only from its place in the traditional order of revelation, which is a guide and not a certainty.} Al-Qurṭubī records what the scholars observed about it: Allah repeated the stories of the prophets in the Qurʾan in differing words and at differing lengths, but told the story of Yūsuf and did not repeat it.",
     "period": "makkah-late",
     "when": "The last years in Makkah",
     "evidence": [
@@ -27,11 +27,31 @@
         "ayah": 1,
         "quote": "وَذَكَرَ اللَّهُ أَقَاصِيصَ الْأَنْبِيَاءِ فِي الْقُرْآنِ وَكَرَّرَهَا بِمَعْنًى وَاحِدٍ فِي وُجُوهٍ مُخْتَلِفَةٍ، بِأَلْفَاظٍ مُتَبَايِنَةٍ عَلَى دَرَجَاتِ الْبَلَاغَةِ، وَقَدْ ذَكَرَ قِصَّةَ يُوسُفَ وَلَمْ يُكَرِّرْهَا"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ يُوسُفَ عَلَيْهِ السَّلَامُ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ النَّحّاسُ وأبُو الشَّيْخِ، وابْنُ مَرْدُوَيْهِ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ يُوسُفَ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by al-Naḥḥās, Abū al-Shaykh and Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ كُلُّها، وقِيلَ نَزَلَتْ ما بَيْنَ مَكَّةَ والمَدِينَةِ وقْتَ الهِجْرَةِ",
+        "says": "Makkan, all of it; it is also said to have come down between Makkah and Madinah, at the time of the Hijrah."
+      }
     ]
   },
   "setting": [
     "Saʿd ibn Abī Waqqāṣ said: the Qurʾan was sent down to the Messenger of Allah ﷺ, and he recited it to them for a time. Then they said: Messenger of Allah, if only you would tell us stories. And Allah sent down: “Alif Lām Rā. These are the ayat of the clear Book… We relate to you the best of stories.”",
-    "Consider who was listening. The believers in Makkah were a few people with no protector, some of whom had been thrown out by their own families. The man reciting to them had been called a liar by his own tribe; if the traditional order holds, he had lately buried his wife and his guardian within a short time of one another, and did not yet know that a city to the north would take him in. To them the surah tells of a boy who was envied by his brothers for nothing he had done, dropped into a well, sold “for a paltry price, a few silver coins,” accused by the woman of the house he served, and left in prison for years by a man who had promised to mention him — and who came out of it as the keeper of the storehouses of the land. “Thus We established Yūsuf in the land… And Allah prevails in His purpose, but most people do not know.”",
+    "Consider who was listening. The believers in Makkah were a few people with no protector, some of whom had been thrown out by their own families. The man reciting to them had been called a liar by his own tribe; if the traditional order holds, he had lately buried his wife and his guardian within a short time of one another, and did not yet know that a city to the north would take him in.{?No report dates this surah. That it belongs to those years follows only from its place in the traditional order of revelation, which is a guide and not a certainty.} To them the surah tells of a boy who was envied by his brothers for nothing he had done, dropped into a well, sold “for a paltry price, a few silver coins,” accused by the woman of the house he served, and left in prison for years by a man who had promised to mention him — and who came out of it as the keeper of the storehouses of the land. “Thus We established Yūsuf in the land… And Allah prevails in His purpose, but most people do not know.”",
     "It is built with great care. It opens with a dream — eleven stars and the sun and the moon, bowing — and closes with the same dream come true: “Father, this is the meaning of my dream of long ago; my Lord has made it real.” A shirt appears three times: stained with false blood, as evidence for a lie; torn from behind, as evidence of the truth; and at last laid over an old man’s face, giving him back his sight. At the centre of the story, in the prison, with two condemned men waiting on his every word, Yūsuf puts off the answer they want and gives them the one they need: “My two companions of the prison — are many different lords better, or Allah, the One, the Irresistible?”",
     "Beside him throughout stands his father. Yaʿqūb is told his son is dead and answers, “Patience is beautiful.” Years later he loses a second son and says it again. His eyes turn white with grief, and when his sons reproach him he says: “I complain of my anguish and my sorrow only to Allah” — the ayah at which ʿUmar was heard sobbing from the back rows as he led the dawn prayer. And then the instruction that defines him: “My sons, go and search for Yūsuf and his brother, and do not despair of relief from Allah.”",
     "When the brothers finally learn who the minister is, and wait for what he will do, he says: “No reproach upon you today. May Allah forgive you; He is the most merciful of the merciful.” The Prophet ﷺ entered Makkah as its conqueror eight years after the Hijrah, with the people who had hunted him gathered before him."
@@ -44,7 +64,9 @@
       ],
       "title": "“If only you would tell us stories”",
       "text": "“The Qurʾan was sent down upon the Messenger of Allah ﷺ, and he recited it to them for a time. They said: ‘Messenger of Allah, if only you would relate stories to us.’ So Allah sent down: ‘Alif Lām Rā. These are the ayat of the clear Book,’ to His saying: ‘We relate to you the best of stories.’”",
-      "source": "Saʿd ibn Abī Waqqāṣ: related by Ibn Ḥibbān and al-Ḥākim, and cited by Ibn al-Jawzī and al-Qurṭubī.",
+      "source": "Saʿd ibn Abī Waqqāṣ: Ibn Ḥibbān (6209) and al-Ḥākim; ṣaḥīḥ according to al-Albānī (Ṣaḥīḥ Mawārid al-Ẓamʾān, 1462).",
+      "rank": "sahih",
+      "caveat": "This is al-Albānī’s grading as an index of his works records it; it has not yet been checked here against the printed book. Ibn Ḥajar graded the report ḥasan.",
       "evidence": {
         "work": "zad-almaseer",
         "ayah": 1,
@@ -135,7 +157,8 @@
           "number": "3390"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“Had I stayed in prison as long as Yūsuf stayed, I would have answered the one who came to call me.” — said in praise of Yūsuf’s patience, who would not walk out of the prison until his name had been cleared.",
@@ -152,7 +175,8 @@
           "number": "151"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "Of the night he was taken up through the heavens, he ﷺ said: “The third heaven was opened to us, and there was Yūsuf. He had been given half of all beauty. He welcomed me, and prayed for good for me.”",
@@ -165,10 +189,10 @@
           "number": "162"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
-  "virtuesNote": "Ibn Kathīr opens his commentary on the surah with the report often quoted for its merit — “Teach your slaves Sūrat Yūsuf, for any Muslim who recites it or teaches it to his household will have the pangs of death eased” — and rejects it: one of its narrators was abandoned, another is unknown, and the chain is weak altogether. That the Prophet ﷺ spoke Yūsuf’s words, “No reproach upon you today,” to Quraysh at the conquest of Makkah is told in the books of sīrah; the likeness of the two moments does not depend on it.",
   "before": "Hūd ended by explaining why the stories of the messengers are told: to make the Prophet’s heart firm. Yūsuf is that explanation carried out, in one story told to its end.",
   "after": "Yūsuf ends: “a guidance and a mercy for people who believe.” Al-Raʿd opens: “What has been sent down to you from your Lord is the truth; but most people do not believe.”",
   "notable": [

@@ -32,12 +32,32 @@
         "ayah": 1,
         "quote": "سُورَةُ الرَّعْدِ مَكِّيَّةٌ فِي قَوْلِ الْحَسَنِ وَعِكْرِمَةَ وَعَطَاءٍ وَجَابِرٍ، وَمَدَنِيَّةٌ فِي قَوْلِ الْكَلْبِيِّ وَمُقَاتِلٍ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةِ الرَّعْدِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ النَّحّاسُ في «ناسِخِهِ» عَنِ ابْنِ عَبّاسٍ قالَ: سُورَةُ الرَّعْدِ نَزَلَتْ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by al-Naḥḥās."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "قَدْ وقَعَ الخِلافُ هَلْ هي مَكِّيَّةٌ أوْ مَدَنِيَّةٌ ؟ فَرَوى النَّحّاسُ في ناسِخِهِ عَنِ ابْنِ عَبّاسٍ أنَّها نَزَلَتْ بِمَكَّةَ",
+        "says": "It is differed over, Makkan or Madinan. Al-Naḥḥās relates from Ibn ʿAbbās that it came down in Makkah."
+      }
     ]
   },
   "setting": [
     "Its first ayah states the difficulty the whole surah addresses: “What has been sent down to you from your Lord is the truth; but most people do not believe.” If it is the truth, why is it not winning? Why do those who deny it prosper, and demand a sign, and go unpunished? The surah answers by changing where the listener is looking.",
     "It looks up. “Allah is He who raised the heavens without pillars that you can see, then rose over the Throne, and pressed the sun and the moon into service, each running to an appointed term.” It looks down: “In the earth are neighbouring tracts, and gardens of vines, and crops, and palms in clusters and alone — watered with one water; yet We make some better than others to eat.” It looks inward: “Allah knows what every female carries, and by how much the wombs fall short or exceed. Everything with Him is by measure.” Each person has angels in succession, before him and behind him, guarding him by Allah’s command.",
-    "Then the storm. “He it is who shows you the lightning, for fear and for hope, and raises the heavy clouds. The thunder glorifies Him with His praise, and so do the angels, in awe of Him.” Ibn al-Jawzī records that most held the next words — “He sends the thunderbolts and strikes with them whom He wills, while they dispute about Allah” — to have come down about two men who came to the Prophet ﷺ meaning to kill him, one of whom was burned by a bolt out of a clear summer sky.",
+    "Then the storm. “He it is who shows you the lightning, for fear and for hope, and raises the heavy clouds. The thunder glorifies Him with His praise, and so do the angels, in awe of Him.” Ibn al-Jawzī records that most held the next words — “He sends the thunderbolts and strikes with them whom He wills, while they dispute about Allah” — to have come down about two men who came to the Prophet ﷺ meaning to kill him, one of whom was burned by a bolt out of a clear summer sky.{reported} Anas ibn Mālik relates them of another man: a tyrant among the Arabs who was called to Allah three times, and each time asked what Allah was made of; at the third, a bolt fell on him from a cloud over his head.{reported}",
     "And out of the storm, the surah’s great image. The water comes down and the valleys flow, each according to its measure, and the torrent carries a swelling foam; and from the ore that men heat in the fire for ornaments and tools there rises a scum like it. “Thus Allah sets out truth and falsehood. As for the foam, it passes away as dross; and as for what benefits people, it remains in the earth.” Falsehood is loud, and on top, and soon gone. That is the answer to the first ayah.",
     "For those who hold to the truth while it is still under the surface, the surah has the gentlest line it could give: “Those who believe, and whose hearts find rest in the remembrance of Allah. Truly, in the remembrance of Allah do hearts find rest.”"
   ],
@@ -48,12 +68,28 @@
         13
       ],
       "title": "The thunderbolt",
-      "text": "Arbad ibn Qays and ʿĀmir ibn al-Ṭufayl came to the Messenger of Allah ﷺ meaning to kill him. He said: “O Allah, suffice me against them by what You will.” As for Arbad, Allah sent a thunderbolt upon him on a clear summer’s day, and it burned him; and ʿĀmir was struck by a tumour and died. Then Allah sent down this ayah. Ibn al-Jawzī gives this as the saying of the majority, and two others beside it.",
-      "source": "Ibn al-Jawzī, from Ibn Jurayj and others — a report of the commentators, not one of the Ṣaḥīḥ collections.",
+      "text": "Arbad ibn Qays and ʿĀmir ibn al-Ṭufayl came to the Messenger of Allah ﷺ meaning to kill him. He said: “O Allah, suffice me against them by what You will.” As for Arbad, Allah sent a thunderbolt upon him on a clear summer’s day, and it burned him; and ʿĀmir was struck by a tumour and died. Then Allah sent down this ayah.",
+      "source": "Ibn al-Jawzī, who says: “this is the saying of the majority, among them Ibn Jurayj.” Al-Ṭabarī, al-Baghawī, al-Qurṭubī, Ibn Kathīr and al-Suyūṭī relate it too.",
+      "rank": "reported",
       "evidence": {
         "work": "zad-almaseer",
         "ayah": 13,
-        "quote": "أرْبَدَ بْنِ قَيْسٍ، وعامِرِ بْنِ الطُّفَيْلِ، أتَيا إلى رَسُولِ اللَّهِ ﷺ يُرِيدانِ الفَتْكَ بِهِ، فَقالَ: \" اللَّهُمَّ اكْفِنِيهِما بِما شِئْتَ \"، فَأمّا أرْبَدُ فَأرْسَلَ اللَّهُ عَلَيْهِ صاعِقَةً في يَوْمٍ صائِفٍ صاحٍ فَأحْرَقَتْهُ"
+        "quote": "أرْبَدَ بْنِ قَيْسٍ، وعامِرِ بْنِ الطُّفَيْلِ، أتَيا إلى رَسُولِ اللَّهِ ﷺ يُرِيدانِ الفَتْكَ بِهِ"
+      }
+    },
+    {
+      "ayat": [
+        13,
+        13
+      ],
+      "title": "The man who asked what Allah is made of",
+      "text": "Anas ibn Mālik said: the Messenger of Allah ﷺ sent to one of the tyrants among the Arabs, calling him to Allah. He said to the messenger: “And what is Allah? Is He of gold, or of silver, or of copper?” The man returned and told the Prophet ﷺ, who said: “Go back to him and call him.” He went back, and was answered as before — and so a third time. While the two were exchanging words, Allah sent a cloud over the man’s head; it thundered, a thunderbolt fell from it and carried off the top of his skull, and this ayah came down.",
+      "source": "Anas ibn Mālik: Abū Yaʿlā and al-Bazzār, as Ibn Kathīr and Ibn al-Jawzī give it. Al-Haythamī said that the men of al-Bazzār’s chain are those of the Ṣaḥīḥ, apart from Daylam ibn Ghazwān, who is trustworthy.",
+      "rank": "reported",
+      "evidence": {
+        "work": "zad-almaseer",
+        "ayah": 13,
+        "quote": "بَعَثَ رَسُولُ اللَّهِ ﷺ إلى بَعْضِ فَراعِنَةِ العَرَبِ يَدْعُوهُ إلى اللَّهِ تَعالى"
       }
     }
   ],
@@ -115,7 +151,8 @@
           "number": "3117"
         }
       ],
-      "grade": "Ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     },
     {
       "text": "“The keys of the unseen are five, which none knows but Allah: none knows what tomorrow holds but Allah; none knows what the wombs fall short of but Allah; none knows when the rain will come but Allah; no soul knows in what land it will die; and none knows when the Hour will arise but Allah.”",
@@ -127,7 +164,8 @@
           "number": "4697"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "virtuesNote": "The fifteenth ayah is an ayah of prostration. It is related from ʿAbd Allāh ibn al-Zubayr, in Mālik’s Muwaṭṭaʾ, that when he heard thunder he would stop speaking and say: “Glory be to Him whom the thunder glorifies with His praise, and the angels, in awe of Him.”",

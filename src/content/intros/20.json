@@ -13,9 +13,9 @@
   "revelation": {
     "place": "makkah",
     "verdict": "Makkan, by agreement",
-    "detail": "It is Makkan in the saying of all; Ibn al-Jawzī and al-Qurṭubī both record the agreement. Al-Qurṭubī adds that it came down before ʿUmar accepted Islam — the well-known account of his conversion has him reading its opening lines in his sister’s house — which would place it in the first five or six years. Ibn Masʿūd counted it among the earliest surahs he learned. The traditional order places it forty-fifth, directly after Maryam.",
+    "detail": "It is Makkan in the saying of all; Ibn al-Jawzī and al-Qurṭubī both record the agreement. Ibn Masʿūd counted it among the earliest surahs he learned. The traditional order places it forty-fifth, directly after Maryam.",
     "period": "makkah-middle",
-    "when": "Makkah, in the first half of the mission — before ʿUmar’s Islam",
+    "when": "Makkah — among the surahs Ibn Masʿūd learned first",
     "evidence": [
       {
         "work": "zad-almaseer",
@@ -25,13 +25,32 @@
       {
         "work": "qurtubi",
         "ayah": 1,
-        "quote": "مَكِّيَّةٌ فِي قَوْلِ الْجَمِيعِ. نَزَلَتْ قَبْلَ إِسْلَامِ عُمَرَ رَضِيَ اللَّهُ عَنْهُ"
+        "quote": "مَكِّيَّةٌ فِي قَوْلِ الْجَمِيعِ"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ طه مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ النَّحّاسُ، وابْنُ مَرْدُوَيْهِ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ طه بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by al-Naḥḥās and Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "قالَ القُرْطُبِيُّ: مَكِّيَّةٌ في قَوْلِ الجَمِيعِ",
+        "says": "Makkan, by agreement, citing al-Qurṭubī."
       }
     ]
   },
   "setting": [
-    "Ibn al-Jawzī gives three reports of what its opening came down about, and they point the same way. One: that the Messenger of Allah ﷺ stood so long in prayer at night that he would shift his weight from foot to foot. Another: that when the Qurʾan began to come down he and his Companions prayed at great length, and Quraysh said, “Allah has sent this Qurʾan down on Muḥammad only to make him miserable.” The surah answers: “Ṭā-Hā. We have not sent down the Qurʾan to you that you should be distressed, but as a reminder for whoever fears.”",
-    "It is the surah connected with the turning of ʿUmar. The account, which Ibn Isḥāq relates and which al-Qurṭubī cites here, is that he set out with his sword to kill the Prophet ﷺ, was told on the way that his own sister and her husband had become Muslims, burst in on them, struck her — and then, shamed by the sight of her blood, asked to see what they had been reading. It was a sheet with the opening of this surah. The chains of the story are not strong, and it is told as a report.",
+    "Ibn al-Jawzī gives three reports of what its opening came down about, and they point the same way.{reported} One: that the Messenger of Allah ﷺ stood so long in prayer at night that he would shift his weight from foot to foot. Another: that when the Qurʾan began to come down he and his Companions prayed at great length, and Quraysh said, “Allah has sent this Qurʾan down on Muḥammad only to make him miserable.” The surah answers: “Ṭā-Hā. We have not sent down the Qurʾan to you that you should be distressed, but as a reminder for whoever fears.”",
     "What fills most of the surah is Mūsā, and here the telling stays close to him as a person. He sees a fire and tells his family to wait. He hears: “I am your Lord, so take off your sandals… I have chosen you, so listen to what is revealed.” He is asked what is in his hand, and answers at length, like a man glad to be spoken to. He is told to go to Pharaoh, and asks for his chest to be opened, his task made easy, the knot loosed from his tongue, and his brother given to him as a helper. When he and Hārūn say they are afraid, they are told: “Do not fear. I am with you both; I hear and I see.”",
     "The Prophet ﷺ is being shown that the fear is not new, and neither is the answer. The surah ends as it began, speaking to him directly: be patient with what they say; glorify your Lord before the rising of the sun and before its setting; do not stretch your eyes towards what We have given some of them to enjoy; and bid your family to pray, and be steadfast in it."
   ],
@@ -43,7 +62,8 @@
       ],
       "title": "“Only to make him miserable”",
       "text": "When the Qurʾan came down upon the Messenger of Allah ﷺ, he and his Companions prayed and stood for long. Quraysh said: “Allah has sent down this Qurʾan upon Muḥammad only so that he should be wretched.” So this was revealed.",
-      "source": "Ibn al-Jawzī, from al-Ḍaḥḥāk — one of three accounts he gives.",
+      "source": "Ibn al-Jawzī, from al-Ḍaḥḥāk — one of three accounts he gives. Al-Baghawī, al-Qurṭubī, Ibn Kathīr, al-Suyūṭī and al-Shawkānī relate the like.",
+      "rank": "reported",
       "evidence": {
         "work": "zad-almaseer",
         "ayah": 1,
@@ -132,7 +152,8 @@
           "number": "684"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "Ibn Masʿūd counted it, with Banī Isrāʾīl, al-Kahf, Maryam and al-Anbiyāʾ, among “the first and finest” — the earliest surahs he had learned.",
@@ -144,10 +165,10 @@
           "number": "4739"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
-  "virtuesNote": "Ibn Kathīr opens his commentary with a report that Allah recited Ṭā-Hā and Yā-Sīn a thousand years before creating Ādam, and says of it at once that it is a strange report with something objectionable in it, two of its narrators having been criticised.",
   "before": "Maryam ended by saying that the Qurʾan was made easy on his tongue to bring good news and warning. Ṭā-Hā opens: it was not sent to make you wretched.",
   "after": "Ṭā-Hā ends: everyone is waiting, so wait. Al-Anbiyāʾ begins: their reckoning has drawn near to mankind, while they turn away, heedless.",
   "notable": [

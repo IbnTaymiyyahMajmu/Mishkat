@@ -33,6 +33,26 @@
         "ayah": 1,
         "quote": "وَهِيَ مَدَنِيَّةٌ فِي قَوْلِ أَكْثَرِ الْمُفَسِّرِينَ ذَكَرهُ الثَّعْلَبِيُّ. وَحَكَى الْمَاوَرْدِيُّ عَكْسَهُ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْقَدْرِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿إنّا أنْزَلْناهُ في لَيْلَةِ القَدْرِ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ عِنْدَ أكْثَرِ المُفَسِّرِينَ",
+        "says": "Makkan, according to most of the commentators."
+      }
     ]
   },
   "setting": [
@@ -82,7 +102,8 @@
           "number": "760"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“Seek the Night of Decree in the odd nights of the last ten of Ramaḍān.”",
@@ -94,7 +115,8 @@
           "number": "2017"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "ʿĀʾishah asked: “Messenger of Allah, if I know which night is the Night of Decree, what should I say in it?” He said: “Say: O Allah, You are Pardoning and love to pardon, so pardon me.”",
@@ -111,10 +133,10 @@
           "number": "3850"
         }
       ],
-      "grade": "Ḥasan ṣaḥīḥ, said al-Tirmidhī; ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     }
   ],
-  "virtuesNote": "The report that ties “a thousand months” to the length of Umayyad rule (al-Tirmidhī 3350) was called gharīb by al-Tirmidhī himself, and Ibn Kathīr judged it munkar.",
   "before": "Al-ʿAlaq opens with the first words of the revelation. Al-Qadr says on which night they came.",
   "after": "Al-Bayyinah turns to what that night began: a Messenger from Allah, reciting purified pages — the clear proof that the People of the Book and the idolaters had been waiting for.",
   "notable": [

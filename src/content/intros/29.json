@@ -27,11 +27,25 @@
         "ayah": 1,
         "quote": "مَكِّيَّةٌ كُلُّهَا فِي قَوْلِ الْحَسَنِ وَعِكْرِمَةَ وَعَطَاءٍ وَجَابِرٍ. وَمَدَنِيَّةٌ كُلُّهَا فِي أَحَدِ قَوْلَيِ ابْنِ عَبَّاسٍ وَقَتَادَةَ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْعَنْكَبُوتِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُوَيْهِ، والبَيْهَقِيُّ في ”الدَّلائِلِ“، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”العَنْكَبُوتِ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      }
     ]
   },
   "setting": [
     "By the last years in Makkah, to say “I believe” had a price, and it was paid inside the home as well as in the street. Saʿd ibn Abī Waqqāṣ tells how his mother swore that she would neither eat nor drink until he renounced his religion. “You claim that Allah has enjoined on you goodness to your parents — I am your mother, and I command you this.” She kept it up for three days, until she fainted. The ayah came down: “We have enjoined on man goodness to his parents; but if they strive to make you associate with Me what you have no knowledge of, do not obey them.”",
-    "Ibn al-Jawzī relates three accounts of what the opening ayat came down about, and they are all of one kind: Muslims left in Makkah who were told that their Islam would not be accepted until they emigrated, who set out and were overtaken and forced back; and those who were tortured for their faith, ʿAmmār among them. The surah’s first words are addressed to all of them. “Do people think that they will be left to say, ‘We believe,’ and not be tried? We tried those before them — so Allah will surely make known those who are truthful, and make known the liars.”",
+    "Ibn al-Jawzī relates three accounts of what the opening ayat came down about, and they are all of one kind: Muslims left in Makkah who were told that their Islam would not be accepted until they emigrated, who set out and were overtaken and forced back; and those who were tortured for their faith, ʿAmmār among them.{reported} The surah’s first words are addressed to all of them. “Do people think that they will be left to say, ‘We believe,’ and not be tried? We tried those before them — so Allah will surely make known those who are truthful, and make known the liars.”",
     "Then it gives them their predecessors, with the stress each time on how long and how hard. Nūḥ stayed among his people a thousand years less fifty. Ibrāhīm was answered with: “Kill him, or burn him.” Lūṭ, Shuʿayb, Hūd, Ṣāliḥ, Mūsā. And after the roll, the image that names the surah: all the power their persecutors relied on — wealth, numbers, idols, alliances — is a spider’s web.",
     "Its last third is practical. Recite the Book; keep up the prayer, for the prayer restrains from indecency and wrong. Argue with the People of the Book only in the best manner. And if you cannot worship Me here: “O My servants who believe, My earth is wide — so worship Me alone.” Every soul will taste death; how many a creature does not carry its provision, and Allah provides for it and for you. The final ayah is a promise to anyone who has made the effort: “Those who strive for Us — We shall surely guide them to Our ways.”"
   ],
@@ -43,7 +57,8 @@
       ],
       "title": "Those who were turned back",
       "text": "When the emigration was commanded, the Muslims wrote to their brothers in Makkah that their Islam would not be accepted until they emigrated. They set out for Madinah; the idolaters caught up with them and turned them back. Then Allah sent down the opening ayat of this surah.",
-      "source": "Ibn al-Jawzī, the first of three accounts he gives; the others name ʿAmmār ibn Yāsir, who was tortured for his faith, and Mihjaʿ, the first Muslim killed at Badr.",
+      "source": "Ibn al-Jawzī, the first of three accounts he gives; the others name ʿAmmār ibn Yāsir, who was tortured for his faith, and Mihjaʿ, the first Muslim killed at Badr. Al-Baghawī, al-Qurṭubī, al-Suyūṭī and al-Shawkānī relate it too.",
+      "rank": "reported",
       "evidence": {
         "work": "zad-almaseer",
         "ayah": 1,
@@ -57,7 +72,8 @@
       ],
       "title": "Saʿd and his mother",
       "text": "The mother of Saʿd swore that she would never speak to him, and would neither eat nor drink, until he renounced his religion. She went three days until she fainted from the strain. And Allah sent down this ayah: “We have enjoined upon man goodness to parents; but if they strive to make you associate with Me that of which you have no knowledge, do not obey them.”",
-      "source": "Saʿd ibn Abī Waqqāṣ: Muslim (1748)."
+      "source": "Saʿd ibn Abī Waqqāṣ: Muslim (1748).",
+      "rank": "agreed"
     }
   ],
   "aim": "It centres on firmness and patience in the midst of trial and persecution, and on what they lead to.",

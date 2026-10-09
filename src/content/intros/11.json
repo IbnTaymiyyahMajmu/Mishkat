@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "قَالَ أَبُو بَكْرٍ: يَا رَسُولَ اللَّهِ، قَدْ شِبْتَ؟ قَالَ: \" شَيَّبَتْنِي هُودٌ، وَالْوَاقِعَةُ، وَالْمُرْسَلَاتُ، وَعَمَّ يَتَسَاءَلُونَ، وَإِذَا الشَّمْسُ كُوِّرَتْ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةِ هُودٍ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ النَّحّاسُ في «تارِيخِهِ» وأبُو الشَّيْخِ، وابْنُ مَرْدُوَيْهِ مِن طُرُقٍ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ هُودٍ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by al-Naḥḥās, Abū al-Shaykh and Ibn Mardawayh, through several chains."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "سُورَةُ هُودٍ هي مَكِّيَّةٌ في قَوْلِ الحَسَنِ وعِكْرِمَةَ وعَطاءٍ وجابِرٍ",
+        "says": "Makkan, in the saying of al-Ḥasan, ʿIkrimah, ʿAṭāʾ and Jābir ibn Zayd."
+      }
     ]
   },
   "setting": [
@@ -43,7 +63,8 @@
       ],
       "title": "“Good deeds drive away evil deeds”",
       "text": "A man kissed a woman, and came to the Messenger of Allah ﷺ and told him of it. Then there was sent down to him: “Establish the prayer at the two ends of the day and in the first hours of the night; good deeds drive away evil deeds.” The man said: “Is this for me alone?” He said: “For whoever of my community acts on it.”",
-      "source": "ʿAbd Allāh ibn Masʿūd: al-Bukhārī (4687) and Muslim (2763)."
+      "source": "ʿAbd Allāh ibn Masʿūd: al-Bukhārī (4687) and Muslim (2763).",
+      "rank": "agreed"
     }
   ],
   "aim": "To set out the way of the messengers in facing those of their people who denied them.",
@@ -119,6 +140,7 @@
         }
       ],
       "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih",
       "evidence": {
         "work": "qurtubi",
         "ayah": 112,
@@ -140,7 +162,8 @@
           "number": "2583"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“Allah, mighty and majestic, has said: ‘Spend, and I shall spend on you.’ The Hand of Allah is full; no spending diminishes it, pouring forth night and day. Have you seen what He has spent since He created the heavens and the earth? It has not lessened what is in His Hand. And His Throne was upon the water; and in His Hand is the balance: He lowers and He raises.”",
@@ -152,10 +175,10 @@
           "number": "4684"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
-  "virtuesNote": "Al-Qurṭubī cites from al-Dārimī a report, through Kaʿb, “Recite Sūrat Hūd on Fridays.” It is a mursal report — the link to the Prophet ﷺ is missing — and is not relied on.",
   "before": "Yūnus ended: “be patient until Allah judges.” Hūd shows what that judgement looked like, six times over.",
   "after": "Hūd ends by saying that the stories of the messengers are told to make the Prophet’s heart firm. Yūsuf opens: “We relate to you the best of stories” — and tells one, from beginning to end.",
   "notable": [

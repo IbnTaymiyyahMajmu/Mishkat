@@ -27,7 +27,7 @@
     "verdict": "Makkan",
     "detail": "Ibn al-Jawzī says it is Makkan in the saying of the generality, though some held that parts are Madinan: a report from Ibn ʿAbbās, followed by Qatādah, sets apart eight ayat beginning “They were about to tempt you away” (17:73), and al-Qurṭubī names three. Ibn Masʿūd counted it with al-Kahf and Maryam among the earliest surahs he had learned. Its opening fixes it after the Night Journey, which took place in the last years before the Hijrah. The traditional order places it fiftieth.",
     "period": "makkah-late",
-    "when": "Makkah, after the Night Journey — the last years before the Hijrah",
+    "when": "Makkah, after the Night Journey — the last years before the Hijrah{?The reports of when the Night Journey took place differ by years. About a year before the Hijrah is the saying most often given; Ibn Isḥāq tells of the Journey before the deaths of Khadījah and Abū Ṭālib.}",
     "evidence": [
       {
         "work": "zad-almaseer",
@@ -44,16 +44,45 @@
         "ayah": 1,
         "quote": "هَذِهِ السُّورَةُ مَكِّيَّةٌ، إِلَّا ثَلَاثَ آيَاتٍ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْإِسْرَاءِ مَكِّيَّةٌ وَهِيَ مِائَةٌ وَإِحْدَى عَشْرَةَ آيَةً",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ النَّحّاسُ، وابْنُ مَرْدُويَهْ، عَنِ اِبْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”بَنِي إسْرائِيلَ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by al-Naḥḥās and Ibn Mardawayh."
+      }
     ]
   },
   "setting": [
-    "By the dating most widely held, it was about a year before the Hijrah: Khadījah was dead, and Abū Ṭālib, and al-Ṭāʾif had driven him out with stones. The Prophet ﷺ was brought a mount called al-Burāq, and carried by night to Jerusalem, where he prayed, and from there taken up through the heavens. When he told Quraysh in the morning, they laughed; and it is related that some who had believed fell away. The surah refers to that test in its sixtieth ayah — “We did not make the vision We showed you except as a trial for people” — and Ibn ʿAbbās explains: it was a vision of the eye, shown to the Messenger of Allah ﷺ on the night he was taken to Jerusalem.",
+    "By the dating most widely held, it was about a year before the Hijrah{?The reports of when the Night Journey took place differ by years. About a year before the Hijrah is the saying most often given; Ibn Isḥāq tells of the Journey before the deaths of Khadījah and Abū Ṭālib.}: Khadījah was dead, and Abū Ṭālib, and al-Ṭāʾif had driven him out with stones. The Prophet ﷺ was brought a mount called al-Burāq, and carried by night to Jerusalem, where he prayed, and from there taken up through the heavens. When he told Quraysh in the morning, they laughed; and ʿĀʾishah relates that some who had believed fell away.{?al-Albānī includes this report in al-Silsilah al-Ṣaḥīḥah (306), as an index of his works records it; it has not yet been checked here against the printed book. Other scholars fault its chain.} The surah refers to that test in its sixtieth ayah — “We did not make the vision We showed you except as a trial for people” — and Ibn ʿAbbās explains: it was a vision of the eye, shown to the Messenger of Allah ﷺ on the night he was taken to Jerusalem.",
     "What is striking is how little the surah says about it. One ayah, beginning with a word of awe — Subḥān — and calling him by the highest title he has: “His servant.” Then, without a pause, it turns to Mūsā, the Book given to him, and the people who received it — who twice spread corruption in the land and were twice overrun, their Temple entered and laid waste. The sanctuary to which he had just been carried had been lost by its keepers. The next ayah says why this is being told: “This Qurʾan guides to what is most upright.” Another people are about to be entrusted.",
     "And so the surah gives them their charge. In seventeen ayat (17:23–39) it sets out a whole way of life, opening and closing with the oneness of Allah. Worship none but Him. Be good to parents — “do not say to them so much as ‘uff’… and lower to them the wing of humility, out of mercy, and say: My Lord, have mercy on them, as they raised me when I was small.” Give the kinsman his due. Do not squander, and do not be tight-fisted. Do not kill your children for fear of want. Do not go near adultery. Do not take life. Do not touch the orphan’s property. Keep your word. Give full measure. Do not pursue what you have no knowledge of. Do not walk the earth exultantly. “That is part of the wisdom your Lord has revealed to you.”",
     "Few surahs speak of the Qurʾan by name so insistently. It is a healing and a mercy. If mankind and jinn joined forces to produce its like, they could not. It was sent down in truth and in truth it descended, in portions, to be recited to people at intervals. Quraysh, for their part, set out what it would take to convince them — a spring gushing from the ground, a garden, the sky brought down in pieces, a house of gold, a ladder to heaven and a book fetched down from it — and are answered in one line: “Say: glory be to my Lord! Am I anything but a human being, a messenger?”",
-    "There is pressure in it, plainly stated: “They were about to tempt you away from what We revealed to you… and had We not made you firm, you would almost have inclined to them a little.” “They were about to scare you out of the land.” And there is the answer to the pressure: the prayer from the sun’s decline to the dark of night, the recitation at dawn, the night vigil — “it may be that your Lord will raise you to a praised station” — and a prayer of his own, which the commentators relate to the Hijrah that was now close: “My Lord, bring me in by an entrance of truth, and bring me out by an exit of truth.” Then: “Say: the truth has come, and falsehood has vanished.” Within ten years he would say those words aloud, in Makkah, to three hundred and sixty idols."
+    "There is pressure in it, plainly stated: “They were about to tempt you away from what We revealed to you… and had We not made you firm, you would almost have inclined to them a little.” “They were about to scare you out of the land.” And there is the answer to the pressure: the prayer from the sun’s decline to the dark of night, the recitation at dawn, the night vigil — “it may be that your Lord will raise you to a praised station” — and a prayer of his own: “My Lord, bring me in by an entrance of truth, and bring me out by an exit of truth.” Then: “Say: the truth has come, and falsehood has vanished.” Within ten years he would say those words aloud, in Makkah, to three hundred and sixty idols."
   ],
   "occasions": [
+    {
+      "ayat": [
+        1,
+        1
+      ],
+      "title": "The Night Journey, as he ﷺ told it",
+      "text": "Anas ibn Mālik relates that the Messenger of Allah ﷺ said: “I was brought al-Burāq — a white animal, long, larger than a donkey and smaller than a mule, which sets its hoof at the furthest point its eye can reach. I rode it until I came to Jerusalem, and I tethered it at the ring where the prophets tether their mounts. Then I entered the mosque and prayed two rakʿahs in it, and came out; and Jibrīl brought me a vessel of wine and a vessel of milk. I chose the milk, and Jibrīl said: You have chosen the natural way.”",
+      "story": [
+        "Then he was taken up. At each heaven Jibrīl asked for it to be opened, and was asked: “Who are you?” — “Jibrīl.” — “And who is with you?” — “Muḥammad.” — “Has he been sent for?” — “He has been sent for.” In the first heaven he met Ādam, who welcomed him and prayed for good for him. In the second were the two cousins, ʿĪsā son of Maryam and Yaḥyā son of Zakariyyā; in the third Yūsuf, “who had been given half of all beauty”; in the fourth Idrīs, of whom Allah says, “We raised him to a high place”; in the fifth Hārūn; in the sixth Mūsā. In the seventh was Ibrāhīm, resting his back against the Much-Frequented House, which seventy thousand angels enter each day and do not return to again.",
+        "“Then I was taken to the Lote Tree of the Furthest Limit. Its leaves were like the ears of elephants and its fruits like great jars. And when there covered it, by the command of Allah, what covered it, it was changed, and no one of Allah’s creation could describe it for its beauty.” There Allah revealed to him what He revealed, and made fifty prayers obligatory in every day and night.",
+        "On the way down he came to Mūsā, who asked: “What has your Lord enjoined upon your community?” — “Fifty prayers.” — “Go back to your Lord and ask Him to lighten it. Your community cannot bear that; I have tried the Children of Israel and tested them.” He went back and said, “My Lord, lighten it for my community,” and five were taken off; and Mūsā said the same again. “I did not cease going back and forth between my Lord and Mūsā until He said: Muḥammad, they are five prayers in every day and night, and each prayer is as ten; that is fifty prayers. Whoever intends a good deed and does not do it, one good deed is written for him, and if he does it, ten are written; and whoever intends an evil deed and does not do it, nothing is written, and if he does it, one evil deed is written.” When he told Mūsā, he said once more: go back and ask for it to be lightened. “I said: I have gone back to my Lord until I am ashamed before Him.”"
+      ],
+      "source": "Anas ibn Mālik: Muslim (162). Al-Bukhārī gives the ascent from Mālik ibn Ṣaʿṣaʿah (3887).",
+      "rank": "agreed"
+    },
     {
       "ayat": [
         85,
@@ -61,7 +90,8 @@
       ],
       "title": "“They ask you about the spirit”",
       "text": "Quraysh said to the Jews: “Give us something to ask this man about.” They said: “Ask him about the spirit.” So they asked him, and Allah sent down: “They ask you about the spirit. Say: the spirit is of the command of my Lord; and you have been given of knowledge only a little.”",
-      "source": "Ibn ʿAbbās: al-Tirmidhī (3140); a ṣaḥīḥ chain according to al-Albānī. Ibn Masʿūd relates the question from a group of Jews in Madinah: al-Bukhārī (4721) and Muslim (2794)."
+      "source": "Ibn ʿAbbās: al-Tirmidhī (3140); a ṣaḥīḥ chain according to al-Albānī. Ibn Masʿūd relates the question from a group of Jews in Madinah: al-Bukhārī (4721) and Muslim (2794).",
+      "rank": "sahih"
     },
     {
       "ayat": [
@@ -70,7 +100,8 @@
       ],
       "title": "Neither loud nor silent",
       "text": "“It came down while the Messenger of Allah ﷺ was in hiding in Makkah. When he prayed with his Companions he would raise his voice with the Qurʾan; and when the idolaters heard it, they reviled the Qurʾan, and Him who sent it down, and him who brought it. So Allah said to His Prophet ﷺ: ‘Do not be loud in your prayer’ — so that the idolaters hear and revile the Qurʾan — ‘nor silent in it’ — so that your Companions cannot hear — ‘but seek a way between.’”",
-      "source": "Ibn ʿAbbās: al-Bukhārī (4722) and Muslim (446)."
+      "source": "Ibn ʿAbbās: al-Bukhārī (4722) and Muslim (446).",
+      "rank": "agreed"
     }
   ],
   "aim": "To set out the perfection of the message of Muḥammad ﷺ; in it are signs and good tidings for that message, in what it contains and in what was to come.",
@@ -152,7 +183,8 @@
           "number": "2920"
         }
       ],
-      "grade": "Ṣaḥīḥ according to al-Albānī"
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
     },
     {
       "text": "Ibn Masʿūd said of Banī Isrāʾīl, al-Kahf and Maryam: “They are among the first and finest, and they are my oldest wealth.”",
@@ -165,7 +197,8 @@
           "number": "4708"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "The Prophet ﷺ entered Makkah, and around the House were three hundred and sixty idols. He began to strike them with a stick in his hand, saying: “The truth has come, and falsehood has vanished. The truth has come, and falsehood neither begins anything nor brings it back.”",
@@ -181,7 +214,8 @@
           "number": "1781"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "Ibn ʿUmar said: “On the Day of Resurrection people will be on their knees, each community following its prophet, saying: ‘So-and-so, intercede!’ — until the intercession comes to the Prophet ﷺ. That is the day on which Allah will raise him to the praised station.”",
@@ -193,7 +227,8 @@
           "number": "4718"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“The prayer in congregation is twenty-five degrees better than the prayer of one alone; and the angels of the night and the angels of the day gather at the dawn prayer.” Abū Hurayrah said: recite, if you wish: “The recitation of dawn is witnessed.”",
@@ -205,10 +240,11 @@
           "number": "4717"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
-  "virtuesNote": "The hundred and ninth ayah is an ayah of prostration. The report that connects “My Lord, bring me in by an entrance of truth” with the command to emigrate (al-Tirmidhī 3139) has a weak chain according to al-Albānī; the connection is given above as the commentators relate it.",
+  "virtuesNote": "The hundred and ninth ayah is an ayah of prostration.",
   "before": "Al-Naḥl ended by telling the Prophet ﷺ to be patient, and that Allah is with the mindful. Al-Isrāʾ opens with how near: a journey by night to His signs.",
   "after": "Al-Isrāʾ opens with glorification and ends with praise: “Praise be to Allah, who has taken no son.” Al-Kahf opens: “Praise be to Allah, who sent down the Book upon His servant.”",
   "notable": [

@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "سُورَةُ الْأَحْزَابِ مَدَنِيَّةٌ فِي قَوْلِ جَمِيعِهِمْ. نَزَلَتْ فِي الْمُنَافِقِينَ وَإِيذَائِهِمْ رَسُولَ اللَّهِ ﷺ، وَطَعْنِهِمْ فِيهِ وَفِي مُنَاكَحَتِهِ وَغَيْرِهَا. وهي ثلاث وَسَبْعُونَ آيَةً"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْأَحْزَابِ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُوَيْهِ، والبَيْهَقِيُّ في ”الدَّلائِلِ“، مِن طُرُقٍ عَنْ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”الأحْزابِ“ بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī, through several chains."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "تَفْسِيرُ سُورَةِ الأحْزابِ أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ وابْنُ مَرْدَوَيْهِ، والبَيْهَقِيُّ في الدَّلائِلِ مِن طُرُقٍ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ الأحْزابِ بِالمَدِينَةِ",
+        "says": "Madinan."
+      }
     ]
   },
   "setting": [
@@ -44,7 +64,8 @@
       ],
       "title": "Zayd ibn Ḥārithah",
       "text": "“Zayd ibn Ḥārithah, the freedman of the Messenger of Allah ﷺ — we used to call him nothing but Zayd son of Muḥammad, until the Qurʾan came down: ‘Call them by their fathers; that is more just with Allah.’”",
-      "source": "ʿAbd Allāh ibn ʿUmar: al-Bukhārī (4782) and Muslim (2425)."
+      "source": "ʿAbd Allāh ibn ʿUmar: al-Bukhārī (4782) and Muslim (2425).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -52,8 +73,13 @@
         23
       ],
       "title": "Anas ibn al-Naḍr",
-      "text": "Anas said: “We consider that this ayah came down about Anas ibn al-Naḍr: ‘Among the believers are men who have been true to what they pledged to Allah.’” He had missed Badr and vowed that if he saw another battle Allah would see what he would do; at Uḥud he went forward alone and was found with more than eighty wounds.",
-      "source": "Anas ibn Mālik: al-Bukhārī (4783, 2805) and Muslim (1903)."
+      "text": "Anas ibn Mālik said: my uncle Anas ibn al-Naḍr was absent from the fighting at Badr, and he said: “Messenger of Allah, I was absent from the first battle you fought against the idolaters. If Allah lets me be present at a battle with them, Allah will see what I do.” On the day of Uḥud, when the Muslims fell back, he said: “O Allah, I ask Your pardon for what these have done” — his own companions — “and I declare myself clear before You of what these have done” — the idolaters. Then he went forward.",
+      "story": [
+        "Saʿd ibn Muʿādh met him, and he said: “Saʿd ibn Muʿādh — the Garden! By the Lord of al-Naḍr, I find its fragrance from this side of Uḥud.” Saʿd said afterwards: “Messenger of Allah, I could not do what he did.”",
+        "“We found on him,” said Anas, “eighty and some wounds: the stroke of a sword, the thrust of a spear, the shot of an arrow. We found him killed, and the idolaters had mutilated him, so that no one knew him but his sister, by his fingertips. We used to think that this ayah came down about him and those like him: ‘Among the believers are men who have been true to what they pledged to Allah.’”"
+      ],
+      "source": "Anas ibn Mālik: al-Bukhārī (4783, 2805) and Muslim (1903).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -62,7 +88,12 @@
       ],
       "title": "The choice",
       "text": "ʿĀʾishah said that when the Messenger of Allah ﷺ was commanded to give his wives the choice, he began with her: “I am going to mention something to you; do not be hasty until you have consulted your parents.” Then he recited the two ayat. She said: “Is it about this that I should consult my parents? I want Allah, His Messenger and the home of the Hereafter.” And all his wives did as she did.",
-      "source": "ʿĀʾishah: al-Bukhārī (4785) and Muslim (1475)."
+      "story": [
+        "Jābir ibn ʿAbd Allāh tells what came before it. Abū Bakr came asking leave to enter upon the Messenger of Allah ﷺ and found people sitting at his door, none of them admitted. He was given leave, and then ʿUmar; and they found the Prophet ﷺ sitting with his wives around him, downcast and silent. ʿUmar said to himself: I shall say something to make the Prophet ﷺ laugh — and told how his own wife had asked him for more to spend, and how he had got up and dealt with her. The Messenger of Allah ﷺ laughed, and said: “They are around me, as you see, asking me for more to spend.” Abū Bakr rose to strike ʿĀʾishah, and ʿUmar to strike Ḥafṣah, each of them saying: “Do you ask the Messenger of Allah ﷺ for what he does not have?” They said: “By Allah, we shall never ask the Messenger of Allah ﷺ for anything he does not have.”",
+        "He kept apart from them for a month, or twenty-nine days, and then this ayah came down upon him. He began with ʿĀʾishah, and when he had recited it to her she said: “Is it about you, Messenger of Allah, that I should consult my parents? No — I choose Allah, His Messenger and the home of the Hereafter. And I ask you not to tell any of your wives what I have said.” He said: “None of them will ask me but I shall tell her. Allah did not send me to make things hard, nor to look for people’s stumbling. He sent me as a teacher, and one who makes things easy.”"
+      ],
+      "source": "ʿĀʾishah: al-Bukhārī (4785) and Muslim (1475). Jābir ibn ʿAbd Allāh: Muslim (1478).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -71,7 +102,8 @@
       ],
       "title": "Zaynab bint Jaḥsh",
       "text": "Zayd came complaining, and the Prophet ﷺ kept saying: “Be mindful of Allah, and keep your wife.” Anas said: had the Messenger of Allah ﷺ concealed anything, he would have concealed this. Zaynab used to say to the other wives: “Your families gave you in marriage; Allah gave me in marriage from above seven heavens.”",
-      "source": "Anas ibn Mālik: al-Bukhārī (7420)."
+      "source": "Anas ibn Mālik: al-Bukhārī (7420).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -80,7 +112,8 @@
       ],
       "title": "The screen",
       "text": "When the Messenger of Allah ﷺ married Zaynab he invited the people to a meal. They ate and then sat on, talking, and he was too shy to tell them to leave. He rose; some left, and three stayed. When at last they had gone, Anas went to enter with him, and he let down the curtain between them — and the ayah of the screen was sent down. ʿUmar had earlier said: “Messenger of Allah, the good and the bad come in to you; if only you would order the mothers of the believers to be screened.”",
-      "source": "Anas ibn Mālik: al-Bukhārī (4791, 4790) and Muslim (1428)."
+      "source": "Anas ibn Mālik: al-Bukhārī (4791, 4790) and Muslim (1428).",
+      "rank": "agreed"
     }
   ],
   "aim": "It centres on Allah’s care for His Prophet ﷺ, and the protection of his honour and his household.",
@@ -164,7 +197,8 @@
           "number": "406"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "When the confederates had been driven off, the Prophet ﷺ said: “Now we shall raid them, and they will not raid us; we shall go to them.”",
@@ -176,7 +210,8 @@
           "number": "4110"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Sajdah, the last of a long run of Makkan surahs, ended: turn from them, and wait. Al-Aḥzāb opens in Madinah, with the wait over and the enemy at the wall.",

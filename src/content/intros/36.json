@@ -27,13 +27,33 @@
         "ayah": 1,
         "quote": "سُورَةُ يس وَهِيَ مكية بإجماع. وهى ثلاث وثمانون آية"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ يس مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهْ والبَيْهَقِيُّ في ”الدَّلائِلِ“ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”يس“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "تَفْسِيرُ سُورَةِ يس وهِيَ مَكِّيَّةٌ",
+        "says": "Makkan."
+      }
     ]
   },
   "setting": [
     "The surah opens with an oath — by the wise Qurʾan — sworn to a single statement: “You are indeed one of the messengers, on a straight path.” Everything that follows supports it. It was sent to a man who had been called a liar by his own people for years, and to the small company that had believed him.",
-    "First comes a story for both. Messengers came to a town: two, then a third to strengthen them. Its people said what Quraysh said — you are only men like us; we see an ill omen in you; stop, or we will stone you. Then a man came running from the farthest part of the city. “My people, follow the messengers. Follow those who ask no wage of you, and are rightly guided.” The surah does not say how he died. It says only that he was told, “Enter the Garden,” and that his first thought was for those who had killed him: “If only my people knew how my Lord has forgiven me.” The Qurʾan names neither him nor the town; the commentators relate that he was called Ḥabīb, and many said the town was Antioch, which Ibn Kathīr gives reasons to doubt.",
+    "First comes a story for both. Messengers came to a town: two, then a third to strengthen them. Its people said what Quraysh said — you are only men like us; we see an ill omen in you; stop, or we will stone you. Then a man came running from the farthest part of the city. “My people, follow the messengers. Follow those who ask no wage of you, and are rightly guided.” The surah does not say how he died. It says only that he was told, “Enter the Garden,” and that his first thought was for those who had killed him: “If only my people knew how my Lord has forgiven me.” The Qurʾan names neither him nor the town.",
     "Then the signs, set out for people who think the dead stay dead: the dead earth made to live and yield grain; the night with the day stripped from it; the sun running to a resting-place appointed for it; the moon passing through its stations until it comes back like an old, curved palm-stalk.",
-    "The surah ends on a scene the commentators tie to a particular man. One of the chiefs of Quraysh — al-ʿĀṣ ibn Wāʾil, or Ubayy ibn Khalaf — came to the Prophet ﷺ with a decayed bone, crumbled it in his hand, and said: “Muḥammad, will Allah raise this, now that it has rotted?” He said: “Yes. He will cause you to die, then raise you, then enter you into the Fire.” And the closing ayat came down: “He strikes a comparison for Us and forgets his own creation. He says: who will give life to bones when they are dust? Say: He will give them life who produced them the first time.”"
+    "The surah ends on a scene the commentators tie to a particular man.{reported} One of the chiefs of Quraysh — al-ʿĀṣ ibn Wāʾil, or Ubayy ibn Khalaf — came to the Prophet ﷺ with a decayed bone, crumbled it in his hand, and said: “Muḥammad, will Allah raise this, now that it has rotted?” He said: “Yes. He will cause you to die, then raise you, then enter you into the Fire.” And the closing ayat came down: “He strikes a comparison for Us and forgets his own creation. He says: who will give life to bones when they are dust? Say: He will give them life who produced them the first time.”"
   ],
   "occasions": [
     {
@@ -43,7 +63,9 @@
       ],
       "title": "The crumbled bone",
       "text": "Al-ʿĀṣ ibn Wāʾil came to the Messenger of Allah ﷺ with a decayed bone and crumbled it, saying: “Muḥammad, will Allah resurrect this after it has decayed?” He said: “Yes — Allah will resurrect this; He will cause you to die, then bring you to life, then enter you into the fire of Hell.” Then the ayat at the end of Yā-Sīn were revealed.",
-      "source": "Ibn ʿAbbās: al-Ḥākim, who graded it ṣaḥīḥ; Ibn Kathīr gives it, and reports from Mujāhid, ʿIkrimah and others naming Ubayy ibn Khalaf."
+      "source": "Ibn ʿAbbās: al-Ḥākim, who graded it ṣaḥīḥ; Ibn Kathīr gives it, and reports from Mujāhid, ʿIkrimah and others naming Ubayy ibn Khalaf.",
+      "rank": "sahih",
+      "caveat": "No grading by al-Albānī was found for this report. The grading given is al-Ḥākim’s — ṣaḥīḥ by the standard of al-Bukhārī and Muslim — and al-Dhahabī agreed with it."
     }
   ],
   "aim": "To establish the truth of the message and of the Resurrection, and the proofs of both.",
@@ -118,10 +140,10 @@
           "number": "159"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
-  "virtuesNote": "This is among the most loved surahs of the Qurʾan, and much is repeated about it that is not established. The report that “everything has a heart, and the heart of the Qurʾan is Yā-Sīn” (al-Tirmidhī 2887) was called gharīb by al-Tirmidhī, who said one of its narrators is unknown; al-Albānī grades it fabricated. The instruction to recite it over the dying (Abū Dāwūd 3121, Ibn Mājah 1448) is weak in its chain. No sound hadith specifies a reward for reciting it on a particular night or for a particular need.",
   "before": "Fāṭir ended with those who swore that if a warner came to them they would be the best guided of peoples — and when he came, it only drove them further off (35:42). Yā-Sīn opens by swearing that he is that warner.",
   "after": "Yā-Sīn closes with the One whose command is “Be”. Al-Ṣāffāt opens with the angels ranged in ranks before Him, and the declaration: your God is One.",
   "notable": [

@@ -27,11 +27,25 @@
         "ayah": 1,
         "quote": "تَفْسِيرُ سُورَةِ لُقْمَانَ وَهِيَ مَكِّيَّةٌ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ لُقْمَانَ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، وابْنُ مَرْدُوَيْهِ، والبَيْهَقِيُّ في ”الدَّلائِلِ“، عَنِ ابْنِ عَبّاسٍ قالَ: أُنْزِلَتْ سُورَةُ ”لُقْمانَ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, Ibn Mardawayh and al-Bayhaqī."
+      }
     ]
   },
   "setting": [
     "It opens by calling the Qurʾan “the wise Book”, and wisdom is its subject from beginning to end: who has it, and who trades it away.",
-    "The one who trades it away comes first. “Among people is one who buys idle talk, to lead astray from the way of Allah without knowledge, and to make a mockery of it.” The commentators relate this to al-Naḍr ibn al-Ḥārith, who brought back from his travels the tales of the Persian kings and would gather an audience with them when the Prophet ﷺ recited. Ibn Masʿūd, asked about the “idle talk” of the ayah, swore three times that it is singing.",
+    "The one who trades it away comes first. “Among people is one who buys idle talk, to lead astray from the way of Allah without knowledge, and to make a mockery of it.” The commentators relate this to al-Naḍr ibn al-Ḥārith, who brought back from his travels the tales of the Persian kings and would gather an audience with them when the Prophet ﷺ recited.{reported} Ibn Masʿūd, asked about the “idle talk” of the ayah, swore three times that it is singing.",
     "Then comes the one who has it. Luqmān is not placed among the prophets; he is given as a man to whom Allah gave wisdom, and the first use he makes of it is to bring up his child. His counsel begins with the greatest matter — “My son, do not associate anything with Allah; association is a tremendous wrong” — and moves through accountability, prayer, enjoining right and forbidding wrong, and patience, down to the bearing of the body: do not turn your cheek from people in scorn, do not strut, be moderate in your walk, and lower your voice. When the Companions were distressed by another ayah, about those who mix their faith with wrong, the Prophet ﷺ reassured them with Luqmān’s sentence: it is not as you think; it is association.",
     "In the middle of the father’s speech the surah interrupts, in Allah’s own voice, to speak of parents: the mother who carried her child in weakness upon weakness; gratitude owed to Me and to them; and the limit — if they press you to associate with Me, do not obey, but keep them company in this world with kindness. Saʿd ibn Abī Waqqāṣ said that this came down about him and his mother.",
     "It closes with five things whose knowledge Allah has kept to Himself. The Prophet ﷺ called them the keys of the unseen."
@@ -44,7 +58,8 @@
       ],
       "title": "“It is not as you think”",
       "text": "When there came down, “Those who believe and do not mix their faith with wrong,” it weighed heavily on the Companions of the Messenger of Allah ﷺ, and they said: “Which of us does not wrong himself?” He said: “It is not as you think. It is only what Luqmān said to his son: ‘My son, do not associate anything with Allah; association is a tremendous wrong.’”",
-      "source": "ʿAbd Allāh ibn Masʿūd: al-Bukhārī (4776) and Muslim (124)."
+      "source": "ʿAbd Allāh ibn Masʿūd: al-Bukhārī (4776) and Muslim (124).",
+      "rank": "agreed"
     },
     {
       "ayat": [
@@ -53,7 +68,8 @@
       ],
       "title": "Saʿd and his mother",
       "text": "Saʿd ibn Abī Waqqāṣ’s mother swore not to eat or drink until he abandoned his religion, saying that Allah had commanded him to obey his parents. These ayat came down: goodness to parents, and no obedience to them in associating others with Allah.",
-      "source": "Saʿd ibn Abī Waqqāṣ: Muslim (1748)."
+      "source": "Saʿd ibn Abī Waqqāṣ: Muslim (1748).",
+      "rank": "agreed"
     }
   ],
   "aim": "To bring out the wisdom that accords with the revealed law — with Luqmān given as its example.",
@@ -114,7 +130,8 @@
           "number": "4778"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Rūm closed with a command to be patient. Luqmān gives that same command in a father’s voice, among nine others.",

@@ -1,7 +1,7 @@
 {
   "surah": 38,
   "epithet": "“Has he made the gods into one God?”",
-  "lede": "The chiefs of Quraysh went to Abū Ṭālib’s sickbed to settle things with his nephew, were asked for one sentence, and walked out. The surah records what they said as they left — and then tells of three servants who were tested with power, with kingship and with pain, and each time turned back to their Lord.",
+  "lede": "“Has he made the gods into one God? This is an astonishing thing.” The surah keeps what the chiefs of Quraysh said as they turned away — and then tells of three servants who were tested with power, with kingship and with pain, and each time turned back to their Lord.",
   "names": [
     {
       "arabic": "ص",
@@ -19,9 +19,9 @@
   "revelation": {
     "place": "makkah",
     "verdict": "Makkan, by agreement",
-    "detail": "It is Makkan in the saying of all. Its opening is tied to a meeting between the chiefs of Quraysh and Abū Ṭālib, which the reports place in his last illness — so in the later Makkan years. The traditional order places it thirty-eighth.",
-    "period": "makkah-late",
-    "when": "Makkah, in the lifetime of Abū Ṭālib — the reports say, in his last illness",
+    "detail": "It is Makkan in the saying of all: Ibn al-Jawzī records the agreement, and al-Qurṭubī says the same. The traditional order places it thirty-eighth.",
+    "period": "makkah-middle",
+    "when": "The middle years in Makkah",
     "evidence": [
       {
         "work": "zad-almaseer",
@@ -33,45 +33,36 @@
         "ayah": 1,
         "quote": "سُورَةُ ص مَكِّيَّةٌ فِي قَوْلِ الْجَمِيعِ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ ص مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهْ والبَيْهَقِيُّ في ”الدَّلائِلِ“ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”ص“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "تَفْسِيرُ سُورَةِ ص وهِيَ مَكِّيَّةٌ: قالَ القُرْطُبِيُّ: في قَوْلِ الجَمِيعِ",
+        "says": "Makkan, by agreement, citing al-Qurṭubī."
+      }
     ]
   },
   "setting": [
-    "Ibn ʿAbbās relates the occasion. Quraysh complained of the Messenger of Allah ﷺ to his uncle and protector, Abū Ṭālib. He sent for him: “Nephew, what do you want of your people?” He said: “Uncle, I want from them only one word, by which the Arabs will yield to them and the non-Arabs pay them tribute.” “One word?” “One word.” “What is it?” “Lā ilāha illā Allāh.” They got up, shaking out their robes: “Has he made the gods into one God? This is an astonishing thing.” And the opening of the surah came down about them.",
+    "It opens on the state of the people it is about: “those who disbelieve are in pride and dissension.” One thing had been asked of them — to say that there is no god but Allah — and the surah keeps their answer word for word: “Has he made the gods into one God? This is an astonishing thing.”",
     "The surah quotes them further. Their leaders set off saying, “Go on, and stand by your gods — this is something that is being plotted. We never heard of this in the latest religion. It is nothing but an invention. Has the Reminder been sent down to him, out of all of us?” The last question is the truest. What they could not bear was that revelation should have come to him and not to one of them.",
     "To the one who had to listen to this, the surah says: “Be patient with what they say, and remember Our servant Dāwūd.” Three prophets follow, each given something immense and each tried in it. Dāwūd was given strength, a kingdom and judgement; he was tested, understood at once, and fell down in prostration. Sulaymān was given a dominion such as no one after him would have; he was tested, and turned back. Ayyūb was given affliction, and called on his Lord — “and We found him patient: an excellent servant, ever turning back.” The same praise is given to all three.",
     "Of Dāwūd’s trial, Ibn Kathīr writes that the commentators relate a story most of which is taken from Israelite sources, that nothing binding is established about it from the Prophet ﷺ, and that the right course is to keep to what the Qurʾan itself recites.",
     "The surah ends at the beginning of the human story: the creation of Ādam, and the one who would not bow."
   ],
-  "occasions": [
-    {
-      "ayat": [
-        1,
-        7
-      ],
-      "title": "One word",
-      "text": "Quraysh complained of the Messenger of Allah ﷺ to Abū Ṭālib. He asked him what he wanted of his people, and he said: “I want from them a single word, by which the Arabs will submit to them and the non-Arabs pay them the jizyah: lā ilāha illā Allāh.” They said: “Has he made the gods one God?” And there came down about them: “Ṣād. By the Qurʾan, full of reminder…” to “this is nothing but an invention.”",
-      "source": "Ibn ʿAbbās: Aḥmad and al-Tirmidhī (3232), who graded it ḥasan; al-Albānī judged its chain weak.",
-      "evidence": {
-        "work": "zad-almaseer",
-        "ayah": 1,
-        "quote": "أنَّ قُرَيْشًا شَكَوا رَسُولَ اللَّهِ ﷺ إلى أبِي طالِبٍ، فَقالَ: يا ابْنَ أخِي، ما تُرِيدُ مِن قَوْمِكَ؟ فَقالَ: \"يا عَمِّ، إنَّما أُرِيدُ مِنهم كَلِمَةً تَذِلُّ لَهم بِها العَرَبُ وتُؤَدِّي إلَيْهِمُ الجِزْيَةَ بِها العَجَمُ"
-      }
-    },
-    {
-      "ayat": [
-        21,
-        25
-      ],
-      "title": "On Dāwūd’s trial",
-      "text": "Ibn Kathīr declines to relate the stories told about what Dāwūd’s trial was: most of them are drawn from Israelite reports, and nothing that must be followed is established about it from the Prophet ﷺ. It is better, he says, to confine oneself to reciting the account as it stands, and to refer its knowledge to Allah.",
-      "source": "Ibn Kathīr, on these ayat.",
-      "evidence": {
-        "work": "ibn-katheer",
-        "ayah": 21,
-        "quote": "قَدْ ذَكَرَ الْمُفَسِّرُونَ هَاهُنَا قِصَّةً أَكْثَرُهَا مَأْخُوذٌ مِنَ الْإِسْرَائِيلِيَّاتِ وَلَمْ يَثْبُتْ فِيهَا عَنِ الْمَعْصُومِ حَدِيثٌ يَجِبُ اتِّبَاعُهُ"
-      }
-    }
-  ],
+  "occasions": [],
   "aim": "To recount contention in the cause of falsehood, and what it leads to.",
   "themes": [
     "The pride of Quraysh",
@@ -138,7 +129,8 @@
           "number": "4807"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Ṣāffāt recalled the idolaters saying, “Shall we leave our gods for a mad poet?” Ṣād opens with the scene in which they said it to his face, and left.",

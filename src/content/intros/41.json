@@ -33,10 +33,24 @@
         "ayah": 1,
         "quote": "سُورَةُ فُصِّلَتْ مَكِّيَّةٌ فِي قَوْلِ الْجَمِيعِ وَهِيَ أربع وخمسون"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ فُصِّلَتْ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهْ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”حم السَّجْدَةِ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      }
     ]
   },
   "setting": [
-    "Ibn Kathīr gives the story at the head of the surah, from several routes. Quraysh met and said: find us the man most learned in sorcery, soothsaying and poetry, and let him go to this man who has split our community and reviled our religion, and see what answer he gets. They said: we know of no one but ʿUtbah ibn Rabīʿah.",
+    "Ibn Kathīr gives the story at the head of the surah, from several routes.{reported} Quraysh met and said: find us the man most learned in sorcery, soothsaying and poetry, and let him go to this man who has split our community and reviled our religion, and see what answer he gets. They said: we know of no one but ʿUtbah ibn Rabīʿah.",
     "ʿUtbah went to him. If you want wealth, he said, we will collect for you until you are the richest of us. If you want honour, we will make you our chief. If you want kingship, we will make you king. And if this thing that comes to you is a spirit you cannot shake off, we will pay for physicians until you are cured. The Messenger of Allah ﷺ waited until he had finished. “Have you done, Abū al-Walīd?” “Yes.” “Then listen to me.” And he recited: “Ḥā Mīm. A sending down from the Most Merciful, the Especially Merciful. A Book whose ayat are set out in detail…” — on, until he reached: “But if they turn away, say: I have warned you of a thunderbolt like the thunderbolt of ʿĀd and Thamūd.” ʿUtbah put his hand over the Prophet’s ﷺ mouth and implored him by their kinship to stop.",
     "He went back changed. “I have heard words such as, by Allah, I have never heard. It is not poetry, nor sorcery, nor soothsaying. Men of Quraysh, take my advice: leave this man to what he is about.” They said: he has bewitched you with his tongue.",
     "The surah describes exactly the people ʿUtbah returned to. “Our hearts are under covers from what you call us to; in our ears is deafness; and between us and you is a veil.” And later: “Do not listen to this Qurʾan; drown it in noise, so that you may prevail.” Against that it sets the calm of those who say, “Our Lord is Allah,” and then stand firm — and a rule for answering hostility that is among the highest things the Qurʾan teaches: repel with what is better, and the one between whom and you there was enmity will be as though he were a close friend."
@@ -49,7 +63,8 @@
       ],
       "title": "ʿUtbah ibn Rabīʿah",
       "text": "ʿUtbah came to the Prophet ﷺ on behalf of Quraysh with offers of wealth, leadership and kingship. When he had finished, the Messenger of Allah ﷺ recited to him from the beginning of this surah as far as the warning of “a thunderbolt like the thunderbolt of ʿĀd and Thamūd”, and ʿUtbah put his hand on his mouth and adjured him by their kinship to stop.",
-      "source": "Ibn Kathīr, from Jābir ibn ʿAbd Allāh through ʿAbd ibn Ḥumayd, Abū Yaʿlā and al-Baghawī, and from Ibn Isḥāq.",
+      "source": "Ibn Kathīr, from Jābir ibn ʿAbd Allāh through ʿAbd ibn Ḥumayd, Abū Yaʿlā and al-Baghawī, and from Ibn Isḥāq. Al-Baghawī, al-Qurṭubī, al-Suyūṭī and al-Shawkānī relate it too.",
+      "rank": "reported",
       "evidence": {
         "work": "ibn-katheer",
         "ayah": 1,

@@ -51,6 +51,26 @@
         "ayah": 1,
         "quote": "وَالْحِجْرُ مَكِّيَّةٌ بِإِجْمَاعٍ. وَلَا خِلَافَ أَنَّ فَرْضَ الصَّلَاةِ كَانَ بِمَكَّةَ. وَمَا حُفِظَ أَنَّهُ كَانَ فِي الْإِسْلَامِ قَطُّ صَلَاةٌ بِغَيْرِ\" الْحَمْدُ لِلَّهِ رَبِّ الْعالَمِينَ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "وَهِيَ مَكِّيَّةٌ عَلَى قَوْلِ الْأَكْثَرِينَ. وَقَالَ مُجَاهِدٌ: مَدَنِيَّةٌ",
+        "says": "Makkan, in the saying of most; Mujāhid said: Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ الواحِدِيُّ في ”أسْبابِ النُّزُولِ“ والثَّعْلَبِيُّ في ”تَفْسِيرِهِ“ عَنْ عَلِيٍّ رَضِيَ اللَّهُ عَنْهُ قالَ: نَزَلَتْ ”فاتِحَةُ الكِتابِ“ بِمَكَّةَ",
+        "says": "ʿAlī: the Opening of the Book came down in Makkah. Recorded by al-Wāḥidī and al-Thaʿlabī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "قِيلَ هي مَكِّيَّةٌ، وقِيلَ مَدَنِيَّةٌ",
+        "says": "It has been said to be Makkan, and said to be Madinan."
+      }
     ]
   },
   "setting": [
@@ -109,7 +129,8 @@
           "number": "4474"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "Allah said: “I have divided the prayer between Myself and My servant in two halves, and My servant shall have what he asks. When the servant says, ‘All praise is for Allah, Lord of the worlds,’ Allah says: My servant has praised Me…” — and so on through the surah, until: “This is for My servant, and My servant shall have what he asked.”",
@@ -122,7 +143,8 @@
           "number": "395"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "While Jibrīl was sitting with the Prophet ﷺ he heard a sound above him and raised his head. An angel had come down who had never come down before, and he said: “Rejoice in two lights that you have been given and that no prophet before you was given: Fātiḥat al-Kitāb, and the closing ayat of Sūrat al-Baqarah. You will not recite a letter of them without being given it.”",
@@ -134,7 +156,8 @@
           "number": "806"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     },
     {
       "text": "“There is no prayer for one who does not recite the Opening of the Book.”",
@@ -151,7 +174,8 @@
           "number": "394"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "after": "Al-Baqarah opens by answering it. The servant has just asked, “Guide us to the straight path”; the next words in the muṣḥaf are “This is the Book about which there is no doubt, a guidance for those mindful of Allah” (2:2).",

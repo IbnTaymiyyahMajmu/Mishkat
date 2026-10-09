@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "مَكِّيَّةٌ كُلُّهَا فِي قَوْلِ الْحَسَنِ وَعِكْرِمَةَ وَعَطَاءٍ وَجَابِرٍ. وَقَالَ ابْنُ عَبَّاسٍ وَقَتَادَةُ: إِلَّا آيَتَيْنِ مِنْهَا"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْمُزَّمِّلِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ ﴿يا أيُّها المُزَّمِّلُ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ",
+        "says": "Makkan."
+      }
     ]
   },
   "setting": [
@@ -43,7 +63,8 @@
       ],
       "title": "The lightening",
       "text": "“Allah made standing by night obligatory at the beginning of this surah, so the Prophet of Allah ﷺ and his Companions stood for a year. Allah withheld its conclusion for twelve months in the heaven, until He sent down the lightening at the end of this surah, and standing by night became voluntary after having been obligatory.”",
-      "source": "ʿĀʾishah: Muslim (746)."
+      "source": "ʿĀʾishah: Muslim (746).",
+      "rank": "agreed"
     }
   ],
   "aim": "To set out the spiritual provision of those who call to Allah, in the face of hardship and the difficulties of life — steadying the Prophet ﷺ, and threatening those who deny him.",
@@ -96,7 +117,8 @@
           "number": "746"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
   "before": "Al-Jinn ended with the Messenger ﷺ commanded to convey what his Lord sent. Al-Muzzammil shows how he was prepared to carry it.",

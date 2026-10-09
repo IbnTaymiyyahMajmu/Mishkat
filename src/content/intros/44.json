@@ -27,6 +27,26 @@
         "ayah": 1,
         "quote": "أحَدُهُما: أنَّها لَيْلَةُ القَدْرِ، وهو قَوْلُ الأكْثَرِينَ. ورَوى عِكْرِمَةُ عَنِ ابْنِ عَبّاسٍ قالَ: أُنْزِلَ القُرْآنُ مِن عِنْدِ الرَّحْمَنِ لَيْلَةَ القَدْرِ جُمْلَةً واحِدَةً، فَوُضِعَ في السَّماءِ الدُّنْيا، ثُمَّ أُنْزِلَ نُجُومًا"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الدُّخَانِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهْ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ بِمَكَّةَ سُورَةُ ”حم الدُّخانِ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "قالَ القُرْطُبِيُّ هي مَكِّيَّةٌ بِاتِّفاقٍ إلّا قَوْلَهُ: ﴿إنّا كاشِفُو العَذابِ﴾ [الدخان: ١٥",
+        "says": "Citing al-Qurṭubī: Makkan by agreement, except “We shall remove the punishment” (44:15)."
+      }
     ]
   },
   "setting": [
@@ -43,7 +63,8 @@
       ],
       "title": "The famine of Quraysh",
       "text": "“This was because when Quraysh were defiant towards the Prophet ﷺ, he prayed against them for years like the years of Yūsuf. Drought and hardship struck them until they ate bones, and a man would look at the sky and see between him and it the like of smoke, from exhaustion. So Allah sent down: ‘Then watch for the Day when the sky brings a clear smoke.’” They asked for relief and were given it, and went back to what they had been upon.",
-      "source": "ʿAbd Allāh ibn Masʿūd: al-Bukhārī (4821) and Muslim (2798)."
+      "source": "ʿAbd Allāh ibn Masʿūd: al-Bukhārī (4821) and Muslim (2798).",
+      "rank": "agreed"
     }
   ],
   "aim": "To warn of the awaited punishment, by making the deniers fear both the punishment of this world and that of the next.",
@@ -98,7 +119,6 @@
     "why": "The epitaph of a civilisation that thought itself the centre of the world: nothing above it or beneath it noticed its passing."
   },
   "virtues": [],
-  "virtuesNote": "The reports of special reward for reciting this surah at night or on the night before Friday are not sound. Al-Tirmidhī’s two (2888, 2889) he himself called gharīb and weak in their narrators; al-Albānī grades the first fabricated and the second weak.",
   "before": "Al-Zukhruf ended: “So turn from them and say, ‘Peace’ — they will come to know” (43:89). Al-Dukhān opens on what they will come to know, and when.",
   "after": "Al-Dukhān ends: “We have made it easy in your tongue.” Al-Jāthiyah begins with the sending down of that Book, and the signs that stand beside it in the heavens and the earth.",
   "notable": [

@@ -39,6 +39,26 @@
         "ayah": 1,
         "quote": "وَهِيَ إِحْدَى وَثَلَاثُونَ آيَةً مَكِّيَّةٌ فِي قَوْلِ ابْنِ عَبَّاسٍ وَمُقَاتِلٍ وَالْكَلْبِيِّ. وَقَالَ الْجُمْهُورُ: مَدَنِيَّةٌ"
       }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْإِنْسَانِ قَالَ عَطَاءٌ: هِيَ مَكِّيَّةٌ وَقَالَ مُجَاهِدٌ وَقَتَادَةُ: مَدَنِيَّةٌ وَقَالَ الْحَسَنُ وَعِكْرِمَةُ: هِيَ مَدَنِيَّةٌ إِلَّا آيَةً",
+        "says": "ʿAṭāʾ said: Makkan. Mujāhid and Qatādah said: Madinan. Al-Ḥasan and ʿIkrimah said: Madinan, except one ayah."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ النَّحّاسُ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ الإنْسانِ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by al-Naḥḥās."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "قالَ الجُمْهُورُ: هي مَدَنِيَّةٌ",
+        "says": "Madinan, in the saying of the majority."
+      }
     ]
   },
   "setting": [
@@ -108,10 +128,10 @@
           "number": "880"
         }
       ],
-      "grade": "Ṣaḥīḥ"
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
     }
   ],
-  "virtuesNote": "The well-known story that the ayat on feeding the poor, the orphan and the captive came down about ʿAlī and Fāṭimah giving away their food on three successive nights of a vowed fast is not established: Ibn al-Jawzī counted it among the fabricated reports.",
   "before": "Al-Qiyāmah ended with man as a drop of fluid, and asked whether its Maker cannot raise the dead. Al-Insān begins there and goes on to what he is raised for.",
   "after": "Al-Insān dwells on the reward of the righteous and gives the deniers a line. Al-Mursalāt reverses the proportion: ten times it says, “Woe, that Day, to the deniers.”",
   "notable": [
