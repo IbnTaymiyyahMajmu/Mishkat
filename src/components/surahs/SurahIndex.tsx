@@ -4,18 +4,22 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useChapters } from "@/lib/store/chapters";
 import { SURAH_NAMES } from "@/lib/quran/surahNames";
+import { useT, type MessageKey } from "@/lib/i18n";
+import { useSurahNames } from "@/lib/i18n/surah";
 import styles from "./SurahIndex.module.css";
 
 type Order = "mushaf" | "revelation" | "length";
 
-const ORDERS: { id: Order; label: string }[] = [
-  { id: "mushaf", label: "Muṣḥaf order" },
-  { id: "revelation", label: "Order of revelation" },
-  { id: "length", label: "Longest first" },
+const ORDERS: { id: Order; label: MessageKey }[] = [
+  { id: "mushaf", label: "surahs.order.mushaf" },
+  { id: "revelation", label: "surahs.order.revelation" },
+  { id: "length", label: "surahs.order.length" },
 ];
 
 export function SurahIndex() {
   const { chapters, loading } = useChapters();
+  const t = useT();
+  const names = useSurahNames();
   const [query, setQuery] = useState("");
   const [order, setOrder] = useState<Order>("mushaf");
 
@@ -43,6 +47,8 @@ export function SurahIndex() {
             revelationOrder: 0,
           }));
 
+    // Found by any of its names, whichever of them is on screen: a reader of
+    // Spanish who types "mulk" means the surah the page calls الملك.
     const q = query.trim().toLowerCase();
     const filtered = q
       ? base.filter(
@@ -68,19 +74,19 @@ export function SurahIndex() {
       <div className={styles.body}>
         <div className={styles.head}>
           <div>
-            <div className="kicker">Contents</div>
-            <h1 className={styles.title}>Every surah</h1>
+            <div className="kicker">{t("surahs.kicker")}</div>
+            <h1 className={styles.title}>{t("surahs.title")}</h1>
           </div>
           <input
             className={`input ${styles.filter}`}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Filter by name, meaning or number"
-            aria-label="Filter surahs"
+            placeholder={t("surahs.filter")}
+            aria-label={t("surahs.filterLabel")}
           />
         </div>
 
-        <div className={styles.orders} role="group" aria-label="Sort order">
+        <div className={styles.orders} role="group" aria-label={t("surahs.sort")}>
           {ORDERS.map((o) => (
             <button
               key={o.id}
@@ -88,19 +94,17 @@ export function SurahIndex() {
               disabled={o.id === "revelation" && !chapters.length}
               className={`${styles.order} ${order === o.id ? styles.orderOn : ""}`}
             >
-              {o.label}
+              {t(o.label)}
             </button>
           ))}
           <div style={{ flex: 1 }} />
           <span className={styles.count}>
-            {rows.length} {rows.length === 1 ? "surah" : "surahs"}
-            {loading ? " · loading details…" : ""}
+            {t("surahs.count", { count: rows.length })}
+            {loading ? ` · ${t("surahs.loadingDetails")}` : ""}
           </span>
         </div>
 
-        {rows.length === 0 && (
-          <p className={styles.empty}>Nothing matches “{query.trim()}”.</p>
-        )}
+        {rows.length === 0 && <p className={styles.empty}>{t("surahs.none", { query: query.trim() })}</p>}
 
         <div className={styles.grid}>
           {rows.map((r) => (
@@ -109,12 +113,18 @@ export function SurahIndex() {
                 <span className={styles.diamondNumber}>{r.id}</span>
               </span>
               <span className={styles.rowText}>
-                <span className={styles.rowName}>{r.english}</span>
+                <span className={names.arabic ? styles.rowNameArabic : styles.rowName}>{names.name(r.id)}</span>
                 <span className={styles.rowMeta}>
-                  {r.meaning} · {r.ayat} ayat · {r.place === "makkah" ? "Meccan" : "Medinan"}
+                  {[
+                    names.meaning(r.id),
+                    t("common.ayat", { count: r.ayat }),
+                    t(r.place === "makkah" ? "common.meccan" : "common.medinan"),
+                  ]
+                    .filter(Boolean)
+                    .join(" · ")}
                 </span>
               </span>
-              <span className={styles.rowArabic}>{r.arabic}</span>
+              {!names.arabic && <span className={styles.rowArabic}>{r.arabic}</span>}
             </Link>
           ))}
         </div>

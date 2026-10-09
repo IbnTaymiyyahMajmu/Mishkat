@@ -1,0 +1,151 @@
+{
+  "surah": 47,
+  "epithet": "The surah that bears his name",
+  "lede": "In Makkah the believers had been told to hold back their hands. This is the voice of Madinah: those who disbelieve and bar others from Allah’s way will have their works come to nothing — and those who believe in what was sent down upon Muḥammad will be set right.",
+  "names": [
+    {
+      "arabic": "محمد",
+      "name": "Muḥammad",
+      "meaning": "Muḥammad ﷺ",
+      "note": "After his name in its second ayah — one of only four places in the Qurʾan where he is named."
+    },
+    {
+      "arabic": "القتال",
+      "name": "al-Qitāl",
+      "meaning": "Fighting",
+      "note": "The name al-Qurṭubī and Ibn Kathīr both head it with, after its subject and its twentieth ayah. It is also called Alladhīna kafarū, from its opening words."
+    }
+  ],
+  "revelation": {
+    "place": "madinah",
+    "verdict": "Madinan, by the majority",
+    "detail": "Most hold it Madinan — Ibn al-Jawzī names Mujāhid and Muqātil. It is related from Ibn ʿAbbās and Qatādah that one ayah (47:13) came down as the Prophet ﷺ left Makkah, looking back at the House; and al-Ḍaḥḥāk and al-Suddī held the surah Makkan. Its rulings on meeting the enemy, on captives and on the hypocrites are all Madinan matters.",
+    "period": "madinah-early",
+    "when": "Madinah, in the first years, when fighting had been permitted and the hypocrites had begun to show themselves",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَفِيها قَوْلانِ. أحَدُهُما: [أنَّها] مَدَنِيَّةٌ، قالَهُ الأكْثَرُونَ، مِنهم مُجاهِدٌ، ومُقاتِلٌ. وحُكِيَ عَنِ ابْنِ عَبّاسٍ وقَتادَةَ أنَّها مَدَنِيَّةٌ، إلّا آيَةً مِنها"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْقِتَالِ، وَهِيَ سُورَةُ مُحَمَّدٍ ﷺ مَدَنِيَّةٌ فِي قَوْلِ ابْنِ عَبَّاسٍ، ذَكَرَهُ النَّحَّاسُ"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ مُحَمَّدٍ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”القِتالِ“ بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هِيَ تِسْعٌ وثَلاثُونَ آيَةً، وقِيلَ: ثَمانٌ وثَلاثُونَ، وهي مَدَنِيَّةٌ",
+        "says": "Madinan."
+      }
+    ]
+  },
+  "setting": [
+    "For thirteen years in Makkah the Muslims had been forbidden to answer violence with violence. After the Hijrah that changed: Quraysh had driven them out, seized their property, and now meant to finish them in their refuge. Permission to fight was given, and with it came a new test, because Madinah held people who had been glad to say the words of faith while they cost nothing.",
+    "The surah is built on a contrast that it states in its first three ayat and never lets go: the disbelievers, whose works Allah brings to nothing, and the believers, whose misdeeds He removes and whose condition He sets right — “because those who disbelieve follow falsehood, and those who believe follow the truth from their Lord.”",
+    "It gives the rule for the battlefield and for what follows it: when the fighting is over, captives are to be freed by grace or ransomed. It promises those killed in Allah’s way that their works will not be lost. And it describes Paradise in one of the most concrete ayat in the Qurʾan — rivers of water that never stales, of milk that never sours, of wine that is a delight to those who drink, and of honey made pure.",
+    "Then it turns to the hypocrites. The believers had been saying, “If only a surah were sent down” — and when a decisive one came that mentioned fighting, “you see those in whose hearts is a sickness looking at you with the look of one fainting at the approach of death.” The question it asks of them has been asked of every reader since: “Do they not ponder the Qurʾan, or are there locks upon their hearts?”"
+  ],
+  "occasions": [],
+  "aim": "To urge the believers on to fighting — strengthening them, and weakening the disbelievers.",
+  "themes": [
+    "Belief and disbelief, and what becomes of deeds",
+    "Fighting and captives",
+    "The description of Paradise",
+    "The hypocrites",
+    "Pondering the Qurʾan",
+    "Spending and miserliness"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 3,
+      "title": "Two parties",
+      "summary": "Those who disbelieve and turn others from the way of Allah — He will bring their deeds to nothing. Those who believe and do right, and believe in what has been sent down upon Muḥammad, which is the truth from their Lord — He will remove their misdeeds and set their condition right."
+    },
+    {
+      "from": 4,
+      "to": 11,
+      "title": "When you meet them",
+      "summary": "When you meet those who disbelieve in battle, strike until you have subdued them, then bind them fast; and afterwards, either release by grace or ransom, until the war lays down its burdens. Those who are killed in the way of Allah, He will never let their deeds be lost: He will guide them and admit them to the Garden He has made known to them. O you who believe, if you help Allah, He will help you and make your feet firm."
+    },
+    {
+      "from": 12,
+      "to": 15,
+      "title": "The Garden, described",
+      "summary": "Those who disbelieve take their enjoyment and eat as cattle eat, and the Fire is their home. How many a town, mightier than your town which drove you out, We destroyed. The likeness of the Garden promised to the mindful: in it are rivers of water unaltered, rivers of milk whose taste never changes, rivers of wine delicious to the drinkers, and rivers of honey purified; and for them there is every kind of fruit, and forgiveness from their Lord."
+    },
+    {
+      "from": 16,
+      "to": 19,
+      "title": "Those who listen and do not hear",
+      "summary": "Some of them listen to you, and when they leave you they say to those given knowledge, “What did he say just now?” Those who are guided, He increases in guidance. Are they waiting for anything but the Hour? Its signs have already come. So know that there is no god but Allah, and ask forgiveness for your sin and for the believing men and women (47:19)."
+    },
+    {
+      "from": 20,
+      "to": 31,
+      "title": "The sickness in the heart",
+      "summary": "The believers say, “If only a surah were sent down.” But when a decisive surah is sent down and fighting is mentioned in it, you see those with sickness in their hearts looking at you like one overcome by death. Would you, if you turned away, spread corruption in the land and sever your ties of kinship? Do they not ponder the Qurʾan, or are there locks upon their hearts? Those who turned back after guidance was clear to them — Satan enticed them. How will it be when the angels take their souls, striking their faces and their backs? We shall surely test you, until We make known those of you who strive and are patient."
+    },
+    {
+      "from": 32,
+      "to": 38,
+      "title": "Do not weaken",
+      "summary": "O you who believe, obey Allah and obey the Messenger, and do not make your deeds void. So do not weaken and call for peace while you have the upper hand; Allah is with you. The life of this world is only play and diversion. Here you are, called to spend in the way of Allah, and some of you are miserly — and whoever is miserly is so only against himself. Allah is the Rich, and you are the poor. If you turn away, He will replace you with another people, and they will not be like you."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 24,
+    "why": "The question the surah leaves with its reader. Reflection on the Qurʾan is what the hypocrites lacked — and what is asked of everyone."
+  },
+  "virtues": [],
+  "before": "Al-Aḥqāf ended with the Prophet ﷺ told to be patient and not to hasten the punishment of the disbelievers. This surah opens, in Madinah, with their works brought to nothing.",
+  "after": "Sūrat Muḥammad promised: if you help Allah, He will help you. Al-Fatḥ begins with the promise kept: “We have given you a clear victory.”",
+  "notable": [
+    {
+      "ayah": 2,
+      "label": "What was sent down upon Muḥammad"
+    },
+    {
+      "ayah": 7,
+      "label": "If you help Allah, He will help you"
+    },
+    {
+      "ayah": 15,
+      "label": "The rivers of the Garden"
+    },
+    {
+      "ayah": 19,
+      "label": "Know that there is no god but Allah"
+    },
+    {
+      "ayah": 24,
+      "label": "Do they not ponder the Qurʾan?"
+    },
+    {
+      "ayah": 38,
+      "label": "He will replace you with another people"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr"
+  ]
+}

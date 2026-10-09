@@ -14,8 +14,21 @@ described below is the shape of the work, not a finished product.
 ## What is here
 
 **Screens.** Home · surah index (114, filterable, sortable by muṣḥaf order,
-revelation order or length) · reader · muṣḥaf view · notes · bookmarks ·
-settings · search overlay.
+revelation order or length) · reader · an introduction to each surah · muṣḥaf
+view · notes · bookmarks · settings · search overlay.
+
+**Four languages for finding your way around.** The site's own words — its
+menus, labels, buttons and messages — can be had in English, Pashto, Persian or
+Spanish, chosen under **Language** at the head of the settings page. That is all
+the choice changes. The translation under each ayah, the word meanings and the
+tafsir are chosen where they always were and are left exactly as the reader has
+them. Pashto and Persian turn the whole page to read from the right.
+
+Outside English, a surah is named in Arabic and nothing else: الملك, not
+"Al-Mulk · The Sovereignty". A reader who does not read English cannot tell
+"Ta Ha" from "Al-Mulk", and can read طه and الملك whatever language the rest
+of the page is in. A surah is still *found* by any of its names — typing `kahf`
+or `کهف` reaches الكهف in every language.
 
 **The landing page.** One ayah, chosen by the date and turning over once a day,
 set in gold on a lit niche — a lamp above the top edge of the screen, its halo,
@@ -24,6 +37,23 @@ and none of it in React's way. Each of the twelve ayat carries the state of mind
 it answers, and that is printed beside it. Below the fold, deliberately far
 below it, the whole muṣḥaf: 114 surahs in the order they are bound, the thirty
 juz, or the order in which they were revealed.
+
+**An introduction to every surah.** Under each surah's name in the reader is a
+line and a paragraph, and a way through to a page of its own
+(`/read/<n>/about/`): where and when it came down, with the scholars' words
+for it in Arabic; where it falls among the 114 in the order of revelation,
+drawn as a river with the Hijrah marked on it; what was happening; what it is
+for, as *al-Mukhtaṣar* states it; the surah passage by passage; what is
+authentically narrated about it, and what is commonly quoted and is not; its
+names; and its neighbours. At the head is a medallion drawn from the surah
+itself — a band for each passage, as long as the passage is, and a tick for
+the end of every ayah.
+
+What is counted on that page is generated, and what is quoted is found in the
+site's copy of the book and printed as the copy has it (`npm run lock:intros`;
+the deploy checks it). The English prose was written for this site from the
+works each page lists, and is waiting on a reader of knowledge —
+`DATA-NEEDED.md` §1.
 
 **Word by word.** Hovering an Arabic word lights the Arabic, its transliteration
 and its gloss together. So does keyboard focus, and so does a tap on a phone —
@@ -138,12 +168,14 @@ src/
     quran/              corpus client, types, resources, useSurah
     store/              settings, library (bookmarks + notes), chapters
     audio/              recitation with word-level following
+    i18n/               the language of the site's own words: the provider,
+                        the list of languages, and a file of messages for each
     highlight.ts        the word painter
     notes.ts            note bodies and their quote markers
   content/              locally authored content that overrides the corpus
 ```
 
-Three decisions shape most of the code:
+Four decisions shape most of the code:
 
 **The word highlight is painted onto the document, not rendered.** A long surah
 is thousands of word nodes; driving the highlight through React state means
@@ -159,6 +191,19 @@ loader and the search dialog each hold one state object carrying the request it
 belongs to, and derive "loading" by comparing that against what is being asked
 for now. Nothing is cleared before a fetch, so no screen ever shows the previous
 surah under the current surah's heading.
+
+**The language is a setting, not a route.** The site is exported as plain files
+and there is no server to hand a Pashto reader a Pashto page, so the language is
+kept in the browser with the reading light and is applied the same way: a script
+in `<head>` turns the document to face the right way before anything is painted,
+and `LocaleProvider` (`src/lib/i18n`) puts the words on it. English is part of
+the application; each other language is its own file, fetched only by the
+readers who read it. `messages/en.ts` is the measure — every other file is typed
+as "each of those keys and nothing else", so a sentence added to a screen fails
+the build until it has been said in all four. Adding a language is one entry in
+`locales.ts` and one file beside it. The stylesheets state their sides as start
+and end rather than left and right, which is what lets one set of them serve a
+page read in either direction.
 
 ## Where the data comes from
 

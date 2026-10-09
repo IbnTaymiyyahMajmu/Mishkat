@@ -1,0 +1,228 @@
+{
+  "surah": 49,
+  "epithet": "The manners of a believing people",
+  "lede": "Eighteen ayat that hold a community together. How to behave before the Prophet ﷺ; how to treat a rumour; what to do when believers fight; and six things never to do to one another — ending with the sentence that abolished every aristocracy of birth.",
+  "names": [
+    {
+      "arabic": "الحجرات",
+      "name": "al-Ḥujurāt",
+      "meaning": "The Private Rooms",
+      "note": "From its fourth ayah: the small apartments of the Prophet’s ﷺ wives along the wall of his mosque, from behind which a delegation of Bedouin shouted for him to come out."
+    }
+  ],
+  "revelation": {
+    "place": "madinah",
+    "verdict": "Madinan, by agreement",
+    "detail": "It is Madinan by agreement, as Ibn al-Jawzī and al-Qurṭubī both state. Its occasions belong to the last years of the Prophet’s ﷺ life, above all the ninth year, when delegations were arriving in Madinah from every tribe in Arabia — many of them people who had never lived among Muslims.",
+    "period": "madinah-late",
+    "when": "Madinah, the ninth year of the Hijrah — the Year of the Delegations",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ الحُجُراتِ وَهِيَ مَدَنِيَّةٌ بِإجْماعِهِمْ"
+      },
+      {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "هَذِهِ آدَابٌ ، أَدَّبَ اللَّهُ بِهَا عِبَادَهُ الْمُؤْمِنِينَ فِيمَا يُعَامِلُونَ بِهِ الرَّسُولَ ﷺ مِنَ التَّوْقِيرِ وَالِاحْتِرَامِ وَالتَّبْجِيلِ وَالْإِعْظَامِ"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْحُجُرَاتِ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَتْ: نَزَلَتْ سُورَةُ الحُجُراتِ بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَدَنِيَّةٌ",
+        "says": "Madinan."
+      }
+    ]
+  },
+  "setting": [
+    "After the conquest of Makkah the tribes of Arabia came to terms with Islam in a rush, and Madinah filled with visitors: chiefs with their retinues, proud of their lineage, used to the rough manners of the desert, and new to everything the older Muslims had spent twenty years learning.",
+    "Several of the surah’s passages are tied to particular moments in that year. When the delegation of Banū Tamīm arrived, Abū Bakr and ʿUmar each proposed a different man to be their leader, and argued until their voices rose in the presence of the Prophet ﷺ. Ibn Abī Mulaykah says: “The two best men nearly perished.” The ayah came down — do not raise your voices above the voice of the Prophet — and after it ʿUmar would speak to him so quietly that he had to be asked to repeat himself. Thābit ibn Qays, who had a naturally loud voice, shut himself in his house in grief, certain that his deeds were lost, until the Prophet ﷺ sent word: “You are not of the people of the Fire; you are of the people of Paradise.”",
+    "The men of Tamīm themselves stood outside the Prophet’s ﷺ rooms at midday and called out, “Muḥammad, come out to us!” — and are told that most of them do not understand. A collector sent to a tribe came back with a false report that they had refused the zakāh and meant to fight, and an expedition was nearly sent against innocent people: “if a transgressor brings you news, verify it.” Some Bedouin of Banū Asad announced, “We have believed,” as though doing him a favour; they are told to say, rather, “We have submitted,” for faith has not yet entered their hearts.",
+    "Out of these incidents the surah draws rules that have nothing local about them. Ibn Kathīr opens his commentary on it: these are manners by which Allah has trained His believing servants."
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        1,
+        3
+      ],
+      "title": "Raised voices",
+      "text": "“The two best men nearly perished — Abū Bakr and ʿUmar. They raised their voices in the presence of the Prophet ﷺ when the riders of Banū Tamīm came to him: one of them pointed to al-Aqraʿ ibn Ḥābis and the other to another man… and their voices rose. So Allah sent down: ‘O you who believe, do not raise your voices above the voice of the Prophet.’” Ibn al-Zubayr said: after this ayah ʿUmar would not make the Messenger of Allah ﷺ hear him until he asked him to repeat.",
+      "source": "Ibn Abī Mulaykah, from ʿAbd Allāh ibn al-Zubayr: al-Bukhārī (4845).",
+      "rank": "agreed"
+    },
+    {
+      "ayat": [
+        2,
+        2
+      ],
+      "title": "Thābit ibn Qays",
+      "text": "The Prophet ﷺ missed Thābit ibn Qays, and a man found him sitting in his house with his head bowed. “It is bad: I used to raise my voice above the voice of the Prophet ﷺ; my deeds are void and I am of the people of the Fire.” The Prophet ﷺ sent the man back with great good news: “Go to him and say: you are not of the people of the Fire; rather, you are of the people of Paradise.”",
+      "source": "Anas ibn Mālik: al-Bukhārī (4846) and Muslim (119).",
+      "rank": "agreed"
+    },
+    {
+      "ayat": [
+        9,
+        9
+      ],
+      "title": "Two parties of believers",
+      "text": "It was said to the Prophet ﷺ, “If only you would go to ʿAbd Allāh ibn Ubayy.” He rode to him on a donkey, and Ibn Ubayy said, “Keep away from me; the stink of your donkey offends me.” A man of the Anṣār answered him, each side’s men grew angry, and there were blows with palm-stalks, hands and sandals. “And it has reached us that this was sent down about them: ‘If two parties of the believers fight, make peace between them.’”",
+      "source": "Anas ibn Mālik: al-Bukhārī (2691) and Muslim (1799).",
+      "rank": "agreed"
+    }
+  ],
+  "aim": "To establish the morals of the Muslim society, and to warn against evil conduct.",
+  "themes": [
+    "Reverence for the Prophet ﷺ",
+    "Verifying reports",
+    "Reconciliation",
+    "Brotherhood",
+    "Mockery, suspicion, spying and backbiting",
+    "Nobility is in mindfulness of Allah",
+    "Islam and faith"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 5,
+      "title": "Before Allah and His Messenger ﷺ",
+      "summary": "O you who believe, do not put yourselves forward before Allah and His Messenger. Do not raise your voices above the voice of the Prophet, nor speak loudly to him as you do to one another, lest your deeds come to nothing without your knowing. Those who lower their voices before him are those whose hearts Allah has tested for mindfulness. Those who call out to you from behind the private rooms — most of them do not understand; had they been patient until you came out to them, it would have been better for them."
+    },
+    {
+      "from": 6,
+      "to": 8,
+      "title": "When a report reaches you",
+      "summary": "O you who believe, if a transgressor comes to you with news, verify it, lest you harm a people in ignorance and then regret what you did. Know that the Messenger of Allah is among you. Allah has made faith dear to you and adorned it in your hearts, and made disbelief, transgression and disobedience hateful to you."
+    },
+    {
+      "from": 9,
+      "to": 10,
+      "title": "When believers fight",
+      "summary": "If two parties of the believers fight, make peace between them. If one of them wrongs the other, fight the one that does wrong until it returns to the command of Allah; and if it returns, make peace between them with justice. The believers are but brothers, so make peace between your brothers (49:10)."
+    },
+    {
+      "from": 11,
+      "to": 12,
+      "title": "Six prohibitions",
+      "summary": "Let no people mock another people — they may be better than them — nor women other women. Do not find fault with one another, nor call one another by offensive nicknames. Avoid much suspicion; some suspicion is sin. Do not spy, and do not backbite one another: would one of you like to eat the flesh of his dead brother? You would loathe it."
+    },
+    {
+      "from": 13,
+      "to": 13,
+      "title": "The measure of nobility",
+      "summary": "O mankind, We created you from a male and a female, and made you into peoples and tribes that you may know one another. The most noble of you in the sight of Allah is the most mindful of Him."
+    },
+    {
+      "from": 14,
+      "to": 18,
+      "title": "“We have believed”",
+      "summary": "The desert Arabs say, “We have believed.” Say: you have not believed; say rather, “We have submitted,” for faith has not yet entered your hearts. The believers are only those who believe in Allah and His Messenger and then do not doubt, and strive with their wealth and their lives. They count it as a favour to you that they have accepted Islam. Say: rather, it is Allah who has done you the favour, in guiding you to faith."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 13,
+    "why": "Addressed to all mankind, in a surah otherwise addressed to believers. The Prophet ﷺ repeated its meaning in his farewell sermon."
+  },
+  "virtues": [
+    {
+      "text": "“Do you know what backbiting is?” They said: “Allah and His Messenger know best.” He said: “To mention your brother in a way he dislikes.” It was asked: “What if what I say is true of my brother?” He said: “If what you say is true of him, you have backbitten him; and if it is not, you have slandered him.”",
+      "arabic": "ذِكْرُكَ أَخَاكَ بِمَا يَكْرَهُ",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ Muslim, 2589",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "2589"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "It was said: “Messenger of Allah, who is the most noble of people?” He said: “The most mindful of Allah among them.”",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 3353 · Ṣaḥīḥ Muslim, 2378",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "3353"
+        },
+        {
+          "book": "muslim",
+          "number": "2378"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "“Beware of suspicion, for suspicion is the most untruthful of speech. Do not seek out faults, do not spy, do not envy one another, do not turn your backs on one another, and do not hate one another. Be servants of Allah, brothers.”",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 6064 · Ṣaḥīḥ Muslim, 2563",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "6064"
+        },
+        {
+          "book": "muslim",
+          "number": "2563"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "before": "Al-Fatḥ ended by describing the Companions as “merciful among themselves”. Al-Ḥujurāt spells out what that requires.",
+  "after": "Al-Ḥujurāt ends by saying that Allah knows the unseen of the heavens and the earth and sees what you do. Qāf opens the long run of Makkan surahs that follow by turning to the greatest of the unseen things: the Resurrection.",
+  "notable": [
+    {
+      "ayah": 2,
+      "label": "Do not raise your voices above the voice of the Prophet"
+    },
+    {
+      "ayah": 6,
+      "label": "If a transgressor brings you news, verify it"
+    },
+    {
+      "ayah": 10,
+      "label": "The believers are but brothers"
+    },
+    {
+      "ayah": 11,
+      "to": 12,
+      "label": "No mockery, suspicion, spying or backbiting"
+    },
+    {
+      "ayah": 13,
+      "label": "The most noble of you is the most mindful"
+    },
+    {
+      "ayah": 14,
+      "label": "“Say rather: we have submitted”"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

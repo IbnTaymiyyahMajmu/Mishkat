@@ -2,7 +2,15 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import type { LexiconEntry, LexiconText, RootProfile, Segment, Verse, Word } from "@/lib/quran/types";
+import type {
+  LexiconEntry,
+  LexiconText,
+  RootProfile,
+  RootVersePage,
+  Segment,
+  Verse,
+  Word,
+} from "@/lib/quran/types";
 import { fetchOccurrences } from "@/lib/quran/api";
 import {
   MORPHOLOGY_SOURCE,
@@ -10,10 +18,13 @@ import {
   fetchLexicon,
   fetchLexiconText,
   fetchRoot,
+  fetchRootVerses,
 } from "@/lib/quran/lexicon";
-import { readGrammar, romanizeRoot } from "@/lib/quran/morphology";
+import { readGrammar, romanizeRoot, sayPos } from "@/lib/quran/morphology";
 import { stripDiacritics } from "@/lib/text";
 import { useGoToVerse } from "@/lib/useGoToVerse";
+import { useLocale } from "@/lib/i18n";
+import { markWords } from "@/components/study/mark";
 import styles from "./Panels.module.css";
 
 /**
@@ -44,6 +55,7 @@ type Slot<T> = { key: string; value: T } | undefined;
 
 export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) {
   const goToVerse = useGoToVerse();
+  const { t, rich, n, arrows, grammar } = useLocale();
   const verseKey = verse?.verse_key ?? "";
   const form = word ? stripDiacritics(word.text_uthmani || word.text || "") : "";
 
@@ -103,8 +115,31 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
     };
   }, [rootKey]);
 
+  // ── where else ────────────────────────────────────────────────────────────
+  //
+  // By the root, where the word has one. This used to be a search for the
+  // word's own letters, which is a different and a lesser question: it found
+  // رَبِّ wherever رَبِّ is written and none of رَبُّكُمْ, رَبَّنَا or أَرْبَاب. The corpus
+  // records which words carry which root, so the ayat are asked for by that
+  // and the words that carry it are marked. A word with no root — a particle,
+  // a pronoun — is still looked for by its form, which is all there is to go
+  // on, and so is any word whose morphology could not be reached.
+  const [rooted, setRooted] = useState<Slot<RootVersePage | null>>();
   useEffect(() => {
-    if (!form) return;
+    if (!rootKey) return;
+    let alive = true;
+    fetchRootVerses(rootKey)
+      .then((page) => alive && setRooted({ key: rootKey, value: page }))
+      .catch(() => alive && setRooted({ key: rootKey, value: null }));
+    return () => {
+      alive = false;
+    };
+  }, [rootKey]);
+  const byRoot = rootKey ? stamped(rooted, rootKey) : null;
+  const byForm = parts !== undefined && byRoot === null;
+
+  useEffect(() => {
+    if (!form || !byForm) return;
     let alive = true;
     fetchOccurrences(form)
       .then((r) => alive && setFound({ form, rows: r.rows, total: r.total }))
@@ -112,7 +147,7 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
     return () => {
       alive = false;
     };
-  }, [form]);
+  }, [form, byForm]);
 
   const openEntry = (id: number) => {
     setOpen((o) => ({ ...o, [id]: !o[id] }));
@@ -124,13 +159,16 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
   };
 
   if (!verse || !word) {
-    return <p className={styles.empty}>Select a word in the text to study it.</p>;
+    return <p className={styles.empty}>{t("word.select")}</p>;
   }
 
   const wordCount = verse.words.filter((w) => w.char_type_name === "word").length;
   const profile = stamped(root, rootKey);
   const works = stamped(lexicon, rootKey);
   const loadingParts = parts === undefined;
+  // The ayah being studied is one of the ayat its root occurs in, and is not
+  // "elsewhere".
+  const elsewhere = (byRoot?.verses ?? []).filter((v) => v.key !== verseKey).slice(0, 8);
 
   return (
     <>
@@ -145,44 +183,44 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
           so the way through to the page that is built for it sits at the top
           rather than at the end of a scroll. */}
       <Link href={`/study/?w=${studyKey}`} className="btn btn-secondary btn-block" style={{ marginTop: 18 }}>
-        Study this word in full
+        {t("word.inFull")}
       </Link>
 
       {/* ── what the word is made of ───────────────────────────────────── */}
       <section className={styles.section}>
         <div className={styles.sectionHead}>
-          <div className="kicker kicker-sm">The word, part by part</div>
+          <div className="kicker kicker-sm">{t("word.parts")}</div>
           {parts && parts.length > 1 && (
-            <div className={styles.count}>{parts.length} segments</div>
+            <div className={styles.count}>{t("word.segments", { count: parts.length })}</div>
           )}
         </div>
 
-        {loadingParts && <p className={styles.quiet}>Reading the grammar…</p>}
+        {loadingParts && <p className={styles.quiet}>{t("word.readingGrammar")}</p>}
         {parts === null && (
           <p className={styles.quiet}>
-            The morphology for this ayah could not be reached. Nothing is inferred in its place.
+            {t("word.noMorphology")}
           </p>
         )}
 
         {parts?.map((s, i) => {
-          const g = readGrammar(s.raw, s.pos);
+          const g = readGrammar(s.raw, s.pos, grammar);
           return (
             <div key={i} className={styles.segment}>
               <div className={styles.segmentForm} dir="rtl">
                 {s.form}
               </div>
               <div className={styles.segmentBody}>
-                <div className={styles.segmentPos}>{s.pos}</div>
+                <div className={styles.segmentPos}>{sayPos(s.raw, s.pos, grammar)}</div>
                 {(g.root || g.lemma) && (
                   <div className={styles.segmentStem}>
                     {s.rootSpaced && (
                       <span>
-                        root <b dir="rtl">{s.rootSpaced}</b>
+                        {t("word.root")} <b dir="rtl">{s.rootSpaced}</b>
                       </span>
                     )}
                     {s.lemma && (
                       <span>
-                        lemma <b dir="rtl">{s.lemma}</b>
+                        {t("word.lemma")} <b dir="rtl">{s.lemma}</b>
                       </span>
                     )}
                   </div>
@@ -203,15 +241,15 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
       </section>
 
       <dl className={styles.definitions}>
-        <dt>Location</dt>
+        <dt>{t("word.location")}</dt>
         <dd className={styles.numeric}>{word.location || `${verse.verse_key}:${word.position}`}</dd>
-        <dt>Ayah</dt>
+        <dt>{t("common.ayah")}</dt>
         <dd>{`${surahName} ${verse.verse_key}`}</dd>
-        <dt>Position</dt>
-        <dd className={styles.numeric}>{`Word ${word.position} of ${wordCount}`}</dd>
-        <dt>Page</dt>
+        <dt>{t("word.position")}</dt>
+        <dd className={styles.numeric}>{t("word.positionOf", { n: word.position, total: wordCount })}</dd>
+        <dt>{t("common.page")}</dt>
         <dd className={styles.numeric}>{verse.page_number}</dd>
-        <dt>Juz</dt>
+        <dt>{t("common.juz")}</dt>
         <dd className={styles.numeric}>{verse.juz_number}</dd>
       </dl>
 
@@ -219,7 +257,7 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
       {rootKey && (
         <section className={styles.section}>
           <div className="kicker kicker-sm" style={{ marginBottom: 10 }}>
-            The root
+            {t("word.theRoot")}
           </div>
           <div className={styles.rootCard}>
             <div className={styles.rootArabic} dir="rtl">
@@ -229,9 +267,8 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
               <span className={styles.rootRoman}>{profile?.romanized || romanizeRoot(rootKey)}</span>
               {profile && (
                 <span>
-                  {profile.ayat.toLocaleString()} ayat carry it
-                  {profile.lemmas.length > 0 &&
-                    ` · ${profile.lemmas.length} ${profile.lemmas.length === 1 ? "lemma" : "lemmas"}`}
+                  {t("word.carry", { count: profile.ayat, countText: n(profile.ayat) })}
+                  {profile.lemmas.length > 0 && ` · ${t("word.lemmas", { count: profile.lemmas.length })}`}
                 </span>
               )}
             </div>
@@ -252,19 +289,16 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
       {rootKey && (
         <section className={styles.section}>
           <div className={styles.sectionHead}>
-            <div className="kicker kicker-sm">In the lexicons</div>
+            <div className="kicker kicker-sm">{t("word.inLexicons")}</div>
             {works && works.length > 0 && (
-              <div className={styles.count}>
-                {works.length} {works.length === 1 ? "work" : "works"}
-              </div>
+              <div className={styles.count}>{t("word.works", { count: works.length })}</div>
             )}
           </div>
 
-          {works === undefined && <p className={styles.quiet}>Opening the lexicons…</p>}
+          {works === undefined && <p className={styles.quiet}>{t("word.openingLexicons")}</p>}
           {works?.length === 0 && (
             <p className={styles.quiet}>
-              No lexicon in the connected library carries an entry for this root yet. The scanned
-              pages below are unaffected.
+              {t("word.noLexiconPanel")}
             </p>
           )}
 
@@ -287,8 +321,8 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
                     </span>
                     <span className={styles.workAuthor}>
                       {w.author}
-                      {w.died !== null && ` · d. ${w.died}`}
-                      {w.quranic && <span className={styles.tag}>of the Qur&rsquo;an</span>}
+                      {w.died !== null && ` · ${t("word.died", { year: w.died })}`}
+                      {w.quranic && <span className={styles.tag}>{t("word.ofQuran")}</span>}
                     </span>
                     {!isOpen && teaser && <span className={styles.teaser}>{teaser}…</span>}
                   </button>
@@ -299,7 +333,7 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
                     <div className={styles.workBody}>
                       {/* The Arabic first: the translation is the part that can
                           be wrong, and it should be read against something. */}
-                      {text === undefined && <p className={styles.quiet}>Fetching the entry…</p>}
+                      {text === undefined && <p className={styles.quiet}>{t("word.fetchingEntry")}</p>}
                       {text?.arabic && (
                         <p dir="rtl" className={`${styles.tafsirPara} ${styles.tafsirArabic}`}>
                           {text.arabic}
@@ -308,7 +342,7 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
                       {text?.english && (
                         <>
                           <div className="kicker kicker-sm" style={{ margin: "16px 0 8px" }}>
-                            Translated
+                            {t("word.translated")}
                           </div>
                           {paragraphs(text.english).map((p, i) => (
                             <p key={i} className={styles.tafsirPara}>
@@ -320,7 +354,7 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
                       {w.summary && (
                         <>
                           <div className="kicker kicker-sm" style={{ margin: "16px 0 8px" }}>
-                            In summary
+                            {t("word.inSummary")}
                           </div>
                           {paragraphs(w.summary).map((p, i) => (
                             <p key={i} className={styles.tafsirPara}>
@@ -337,11 +371,11 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
                         they are. */}
                     <footer className={styles.workFoot}>
                       <button className="btn btn-ghost" style={{ fontSize: 12 }} onClick={() => openEntry(w.id)}>
-                        Close
+                        {t("common.close")}
                       </button>
                       <div style={{ flex: 1 }} />
                       <Link href={`/study/?w=${studyKey}&work=${w.id}`} className={styles.sourceLink}>
-                        Read this entry in full →
+                        {t("word.readEntry")} {arrows.next}
                       </Link>
                     </footer>
                   </>
@@ -352,7 +386,7 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
 
           <div className={styles.workFoot} style={{ borderTop: 0, paddingLeft: 0, paddingRight: 0 }}>
             <Link href={`/study/?w=${studyKey}`} className={styles.sourceLink}>
-              All {works?.length ? `${works.length} ` : ""}entries, set to be read →
+              {works?.length ? t("word.allEntriesN", { count: works.length }) : t("word.allEntries")} {arrows.next}
             </Link>
           </div>
         </section>
@@ -362,14 +396,14 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
       {profile && profile.cognates.length > 0 && (
         <section className={styles.section}>
           <div className={styles.sectionHead}>
-            <div className="kicker kicker-sm">In the sister languages</div>
+            <div className="kicker kicker-sm">{t("word.sisters")}</div>
             <button
               className="btn btn-ghost"
               style={{ fontSize: 12 }}
               onClick={() => setCognatesFor((r) => (r === rootKey ? "" : rootKey))}
               aria-expanded={cognatesFor === rootKey}
             >
-              {cognatesFor === rootKey ? "Hide" : `Show ${profile.cognates.length}`}
+              {cognatesFor === rootKey ? t("word.hide") : t("word.show", { count: profile.cognates.length })}
             </button>
           </div>
           {cognatesFor === rootKey && (
@@ -385,9 +419,7 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
                 </div>
               ))}
               <p className={styles.footnote}>
-                Comparative philology, not Arabic lexicography — a cognate shows how a root was used
-                in a related language, which is a different question from what the word means here.
-                The lexicons above answer that one.
+                {t("word.cognateNote")}
               </p>
             </>
           )}
@@ -397,45 +429,74 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
       {/* ── elsewhere ──────────────────────────────────────────────────── */}
       <section className={styles.section}>
         <div className={styles.sectionHead}>
-          <div className="kicker kicker-sm">Elsewhere in the Qur&rsquo;an</div>
-          {found.form === form && found.rows.length > 0 && (
-            <div className={styles.count}>
-              {found.rows.length} of {found.total.toLocaleString()}
-            </div>
+          <div className="kicker kicker-sm">{t("word.elsewhere")}</div>
+          {byRoot && elsewhere.length > 0 && (
+            <div className={styles.count}>{t("word.shownOf", { shown: elsewhere.length, total: n(byRoot.total) })}</div>
+          )}
+          {byForm && found.form === form && found.rows.length > 0 && (
+            <div className={styles.count}>{t("word.shownOf", { shown: found.rows.length, total: n(found.total) })}</div>
           )}
         </div>
 
-        {!!form && found.form !== form && <p className={styles.quiet}>Searching the muṣḥaf…</p>}
-        {found.form === form && found.rows.length === 0 && (
-          <p className={styles.quiet}>No other exact matches for this form.</p>
+        {(parts === undefined || byRoot === undefined || (byForm && !!form && found.form !== form)) && (
+          <p className={styles.quiet}>{t("word.searching")}</p>
         )}
 
-        {(found.form === form ? found.rows : []).map((o) => (
-          <button key={o.key} className={styles.occurrence} onClick={() => goToVerse(o.key)}>
-            <span dir="rtl" className={styles.occurrenceText}>
-              {o.text}
-            </span>
-            <span className={styles.occurrenceKey}>{o.key}</span>
-          </button>
-        ))}
-        <p className={styles.footnote}>Exact-form matches from the corpus search index.</p>
+        {byRoot && elsewhere.length === 0 && <p className={styles.quiet}>{t("word.noOtherRoot")}</p>}
+        {byRoot &&
+          elsewhere.map((v) => (
+            <button key={v.key} className={styles.occurrence} onClick={() => goToVerse(v.key)}>
+              <span dir="rtl" className={styles.occurrenceText}>
+                {markWords(v.arabic, v.matched, styles.occurrenceHit)}
+              </span>
+              <span className={styles.occurrenceKey}>{v.key}</span>
+            </button>
+          ))}
+
+        {byForm && found.form === form && found.rows.length === 0 && (
+          <p className={styles.quiet}>{t("word.noOther")}</p>
+        )}
+        {byForm &&
+          (found.form === form ? found.rows : []).map((o) => (
+            <button key={o.key} className={styles.occurrence} onClick={() => goToVerse(o.key)}>
+              <span dir="rtl" className={styles.occurrenceText}>
+                {o.text}
+              </span>
+              <span className={styles.occurrenceKey}>{o.key}</span>
+            </button>
+          ))}
+
+        {byRoot && byRoot.total > elsewhere.length + 1 && (
+          <div className={styles.workFoot} style={{ borderTop: 0, paddingLeft: 0, paddingRight: 0 }}>
+            <Link href={`/study/?w=${studyKey}#occurrences`} className={styles.sourceLink}>
+              {t("word.everyOccurrence")} {arrows.next}
+            </Link>
+          </div>
+        )}
+        {(byRoot || byForm) && <p className={styles.footnote}>{t(byRoot ? "word.byRoot" : "word.byForm")}</p>}
       </section>
 
       <button onClick={onOpenTafsir} className="btn btn-primary btn-block" style={{ marginTop: 22 }}>
-        Read tafsir for {verse.verse_key}
+        {t("word.readTafsir", { key: verse.verse_key })}
       </button>
 
       <p className={styles.footnote}>
-        Grammar, root and lemma from{" "}
-        <a href={MORPHOLOGY_SOURCE.href} target="_blank" rel="noopener noreferrer">
-          {MORPHOLOGY_SOURCE.name}
-        </a>
-        . Lexicon entries are reproduced under each author&rsquo;s own name and death date, Arabic
-        first; both are served by{" "}
-        <a href={MORPHOLOGY_SOURCE.servedHref} target="_blank" rel="noopener noreferrer">
-          {MORPHOLOGY_SOURCE.served}
-        </a>
-        . Nothing on this panel is generated — where a source is silent, so is the screen.
+        {rich(
+          "word.sources",
+          {
+            corpus: (words) => (
+              <a href={MORPHOLOGY_SOURCE.href} target="_blank" rel="noopener noreferrer">
+                {words}
+              </a>
+            ),
+            served: (words) => (
+              <a href={MORPHOLOGY_SOURCE.servedHref} target="_blank" rel="noopener noreferrer">
+                {words}
+              </a>
+            ),
+          },
+          { corpus: MORPHOLOGY_SOURCE.name, served: MORPHOLOGY_SOURCE.served },
+        )}
       </p>
     </>
   );

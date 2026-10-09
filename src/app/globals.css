@@ -110,9 +110,13 @@
   --color-accent-2-800: #573d14;
   --color-accent-2-900: #382810;
 
-  --font-heading: var(--font-cormorant), system-ui, sans-serif;
+  /* The Naskh stands behind both Latin faces. Neither has an Arabic letter in
+     it, and Arabic turns up inside Latin text — a surah named in Arabic on a
+     Spanish page, a language named in its own script in the language menu —
+     where it would otherwise be drawn in whatever the device had to hand. */
+  --font-heading: var(--font-cormorant), var(--font-noto-naskh), system-ui, sans-serif;
   --font-heading-weight: 600;
-  --font-body: var(--font-lora), system-ui, sans-serif;
+  --font-body: var(--font-lora), var(--font-noto-naskh), system-ui, sans-serif;
 
   --space-1: 4.6px;
   --space-2: 9.2px;
@@ -246,6 +250,53 @@
   --shadow-lg: 0 12px 32px rgb(0 0 0 / 55%);
   --shadow-md: 0 3px 10px rgb(0 0 0 / 45%);
 }
+
+/* ── The interface in an Arabic script ─────────────────────────────────────
+   Pashto and Persian are written in Arabic letters, and the Classical design
+   system above was drawn for Latin ones. Three of its habits do not survive
+   the crossing, and are undone here in one place rather than in every
+   component that has them:
+
+     letter-spacing   opens a gap between letters that are meant to join, and
+                      a tracked-out eyebrow in Pashto is a row of broken words;
+     italics          have no Arabic form, so a browser slants the upright one
+                      mechanically. With synthesis off, italic Latin stays
+                      italic and the Arabic beside it stays upright;
+     the two faces    have no Arabic letters at all.
+
+   The face for labels and prose is Noto Sans Arabic, which holds together at
+   the ten and eleven pixels the design sets its labels in; headings keep the
+   Naskh, which is the classical hand the Latin headings are an echo of.
+
+   `data-script` is put on the document by the opening script and kept there by
+   the language provider (lib/i18n). Which way the page reads is `dir`, set in
+   the same two places; the components state their spacing in logical
+   properties — inline-start, inline-end — so they follow it without being
+   told. */
+:root[data-script="arabic"] {
+  --font-heading: var(--font-noto-sans-arabic), var(--font-noto-naskh), system-ui, sans-serif;
+  --font-body: var(--font-noto-sans-arabic), var(--font-noto-naskh), system-ui, sans-serif;
+  font-synthesis-style: none;
+}
+:root[data-script="arabic"] *,
+:root[data-script="arabic"] *::before,
+:root[data-script="arabic"] *::after {
+  letter-spacing: 0 !important;
+}
+:root[data-script="arabic"] body { line-height: 1.75; }
+:root[data-script="arabic"] :is(h1, h2) {
+  font-family: var(--font-noto-naskh), var(--font-noto-sans-arabic), serif;
+  line-height: 1.45;
+}
+/* An eyebrow in small capitals reads at ten pixels. Arabic script has no
+   capitals to be small, and at ten pixels it has no counters either. */
+:root[data-script="arabic"] .kicker { font-size: 12px; }
+
+/* A page in another language is held back until it has its words: see
+   LOCALE_BOOTSTRAP in lib/i18n/locales.ts. What is hidden is what is on the
+   page, not the page — the ground is still painted, so for that moment the
+   reader sees the page's own colour and not a white flash. */
+:root[data-i18n-pending] body > * { visibility: hidden; }
 
 *,
 *::before,
@@ -425,7 +476,7 @@ textarea.input { min-height: 90px; resize: vertical; font-family: var(--font-bod
 /* — tables — */
 .table { width: 100%; border-collapse: collapse; font-size: 14px; }
 .table th {
-  text-align: left;
+  text-align: start;
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -517,7 +568,7 @@ textarea.input { min-height: 90px; resize: vertical; font-family: var(--font-bod
 /* Visible only to screen readers, and to anyone who tabs to it. */
 .skip-link {
   position: absolute;
-  left: -9999px;
+  inset-inline-start: -9999px;
   top: 0;
   z-index: 200;
   background: var(--color-bg);
@@ -527,7 +578,7 @@ textarea.input { min-height: 90px; resize: vertical; font-family: var(--font-bod
   font-family: var(--font-heading);
 }
 .skip-link:focus {
-  left: 12px;
+  inset-inline-start: 12px;
   top: 12px;
 }
 
@@ -554,4 +605,14 @@ textarea.input { min-height: 90px; resize: vertical; font-family: var(--font-bod
   font-family: var(--font-amiri-quran), serif;
   direction: rtl;
   line-height: 1.7;
+}
+
+/* A surah named in Arabic in a line of something else: outside English that
+   is the only name a surah is given (lib/i18n/surah.ts). Set in the face the
+   names are set in everywhere else, and a little larger than the Latin around
+   it, because Arabic at the same size reads a size smaller. */
+.surah-ar {
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 1.16em;
+  line-height: 1.3;
 }

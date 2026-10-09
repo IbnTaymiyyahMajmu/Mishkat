@@ -1,0 +1,113 @@
+{
+  "surah": 100,
+  "epithet": "The chargers, and the ingratitude of man",
+  "lede": "It opens at a gallop — hooves, sparks, dust, a raid at first light — and then stops dead on one sentence: the human being is ungrateful to his Lord. The animal gives everything to its master. The man does not.",
+  "names": [
+    {
+      "arabic": "العاديات",
+      "name": "al-ʿĀdiyāt",
+      "meaning": "The Chargers",
+      "note": "After the creatures it swears by, those that run. Al-Qurṭubī heads it wa-l-ʿĀdiyāt, with the oath as it is recited."
+    }
+  ],
+  "revelation": {
+    "place": "disputed",
+    "verdict": "Differed over",
+    "detail": "Ibn al-Jawzī gives two views without choosing between them. That it is Makkan is the saying of Ibn Masʿūd, ʿAṭāʾ, ʿIkrimah and Jābir; that it is Madinan, of Ibn ʿAbbās, Qatādah and Muqātil. The difference runs alongside another: what the “chargers” are. Most, with Ibn ʿAbbās, say they are horses ridden out to battle. ʿAlī and Ibn Masʿūd said they are the camels of the pilgrims, running from ʿArafah to Muzdalifah and from Muzdalifah to Minā. The muṣḥaf heads it Makkan, and the traditional order places it fourteenth.",
+    "period": "makkah-early",
+    "when": "On the view that it is Makkan: among the earliest surahs",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَفِيها قَوْلانِ: أحَدُهُما: أنَّها مَكِّيَّةٌ، قالَهُ ابْنُ مَسْعُودٍ، وعَطاءٌ، وعِكْرِمَةُ، وجابِرٌ. والثّانِي: مَدَنِيَّةٌ، قالَهُ ابْنُ عَبّاسٍ، وقَتادَةُ، ومُقاتِلٌ"
+      },
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "أنَّها الإبِلُ في الحَجِّ، قالَهُ عَلِيٌّ، وابْنُ مَسْعُودٍ"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْعَادِيَاتِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ والعادِياتِ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ في قَوْلِ ابْنِ مَسْعُودٍ، وجابِرٍ، والحَسَنِ، وعِكْرِمَةَ، وعَطاءٍ، ومَدَنِيَّةٌ في قَوْلِ ابْنِ عَبّاسٍ، وأنَسِ بْنِ مالِكٍ، وقَتادَةَ",
+        "says": "Makkan in the saying of Ibn Masʿūd, Jābir, al-Ḥasan, ʿIkrimah and ʿAṭāʾ; Madinan in the saying of Ibn ʿAbbās, Anas ibn Mālik and Qatādah."
+      }
+    ]
+  },
+  "setting": [
+    "The Arabs to whom this was first recited knew the dawn raid as they knew their own names. It was how wealth changed hands in the desert, and nothing in their poetry was praised more than the horse that carried a man into one: panting, striking fire from the stones, in among the enemy before the sun was up.",
+    "The surah gives them that picture in five ayat, as vividly as any of their poets — and then turns it on them. The horse does all of that for a master who feeds it. And the human being, who has been given everything by his Lord, is kanūd: ungrateful, counting his misfortunes and forgetting his blessings. He is himself a witness to it, and he is fierce in his love of wealth.",
+    "It ends where a raid cannot reach: what is in the graves is turned out, what is in the hearts is brought to light, and their Lord, that Day, knows them through and through."
+  ],
+  "occasions": [],
+  "aim": "To set out the human being’s traits when the world is all he cares for — reminding him where he is headed, and moving him to correct his course.",
+  "themes": [
+    "Ingratitude",
+    "Love of wealth",
+    "The Resurrection"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 5,
+      "title": "The oath",
+      "summary": "By the chargers, panting; striking sparks; raiding at dawn; raising a trail of dust; and plunging with it into the midst of the host."
+    },
+    {
+      "from": 6,
+      "to": 8,
+      "title": "What is sworn to",
+      "summary": "The human being is ungrateful to his Lord — and he is a witness to that himself — and in his love of wealth he is intense."
+    },
+    {
+      "from": 9,
+      "to": 11,
+      "title": "What he forgets",
+      "summary": "Does he not know that when what is in the graves is overturned, and what is in the breasts is brought out, their Lord on that Day is fully aware of them?"
+    }
+  ],
+  "keyAyah": {
+    "ayah": 6,
+    "why": "The charge the five oaths lead up to. Al-Ḥasan al-Baṣrī explained the word kanūd: he counts the hardships and forgets the favours."
+  },
+  "virtues": [],
+  "before": "Al-Zalzalah ends with deeds being shown, down to an atom’s weight. Al-ʿĀdiyāt says what keeps people from preparing for that: ingratitude and the love of wealth.",
+  "after": "This surah ends with the graves turned out. Al-Qāriʿah begins with the Day itself: people like scattered moths, and the mountains like tufts of wool.",
+  "notable": [
+    {
+      "ayah": 6,
+      "label": "Ungrateful to his Lord"
+    },
+    {
+      "ayah": 8,
+      "label": "Intense in his love of wealth"
+    },
+    {
+      "ayah": 9,
+      "to": 10,
+      "label": "What is in the graves, and what is in the breasts"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "al-Ṭabarī, Jāmiʿ al-Bayān",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr"
+  ]
+}

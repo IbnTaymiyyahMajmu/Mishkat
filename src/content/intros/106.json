@@ -1,0 +1,107 @@
+{
+  "surah": 106,
+  "epithet": "Fed against hunger, secured against fear",
+  "lede": "Quraysh lived in a valley where nothing grew, and yet their caravans came and went in safety, winter and summer, when no one else’s did. Four ayat tell them why — and ask one thing in return.",
+  "names": [
+    {
+      "arabic": "قريش",
+      "name": "Quraysh",
+      "meaning": "Quraysh",
+      "note": "After the tribe it addresses: the descendants of al-Naḍr ibn Kinānah, keepers of the Kaʿbah, and the Prophet’s ﷺ own people."
+    },
+    {
+      "arabic": "لإيلاف",
+      "name": "Li-Īlāf",
+      "meaning": "“For the accustomed security…”",
+      "note": "Its opening words. Ibn al-Jawzī records this as its other name."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by the majority",
+    "detail": "The majority hold it to be Makkan. That it is Madinan is reported from al-Ḍaḥḥāk and al-Kalbī. It speaks to Quraysh about “this House” as people who live beside it.",
+    "period": "makkah-early",
+    "when": "The early years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَيُقالُ لَها: سُورَةُ لِإيلافِ وَفِيها قَوْلانِ. أحَدُهُما: مَكِّيَّةٌ، قالَهُ الجُمْهُورُ. والثّانِي: مَدَنِيَّةٌ، قالَهُ الضَّحّاكُ، وابْنُ السّائِبِ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "مَكِّيَّةٌ، فِي قَوْلِ الْجُمْهُورِ. وَمَدَنِيَّةٌ فِي قَوْلِ الضَّحَّاكِ وَالْكَلْبِيِّ وَهِيَ أَرْبَعُ آيات"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ قُرَيْشٍ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿لإيلافِ قُرَيْشٍ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ عِنْدَ الجُمْهُورِ",
+        "says": "Makkan, in the saying of the majority."
+      }
+    ]
+  },
+  "setting": [
+    "Makkah had no fields and no river. What it had was the House, and what the House gave its keepers was immunity. In an Arabia where every tribe raided every other, a caravan of Quraysh could cross the peninsula unharmed, because they were the people of Allah’s sanctuary. On that they built their living: one journey each winter south to Yemen, and one each summer north to Shām.",
+    "The surah calls this their īlāf — what they were accustomed to, their settled arrangement — and it treats it as a gift, which it was. The surah before it has just told how that gift was protected: an army came to destroy the House and was destroyed. Some of the scholars read the two as a single statement, and al-Qurṭubī begins his commentary by noting the view that this surah is joined in meaning to the one before.",
+    "So the conclusion is short. Let them worship the Lord of this House — not the idols they had set around it — who has fed them against hunger and made them safe from fear."
+  ],
+  "occasions": [],
+  "aim": "To recall Allah’s favour to Quraysh, and what it obliges them to.",
+  "themes": [
+    "Gratitude",
+    "Security and provision",
+    "Worship of the Lord of the House"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 2,
+      "title": "The favour",
+      "summary": "For the accustomed security of Quraysh — their security in the journey of winter and of summer."
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "title": "What it calls for",
+      "summary": "Let them worship the Lord of this House, who has fed them against hunger and made them safe from fear. The two things every community wants; here, the reasons for worship."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 3,
+    "why": "The one command in the surah. Everything before it is the reason, and everything after it is the reason again."
+  },
+  "virtues": [],
+  "before": "Al-Fīl told how the House was defended. Quraysh says for whose benefit, and what they owe for it. The scholars note how closely the two are joined.",
+  "after": "Quraysh were fed and kept safe. Al-Māʿūn shows what a man becomes when he denies the Reckoning: he drives away the orphan and does not urge the feeding of the poor.",
+  "notable": [
+    {
+      "ayah": 3,
+      "label": "Let them worship the Lord of this House"
+    },
+    {
+      "ayah": 4,
+      "label": "Fed against hunger, secured against fear"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr"
+  ]
+}

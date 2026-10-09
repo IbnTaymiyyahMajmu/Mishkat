@@ -247,3 +247,25 @@
   .translation { padding-inline-start: 18px; }
   .action { width: 28px; height: 28px; }
 }
+
+/* An ayah of prostration, said at the head of the ayah itself. The ۩ is the
+   muṣḥaf's own mark for it, and is set in the muṣḥaf's hand. */
+.sajda {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
+  border-radius: 3px;
+  padding: 1px 7px;
+  white-space: nowrap;
+}
+.sajda > span {
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 13px;
+  line-height: 1;
+}

@@ -1,0 +1,162 @@
+{
+  "surah": 45,
+  "epithet": "Every nation on its knees",
+  "lede": "It argues with people who had made their own desire into a god, and who said that nothing kills us but time. It answers with signs — in the sky, in their own bodies, in the rain — and then shows the Day when every community kneels and is called to its record.",
+  "names": [
+    {
+      "arabic": "الجاثية",
+      "name": "al-Jāthiyah",
+      "meaning": "The Kneeling",
+      "note": "From its twenty-eighth ayah: “You will see every nation kneeling.”"
+    },
+    {
+      "arabic": "الشريعة",
+      "name": "al-Sharīʿah",
+      "meaning": "The Clear Way",
+      "note": "A name Ibn al-Jawzī records, from its eighteenth ayah: “Then We set you upon a clear way of the matter, so follow it.” It is the only place in the Qurʾan where the word sharīʿah occurs."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by the majority",
+    "detail": "It is Makkan in the saying of Ibn ʿAbbās, al-Ḥasan, ʿIkrimah, Mujāhid, Qatādah and the majority. One ayah is reported, from Ibn ʿAbbās and Qatādah, to be Madinan: the fourteenth, which tells the believers to forgive. It is the sixth of the Ḥawāmīm, and the traditional order places it sixty-fifth.",
+    "period": "makkah-late",
+    "when": "The later years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَتُسَمّى سُورَةَ الشَّرِيعَةِ رَوى العَوْفِيُّ وابْنُ أبِي طَلْحَةَ عَنِ ابْنِ عَبّاسٍ أنَّها مَكِّيَّةٌ، وهو قَوْلُ الحَسَنِ، [وَعِكْرِمَةَ]، ومُجاهِدٍ، وقَتادَةَ، والجُمْهُورِ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْجَاثِيَةِ مَكِّيَّةٌ كُلُّهَا فِي قَوْلِ الْحَسَنِ وَجَابِرٍ وَعِكْرِمَةَ. وَقَالَ ابْنُ عَبَّاسٍ وَقَتَادَةُ: إِلَّا آيَةً"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْجَاثِيَةِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهْ عَنِ ابْنِ عَبّاسٍ قالَ: أُنْزِلَ بِمَكَّةَ سُورَةُ ”حم الجاثِيَةِ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      }
+    ]
+  },
+  "setting": [
+    "No occasion is reported for the surah as a whole. It speaks to the settled outlook of the Makkan establishment, and states that outlook in their own words more baldly than anywhere else in the Qurʾan: “There is nothing but our life in this world. We die and we live, and nothing destroys us but time.” No Maker to answer to, no return; only al-dahr, the passing of the ages, wearing everything away.",
+    "The reply to that is in the Prophet’s ﷺ report of his Lord’s words: “The son of Ādam wrongs Me. He curses time — and I am time: in My hand is the matter; I turn the night and the day.” What they blamed on blind time was the act of One who sees.",
+    "The surah traces the outlook to its root. “Have you seen the one who takes his own desire as his god?” A man who will not have a Lord ends by serving his appetites, and Allah leaves him to it — his hearing and his heart sealed, a covering over his sight.",
+    "Against that it sets a way. The Children of Israel were given the Book, judgement and prophethood, and fell into division after knowledge had come to them, out of rivalry. “Then We set you upon a sharīʿah of the matter: so follow it, and do not follow the desires of those who do not know.”"
+  ],
+  "occasions": [],
+  "aim": "To deal with those who follow desire and are too proud for the truth — by setting out the signs, and reminding of the Hereafter.",
+  "themes": [
+    "Signs in creation",
+    "Arrogance before the Qurʾan",
+    "Desire taken as a god",
+    "The clear way",
+    "“Nothing destroys us but time”",
+    "The record of deeds"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 6,
+      "title": "Signs",
+      "summary": "Ḥā Mīm. The sending down of the Book is from Allah, the Almighty, the Wise. In the heavens and the earth are signs for the believers; in your own creation and the creatures He scatters, signs for people who are certain; in the alternation of night and day, the provision He sends down from the sky and the turning of the winds, signs for people who reason. In what discourse, after Allah and His signs, will they believe?"
+    },
+    {
+      "from": 7,
+      "to": 11,
+      "title": "The one who hears and persists",
+      "summary": "Woe to every sinful liar, who hears the ayat of Allah recited to him and then persists in arrogance as though he had not heard them, and when he learns something of Our ayat takes it in mockery. Behind them is Hell; what they earned will not avail them, nor those they took as protectors besides Allah."
+    },
+    {
+      "from": 12,
+      "to": 15,
+      "title": "What has been put at your service",
+      "summary": "It is Allah who subjected the sea to you, that ships may sail on it by His command; and subjected to you all that is in the heavens and the earth, all of it from Him. Tell those who believe to forgive those who do not look to the days of Allah. Whoever does right, it is for his own soul; and whoever does evil, it is against it."
+    },
+    {
+      "from": 16,
+      "to": 20,
+      "title": "The clear way",
+      "summary": "We gave the Children of Israel the Book, judgement and prophethood, and favoured them; and they differed only after knowledge had come to them. Then We set you upon a clear way of the matter, so follow it, and do not follow the desires of those who do not know (45:18). This is enlightenment for mankind, and guidance and mercy for people who are certain."
+    },
+    {
+      "from": 21,
+      "to": 26,
+      "title": "Desire, and time",
+      "summary": "Do those who commit evil deeds think We will make them like those who believe and do right, equal in life and in death? Have you seen the one who takes his desire as his god? They say: “There is nothing but our worldly life; we die and live, and nothing destroys us but time.” They have no knowledge of that. Say: Allah gives you life, then causes you to die, then gathers you for the Day of Resurrection."
+    },
+    {
+      "from": 27,
+      "to": 37,
+      "title": "Every nation kneeling",
+      "summary": "On the Day the Hour comes, the followers of falsehood will lose. You will see every nation kneeling; every nation called to its record: “Today you are repaid for what you used to do. This is Our record, speaking against you in truth; We were having transcribed whatever you did.” To Allah belongs all praise, Lord of the heavens and Lord of the earth, Lord of the worlds; and His is the majesty in the heavens and the earth."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 23,
+    "why": "The surah’s diagnosis of unbelief: not an argument, but an appetite that has been given the place of a god."
+  },
+  "virtues": [
+    {
+      "text": "“Allah said: The son of Ādam wrongs Me. He curses time, and I am time: in My hand is the matter; I alternate the night and the day.”",
+      "arabic": "يُؤْذِينِي ابْنُ آدَمَ يَسُبُّ الدَّهْرَ وَأَنَا الدَّهْرُ",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4826 · Ṣaḥīḥ Muslim, 2246",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4826"
+        },
+        {
+          "book": "muslim",
+          "number": "2246"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "before": "Al-Dukhān warned Quraysh by the fate of Pharaoh’s people. Al-Jāthiyah goes behind the warning to the outlook that made them deaf to it.",
+  "after": "Al-Jāthiyah closes with praise of the Lord of the heavens and the earth. Al-Aḥqāf opens by asking what, in the heavens or the earth, those they call upon have ever created.",
+  "notable": [
+    {
+      "ayah": 13,
+      "label": "All that is in the heavens and the earth, subjected to you"
+    },
+    {
+      "ayah": 18,
+      "label": "A clear way — so follow it"
+    },
+    {
+      "ayah": 23,
+      "label": "The one who takes his desire as his god"
+    },
+    {
+      "ayah": 24,
+      "label": "“Nothing destroys us but time”"
+    },
+    {
+      "ayah": 28,
+      "to": 29,
+      "label": "Every nation kneeling, called to its record"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

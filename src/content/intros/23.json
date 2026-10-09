@@ -1,0 +1,183 @@
+{
+  "surah": 23,
+  "epithet": "Successful indeed are the believers",
+  "lede": "It answers the question before it is asked: who succeeds? Seven qualities in the first eleven ayat, beginning and ending with the prayer. The surah’s last ayah but one gives the other verdict in the same word — the disbelievers will not succeed.",
+  "names": [
+    {
+      "arabic": "المؤمنون",
+      "name": "al-Muʾminūn",
+      "meaning": "The Believers",
+      "note": "From its first ayah. It is also called Qad aflaḥa, after its opening words."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "It is Makkan in the saying of all: both Ibn al-Jawzī and al-Qurṭubī say so, and Ibn Kathīr. The traditional order places it seventy-fourth, among the last surahs before the Hijrah. A few of its ayat allude to a hardship that struck Quraysh — a famine — as something already upon them.",
+    "period": "makkah-late",
+    "when": "The later years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ المُؤْمِنُونَ مَكِّيَّةٌ في قَوْلِ الجَمِيعِ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْمُؤْمِنُونَ مَكِّيَّةٌ كُلُّهَا فِي قَوْلِ الْجَمِيعِ"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْمُؤْمِنُونَ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُوَيْهِ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ بِمَكَّةَ سُورَةُ ”المُؤْمِنِينَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      }
+    ]
+  },
+  "setting": [
+    "In Makkah the word for success was already taken. A man had succeeded if he had wealth, sons and a following; and by that measure the believers — poor, few, shut out — had plainly failed. This surah opens by taking the word back.",
+    "“Successful indeed are the believers.” And at once it describes them, so that the claim cannot be made cheaply: those who are humble in their prayer; who turn away from idle talk; who give the zakāh; who guard their chastity; who keep their trusts and their pledges; and who watch over their prayers. “Those are the heirs, who will inherit Firdaws.” When ʿĀʾishah was asked about the character of the Messenger of Allah ﷺ, she said that his character was the Qurʾan, and recited these ayat.",
+    "The surah then makes the case for faith from the two things nearest to hand. First the human body: an extract of clay, a drop in a secure lodging, a clot, a lump, bones, flesh — “then We brought him forth as another creation. So blessed is Allah, the best of creators.” Then the world a person lives in: the seven paths above him, rain measured out, gardens of palm and vine, the olive that grows on Mount Sinai, the cattle, the ships.",
+    "And it tells of five messengers in a row, to show that the objection Quraysh raised was the oldest one there is. Nūḥ’s people said: this is only a human being like you, who wants to make himself your better. The people after them said it. Pharaoh and his chiefs said it of Mūsā and Hārūn: “Shall we believe two human beings like ourselves?”",
+    "Near the end the listener is taken to the moment of death — “My Lord, send me back, that I may do right in what I left undone” — and told, in a single word, no. Then: “Did you think that We created you without purpose, and that you would not be returned to Us?”"
+  ],
+  "occasions": [],
+  "aim": "To set out faith, its reality and its fruits, the consequences of going against it, and the fault of the disbelievers — which is why it opens with the success of the believers and closes by saying that the disbelievers will not succeed.",
+  "themes": [
+    "The qualities of the believers",
+    "Humility in prayer",
+    "The stages of human creation",
+    "The messengers called “only human”",
+    "Those who hasten to good",
+    "The plea at death",
+    "Created with a purpose"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 11,
+      "title": "Who succeeds",
+      "summary": "Successful indeed are the believers: those who are humble in their prayer; who turn away from what is idle; who give the zakāh; who guard their private parts, except from their spouses; who are faithful to their trusts and their covenant; and who keep their prayers. Those are the heirs, who will inherit Firdaws, to abide in it."
+    },
+    {
+      "from": 12,
+      "to": 22,
+      "title": "How you were made, and what was made for you",
+      "summary": "We created man from an extract of clay; then made him a drop in a secure lodging; then a clinging clot, a lump of flesh, bones, and clothed the bones with flesh; then We brought him forth as another creation. So blessed is Allah, the best of creators. Then after that you will die, and on the Day of Resurrection be raised. We sent down water from the sky in measure, and brought forth for you gardens, and a tree that springs from Mount Sinai."
+    },
+    {
+      "from": 23,
+      "to": 50,
+      "title": "Five messengers, one objection",
+      "summary": "We sent Nūḥ to his people, and their chiefs said: “This is only a human being like you, who wishes to gain superiority over you.” Then another generation, and a messenger from among them: “He eats of what you eat and drinks of what you drink.” Then Mūsā and Hārūn to Pharaoh: “Shall we believe two humans like ourselves, whose people are our slaves?” And We made the son of Maryam and his mother a sign."
+    },
+    {
+      "from": 51,
+      "to": 67,
+      "title": "Those who hasten to good",
+      "summary": "O messengers, eat of the good things and do right. This community of yours is one community. Do they think that the wealth and sons We extend to them mean We are hastening good to them? Those who are in awe of their Lord; who believe in His ayat; who associate nothing with Him; and who give what they give with hearts trembling, because they will return to their Lord — it is those who hasten to good deeds, and are foremost in them. We burden no soul beyond its capacity."
+    },
+    {
+      "from": 68,
+      "to": 92,
+      "title": "Have they not pondered?",
+      "summary": "Have they not pondered the word — or did they not recognise their Messenger? Had the truth followed their desires, the heavens and the earth would have been ruined. We seized them with punishment, yet they did not humble themselves to their Lord. Say: whose is the earth, and whoever is in it? They will say, “Allah’s.” Say: who is Lord of the seven heavens? Allah has taken no son, nor is there any god with Him."
+    },
+    {
+      "from": 93,
+      "to": 118,
+      "title": "“Send me back”",
+      "summary": "Repel evil with what is better. Say: my Lord, I seek refuge with You from the promptings of the devils. Until, when death comes to one of them, he says: “My Lord, send me back, that I may do right in what I neglected.” No — it is only a word he says; and behind them is a barrier until the Day they are raised. “Did you think that We created you in vain, and that you would not be returned to Us?” (23:115) The disbelievers will not succeed. And say: “My Lord, forgive and have mercy; You are the best of the merciful.”"
+    }
+  ],
+  "keyAyah": {
+    "ayah": 115,
+    "why": "The question the whole surah has been leading to — and the answer to anyone who thinks a human life is an accident."
+  },
+  "virtues": [
+    {
+      "text": "ʿĀʾishah said: I asked the Messenger of Allah ﷺ about this ayah — “those who give what they give while their hearts tremble.” “Are they those who drink wine and steal?” He said: “No, daughter of al-Ṣiddīq. They are those who fast, pray and give in charity, and fear that it will not be accepted from them. It is those who hasten to good deeds.”",
+      "narrator": "ʿĀʾishah",
+      "source": "Jāmiʿ al-Tirmidhī, 3175 · Sunan Ibn Mājah, 4198",
+      "refs": [
+        {
+          "book": "tirmidhi",
+          "number": "3175"
+        },
+        {
+          "book": "ibnmajah",
+          "number": "4198"
+        }
+      ],
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
+    },
+    {
+      "text": "“When you ask Allah, ask Him for Firdaws: it is the middle of the Garden and the highest part of the Garden; above it is the Throne of the Most Merciful, and from it spring the rivers of the Garden.”",
+      "arabic": "فَإِذَا سَأَلْتُمُ اللَّهَ فَاسْأَلُوهُ الْفِرْدَوْسَ",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 2790",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "2790"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "before": "Al-Ḥajj closed with commands to the believers: bow, prostrate, do good, strive. Al-Muʾminūn opens with the outcome for those who do.",
+  "after": "This surah praises those who guard their chastity. Al-Nūr, a Madinan surah, legislates for it: the penalties, the proprieties and the protections of a chaste society.",
+  "notable": [
+    {
+      "ayah": 1,
+      "to": 2,
+      "label": "Successful are the believers, humble in their prayer"
+    },
+    {
+      "ayah": 10,
+      "to": 11,
+      "label": "The heirs of Firdaws"
+    },
+    {
+      "ayah": 12,
+      "to": 14,
+      "label": "The stages of creation"
+    },
+    {
+      "ayah": 60,
+      "to": 61,
+      "label": "Those who give with trembling hearts"
+    },
+    {
+      "ayah": 99,
+      "to": 100,
+      "label": "“My Lord, send me back”"
+    },
+    {
+      "ayah": 115,
+      "label": "Did you think We created you in vain?"
+    },
+    {
+      "ayah": 118,
+      "label": "“My Lord, forgive and have mercy”"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī; the Sunan of al-Tirmidhī and Ibn Mājah"
+  ]
+}

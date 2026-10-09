@@ -1,0 +1,163 @@
+{
+  "surah": 72,
+  "epithet": "“We have heard a wondrous Qurʾan”",
+  "lede": "The Prophet ﷺ was reciting in the dawn prayer, and listeners he could not see stopped to hear. They went back to their own kind as believers. He knew nothing of it until this surah told him what they had said.",
+  "names": [
+    {
+      "arabic": "الجنّ",
+      "name": "al-Jinn",
+      "meaning": "The Jinn",
+      "note": "After the party of jinn whose words make up most of it. It is also called by its opening, Qul ūḥiya ilayya."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "It is Makkan in the saying of all: Ibn al-Jawzī and al-Qurṭubī both record the agreement. The traditional order places it fortieth.",
+    "period": "makkah-middle",
+    "when": "Makkah, before the Hijrah: a dawn prayer at Nakhlah, on the road between Makkah and Ṭāʾif",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ الجِنِّ كُلُّها مَكِّيَّةٌ بِإجْماعِهِمْ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْجِنِّ مَكِّيَّةٌ فِي قَوْلِ الْجَمِيعِ. وَهِيَ ثمان وعشرون آية"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْجِنِّ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ الجِنِّ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ",
+        "says": "Makkan."
+      }
+    ]
+  },
+  "setting": [
+    "The Arabs believed in the jinn and feared them. A traveller stopping for the night in an empty valley would call out, “I seek the protection of the lord of this valley,” meaning its chief jinn. Soothsayers claimed that jinn brought them news stolen from the sky. Some tribes said the jinn were kin to Allah. The whole unseen world, as they imagined it, was a rival authority.",
+    "Ibn ʿAbbās relates what happened. The Prophet ﷺ set out with some of his Companions for the market of ʿUkāẓ. By then the devils had been cut off from the news of heaven, and shooting stars were loosed against them; they said to one another, something has happened — search the east of the earth and the west. A party of them, heading towards Tihāmah, came upon him at Nakhlah as he led his Companions in the dawn prayer. When they heard the Qurʾan they listened closely, and said: this is what has come between us and the news of heaven. They went back to their people: “We have heard a wondrous Qurʾan.” Ibn ʿAbbās adds: he did not recite to the jinn and did not see them; it was revealed to him what they had said.",
+    "Ibn Isḥāq places their listening at Nakhlah on his return from Ṭāʾif, in the tenth year of the mission — when the people of that town had stoned him out of it.{reported} If so, the news that came with this surah was a consolation: the humans had driven him off, and the jinn believed.",
+    "What the jinn say takes every Arab belief about them apart, in their own voices. Our Lord has taken neither wife nor son. Our fools used to say outrageous things about Him. People sought refuge with us and it only made them worse. We tried the heaven and found it full of guards. We do not know the unseen. And among us are those who submit and those who do wrong, as among you."
+  ],
+  "occasions": [
+    {
+      "title": "The dawn prayer at Nakhlah",
+      "text": "Ibn ʿAbbās said: the Prophet ﷺ set out with a group of his Companions, making for the market of ʿUkāẓ. By then the devils had been barred from the news of heaven, and shooting stars were being sent against them. They went back to their people, who said: “What has happened to you?” — “We have been barred from the news of heaven, and shooting stars have been sent against us.” They said: “Nothing has come between you and the news of heaven but something that has newly happened. Travel the east of the earth and its west, and see what it is.”",
+      "story": [
+        "Those of them who had set out towards Tihāmah came upon the Prophet ﷺ at Nakhlah, on his way to ʿUkāẓ, as he was leading his Companions in the dawn prayer. When they heard the Qurʾan they listened to it closely, and said: “This, by Allah, is what has come between you and the news of heaven.” And so they went back to their people and said: “Our people, we have heard a wondrous Qurʾan. It guides to right conduct, and we have believed in it, and we shall never associate anyone with our Lord.” Then Allah sent down upon His Prophet ﷺ: “Say: it has been revealed to me that a group of the jinn listened.” What was revealed to him was what the jinn had said."
+      ],
+      "source": "Ibn ʿAbbās: al-Bukhārī (773, 4921) and Muslim (449).",
+      "rank": "agreed"
+    }
+  ],
+  "aim": "To confirm that the Qurʾan was sent down and is from Allah, through the belief of the jinn in it — and to refute what the idolaters claimed about them.",
+  "themes": [
+    "The jinn",
+    "The Qurʾan",
+    "Tawḥīd",
+    "The guarded heaven",
+    "The unseen belongs to Allah",
+    "The mosques are for Allah"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 7,
+      "title": "What they said on hearing it",
+      "summary": "Say: it has been revealed to me that a group of jinn listened and said, “We have heard a wondrous Qurʾan that guides to right conduct; we believe in it, and will never associate anyone with our Lord. Exalted is His majesty — He has taken neither wife nor son. Our foolish ones used to say outrageous things about Allah. Men among humankind used to seek refuge with men among the jinn, and it increased them in wrong.”"
+    },
+    {
+      "from": 8,
+      "to": 10,
+      "title": "The sky closed",
+      "summary": "“We sought to reach the heaven and found it filled with stern guards and shooting flames. We used to take up positions there to listen; but whoever listens now finds a flame lying in wait. And we do not know whether harm is intended for those on earth, or whether their Lord intends for them right guidance.”"
+    },
+    {
+      "from": 11,
+      "to": 15,
+      "title": "Jinn like men",
+      "summary": "“Among us are the righteous and those who are otherwise; we are of differing ways. We know we cannot escape Allah on earth or by flight. When we heard the guidance, we believed in it. Among us are those who have submitted and those who are unjust: those who submit have sought out right guidance, and the unjust will be fuel for Hell.”"
+    },
+    {
+      "from": 16,
+      "to": 19,
+      "title": "The mosques are for Allah",
+      "summary": "Had they kept to the way, We would have given them abundant water, to test them by it. The places of prostration belong to Allah, so call on no one along with Allah. And when the servant of Allah stood calling on Him, they nearly pressed upon him in crowds."
+    },
+    {
+      "from": 20,
+      "to": 28,
+      "title": "What the Messenger ﷺ is to say of himself",
+      "summary": "Say: I call only upon my Lord and associate no one with Him. Say: I have no power to harm you or to guide you. Say: no one can protect me from Allah; mine is only to convey from Allah. He is the Knower of the unseen and discloses it to no one, except a messenger He has chosen — and then He sets guards before him and behind him."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 18,
+    "why": "The command the whole surah comes down to. The places of worship are His, and no one is to be called upon with Him."
+  },
+  "virtues": [
+    {
+      "text": "“The Prophet ﷺ did not recite to the jinn, nor did he see them. He set out with a group of his Companions for the market of ʿUkāẓ…” — and the jinn came upon him as he led the dawn prayer at Nakhlah, and listened.",
+      "narrator": "Ibn ʿAbbās",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4921 · Ṣaḥīḥ Muslim, 449",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4921"
+        },
+        {
+          "book": "muslim",
+          "number": "449"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "before": "Nūḥ’s people heard the call for centuries and blocked their ears. The jinn of this surah heard it once.",
+  "after": "This surah tells of others listening to the Prophet’s ﷺ recitation in prayer. Al-Muzzammil tells him to stand in that prayer through the night, and recite the Qurʾan in measured tones.",
+  "notable": [
+    {
+      "ayah": 1,
+      "to": 2,
+      "label": "“We have heard a wondrous Qurʾan”"
+    },
+    {
+      "ayah": 3,
+      "label": "He has taken neither wife nor son"
+    },
+    {
+      "ayah": 18,
+      "label": "The mosques are for Allah"
+    },
+    {
+      "ayah": 26,
+      "to": 27,
+      "label": "The Knower of the unseen"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "Ibn Isḥāq’s account, as the commentators relay it",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

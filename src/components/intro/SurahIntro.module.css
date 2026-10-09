@@ -1,0 +1,1804 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   The introduction to a surah.
+
+   Two grounds. The frontispiece at the top is lit — the `--mk-hero-*` set, as
+   on the landing page: a dark plate with gold on it in the evening and at
+   night, bright paper under the sun. Everything below it is the page, in the
+   page's own tokens, set to a measure narrow enough to read.
+
+   The written parts are in English whatever language the site is in, and say
+   so on the element (`lang="en" dir="ltr"`); the labels round them follow the
+   reader. Spacing is stated in logical properties throughout, so the page
+   turns round for Pashto and Persian without being told.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.shell {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.written { text-align: start; }
+
+/* ── the frontispiece ─────────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  background: var(--mk-hero-bg);
+  color: var(--mk-hero-ink);
+  border-bottom: 1px solid color-mix(in srgb, var(--mk-gold) 38%, transparent);
+}
+
+.heroInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 26px 32px 44px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 500px);
+  column-gap: 60px;
+  align-items: center;
+}
+
+.heroText { min-width: 0; }
+.heroText > * { animation: rise 720ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+.heroText > :nth-child(2) { animation-delay: 60ms; }
+.heroText > :nth-child(3) { animation-delay: 120ms; }
+.heroText > :nth-child(4) { animation-delay: 180ms; }
+.heroText > :nth-child(5) { animation-delay: 260ms; }
+.heroText > :nth-child(6) { animation-delay: 360ms; }
+.heroText > :nth-child(7) { animation-delay: 420ms; }
+.heroText > :nth-child(8) { animation-delay: 480ms; }
+
+/* The way back to the surah, across the top of the plate in either layout. */
+.back {
+  grid-column: 1 / -1;
+  justify-self: start;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  color: color-mix(in srgb, var(--mk-hero-ink) 62%, transparent);
+  text-decoration: none;
+}
+.back:hover { color: var(--mk-gold-pale); }
+
+.kicker {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mk-hero-kicker);
+}
+
+/* Gold leaf, as the landing page's ayah is: the letters are a window onto a
+   gradient wider than they are, slid slowly across. */
+.name {
+  margin: 12px 0 0;
+  font-weight: 400;
+  font-size: clamp(46px, 6.4vw, 82px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-image: var(--mk-shine);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  padding-bottom: 0.08em;
+  animation:
+    rise 720ms cubic-bezier(0.22, 0.61, 0.36, 1) both 120ms,
+    sheen 11s linear infinite;
+}
+.nameArabic {
+  font-family: var(--font-amiri-quran), var(--font-amiri), serif;
+  font-size: clamp(44px, 6vw, 72px);
+  line-height: 1.7;
+  letter-spacing: 0;
+  padding-top: var(--quran-ascender-pad);
+  padding-bottom: var(--quran-descender-pad);
+}
+
+.meaning {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 19px;
+  color: color-mix(in srgb, var(--mk-hero-ink) 66%, transparent);
+  margin-top: 4px;
+}
+
+.epithet {
+  margin: 26px 0 0;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(21px, 2.5vw, 27px);
+  line-height: 1.3;
+  color: var(--mk-gold-pale);
+  text-wrap: balance;
+}
+
+.lede {
+  margin: 14px 0 0;
+  max-width: 56ch;
+  font-size: 16px;
+  line-height: 1.78;
+  color: color-mix(in srgb, var(--mk-hero-ink) 90%, transparent);
+  text-wrap: pretty;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: 20px 44px;
+  margin: 30px 0 0;
+  padding-top: 22px;
+  border-top: 1px solid color-mix(in srgb, var(--mk-gold) 32%, transparent);
+}
+.fact dt {
+  font-family: var(--font-heading);
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mk-hero-kicker);
+}
+.fact dd {
+  margin: 3px 0 0;
+  font-family: var(--font-heading);
+  font-size: 26px;
+  line-height: 1.15;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--mk-hero-ink);
+}
+
+.extras {
+  margin: 16px 0 0;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--mk-hero-ink) 60%, transparent);
+}
+.letters {
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 1.55em;
+  line-height: 1;
+  color: var(--mk-gold-pale);
+  margin-inline-start: 2px;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 22px;
+  margin-top: 28px;
+}
+
+.begin {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 14.5px;
+  letter-spacing: 0.02em;
+  padding: 11px 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--mk-hero-kicker);
+  color: var(--mk-gold-pale);
+  text-decoration: none;
+  transition: background 180ms ease;
+}
+.begin:hover {
+  background: color-mix(in srgb, var(--mk-gold) 18%, transparent);
+  color: var(--mk-gold-pale);
+}
+
+.down {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  color: color-mix(in srgb, var(--mk-hero-ink) 70%, transparent);
+  text-underline-offset: 4px;
+  text-decoration-color: color-mix(in srgb, var(--mk-hero-ink) 30%, transparent);
+}
+.down:hover { color: var(--mk-gold-pale); }
+
+.medallion {
+  margin: 0;
+  min-width: 0;
+}
+
+.caption {
+  min-height: 74px;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  text-align: center;
+}
+.captionRange {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mk-hero-kicker);
+}
+.captionTitle {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  line-height: 1.25;
+  color: var(--mk-hero-ink);
+  text-wrap: balance;
+}
+.captionGo {
+  font-size: 12px;
+  color: var(--mk-gold-pale);
+  text-decoration: none;
+}
+.captionGo:hover { color: var(--mk-gold-pale); text-decoration: underline; }
+.captionHint {
+  max-width: 40ch;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--mk-hero-ink) 56%, transparent);
+  text-wrap: balance;
+}
+
+/* ── the page under it ────────────────────────────────────────────────── */
+
+.layout {
+  display: grid;
+  grid-template-columns: 196px minmax(0, 1fr);
+  gap: 60px;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 58px 32px 150px;
+}
+
+.body {
+  min-width: 0;
+  max-width: 740px;
+}
+
+.rail { position: relative; }
+.railInner {
+  position: sticky;
+  top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.railLink {
+  display: block;
+  padding: 5px 12px;
+  border-inline-start: 2px solid var(--color-divider);
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--muted-55);
+  text-decoration: none;
+}
+.railLink:hover { color: var(--color-text); }
+.railOn {
+  color: var(--color-accent);
+  border-inline-start-color: var(--color-accent);
+}
+
+.section {
+  margin-bottom: 84px;
+  scroll-margin-top: 26px;
+}
+
+.title {
+  margin: 10px 0 4px;
+  font-weight: 400;
+  font-size: clamp(29px, 3.6vw, 40px);
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+.when {
+  margin: 6px 0 0;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 18.5px;
+  line-height: 1.45;
+  color: var(--muted-72);
+  text-wrap: pretty;
+}
+
+.subtitle {
+  margin: 48px 0 16px;
+  font-size: 23px;
+  font-weight: var(--font-heading-weight);
+}
+
+.prose {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.86;
+  color: var(--muted-88);
+  text-wrap: pretty;
+}
+
+/* The telling opens the way a chapter does. */
+.telling > p:first-child::first-letter {
+  float: left;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 4.1em;
+  line-height: 0.8;
+  padding: 7px 10px 0 0;
+  color: var(--color-accent);
+}
+
+.ayahRef {
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+  white-space: nowrap;
+}
+.ayahRef:hover { border-bottom-color: var(--color-accent); }
+
+.note {
+  margin: 18px 0 0;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--muted-55);
+  max-width: 68ch;
+}
+
+.attribution {
+  margin: -6px 0 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--muted-55);
+}
+
+/* ── the river of revelation ──────────────────────────────────────────── */
+
+.river { margin: 30px 0 34px; }
+
+.riverHead {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  color: var(--color-accent);
+}
+
+.riverBars {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(114, minmax(0, 1fr));
+  align-items: end;
+  column-gap: 1px;
+  height: 128px;
+  margin-top: 6px;
+  padding-top: 26px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.bar {
+  display: block;
+  min-height: 3px;
+  border-radius: 1px 1px 0 0;
+  background: color-mix(in srgb, var(--color-text) 24%, transparent);
+  transform-origin: bottom;
+  animation: grow 900ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.barMadinah { background: color-mix(in srgb, var(--mk-gold) 62%, transparent); }
+.barPeek { background: var(--color-text); }
+.barHere,
+.barHere.barPeek {
+  position: relative;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent);
+  z-index: 1;
+}
+/* The pin over this surah's bar. */
+.barHere::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 50%;
+  top: -13px;
+  width: 7px;
+  height: 7px;
+  margin-inline-start: -3.5px;
+  transform: rotate(45deg);
+  background: var(--color-accent);
+}
+
+.hijrah {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-inline-start: 1px dashed color-mix(in srgb, var(--color-accent) 75%, transparent);
+  pointer-events: none;
+}
+.hijrah > span {
+  position: absolute;
+  top: -3px;
+  inset-inline-end: 7px;
+  font-family: var(--font-heading);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-accent);
+}
+
+.riverAxis {
+  display: flex;
+  margin-top: 7px;
+  font-family: var(--font-heading);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted-55);
+}
+.riverAxis > span {
+  flex-basis: 0;
+  min-width: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.riverRead {
+  min-height: 21px;
+  margin-top: 8px;
+  text-align: center;
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-72);
+}
+
+.riverNext {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 6px;
+}
+.riverLink {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  padding: 9px 14px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-size: 17px;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: border-color 160ms ease;
+}
+.riverLink:hover { border-color: var(--color-accent); color: var(--color-text); }
+.riverLinkEnd { text-align: end; align-items: flex-end; }
+.riverLinkLabel {
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.riverEdge {
+  padding: 9px 2px;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--muted-55);
+}
+
+/* ── a scholar's own words ────────────────────────────────────────────── */
+
+.quoted {
+  margin: 20px 0 22px;
+  padding: 16px 22px 13px;
+  border-inline-start: 2px solid var(--mk-gold);
+  background: color-mix(in srgb, var(--mk-gold) 7%, transparent);
+  border-start-end-radius: var(--radius-lg);
+  border-end-end-radius: var(--radius-lg);
+}
+.quotedText {
+  margin: 0;
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 21px;
+  line-height: 2.05;
+  text-align: start;
+  color: var(--color-text);
+}
+.quotedBy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--muted-62);
+}
+/* Upright: the italic has no ʿ or ḥ of its own, and borrows them badly. */
+.quotedWork { color: var(--muted-45); }
+.quotedLink {
+  margin-inline-start: auto;
+  color: var(--color-accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.quotedLink:hover { text-decoration: underline; }
+
+/* ── what came down about what ────────────────────────────────────────── */
+
+.occasion {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  column-gap: 26px;
+  padding: 22px 0 8px;
+  border-top: 1px solid var(--color-divider);
+}
+.occasion > :not(.occasionWhere) { grid-column: 2; }
+.occasionWhere {
+  grid-row: 1 / span 2;
+  padding-top: 4px;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.occasionWhere a { text-decoration: none; }
+.occasionWhere a:hover { text-decoration: underline; }
+.occasionTitle {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: var(--font-heading-weight);
+}
+
+/* ── what it is for ───────────────────────────────────────────────────── */
+
+.aim {
+  padding: 50px 26px 46px;
+  text-align: center;
+  border-top: 1px solid var(--color-divider);
+  border-bottom: 1px solid var(--color-divider);
+}
+.aimArabic {
+  margin: 20px auto 12px;
+  max-width: 620px;
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: clamp(25px, 3.5vw, 34px);
+  line-height: 1.95;
+  color: var(--color-text);
+  text-wrap: balance;
+}
+.aimEnglish {
+  margin: 0 auto;
+  max-width: 44ch;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(19px, 2.3vw, 23px);
+  line-height: 1.5;
+  color: var(--muted-88);
+  text-wrap: balance;
+}
+.aimCredit {
+  margin: 16px 0 0;
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+}
+.aimCredit a {
+  color: var(--muted-55);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-divider);
+}
+.aimCredit a:hover { color: var(--color-accent); }
+.themes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 26px 0 0;
+}
+
+/* ── passage by passage ───────────────────────────────────────────────── */
+
+.strip {
+  display: flex;
+  gap: 2px;
+  height: 16px;
+  margin: 26px 0 5px;
+}
+.stripPart {
+  flex-basis: 0;
+  min-width: 3px;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--mk-gold) 62%, transparent);
+  transition: background 160ms ease;
+}
+.stripOdd { background: color-mix(in srgb, var(--mk-gold) 32%, transparent); }
+.stripOn { background: var(--color-accent); }
+.stripEnds {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--muted-55);
+}
+
+.passages {
+  list-style: none;
+  padding: 0;
+  margin: 26px 0 0;
+}
+.passage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  column-gap: 26px;
+  padding: 24px 0 20px;
+  border-top: 1px solid var(--color-divider);
+  scroll-margin-top: 18px;
+}
+.passage::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: -18px;
+  top: 24px;
+  bottom: 20px;
+  width: 2px;
+  background: var(--color-accent);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+.passageOn::before,
+.passage:target::before { opacity: 1; }
+
+.passageRange {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 27px;
+  line-height: 1;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--color-accent);
+}
+.passageShare {
+  display: block;
+  margin-top: 8px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--muted-55);
+}
+.passageTitle {
+  margin: 0 0 7px;
+  font-size: 22px;
+  font-weight: var(--font-heading-weight);
+  line-height: 1.2;
+}
+.passageText .prose { margin-bottom: 10px; }
+.passageRead {
+  font-family: var(--font-heading);
+  font-size: 13.5px;
+  text-decoration: none;
+}
+.passageRead:hover { text-decoration: underline; }
+
+/* ── one ayah ─────────────────────────────────────────────────────────── */
+
+.keyAyah {
+  margin: 0 0 84px;
+  padding: 40px 30px 30px;
+  text-align: center;
+  border: 1px solid color-mix(in srgb, var(--mk-gold) 40%, transparent);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--mk-gold) 6%, transparent);
+}
+.keyArabic {
+  margin: 16px 0 0;
+  font-size: clamp(27px, 4vw, 37px);
+  line-height: 2.2;
+  text-align: center;
+  padding-bottom: var(--quran-descender-pad);
+}
+.keyTranslation {
+  margin: 4px auto 0;
+  max-width: 54ch;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(18px, 2.2vw, 21px);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+.keyWhy {
+  margin: 20px auto 16px;
+  max-width: 58ch;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted-72);
+}
+.keyLink {
+  font-family: var(--font-heading);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.keyLink:hover { text-decoration: underline; }
+
+/* ── what is narrated ─────────────────────────────────────────────────── */
+
+.narrations { margin-top: 22px; }
+.narration {
+  margin: 0;
+  padding: 26px 0 22px;
+  border-top: 1px solid var(--color-divider);
+}
+.narrationArabic {
+  margin: 0 0 10px;
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: clamp(23px, 3vw, 28px);
+  line-height: 2;
+  text-align: start;
+  color: var(--color-accent);
+}
+.narrationText {
+  margin: 0;
+  font-size: 16.5px;
+  line-height: 1.82;
+  color: var(--muted-88);
+  text-align: start;
+  text-wrap: pretty;
+}
+.narrationFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-top: 14px;
+  font-size: 12px;
+}
+.narrationSource { color: var(--muted-62); }
+.grade {
+  padding: 2px 10px;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+  border-radius: calc(var(--radius-md) * 0.75);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  color: var(--color-accent);
+}
+/* A grading that needs a sentence is set as one, under the source. */
+.gradeLong {
+  flex-basis: 100%;
+  padding-inline-start: 12px;
+  border-inline-start: 2px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--muted-72);
+  text-align: start;
+}
+.lookup {
+  color: var(--muted-55);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.lookup:hover { color: var(--color-accent); }
+
+.caution {
+  margin-top: 8px;
+  padding: 16px 20px 4px;
+  border: 1px dashed color-mix(in srgb, var(--color-text) 28%, transparent);
+  border-radius: var(--radius-lg);
+}
+.caution .prose {
+  margin-top: 8px;
+  font-size: 14.5px;
+  text-align: start;
+}
+
+/* ── its names ────────────────────────────────────────────────────────── */
+
+.names {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+.nameCard {
+  padding: 16px 22px 18px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+}
+.nameArabicBig {
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 33px;
+  line-height: 1.75;
+  color: var(--color-accent);
+}
+.nameLatin {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 20px;
+}
+.nameMeaning {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 15.5px;
+  color: var(--muted-62);
+}
+.nameNote {
+  margin: 10px 0 0;
+  font-size: 13.5px;
+  line-height: 1.72;
+  color: var(--muted-72);
+}
+
+/* ── before and after ─────────────────────────────────────────────────── */
+
+.neighbours {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+.neighbour {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 22px 16px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: border-color 160ms ease;
+}
+.neighbour:hover { border-color: var(--color-accent); color: var(--color-text); }
+.neighbourLabel {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.neighbourEnd .neighbourLabel { text-align: end; }
+.neighbourName {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  font-family: var(--font-heading);
+  font-size: 25px;
+  line-height: 1.2;
+}
+.neighbourArabic {
+  font-family: var(--font-amiri), serif;
+  font-size: 23px;
+  color: var(--muted-55);
+}
+.neighbourText {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted-72);
+  text-align: start;
+}
+.neighbourOpen {
+  margin-top: auto;
+  padding-top: 4px;
+  font-size: 12px;
+  color: var(--color-accent);
+}
+
+.notable {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.notableLink {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  height: 100%;
+  padding: 11px 15px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: border-color 160ms ease;
+}
+.notableLink:hover { border-color: var(--color-accent); color: var(--color-text); }
+.notableKey {
+  flex: none;
+  min-width: 4.6em;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--color-accent);
+}
+.notableLabel {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ── sources ──────────────────────────────────────────────────────────── */
+
+.sources .prose { font-size: 14.5px; }
+.sourceList {
+  columns: 2 260px;
+  column-gap: 36px;
+  margin: 18px 0 0;
+  padding-inline-start: 18px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted-88);
+}
+.sourceList li { break-inside: avoid; }
+
+/* ── on into the surah ────────────────────────────────────────────────── */
+
+.end {
+  padding-top: 34px;
+  text-align: center;
+  border-top: 1px solid var(--color-divider);
+}
+.endArabic {
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 58px;
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--mk-gold) 62%, transparent);
+  padding-bottom: var(--quran-descender-pad);
+}
+.endBegin {
+  font-size: 16px;
+  padding: 12px 30px;
+}
+.endMore {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  margin-top: 14px;
+}
+
+/* ── how a report stands ──────────────────────────────────────────────── */
+
+/* One colour for everything that is less than ṣaḥīḥ: warm, and quieter than
+   the gold a sound report is marked in. It is used for a word and a hairline,
+   never for a block — the page says what a report is without shouting it. */
+.shell { --soft: color-mix(in srgb, #b4612b 74%, var(--color-text)); }
+
+.standing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  margin: 9px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted-62);
+}
+.standingMark {
+  padding: 1px 9px;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 50%, transparent);
+  border-radius: calc(var(--radius-md) * 0.75);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  color: var(--color-accent);
+}
+.standingSoft .standingMark {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--soft) 62%, transparent);
+  color: var(--soft);
+}
+.standingNote { font-style: italic; }
+
+/* The grading of a narration that is not ṣaḥīḥ, in the same quieter mark. */
+.gradeSoft {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--soft) 62%, transparent);
+  color: var(--soft);
+}
+.gradeLong.gradeSoft {
+  border-style: none;
+  border-inline-start: 2px dashed color-mix(in srgb, var(--soft) 62%, transparent);
+  color: var(--muted-72);
+}
+
+/* Under a quotation from a work that is quoted for its reports alone. */
+.quotedNote {
+  flex-basis: 100%;
+  font-size: 11.5px;
+  font-style: italic;
+  color: var(--soft);
+  text-decoration: none;
+}
+.quotedNote:hover { text-decoration: underline; }
+
+.attestedCaveat {
+  margin: 2px 0 0;
+  font-size: 11.5px;
+  font-style: italic;
+  color: var(--soft);
+}
+
+/* The paragraph in Sources that a note under a quotation points to. */
+.noteMarked {
+  padding-inline-start: 12px;
+  border-inline-start: 2px dashed color-mix(in srgb, var(--soft) 62%, transparent);
+  scroll-margin-top: 90px;
+}
+.noteMarked:target { color: var(--color-text); }
+
+/* A mark after a sentence that tells of a report which is not ṣaḥīḥ, and the
+   key under the account that says what each mark means. The mark is small
+   and the same colour as every other "not ṣaḥīḥ" on the page. */
+.mark {
+  display: inline-block;
+  margin-inline-start: 2px;
+  font-size: 0.62em;
+  line-height: 1;
+  vertical-align: 0.55em;
+  color: var(--soft);
+  text-decoration: none;
+  cursor: help;
+}
+.mark:hover { color: var(--color-accent); }
+.marksKey {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 12px 0 0;
+  border-top: 1px dashed color-mix(in srgb, var(--soft) 45%, transparent);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted-62);
+  scroll-margin-top: 90px;
+}
+.marksKey li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+}
+.marksKey li + li { margin-top: 4px; }
+.marksKey .mark {
+  margin: 0;
+  font-size: 9px;
+  vertical-align: baseline;
+  cursor: default;
+}
+.marksWord {
+  color: var(--soft);
+  letter-spacing: 0.03em;
+}
+
+/* ── what is not certain ──────────────────────────────────────────────── */
+
+/* A small sign after a date, a figure or a placing that is not certain. The
+   reason is in the page, under the line, and is shown to a pointer that
+   rests on the sign, a finger that touches it, and a reader who tabs to it.
+
+   The reason is placed without the sign being positioned: left to itself it
+   sits where the sign is, and its sides are taken from the paragraph, so it
+   opens across the measure under the line and can never run off a phone. */
+.prose,
+.when,
+.riverHead { position: relative; }
+
+/* A part that has arrived keeps a layer of its own, and the part after it is
+   painted over whatever hangs below. The one being asked is lifted clear. */
+.written:has(.doubt:hover, .doubt:focus),
+.prose:has(.doubt:hover, .doubt:focus),
+.riverHead:has(.doubt:hover, .doubt:focus),
+.occasion:has(.doubt:hover, .doubt:focus),
+.narration:has(.doubt:hover, .doubt:focus) {
+  position: relative;
+  z-index: 9;
+}
+
+/* A grading that comes with a word about itself — taken from an index and not
+   yet seen in the book, or another scholar's where al-Albānī's was not found —
+   is underlined, and the word is under the sign beside it. */
+.standing,
+.narrationFoot { position: relative; }
+.flagged {
+  text-decoration: underline dotted color-mix(in srgb, var(--soft) 85%, transparent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+.flagged .doubt,
+.standing .doubt {
+  font-size: 10px;
+  vertical-align: 0.1em;
+}
+
+/* An occasion told in full is set as a passage of its own: a hairline down
+   its edge, and the paragraphs a little closer than the page's. */
+.account {
+  margin-bottom: 14px;
+  padding-inline-start: 18px;
+  border-inline-start: 1px solid color-mix(in srgb, var(--color-accent) 42%, transparent);
+}
+.account > .prose { margin-bottom: 13px; }
+.account > .prose:last-child { margin-bottom: 0; }
+
+.doubt {
+  display: inline-block;
+  width: 1.3em;
+  height: 1.3em;
+  margin-inline-start: 3px;
+  border: 1px dashed color-mix(in srgb, var(--soft) 70%, transparent);
+  border-radius: 50%;
+  font-family: var(--font-heading);
+  font-size: 0.64em;
+  font-style: normal;
+  line-height: 1.22em;
+  text-align: center;
+  vertical-align: 0.4em;
+  color: var(--soft);
+  cursor: help;
+  outline: none;
+  transition: background 160ms ease;
+}
+.doubt:hover,
+.doubt:focus {
+  border-style: solid;
+  background: color-mix(in srgb, var(--soft) 16%, transparent);
+}
+.doubtWhy {
+  position: absolute;
+  inset-inline: 0;
+  z-index: 8;
+  margin-top: 22px;
+  padding: 10px 14px 11px;
+  border: 1px solid color-mix(in srgb, var(--soft) 45%, transparent);
+  border-inline-start-width: 2px;
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  box-shadow: 0 10px 28px color-mix(in srgb, #000 16%, transparent);
+  font-family: var(--font-body, inherit);
+  font-size: 12.5px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.62;
+  letter-spacing: 0;
+  text-align: start;
+  text-transform: none;
+  white-space: normal;
+  color: var(--color-text);
+  cursor: default;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    opacity 170ms ease,
+    transform 170ms ease,
+    visibility 0s linear 170ms;
+}
+.doubt:hover .doubtWhy,
+.doubt:focus .doubtWhy {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition-delay: 0s;
+}
+
+/* ── the same, in other works ─────────────────────────────────────────── */
+
+.attested { margin: 28px 0 10px; }
+.attestedTitle {
+  margin: 0 0 8px;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted-55);
+}
+.attestedList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-divider);
+}
+.attestedRow {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr) auto;
+  column-gap: 22px;
+  align-items: start;
+  padding: 14px 0 12px;
+  border-bottom: 1px solid var(--color-divider);
+}
+.attestedWho {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding-top: 1px;
+}
+.attestedAuthor {
+  font-family: var(--font-heading);
+  font-size: 16.5px;
+  line-height: 1.3;
+  color: var(--color-text);
+}
+.attestedWork {
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--muted-45);
+}
+.attestedSays {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: var(--color-text);
+}
+/* Under the English and on its side of the column, whichever way the page reads. */
+.attestedQuote {
+  margin: 3px 0 0;
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 16.5px;
+  line-height: 1.95;
+  color: var(--muted-62);
+  text-align: -webkit-match-parent;
+  text-align: match-parent;
+}
+.attestedLink {
+  align-self: center;
+  padding: 6px 2px;
+  font-size: 15px;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: transform 200ms ease;
+}
+.attestedRow:hover .attestedLink { transform: translateX(3px); }
+.attestedRow:hover .attestedLink:dir(rtl) { transform: translateX(-3px); }
+.attestedNote {
+  margin: 9px 0 0;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--muted-45);
+}
+
+/* ── the books behind the page ────────────────────────────────────────── */
+
+.works {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(228px, 1fr));
+  gap: 10px;
+}
+.work {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  height: 100%;
+  padding: 13px 16px 13px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    transform 240ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.work:hover {
+  border-color: var(--color-accent);
+  color: inherit;
+  transform: translateY(-2px);
+}
+.workArabic {
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 19px;
+  line-height: 1.75;
+  color: var(--color-accent);
+  text-align: -webkit-match-parent;
+  text-align: match-parent;
+}
+.workName {
+  font-family: var(--font-heading);
+  font-size: 15.5px;
+  line-height: 1.35;
+  color: var(--color-text);
+}
+.workBy {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted-55);
+}
+
+/* ── how far down the page ────────────────────────────────────────────── */
+
+/* A hair of gold along the top that fills as the page is read. It is drawn by
+   the scroll itself, where a browser can do that, and is not there otherwise. */
+.progress {
+  position: sticky;
+  top: 0;
+  z-index: 6;
+  height: 2px;
+  margin-bottom: -2px;
+  background: linear-gradient(90deg, var(--mk-gold), var(--mk-gold-pale));
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+.progress:dir(rtl) { transform-origin: 100% 50%; }
+
+/* ── light in the air of the plate ────────────────────────────────────── */
+
+.heroInner { position: relative; }
+
+.motes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.motes::before,
+.motes::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 -240px;
+  background-image:
+    radial-gradient(circle, color-mix(in srgb, var(--mk-gold-pale) 75%, transparent) 0 1px, transparent 1.7px),
+    radial-gradient(circle, color-mix(in srgb, var(--mk-gold-pale) 45%, transparent) 0 0.9px, transparent 1.5px),
+    radial-gradient(circle, color-mix(in srgb, var(--mk-gold) 60%, transparent) 0 1.2px, transparent 2px);
+  background-size: 190px 240px, 270px 240px, 340px 240px;
+  background-position: 24px 36px, 138px 150px, 232px 88px;
+  opacity: 0.42;
+  mask-image: radial-gradient(ellipse 75% 70% at 62% 44%, #000 0, transparent 100%);
+  animation: drift 52s linear infinite;
+}
+.motes::after {
+  background-size: 230px 240px, 310px 240px, 410px 240px;
+  background-position: 96px 190px, 14px 70px, 300px 20px;
+  opacity: 0.26;
+  animation-duration: 83s;
+}
+
+/* The six figures come up one after another, under a rule drawn from its middle. */
+.facts { position: relative; }
+.facts::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  inset-inline: 0;
+  height: 1px;
+  background: color-mix(in srgb, var(--mk-gold-pale) 70%, transparent);
+  animation: glintX 1500ms cubic-bezier(0.22, 0.61, 0.36, 1) 420ms both;
+}
+.fact { animation: rise 640ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+.fact:nth-child(1) { animation-delay: 420ms; }
+.fact:nth-child(2) { animation-delay: 490ms; }
+.fact:nth-child(3) { animation-delay: 560ms; }
+.fact:nth-child(4) { animation-delay: 630ms; }
+.fact:nth-child(5) { animation-delay: 700ms; }
+.fact:nth-child(6) { animation-delay: 770ms; }
+
+/* The epithet is written across, as with a pen. */
+.epithet { animation: ink 1250ms cubic-bezier(0.22, 0.61, 0.36, 1) 460ms both; }
+
+/* A light crosses the way into the surah when it is reached for. */
+.begin {
+  position: relative;
+  overflow: hidden;
+}
+.begin::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 34%, color-mix(in srgb, var(--mk-gold-pale) 34%, transparent) 50%, transparent 66%);
+  transform: translateX(-120%);
+}
+.begin:hover::after {
+  transform: translateX(120%);
+  transition: transform 760ms ease;
+}
+
+/* ── small answers to the hand ────────────────────────────────────────── */
+
+.passageRead {
+  display: inline-block;
+  transition: transform 220ms ease;
+}
+.passage:hover .passageRead { transform: translateX(4px); }
+.passage:hover .passageRead:dir(rtl) { transform: translateX(-4px); }
+
+.neighbour {
+  transition:
+    border-color 160ms ease,
+    transform 260ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.neighbour:hover { transform: translateY(-3px); }
+
+/* A line of light runs down the edge of a quotation as it arrives. */
+.quoted { position: relative; }
+.quoted::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: -2px;
+  width: 2px;
+  background: var(--mk-gold-pale);
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+  pointer-events: none;
+}
+
+/* The heading of a section, and the rule it draws out to the edge. */
+.section:not(.aim) > :global(.kicker) {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.section:not(.aim) > :global(.kicker)::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--mk-gold) 55%, transparent), transparent 84%);
+  transform-origin: 0 50%;
+}
+.section:not(.aim) > :global(.kicker):dir(rtl)::after {
+  background: linear-gradient(270deg, color-mix(in srgb, var(--mk-gold) 55%, transparent), transparent 84%);
+  transform-origin: 100% 50%;
+}
+
+/* The ayah to carry away sits in a light of its own. */
+.keyAyah {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.keyAyah::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -30% -10% auto;
+  height: 110%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--mk-gold-pale) 20%, transparent), transparent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The pin over this surah's bar sends out a ring, slowly, for as long as the page is open. */
+.barHere::after {
+  content: "";
+  position: absolute;
+  top: -16.5px;
+  inset-inline-start: 50%;
+  width: 14px;
+  height: 14px;
+  margin-inline-start: -7px;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.stripPart { transform-origin: 0 50%; }
+.stripPart:dir(rtl) { transform-origin: 100% 50%; }
+
+@media (max-width: 640px) {
+  .attestedRow {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 4px;
+  }
+  .attestedWho {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .works { grid-template-columns: 1fr; }
+}
+
+/* ── motion ───────────────────────────────────────────────────────────── */
+
+/* The page arrives as it is read. `useReveal` marks the root `data-live`, and
+   each waiting part `data-seen` when it is scrolled to. Until the root is
+   marked, nothing waits: a reader without script is simply given the page,
+   and so is one who has asked for less motion, for whom the hook does not
+   run and the site's own rule ends every animation as it starts. */
+
+.shell[data-live] [data-reveal="item"]:not([data-seen]),
+.shell[data-live] [data-reveal="quote"]:not([data-seen]),
+.shell[data-live] [data-reveal="key"]:not([data-seen]),
+.shell[data-live] [data-reveal="prose"]:not([data-seen]) > *,
+.shell[data-live] [data-reveal="end"]:not([data-seen]) > *,
+.shell[data-live] [data-reveal="aim"]:not([data-seen]) > *,
+.shell[data-live] [data-reveal="list"]:not([data-seen]) li,
+.shell[data-live] [data-reveal="list"]:not([data-seen]) > a,
+.shell[data-live] [data-reveal="head"]:not([data-seen]) > :global(.kicker),
+.shell[data-live] [data-reveal="head"]:not([data-seen]) > .title,
+.shell[data-live] [data-reveal="head"]:not([data-seen]) > :global(.kicker) + .written {
+  opacity: 0;
+}
+
+/* A thing on its own: a passage, a narration, a name, a quotation. */
+.shell [data-reveal="item"][data-seen],
+.shell [data-reveal="quote"][data-seen] {
+  animation: arrive 780ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.shell [data-reveal="quote"][data-seen]::before {
+  animation: glint 1400ms cubic-bezier(0.22, 0.61, 0.36, 1) 260ms both;
+}
+.shell [data-reveal="item"][data-seen] .narrationArabic {
+  animation: focus 1150ms cubic-bezier(0.22, 0.61, 0.36, 1) 140ms both;
+}
+.shell [data-reveal="item"][data-seen] .grade {
+  animation: pop 520ms cubic-bezier(0.34, 1.56, 0.64, 1) 420ms both;
+}
+
+/* The head of a section: its label, the rule drawn out from it, its title. */
+.shell [data-reveal="head"][data-seen] > :global(.kicker) {
+  animation: rise 620ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.shell [data-reveal="head"][data-seen] > .title,
+.shell [data-reveal="head"][data-seen] > :global(.kicker) + .written {
+  animation: arrive 780ms cubic-bezier(0.22, 0.61, 0.36, 1) 90ms both;
+}
+.shell[data-live] [data-reveal="head"]:not([data-seen]) > :global(.kicker)::after { transform: scaleX(0); }
+.shell [data-reveal="head"][data-seen] > :global(.kicker)::after {
+  animation: rule 1200ms cubic-bezier(0.22, 0.61, 0.36, 1) 220ms both;
+}
+
+/* Paragraphs, one after another. */
+.shell [data-reveal="prose"][data-seen] > * { animation: arrive 740ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+.shell [data-reveal="prose"][data-seen] > :nth-child(2) { animation-delay: 110ms; }
+.shell [data-reveal="prose"][data-seen] > :nth-child(3) { animation-delay: 220ms; }
+.shell [data-reveal="prose"][data-seen] > :nth-child(4) { animation-delay: 330ms; }
+.shell [data-reveal="prose"][data-seen] > :nth-child(n + 5) { animation-delay: 440ms; }
+
+/* A list: each line a beat after the one before. */
+.shell [data-reveal="list"] li:nth-child(2),
+.shell [data-reveal="list"] > a:nth-child(2) { --i: 1; }
+.shell [data-reveal="list"] li:nth-child(3) { --i: 2; }
+.shell [data-reveal="list"] li:nth-child(4) { --i: 3; }
+.shell [data-reveal="list"] li:nth-child(5) { --i: 4; }
+.shell [data-reveal="list"] li:nth-child(6) { --i: 5; }
+.shell [data-reveal="list"] li:nth-child(7) { --i: 6; }
+.shell [data-reveal="list"] li:nth-child(8) { --i: 7; }
+.shell [data-reveal="list"] li:nth-child(9) { --i: 8; }
+.shell [data-reveal="list"] li:nth-child(10) { --i: 9; }
+.shell [data-reveal="list"] li:nth-child(n + 11) { --i: 10; }
+.shell [data-reveal="list"][data-seen] li,
+.shell [data-reveal="list"][data-seen] > a {
+  animation: arrive 640ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+/* What the surah is for: the Arabic comes into focus, and the rest follows it. */
+.shell [data-reveal="aim"][data-seen] > * { animation: arrive 800ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+.shell [data-reveal="aim"][data-seen] > .aimArabic { animation: focus 1350ms cubic-bezier(0.22, 0.61, 0.36, 1) 90ms both; }
+.shell [data-reveal="aim"][data-seen] > .aimEnglish { animation-delay: 400ms; }
+.shell [data-reveal="aim"][data-seen] > .aimCredit { animation-delay: 580ms; }
+.shell [data-reveal="aim"][data-seen] > .themes { animation-delay: 660ms; }
+
+/* The one ayah: the card opens, the light comes up behind it, the Arabic clears. */
+.shell [data-reveal="key"][data-seen] { animation: bloom 1100ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+.shell [data-reveal="key"][data-seen]::before { animation: glow 2800ms ease-out 220ms both; }
+.shell [data-reveal="key"][data-seen] .keyArabic { animation: focus 1400ms cubic-bezier(0.22, 0.61, 0.36, 1) 260ms both; }
+
+/* The way on. */
+.shell [data-reveal="end"][data-seen] > * { animation: arrive 780ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+.shell [data-reveal="end"][data-seen] > :nth-child(2) { animation-delay: 150ms; }
+.shell [data-reveal="end"][data-seen] > :nth-child(3) { animation-delay: 280ms; }
+
+/* The river: the bars rise from the first surah to the last, the Hijrah is
+   marked, and the pin drops onto this one. With no script they rise as the
+   page opens, as they always did. */
+.bar { animation-delay: calc(var(--i, 0) * 7ms); }
+.shell[data-live] [data-reveal="river"]:not([data-seen]) .bar {
+  animation: none;
+  transform: scaleY(0);
+}
+.shell[data-live] [data-reveal="river"]:not([data-seen]) .hijrah,
+.shell[data-live] [data-reveal="river"]:not([data-seen]) .barHere::before,
+.shell[data-live] [data-reveal="river"]:not([data-seen]) .riverNext {
+  opacity: 0;
+}
+.shell [data-reveal="river"][data-seen] .hijrah { animation: fade 800ms ease 700ms both; }
+.shell [data-reveal="river"][data-seen] .barHere::before {
+  animation: pin 560ms cubic-bezier(0.34, 1.56, 0.64, 1) 1050ms both;
+}
+.shell [data-reveal="river"][data-seen] .barHere::after { animation: ping 3200ms ease-out 1700ms infinite; }
+.shell [data-reveal="river"][data-seen] .riverNext { animation: arrive 700ms cubic-bezier(0.22, 0.61, 0.36, 1) 900ms both; }
+
+/* The surah laid out in a line: each passage is drawn out in its turn. */
+.shell[data-live] [data-reveal="strip"]:not([data-seen]) .stripPart {
+  transform: scaleX(0);
+  opacity: 0;
+}
+.shell [data-reveal="strip"][data-seen] .stripPart {
+  animation: growX 640ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 55ms);
+}
+
+/* Two things the scroll itself draws, where a browser can: the hair of gold
+   along the top, and the medallion sinking back as the page moves on. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .progress {
+      animation: fill linear both;
+      animation-timeline: scroll(nearest block);
+    }
+    @media (min-width: 1081px) {
+      .medallion {
+        animation: sink linear both;
+        animation-timeline: scroll(nearest block);
+        animation-range: 0px 680px;
+      }
+    }
+  }
+}
+
+/* A module cannot use a global keyframe — see the note in globals.css. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes sheen {
+  from { background-position: 130% 0; }
+  to { background-position: -130% 0; }
+}
+@keyframes grow {
+  from { transform: scaleY(0); }
+  to { transform: none; }
+}
+@keyframes arrive {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes rule {
+  from { transform: scaleX(0); }
+  to { transform: none; }
+}
+@keyframes growX {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes focus {
+  from { opacity: 0; filter: blur(7px); transform: scale(1.025); }
+  to { opacity: 1; filter: blur(0); transform: none; }
+}
+@keyframes bloom {
+  from { opacity: 0; transform: scale(0.975); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes glow {
+  0% { opacity: 0; }
+  35% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.82); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pin {
+  from { opacity: 0; transform: translateY(-12px) rotate(45deg); }
+  to { opacity: 1; transform: rotate(45deg); }
+}
+@keyframes ping {
+  0% { opacity: 0.85; transform: scale(0.5); }
+  70%, 100% { opacity: 0; transform: scale(2.6); }
+}
+@keyframes fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes sink {
+  to { opacity: 0.5; transform: translateY(44px) scale(0.965); }
+}
+@keyframes drift {
+  to { transform: translate3d(0, -240px, 0); }
+}
+@keyframes ink {
+  from { clip-path: inset(-10% 100% -20% -4%); }
+  to { clip-path: inset(-10% -4% -20% -4%); }
+}
+@keyframes glint {
+  0% { opacity: 1; transform: scaleY(0); }
+  65% { opacity: 1; transform: scaleY(1); }
+  100% { opacity: 0; transform: scaleY(1); }
+}
+@keyframes glintX {
+  0% { opacity: 1; transform: scaleX(0); }
+  60% { opacity: 1; transform: scaleX(1); }
+  100% { opacity: 0; transform: scaleX(1); }
+}
+
+/* ── narrower ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 1080px) {
+  .heroInner {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 6px;
+    padding: 18px 22px 36px;
+    text-align: center;
+  }
+  /* The medallion first, as a manuscript opens on its shamsa; the way back
+     stays above it. */
+  .back { order: -2; }
+  .medallion {
+    order: -1;
+    width: min(100%, 430px);
+    margin: 0 auto;
+  }
+  .heroText .written { text-align: center; }
+  .kicker { margin-top: 14px; }
+  .lede { margin-inline: auto; }
+  .facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px 10px;
+  }
+  .fact dd { font-size: 23px; }
+  .heroActions { justify-content: center; }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding: 0 22px 120px;
+  }
+  /* The rail lies down and scrolls sideways. */
+  .rail {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    margin: 0 -22px 34px;
+    padding: 10px 22px;
+    background: color-mix(in srgb, var(--color-bg) 93%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-divider);
+  }
+  .railInner {
+    position: static;
+    flex-direction: row;
+    gap: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .railInner::-webkit-scrollbar { display: none; }
+  .railInner > :global(.kicker) { display: none; }
+  .railLink {
+    border-inline-start: 0;
+    border-bottom: 2px solid transparent;
+    padding: 5px 0;
+    white-space: nowrap;
+  }
+  .railOn { border-bottom-color: var(--color-accent); }
+
+  .body { max-width: none; }
+  .section,
+  .passage { scroll-margin-top: 60px; }
+}
+
+@media (max-width: 640px) {
+  .section { margin-bottom: 64px; }
+  .keyAyah { margin-bottom: 64px; padding: 30px 18px 24px; }
+  .aim { padding: 40px 6px 36px; }
+  .prose { font-size: 15.5px; }
+
+  .riverBars { height: 104px; column-gap: 0; }
+  .riverLink { font-size: 15.5px; padding: 8px 11px; }
+
+  .occasion,
+  .passage {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 10px;
+  }
+  .occasion > :not(.occasionWhere) { grid-column: 1; }
+  .occasionWhere { grid-row: auto; }
+  .passageWhere {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .passageShare { margin-top: 0; }
+  .passage::before { inset-inline-start: -12px; }
+
+  .quoted { padding: 14px 16px 12px; }
+  .quotedText { font-size: 19.5px; }
+  .quotedLink { margin-inline-start: 0; }
+
+  .telling > p:first-child::first-letter { font-size: 3.5em; }
+  .names { grid-template-columns: minmax(0, 1fr); }
+  .endArabic { font-size: 46px; }
+}

@@ -1,3 +1,5 @@
+import type { MessageKey } from "../i18n/types";
+
 /**
  * The ayah the landing page opens with.
  *
@@ -9,22 +11,23 @@
  */
 export interface DailyEntry {
   key: string;
-  theme: string;
+  /** Said in the reader's language: see "daily.*" in lib/i18n/messages. */
+  theme: MessageKey;
 }
 
 export const DAILY: DailyEntry[] = [
-  { key: "2:286", theme: "When it feels like too much" },
-  { key: "13:28", theme: "A restless heart" },
-  { key: "94:5", theme: "In the middle of hardship" },
-  { key: "65:3", theme: "Worry about provision" },
-  { key: "39:53", theme: "Feeling past forgiving" },
-  { key: "3:139", theme: "Discouragement" },
-  { key: "20:114", theme: "Before study" },
-  { key: "29:69", theme: "Trying to keep on" },
-  { key: "17:82", theme: "Healing" },
-  { key: "2:255", theme: "The Throne Verse" },
-  { key: "55:13", theme: "Gratitude" },
-  { key: "18:10", theme: "Asking for guidance" },
+  { key: "2:286", theme: "daily.2:286" },
+  { key: "13:28", theme: "daily.13:28" },
+  { key: "94:5", theme: "daily.94:5" },
+  { key: "65:3", theme: "daily.65:3" },
+  { key: "39:53", theme: "daily.39:53" },
+  { key: "3:139", theme: "daily.3:139" },
+  { key: "20:114", theme: "daily.20:114" },
+  { key: "29:69", theme: "daily.29:69" },
+  { key: "17:82", theme: "daily.17:82" },
+  { key: "2:255", theme: "daily.2:255" },
+  { key: "55:13", theme: "daily.55:13" },
+  { key: "18:10", theme: "daily.18:10" },
 ];
 
 const DAY_MS = 86_400_000;

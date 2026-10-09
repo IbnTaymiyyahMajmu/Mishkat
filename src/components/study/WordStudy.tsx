@@ -21,11 +21,12 @@ import {
   fetchRootVerses,
   scanUrl,
 } from "@/lib/quran/lexicon";
-import { isCompound, readGrammar, romanizeRoot, type Grammar } from "@/lib/quran/morphology";
-import { SURAH_NAMES } from "@/lib/quran/surahNames";
-import { useChapters } from "@/lib/store/chapters";
+import { isCompound, readGrammar, romanizeRoot, sayPos, type Grammar } from "@/lib/quran/morphology";
 import { useSettings } from "@/lib/store/settings";
 import { stripDiacritics } from "@/lib/text";
+import { useLocale, type MessageKey, type Translate } from "@/lib/i18n";
+import { useSurahNames } from "@/lib/i18n/surah";
+import { markWords as mark } from "./mark";
 import styles from "./WordStudy.module.css";
 
 /**
@@ -47,6 +48,12 @@ import styles from "./WordStudy.module.css";
  * prefix, which is the stem — and marks nothing that had to be worked out. No
  * sentence on this page was written by a machine about the language.
  */
+
+const ROLE: Record<"prefix" | "stem" | "suffix", MessageKey> = {
+  prefix: "study.role.prefix",
+  stem: "study.role.stem",
+  suffix: "study.role.suffix",
+};
 
 /** A slot answers only for the thing it was fetched for. */
 type Slot<T> = { key: string; value: T } | undefined;
@@ -80,9 +87,9 @@ export function WordStudy() {
   const verseKey = surah ? `${surah}:${ayah}` : "";
 
   const { settings } = useSettings();
-  const { chapters } = useChapters();
-  const chapter = chapters.find((c) => c.id === surah);
-  const surahName = chapter?.name_simple ?? SURAH_NAMES[surah - 1]?.english ?? `Surah ${surah}`;
+  const { t, rich, n, arrows, grammar } = useLocale();
+  const names = useSurahNames();
+  const surahName = surah ? names.name(surah) : "";
 
   const [verse, setVerse] = useState<Slot<Verse | null>>();
   const [segments, setSegments] = useState<Slot<Segment[] | null>>();
@@ -104,7 +111,7 @@ export function WordStudy() {
   const formCount = stamped(sameForm, target);
 
   const word = stamped(verse, verseKey)?.words.find((w) => w.position === position);
-  const grammars: Grammar[] = (parts ?? []).map((s) => readGrammar(s.raw, s.pos));
+  const grammars: Grammar[] = (parts ?? []).map((s) => readGrammar(s.raw, s.pos, grammar));
 
   // ── loading ───────────────────────────────────────────────────────────────
 
@@ -246,22 +253,22 @@ export function WordStudy() {
   // ── the rail ──────────────────────────────────────────────────────────────
 
   const stops: Stop[] = [
-    { id: "word", label: "The word" },
-    { id: "breakdown", label: "Part by part" },
+    { id: "word", label: t("study.stop.word") },
+    { id: "breakdown", label: t("study.stop.parts") },
     ...(rootKey
       ? [
-          { id: "root", label: "The root" },
-          { id: "occurrences", label: "Where it occurs" },
+          { id: "root", label: t("study.stop.root") },
+          { id: "occurrences", label: t("study.stop.occurs") },
         ]
       : []),
     ...(lexicons?.length
       ? [
-          { id: "lexicons", label: "The lexicons" },
+          { id: "lexicons", label: t("study.stop.lexicons") },
           ...lexicons.map((w) => ({ id: `work-${w.id}`, label: w.name, sub: true })),
         ]
       : []),
-    ...(profile?.cognates.length ? [{ id: "cognates", label: "Sister languages" }] : []),
-    { id: "sources", label: "Sources" },
+    ...(profile?.cognates.length ? [{ id: "cognates", label: t("study.stop.sisters") }] : []),
+    { id: "sources", label: t("study.stop.sources") },
   ];
 
   const here = useHere(stops.map((s) => s.id));
@@ -270,14 +277,11 @@ export function WordStudy() {
     return (
       <div className="page-shell">
         <div className="page-body">
-          <div className="kicker">Study</div>
-          <h1 className={styles.missingTitle}>No word chosen</h1>
-          <p className={styles.missingBody}>
-            This page opens on one word of the Qur&rsquo;an. Open a surah, press a word in the text,
-            and follow <em>Study this word in full</em> from the panel that appears.
-          </p>
+          <div className="kicker">{t("study.kicker")}</div>
+          <h1 className={styles.missingTitle}>{t("study.noWord")}</h1>
+          <p className={styles.missingBody}>{rich("study.noWordBody", { em: (words) => <em>{words}</em> })}</p>
           <Link href="/surahs/" className="btn btn-primary" style={{ marginTop: 20 }}>
-            Choose a surah
+            {t("study.choose")}
           </Link>
         </div>
       </div>
@@ -292,10 +296,10 @@ export function WordStudy() {
     <div className="page-shell">
       <div className={styles.layout}>
         {/* ── the rail ───────────────────────────────────────────────── */}
-        <nav className={styles.rail} aria-label="On this page">
+        <nav className={styles.rail} aria-label={t("study.onPage")}>
           <div className={styles.railInner}>
             <div className="kicker kicker-sm" style={{ marginBottom: 10 }}>
-              On this page
+              {t("study.onPage")}
             </div>
             {stops.map((s) => (
               <a
@@ -319,7 +323,7 @@ export function WordStudy() {
           {/* ── the word ─────────────────────────────────────────────── */}
           <header id="word" className={styles.head}>
             <Link href={`/read/${surah}/#${verseKey}`} className={styles.back}>
-              ← {surahName} {verseKey}
+              {arrows.prev} {surahName} {verseKey}
             </Link>
 
             <div className={styles.headword} dir="rtl">
@@ -332,22 +336,28 @@ export function WordStudy() {
               <div className={styles.headGloss}>{word.translation.text}</div>
             )}
             <div className={styles.headWhere}>
-              Word {position} of {verseKey} · page {stamped(verse, verseKey)?.page_number ?? "—"} ·
-              juz&rsquo; {stamped(verse, verseKey)?.juz_number ?? "—"}
+              {t("study.where", {
+                n: position,
+                key: verseKey,
+                page: stamped(verse, verseKey)?.page_number ?? "—",
+                juz: stamped(verse, verseKey)?.juz_number ?? "—",
+              })}
             </div>
           </header>
 
           {ayahText && (
             <section className={styles.context}>
-              <div className="kicker kicker-sm">The ayah it stands in</div>
+              <div className="kicker kicker-sm">{t("study.context")}</div>
               <p className={styles.contextArabic} dir="rtl">
                 {mark(ayahText, [position], styles.here)}
               </p>
               {ayahTranslation && (
                 <>
-                  <p className={styles.contextEnglish}>{plain(ayahTranslation.text)}</p>
+                  <p className={styles.contextEnglish} dir="auto">
+                    {plain(ayahTranslation.text)}
+                  </p>
                   <div className={styles.credit}>
-                    Translation of the meaning · {ayahTranslation.resource_name}
+                    {t("common.translationOf", { name: ayahTranslation.resource_name ?? "" })}
                   </div>
                 </>
               )}
@@ -356,22 +366,19 @@ export function WordStudy() {
 
           {/* ── part by part ─────────────────────────────────────────── */}
           <section id="breakdown" className={styles.section}>
-            <h2 className={styles.h2}>Part by part</h2>
+            <h2 className={styles.h2}>{t("study.stop.parts")}</h2>
 
-            {parts === undefined && <p className={styles.quiet}>Reading the grammar…</p>}
+            {parts === undefined && <p className={styles.quiet}>{t("word.readingGrammar")}</p>}
             {parts === null && (
               <p className={styles.quiet}>
-                The morphology for this ayah could not be reached. Nothing is inferred in its place.
+                {t("word.noMorphology")}
               </p>
             )}
 
             {parts && compound && (
               <>
                 <p className={styles.lede}>
-                  The corpus tags this word in {parts.length} pieces. They are set apart here, and
-                  keyed by colour throughout the page — a prefix, the stem that carries the root,
-                  and what is attached at the end. Arabic letters do not join across the gaps, so
-                  the pieces are shown separated rather than as the word is written.
+                  {t("study.pieces", { count: parts.length })}
                 </p>
                 <div className={styles.split} dir="rtl">
                   {parts.map((s, i) => (
@@ -386,7 +393,7 @@ export function WordStudy() {
                     .map((r) => (
                       <span key={r} className={styles.legendItem}>
                         <span className={`${styles.swatch} ${styles[r]}`} />
-                        {r === "stem" ? "stem — carries the root" : r}
+                        {r === "stem" ? t("study.stemCarries") : t(ROLE[r])}
                       </span>
                     ))}
                 </div>
@@ -402,15 +409,15 @@ export function WordStudy() {
                   </div>
                   <div className={styles.segBody}>
                     <div className={styles.segTop}>
-                      <span className={styles.segPos}>{s.pos}</span>
-                      <span className={`${styles.segRole} ${styles[`chip_${g.role}`]}`}>{g.role}</span>
+                      <span className={styles.segPos}>{sayPos(s.raw, s.pos, grammar)}</span>
+                      <span className={`${styles.segRole} ${styles[`chip_${g.role}`]}`}>{t(ROLE[g.role])}</span>
                     </div>
 
                     {(s.rootSpaced || s.lemma) && (
                       <dl className={styles.segStem}>
                         {s.rootSpaced && (
                           <>
-                            <dt>Root</dt>
+                            <dt>{t("study.rootLabel")}</dt>
                             <dd dir="rtl" className={styles.segRoot}>
                               {s.rootSpaced}
                             </dd>
@@ -418,7 +425,7 @@ export function WordStudy() {
                         )}
                         {s.lemma && (
                           <>
-                            <dt>Lemma</dt>
+                            <dt>{t("study.lemmaLabel")}</dt>
                             <dd dir="rtl" className={styles.segLemma}>
                               {s.lemma}
                             </dd>
@@ -445,7 +452,7 @@ export function WordStudy() {
           {/* ── the root ─────────────────────────────────────────────── */}
           {rootKey && (
             <section id="root" className={styles.section}>
-              <h2 className={styles.h2}>The root</h2>
+              <h2 className={styles.h2}>{t("study.stop.root")}</h2>
               <div className={styles.rootBlock}>
                 <div className={styles.rootArabic} dir="rtl">
                   {stem?.rootSpaced}
@@ -464,25 +471,16 @@ export function WordStudy() {
                   the same number up twice under two labels, the page says the
                   one thing it actually knows. */}
               <div className={styles.figures}>
-                <Figure
-                  n={profile ? profile.ayat.toLocaleString() : "—"}
-                  label="ayat carry this root"
-                />
-                <Figure n={profile ? String(profile.lemmas.length) : "—"} label="lemmas grown from it" />
-                <Figure
-                  n={formCount === undefined ? "—" : formCount.toLocaleString()}
-                  label="ayat with this exact form"
-                />
-                <Figure
-                  n={lexicons === undefined ? "—" : String(lexicons.length)}
-                  label="lexicons with an entry"
-                />
+                <Figure n={profile ? n(profile.ayat) : "—"} label={t("study.figure.ayat")} />
+                <Figure n={profile ? String(profile.lemmas.length) : "—"} label={t("study.figure.lemmas")} />
+                <Figure n={formCount === undefined ? "—" : n(formCount)} label={t("study.figure.form")} />
+                <Figure n={lexicons === undefined ? "—" : String(lexicons.length)} label={t("study.figure.lexicons")} />
               </div>
 
               {profile && profile.lemmas.length > 0 && (
                 <>
                   <div className="kicker kicker-sm" style={{ margin: "26px 0 10px" }}>
-                    Every lemma the corpus grows from it
+                    {t("study.everyLemma")}
                   </div>
                   <div className={styles.lemmas} dir="rtl">
                     {profile.lemmas.map((l) => (
@@ -495,8 +493,7 @@ export function WordStudy() {
                     ))}
                   </div>
                   <p className={styles.footnote}>
-                    The lemma of the word on this page is marked. A lemma is a dictionary form, not
-                    a meaning: two lemmas of one root can sit some distance apart.
+                    {t("study.lemmaNote")}
                   </p>
                 </>
               )}
@@ -506,21 +503,13 @@ export function WordStudy() {
           {/* ── where it occurs ──────────────────────────────────────── */}
           {rootKey && (
             <section id="occurrences" className={styles.section}>
-              <h2 className={styles.h2}>Where it occurs</h2>
-              {occurrences === undefined && <p className={styles.quiet}>Counting…</p>}
+              <h2 className={styles.h2}>{t("study.stop.occurs")}</h2>
+              {occurrences === undefined && <p className={styles.quiet}>{t("study.counting")}</p>}
               {occurrences && (
                 <>
                   <p className={styles.lede}>
-                    Every ayah carrying this root, in the order of the muṣḥaf, with the words that
-                    carry it marked. {occurrences.verses.length.toLocaleString()} of{" "}
-                    {occurrences.total.toLocaleString()} shown.
-                    {formCount !== undefined && formCount > 0 && (
-                      <>
-                        {" "}
-                        The search index finds {formCount.toLocaleString()} of them carrying this
-                        exact form; the rest are other shapes grown from the same root.
-                      </>
-                    )}
+                    {t("study.occurs", { shown: n(occurrences.verses.length), total: n(occurrences.total) })}
+                    {formCount !== undefined && formCount > 0 && <> {t("study.occursForm", { count: n(formCount) })}</>}
                   </p>
                   {occurrences.verses.map((v) => (
                     <Link key={v.key} href={`/read/${v.key.split(":")[0]}/#${v.key}`} className={styles.occ}>
@@ -534,8 +523,8 @@ export function WordStudy() {
                   {occurrences.verses.length < occurrences.total && (
                     <button className="btn btn-secondary btn-block" onClick={loadMore} disabled={fetchingMore}>
                       {fetchingMore
-                        ? "Fetching…"
-                        : `Show fifty more of ${(occurrences.total - occurrences.verses.length).toLocaleString()} left`}
+                        ? t("common.fetching")
+                        : t("study.more", { count: n(occurrences.total - occurrences.verses.length) })}
                     </button>
                   )}
                 </>
@@ -546,19 +535,16 @@ export function WordStudy() {
           {/* ── the lexicons ─────────────────────────────────────────── */}
           {rootKey && (
             <section id="lexicons" className={styles.section}>
-              <h2 className={styles.h2}>The lexicons</h2>
-              {lexicons === undefined && <p className={styles.quiet}>Opening the lexicons…</p>}
+              <h2 className={styles.h2}>{t("study.stop.lexicons")}</h2>
+              {lexicons === undefined && <p className={styles.quiet}>{t("word.openingLexicons")}</p>}
               {lexicons?.length === 0 && (
                 <p className={styles.quiet}>
-                  No lexicon in the connected library carries an entry for this root yet. The
-                  scanned pages under Sources are unaffected.
+                  {t("study.noLexicon")}
                 </p>
               )}
               {lexicons && lexicons.length > 0 && (
                 <p className={styles.lede}>
-                  {lexicons.length} works, the earliest author first. Each entry is printed in the
-                  Arabic its author wrote, with a translation of that Arabic beneath it — the Arabic
-                  first, because the translation is the part that can be wrong.
+                  {t("study.lexicons", { count: lexicons.length })}
                 </p>
               )}
 
@@ -570,6 +556,7 @@ export function WordStudy() {
                   open={isOpen(w.id)}
                   onToggle={() => toggle(w.id)}
                   scan={scanUrl(rootKey)}
+                  t={t}
                 />
               ))}
             </section>
@@ -578,11 +565,9 @@ export function WordStudy() {
           {/* ── cognates ─────────────────────────────────────────────── */}
           {profile && profile.cognates.length > 0 && (
             <section id="cognates" className={styles.section}>
-              <h2 className={styles.h2}>In the sister languages</h2>
+              <h2 className={styles.h2}>{t("word.sisters")}</h2>
               <p className={styles.lede}>
-                Comparative philology, not Arabic lexicography. A cognate records how a root was
-                used in a related language, which is a different question from what the word means
-                here — the lexicons above answer that one. Oldest attestation first.
+                {t("study.cognates")}
               </p>
               <div className={styles.cognates}>
                 {profile.cognates.map((c, i) => (
@@ -602,40 +587,44 @@ export function WordStudy() {
 
           {/* ── sources ──────────────────────────────────────────────── */}
           <section id="sources" className={styles.section}>
-            <h2 className={styles.h2}>Sources</h2>
+            <h2 className={styles.h2}>{t("study.stop.sources")}</h2>
             <dl className={styles.sources}>
-              <dt>Text and translation</dt>
-              <dd>Uthmānī muṣḥaf and word gloss, Quran.com corpus</dd>
-              <dt>Grammar, root, lemma</dt>
+              <dt>{t("study.source.text")}</dt>
+              <dd>{t("study.source.textValue")}</dd>
+              <dt>{t("study.source.grammar")}</dt>
               <dd>
                 <a href={MORPHOLOGY_SOURCE.href} target="_blank" rel="noopener noreferrer">
                   {MORPHOLOGY_SOURCE.name}
                 </a>{" "}
-                — Kais Dukes, Language Research Group, University of Leeds
+                — {t("study.source.grammarBy")}
               </dd>
-              <dt>Lexicons and cognates</dt>
+              <dt>{t("study.source.lexicons")}</dt>
               <dd>
-                Served by{" "}
-                <a href={MORPHOLOGY_SOURCE.servedHref} target="_blank" rel="noopener noreferrer">
-                  {MORPHOLOGY_SOURCE.served}
-                </a>
-                , each entry under its own author&rsquo;s name
+                {rich(
+                  "study.source.served",
+                  {
+                    served: (words) => (
+                      <a href={MORPHOLOGY_SOURCE.servedHref} target="_blank" rel="noopener noreferrer">
+                        {words}
+                      </a>
+                    ),
+                  },
+                  { served: MORPHOLOGY_SOURCE.served },
+                )}
               </dd>
               {rootKey && (
                 <>
-                  <dt>Scanned pages</dt>
+                  <dt>{t("study.source.scans")}</dt>
                   <dd>
                     <a href={scanUrl(rootKey)} target="_blank" rel="noopener noreferrer">
-                      Arabic Almanac — Lane, Hava, Wehr, Steingass on {stem?.rootSpaced}
+                      {t("study.source.scansValue", { root: stem?.rootSpaced ?? "" })}
                     </a>
                   </dd>
                 </>
               )}
             </dl>
             <p className={styles.footnote}>
-              Nothing on this page is generated. Where a source is silent, so is the screen: a root
-              the lexicons have not reached says so rather than being filled in, and a grammatical
-              code the corpus uses that this site cannot name is shown as the corpus wrote it.
+              {t("study.generated")}
             </p>
           </section>
         </article>
@@ -661,7 +650,9 @@ function LexiconSection({
   open,
   onToggle,
   scan,
+  t,
 }: {
+  t: Translate;
   work: LexiconEntry;
   text: LexiconText | null | undefined;
   open: boolean;
@@ -681,22 +672,20 @@ function LexiconSection({
         </span>
         <span className={styles.workBy}>
           {work.author}
-          {work.died !== null && ` · d. ${work.died}`}
-          {work.quranic && <span className={styles.tag}>a lexicon of the Qur&rsquo;an</span>}
+          {work.died !== null && ` · ${t("word.died", { year: work.died })}`}
+          {work.quranic && <span className={styles.tag}>{t("study.lexiconOfQuran")}</span>}
         </span>
-        <span className={styles.workState}>{open ? "Close" : "Read the entry"}</span>
+        <span className={styles.workState}>{open ? t("common.close") : t("study.readEntry")}</span>
       </button>
 
       {open && (
         <div className={styles.workBody}>
-          {text === undefined && <p className={styles.quiet}>Fetching the entry…</p>}
-          {text === null && (
-            <p className={styles.quiet}>This entry could not be reached just now.</p>
-          )}
+          {text === undefined && <p className={styles.quiet}>{t("word.fetchingEntry")}</p>}
+          {text === null && <p className={styles.quiet}>{t("study.entryUnreached")}</p>}
 
           {text?.arabic && (
             <>
-              <div className="kicker kicker-sm">As its author wrote it</div>
+              <div className="kicker kicker-sm">{t("study.asWritten")}</div>
               <p className={styles.entryArabic} dir="rtl">
                 {text.arabic}
               </p>
@@ -706,7 +695,7 @@ function LexiconSection({
           {text?.english && (
             <>
               <div className="kicker kicker-sm" style={{ marginTop: 30 }}>
-                Translated
+                {t("word.translated")}
               </div>
               {senses(text.english).map((s, i) => (
                 <Sense key={i} sense={s} />
@@ -717,7 +706,7 @@ function LexiconSection({
           {work.summary && (
             <>
               <div className="kicker kicker-sm" style={{ marginTop: 30 }}>
-                The entry in brief
+                {t("study.inBrief")}
               </div>
               {senses(work.summary).map((s, i) => (
                 <Sense key={i} sense={s} />
@@ -728,11 +717,11 @@ function LexiconSection({
           <div className={styles.workFoot}>
             {text?.sourceUrl && (
               <a href={text.sourceUrl} target="_blank" rel="noopener noreferrer" className={styles.out}>
-                Verify at the source ↗
+                {t("study.verify")} ↗
               </a>
             )}
             <a href={scan} target="_blank" rel="noopener noreferrer" className={styles.out}>
-              Scanned pages ↗
+              {t("study.scans")} ↗
             </a>
           </div>
         </div>
@@ -786,34 +775,6 @@ function Rich({ text }: { text: string }) {
       )}
     </>
   );
-}
-
-/**
- * Mark the words at these positions in an ayah. This is counting rather than
- * matching letters, which is why it can be trusted to mark the right word and
- * no other — provided what is counted is words.
- *
- * A space does not quite do that. The muṣḥaf sets some of its signs off on
- * their own: the pause marks (ۛ ۖ ۗ), the ۞ that opens a quarter, the ۩ of a
- * prostration. The corpus does not number those, so a sign standing alone is
- * passed over without being counted. Counting it put the mark one word late
- * for everything after the first pause in the ayah — in 2:2 the word chosen
- * was فِيهِ and the one lit was the ۛ before it.
- */
-const LETTER = /[\u0621-\u064A\u066E-\u06D3]/;
-
-function mark(arabic: string, positions: number[], cls: string) {
-  const at = new Set(positions);
-  let word = 0;
-  return arabic.split(/\s+/).map((w, i) => {
-    const counted = LETTER.test(w);
-    if (counted) word += 1;
-    return (
-      <span key={i} className={counted && at.has(word) ? cls : undefined}>
-        {w}{" "}
-      </span>
-    );
-  });
 }
 
 /** `-1400`, `-1180` → `"14th–12th c. BC"`; kept short enough for a table cell. */

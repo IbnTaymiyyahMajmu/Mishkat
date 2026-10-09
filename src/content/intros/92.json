@@ -1,0 +1,157 @@
+{
+  "surah": 92,
+  "epithet": "Two roads, and the man who gave everything",
+  "lede": "Your efforts, it says, are scattered in every direction. Then it sorts them into two — the hand that gives and the hand that holds back — and ends with a portrait that the commentators recognised as Abū Bakr.",
+  "names": [
+    {
+      "arabic": "الليل",
+      "name": "al-Layl",
+      "meaning": "The Night",
+      "note": "After the first thing it swears by: the night as it covers. The Prophet ﷺ named it by its opening, Wa-l-layli idhā yaghshā (al-Bukhārī 705)."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "Ibn al-Jawzī records agreement that all of it is Makkan. Al-Qurṭubī gives it as Makkan and mentions, without naming who, a saying that it is Madinan. The traditional order places it ninth, and the event its closing ayat are tied to — Abū Bakr buying the freedom of tortured slaves — belongs to the first years of the call.",
+    "period": "makkah-early",
+    "when": "The first years in Makkah, when the weakest believers were being tortured and Abū Bakr was buying their freedom",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ اللَّيْلِ وَهِيَ مَكِّيَّةٌ كُلُّها بِإجْماعِهِمْ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "مَكِّيَّةٌ. وَقِيلَ: مَدَنِيَّةٌ. وَهِيَ إِحْدَى وَعِشْرُونَ آيَةً بإجماع"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ اللَّيْلِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿واللَّيْلِ إذا يَغْشى﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ عِنْدَ الجُمْهُورِ، وقِيلَ مَدَنِيَّةٌ",
+        "says": "Makkan, in the saying of the majority; a saying that it is Madinan is also mentioned."
+      }
+    ]
+  },
+  "setting": [
+    "In the first years in Makkah the Muslims with no clan to defend them were at the mercy of their owners. Bilāl was dragged out to the midday sand by Umayyah ibn Khalaf with a boulder set on his chest, and answered every demand with one word: Aḥad, Aḥad — One, One.",
+    "Abū Bakr was a merchant, and he began to spend his fortune buying such people and setting them free: Bilāl, ʿĀmir ibn Fuhayrah, Zinnīrah, al-Nahdiyyah and her daughter, and others. His father, Abū Quḥāfah, who had not yet accepted Islam, is reported to have said to him: I see you freeing weak slaves — why not free strong men who could protect you?{reported} He answered that he was only seeking what is with Allah.",
+    "The last five ayat of the surah describe a man who gives his wealth to purify himself, who owes no one a favour that he is repaying, and who seeks nothing but the Face of his Lord, the Most High. Ibn Kathīr writes that more than one of the commentators said these ayat came down about Abū Bakr al-Ṣiddīq, and that some reported the agreement of the commentators on it; and he adds that the wording is general, and Abū Bakr is simply the first of the community to whom it applies.{reported}"
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        17,
+        21
+      ],
+      "title": "Abū Bakr al-Ṣiddīq",
+      "text": "More than one of the commentators has said that these ayat came down about Abū Bakr al-Ṣiddīq — may Allah be pleased with him — so much so that some of them reported agreement on it. There is no doubt that he is included in them, and is the foremost of the community in their general meaning.",
+      "source": "Ibn Kathīr, on these ayat.",
+      "rank": "reported",
+      "evidence": {
+        "work": "ibn-katheer",
+        "ayah": 17,
+        "quote": "وَقَدْ ذَكَرَ غَيْرُ وَاحِدٍ مِنَ الْمُفَسِّرِينَ أَنَّ هَذِهِ الْآيَاتِ نَزَلَتْ فِي أَبِي بَكْرٍ الصِّدِّيقِ، رَضِيَ اللَّهُ عَنْهُ، حَتَّى إِنَّ بَعْضَهُمْ حَكَى الْإِجْمَاعَ مِنَ الْمُفَسِّرِينَ عَلَى ذَلِكَ. وَلَا شَكَّ أَنَّهُ دَاخِلٌ فِيهَا، وَأَوْلَى الْأُمَّةِ بِعُمُومِهَا"
+      }
+    }
+  ],
+  "aim": "To show the difference between souls and their deeds — and so the difference in rank between believers and disbelievers.",
+  "themes": [
+    "Giving and withholding",
+    "Ease and hardship",
+    "Guidance belongs to Allah",
+    "Sincerity",
+    "Abū Bakr"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 4,
+      "title": "The oath",
+      "summary": "By the night as it covers, by the day as it shines out, and by the One who created the male and the female: your striving is of many kinds."
+    },
+    {
+      "from": 5,
+      "to": 11,
+      "title": "Two ways of living",
+      "summary": "As for the one who gives, and is mindful of Allah, and affirms the best reward — We shall ease his way to ease. As for the one who is miserly, and thinks himself in need of nothing, and denies the best reward — We shall ease his way to hardship; and his wealth will not help him when he falls."
+    },
+    {
+      "from": 12,
+      "to": 16,
+      "title": "The warning",
+      "summary": "Guidance is upon Us, and to Us belong the last life and the first. So I have warned you of a fire that blazes, which none will enter but the most wretched: he who denied and turned away."
+    },
+    {
+      "from": 17,
+      "to": 21,
+      "title": "The most mindful",
+      "summary": "And the most mindful will be kept far from it — he who gives his wealth to purify himself, with no favour owed to anyone to be repaid, seeking only the Face of his Lord, the Most High. And he will be well pleased."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 7,
+    "why": "The promise the Prophet ﷺ quoted when he was asked why anyone should act, if everything is already written."
+  },
+  "virtues": [
+    {
+      "text": "At a funeral in Baqīʿ the Prophet ﷺ said: “There is not one of you whose place in Paradise or in the Fire has not been written.” They said: “Messenger of Allah, shall we not then rely on what is written, and leave off working?” He said: “Work, for everyone is eased towards what he was created for,” and recited: “As for the one who gives, and is mindful, and affirms the best reward — We shall ease his way to ease.”",
+      "arabic": "اعْمَلُوا فَكُلٌّ مُيَسَّرٌ لِمَا خُلِقَ لَهُ",
+      "narrator": "ʿAlī ibn Abī Ṭālib",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4949 · Ṣaḥīḥ Muslim, 2647",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4949"
+        },
+        {
+          "book": "muslim",
+          "number": "2647"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "before": "Al-Shams: he has succeeded who purifies the soul. Al-Layl shows the purifying being done — a man giving his wealth “to purify himself” (92:18).",
+  "after": "Al-Layl ends, of the best of the community, “and he will be well pleased” (92:21). Al-Ḍuḥā says the same to the Prophet ﷺ: your Lord will give to you, and you will be well pleased.",
+  "notable": [
+    {
+      "ayah": 4,
+      "label": "Your striving is of many kinds"
+    },
+    {
+      "ayah": 5,
+      "to": 7,
+      "label": "The one who gives, and is eased to ease"
+    },
+    {
+      "ayah": 17,
+      "to": 21,
+      "label": "The most mindful, who seeks only his Lord’s Face"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "surah": 104,
+  "epithet": "The slanderer, and what his wealth will buy him",
+  "lede": "A portrait in three strokes: he mocks people to their faces, cuts at them behind their backs, and counts his money as though it could keep him alive. Then the door closes on him — literally.",
+  "names": [
+    {
+      "arabic": "الهمزة",
+      "name": "al-Humazah",
+      "meaning": "The Slanderer",
+      "note": "After the first of the two words it opens with. Humazah and lumazah are both intensive forms: one who makes a habit of wounding people — by word or by gesture, in their presence or their absence. The commentators give several ways of telling the two apart, and all of them are true of the same man."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "Ibn al-Jawzī and al-Qurṭubī both record agreement that it is Makkan; Ibn al-Jawzī notes one isolated saying that it is Madinan. The commentators differ only over whether it came down about one man or about a type.",
+    "period": "makkah-early",
+    "when": "The early years in Makkah, when the believers were mocked in the streets by the men of standing",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَهِيَ مَكِّيَّةٌ بِإجْماعِهِمْ قالَ هِبَةُ اللَّهِ المُفَسِّرُ: وقَدْ قِيلَ: إنَّها مَدَنِيَّةٌ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "تَفْسِيرُ سُورَةِ \"الْهُمَزَةِ\" مَكِّيَّةٌ بِإِجْمَاعٍ. وَهِيَ تِسْعُ آيات"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْهُمَزَةِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: أنْزَلَ ﴿ويْلٌ لِكُلِّ هُمَزَةٍ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      }
+    ]
+  },
+  "setting": [
+    "The first Muslims in Makkah were, many of them, poor, young, enslaved or without a clan to protect them. The men who opposed the Prophet ﷺ were the opposite of all that, and one of their weapons cost them nothing: ridicule. A wink as a believer walked past; a remark for the others to laugh at; a story told once he had gone.",
+    "The commentators name the men it was said to be about, and the list is itself a picture of the opposition: al-Akhnas ibn Sharīq, in the report from Ibn ʿAbbās; al-ʿĀṣ ibn Wāʾil; al-Walīd ibn al-Mughīrah; Umayyah ibn Khalaf, who tortured Bilāl.{reported} Others, Mujāhid among them, said it was not sent down about anyone in particular but about everyone of this description — and the wording supports them: “every” slanderer.",
+    "What ties the two halves of his character together is the fourth ayah’s diagnosis. He gathers wealth and counts it over because he thinks it will make him permanent. A man who believes that has nothing to fear from anyone, and so he says what he likes about them."
+  ],
+  "occasions": [
+    {
+      "title": "One man, or every such man",
+      "text": "Ibn al-Jawzī sets out the difference. Those who say it came down about a particular person name, among others, al-Akhnas ibn Sharīq — the report of Abū Ṣāliḥ from Ibn ʿAbbās — and al-ʿĀṣ ibn Wāʾil. Those who say it is general take it as it reads; and that, al-Qurṭubī says, is the saying of the majority. “It is not about anyone in particular,” said Mujāhid, “but about everyone of whom this is the description.”",
+      "source": "Ibn al-Jawzī, Zād al-Masīr, at the head of the surah; al-Qurṭubī, on its first ayah.",
+      "rank": "reported",
+      "evidence": {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "واخْتَلَفَ المُفَسِّرُونَ هَلْ نَزَلَتْ في حَقِّ شَخْصٍ بِعَيْنِهِ، أمْ نَزَلَتْ عامَّةً؟ عَلى قَوْلَيْنِ. أحَدُهُما: نَزَلَتْ في حَقِّ شَخْصٍ بِعَيْنِهِ. ثُمَّ فِيهِ سِتَّةُ أقْوالٍ. أحَدُها: الأخْنَسُ بْنُ شَرِيقٍ، رَواهُ أبُو صالِحٍ عَنِ ابْنِ عَبّاسٍ"
+      }
+    }
+  ],
+  "aim": "A threat to those who look down on the religion and its people, and mock them.",
+  "themes": [
+    "Slander and mockery",
+    "Hoarding wealth",
+    "The Fire"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 3,
+      "title": "The man",
+      "summary": "Woe to every slanderer and backbiter, who has gathered wealth and counted it, thinking that his wealth will make him live for ever."
+    },
+    {
+      "from": 4,
+      "to": 9,
+      "title": "His end",
+      "summary": "No — he will be flung into the Crusher. And what will make you know what the Crusher is? The fire of Allah, kindled, which rises over the hearts — the place where the contempt began. It is closed in upon them, in columns stretched out."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 1,
+    "why": "The surah’s charge, in its first breath. Only two surahs open with “woe”; the other is al-Muṭaffifīn."
+  },
+  "virtues": [],
+  "before": "Al-ʿAṣr said that all people are at a loss but a few. Al-Humazah is a close study of one who is.",
+  "after": "This man thought his wealth would preserve him. Al-Fīl is the story of an army that thought its strength would — and of what became of it within sight of Makkah.",
+  "notable": [
+    {
+      "ayah": 1,
+      "label": "Woe to every slanderer and backbiter"
+    },
+    {
+      "ayah": 3,
+      "label": "He thinks his wealth will make him last"
+    },
+    {
+      "ayah": 6,
+      "to": 7,
+      "label": "The fire that reaches the hearts"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr"
+  ]
+}

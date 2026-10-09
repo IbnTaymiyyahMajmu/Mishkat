@@ -459,7 +459,7 @@
 .workHead {
   display: block;
   width: 100%;
-  text-align: left;
+  text-align: start;
   padding: 15px 18px;
   background: color-mix(in srgb, var(--color-text) 3%, transparent);
   border: 0;
@@ -592,7 +592,7 @@
 
 .cogWord { font-size: 18px; line-height: 1.6; }
 
-.cogLang { font-size: 12px; color: var(--muted-62); text-align: right; }
+.cogLang { font-size: 12px; color: var(--muted-62); text-align: end; }
 .cogFamily { display: block; font-size: 10px; color: var(--muted-45); }
 
 .cogWhen {
@@ -601,7 +601,7 @@
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
   min-width: 5.5em;
-  text-align: right;
+  text-align: end;
 }
 
 .cogSense {

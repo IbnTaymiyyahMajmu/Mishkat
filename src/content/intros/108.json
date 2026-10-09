@@ -1,0 +1,149 @@
+{
+  "surah": 108,
+  "epithet": "Abundance, in ten words",
+  "lede": "The shortest surah in the Qurʾan. It was sent to a man whose enemies were calling him cut off — no son to carry his name — and it tells him that he has been given more than can be counted, and that it is they who will leave nothing behind.",
+  "names": [
+    {
+      "arabic": "الكوثر",
+      "name": "al-Kawthar",
+      "meaning": "Abundance",
+      "note": "From kathrah, plenty, in its most intensive form. The Prophet ﷺ explained it: “It is a river that my Lord has promised me, with abundant good upon it” (Muslim 400). Ibn ʿAbbās said it is the abundant good that Allah gave him — and when told that people said it was a river in Paradise, his student Saʿīd ibn Jubayr answered that the river is part of that good (al-Bukhārī 4966)."
+    }
+  ],
+  "revelation": {
+    "place": "disputed",
+    "verdict": "Differed over — Makkan, by the majority",
+    "detail": "Ibn al-Jawzī gives the view that it is Makkan as that of Ibn ʿAbbās and the majority, and the view that it is Madinan as that of al-Ḥasan, ʿIkrimah and Qatādah; al-Qurṭubī adds Mujāhid to the second. What keeps the question open is a hadith in Ṣaḥīḥ Muslim: Anas says the Prophet ﷺ dozed among them, raised his head smiling, and said, “A surah has just been sent down to me” — and Anas was a boy of Madinah. Those who hold it Makkan point to its occasion, the taunt of the leaders of Quraysh.",
+    "period": "makkah-early",
+    "when": "On the majority’s view: the early years in Makkah, after the death of his sons",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَفِيها قَوْلانِ. أحَدُهُما: مَكِّيَّةٌ، قالَهُ ابْنُ عَبّاسٍ، والجُمْهُورُ. والثّانِي: مَدَنِيَّةٌ، قالَهُ الحَسَنُ، وعِكْرِمَةُ، وقَتادَةُ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "وَهِيَ مَكِّيَّةٌ فِي قَوْلِ ابن عباس والكلبي ومقاتل. ومدنية في قول الحسن وعكرمة ومجاهد وقتادة. وَهِيَ ثَلَاثُ آيَاتٍ"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْكَوْثَرِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿إنّا أعْطَيْناكَ الكَوْثَرَ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ في قَوْلِ ابْنِ عَبّاسٍ، والكَلْبِيِّ، ومُقاتِلٍ، ومَدَنِيَّةٌ في قَوْلِ الحَسَنِ، وعِكْرِمَةَ، ومُجاهِدٍ، وقَتادَةَ",
+        "says": "Makkan in the saying of Ibn ʿAbbās, al-Kalbī and Muqātil; Madinan in the saying of al-Ḥasan, ʿIkrimah, Mujāhid and Qatādah."
+      }
+    ]
+  },
+  "setting": [
+    "Among the Arabs a man lived on in his sons. They carried his name, defended his honour and kept his memory; a man without them was abtar — docked, cut off, a line that stops. The Prophet’s ﷺ sons died in infancy, and his enemies saw their chance.",
+    "Ibn Kathīr gathers the reports.{reported} Ibn ʿAbbās, Mujāhid, Saʿīd ibn Jubayr and Qatādah said it came down about al-ʿĀṣ ibn Wāʾil, who, whenever the Messenger of Allah ﷺ was mentioned, would say: leave him — he is a man cut off, with no descendants; when he dies, his memory will die with him. Others named ʿUqbah ibn Abī Muʿayṭ, or Kaʿb ibn al-Ashraf.",
+    "The reply is three ayat. We have given you al-Kawthar. So pray to your Lord, and sacrifice — to Him, not as they prayed and sacrificed to their idols. It is the one who hates you who is cut off.",
+    "No prediction in the Qurʾan has been more visibly kept. The men who said it are remembered only because of the ayah that answered them. And the one they called cut off is named, with blessing, by people in every country on earth, in every call to prayer, every day."
+  ],
+  "occasions": [
+    {
+      "title": "“A man cut off”",
+      "text": "Al-ʿĀṣ ibn Wāʾil used to say, when the Messenger of Allah ﷺ was mentioned: “Leave him, for he is a man cut off, with no posterity. When he perishes, his mention will end.” So Allah sent down this surah.",
+      "source": "Ibn Kathīr, from Ibn ʿAbbās, Mujāhid, Saʿīd ibn Jubayr and Qatādah, and from Ibn Isḥāq. Al-Ṭabarī, al-Baghawī, Ibn al-Jawzī, al-Qurṭubī, al-Suyūṭī and al-Shawkānī relate it too.",
+      "rank": "reported",
+      "evidence": {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "قَالَ ابْنُ عَبَّاسٍ، وَمُجَاهِدٌ، وَسَعِيدُ بْنُ جُبَيْرٍ، وَقَتَادَةُ: نَزَلَتْ فِي الْعَاصِ بْنِ وَائِلٍ. وَقَالَ مُحَمَّدِ بْنِ إِسْحَاقَ، عَنْ يَزِيدَ بْنِ رُومَانَ قَالَ: كَانَ الْعَاصُ بْنُ وَائِلٍ إِذَا ذَكَرَ رَسُولُ اللَّهِ ﷺ يقول: دَعُوهُ فَإِنَّهُ رَجُلٌ أَبْتَرُ لَا عَقِبَ لَهُ، فَإِذَا هَلَكَ انْقَطَعَ ذِكْرُهُ. فَأَنْزَلَ اللَّهُ هَذِهِ السُّورَةَ"
+      }
+    }
+  ],
+  "aim": "To recall Allah’s favour to the Prophet ﷺ, and to cut off the way of those who hate him.",
+  "themes": [
+    "Allah’s favour to the Prophet ﷺ",
+    "Prayer and sacrifice",
+    "The fate of his enemies"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 1,
+      "title": "The gift",
+      "summary": "We have given you al-Kawthar: abundant good, and of it a river in Paradise, and the Basin to which his community will come on the Day of Resurrection."
+    },
+    {
+      "from": 2,
+      "to": 2,
+      "title": "The thanks",
+      "summary": "So pray to your Lord, and sacrifice. The two greatest acts of worship of body and of wealth, both made for Allah alone."
+    },
+    {
+      "from": 3,
+      "to": 3,
+      "title": "The answer",
+      "summary": "It is your enemy who is cut off."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 1,
+    "why": "The whole gift in one ayah. The verb is in the past: it has already been given."
+  },
+  "virtues": [
+    {
+      "text": "The Messenger of Allah ﷺ was among us one day when he dozed, then raised his head, smiling. We said: “What has made you smile, Messenger of Allah?” He said: “A surah has just been sent down to me,” and recited it. Then he said: “Do you know what al-Kawthar is?” We said: “Allah and His Messenger know best.” He said: “It is a river that my Lord has promised me, with abundant good upon it. It is a Basin to which my community will come on the Day of Resurrection, its vessels as many as the stars.”",
+      "arabic": "أُنْزِلَتْ عَلَيَّ آنِفًا سُورَةٌ",
+      "narrator": "Anas ibn Mālik",
+      "source": "Ṣaḥīḥ Muslim, 400",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "400"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "“While I was walking in Paradise I came upon a river whose banks were domes of hollowed pearl. I said: What is this, Jibrīl? He said: This is al-Kawthar, which your Lord has given you.”",
+      "narrator": "Anas ibn Mālik",
+      "source": "Ṣaḥīḥ al-Bukhārī, 6581",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "6581"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "before": "Al-Māʿūn drew a man who gives nothing, prays to be seen, and withholds. Al-Kawthar answers each point: you have been given abundance; pray to your Lord; and sacrifice.",
+  "after": "Having been told to worship his Lord alone, he is told in al-Kāfirūn to say so to their faces: I do not worship what you worship.",
+  "notable": [
+    {
+      "ayah": 1,
+      "label": "We have given you al-Kawthar"
+    },
+    {
+      "ayah": 3,
+      "label": "It is your enemy who is cut off"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

@@ -38,7 +38,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 15px 16px 15px 18px;
+  padding-block: 15px;
+  padding-inline: 18px 16px;
   border-bottom: 1px solid var(--color-divider);
   flex: none;
 }
@@ -179,7 +180,7 @@
   align-items: center;
   gap: 12px;
   width: 100%;
-  text-align: left;
+  text-align: start;
   background: none;
   border: 0;
   border-bottom: 1px solid var(--color-divider);
@@ -298,7 +299,7 @@
   margin: 16px 22px;
   padding: 14px 16px;
   border: 1px solid var(--color-divider);
-  border-left: 2px solid var(--color-accent);
+  border-inline-start: 2px solid var(--color-accent);
   border-radius: var(--radius-md);
   font-size: 12.5px;
   line-height: 1.75;
@@ -331,12 +332,13 @@
   width: 100%;
   max-width: 100%;
   overflow-wrap: anywhere;
-  text-align: left;
+  text-align: start;
   background: transparent;
   border: 0;
-  border-left: 2px solid transparent;
+  border-inline-start: 2px solid transparent;
   border-bottom: 1px solid var(--color-divider);
-  padding: 15px 22px 16px 20px;
+  padding-block: 15px 16px;
+  padding-inline: 20px 22px;
   cursor: pointer;
   color: var(--color-text);
   font-family: inherit;
@@ -344,7 +346,7 @@
 }
 .resultOn {
   background: color-mix(in srgb, var(--color-accent) 9%, transparent);
-  border-left-color: var(--color-accent);
+  border-inline-start-color: var(--color-accent);
 }
 
 .resultHead {

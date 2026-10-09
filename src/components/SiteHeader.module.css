@@ -56,7 +56,7 @@
   gap: 10px;
   text-decoration: none;
   color: inherit;
-  margin-right: auto;
+  margin-inline-end: auto;
   min-width: 0;
 }
 
@@ -146,7 +146,8 @@
 .search {
   gap: 9px;
   height: 34px;
-  padding: 0 9px 0 12px;
+  padding: 0;
+  padding-inline: 12px 9px;
   border-radius: 999px;
   flex: none;
 }
@@ -184,6 +185,10 @@
   .nav {
     mask-image: linear-gradient(to right, #000 calc(100% - 18px), transparent);
     padding-inline-end: 14px;
+  }
+  /* …at whichever edge it runs past: the left one, read right to left. */
+  :global([dir="rtl"]) .nav {
+    mask-image: linear-gradient(to left, #000 calc(100% - 18px), transparent);
   }
   /* The three lamps lose their pill and tighten up rather than disappearing:
      the light is the one thing a reader is most likely to want changed on a

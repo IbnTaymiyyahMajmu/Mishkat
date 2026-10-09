@@ -6,15 +6,17 @@ import { useChapters } from "@/lib/store/chapters";
 import { useSettings, type Repeat } from "@/lib/store/settings";
 import { RECITERS } from "@/lib/quran/resources";
 import { formatClock } from "@/lib/text";
+import { useLocale, type MessageKey } from "@/lib/i18n";
+import { useSurahNames } from "@/lib/i18n/surah";
 import styles from "./Transport.module.css";
 
 /** Slow enough to follow an unfamiliar word, fast enough to review a page. */
 const SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
 const REPEATS: Repeat[] = ["off", "ayah", "surah"];
-const REPEAT_LABEL: Record<Repeat, string> = {
-  off: "Repeat off",
-  ayah: "Repeat ayah",
-  surah: "Repeat surah",
+const REPEAT_LABEL: Record<Repeat, MessageKey> = {
+  off: "player.repeat.off",
+  ayah: "player.repeat.ayah",
+  surah: "player.repeat.surah",
 };
 
 /** How many times an ayah is heard, and how many times the passage is gone over. */
@@ -30,6 +32,9 @@ export function Transport() {
   const { toggle, stop, step, seek, loopPassage, endLoop, passageAround } = usePlayerControls();
   const { settings, update } = useSettings();
   const { byId } = useChapters();
+  const { t, arabicScript } = useLocale();
+  const names = useSurahNames();
+  const reciterName = (r: { label: string; labelArabic: string }) => (arabicScript ? r.labelArabic : r.label);
 
   // Voice and pace belong to the recitation, so they are reachable from the
   // transport itself rather than only from the settings page — the reader who
@@ -120,27 +125,38 @@ export function Transport() {
     update({ repeat });
   };
 
-  const span = loop ? (loop.from === loop.to ? `ayah ${loop.from}` : `${loop.from}–${loop.to}`) : "";
+  // A run of ayat is two numbers and a dash, and is kept reading left to
+  // right — 12–18 — on a page that reads the other way.
+  const span = loop
+    ? loop.from === loop.to
+      ? t("player.spanOne", { n: loop.from })
+      : `\u2066${loop.from}–${loop.to}\u2069`
+    : "";
   const clock = `${formatClock(elapsed)} / ${formatClock(duration)}`;
+  const pass = loop
+    ? loop.times
+      ? t("player.passOf", { n: loopAt.pass, total: loop.times })
+      : t("player.pass", { n: loopAt.pass })
+    : "";
   const meta = error
-    ? error
+    ? t(error)
     : echoing
-      ? "Your turn — recite it back"
+      ? t("player.turn")
       : loop
         ? [
-            `Looping ${span}`,
-            `pass ${loopAt.pass}${loop.times ? ` of ${loop.times}` : ""}`,
-            loop.each > 1 ? `hearing ${loopAt.turn} of ${loop.each}` : "",
+            t("player.looping", { span }),
+            pass,
+            loop.each > 1 ? t("player.hearing", { n: loopAt.turn, total: loop.each }) : "",
             clock,
           ]
             .filter(Boolean)
             .join(" · ")
-        : `${reciter?.label ?? "Reciter"} · ${clock}`;
+        : `${reciter ? reciterName(reciter) : t("player.reciter")} · ${clock}`;
 
   return (
     <div className={styles.bar} ref={barRef}>
       <label className={styles.scrubWrap}>
-        <span className="sr-only">Seek within the surah</span>
+        <span className="sr-only">{t("player.seek")}</span>
         <input
           className={styles.scrub}
           type="range"
@@ -155,9 +171,9 @@ export function Transport() {
       </label>
 
       {tuning && (
-        <div className={styles.panel} role="group" aria-label="Recitation settings">
+        <div className={styles.panel} role="group" aria-label={t("player.settings")}>
           <section className={styles.group}>
-            <h2 className={styles.groupTitle}>Reciter</h2>
+            <h2 className={styles.groupTitle}>{t("player.reciter")}</h2>
             <div className={styles.chips}>
               {RECITERS.map((r) => (
                 <button
@@ -168,12 +184,12 @@ export function Transport() {
                     settings.reciterId === r.id ? "btn-on" : ""
                   }`}
                 >
-                  {r.label}
+                  {reciterName(r)}
                 </button>
               ))}
             </div>
             <p className={styles.groupNote}>
-              The surah is fetched again in the new voice; the recitation carries on where it is.
+              {t("player.reciterNote")}
             </p>
           </section>
 
@@ -181,10 +197,10 @@ export function Transport() {
               and it wants more than "repeat": a few ayat, each heard several
               times, the run of them gone over again, and room to say it back. */}
           <section className={styles.group}>
-            <h2 className={styles.groupTitle}>Memorise a passage</h2>
+            <h2 className={styles.groupTitle}>{t("player.memorise")}</h2>
             <div className={styles.passage}>
               <label className={styles.end}>
-                <span className={styles.endLabel}>From ayah</span>
+                <span className={styles.endLabel}>{t("player.from")}</span>
                 <select
                   className={styles.select}
                   value={chosen.from}
@@ -201,7 +217,7 @@ export function Transport() {
                 </select>
               </label>
               <label className={styles.end}>
-                <span className={styles.endLabel}>to ayah</span>
+                <span className={styles.endLabel}>{t("player.to")}</span>
                 <select
                   className={styles.select}
                   value={chosen.to}
@@ -220,22 +236,22 @@ export function Transport() {
 
               {loop ? (
                 <button onClick={endLoop} className={`btn btn-secondary btn-on ${styles.chip}`}>
-                  Stop looping
+                  {t("player.stopLoop")}
                 </button>
               ) : (
                 <button
                   onClick={() => loopPassage({ ...habit, ...chosen }, true)}
                   className={`btn btn-primary ${styles.chip}`}
                 >
-                  Loop this passage
+                  {t("player.loop")}
                 </button>
               )}
             </div>
 
             <div className={styles.habits}>
               <div className={styles.habit}>
-                <span className={styles.habitLabel}>Each ayah</span>
-                <div className={styles.chips} role="group" aria-label="How many times each ayah is recited">
+                <span className={styles.habitLabel}>{t("player.each")}</span>
+                <div className={styles.chips} role="group" aria-label={t("player.eachLabel")}>
                   {EACH.map((n) => (
                     <button
                       key={n}
@@ -251,14 +267,14 @@ export function Transport() {
                 </div>
               </div>
               <div className={styles.habit}>
-                <span className={styles.habitLabel}>The passage</span>
-                <div className={styles.chips} role="group" aria-label="How many times the passage is gone over">
+                <span className={styles.habitLabel}>{t("player.passage")}</span>
+                <div className={styles.chips} role="group" aria-label={t("player.passageLabel")}>
                   {TIMES.map((n) => (
                     <button
                       key={n}
                       onClick={() => chooseHabit({ times: n })}
                       aria-pressed={habit.times === n}
-                      aria-label={n === 0 ? "Until stopped" : undefined}
+                      aria-label={n === 0 ? t("player.untilStopped") : undefined}
                       className={`btn btn-secondary ${styles.chip} ${styles.numeric} ${
                         habit.times === n ? "btn-on" : ""
                       }`}
@@ -269,14 +285,14 @@ export function Transport() {
                 </div>
               </div>
               <div className={styles.habit}>
-                <span className={styles.habitLabel}>After each ayah</span>
+                <span className={styles.habitLabel}>{t("player.after")}</span>
                 <div className={styles.chips}>
                   <button
                     onClick={() => chooseHabit({ echo: !habit.echo })}
                     aria-pressed={habit.echo}
                     className={`btn btn-secondary ${styles.chip} ${habit.echo ? "btn-on" : ""}`}
                   >
-                    {habit.echo ? "A silence to recite it back" : "Straight on"}
+                    {t(habit.echo ? "player.echoOn" : "player.echoOff")}
                   </button>
                 </div>
               </div>
@@ -284,18 +300,23 @@ export function Transport() {
 
             <p className={styles.groupNote}>
               {loop
-                ? `Going over ${span} of ${surah?.name_simple ?? "this surah"} — pass ${loopAt.pass}${
-                    loop.times ? ` of ${loop.times}` : ""
-                  }${
-                    loop.each > 1 ? `, hearing ${loopAt.turn} of ${loop.each} of this ayah` : ""
-                  }. Next and previous stay within the passage; playing an ayah outside it ends the loop.`
-                : "The passage offered runs from the ayah being recited to the end of its rukūʿ, where the sense comes to rest. With the silence on, the recitation waits after each ayah for as long as the ayah took, so it can be said back before it is heard again."}
+                ? t("player.going", {
+                    span,
+                    surah: surah ? names.name(surah.id) : t("player.thisSurah"),
+                    progress: [
+                      pass,
+                      loop.each > 1 ? t("player.hearingThis", { n: loopAt.turn, total: loop.each }) : "",
+                    ]
+                      .filter(Boolean)
+                      .join(", "),
+                  })
+                : t("player.offer")}
             </p>
           </section>
 
           <div className={styles.groupRow}>
             <section className={styles.group}>
-              <h2 className={styles.groupTitle}>Speed</h2>
+              <h2 className={styles.groupTitle}>{t("player.speed")}</h2>
               <div className={styles.chips}>
                 {SPEEDS.map((s) => (
                   <button
@@ -313,7 +334,7 @@ export function Transport() {
             </section>
 
             <section className={styles.group}>
-              <h2 className={styles.groupTitle}>Repeat</h2>
+              <h2 className={styles.groupTitle}>{t("player.repeat")}</h2>
               <div className={styles.chips}>
                 {REPEATS.map((r) => {
                   // A passage being looped is what is repeating; none of these is.
@@ -325,7 +346,7 @@ export function Transport() {
                       aria-pressed={on}
                       className={`btn btn-secondary ${styles.chip} ${on ? "btn-on" : ""}`}
                     >
-                      {REPEAT_LABEL[r]}
+                      {t(REPEAT_LABEL[r])}
                     </button>
                   );
                 })}
@@ -333,14 +354,14 @@ export function Transport() {
             </section>
 
             <section className={styles.group}>
-              <h2 className={styles.groupTitle}>Follow</h2>
+              <h2 className={styles.groupTitle}>{t("player.follow")}</h2>
               <div className={styles.chips}>
                 <button
                   onClick={() => update({ follow: !settings.follow })}
                   aria-pressed={settings.follow}
                   className={`btn btn-secondary ${styles.chip} ${settings.follow ? "btn-on" : ""}`}
                 >
-                  {settings.follow ? "Scrolling with it" : "Staying put"}
+                  {t(settings.follow ? "player.following" : "player.staying")}
                 </button>
               </div>
             </section>
@@ -349,19 +370,19 @@ export function Transport() {
       )}
 
       <div className={styles.row}>
-        <button onClick={toggle} className={`btn btn-icon btn-primary ${styles.play}`} aria-label={playing ? "Pause" : "Play"}>
+        <button onClick={toggle} className={`btn btn-icon btn-primary ${styles.play}`} aria-label={t(playing ? "player.pause" : "player.play")}>
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             {playing ? <path d="M10 4H6v16h4zM18 4h-4v16h4z" /> : <path d="m6 4 14 8-14 8z" />}
           </svg>
         </button>
 
-        <button onClick={() => step(-1)} className={`btn btn-icon ${styles.small}`} aria-label="Previous ayah">
+        <button onClick={() => step(-1)} className={`btn btn-icon ${styles.small}`} aria-label={t("player.prev")}>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" aria-hidden="true">
             <path d="M19 20 9 12l10-8z" />
             <path d="M5 19V5" />
           </svg>
         </button>
-        <button onClick={() => step(1)} className={`btn btn-icon ${styles.small}`} aria-label="Next ayah">
+        <button onClick={() => step(1)} className={`btn btn-icon ${styles.small}`} aria-label={t("player.next")}>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" aria-hidden="true">
             <path d="m5 4 10 8-10 8z" />
             <path d="M19 5v14" />
@@ -370,7 +391,7 @@ export function Transport() {
 
         <div className={styles.now}>
           <div className={styles.nowTitle}>
-            {surah ? `${surah.name_simple} · ` : ""}
+            {surah ? `${names.name(surah.id)} · ` : ""}
             {currentKey}
           </div>
           <div className={`${styles.nowMeta} ${echoing ? styles.nowTurn : ""}`} aria-live={echoing ? "polite" : undefined}>
@@ -383,16 +404,16 @@ export function Transport() {
             <button
               onClick={endLoop}
               className={`btn btn-secondary btn-on ${styles.chip} ${styles.numeric}`}
-              title="Stop looping this passage"
+              title={t("player.stopLoopTitle")}
             >
-              Loop {span}
+              {t("player.loopChip", { span })}
             </button>
           ) : (
             <button
               onClick={() => update({ repeat: REPEATS[(REPEATS.indexOf(settings.repeat) + 1) % REPEATS.length] })}
               className={`btn btn-secondary ${styles.chip} ${settings.repeat !== "off" ? "btn-on" : ""}`}
             >
-              {REPEAT_LABEL[settings.repeat]}
+              {t(REPEAT_LABEL[settings.repeat])}
             </button>
           )}
           <button
@@ -406,7 +427,7 @@ export function Transport() {
             className={`btn btn-secondary ${styles.chip} ${settings.follow ? "btn-on" : ""}`}
             aria-pressed={settings.follow}
           >
-            Follow
+            {t("player.follow")}
           </button>
         </div>
 
@@ -414,8 +435,8 @@ export function Transport() {
           onClick={toggleTuning}
           className={`btn btn-icon ${styles.small} ${tuning || loop ? "btn-on" : ""}`}
           aria-expanded={tuning}
-          aria-label="Reciter, speed, repeat and memorising"
-          title="Reciter, speed, repeat and memorising"
+          aria-label={t("player.tune")}
+          title={t("player.tune")}
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
             <path d="M4 6h10M18 6h2M4 12h2M10 12h10M4 18h10M18 18h2" />
@@ -425,7 +446,7 @@ export function Transport() {
           </svg>
         </button>
 
-        <button onClick={stop} className={`btn btn-icon ${styles.small}`} aria-label="Close the player">
+        <button onClick={stop} className={`btn btn-icon ${styles.small}`} aria-label={t("player.close")}>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
             <path d="M18 6 6 18" />
             <path d="m6 6 12 12" />

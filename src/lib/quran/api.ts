@@ -58,13 +58,6 @@ export async function fetchChapters(): Promise<Chapter[]> {
   return j.chapters ?? [];
 }
 
-export async function fetchChapterInfo(surah: number): Promise<Para[]> {
-  const j = await get<{ chapter_info?: { text?: string } }>(
-    `chapters/${surah}/info?language=en`,
-  );
-  return htmlToParas(j.chapter_info?.text);
-}
-
 // ── verses ──────────────────────────────────────────────────────────────────
 
 export interface VerseQuery {
@@ -392,7 +385,7 @@ export async function search(
     key: r.verse_key,
     arabic: joinWords(r) || r.text || "",
     snippet: plainText(r.translations?.[0]?.text),
-    kind: arabicQuery ? "Qur'an text" : "Translation",
+    kind: arabicQuery ? "quran" : "translation",
   }));
   return { results, total: j.search?.total_results ?? results.length };
 }

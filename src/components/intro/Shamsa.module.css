@@ -1,0 +1,188 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   The medallion.
+
+   It is drawn on the introduction's frontispiece, which is lit like the
+   landing page rather than printed like the rest of the site — so its colours
+   are the `--mk-hero-*` set and the two golds, which every reading light
+   redefines. Nothing here names a colour of its own.
+
+   It arrives in the order a gilder would lay it: the rings are drawn round,
+   the rim is pricked in, the band is laid piece by piece, the name last.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.shamsa {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  --line: color-mix(in srgb, var(--mk-gold-pale) 78%, transparent);
+  --line-soft: color-mix(in srgb, var(--mk-gold-pale) 34%, transparent);
+}
+
+.goldA { stop-color: var(--mk-gold); }
+.goldB { stop-color: var(--mk-gold-pale); }
+.glowIn { stop-color: color-mix(in srgb, var(--mk-gold) 20%, transparent); }
+.glowOut { stop-color: transparent; }
+
+/* ── rings ────────────────────────────────────────────────────────────── */
+
+.ring {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.2;
+  stroke-dasharray: 1;
+  animation: draw 1500ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  transform-origin: 300px 300px;
+  transform: rotate(-90deg);
+}
+
+.ringFine {
+  fill: none;
+  stroke: var(--line-soft);
+  stroke-width: 0.8;
+  stroke-dasharray: 1.5 4;
+}
+
+/* ── the rim ──────────────────────────────────────────────────────────── */
+
+.ticks {
+  fill: none;
+  stroke: color-mix(in srgb, var(--mk-hero-ink) 58%, transparent);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+}
+/* Pricked in one after another, the way round the surah is read. */
+.ticks path {
+  animation: fade 380ms ease both;
+  animation-delay: calc(450ms + var(--k, 0) * 1500ms);
+}
+.ticksThin { stroke-width: 0.75; }
+
+.marks { animation: fade 900ms ease both 1300ms; }
+.head { fill: var(--mk-gold-pale); }
+.juz { fill: var(--mk-gold-pale); opacity: 0.85; }
+.sajdah {
+  fill: none;
+  stroke: var(--mk-gold-pale);
+  stroke-width: 1.6;
+}
+
+/* ── the band ─────────────────────────────────────────────────────────── */
+
+.band {
+  cursor: pointer;
+  outline: none;
+  animation: fade 520ms ease both;
+}
+.band path {
+  fill: color-mix(in srgb, var(--mk-gold) 62%, transparent);
+  stroke: transparent;
+  stroke-width: 6;
+  transform-origin: 300px 300px;
+  transition:
+    fill 180ms ease,
+    transform 260ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.bandOdd path { fill: color-mix(in srgb, var(--mk-gold) 34%, transparent); }
+.bandOn path,
+.band:focus-visible path {
+  fill: var(--mk-gold-pale);
+  transform: scale(1.014);
+}
+
+/* A light that goes once round the band from the top, the way the surah
+   runs, as the last of the gilding. The circle is turned and mirrored so that
+   its own beginning is the surah's. */
+.comet {
+  fill: none;
+  stroke: var(--mk-gold-pale);
+  stroke-width: 20;
+  stroke-dasharray: 0.075 1;
+  stroke-dashoffset: 0.075;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: 300px 300px;
+  transform: rotate(-90deg) scaleY(-1);
+  animation: orbit 2700ms cubic-bezier(0.45, 0, 0.2, 1) 1300ms both;
+}
+
+/* The glow behind it all breathes, slowly. */
+.halo {
+  transform-origin: 300px 300px;
+  animation: breathe 9s ease-in-out 2200ms infinite;
+}
+.band:focus-visible path {
+  stroke: color-mix(in srgb, var(--mk-gold-pale) 40%, transparent);
+}
+
+/* A surah whose map has not been written still has a band; it is only empty. */
+.bandBlank {
+  fill: none;
+  stroke: color-mix(in srgb, var(--mk-gold) 22%, transparent);
+  stroke-width: 20;
+}
+
+/* ── the rosette ──────────────────────────────────────────────────────── */
+
+.rosette { animation: fade 1400ms ease both 300ms; }
+
+.petals {
+  fill: color-mix(in srgb, var(--mk-gold) 7%, transparent);
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-linejoin: round;
+  transform-origin: 300px 300px;
+  animation: turn 360s linear infinite;
+}
+
+.star {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-linejoin: round;
+  transform-origin: 300px 300px;
+  animation: turn 520s linear infinite reverse;
+}
+
+.flower {
+  fill: none;
+  stroke: var(--line-soft);
+  stroke-width: 0.8;
+}
+
+/* ── the heart ────────────────────────────────────────────────────────── */
+
+.disc { fill: color-mix(in srgb, var(--mk-gold) 6%, transparent); }
+
+.name {
+  font-family: var(--font-amiri-quran), var(--font-amiri), serif;
+  animation: name 1100ms cubic-bezier(0.22, 0.61, 0.36, 1) both 700ms;
+  transform-origin: 300px 300px;
+}
+
+/* A module cannot use a global keyframe — see the note in globals.css. */
+@keyframes draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes orbit {
+  0% { opacity: 0; stroke-dashoffset: 0.075; }
+  14% { opacity: 0.6; }
+  82% { opacity: 0.5; }
+  100% { opacity: 0; stroke-dashoffset: -1; }
+}
+@keyframes breathe {
+  0%, 100% { opacity: 1; transform: none; }
+  50% { opacity: 0.72; transform: scale(1.035); }
+}
+@keyframes turn {
+  to { transform: rotate(360deg); }
+}
+@keyframes name {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: none; }
+}

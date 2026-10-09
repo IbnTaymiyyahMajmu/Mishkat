@@ -11,40 +11,90 @@ Ordered by how much each one improves the product per unit of effort.
 
 ---
 
-## 1. Surah introductions — the one you already spotted
+## 1. Surah introductions — written; what they need now is a reader
 
-**Status.** Falling back to Quran.com's `chapter_info`. You are right that it is
-not enough: it is uneven (some surahs get four paragraphs, some get two
-sentences), inconsistent in register, and written for a different product.
+**Status: built, all 114.** Each surah has an introduction of its own at
+`/read/<n>/about/`, reached from the surah's header in the reader. Maudūdī's
+text from the corpus, which stood here before, is gone: the site no longer
+fetches or shows it.
 
-**Where it goes.** `src/content/surah-intros.json`. Schema and a worked example
-are in `src/content/README.md`. Anything you put there replaces the fallback for
-that surah and is attributed to the source you name.
+**What an introduction is made of.** Three kinds of statement, kept apart on
+the page:
 
-**What to send.** Per surah:
+- **Counted.** Ayat, words, pages, juzʾ, prostrations, the opening letters, and
+  the surah's place in the order of revelation — generated from the corpus
+  (`npm run gen:facts`). The order is the one printed in the Egyptian muṣḥaf of
+  1924, which goes back to Ibn ʿAbbās through Jābir ibn Zayd; the page says so,
+  and says that the scholars differed over some of it.
+- **Quoted.** Arabic from the tafsir library this site holds a copy of: Ibn
+  al-Jawzī's *Zād al-Masīr*, al-Qurṭubī and Ibn Kathīr on where a surah came
+  down and what it came down about; under them, the same finding as
+  al-Baghawī heads the surah, as al-Suyūṭī gathers the reports from the
+  Companions in *al-Durr al-Manthūr*, and as al-Shawkānī sums it up; and the
+  sentence with which *al-Mukhtaṣar fī al-Tafsīr* states each surah's purpose.
+  None of it is typed from memory: `npm run lock:intros` finds each quotation
+  in the copy and prints the copy's own text. 591 quotations are held this
+  way, and the deploy refuses to publish if one of them can no longer be found.
+- **Only from Ahl al-Sunnah.** The works an introduction may quote are a fixed
+  list (`src/content/README.md`), and the same script refuses a quotation from
+  anything outside it. Four works the library holds are left off it on purpose.
+- **Nothing weaker passes for ṣaḥīḥ.** Every narration and every occasion of
+  revelation carries how it stands, and anything that is not ṣaḥīḥ says so
+  beside it in a sentence: ḥasan, a Companion's own saying, related by the
+  commentators without a graded chain. Outside al-Bukhārī and Muslim the
+  grading followed is al-Albānī's. A sentence of the account that tells of a
+  report below ṣaḥīḥ ends with a small sign, with a key under the account.
+  Every quotation from al-Qurṭubī says under it that he is quoted for what he
+  relates and not for creed.
+- **Nothing weak is there at all.** By the owner's ruling a weak or fabricated
+  report is neither given nor mentioned — not even to say that it is weak.
+- **The stories are told in full, from the hadith.** Seventeen accounts —
+  Kaʿb ibn Mālik and the fifty nights, the slander, al-Ḥudaybiyah, the Night
+  Journey, Mūsā and al-Khiḍr, the boy and the king, the beginning of
+  revelation among them — run to several paragraphs each. Each was written
+  with the Arabic text of the hadith open, by its number, and tells nothing
+  its narrator did not.
+- **A grading not yet seen in its book says so.** Nine gradings, taken from an
+  index of al-Albānī's works or (twice) from al-Ḥākim, are underlined, with
+  the reason under a small sign beside them.
+- **What is not certain says so.** A date or a figure that is in doubt is
+  followed by a small question mark; resting on it, or touching it, gives the
+  reason. The place in the order of revelation and the "early, middle, late"
+  under the timeline carry one on every page.
+- **Written.** The English: the setting, the map of the surah passage by
+  passage, the account of each occasion of revelation, the note on what is and
+  is not authentically narrated. **I wrote this**, from the works each page
+  lists under *Sources*. It is not a translation of any one of them.
 
-| Field | Required | Notes |
-|---|---|---|
-| `paragraphs` | yes | Plain text, one string per paragraph. 3–6 paragraphs reads well. |
-| `source` | yes | Printed under the introduction. An unattributed introduction is not published — the loader drops entries without it. |
-| `sourceUrl` | no | Makes the attribution a link. |
-| `revealed` | no | `"Meccan"` / `"Medinan"`, if you want to override the corpus. |
-| `themes` | no | 2–4 short tags, shown beside the surah name. |
-| `arabicParagraphs` | no | Set right-to-left after the English. |
+**What I need from you: someone of knowledge to read them.** This is the
+important one. The quotations are checked by machine and the numbers are
+generated, but the prose is mine, and prose about the Book of Allah should not
+stand on my reading alone. **`INTROS-REVIEW.md` sets out every open question,
+one by one, with the page it is on** — start there. In outline:
 
-**Useful shape for each introduction**, if you want a house style: when and where
-it was revealed and what was happening; the central subject; how it is
-structured; its relation to the surahs either side of it; anything specifically
-narrated about reciting it.
+| What to check | Why |
+|---|---|
+| **Hadith gradings** — 193 narrations across the 114 pages | 147 are in al-Bukhārī or Muslim. The rest carry al-Albānī's grading — for the four Sunan as the open hadith corpus records him, for a handful from his other books as a search found them. Two have only al-Ḥākim's grading. The review sheet lists each. |
+| **Hadith numbers** | Every reference to the six books was checked by number against an open corpus — Ṣaḥīḥ Muslim included, by ʿAbd al-Bāqī's numbering. Two Muslim numbers (2483 and 2656) could not be confirmed there, because the corpus itself is out of step at those two places. |
+| **Makkan or Madinan**, where it is differed over | Eleven surahs are marked "differed over" (among them al-Ḥajj, al-Raʿd, al-Raḥmān, al-Insān, al-Muṭaffifīn). For these the page reports the sayings and does not choose. For the rest I followed the majority as Ibn al-Jawzī and al-Qurṭubī give it. |
+| **The period within Makkah or Madinah** | "Early", "middle" and "late" are my estimate from the surah's place in the order and from what it mentions. It is the softest claim on the page. |
+| **Renderings of the ayat** inside the prose | These are my own paraphrases, written to read well in a sentence. The reader's chosen translation is what appears under the ayat themselves. |
+| **Wording about Allah's attributes** | Stated as the text states them — "rose over the Throne", "both His hands" — without interpretation. Please confirm it reads as it should. |
 
-**Volume.** 114 entries. It is worth saying clearly: these can arrive one at a
-time. Each entry improves its own surah and nothing else breaks. Start with the
-ones people open most — al-Fātiḥah, al-Baqarah, Yā-Sīn, al-Kahf, al-Raḥmān,
-al-Mulk, and juz' 'amma.
+A correction is an edit to one JSON file — `src/content/intros/<n>.json`,
+schema in `src/content/README.md` — followed by `npm run lock:intros`.
 
-**Format I can take directly.** JSON in the schema above, or a spreadsheet with
-columns `surah, source, sourceUrl, revealed, themes, paragraph1..paragraph6` —
-I will convert it.
+**What is not there, deliberately.** Popular reports on the merit of a surah
+that are weak or fabricated are not given, and are not named either: the
+pages used to carry a note saying which widely quoted reports were unsound,
+and by the owner's ruling those notes were taken out. Twenty surahs have
+nothing authentic narrated about them in particular, and their pages say that
+rather than fill the space.
+
+**Language.** The introductions are in English only. The navigation around
+them follows the site language; the prose does not, and I have not translated
+it. If you want them in Pashto, Persian or Spanish, that is a translation to
+commission from someone who can answer for it, not one for me to produce.
 
 ---
 
@@ -312,9 +362,13 @@ says so and offers the scans instead.
    lexicon entry and 87% have Lisān al-ʿArab specifically. The rest fall back
    to the scanned pages.
 
-**Still open from the original ask:** "other occurrences of this word" is still
-matched on the surface form, not on the root. The root is now known, so this is
-build time rather than data.
+**Other occurrences — done.** "Elsewhere in the Qur'an", in the panel beside the
+text, was matched on the word's own letters: it found رَبِّ wherever رَبِّ is
+written and none of رَبُّكُمْ or رَبَّنَا. It is now asked for by the root, as the
+study page always was, with the words that carry the root marked in each ayah
+and the count the corpus gives (871 for ر ب ب, where the letters found 126). A
+word with no root — a particle, a pronoun — is still looked for by its form,
+which is all there is to go on, and says so.
 
 ---
 
@@ -440,8 +494,9 @@ yet. Flagging them so you can say whether you want them:
 
 - **Juz', hizb, rubʿ and page number** per ayah (page and juz' are shown in the
   word study panel; nothing browses by them yet).
-- **Sajdah markers** — ayat of prostration are flagged in the data and not
-  surfaced.
+- **Sajdah markers** — now shown. The rail already marked them, but a phone has
+  no rail, so an ayah of prostration says so at its own head: ۩ and the word,
+  in whichever of the four languages the site is in.
 - **Revelation order** — shown as a tag and as a sort option in the index.
 - **Muṣḥaf page layout.** The muṣḥaf view lays out a *surah* continuously. Laying
   out the *actual 604 pages* of the Madīnah muṣḥaf, with the correct line breaks,
@@ -581,8 +636,8 @@ You asked me to look for anything being missed. In the order I would take them:
 5. **Answers on an ayah.** `answers/by_ayah` — scholars' answers to questions
    about an ayah. Same: production only.
 6. **Surah introductions in other languages.** `resources/chapter_infos` lists
-   five: English (Maudūdī's, which is what §1's fallback has been all along —
-   the site should name him), Urdu, Tamil, Malayalam, Italian.
+   five: English (Maudūdī's, which the site showed before it had introductions
+   of its own — see §1), Urdu, Tamil, Malayalam, Italian.
 7. **Other scripts.** IndoPak, which South Asian readers learned on, and its
    Nastaʿlīq form; the simplified Imlāʾī, which is the one to search.
 8. **Whole-surah recitation.** `chapter_recitations` — one file to a surah
@@ -605,6 +660,59 @@ account APIs only. The analytics endpoint: the site has none, by design.
 Its examples use translation `131` throughout — The Clear Qur'an — which the
 same documentation's update notice says has been removed. The examples are
 stale; the notice is right.
+
+---
+
+## 9. The site in four languages — what needs a native reader
+
+**Status: built.** The site's own words — menus, labels, buttons, messages — are
+in English, Pashto, Persian and Spanish, chosen under **Language** at the head
+of the settings page. As you set it out: it is for finding one's way around and
+for nothing else. It does not touch the translation under an ayah, the word
+meanings or the tafsir, which stay as the reader has them; and outside English
+a surah is named in Arabic alone.
+
+**What I need from you: a reader for each language.** I wrote all three
+translations, some 748 sentences each, and nobody who speaks the language has
+read them. In order of how much I would trust them unread:
+
+| Language | File | What to know |
+|---|---|---|
+| Spanish | `src/lib/i18n/messages/es.ts` | The most reliable of the three. Uses *sura*, *aleya*, *yuz*, *mushaf* |
+| Persian | `src/lib/i18n/messages/fa.ts` | Written to be read in Iran and Afghanistan alike. Uses سوره, آیه, جزء |
+| Pashto | `src/lib/i18n/messages/ps.ts` | **The one most in need of checking.** Uses سورت, آیت, سپاره, and امستنې for settings |
+
+Each file is one sentence to a line, English key on the left, so it can be
+read and corrected by someone who has never seen the code. Afterwards,
+`npm run check:messages` confirms nothing was dropped in the correcting — a
+`{count}` or a `<link>` that the English has and the translation has lost. The terms above are
+choices — *سپاره* over *جزء*, *امستنې* over *تنظیمات* — and are yours to make
+differently.
+
+**What stays in English or Arabic, and why.** Names of translators and
+translations are as the corpus gives them. The lexicon entries, the English
+gloss under each word are other people's writing, not the site's, and are not
+translated. The surah introductions are the site's own, written in English,
+and are not translated either — see §1. Reciters and the authors of the tafsir
+are shown in Arabic letters to a reader of Pashto or Persian — العفاسي, الطبري —
+because the Latin spelling is a transliteration made for people who cannot
+read the original, and they can.
+
+**Decisions I made that you may want otherwise.**
+
+1. **The language is not guessed from the device.** The site opens in English
+   until a reader chooses another in Settings. Opening in the device's own
+   language is a small change if you want it — it would mean a reader with a
+   Pashto phone never has to find the setting.
+2. **Spanish names the surahs in Arabic too**, as you asked for every language
+   but English. A Spanish reader who does not read Arabic script then has the
+   number to go by. It is one word per language in `src/lib/i18n/locales.ts`
+   (`surahNames`) if you would rather Spanish kept the Latin names.
+3. **Page titles in search results stay English.** They are written into the
+   exported files. The tab and the history do say the reader's language.
+
+**Adding a language** is one entry in `locales.ts` and one file of messages; the
+build refuses a file that leaves a sentence out.
 
 ---
 

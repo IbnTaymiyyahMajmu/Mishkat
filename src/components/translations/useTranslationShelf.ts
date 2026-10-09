@@ -5,6 +5,7 @@ import { MAX_TRANSLATIONS } from "@/lib/quran/resources";
 import { heldCatalogue, loadCatalogue, translationName, type Catalogue } from "@/lib/quran/translations";
 import { useSettings } from "@/lib/store/settings";
 import { useToast } from "@/components/Toast";
+import { useT } from "@/lib/i18n";
 
 /**
  * The catalogue of translations, once it has arrived.
@@ -56,6 +57,7 @@ const announced = new Set<number>();
 export function useTranslationShelf() {
   const { settings, update } = useSettings();
   const toast = useToast();
+  const t = useT();
   const { catalogue, failed, retry } = useCatalogue();
   const ids = settings.translationIds;
 
@@ -71,28 +73,30 @@ export function useTranslationShelf() {
     const unsaid = gone.filter((id) => !announced.has(id));
     if (!unsaid.length) return;
     unsaid.forEach((id) => announced.add(id));
-    const what = translationName(unsaid[0]) || "A translation you had chosen";
     toast(
-      `${what} is no longer offered by the corpus. Reading ${translationName(next[0]) || "another"} in its place.`,
+      t("translations.gone", {
+        what: translationName(unsaid[0]) || t("translations.goneUnnamed"),
+        next: translationName(next[0]) || t("translations.another"),
+      }),
       9000,
     );
-  }, [catalogue, ids, update, toast]);
+  }, [catalogue, ids, update, toast, t]);
 
   /** Set a translation under each ayah, or take it away. The last one stays. */
   const toggle = useCallback(
     (id: number) => {
       if (ids.includes(id)) {
         if (ids.length > 1) update({ translationIds: ids.filter((x) => x !== id) });
-        else toast("One translation stays. Choose another first, then put this one away.", 4200);
+        else toast(t("translations.lastOne"), 4200);
         return;
       }
       if (ids.length >= MAX_TRANSLATIONS) {
-        toast(`${MAX_TRANSLATIONS} translations is as many as fit under an ayah. Put one away first.`, 4200);
+        toast(t("translations.full", { max: MAX_TRANSLATIONS }), 4200);
         return;
       }
       update({ translationIds: [...ids, id] });
     },
-    [ids, update, toast],
+    [ids, update, toast, t],
   );
 
   /**

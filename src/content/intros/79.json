@@ -1,0 +1,136 @@
+{
+  "surah": 79,
+  "epithet": "The soul drawn out, and the greatest calamity",
+  "lede": "It begins at the deathbed, with the angels who take the soul, and ends on the morning of the Resurrection, when a lifetime will seem to have been an evening. In between stands Pharaoh, who said, “I am your lord, most high.”",
+  "names": [
+    {
+      "arabic": "النازعات",
+      "name": "al-Nāziʿāt",
+      "meaning": "Those Who Pull Out",
+      "note": "After the oath it opens with. ʿAlī, Ibn Masʿūd and Ibn ʿAbbās said they are the angels who draw out the souls — harshly from the disbeliever, gently from the believer — and this is the view of most. Ibn al-Jawzī counts seven sayings in all."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "It is Makkan without disagreement: both Ibn al-Jawzī and al-Qurṭubī record the agreement. The traditional order places it eighty-first, directly after al-Nabaʾ, as it stands in the muṣḥaf.",
+    "period": "makkah-late",
+    "when": "The later years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ النّازِعاتِ مَكِّيَّةٌ كُلُّها بِإجْماعِهِمْ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ النَّازِعَاتِ مَكِّيَّةٌ بِإِجْمَاعٍ. وَهِيَ خَمْسٌ أَوْ سِتٌّ وَأَرْبَعُونَ آيَةً"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ النَّازِعَاتِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ النّازِعاتِ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ بِلا خِلافٍ",
+        "says": "Makkan, by agreement."
+      }
+    ]
+  },
+  "setting": [
+    "No particular occasion is transmitted for it. It belongs with al-Nabaʾ before it: the same hearers, the same denial, the same subject. “Are we really to be brought back to our former state — even after we are crumbled bones?” they said. “That would be a losing return.”",
+    "The surah answers with three things. A scene they had all witnessed and none could explain — a person dying. A story they all knew — Mūsā sent to Pharaoh, the most powerful man of his age, who gathered his people and proclaimed himself their highest lord, and was made an example in this life and the next. And an argument from scale: are you harder to create, or the sky above you?",
+    "It was sent to steady the Prophet ﷺ as much as to warn his people. They kept asking him when the Hour would be. He is told that fixing its time is no part of his task: “You are only a warner to whoever fears it.”"
+  ],
+  "occasions": [],
+  "aim": "To strike hearts that deny the Resurrection and the Recompense, by setting before them death, the raising, the gathering and the Hour.",
+  "themes": [
+    "Death",
+    "The Resurrection",
+    "Mūsā and Pharaoh",
+    "Restraining the soul",
+    "The Hour"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 5,
+      "title": "Five oaths",
+      "summary": "By those who pull out with force, and those who draw out gently; by those who glide, and race ahead, and arrange each matter. The angels, on the reading of most of the early commentators, at their work from the taking of the soul onwards."
+    },
+    {
+      "from": 6,
+      "to": 14,
+      "title": "The two blasts",
+      "summary": "The Day the Quaking shakes, and the second follows it. Hearts that Day will pound and eyes be lowered. They used to say, “Shall we be brought back, when we are decayed bones?” It will be a single cry — and there they are, awake, on the open plain."
+    },
+    {
+      "from": 15,
+      "to": 26,
+      "title": "Mūsā and Pharaoh",
+      "summary": "Has the story of Mūsā reached you? His Lord called him in the sacred valley of Ṭuwā: go to Pharaoh, he has transgressed. He showed him the greatest sign; Pharaoh denied, gathered his people, and declared: “I am your lord, most high.” So Allah seized him as an example for the next life and this. In that is a lesson for whoever fears."
+    },
+    {
+      "from": 27,
+      "to": 33,
+      "title": "Which is harder to create?",
+      "summary": "Are you a harder creation, or the heaven He built? He raised its canopy and ordered it, darkened its night and brought out its morning; then spread the earth, drew out its water and pasture, and set the mountains firm — provision for you and your herds."
+    },
+    {
+      "from": 34,
+      "to": 41,
+      "title": "The Greatest Calamity",
+      "summary": "When the Great Overwhelming comes, the Day a person remembers all he strove for. Whoever transgressed and preferred the life of this world, the Fire is his home. Whoever feared standing before his Lord, and held his soul back from its desire (79:40), Paradise is his home."
+    },
+    {
+      "from": 42,
+      "to": 46,
+      "title": "When?",
+      "summary": "They ask you about the Hour: when will it arrive? What have you to do with naming it? Its end is with your Lord. You are only a warner to those who fear it. The Day they see it, it will be as though they had stayed only an evening, or its morning."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 40,
+    "why": "With the ayah after it, the surah’s description of the one who is saved: two things, fear of the standing and restraint of the self."
+  },
+  "virtues": [],
+  "before": "Al-Nabaʾ ended with the disbeliever wishing he were dust. Al-Nāziʿāt begins one step earlier, with his soul being pulled from him.",
+  "after": "This surah ends: you are only a warner to whoever fears. ʿAbasa opens on a man who came fearing, and on the lesson drawn from that day about who the warning is for.",
+  "notable": [
+    {
+      "ayah": 24,
+      "label": "Pharaoh: “I am your lord, most high”"
+    },
+    {
+      "ayah": 34,
+      "label": "The Greatest Calamity"
+    },
+    {
+      "ayah": 40,
+      "to": 41,
+      "label": "Whoever feared his Lord and restrained his soul"
+    },
+    {
+      "ayah": 46,
+      "label": "As though they stayed an evening or its morning"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr"
+  ]
+}

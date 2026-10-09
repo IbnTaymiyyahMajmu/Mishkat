@@ -3,14 +3,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSearch } from "./search/SearchProvider";
+import { useLocale, type MessageKey } from "@/lib/i18n";
 import { useSettings, type Theme } from "@/lib/store/settings";
 import styles from "./SiteHeader.module.css";
 
 /** The three reading lights, in the order the day runs. */
-const LIGHTS: { id: Theme; title: string; icon: React.ReactNode }[] = [
+const LIGHTS: { id: Theme; title: MessageKey; icon: React.ReactNode }[] = [
   {
     id: "day",
-    title: "Day — bright paper",
+    title: "light.day",
     icon: (
       <>
         <circle cx="12" cy="12" r="4.2" />
@@ -20,7 +21,7 @@ const LIGHTS: { id: Theme; title: string; icon: React.ReactNode }[] = [
   },
   {
     id: "evening",
-    title: "Evening — sepia lamplight",
+    title: "light.evening",
     icon: (
       <>
         <path d="M3.5 17.5h17" />
@@ -31,23 +32,24 @@ const LIGHTS: { id: Theme; title: string; icon: React.ReactNode }[] = [
   },
   {
     id: "night",
-    title: "Night — dark ground",
+    title: "light.night",
     icon: <path d="M20 14.4A8.2 8.2 0 1 1 9.6 4a6.6 6.6 0 0 0 10.4 10.4z" />,
   },
 ];
 
-const NAV = [
-  { href: "/surahs/", label: "Surahs", match: (p: string) => p.startsWith("/surahs") },
-  { href: "/tafsir/", label: "Tafsir", match: (p: string) => p.startsWith("/tafsir") },
-  { href: "/notes/", label: "Notes", match: (p: string) => p.startsWith("/notes") },
-  { href: "/bookmarks/", label: "Bookmarks", match: (p: string) => p.startsWith("/bookmarks") },
-  { href: "/settings/", label: "Settings", match: (p: string) => p.startsWith("/settings") },
+const NAV: { href: string; label: MessageKey; match: (p: string) => boolean }[] = [
+  { href: "/surahs/", label: "nav.surahs", match: (p) => p.startsWith("/surahs") },
+  { href: "/tafsir/", label: "nav.tafsir", match: (p) => p.startsWith("/tafsir") },
+  { href: "/notes/", label: "nav.notes", match: (p) => p.startsWith("/notes") },
+  { href: "/bookmarks/", label: "nav.bookmarks", match: (p) => p.startsWith("/bookmarks") },
+  { href: "/settings/", label: "nav.settings", match: (p) => p.startsWith("/settings") },
 ];
 
 export function SiteHeader() {
   const pathname = usePathname() || "/";
   const { openSearch } = useSearch();
   const { settings, update } = useSettings();
+  const { t, arabicScript } = useLocale();
 
   // The landing page is read against a lit niche rather than paper, so the bar
   // gives up its own ground there and sits in the light: no fill, no rule under
@@ -59,11 +61,13 @@ export function SiteHeader() {
     <header className={`${styles.header} ${onHome ? styles.headerHome : ""}`}>
       <Link href="/" className={styles.brand}>
         <span className={styles.brandArabic}>مشكاة</span>
-        <span className={styles.brandName}>Mishkāt</span>
-        <span className={styles.brandKicker}>Qur&rsquo;an</span>
+        {/* The name in Latin letters is a transliteration of the word beside
+            it. A reader of an Arabic script has just read the word itself. */}
+        {!arabicScript && <span className={styles.brandName}>{t("brand.name")}</span>}
+        <span className={styles.brandKicker}>{t("brand.kicker")}</span>
       </Link>
 
-      <nav className={styles.nav} aria-label="Primary">
+      <nav className={styles.nav} aria-label={t("nav.primary")}>
         {NAV.map((item) => {
           const current = item.match(pathname);
           return (
@@ -73,13 +77,13 @@ export function SiteHeader() {
               aria-current={current ? "page" : undefined}
               className={`${styles.navLink} ${current ? styles.navLinkOn : ""}`}
             >
-              {item.label}
+              {t(item.label)}
             </Link>
           );
         })}
       </nav>
 
-      <div className={styles.lights} role="group" aria-label="Reading light">
+      <div className={styles.lights} role="group" aria-label={t("light.group")}>
         {LIGHTS.map((light) => {
           const on = settings.theme === light.id;
           return (
@@ -87,8 +91,8 @@ export function SiteHeader() {
               key={light.id}
               onClick={() => update({ theme: light.id })}
               aria-pressed={on}
-              title={light.title}
-              aria-label={light.title}
+              title={t(light.title)}
+              aria-label={t(light.title)}
               className={`${styles.light} ${on ? styles.lightOn : ""}`}
             >
               <svg
@@ -111,13 +115,13 @@ export function SiteHeader() {
       <button
         onClick={() => openSearch()}
         className={`btn btn-secondary ${styles.search}`}
-        aria-label="Search the Qur'an"
+        aria-label={t("nav.searchLabel")}
       >
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
           <circle cx="11" cy="11" r="7" />
           <path d="m20 20-3.5-3.5" />
         </svg>
-        <span className={styles.searchLabel}>Search</span>
+        <span className={styles.searchLabel}>{t("nav.search")}</span>
         <kbd className={styles.kbd}>/</kbd>
       </button>
     </header>

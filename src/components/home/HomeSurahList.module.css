@@ -126,6 +126,19 @@
   color: var(--mk-hero-ink);
 }
 
+/* Outside English a surah is named in Arabic and nothing else, so the name is
+   the row's one piece of Arabic and is set as the Arabic at the far end of an
+   English row is: in the muṣḥaf's own hand, a size up. */
+.nameArabic {
+  font-family: var(--font-amiri-quran), serif;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 1.5;
+  /* This face hangs its tails well below the line — the mīm of إبراهيم, the yāʾ
+     of مريم — and here there is a line of small type directly under it. */
+  padding-bottom: 0.34em;
+}
+
 .sub {
   display: block;
   font-size: 11.5px;

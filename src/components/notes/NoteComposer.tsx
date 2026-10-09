@@ -8,6 +8,7 @@ import { fetchVerse } from "@/lib/quran/api";
 import { useSettings } from "@/lib/store/settings";
 import { translationName } from "@/lib/quran/translations";
 import { isValidVerseKey } from "@/lib/text";
+import { useT, type MessageKey } from "@/lib/i18n";
 import styles from "./NoteComposer.module.css";
 
 export interface ComposerResult {
@@ -30,12 +31,13 @@ interface Props {
 
 export function NoteComposer({ surah, anchorVerseKey, loadedVerses, editing, onSave, onCancel }: Props) {
   const { settings } = useSettings();
+  const t = useT();
   const [title, setTitle] = useState(editing?.title ?? "");
   const [body, setBody] = useState(editing?.body ?? "");
   const [quotes, setQuotes] = useState<NoteQuote[]>(editing?.quotes ?? []);
   const [pickerOpen, setPickerOpen] = useState(false);
   const [pickerValue, setPickerValue] = useState(anchorVerseKey ?? `${surah}:1`);
-  const [pickerError, setPickerError] = useState<string | null>(null);
+  const [pickerError, setPickerError] = useState<MessageKey | null>(null);
   const [resolving, setResolving] = useState(false);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -50,7 +52,7 @@ export function NoteComposer({ surah, anchorVerseKey, loadedVerses, editing, onS
   }, [editing?.id]);
 
   const translatorFallback =
-    translationName(settings.translationId) || "Translation";
+    translationName(settings.translationId) || t("composer.translation");
 
   /** Add an ayah's text to the note at the caret, snapshotting it as we go. */
   const addQuote = async (reference: string) => {
@@ -59,7 +61,7 @@ export function NoteComposer({ surah, anchorVerseKey, loadedVerses, editing, onS
     const parts = /^(\d{1,3})\s*[:.\-\s]\s*(\d{1,3})$/.exec(reference.trim());
     const verseKey = parts ? `${+parts[1]}:${+parts[2]}` : "";
     if (!isValidVerseKey(verseKey)) {
-      setPickerError("Use a reference like 2:255.");
+      setPickerError("composer.badReference");
       return;
     }
     setPickerError(null);
@@ -69,7 +71,7 @@ export function NoteComposer({ surah, anchorVerseKey, loadedVerses, editing, onS
       if (!verse) {
         const fetched = await fetchVerse(verseKey, settings.translationId);
         if (!fetched) {
-          setPickerError("That ayah could not be found.");
+          setPickerError("composer.notFound");
           return;
         }
         verse = fetched;
@@ -114,10 +116,11 @@ export function NoteComposer({ surah, anchorVerseKey, loadedVerses, editing, onS
       <div className={styles.titleRow}>
         <input
           className={`input ${styles.title}`}
+          dir="auto"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder={anchorVerseKey ? `Title (optional) — note on ${anchorVerseKey}` : "Title (optional)"}
-          aria-label="Note title"
+          placeholder={anchorVerseKey ? t("composer.titleOn", { key: anchorVerseKey }) : t("composer.title")}
+          aria-label={t("composer.titleLabel")}
         />
       </div>
 
@@ -134,8 +137,9 @@ export function NoteComposer({ surah, anchorVerseKey, loadedVerses, editing, onS
             (e.currentTarget.form as HTMLFormElement | null)?.requestSubmit();
           }
         }}
-        placeholder="What did you notice? Quote an ayah and write around it."
-        aria-label="Note"
+        placeholder={t("composer.body")}
+        aria-label={t("composer.bodyLabel")}
+        dir="auto"
         rows={7}
       />
 
@@ -148,7 +152,7 @@ export function NoteComposer({ surah, anchorVerseKey, loadedVerses, editing, onS
             onClick={() => addQuote(anchorVerseKey)}
             disabled={resolving || alreadyQuoted.has(anchorVerseKey)}
           >
-            {alreadyQuoted.has(anchorVerseKey) ? `${anchorVerseKey} quoted` : `Quote ${anchorVerseKey}`}
+            {t(alreadyQuoted.has(anchorVerseKey) ? "composer.quoted" : "composer.quote", { key: anchorVerseKey })}
           </button>
         )}
         <button
@@ -158,14 +162,14 @@ export function NoteComposer({ surah, anchorVerseKey, loadedVerses, editing, onS
           onClick={() => setPickerOpen((v) => !v)}
           aria-expanded={pickerOpen}
         >
-          Quote another ayah
+          {t("composer.quoteAnother")}
         </button>
       </div>
 
       {pickerOpen && (
         <div className={styles.picker}>
           <label className={styles.pickerLabel} htmlFor="quote-ref">
-            Reference
+            {t("composer.reference")}
           </label>
           <div className={styles.pickerRow}>
             <input
@@ -187,25 +191,24 @@ export function NoteComposer({ surah, anchorVerseKey, loadedVerses, editing, onS
               onClick={() => void addQuote(pickerValue.trim())}
               disabled={resolving}
             >
-              {resolving ? "Fetching…" : "Insert"}
+              {resolving ? t("common.fetching") : t("composer.insert")}
             </button>
           </div>
-          {pickerError && <p className={styles.pickerError}>{pickerError}</p>}
+          {pickerError && <p className={styles.pickerError}>{t(pickerError)}</p>}
           <p className={styles.pickerHint}>
-            Any ayah in the Qur&rsquo;an, not only this surah. Its text is stored with the note, so
-            the note still reads if you change translation later.
+            {t("composer.hint")}
           </p>
         </div>
       )}
 
       <div className={styles.actions}>
         <button type="button" className="btn btn-ghost" style={{ fontSize: 13 }} onClick={onCancel}>
-          Cancel
+          {t("common.cancel")}
         </button>
         <div style={{ flex: 1 }} />
         <span className={styles.hint}>⌘/Ctrl + ↵</span>
         <button type="submit" className="btn btn-primary" disabled={!body.trim()}>
-          {editing ? "Save changes" : "Save note"}
+          {t(editing ? "composer.saveChanges" : "composer.save")}
         </button>
       </div>
     </form>

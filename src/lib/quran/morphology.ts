@@ -1,5 +1,7 @@
+import type { MessageKey, Translate } from "../i18n/types";
+
 /**
- * Reading the corpus's grammar tags back into English.
+ * Reading the corpus's grammar tags back into words.
  *
  * The Quranic Arabic Corpus writes a segment's grammar as a run of short codes:
  * `STEM|POS:N|LEM:kita`b|ROOT:ktb|MS|GEN|INDEF` is a definite-less noun of the
@@ -12,65 +14,85 @@
  * can see and go and check, where a guessed translation is a claim about the
  * language that nobody made. Same principle as the panel it feeds.
  *
- * Part of speech is not translated here at all. The corpus's own `pos` field
- * arrives already spelled out ("Relative Pronoun", "Accusative Particle"), so
- * repeating that table would only be a second chance to disagree with it.
+ * ── in which language ─────────────────────────────────────────────────────
+ *
+ * The codes are said in the reader's language, through the site's messages
+ * ("grammar.*"). Most terms also have an Arabic name, which is what a grammar
+ * book and a teacher will both call it, and it is given beside the reader's
+ * word for it: "genitive · مجرور".
+ *
+ * A reader of a language written in Arabic script — Pashto, Persian — learned
+ * this grammar under its Arabic names to begin with. To them مجرور is not a
+ * gloss on "genitive"; it is the term, and the other word is the gloss. So
+ * there the Arabic name stands alone, and so does the part of speech: the
+ * corpus spells that out in English ("Relative Pronoun"), and the Arabic
+ * names below are the corpus's own, from its documentation of the tag set.
  */
 
-/** Person, gender and number — the agreement carried by a verb or a pronoun. */
-const PERSON: Record<string, string> = {
-  "1S": "1st person singular",
-  "1P": "1st person plural",
-  "2MS": "2nd person masculine singular",
-  "2FS": "2nd person feminine singular",
-  "2D": "2nd person dual",
-  "2MD": "2nd person masculine dual",
-  "2FD": "2nd person feminine dual",
-  "2MP": "2nd person masculine plural",
-  "2FP": "2nd person feminine plural",
-  "3MS": "3rd person masculine singular",
-  "3FS": "3rd person feminine singular",
-  "3D": "3rd person dual",
-  "3MD": "3rd person masculine dual",
-  "3FD": "3rd person feminine dual",
-  "3MP": "3rd person masculine plural",
-  "3FP": "3rd person feminine plural",
-};
+/** How a segment's grammar is put into words for this reader. */
+export interface GrammarSay {
+  t: Translate;
+  /** Whether a term's Arabic name stands alone rather than beside a translation. */
+  arabicTerms: boolean;
+  /** Parts of speech in this reader's language, by the corpus's tag, if it has them. */
+  pos?: Record<string, string> | null;
+}
 
-/** Gender and number on a noun, which carries no person to agree with. */
-const NUMBER: Record<string, string> = {
-  M: "masculine",
-  F: "feminine",
-  D: "dual",
-  P: "plural",
-  MS: "masculine singular",
-  FS: "feminine singular",
-  MD: "masculine dual",
-  FD: "feminine dual",
-  MP: "masculine plural",
-  FP: "feminine plural",
+/**
+ * A term: the message that says it, and its Arabic name where it has one.
+ * `mark` is for the Arabic that is not a name but the thing itself — the ال of
+ * the article — which is shown beside the term in every language.
+ */
+type Term = { say: MessageKey; arabic?: string; mark?: string };
+
+const PERSON_OF: Record<string, MessageKey> = {
+  "1": "grammar.person.1",
+  "2": "grammar.person.2",
+  "3": "grammar.person.3",
 };
+const GENDER_OF: Record<string, MessageKey> = { M: "grammar.masculine", F: "grammar.feminine" };
+const NUMBER_OF: Record<string, MessageKey> = { S: "grammar.singular", D: "grammar.dual", P: "grammar.plural" };
+
+/**
+ * Person, gender and number, in that order, as the corpus packs them: `3MS`,
+ * `2D`, `FP`, `M`. Each letter is a word, and the words are said in the order
+ * the letters come — which reads rightly in every language the site speaks.
+ */
+function agreement(code: string, t: Translate): string | null {
+  const m = /^([123])?([MF])?([SDP])?$/.exec(code);
+  if (!m || !code) return null;
+  return [m[1] && t(PERSON_OF[m[1]]), m[2] && t(GENDER_OF[m[2]]), m[3] && t(NUMBER_OF[m[3]])]
+    .filter(Boolean)
+    .join(" ");
+}
 
 /**
  * Case and mood are given with the Arabic term beside the English, because the
  * Arabic is what a grammar book and a teacher will both call it.
  */
-const CASE: Record<string, string> = {
-  NOM: "nominative · مرفوع",
-  ACC: "accusative · منصوب",
-  GEN: "genitive · مجرور",
+const CASE: Record<string, Term> = {
+  NOM: { say: "grammar.nominative", arabic: "مرفوع" },
+  ACC: { say: "grammar.accusative", arabic: "منصوب" },
+  GEN: { say: "grammar.genitive", arabic: "مجرور" },
 };
 
-const MOOD: Record<string, string> = {
-  IND: "indicative · مرفوع",
-  SUBJ: "subjunctive · منصوب",
-  JUS: "jussive · مجزوم",
+const MOOD: Record<string, Term> = {
+  IND: { say: "grammar.indicative", arabic: "مرفوع" },
+  SUBJ: { say: "grammar.subjunctive", arabic: "منصوب" },
+  JUS: { say: "grammar.jussive", arabic: "مجزوم" },
 };
 
-const ASPECT: Record<string, string> = {
-  PERF: "perfect · ماضٍ",
-  IMPF: "imperfect · مضارع",
-  IMPV: "imperative · أمر",
+const ASPECT: Record<string, Term> = {
+  PERF: { say: "grammar.perfect", arabic: "ماضٍ" },
+  IMPF: { say: "grammar.imperfect", arabic: "مضارع" },
+  IMPV: { say: "grammar.imperative", arabic: "أمر" },
+};
+
+const STATE: Record<string, Term> = {
+  ACT: { say: "grammar.active", arabic: "معلوم" },
+  PASS: { say: "grammar.passive", arabic: "مجهول" },
+  INDEF: { say: "grammar.indefinite", arabic: "نكرة" },
+  DET: { say: "grammar.definite", arabic: "معرفة" },
 };
 
 /**
@@ -78,38 +100,142 @@ const ASPECT: Record<string, string> = {
  * most: the wāw that joins two clauses and the wāw that puts one inside the
  * other as a circumstance are the same letter, and the corpus separates them.
  */
-const PREFIX: Record<string, string> = {
-  "Al+": "the definite article · ال",
-  "bi+": "the preposition · بِ",
-  "ka+": "the preposition · كَ",
-  "ta+": "the oath · تَ",
-  "sa+": "the future · سَ",
-  "ya+": "the vocative · يا",
-  "wa+": "and · وَ",
-  "w:CONJ+": "the joining wāw · واو العطف",
-  "w:REM+": "the resumptive wāw · واو الاستئناف",
-  "w:CIRC+": "the circumstantial wāw · واو الحال",
-  "w:SUP+": "the supplemental wāw",
-  "w:COM+": "the wāw of accompaniment · واو المعية",
-  "w:P+": "the oath wāw · واو القسم",
-  "f:CONJ+": "the joining fā’ · فاء العطف",
-  "f:REM+": "the resumptive fā’ · فاء الاستئناف",
-  "f:RSLT+": "the fā’ of the answer · فاء الجواب",
-  "f:CAUS+": "the causal fā’ · فاء السببية",
-  "f:SUP+": "the supplemental fā’",
-  "l:P+": "the preposition · لِ",
-  "l:EMPH+": "the lām of emphasis · لام التوكيد",
-  "l:PRP+": "the lām of purpose · لام التعليل",
-  "l:IMPV+": "the lām of command · لام الأمر",
-  "A:INTG+": "the interrogative alif · همزة الاستفهام",
+const PREFIX: Record<string, Term> = {
+  "Al+": { say: "grammar.article", mark: "ال" },
+  "bi+": { say: "grammar.preposition", mark: "بِ" },
+  "ka+": { say: "grammar.preposition", mark: "كَ" },
+  "ta+": { say: "grammar.oath", mark: "تَ" },
+  "sa+": { say: "grammar.future", mark: "سَ" },
+  "ya+": { say: "grammar.vocative", mark: "يا" },
+  "wa+": { say: "grammar.and", mark: "وَ" },
+  "w:CONJ+": { say: "grammar.waw.joining", arabic: "واو العطف" },
+  "w:REM+": { say: "grammar.waw.resumptive", arabic: "واو الاستئناف" },
+  "w:CIRC+": { say: "grammar.waw.circumstantial", arabic: "واو الحال" },
+  "w:SUP+": { say: "grammar.waw.supplemental" },
+  "w:COM+": { say: "grammar.waw.accompaniment", arabic: "واو المعية" },
+  "w:P+": { say: "grammar.waw.oath", arabic: "واو القسم" },
+  "f:CONJ+": { say: "grammar.fa.joining", arabic: "فاء العطف" },
+  "f:REM+": { say: "grammar.fa.resumptive", arabic: "فاء الاستئناف" },
+  "f:RSLT+": { say: "grammar.fa.answer", arabic: "فاء الجواب" },
+  "f:CAUS+": { say: "grammar.fa.causal", arabic: "فاء السببية" },
+  "f:SUP+": { say: "grammar.fa.supplemental" },
+  "l:P+": { say: "grammar.preposition", mark: "لِ" },
+  "l:EMPH+": { say: "grammar.lam.emphasis", arabic: "لام التوكيد" },
+  "l:PRP+": { say: "grammar.lam.purpose", arabic: "لام التعليل" },
+  "l:IMPV+": { say: "grammar.lam.command", arabic: "لام الأمر" },
+  "A:INTG+": { say: "grammar.interrogative", arabic: "همزة الاستفهام" },
 };
 
 /** The two families of governing particles the corpus marks by name. */
-const FAMILY: Record<string, string> = {
-  "kaAn": "of kāna and its sisters",
-  "<in~": "of inna and its sisters",
-  "kaAd": "of kāda and its sisters",
+const FAMILY: Record<string, Term> = {
+  "kaAn": { say: "grammar.kana" },
+  "<in~": { say: "grammar.inna" },
+  "kaAd": { say: "grammar.kada" },
 };
+
+const PARTICIPLE: Record<"active" | "passive", Term> = {
+  active: { say: "grammar.activeParticiple", arabic: "اسم فاعل" },
+  passive: { say: "grammar.passiveParticiple", arabic: "اسم مفعول" },
+};
+const VERBAL_NOUN: Term = { say: "grammar.verbalNoun", arabic: "مصدر" };
+
+function said(term: Term, say: GrammarSay): string {
+  if (term.mark) return `${say.t(term.say)} · ${term.mark}`;
+  if (!term.arabic) return say.t(term.say);
+  return say.arabicTerms ? term.arabic : `${say.t(term.say)} · ${term.arabic}`;
+}
+
+/**
+ * The parts of speech, by the corpus's tag, under the Arabic names the corpus
+ * itself gives them. Shown to a reader of an Arabic script in place of the
+ * English the corpus spells out; see the note at the head of this file.
+ */
+const POS_ARABIC: Record<string, string> = {
+  N: "اسم",
+  PN: "اسم علم",
+  ADJ: "صفة",
+  IMPN: "اسم فعل أمر",
+  PRON: "ضمير",
+  DEM: "اسم إشارة",
+  REL: "اسم موصول",
+  T: "ظرف زمان",
+  LOC: "ظرف مكان",
+  V: "فعل",
+  P: "حرف جر",
+  EMPH: "لام التوكيد",
+  IMPV: "لام الأمر",
+  PRP: "لام التعليل",
+  CONJ: "حرف عطف",
+  SUB: "حرف مصدري",
+  ACC: "حرف نصب",
+  AMD: "حرف استدراك",
+  ANS: "حرف جواب",
+  AVR: "حرف ردع",
+  CAUS: "حرف سببية",
+  CERT: "حرف تحقيق",
+  CIRC: "حرف حال",
+  COM: "واو المعية",
+  COND: "حرف شرط",
+  EQ: "حرف تسوية",
+  EXH: "حرف تحضيض",
+  EXL: "حرف تفصيل",
+  EXP: "أداة استثناء",
+  FUT: "حرف استقبال",
+  INC: "حرف ابتداء",
+  INT: "حرف تفسير",
+  INTG: "حرف استفهام",
+  NEG: "حرف نفي",
+  PREV: "حرف كاف",
+  PRO: "حرف نهي",
+  REM: "حرف استئناف",
+  RES: "أداة حصر",
+  RET: "حرف إضراب",
+  RSLT: "حرف واقع في جواب الشرط",
+  SUP: "حرف زائد",
+  SUR: "حرف فجاءة",
+  VOC: "حرف نداء",
+  INL: "حروف مقطعة",
+  DET: "أداة تعريف",
+};
+
+/** The bare prefixes, which carry no tag of their own, and the tag each is. */
+const BARE_PREFIX: Record<string, string> = {
+  "Al+": "DET",
+  "bi+": "P",
+  "ka+": "P",
+  "ta+": "P",
+  "sa+": "FUT",
+  "ya+": "VOC",
+  "wa+": "CONJ",
+};
+
+/**
+ * The corpus's tag for a segment's part of speech: `N`, `REL`, `CONJ`. A stem
+ * states it (`POS:N`); a prefix carries it in its own code (`w:CONJ+`); an
+ * attached pronoun is one by being one. Empty where none can be read.
+ */
+export function posTag(raw: string): string {
+  const atoms = (raw || "").split("|");
+  const stated = atoms.find((a) => a.startsWith("POS:"));
+  if (stated) return stated.slice(4);
+  for (const atom of atoms) {
+    if (BARE_PREFIX[atom]) return BARE_PREFIX[atom];
+    const prefixed = /^[A-Za-z]:([A-Z]+)\+$/.exec(atom);
+    if (prefixed) return prefixed[1];
+    if (atom.startsWith("PRON:")) return "PRON";
+  }
+  return "";
+}
+
+/**
+ * A segment's part of speech, in words this reader reads: the Arabic name in
+ * an Arabic script, the language's own where it has one, and otherwise what
+ * the corpus itself spelled out.
+ */
+export function sayPos(raw: string, pos: string, say: GrammarSay): string {
+  const tag = posTag(raw);
+  return (say.arabicTerms ? POS_ARABIC[tag] : say.pos?.[tag]) || pos;
+}
 
 /**
  * Which part of the word a segment is. The corpus states this outright — it is
@@ -125,7 +251,7 @@ export interface Grammar {
   root: string;
   /** The dictionary form. Empty where the corpus records none. */
   lemma: string;
-  /** Everything else, in reading order, already in English. */
+  /** Everything else, in reading order, in the reader's language. */
   traits: string[];
 }
 
@@ -139,11 +265,11 @@ export function isCompound(grammars: Grammar[]): boolean {
 }
 
 /**
- * Turn one segment's `features_raw` into a root, a lemma and a plain-English
- * list of its grammar. `pos` is the corpus's own spelled-out part of speech,
- * used only to decide whether a bare `PERF`-style code belongs to a verb.
+ * Turn one segment's `features_raw` into a root, a lemma and a plain list of
+ * its grammar. `pos` is the corpus's own spelled-out part of speech, used only
+ * to keep a segment from repeating its own label as its one trait.
  */
-export function readGrammar(raw: string, pos: string): Grammar {
+export function readGrammar(raw: string, pos: string, say: GrammarSay): Grammar {
   const atoms = (raw || "").split("|").filter(Boolean);
   const has = (a: string) => atoms.includes(a);
 
@@ -151,16 +277,14 @@ export function readGrammar(raw: string, pos: string): Grammar {
   let root = "";
   let lemma = "";
   const traits: string[] = [];
-  const push = (t: string | undefined) => {
-    if (t && !traits.includes(t)) traits.push(t);
+  const push = (trait: string | undefined | null) => {
+    if (trait && !traits.includes(trait)) traits.push(trait);
   };
 
   // A participle is a noun built off a verb, so ACT and PASS beside PCPL name
   // the participle rather than the voice of a finite verb. Read together, once.
-  if (has("PCPL")) {
-    push(has("PASS") ? "passive participle · اسم مفعول" : "active participle · اسم فاعل");
-  }
-  if (has("VN")) push("verbal noun · مصدر");
+  if (has("PCPL")) push(said(has("PASS") ? PARTICIPLE.passive : PARTICIPLE.active, say));
+  if (has("VN")) push(said(VERBAL_NOUN, say));
 
   for (const atom of atoms) {
     // Structural markers. Which part of the word this is, is shown beside the
@@ -177,66 +301,47 @@ export function readGrammar(raw: string, pos: string): Grammar {
       lemma = atom.slice(4);
       continue;
     }
-    if (atom.startsWith("POS:")) continue; // already spelled out by the corpus
+    if (atom.startsWith("POS:")) continue; // said beside the segment already
 
     if (atom.startsWith("PRON:")) {
-      const who = PERSON[atom.slice(5)];
-      push(who ? `attached pronoun · ${who}` : `attached pronoun · ${atom.slice(5)}`);
+      const who = agreement(atom.slice(5), say.t);
+      push(`${say.t("grammar.attachedPronoun")} · ${who ?? atom.slice(5)}`);
       continue;
     }
     if (atom.startsWith("MOOD:")) {
-      push(MOOD[atom.slice(5)] ?? atom.slice(5));
+      const mood = MOOD[atom.slice(5)];
+      push(mood ? said(mood, say) : atom.slice(5));
       continue;
     }
     if (atom.startsWith("SP:")) {
-      push(FAMILY[atom.slice(3)] ?? atom.slice(3));
+      const family = FAMILY[atom.slice(3)];
+      push(family ? said(family, say) : atom.slice(3));
       continue;
     }
 
     // A prefix is written either bare (`Al+`) or with its function (`w:CIRC+`),
     // and both forms are keys in the one table.
     if (atom.endsWith("+")) {
-      push(PREFIX[atom] ?? atom.replace(/\+$/, ""));
+      const prefix = PREFIX[atom];
+      push(prefix ? said(prefix, say) : atom.replace(/\+$/, ""));
       continue;
     }
 
     // Verb form, which the corpus already gives in Roman numerals.
     const form = /^\((I|II|III|IV|V|VI|VII|VIII|IX|X|XI|XII)\)$/.exec(atom);
     if (form) {
-      push(`form ${form[1]}`);
+      push(say.t("grammar.form", { n: form[1] }));
       continue;
     }
 
-    if (PERSON[atom]) {
-      push(PERSON[atom]);
+    const term = CASE[atom] ?? ASPECT[atom] ?? STATE[atom];
+    if (term) {
+      push(said(term, say));
       continue;
     }
-    if (NUMBER[atom]) {
-      push(NUMBER[atom]);
-      continue;
-    }
-    if (CASE[atom]) {
-      push(CASE[atom]);
-      continue;
-    }
-    if (ASPECT[atom]) {
-      push(ASPECT[atom]);
-      continue;
-    }
-    if (atom === "ACT") {
-      push("active · معلوم");
-      continue;
-    }
-    if (atom === "PASS") {
-      push("passive · مجهول");
-      continue;
-    }
-    if (atom === "INDEF") {
-      push("indefinite · نكرة");
-      continue;
-    }
-    if (atom === "DET") {
-      push("definite · معرفة");
+    const agrees = agreement(atom, say.t);
+    if (agrees) {
+      push(agrees);
       continue;
     }
 

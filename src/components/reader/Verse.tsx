@@ -6,6 +6,7 @@ import type { Rendering } from "@/lib/quran/useSurahTranslations";
 import { arabicNumber } from "@/lib/text";
 import { wordDomId } from "@/lib/highlight";
 import { TranslationText } from "@/components/translations/TranslationText";
+import { useLocale } from "@/lib/i18n";
 import styles from "./Verse.module.css";
 
 export interface VerseHandlers {
@@ -61,6 +62,7 @@ function VerseImpl({
 }: Props) {
   const key = verse.verse_key;
   const number = arabicNumber(verse.verse_number);
+  const { t, arrows } = useLocale();
 
   // Worked out here, from the ayah, rather than handed in already worked out.
   // A filtered list is a new list every time it is made, so passing one in as
@@ -75,7 +77,7 @@ function VerseImpl({
       className={[styles.verse, current && styles.playing, flash && styles.flash]
         .filter(Boolean)
         .join(" ")}
-      aria-label={`Ayah ${key}`}
+      aria-label={t("verse.label", { key })}
     >
       <div className={styles.head}>
         <div className={styles.disc} aria-hidden="true">
@@ -83,14 +85,21 @@ function VerseImpl({
         </div>
         <div className={styles.key}>{key}</div>
         {noteCount > 0 && (
-          <span className={styles.noteBadge} title={`${noteCount} note${noteCount > 1 ? "s" : ""} on this ayah`}>
-            {noteCount} {noteCount > 1 ? "notes" : "note"}
+          <span className={styles.noteBadge} title={t("verse.notesOn", { count: noteCount })}>
+            {t("common.notes", { count: noteCount })}
+          </span>
+        )}
+        {/* The rail marks where the ۩ fall, and a phone has no rail. An ayah of
+            prostration says so at its own head, where it is read. */}
+        {verse.sajdah_number != null && (
+          <span className={styles.sajda} title={t("mark.sajda")}>
+            <span aria-hidden="true">۩</span> {t("verse.sajda")}
           </span>
         )}
         <div className={styles.rule} />
 
         <div className={styles.actions}>
-          <IconButton label={playing ? "Pause this ayah" : "Play this ayah"} onClick={() => handlers.onPlay(key)} active={playing}>
+          <IconButton label={t(playing ? "verse.pause" : "verse.play")} onClick={() => handlers.onPlay(key)} active={playing}>
             {playing ? (
               <path d="M10 4H6v16h4zM18 4h-4v16h4z" fill="currentColor" stroke="none" />
             ) : (
@@ -98,7 +107,7 @@ function VerseImpl({
             )}
           </IconButton>
 
-          <IconButton label="Repeat this ayah" onClick={() => handlers.onRepeat(key)}>
+          <IconButton label={t("verse.repeat")} onClick={() => handlers.onRepeat(key)}>
             <>
               <path d="m17 2 4 4-4 4" />
               <path d="M3 11v-1a4 4 0 0 1 4-4h14" />
@@ -108,7 +117,7 @@ function VerseImpl({
           </IconButton>
 
           <IconButton
-            label={bookmarked ? "Remove bookmark" : "Bookmark this ayah"}
+            label={t(bookmarked ? "verse.unbookmark" : "verse.bookmark")}
             onClick={() => handlers.onBookmark(verse)}
             active={bookmarked}
             pressed={bookmarked}
@@ -116,28 +125,28 @@ function VerseImpl({
             <path d="M19 21 12 16 5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" fill={bookmarked ? "currentColor" : "none"} />
           </IconButton>
 
-          <IconButton label="Write a note on this ayah" onClick={() => handlers.onNote(key)} active={noteCount > 0}>
+          <IconButton label={t("verse.note")} onClick={() => handlers.onNote(key)} active={noteCount > 0}>
             <>
               <path d="M12 20h9" />
               <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" />
             </>
           </IconButton>
 
-          <IconButton label="Open tafsir for this ayah" onClick={() => handlers.onTafsir(key)}>
+          <IconButton label={t("verse.tafsir")} onClick={() => handlers.onTafsir(key)}>
             <>
               <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
               <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
             </>
           </IconButton>
 
-          <IconButton label="Copy the Arabic" onClick={() => handlers.onCopyArabic(verse)}>
+          <IconButton label={t("verse.copyArabic")} onClick={() => handlers.onCopyArabic(verse)}>
             <>
               <rect x="9" y="9" width="12" height="12" rx="2" />
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
             </>
           </IconButton>
 
-          <IconButton label="Copy the translation" onClick={() => handlers.onCopyTranslation(verse)}>
+          <IconButton label={t("verse.copyTranslation")} onClick={() => handlers.onCopyTranslation(verse)}>
             <>
               <path d="M14 3v4a1 1 0 0 0 1 1h4" />
               <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z" />
@@ -146,7 +155,7 @@ function VerseImpl({
             </>
           </IconButton>
 
-          <IconButton label="Copy a link to this ayah" onClick={() => handlers.onShare(key)}>
+          <IconButton label={t("verse.share")} onClick={() => handlers.onShare(key)}>
             <>
               <path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.5 1.5" />
               <path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.5-1.5" />
@@ -195,16 +204,16 @@ function VerseImpl({
 
       {showTranslation && translations.length > 0 && (
         <div className={styles.translation}>
-          {translations.map((t, i) => (
-            <div key={t.id} className={styles.rendering}>
+          {translations.map((r, i) => (
+            <div key={r.id} className={styles.rendering}>
               <TranslationText
-                text={t.text}
-                footnotes={t.footnotes}
-                lang={t.lang}
+                text={r.text}
+                footnotes={r.footnotes}
+                lang={r.lang}
                 className={styles.translationText}
               />
               <div className={styles.translationFoot}>
-                <span className={styles.translator}>Translation of the meaning · {t.name}</span>
+                <span className={styles.translator}>{t("common.translationOf", { name: r.name })}</span>
                 {/* Under the last of them, the two things a reader of a
                     translation wants next: how others put it, and what it
                     means. The tafsir is also one of the icons above, but an
@@ -212,10 +221,10 @@ function VerseImpl({
                 {i === translations.length - 1 && (
                   <span className={styles.footLinks}>
                     <button className={styles.tafsirLink} onClick={() => handlers.onTranslations(key)}>
-                      Other translations
+                      {t("verse.otherTranslations")}
                     </button>
                     <button className={styles.tafsirLink} onClick={() => handlers.onTafsir(key)}>
-                      Tafsir <span aria-hidden="true">→</span>
+                      {t("common.tafsir")} <span aria-hidden="true">{arrows.next}</span>
                     </button>
                   </span>
                 )}

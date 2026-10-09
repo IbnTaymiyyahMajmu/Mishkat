@@ -1,0 +1,192 @@
+{
+  "surah": 32,
+  "epithet": "Their sides forsake their beds",
+  "lede": "Thirty ayat that the Prophet ﷺ recited every Friday at dawn and again each night before he slept. Creation, the Resurrection, the guilty with their heads hung low — and a reward so hidden that no soul knows what joy has been kept for it.",
+  "names": [
+    {
+      "arabic": "السجدة",
+      "name": "al-Sajdah",
+      "meaning": "The Prostration",
+      "note": "After the ayah of prostration in it, the fifteenth. It is called Alif Lām Mīm Tanzīl, or Tanzīl al-Sajdah, in the hadith, from its opening words."
+    },
+    {
+      "arabic": "المضاجع",
+      "name": "al-Maḍājiʿ",
+      "meaning": "The Beds",
+      "note": "A name Ibn al-Jawzī records, from its sixteenth ayah: “their sides forsake their beds.”"
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "Ibn al-Jawzī records agreement that it is Makkan. Al-Kalbī and Muqātil excepted three ayat (32:18–20) as Madinan, and others five, beginning with the sixteenth. The traditional order places it seventy-fifth.",
+    "period": "makkah-late",
+    "when": "The later years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ السَّجْدَةِ وَتُسَمّى سُورَةَ المَضاجِعِ، وهي مَكِّيَّةٌ بِإجْماعِهِمْ"
+      },
+      {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "تَفْسِيرُ سُورَةِ السَّجْدَةِ وَهِيَ مَكِّيَّةٌ"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ السَّجْدَةِ مَكِّيَّةٌ ، قَالَ عَطَاءٌ: إِلَّا ثَلَاثَ آيَاتٍ",
+        "says": "Makkan; ʿAṭāʾ said: except three ayat."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضَّرِيسِ، وابْنُ مَرْدُوَيْهِ، والبَيْهَقِيُّ في ”الدَّلائِلِ“، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ: ﴿الم﴾ ﴿تَنْزِيلُ﴾ ”السَّجْدَةُ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, Ibn Mardawayh and al-Bayhaqī."
+      }
+    ]
+  },
+  "setting": [
+    "No occasion is reported for it. Its opening states the charge it answers — “Or do they say: he has invented it?” — and replies: no, it is the truth from your Lord, to warn a people to whom no warner came before you.",
+    "What follows is the whole of the faith in very small compass, and that is the best explanation of the use the Prophet ﷺ made of it. Abū Hurayrah says that on Fridays he recited it in the first unit of the dawn prayer, and “Has there come upon man” in the second. Friday is the day on which Ādam was created and on which the Hour will come; and these two surahs carry the worshipper from the one to the other. Here: the heavens and the earth made in six days; the affair directed from heaven to earth; the human being begun from clay, then from a drop, then shaped and given hearing, sight and a heart. Then the question — “when we are lost in the earth, shall we be created anew?” — and the answer: the angel of death, who has been given charge of you, will take you.",
+    "Then the two parties. The guilty hang their heads before their Lord: “Our Lord, we have seen and heard; send us back, and we will do right.” And the believers are described by what they do when the ayat are recited to them — they fall down in prostration — and by their nights: “Their sides forsake their beds, as they call upon their Lord in fear and hope, and they spend of what We have provided them.”",
+    "For them the surah holds the ayah that the Prophet ﷺ explained with words from his Lord: “No soul knows what delight of the eyes is kept hidden for them, as a reward for what they used to do.”"
+  ],
+  "occasions": [],
+  "aim": "To set out the proofs and scenes of the truth that the Qurʾan came down with — among them the reality of creation, and the states of man.",
+  "themes": [
+    "The truth of the Book",
+    "Creation in stages",
+    "The Resurrection",
+    "Night worship",
+    "The hidden reward",
+    "The believer and the transgressor are not equal"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 3,
+      "title": "No doubt in it",
+      "summary": "Alif Lām Mīm. The sending down of the Book, in which there is no doubt, is from the Lord of the worlds. Or do they say, “He has invented it”? No — it is the truth from your Lord, that you may warn a people to whom no warner has come before you."
+    },
+    {
+      "from": 4,
+      "to": 9,
+      "title": "The Creator, and how He made you",
+      "summary": "It is Allah who created the heavens and the earth and what is between them in six days, and then rose over the Throne. He directs the affair from the heaven to the earth; then it ascends to Him in a Day whose measure is a thousand years of your counting. He made excellent everything He created, and began the creation of man from clay; then made his offspring from an extract of a lowly fluid; then shaped him and breathed into him of His spirit, and gave you hearing, sight and hearts."
+    },
+    {
+      "from": 10,
+      "to": 14,
+      "title": "“When we are lost in the earth?”",
+      "summary": "They say: “When we are lost in the earth, shall we really be in a new creation?” Say: the angel of death, who has been entrusted with you, will take you; then to your Lord you will be returned. If you could see the guilty, hanging their heads before their Lord: “Our Lord, we have seen and heard, so send us back.” Taste, then — for you forgot the meeting of this Day."
+    },
+    {
+      "from": 15,
+      "to": 22,
+      "title": "Those who believe in Our ayat",
+      "summary": "Only those believe in Our ayat who, when reminded of them, fall down in prostration and glorify their Lord with praise, and are not proud. Their sides forsake their beds, as they call on their Lord in fear and hope. No soul knows what delight of the eyes is hidden for them (32:17). Is one who believes like one who transgresses? They are not equal. We shall make them taste the nearer punishment before the greater, so that they may return."
+    },
+    {
+      "from": 23,
+      "to": 30,
+      "title": "Leaders, when they were patient",
+      "summary": "We gave Mūsā the Book, and made it a guidance for the Children of Israel; and We made from among them leaders guiding by Our command, when they were patient and were certain of Our signs. Do they not see that We drive the water to the barren land and bring out crops by it? They say, “When is this Decision, if you are truthful?” So turn from them, and wait; they too are waiting."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 16,
+    "why": "The mark of those who believe, in one image: awake when others sleep, between fear and hope."
+  },
+  "virtues": [
+    {
+      "text": "“The Prophet ﷺ used to recite, in the dawn prayer on Friday, ‘Alif Lām Mīm, the sending down’ — al-Sajdah — and ‘Has there come upon man’.”",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 891 · Ṣaḥīḥ Muslim, 880",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "891"
+        },
+        {
+          "book": "muslim",
+          "number": "880"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "“The Prophet ﷺ would not sleep until he had recited ‘the sending down’ of al-Sajdah, and ‘Blessed is He’.”",
+      "narrator": "Jābir ibn ʿAbd Allāh",
+      "source": "Jāmiʿ al-Tirmidhī, 3404",
+      "refs": [
+        {
+          "book": "tirmidhi",
+          "number": "3404"
+        }
+      ],
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
+    },
+    {
+      "text": "“Allah said: I have prepared for My righteous servants what no eye has seen, no ear has heard, and what has never occurred to a human heart.” Abū Hurayrah said: recite, if you wish, “No soul knows what delight of the eyes is hidden for them.”",
+      "arabic": "أَعْدَدْتُ لِعِبَادِي الصَّالِحِينَ مَا لاَ عَيْنٌ رَأَتْ وَلاَ أُذُنٌ سَمِعَتْ وَلاَ خَطَرَ عَلَى قَلْبِ بَشَرٍ",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4779 · Ṣaḥīḥ Muslim, 2824",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4779"
+        },
+        {
+          "book": "muslim",
+          "number": "2824"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "before": "Luqmān ended with five things known only to Allah, the Hour first among them. Al-Sajdah opens with the Book that warns of it, and the question of those who cannot believe they will be raised.",
+  "after": "Al-Sajdah ends: turn from them, and wait. Al-Aḥzāb opens: “O Prophet, be mindful of Allah, and do not obey the disbelievers and the hypocrites” — and the muṣḥaf passes from Makkah to Madinah.",
+  "notable": [
+    {
+      "ayah": 4,
+      "to": 5,
+      "label": "Six days, the Throne, and the affair directed"
+    },
+    {
+      "ayah": 7,
+      "to": 9,
+      "label": "The making of man"
+    },
+    {
+      "ayah": 11,
+      "label": "The angel of death, entrusted with you"
+    },
+    {
+      "ayah": 15,
+      "label": "An ayah of prostration"
+    },
+    {
+      "ayah": 16,
+      "to": 17,
+      "label": "Their sides forsake their beds; the hidden reward"
+    },
+    {
+      "ayah": 24,
+      "label": "Leaders, when they were patient and certain"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; Jāmiʿ al-Tirmidhī"
+  ]
+}

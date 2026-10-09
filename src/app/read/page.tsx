@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useT } from "@/lib/i18n";
 
 /**
  * `/read` on its own resumes where the reader stopped. It cannot redirect at
@@ -11,6 +12,7 @@ import { useRouter } from "next/navigation";
  */
 export default function ReadIndex() {
   const router = useRouter();
+  const t = useT();
 
   useEffect(() => {
     let surah = 1;
@@ -29,7 +31,7 @@ export default function ReadIndex() {
 
   return (
     <div style={{ flex: 1, display: "grid", placeItems: "center", padding: 40 }}>
-      <p style={{ fontFamily: "var(--font-heading)", color: "var(--muted-45)" }}>Opening the reader…</p>
+      <p style={{ fontFamily: "var(--font-heading)", color: "var(--muted-45)" }}>{t("read.opening")}</p>
     </div>
   );
 }

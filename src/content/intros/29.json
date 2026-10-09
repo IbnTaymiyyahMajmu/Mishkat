@@ -1,0 +1,176 @@
+{
+  "surah": 29,
+  "epithet": "Do people think they will not be tested?",
+  "lede": "One of the last surahs before the Hijrah, and its first question is the one every believer under pressure has had to answer. It tells of prophets who waited centuries and were thrown into fires — and likens every refuge other than Allah to the frailest house there is.",
+  "names": [
+    {
+      "arabic": "العنكبوت",
+      "name": "al-ʿAnkabūt",
+      "meaning": "The Spider",
+      "note": "From its forty-first ayah: those who take protectors other than Allah are like the spider that makes itself a house — and the flimsiest of houses is the spider’s."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by most — its opening said to be Madinan",
+    "detail": "Ibn al-Jawzī gives it as Makkan from Ibn ʿAbbās, and from al-Ḥasan, Qatādah, ʿAṭāʾ, Jābir ibn Zayd and Muqātil. Another report from Ibn ʿAbbās has it Madinan. Between the two stands the view that it is part one and part the other — its first ten ayat from one city and the rest from the other, and the scholars who say so differ over which is which. The traditional order places it eighty-fifth, the last surah but one before the Hijrah; its subject is the trial of those who believed and had not yet left.",
+    "period": "makkah-late",
+    "when": "The eve of the Hijrah, as the believers of Makkah were being told to leave",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "رَوى العَوْفِيُّ عَنِ ابْنِ عَبّاسٍ أنَّها مَكِّيَّةٌ، وبِهِ قالَ الحَسَنُ، وقَتادَةُ، وعَطاءٌ، وجابِرُ بْنُ زَيْدٍ، ومُقاتِلٌ. وفي رِوايَةٍ عَنِ ابْنِ عَبّاسٍ أنَّها مَدَنِيَّةٌ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "مَكِّيَّةٌ كُلُّهَا فِي قَوْلِ الْحَسَنِ وَعِكْرِمَةَ وَعَطَاءٍ وَجَابِرٍ. وَمَدَنِيَّةٌ كُلُّهَا فِي أَحَدِ قَوْلَيِ ابْنِ عَبَّاسٍ وَقَتَادَةَ"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْعَنْكَبُوتِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُوَيْهِ، والبَيْهَقِيُّ في ”الدَّلائِلِ“، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ”العَنْكَبُوتِ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      }
+    ]
+  },
+  "setting": [
+    "By the last years in Makkah, to say “I believe” had a price, and it was paid inside the home as well as in the street. Saʿd ibn Abī Waqqāṣ tells how his mother swore that she would neither eat nor drink until he renounced his religion. “You claim that Allah has enjoined on you goodness to your parents — I am your mother, and I command you this.” She kept it up for three days, until she fainted. The ayah came down: “We have enjoined on man goodness to his parents; but if they strive to make you associate with Me what you have no knowledge of, do not obey them.”",
+    "Ibn al-Jawzī relates three accounts of what the opening ayat came down about, and they are all of one kind: Muslims left in Makkah who were told that their Islam would not be accepted until they emigrated, who set out and were overtaken and forced back; and those who were tortured for their faith, ʿAmmār among them.{reported} The surah’s first words are addressed to all of them. “Do people think that they will be left to say, ‘We believe,’ and not be tried? We tried those before them — so Allah will surely make known those who are truthful, and make known the liars.”",
+    "Then it gives them their predecessors, with the stress each time on how long and how hard. Nūḥ stayed among his people a thousand years less fifty. Ibrāhīm was answered with: “Kill him, or burn him.” Lūṭ, Shuʿayb, Hūd, Ṣāliḥ, Mūsā. And after the roll, the image that names the surah: all the power their persecutors relied on — wealth, numbers, idols, alliances — is a spider’s web.",
+    "Its last third is practical. Recite the Book; keep up the prayer, for the prayer restrains from indecency and wrong. Argue with the People of the Book only in the best manner. And if you cannot worship Me here: “O My servants who believe, My earth is wide — so worship Me alone.” Every soul will taste death; how many a creature does not carry its provision, and Allah provides for it and for you. The final ayah is a promise to anyone who has made the effort: “Those who strive for Us — We shall surely guide them to Our ways.”"
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        1,
+        3
+      ],
+      "title": "Those who were turned back",
+      "text": "When the emigration was commanded, the Muslims wrote to their brothers in Makkah that their Islam would not be accepted until they emigrated. They set out for Madinah; the idolaters caught up with them and turned them back. Then Allah sent down the opening ayat of this surah.",
+      "source": "Ibn al-Jawzī, the first of three accounts he gives; the others name ʿAmmār ibn Yāsir, who was tortured for his faith, and Mihjaʿ, the first Muslim killed at Badr. Al-Baghawī, al-Qurṭubī, al-Suyūṭī and al-Shawkānī relate it too.",
+      "rank": "reported",
+      "evidence": {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "أنَّهُ لَمّا أُمِرَ بِالهِجْرَةِ، كَتَبَ المُسْلِمُونَ إلى إخْوانِهِمْ بِمَكَّةَ أنَّهُ لا يُقْبَلُ مِنكم إسْلامُكم حَتّى تُهاجِرُوا، فَخَرَجُوا نَحْوَ المَدِينَةِ فَأدْرَكَهُمُ المُشْرِكُونَ فَرَدُّوهُمْ"
+      }
+    },
+    {
+      "ayat": [
+        8,
+        8
+      ],
+      "title": "Saʿd and his mother",
+      "text": "The mother of Saʿd swore that she would never speak to him, and would neither eat nor drink, until he renounced his religion. She went three days until she fainted from the strain. And Allah sent down this ayah: “We have enjoined upon man goodness to parents; but if they strive to make you associate with Me that of which you have no knowledge, do not obey them.”",
+      "source": "Saʿd ibn Abī Waqqāṣ: Muslim (1748).",
+      "rank": "agreed"
+    }
+  ],
+  "aim": "It centres on firmness and patience in the midst of trial and persecution, and on what they lead to.",
+  "themes": [
+    "Trial as the proof of faith",
+    "Parents and the limits of obedience",
+    "The long patience of the prophets",
+    "The spider’s house",
+    "Prayer",
+    "Emigration",
+    "Striving and guidance"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 13,
+      "title": "The test",
+      "summary": "Alif Lām Mīm. Do people think they will be left to say, “We believe,” and not be tried? We tried those before them. Whoever strives, strives only for himself. We have enjoined on man goodness to his parents — but if they strive to make you associate with Me, do not obey them. Among people is one who says, “We believe in Allah,” but when he is harmed for Allah’s sake, he treats people’s persecution as though it were Allah’s punishment."
+    },
+    {
+      "from": 14,
+      "to": 27,
+      "title": "Nūḥ, and Ibrāhīm",
+      "summary": "We sent Nūḥ to his people, and he stayed among them a thousand years less fifty. And Ibrāhīm, when he said to his people: “Worship Allah and be mindful of Him.” Their only answer was: “Kill him, or burn him.” Allah saved him from the fire. Lūṭ believed him; and he said, “I am emigrating to my Lord.” We gave him Isḥāq and Yaʿqūb, and placed prophethood and the Book among his descendants."
+    },
+    {
+      "from": 28,
+      "to": 40,
+      "title": "Lūṭ, Shuʿayb and the rest",
+      "summary": "Lūṭ said to his people, “You commit an indecency no one in the worlds has committed before you.” To Madyan, their brother Shuʿayb. ʿĀd and Thamūd — it is plain to you from their dwellings. Qārūn, Pharaoh and Hāmān. Each We seized for his sin: on some We sent a storm of stones, some the blast overtook, some We made the earth swallow, and some We drowned. Allah did not wrong them; they wronged themselves."
+    },
+    {
+      "from": 41,
+      "to": 44,
+      "title": "The spider’s house",
+      "summary": "The likeness of those who take protectors other than Allah is that of the spider, which takes a house: and the frailest of houses is the spider’s house, if only they knew. These are the examples We set for mankind; none understand them but those who have knowledge."
+    },
+    {
+      "from": 45,
+      "to": 55,
+      "title": "The Book, the prayer, and the People of the Book",
+      "summary": "Recite what has been revealed to you of the Book, and establish the prayer: the prayer restrains from indecency and wrong, and the remembrance of Allah is greater. Do not argue with the People of the Book except in the best manner. You did not recite any book before it, nor write one with your right hand. Is it not enough for them that We have sent down to you the Book, recited to them?"
+    },
+    {
+      "from": 56,
+      "to": 69,
+      "title": "My earth is wide",
+      "summary": "O My servants who believe, My earth is wide, so worship Me alone. Every soul will taste death. How many a creature does not carry its own provision; Allah provides for it and for you. The life of this world is only diversion and play; the home of the Hereafter — that is the true life. And those who strive for Us, We shall surely guide them to Our ways; and Allah is with those who do good."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 2,
+    "why": "The question that names the terms of faith. A claim to believe is, by its nature, something that will be tested."
+  },
+  "virtues": [],
+  "before": "Al-Qaṣaṣ ended with the promise that the Prophet ﷺ would be brought back to the place he was leaving. Al-ʿAnkabūt speaks to the believers who would have to go through the leaving.",
+  "after": "Al-ʿAnkabūt promises that Allah is with those who do good. Al-Rūm opens with a world event that looked like the defeat of faith, and the announcement that it would be reversed.",
+  "notable": [
+    {
+      "ayah": 2,
+      "to": 3,
+      "label": "Left to say “We believe”, and not be tried?"
+    },
+    {
+      "ayah": 8,
+      "label": "Goodness to parents, and its limit"
+    },
+    {
+      "ayah": 14,
+      "label": "A thousand years less fifty"
+    },
+    {
+      "ayah": 41,
+      "label": "The spider’s house"
+    },
+    {
+      "ayah": 45,
+      "label": "The prayer restrains from indecency and wrong"
+    },
+    {
+      "ayah": 46,
+      "label": "Argue only in the best manner"
+    },
+    {
+      "ayah": 56,
+      "label": "My earth is wide"
+    },
+    {
+      "ayah": 69,
+      "label": "Those who strive for Us, We guide to Our ways"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ Muslim"
+  ]
+}

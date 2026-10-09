@@ -1,0 +1,149 @@
+{
+  "surah": 70,
+  "epithet": "A Day of fifty thousand years",
+  "lede": "Someone in Makkah dared the punishment to come. The answer is that it will, from the Lord of the ways of ascent — and that the human being, anxious by nature, is cured of his anxiety by one thing, which the surah names first and last: the prayer.",
+  "names": [
+    {
+      "arabic": "المعارج",
+      "name": "al-Maʿārij",
+      "meaning": "The Ways of Ascent",
+      "note": "From its third ayah: Allah, Lord of the ways of ascent, by which the angels and the Spirit go up to Him."
+    },
+    {
+      "arabic": "سأل سائل",
+      "name": "Saʾala Sāʾil",
+      "meaning": "“A questioner asked”",
+      "note": "Its opening words. Ibn al-Jawzī and Ibn Kathīr both head it with this name; Ibn al-Jawzī adds a third, Sūrat al-Wāqiʿ."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "It is Makkan by agreement, as both Ibn al-Jawzī and al-Qurṭubī record. The traditional order places it seventy-ninth, straight after al-Ḥāqqah, whose subject it continues.",
+    "period": "makkah-late",
+    "when": "The later years in Makkah, when the deniers had taken to demanding the punishment as a taunt",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ سَألَ سائِلٌ، ويُقالُ لَها: سُورَةُ المَعارِجِ، ويُقالُ لَها: سُورَةُ الواقِعِ وَهِيَ مَكِّيَّةٌ كُلُّها بِإجْماعِهِمْ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْمَعَارِجِ وَهِيَ مَكِّيَّةٌ بِاتِّفَاقٍ. وَهِيَ أَرْبَعٌ وأربعون آية"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْمَعَارِجِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةٌ «سَألَ» بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ",
+        "says": "Makkan."
+      }
+    ]
+  },
+  "setting": [
+    "By the later Makkan years the warning of punishment had been repeated so often that the leaders of Quraysh had turned it into a joke. If it is true, they said, then bring it on. The Qurʾan records the very words elsewhere: “O Allah, if this is the truth from You, then rain down stones on us from the sky, or bring us a painful punishment” (8:32).",
+    "Ibn al-Jawzī relates from the commentators that this surah came down about the man who said that — al-Naḍr ibn al-Ḥārith, in the view of Ibn ʿAbbās, Mujāhid and the majority; others said Abū Jahl.{reported} A questioner has asked for a punishment that is going to fall.",
+    "The surah does not hurry to oblige him. It tells the Prophet ﷺ to be patient, with a patience that has no complaint in it: they see it as far off, and We see it as near. Then it describes the Day in terms of what will become of human ties — no close friend will ask after his friend, though they are put in sight of each other, and the guilty one would give his children, his wife, his brother, his clan and everyone on earth to buy himself out.",
+    "And in the middle it places one of the Qurʾan’s great character sketches. Man was created restless: fretful when harm touches him, tight-fisted when good comes his way. Except — and eight qualities follow, which begin with those who are constant in their prayer and end with those who guard it."
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        1,
+        2
+      ],
+      "title": "The man who asked for it",
+      "text": "The commentators said it came down about al-Naḍr ibn al-Ḥārith, when he said: “O Allah, if this is the truth from You, then rain down stones upon us from the sky.” This is the position of the majority, among them Ibn ʿAbbās and Mujāhid. Al-Rabīʿ ibn Anas said it was Abū Jahl.",
+      "source": "Ibn al-Jawzī, Zād al-Masīr.",
+      "rank": "reported",
+      "evidence": {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "قالَ المُفَسِّرُونَ: نَزَلَتْ في النَّضْرِ بْنِ الحارِثِ حِينَ قالَ: ﴿اللَّهُمَّ إنْ كانَ هَذا هو الحَقَّ مِن عِنْدِكَ فَأمْطِرْ عَلَيْنا حِجارَةً مِن السَّماءِ"
+      }
+    }
+  ],
+  "aim": "To affirm that punishment will fall on the disbelievers, and bliss come to those who affirm the Day of Recompense.",
+  "themes": [
+    "The certainty of punishment",
+    "Patience",
+    "The Day when ties are cut",
+    "Human restlessness",
+    "Prayer",
+    "The rights of the poor"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 7,
+      "title": "A punishment bound to fall",
+      "summary": "A questioner asked about a punishment that will fall upon the disbelievers, which none can avert, from Allah, Lord of the ways of ascent. The angels and the Spirit ascend to Him in a Day whose measure is fifty thousand years. So be patient, with a beautiful patience. They see it distant; We see it near."
+    },
+    {
+      "from": 8,
+      "to": 18,
+      "title": "The Day no friend asks after a friend",
+      "summary": "The Day the sky is like molten metal and the mountains like wool. They will be shown one another — and the guilty will wish to ransom himself from that Day’s punishment with his sons, his wife, his brother, the kin who sheltered him and everyone on earth. No: it is a raging flame that strips away the scalp, calling the one who turned his back, and gathered, and hoarded."
+    },
+    {
+      "from": 19,
+      "to": 35,
+      "title": "Man, and the exception",
+      "summary": "The human being was created anxious: fretful when evil touches him, withholding when good touches him. Except those who pray, and are constant in their prayer; in whose wealth there is a known right for the beggar and the deprived; who affirm the Day of Recompense and fear their Lord’s punishment; who guard their chastity; who keep their trusts and their pledges; who stand by their testimony; and who guard their prayer. Those will be in gardens, honoured."
+    },
+    {
+      "from": 36,
+      "to": 44,
+      "title": "What are they hoping for?",
+      "summary": "What is the matter with the disbelievers, hurrying towards you in crowds from right and left? Does each of them hope to be admitted to a garden of delight? No — We created them from what they know. So leave them to their idle talk and play until they meet the Day they are promised: the Day they come out of the graves in haste, as if racing to a goal, their eyes cast down, humiliation covering them."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 19,
+    "why": "With the two ayat after it, the diagnosis; and what follows is the treatment, which opens and closes with the prayer."
+  },
+  "virtues": [],
+  "before": "Al-Ḥāqqah showed the two records being handed out. Al-Maʿārij asks what a person would give, on that Day, to be the other one.",
+  "after": "The Prophet ﷺ is told here to be patient with a beautiful patience. Nūḥ is the example: nine hundred and fifty years of calling, and how he called.",
+  "notable": [
+    {
+      "ayah": 4,
+      "label": "A Day of fifty thousand years"
+    },
+    {
+      "ayah": 5,
+      "label": "A beautiful patience"
+    },
+    {
+      "ayah": 19,
+      "to": 21,
+      "label": "Man was created anxious"
+    },
+    {
+      "ayah": 22,
+      "to": 35,
+      "label": "Except those who pray"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr"
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "surah": 110,
+  "epithet": "The victory — and the farewell",
+  "lede": "The last surah to come down whole. It announces the triumph of everything the Prophet ﷺ had worked for, and those who understood it best wept: when a task is finished, the one who was sent to do it is called home.",
+  "names": [
+    {
+      "arabic": "النصر",
+      "name": "al-Naṣr",
+      "meaning": "The Help",
+      "note": "After the help of Allah that it opens with. It is also called by its first words, Idhā jāʾa naṣru llāh."
+    },
+    {
+      "arabic": "التوديع",
+      "name": "al-Tawdīʿ",
+      "meaning": "The Farewell",
+      "note": "A name al-Qurṭubī records for it, because in it the Prophet ﷺ was told that his time was near."
+    }
+  ],
+  "revelation": {
+    "place": "madinah",
+    "verdict": "Madinan, by agreement — the last surah revealed complete",
+    "detail": "There is no difference over it. Ibn al-Jawzī and al-Qurṭubī both record the agreement, and both cite Ibn ʿAbbās in Ṣaḥīḥ Muslim: it is the last surah of the Qurʾan to have been sent down all together. “Madinan” here means after the Hijrah; reports place its coming down during the Farewell Pilgrimage itself, in the days at Minā.",
+    "period": "madinah-late",
+    "when": "The last months of the Prophet’s ﷺ life, after the opening of Makkah — the tenth year of the Hijrah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَهِيَ مَدَنِيَّةٌ بِإجْماعِهِمْ وَفِي أفْرادِ مُسْلِمٍ مِن حَدِيثِ ابْنِ عَبّاسٍ أنَّها آخِرُ سُورَةٍ نَزَلَتْ جَمِيعًا"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "وَهِيَ مَدَنِيَّةٌ بِإِجْمَاعٍ. وَتُسَمَّى سُورَةَ (التَّوْدِيعِ). وَهِيَ ثَلَاثُ آيَاتٍ. وَهِيَ آخِرُ سُورَةٍ نزَلَتْ جَمِيعًا قَالَهُ ابْنُ عُبَّاسٍ فِي صحيح مسلم"
+      }
+    ],
+    "attested": [
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: أُنْزِلَ بِالمَدِينَةِ ﴿إذا جاءَ نَصْرُ اللَّهِ والفَتْحُ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَدَنِيَّةٌ بِلا خِلافٍ",
+        "says": "Madinan, by agreement."
+      }
+    ]
+  },
+  "setting": [
+    "For years the tribes of Arabia had watched the struggle between Muḥammad ﷺ and his own people and kept their distance. Leave him and his tribe, they said: if he prevails over them, he is a true prophet. Al-Ḥasan al-Baṣrī put their reasoning this way: Allah had defended the people of the Sanctuary against the army of the elephant; if Muḥammad has now been given victory over them, no one can stand against him.",
+    "In the eighth year of the Hijrah he entered Makkah at the head of ten thousand, almost without bloodshed, and broke the idols round the Kaʿbah. After that the delegations came from every quarter of the peninsula — so many that the ninth year is called the Year of Delegations — and people who had held out for two decades entered Islam tribe by tribe.",
+    "This surah describes exactly that, and then gives an instruction that has nothing of triumph in it: glorify your Lord with His praise, and ask His forgiveness.",
+    "ʿUmar once asked the elders of Badr what they understood from it. Some said: we are commanded to praise Allah and seek His forgiveness when He helps us and gives us victory. He turned to the young Ibn ʿAbbās, who said: it is the term of the Messenger of Allah ﷺ, which Allah made known to him — when the help of Allah and the opening come, that is the sign of your end. ʿUmar said: I know of it only what you say."
+  ],
+  "occasions": [
+    {
+      "title": "“It is the term of the Messenger of Allah ﷺ”",
+      "text": "ʿUmar used to bring Ibn ʿAbbās in with the veterans of Badr. He asked them about this surah, and then asked him. Ibn ʿAbbās said: “It is the term of the Messenger of Allah ﷺ, which He made known to him.” ʿUmar said: “I know of it only what you say.”",
+      "source": "Ibn ʿAbbās: al-Bukhārī (4970).",
+      "rank": "agreed",
+      "evidence": {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "فَقُلْتُ: هُوَ أجلُ رَسُولِ اللَّهِ ﷺ أَعْلَمَهُ لَهُ، قَالَ: ﴿إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ﴾ فَذَلِكَ عَلَامَةُ أَجَلِكَ، ﴿فَسَبِّحْ بِحَمْدِ رَبِّكَ وَاسْتَغْفِرْهُ إِنَّهُ كَانَ تَوَّابًا﴾ فَقَالَ عُمَرُ بْنُ الْخَطَّابِ: لَا أَعْلَمُ مِنْهَا إِلَّا مَا تَقُولُ"
+      }
+    }
+  ],
+  "aim": "To make known how Islam ends — in help and in conquest — and what is prescribed when that comes; and it points to the nearness of the Prophet’s ﷺ death.",
+  "themes": [
+    "Victory from Allah",
+    "The opening of Makkah",
+    "Praise and seeking forgiveness",
+    "The end of the mission"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 2,
+      "title": "The sign",
+      "summary": "When the help of Allah comes, and the opening — and you see people entering the religion of Allah in crowds."
+    },
+    {
+      "from": 3,
+      "to": 3,
+      "title": "The response",
+      "summary": "Then glorify your Lord with His praise and ask His forgiveness; He is ever accepting of repentance. The greatest success of his life is to be met with humility."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 3,
+    "why": "What the Prophet ﷺ did with it: ʿĀʾishah says he made these words his constant remembrance from then on."
+  },
+  "virtues": [
+    {
+      "text": "After “When the help of Allah comes, and the opening” was sent down, the Prophet ﷺ did not pray a prayer without saying in it: “Glory be to You, our Lord, and with Your praise; O Allah, forgive me.” In another wording: he would say it often in his bowing and prostration, acting on the Qurʾan.",
+      "arabic": "سُبْحَانَكَ اللَّهُمَّ رَبَّنَا وَبِحَمْدِكَ اللَّهُمَّ اغْفِرْ لِي",
+      "narrator": "ʿĀʾishah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4967–4968 · Ṣaḥīḥ Muslim, 484",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4968"
+        },
+        {
+          "book": "muslim",
+          "number": "484"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "Ibn ʿAbbās asked ʿUbayd Allāh ibn ʿAbd Allāh ibn ʿUtbah: “Do you know the last surah of the Qurʾan to be sent down all together?” He said: “Yes — ‘When the help of Allah comes, and the opening’.” He said: “You are right.”",
+      "narrator": "Ibn ʿAbbās",
+      "source": "Ṣaḥīḥ Muslim, 3024",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "3024"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "before": "Al-Kāfirūn drew a line between two religions when the believers were few and weak. Al-Naṣr shows which side of the line the people ended on.",
+  "after": "Al-Masad returns to the first day of the open call and the first man to curse it — his own uncle — who was promised ruin and did not live to see the victory this surah describes.",
+  "notable": [
+    {
+      "ayah": 2,
+      "label": "People entering Allah’s religion in crowds"
+    },
+    {
+      "ayah": 3,
+      "label": "Glorify your Lord, and seek His forgiveness"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

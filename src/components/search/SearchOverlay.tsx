@@ -10,25 +10,32 @@ import { useRecentSearches } from "@/lib/store/recent";
 import { useGoToVerse } from "@/lib/useGoToVerse";
 import { isValidVerseKey, plainText } from "@/lib/text";
 import { foldToText, markMatches, type MatchPart } from "@/lib/match";
+import { useT, type MessageKey } from "@/lib/i18n";
+import { useSurahNames } from "@/lib/i18n/surah";
 import styles from "./SearchOverlay.module.css";
 
 type Scope = "all" | "quran" | "translation" | "tafsir";
 
-const SCOPES: { id: Scope; label: string }[] = [
-  { id: "all", label: "Everything" },
-  { id: "quran", label: "Qur'an text" },
-  { id: "translation", label: "Translation" },
-  { id: "tafsir", label: "Tafsir" },
+const SCOPES: { id: Scope; label: MessageKey }[] = [
+  { id: "all", label: "search.scope.all" },
+  { id: "quran", label: "search.scope.quran" },
+  { id: "translation", label: "search.scope.translation" },
+  { id: "tafsir", label: "search.scope.tafsir" },
 ];
 
+/**
+ * What the empty box offers. The same in every language the site is in: they
+ * are things to search *for*, in the Qur'an and in the reader's translation,
+ * and the site's language changes neither.
+ */
 const SUGGESTIONS = ["ٱلرَّحْمَـٰن", "patience", "light upon light", "Maryam", "2:255"];
 
 /** How the search box reads a query, shown while the box is empty. */
-const GRAMMAR: { term: string; means: string }[] = [
-  { term: "2:255", means: "jump straight to an ayah" },
-  { term: "Maryam", means: "open a surah by name or number" },
-  { term: "ٱلرَّحْمَـٰن", means: "Arabic, diacritics optional" },
-  { term: "light upon light", means: "search the translation" },
+const GRAMMAR: { term: string; means: MessageKey }[] = [
+  { term: "2:255", means: "search.grammar.reference" },
+  { term: "Maryam", means: "search.grammar.surah" },
+  { term: "ٱلرَّحْمَـٰن", means: "search.grammar.arabic" },
+  { term: "light upon light", means: "search.grammar.phrase" },
 ];
 
 /** One shared empty list, so "no results" is the same reference every render. */
@@ -48,6 +55,9 @@ function SearchDialog({ seed }: { seed: string }) {
   const { chapters, byId } = useChapters();
   const { recent, remember, clear: clearRecent } = useRecentSearches();
   const goToVerse = useGoToVerse();
+  const t = useT();
+  const names = useSurahNames();
+
 
   const [query, setQuery] = useState(seed);
   const [scope, setScope] = useState<Scope>("all");
@@ -120,7 +130,7 @@ function SearchDialog({ seed }: { seed: string }) {
                   key: verse.verse_key,
                   arabic: verse.text_uthmani,
                   snippet: plainText(verse.translations?.[0]?.text),
-                  kind: "Reference",
+                  kind: "reference",
                 },
               ],
             });
@@ -252,15 +262,18 @@ function SearchDialog({ seed }: { seed: string }) {
 
   const note = idle
     ? chapterHits.length
-      ? "Press ↵ to open the surah"
-      : "Type two letters or more"
+      ? t("search.note.surah")
+      : t("search.note.type")
     : busy
-      ? "Searching…"
+      ? t("search.note.busy")
       : scope === "all"
-        ? `${total} matches in the muṣḥaf and the selected translation`
+        ? t("search.note.all", { count: total })
         : scope === "tafsir"
-          ? "Tafsir is not indexed for full-text search"
-          : `${shown.length} of ${results.length} carry the term in the ${scope === "quran" ? "Arabic" : "translation"}`;
+          ? t("search.note.tafsir")
+          : t(scope === "quran" ? "search.note.arabic" : "search.note.translation", {
+              shown: shown.length,
+              total: results.length,
+            });
 
   return (
     <div className={styles.backdrop} onClick={closeSearch} role="presentation">
@@ -269,7 +282,7 @@ function SearchDialog({ seed }: { seed: string }) {
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
-        aria-label="Search the Qur'an"
+        aria-label={t("nav.searchLabel")}
       >
         <div className={styles.head}>
           <svg className={styles.headIcon} width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
@@ -285,11 +298,11 @@ function SearchDialog({ seed }: { seed: string }) {
               setCursor(0);
             }}
             onKeyDown={onKeyDown}
-            placeholder="Search Arabic, an English phrase, a surah name, or 2:255"
-            aria-label="Search Arabic, translations, or a reference"
+            placeholder={t("search.placeholder")}
+            aria-label={t("search.input")}
           />
           {query.length > 0 && (
-            <button onClick={clearQuery} className={styles.clear} aria-label="Clear search">
+            <button onClick={clearQuery} className={styles.clear} aria-label={t("search.clear")}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
                 <circle cx="12" cy="12" r="9" />
                 <path d="M15 9 9 15" />
@@ -298,12 +311,12 @@ function SearchDialog({ seed }: { seed: string }) {
             </button>
           )}
           <span className={styles.headRule} aria-hidden="true" />
-          <button onClick={closeSearch} className={styles.esc} aria-label="Close search">
+          <button onClick={closeSearch} className={styles.esc} aria-label={t("search.close")}>
             Esc
           </button>
         </div>
 
-        <div className={styles.scopes} role="group" aria-label="Search scope">
+        <div className={styles.scopes} role="group" aria-label={t("search.scopes")}>
           {SCOPES.map((s) => (
             <button
               key={s.id}
@@ -314,7 +327,7 @@ function SearchDialog({ seed }: { seed: string }) {
               }}
               className={`${styles.scope} ${scope === s.id ? styles.scopeOn : ""}`}
             >
-              <span>{s.label}</span>
+              <span>{t(s.label)}</span>
               {searched && s.id !== "tafsir" && (
                 <span className={styles.scopeCount}>{counts[s.id]}</span>
               )}
@@ -325,21 +338,27 @@ function SearchDialog({ seed }: { seed: string }) {
         <div className={styles.results} ref={resultsRef}>
           {chapterHits.length > 0 && (
             <div className={styles.chapters}>
-              <div className={styles.sectionLabel}>Surahs</div>
+              <div className={styles.sectionLabel}>{t("search.surahs")}</div>
               {chapterHits.map((c) => (
                 <button key={c.id} className={styles.chapter} onClick={() => go(`${c.id}:1`)}>
                   <span className={styles.chapterNum}>{c.id}</span>
                   <span className={styles.chapterText}>
-                    <span className={styles.chapterName}>{c.name_simple}</span>
+                    <span className={`${styles.chapterName} ${names.arabic ? "surah-ar" : ""}`}>{names.name(c.id)}</span>
                     <span className={styles.chapterSub}>
-                      {c.translated_name?.name ? `${c.translated_name.name} · ` : ""}
-                      {c.verses_count} ayat ·{" "}
-                      {c.revelation_place === "makkah" ? "Meccan" : "Medinan"}
+                      {[
+                        names.meaning(c.id),
+                        t("common.ayat", { count: c.verses_count }),
+                        t(c.revelation_place === "makkah" ? "common.meccan" : "common.medinan"),
+                      ]
+                        .filter(Boolean)
+                        .join(" · ")}
                     </span>
                   </span>
-                  <span className={styles.chapterArabic} dir="rtl">
-                    {c.name_arabic}
-                  </span>
+                  {!names.arabic && (
+                    <span className={styles.chapterArabic} dir="rtl">
+                      {c.name_arabic}
+                    </span>
+                  )}
                 </button>
               ))}
             </div>
@@ -350,10 +369,10 @@ function SearchDialog({ seed }: { seed: string }) {
               {recent.length > 0 && (
                 <div className={styles.block}>
                   <div className={styles.sectionHead}>
-                    <span className={styles.sectionLabel}>Recent</span>
+                    <span className={styles.sectionLabel}>{t("search.recent")}</span>
                     <span className={styles.sectionRule} />
                     <button onClick={clearRecent} className={styles.clearRecent}>
-                      Clear
+                      {t("common.clear")}
                     </button>
                   </div>
                   <div className={styles.chips}>
@@ -371,7 +390,7 @@ function SearchDialog({ seed }: { seed: string }) {
               )}
 
               <div className={styles.sectionHead}>
-                <span className={styles.sectionLabel}>Try</span>
+                <span className={styles.sectionLabel}>{t("search.try")}</span>
                 <span className={styles.sectionRule} />
               </div>
               <div className={styles.chips}>
@@ -384,8 +403,8 @@ function SearchDialog({ seed }: { seed: string }) {
 
               <div className={styles.grammar}>
                 {GRAMMAR.map((g) => (
-                  <div key={g.term}>
-                    <span className={styles.grammarTerm}>{g.term}</span> — {g.means}
+                  <div key={g.means}>
+                    <span className={styles.grammarTerm}>{g.term}</span> — {t(g.means)}
                   </div>
                 ))}
               </div>
@@ -394,8 +413,7 @@ function SearchDialog({ seed }: { seed: string }) {
 
           {scope === "tafsir" && !idle && (
             <p className={styles.notice}>
-              Tafsir is served per ayah in this build but is not indexed for full-text search — the
-              corpus itself, not an ayah-by-ayah API, is what that would need.
+              {t("search.tafsirNotice")}
             </p>
           )}
 
@@ -404,16 +422,16 @@ function SearchDialog({ seed }: { seed: string }) {
               <div className={styles.spinner} aria-hidden="true">
                 ۞
               </div>
-              <div className={styles.stateText}>Searching the muṣḥaf…</div>
+              <div className={styles.stateText}>{t("search.searching")}</div>
             </div>
           )}
 
           {empty && (
             <div className={styles.state}>
               <div className={styles.stateText}>
-                Nothing found for that.
+                {t("search.nothing")}
                 <br />
-                Try an Arabic form without diacritics, an English phrase, or a reference like 36:12.
+                {t("search.nothingTry")}
               </div>
             </div>
           )}
@@ -431,19 +449,19 @@ function SearchDialog({ seed }: { seed: string }) {
               >
                 <span className={styles.resultHead}>
                   <span
-                    className={`${styles.badge} ${r.kind === "Reference" ? styles.badgeNeutral : styles.badgeAccent}`}
+                    className={`${styles.badge} ${r.kind === "reference" ? styles.badgeNeutral : styles.badgeAccent}`}
                   >
-                    {r.kind}
+                    {t(`search.kind.${r.kind}`)}
                   </span>
                   <span className={styles.resultKey}>{r.key}</span>
-                  <span className={styles.resultSurah}>{chapter?.name_simple ?? ""}</span>
+                  <span className={styles.resultSurah}>{chapter ? names.name(chapter.id) : ""}</span>
                   <span className={styles.resultGap} />
-                  <span className={styles.openHint}>↵ Open</span>
+                  <span className={styles.openHint}>↵ {t("search.openHint")}</span>
                 </span>
                 <span className={styles.resultArabic} dir="rtl">
                   <Marked text={r.arabic} needle={needle} />
                 </span>
-                <span className={styles.resultSnippet}>
+                <span className={styles.resultSnippet} dir="auto">
                   <Marked text={r.snippet} needle={needle} />
                 </span>
               </button>
@@ -455,13 +473,16 @@ function SearchDialog({ seed }: { seed: string }) {
           <span className={styles.footNote}>{note}</span>
           <span className={styles.resultGap} />
           <span className={styles.key}>
-            <kbd className={styles.kbd}>↑↓</kbd>move
+            <kbd className={styles.kbd}>↑↓</kbd>
+            {t("keys.move")}
           </span>
           <span className={styles.key}>
-            <kbd className={styles.kbd}>↵</kbd>open
+            <kbd className={styles.kbd}>↵</kbd>
+            {t("keys.open")}
           </span>
           <span className={styles.key}>
-            <kbd className={styles.kbd}>esc</kbd>close
+            <kbd className={styles.kbd}>esc</kbd>
+            {t("keys.close")}
           </span>
         </div>
       </div>

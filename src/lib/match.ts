@@ -29,7 +29,14 @@ function isDroppable(code: number): boolean {
     (code >= 0x064b && code <= 0x065f) || // Arabic tashkīl
     code === 0x0670 || // superscript alif
     (code >= 0x06d6 && code <= 0x06ed) || // Qur'anic annotation marks
-    code === 0x0640 // taṭwīl, a stretch of the baseline and nothing more
+    code === 0x0640 || // taṭwīl, a stretch of the baseline and nothing more
+    // The joiners and direction marks a keyboard or a page puts between
+    // letters and nobody sees: Persian writes آسمان‌ها with one in the middle.
+    code === 0x200c ||
+    code === 0x200d ||
+    code === 0x200e ||
+    code === 0x200f ||
+    (code >= 0x2066 && code <= 0x2069)
   );
 }
 
@@ -41,6 +48,17 @@ const UNIFY: Record<string, string> = {
   "ٱ": "ا", // ٱ → ا
   "ى": "ي", // ى → ي
   "ة": "ه", // ة → ه
+  // The same letters as a Persian, Pashto or Urdu keyboard types them. They
+  // are different code points from the Arabic ones the muṣḥaf is written in,
+  // so a reader typing کهف on a Persian keyboard was not finding الكهف: the
+  // word was right, and its first letter was not the "same" letter.
+  "ک": "ك", // ک → ك
+  "ی": "ي", // ی → ي
+  "ې": "ي", // ې → ي
+  "ۍ": "ي", // ۍ → ي
+  "ہ": "ه", // ہ → ه
+  "ھ": "ه", // ھ → ه
+  "ە": "ه", // ە → ه
 };
 
 export function fold(input: string | null | undefined): Folded {

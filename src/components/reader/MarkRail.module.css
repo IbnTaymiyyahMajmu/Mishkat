@@ -26,7 +26,7 @@
    band far wider than what is drawn. */
 .slider {
   position: absolute;
-  right: 28px;
+  inset-inline-end: 28px;
   top: 44px;
   bottom: 44px;
   width: 46px;
@@ -44,7 +44,7 @@
   position: absolute;
   top: 56px;
   bottom: 56px;
-  right: 50px;
+  inset-inline-end: 50px;
   width: 1px;
   background: var(--color-divider);
 }
@@ -52,7 +52,7 @@
 /* The surah has a beginning and an end, and they are stated. */
 .cap {
   position: absolute;
-  left: -3px;
+  inset-inline-start: -3px;
   width: 7px;
   height: 1px;
   background: color-mix(in srgb, var(--color-text) 30%, transparent);
@@ -62,7 +62,7 @@
 
 .band {
   position: absolute;
-  left: -7px;
+  inset-inline-start: -7px;
   width: 4px;
   background: color-mix(in srgb, var(--mk-gold) 11%, transparent);
 }
@@ -72,7 +72,7 @@
    is happening now. The minimum height keeps a single ayah visible. */
 .loop {
   position: absolute;
-  left: 4px;
+  inset-inline-start: 4px;
   width: 3px;
   min-height: 5px;
   border-radius: 2px;
@@ -83,7 +83,7 @@
 
 .stop {
   position: absolute;
-  left: -2px;
+  inset-inline-start: -2px;
   width: 5px;
   height: 1px;
   background: color-mix(in srgb, var(--color-text) 20%, transparent);
@@ -91,7 +91,7 @@
 
 .juzLine {
   position: absolute;
-  left: -5px;
+  inset-inline-start: -5px;
   width: 11px;
   height: 1px;
   background: color-mix(in srgb, var(--mk-gold) 55%, transparent);
@@ -99,7 +99,7 @@
 
 .juzLabel {
   position: absolute;
-  right: 9px;
+  inset-inline-end: 9px;
   transform: translateY(-50%);
   white-space: nowrap;
   font-family: var(--font-heading);
@@ -125,7 +125,7 @@
 
 .mark {
   position: absolute;
-  left: 13px;
+  inset-inline-start: 13px;
   transform: translateY(-50%);
   width: 30px;
   height: 30px;
@@ -164,7 +164,7 @@
   height: 0;
   border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
-  border-left: 10px solid var(--mk-gold);
+  border-inline-start: 10px solid var(--mk-gold);
 }
 
 .group {
@@ -186,7 +186,7 @@
 
 .fill {
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   top: 0;
   width: 1px;
   height: 0;
@@ -196,7 +196,7 @@
 /* A hairline that follows the pointer, so the preview is tied to a place. */
 .cursor {
   position: absolute;
-  left: -6px;
+  inset-inline-start: -6px;
   top: 0;
   width: 13px;
   height: 1px;
@@ -214,7 +214,7 @@
 
 .marker {
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   top: 0;
   width: 0;
   height: 0;
@@ -222,7 +222,7 @@
 
 .dot {
   position: absolute;
-  left: -3.5px;
+  inset-inline-start: -3.5px;
   top: -3.5px;
   width: 7px;
   height: 7px;
@@ -234,7 +234,7 @@
 
 .readout {
   position: absolute;
-  right: 9px;
+  inset-inline-end: 9px;
   top: -9px;
   white-space: nowrap;
   font-family: var(--font-heading);
@@ -251,7 +251,7 @@
 
 .preview {
   position: absolute;
-  left: 52px;
+  inset-inline-start: 52px;
   top: 0;
   transform: translateY(-50%);
   opacity: 0;
@@ -260,7 +260,7 @@
   width: 230px;
   background: var(--color-bg);
   border: 1px solid var(--color-divider);
-  border-left: 2px solid var(--mk-gold);
+  border-inline-start: 2px solid var(--mk-gold);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   padding: 9px 13px;

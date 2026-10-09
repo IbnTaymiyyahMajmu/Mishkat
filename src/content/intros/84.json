@@ -1,0 +1,160 @@
+{
+  "surah": 84,
+  "epithet": "Toiling towards your Lord",
+  "lede": "The sky splits and the earth empties itself, each because its Lord told it to — and each “as it must”. Between those two obedient giants stands the human being, who is on his way to the same Lord whether he listens or not.",
+  "names": [
+    {
+      "arabic": "الانشقاق",
+      "name": "al-Inshiqāq",
+      "meaning": "The Splitting Open",
+      "note": "From its first ayah: when the sky is split. In the hadith it is called by its opening words, Idhā l-samāʾu nshaqqat."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "It is Makkan in the saying of all, as both Ibn al-Jawzī and al-Qurṭubī state. The traditional order places it eighty-third, among the last surahs before the Hijrah.",
+    "period": "makkah-late",
+    "when": "The later years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ الِانْشِقاقِ وَهِيَ مَكِّيَّةٌ كُلُّها بِإجْماعِهِمْ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ الِانْشِقَاقِ مَكِّيَّةٌ فِي قَوْلِ الْجَمِيعِ وَهِيَ خَمْسٌ وَعِشْرُونَ آيَةً"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الِانْشِقَاقِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ الِانْشِقاقُ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ بِلا خِلافٍ",
+        "says": "Makkan, by agreement."
+      }
+    ]
+  },
+  "setting": [
+    "No occasion is transmitted for it. It completes the group the Prophet ﷺ named together — al-Takwīr, al-Infiṭār and this — as the surahs that set the Day of Resurrection before the eyes.",
+    "Each of the three takes the same opening and draws a different lesson from it. This one draws obedience. The sky “listens to its Lord, as it must”; the earth throws out what is in it and “listens to its Lord, as it must.” Then the address turns: O human being, you are labouring towards your Lord, labouring hard, and you will meet Him.",
+    "The Quraysh who first heard it lived, as the surah says of the one given his book behind his back, “happy among his people”, sure that he would never be brought back. It ends by asking what is the matter with them: they do not believe, and when the Qurʾan is recited to them they do not prostrate. The Prophet ﷺ prostrated at that ayah, and Abū Hurayrah said he would go on doing so until he met him."
+  ],
+  "occasions": [],
+  "aim": "To picture the Resurrection as the whole universe yielding and submitting to its Lord’s command — which obliges submission, and condemns refusal.",
+  "themes": [
+    "The Last Day",
+    "Submission to Allah",
+    "Meeting the Lord",
+    "The two records",
+    "Prostration"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 5,
+      "title": "The sky and the earth obey",
+      "summary": "When the sky is split open, and listens to its Lord as it must; when the earth is stretched flat, and casts out what is in it and is emptied, and listens to its Lord as it must."
+    },
+    {
+      "from": 6,
+      "to": 15,
+      "title": "The meeting, and the two books",
+      "summary": "O human being, you are toiling towards your Lord and will meet Him. The one given his record in his right hand will have an easy reckoning and go back to his people rejoicing. The one given his record behind his back will cry out for destruction and enter a blaze: he used to be glad among his people, and thought he would never return. Yes — his Lord was always watching him."
+    },
+    {
+      "from": 16,
+      "to": 19,
+      "title": "Stage after stage",
+      "summary": "I swear by the afterglow of sunset, by the night and what it gathers in, and by the moon when it is full: you will surely pass from stage to stage."
+    },
+    {
+      "from": 20,
+      "to": 25,
+      "title": "Why do they not prostrate?",
+      "summary": "What is wrong with them, that they do not believe, and when the Qurʾan is recited to them they do not prostrate? The disbelievers deny, and Allah knows best what they hold inside. Give them news of a painful punishment — except those who believe and do right: theirs is a reward that never fails."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 6,
+    "why": "The sentence the surah turns on. Everyone is travelling to the same meeting; the only difference is in what they carry."
+  },
+  "virtues": [
+    {
+      "text": "Abū Rāfiʿ said: I prayed the night prayer behind Abū Hurayrah and he recited “When the sky is split open” and prostrated. I asked him about it, and he said: “I prostrated at it behind Abū al-Qāsim ﷺ, and I will not stop prostrating at it until I meet him.”",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 766 · Ṣaḥīḥ Muslim, 578",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "766"
+        },
+        {
+          "book": "muslim",
+          "number": "578"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "The Prophet ﷺ said: “Whoever is called to account will be punished.” ʿĀʾishah said: “Does Allah not say, ‘He will be given an easy reckoning’?” He said: “That is only the presentation. But whoever is examined closely in the reckoning is ruined.”",
+      "narrator": "ʿĀʾishah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 103 · Ṣaḥīḥ Muslim, 2876",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "103"
+        },
+        {
+          "book": "muslim",
+          "number": "2876"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "before": "Al-Muṭaffifīn told where the two records are kept. Al-Inshiqāq shows them given out.",
+  "after": "This surah ends with the reward of those who believe. Al-Burūj tells the story of people who believed and were burned for it — and of who was really watching.",
+  "notable": [
+    {
+      "ayah": 6,
+      "label": "Toiling towards your Lord"
+    },
+    {
+      "ayah": 7,
+      "to": 8,
+      "label": "The record in the right hand, and the easy reckoning"
+    },
+    {
+      "ayah": 19,
+      "label": "From stage to stage"
+    },
+    {
+      "ayah": 21,
+      "label": "An ayah of prostration"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

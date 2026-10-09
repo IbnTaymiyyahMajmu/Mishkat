@@ -1,0 +1,190 @@
+{
+  "surah": 75,
+  "epithet": "Does man think We will not gather his bones?",
+  "lede": "An oath by the Day of Resurrection and by the conscience that reproaches — and then the Day, the deathbed, and the drop of fluid that every human being began as. In its middle, four ayat turn aside to the Prophet ﷺ himself, and show us how the Qurʾan was received.",
+  "names": [
+    {
+      "arabic": "القيامة",
+      "name": "al-Qiyāmah",
+      "meaning": "The Resurrection",
+      "note": "After the oath it opens with: I swear by the Day of Resurrection. It is also called by its opening words, Lā uqsimu."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "Ibn al-Jawzī records agreement that all of it is Makkan, and al-Qurṭubī and Ibn Kathīr give no other view. The traditional order places it thirty-first, among the earlier surahs — which fits what its middle ayat describe: a Prophet ﷺ still new to receiving revelation.",
+    "period": "makkah-early",
+    "when": "The early years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ القِيامَةِ وَهِيَ مَكِّيَّةٌ كُلُّها بِإجْماعِهِمْ"
+      },
+      {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "تَفْسِيرُ سُورَةِ الْقِيَامَةِ وَهِيَ مَكِّيَّةٌ"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْقِيَامَةِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ في الدَّلائِلِ مِن طُرُقٍ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ القِيامَةِ، وفي لَفْظٍ، نَزَلَتْ سُورَةُ ﴿لا أُقْسِمُ بِيَوْمِ القِيامَةِ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī, through several chains."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ بِلا خِلافٍ",
+        "says": "Makkan, by agreement."
+      }
+    ]
+  },
+  "setting": [
+    "The objection in Makkah was always the same, and it was a practical one. A body rots; its bones scatter. How is it to be put back? The surah answers with something no one in that age could have appreciated as we can: “Yes — We are able to restore even his fingertips.”",
+    "Then it says why the objection is really made. It is not that man cannot believe. It is that he wants to go on sinning into the time ahead of him; so he asks, as a way of putting it off, “When is this Day of Resurrection?”",
+    "In the middle of all this the address suddenly turns: “Do not move your tongue with it, to hasten it.” Ibn ʿAbbās explains. When Jibrīl came down with revelation, the Messenger of Allah ﷺ used to move his lips and tongue with it as it was being recited, straining to hold on to every word, and it was hard on him. So Allah sent down these ayat: its gathering in your heart and its recitation are for Us to see to. When We recite it, follow its recitation; then its explanation is for Us to see to. After that, when Jibrīl came, he would listen in silence, and when Jibrīl left, he would recite it as he had recited it.",
+    "It is a passage that could only have come from outside him. No author interrupts his own argument to correct the way he is speaking it."
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        16,
+        19
+      ],
+      "title": "“Do not move your tongue with it”",
+      "text": "The Messenger of Allah ﷺ used to suffer hardship when revelation came down, and would move his lips with it. So Allah sent down: “Do not move your tongue with it to hasten it. Its collection and its recitation are upon Us.” After that he would listen when Jibrīl came, and when Jibrīl had gone he would recite it as Jibrīl had.",
+      "source": "Ibn ʿAbbās: al-Bukhārī (5, 4929) and Muslim (448).",
+      "rank": "agreed"
+    }
+  ],
+  "aim": "To show Allah’s power to gather together what He created of man, and to raise him.",
+  "themes": [
+    "The Resurrection",
+    "The self-reproaching soul",
+    "How the Qurʾan was received",
+    "Seeing Allah",
+    "The moment of death"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 6,
+      "title": "The oath, and the doubt",
+      "summary": "I swear by the Day of Resurrection, and I swear by the self-reproaching soul. Does man think that We will not assemble his bones? Yes — We are able to restore his very fingertips. But man wishes to go on in sin ahead of him; he asks, “When is the Day of Resurrection?”"
+    },
+    {
+      "from": 7,
+      "to": 15,
+      "title": "The Day",
+      "summary": "When the sight is dazed, and the moon is darkened, and the sun and the moon are brought together — man will say that Day, “Where is the escape?” No: there is no refuge. To your Lord, that Day, is the place of rest. Man will be told what he sent ahead and what he left behind; indeed, man is a witness against himself, though he puts forward his excuses."
+    },
+    {
+      "from": 16,
+      "to": 19,
+      "title": "To the Prophet ﷺ",
+      "summary": "Do not move your tongue with it to hasten it. Its gathering and its recitation are upon Us; so when We have recited it, follow its recitation. Then upon Us is its explanation."
+    },
+    {
+      "from": 20,
+      "to": 25,
+      "title": "Two kinds of faces",
+      "summary": "No — you love the fleeting life and neglect the Hereafter. Faces, that Day, will be radiant, looking at their Lord (75:23). And faces, that Day, will be scowling, expecting something back-breaking to be done to them."
+    },
+    {
+      "from": 26,
+      "to": 30,
+      "title": "The deathbed",
+      "summary": "No — when the soul reaches the collarbones, and it is said, “Who is there to cure him?”, and he knows it is the parting, and one leg is wound about the other: to your Lord, that Day, is the driving."
+    },
+    {
+      "from": 31,
+      "to": 40,
+      "title": "Left to no purpose?",
+      "summary": "He neither believed nor prayed, but denied and turned away, and went to his people swaggering. Does man think that he will be left neglected? Was he not a drop of fluid emitted, then a clinging clot, which He created and proportioned, and made of it the pair, male and female? Is not He able to give life to the dead?"
+    }
+  ],
+  "keyAyah": {
+    "ayah": 23,
+    "why": "With the ayah before it, the clearest statement in the Qurʾan of the greatest of all rewards: that the believers will see their Lord."
+  },
+  "virtues": [
+    {
+      "text": "“You will see your Lord as you see this moon, and you will not be crowded in seeing Him. So if you are able not to be overcome in a prayer before the rising of the sun and a prayer before its setting, then do so.”",
+      "arabic": "إِنَّكُمْ سَتَرَوْنَ رَبَّكُمْ كَمَا تَرَوْنَ هَذَا الْقَمَرَ لاَ تُضَامُّونَ فِي رُؤْيَتِهِ",
+      "narrator": "Jarīr ibn ʿAbd Allāh",
+      "source": "Ṣaḥīḥ al-Bukhārī, 554 · Ṣaḥīḥ Muslim, 633",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "554"
+        },
+        {
+          "book": "muslim",
+          "number": "633"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "“When Jibrīl came down with revelation, the Messenger of Allah ﷺ would move his tongue and his lips with it, and it was hard on him… So Allah sent down the ayah in ‘I swear by the Day of Resurrection’: ‘Do not move your tongue with it to hasten it.’”",
+      "narrator": "Ibn ʿAbbās",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4929 · Ṣaḥīḥ Muslim, 448",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4929"
+        },
+        {
+          "book": "muslim",
+          "number": "448"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "before": "Al-Muddaththir ended: no — they do not fear the Hereafter (74:53). Al-Qiyāmah opens by swearing by it.",
+  "after": "This surah ends by asking whether the One who made man from a drop cannot raise the dead. Al-Insān begins from that same drop, and follows man from it to his two ends.",
+  "notable": [
+    {
+      "ayah": 2,
+      "label": "The self-reproaching soul"
+    },
+    {
+      "ayah": 4,
+      "label": "Able to restore his very fingertips"
+    },
+    {
+      "ayah": 16,
+      "to": 19,
+      "label": "Do not move your tongue with it"
+    },
+    {
+      "ayah": 22,
+      "to": 23,
+      "label": "Faces radiant, looking at their Lord"
+    },
+    {
+      "ayah": 36,
+      "label": "Does man think he will be left neglected?"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

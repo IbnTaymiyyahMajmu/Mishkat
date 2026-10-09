@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Reader } from "@/components/reader/Reader";
+import { loadTeaser } from "@/lib/intros/load";
 import { SURAH_NAMES } from "@/lib/quran/surahNames";
 
 /**
@@ -37,5 +38,9 @@ export default async function ReaderPage({ params }: { params: Promise<{ surah: 
   // Keyed on the surah so moving between surahs is a remount, not a prop
   // change: the rendered window, the open panel and any pending scroll all
   // belong to one surah, and none of them should survive into the next.
-  return <Reader key={n} surah={n} />;
+  //
+  // The two lines of the surah's introduction that stand under its name are
+  // read here, while the page is being exported, so they are in the page
+  // itself and the reader's own bundle carries none of the 114.
+  return <Reader key={n} surah={n} teaser={loadTeaser(n)} />;
 }

@@ -26,6 +26,13 @@ import type { Para } from "./types";
  * they read Arabic, so the library divides by language before anything else;
  * and within a language, by how much they want — a paragraph, or the work at
  * length — and, for the classical works, by what kind of tafsir each is.
+ *
+ * Everything here that is a sentence is written in English, and is said in
+ * the reader's own language by `useTafsirSay` (components/tafsir): the
+ * headings from the site's messages, and what each work is from the few lines
+ * each language's file gives it. What is a name — an author, a title — is
+ * kept in Latin letters and in Arabic, and a reader of an Arabic script is
+ * shown the Arabic.
  */
 
 export type TafsirLang = "en" | "ar";
@@ -35,10 +42,16 @@ export interface TafsirWork {
   id: string;
   /** What it is called on a tab: its author, as readers call it. */
   short: string;
+  /** …and the same in Arabic letters: "الطبري". */
+  shortArabic?: string;
   name: string;
   /** The title in English, where the title is Arabic. */
   nameEnglish?: string;
   nameArabic?: string;
+  /** The book's own title in Arabic — "جامع البيان" — as against what it is known as. */
+  titleArabic?: string;
+  /** The author in Arabic letters, for a credit a reader of them can read. */
+  authorArabic?: string;
   /** "Fakhr al-Dīn al-Rāzī (d. 606 AH)". */
   credit: string;
   /** Who it is by or how it comes, in a few words, for a narrow list. */
@@ -55,11 +68,10 @@ export interface TafsirWork {
   /** tafsir.app's id for the work, where it has more to say about it. */
   aboutId?: string;
   /**
-   * The same work in the other language, where the library holds both — and a
-   * word on how the two differ, where they do: a translation is not always of
-   * the whole.
+   * The work this is one language of, where the library holds it in more than
+   * one: `"mukhtasar"`. See `tafsirCounterpart`.
    */
-  pair?: { id: string; note?: string };
+  family?: string;
   load: (verseKey: string) => Promise<TafsirPassage>;
 }
 
@@ -76,8 +88,8 @@ export interface TafsirPassage {
 
 /** A run of works that belong together under one heading. */
 export interface TafsirSection {
-  id: string;
-  title: string;
+  /** Its heading is "tafsir.section.<id>" in the site's messages. */
+  id: "en-brief" | "en-length" | "ar-brief" | "ar-mothers" | "ar-kinds";
   /** The heading as tafsir.app gives it, where the division is its own. */
   titleArabic?: string;
   /**
@@ -93,10 +105,6 @@ export interface TafsirShelf {
   id: string;
   /** The language every work on it is written in: the first thing a reader chooses by. */
   lang: TafsirLang;
-  /** That language, named. */
-  label: string;
-  title: string;
-  note: string;
   sections: TafsirSection[];
   /** Every work on the shelf, in the order it is shown. */
   works: TafsirWork[];
@@ -149,32 +157,16 @@ function cdn(edition: string, work: Described): TafsirWork {
 
 // ── from this site's copy of tafsir.app ─────────────────────────────────────
 
-/**
- * The Arabic works that have an English version in this library, and what
- * that version is.
- *
- * There are three, and that is every one there is to have. All 123 editions of
- * the Tafsir API were opened and read, not taken by their names: its Ṭabarī,
- * Qurṭubī, Baghawī, Rāzī and the rest have English titles in its list and
- * Arabic inside. Of the works on this shelf it holds English for Ibn Kathīr,
- * abridged, and for the two short works below, and for nothing else — because
- * nothing else has been translated whole and released. The rest are read in
- * Arabic, which was the site owner's decision and is why the library is two
- * shelves and not one.
- */
-const IN_ENGLISH: Record<string, { id: string; note?: string }> = {
-  "ibn-katheer": { id: "q:169", note: "The English is an abridgement of this." },
-  jalalayn: { id: "cdn:tafsir-al-jalalayn" },
-  mukhtasar: { id: "cdn:en-tafsir-al-mukhtasar" },
-};
-
 function classical(w: TafsirAppWork): TafsirWork {
   return {
     id: `app:${w.id}`,
     short: w.short,
+    shortArabic: w.shortArabic,
     name: w.name,
     nameEnglish: w.nameEnglish,
     nameArabic: w.nameArabic,
+    titleArabic: w.titleArabic,
+    authorArabic: w.authorArabic,
     credit: tafsirAppAuthor(w),
     by: w.nameEnglish,
     era: w.era ?? (w.died === null ? "" : `d. ${w.died} AH`),
@@ -183,7 +175,7 @@ function classical(w: TafsirAppWork): TafsirWork {
     about: w.about,
     origin: { name: TAFSIR_APP.name, href: (verseKey) => tafsirAppUrl(w.id, verseKey) },
     aboutId: tafsirAppMirrored(w.id) ? w.id : undefined,
-    pair: IN_ENGLISH[w.id],
+    family: w.id in FAMILIES ? w.id : undefined,
     load: (verseKey) => fetchTafsirApp(w.id, verseKey),
   };
 }
@@ -192,65 +184,98 @@ const HELD = TAFSIR_APP_WORKS.filter((w) => tafsirAppReadable(w.id));
 const MOTHERS = "The mother works";
 const BRIEF = "Brief";
 
-/** The way back from an English work to its Arabic, if the Arabic is held. */
-const inArabic = (id: string, note?: string) =>
-  HELD.some((w) => w.id === id) ? { id: `app:${id}`, note } : undefined;
+/**
+ * The works held in more than one language, and where each language of each
+ * is.
+ *
+ * There are three, and that is every one there is to have. All 123 editions of
+ * the Tafsir API were opened and read, not taken by their names: its Ṭabarī,
+ * Qurṭubī, Baghawī, Rāzī and the rest have English titles in its list and
+ * Arabic inside. Of the works on the Arabic shelf it holds English for Ibn
+ * Kathīr, abridged, and for the two short works, and for nothing else —
+ * because nothing else has been translated whole and released. The rest are
+ * read in Arabic, which was the site owner's decision and is why the library
+ * is two shelves and not one.
+ *
+ * `partial` marks a language of a work that is not the whole of it.
+ */
+const FAMILIES: Record<string, Partial<Record<TafsirLang, { id: string; partial?: boolean }>>> = {
+  mukhtasar: {
+    ar: { id: "app:mukhtasar" },
+    en: { id: "cdn:en-tafsir-al-mukhtasar" },
+  },
+  jalalayn: {
+    ar: { id: "app:jalalayn" },
+    en: { id: "cdn:tafsir-al-jalalayn" },
+  },
+  "ibn-katheer": {
+    ar: { id: "app:ibn-katheer" },
+    en: { id: "q:169", partial: true },
+  },
+};
 
 // ── the shelves ─────────────────────────────────────────────────────────────
 
 const ENGLISH: TafsirSection[] = [
   {
     id: "en-brief",
-    title: "To begin with",
     lead: "by",
     works: [
       cdn("en-tafsir-al-mukhtasar", {
         short: "al-Mukhtaṣar",
+        shortArabic: "المختصر",
         name: "al-Mukhtaṣar fī al-tafsīr",
         nameEnglish: "The Concise Commentary",
+        titleArabic: "المختصر في التفسير",
+        authorArabic: "مركز تفسير",
         credit: "Markaz Tafsīr · in English",
         by: "Markaz Tafsīr",
         era: "Markaz Tafsīr",
         lang: "en",
         kind: "Brief",
         about: "A plain paragraph on what the ayah says, written by a committee of scholars. The place to start.",
-        pair: inArabic("mukhtasar"),
+        family: "mukhtasar",
       }),
       cdn("tafsir-al-jalalayn", {
         short: "al-Jalālayn",
+        shortArabic: "الجلالين",
         name: "Tafsīr al-Jalālayn",
         nameEnglish: "The Commentary of the Two Jalāls",
+        titleArabic: "تفسير الجلالين",
         credit: "al-Maḥallī (d. 864 AH) and al-Suyūṭī (d. 911 AH) · translated by Feras Hamza",
         by: "translated by Feras Hamza",
         era: "d. 864 and 911 AH",
         lang: "en",
         kind: "Brief",
         about: "The ayah glossed phrase by phrase. The most widely taught short tafsir there is.",
-        pair: inArabic("jalalayn"),
+        family: "jalalayn",
       }),
     ],
   },
   {
     id: "en-length",
-    title: "At length",
     lead: "by",
     works: [
       corpus(169, {
         short: "Ibn Kathīr",
+        shortArabic: "ابن كثير",
         name: "Tafsīr Ibn Kathīr (abridged)",
         nameEnglish: "Commentary on the Mighty Qurʾan, abridged",
+        titleArabic: "تفسير ابن كثير (مختصر)",
         credit: "Ismāʿīl ibn Kathīr (d. 774 AH) · abridged, in English",
         by: "abridged and translated",
         era: "d. 774 AH",
         lang: "en",
         kind: "At length",
         about: "The Qurʾan explained by the Qurʾan, by hadith and by the early generations, abridged and translated.",
-        pair: inArabic("ibn-katheer", "An abridgement. The Arabic is the whole work."),
+        family: "ibn-katheer",
       }),
       corpus(168, {
         short: "Maʿārif al-Qurʾān",
+        shortArabic: "معارف القرآن",
         name: "Maʿārif al-Qurʾān",
         nameEnglish: "Insights of the Qurʾan",
+        titleArabic: "معارف القرآن",
         credit: "Mufti Muhammad Shafi (d. 1976) · in English",
         by: "Mufti Muhammad Shafi",
         era: "d. 1976",
@@ -260,8 +285,10 @@ const ENGLISH: TafsirSection[] = [
       }),
       corpus(817, {
         short: "Tazkirul Qurʾān",
+        shortArabic: "تذكير القرآن",
         name: "Tazkirul Qurʾān",
         nameEnglish: "The Reminder of the Qurʾan",
+        titleArabic: "تذكير القرآن",
         credit: "Wahiduddin Khan (d. 2021) · in English",
         by: "Wahiduddin Khan",
         era: "d. 2021",
@@ -276,7 +303,6 @@ const ENGLISH: TafsirSection[] = [
 const ARABIC: TafsirSection[] = [
   {
     id: "ar-brief",
-    title: "Briefly",
     lead: "by",
     works: [
       // The two that are also here in English come first, as they do on the
@@ -284,9 +310,12 @@ const ARABIC: TafsirSection[] = [
       ...HELD.filter((w) => w.field === BRIEF).map(classical),
       corpus(16, {
         short: "al-Muyassar",
+        shortArabic: "الميسر",
         name: "al-Tafsīr al-Muyassar",
         nameEnglish: "The Simplified Commentary",
         nameArabic: "التفسير الميسر",
+        titleArabic: "التفسير الميسر",
+        authorArabic: "مجمع الملك فهد",
         credit: "King Fahd Complex",
         by: "King Fahd Complex",
         era: "King Fahd Complex",
@@ -296,9 +325,12 @@ const ARABIC: TafsirSection[] = [
       }),
       corpus(91, {
         short: "al-Saʿdī",
+        shortArabic: "السعدي",
         name: "Taysīr al-Karīm al-Raḥmān",
         nameEnglish: "The Facilitation of the Generous, the Merciful",
         nameArabic: "تفسير السعدي",
+        titleArabic: "تيسير الكريم الرحمن",
+        authorArabic: "عبد الرحمن السعدي",
         credit: "ʿAbd al-Raḥmān al-Saʿdī (d. 1376 AH)",
         by: "ʿAbd al-Raḥmān al-Saʿdī",
         era: "d. 1376 AH",
@@ -310,41 +342,30 @@ const ARABIC: TafsirSection[] = [
   },
   {
     id: "ar-mothers",
-    title: MOTHERS,
     titleArabic: "أمّهات",
     lead: "by",
     works: HELD.filter((w) => w.field === MOTHERS).map(classical),
   },
   {
     id: "ar-kinds",
-    title: "The leading work of each kind",
     lead: "kind",
     works: HELD.filter((w) => w.field !== MOTHERS && w.field !== BRIEF).map(classical),
   },
 ];
 
-const shelf = (lang: TafsirLang, label: string, note: string, sections: TafsirSection[]): TafsirShelf => {
+const shelf = (lang: TafsirLang, sections: TafsirSection[]): TafsirShelf => {
   const kept = sections.filter((section) => section.works.length > 0);
-  return {
-    id: label.toLowerCase(),
-    lang,
-    label,
-    title: `In ${label}`,
-    note,
-    sections: kept,
-    works: kept.flatMap((section) => section.works),
-  };
+  return { id: lang, lang, sections: kept, works: kept.flatMap((section) => section.works) };
 };
 
-export const TAFSIR_SHELVES: TafsirShelf[] = [
-  shelf("en", "English", "Two short works to begin with, and three that go further.", ENGLISH),
-  shelf(
-    "ar",
-    "Arabic",
-    "Four short works; then the classical library as its authors wrote it — the four mother works, and the leading work of each other kind of tafsir.",
-    ARABIC,
-  ),
-].filter((s) => s.works.length > 0);
+/**
+ * The two shelves. They are the same whatever language the site itself is in:
+ * that language is for finding one's way around, and does not change what
+ * there is to read.
+ */
+export const TAFSIR_SHELVES: TafsirShelf[] = [shelf("en", ENGLISH), shelf("ar", ARABIC)].filter(
+  (s) => s.works.length > 0,
+);
 
 export const TAFSIR_LIBRARY: TafsirWork[] = TAFSIR_SHELVES.flatMap((s) => s.works);
 
@@ -352,6 +373,23 @@ const BY_ID = new Map(TAFSIR_LIBRARY.map((w) => [w.id, w]));
 
 export function tafsirWork(id: string | null | undefined): TafsirWork | undefined {
   return id ? BY_ID.get(id) : undefined;
+}
+
+/**
+ * The same work in the other language, where the library holds both.
+ *
+ * `partial` says the translation is not of the whole work — the English Ibn
+ * Kathīr is an abridgement — whichever of the two is being read.
+ */
+export function tafsirCounterpart(
+  work: TafsirWork | undefined,
+): { work: TafsirWork; partial: boolean } | undefined {
+  const family = work?.family ? FAMILIES[work.family] : undefined;
+  if (!work || !family) return undefined;
+  const there = work.lang === "ar" ? family.en : family.ar;
+  const found = there && there.id !== work.id ? BY_ID.get(there.id) : undefined;
+  if (!found) return undefined;
+  return { work: found, partial: !!(there?.partial || family[work.lang]?.partial) };
 }
 
 /**

@@ -7,6 +7,14 @@ export function arabicNumber(n: number | string): string {
   return String(n).replace(/\d/g, (d) => ARABIC_DIGITS[+d]);
 }
 
+/** "87th" in English; elsewhere the number, which the sentence around it carries. */
+export function ordinal(n: number, locale: string): string {
+  if (locale !== "en") return String(n);
+  const s = ["th", "st", "nd", "rd"];
+  const v = n % 100;
+  return `${n}${s[(v - 20) % 10] || s[v] || s[0]}`;
+}
+
 const ARABIC_RANGE = /[؀-ۿ]/;
 
 /** Whether a passage should be laid out right-to-left. */
@@ -92,15 +100,6 @@ export function verseKeyParts(key: string): { surah: number; ayah: number } {
 
 export function isValidVerseKey(key: string): boolean {
   return /^\d{1,3}:\d{1,3}$/.test(key);
-}
-
-/** "12 August 2026" in the reader's own locale. */
-export function formatDate(ts: number): string {
-  return new Date(ts).toLocaleDateString(undefined, {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
 }
 
 /** Minutes and seconds, and the hour too once there is one — a surah read

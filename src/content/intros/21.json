@@ -1,0 +1,199 @@
+{
+  "surah": 21,
+  "epithet": "One message, sixteen messengers",
+  "lede": "“Their reckoning has drawn near to mankind, while they turn away in heedlessness.” After that opening the surah calls its witnesses: prophet after prophet, each in distress, each calling on his Lord, each answered. And it sums up the last of them in a line — a mercy to the worlds.",
+  "names": [
+    {
+      "arabic": "الأنبياء",
+      "name": "al-Anbiyāʾ",
+      "meaning": "The Prophets",
+      "note": "After those whose stories fill its second half: sixteen are named in it, from Ibrāhīm to ʿĪsā, with Maryam beside them."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "Ibn al-Jawzī records agreement that it is Makkan, without any disagreement he knew of, and al-Qurṭubī says the same. Ibn Masʿūd named it with al-Isrāʾ, al-Kahf, Maryam and Ṭā-Hā among the earliest surahs he had learned. The traditional order places it seventy-third.",
+    "period": "makkah-late",
+    "when": "The later years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ الأنْبِياءِ وَهِيَ مَكِّيَّةٌ بِإجْماعِهِمْ مِن غَيْرِ خِلافٍ نَعْلَمُهُ"
+      },
+      {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "عَنْ عَبْدِ اللَّهِ قَالَ: بَنُو إِسْرَائِيلَ، وَالْكَهْفُ، وَمَرْيَمُ، وَطه، وَالْأَنْبِيَاءُ، هُنَّ مِنَ الْعِتَاقِ الْأُوَلِ، وَهُنَّ مِنْ تِلَادِي"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْأَنْبِيَاءِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ النَّحّاسُ في ”ناسِخِهِ“، وابْنُ مَرْدُوَيْهِ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ الأنْبِياءِ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by al-Naḥḥās and Ibn Mardawayh."
+      }
+    ]
+  },
+  "setting": [
+    "Its first ayah, Ibn al-Jawzī notes, came down about the disbelievers of Makkah, and it describes a mood: people going about their amusements while the account draws closer.{reported} “No fresh reminder comes to them from their Lord but they listen to it as they play, their hearts distracted.”",
+    "The surah records what they whispered among themselves about the Prophet ﷺ, and the list shows how unsure they were. He is only a human being like you. It is magic. No — muddled dreams. No — he has made it up. No — he is a poet. Let him bring us a sign, as the earlier messengers were sent with signs.",
+    "The reply has two parts. The first is argument: had there been gods in the heavens and the earth other than Allah, both would have gone to ruin. The heavens and the earth were a joined mass, and We split them apart, and made from water every living thing. “We did not create the heaven and the earth and what is between them in play.”",
+    "The second is the company he belongs to. Ibrāhīm, who broke the idols and was thrown into the fire: “O fire, be coolness and safety for Ibrāhīm.” Lūṭ; Nūḥ; Dāwūd and Sulaymān. Ayyūb: “Harm has touched me, and You are the Most Merciful of the merciful.” Ismāʿīl, Idrīs, Dhū l-Kifl. Dhū l-Nūn — Yūnus — calling out from the darknesses: “There is no god but You; glory be to You; I have been among the wrongdoers.” Zakariyyā: “My Lord, do not leave me alone.” And she who guarded her chastity. After each: “So We answered him.” And then the sentence that binds them: “This community of yours is one community, and I am your Lord, so worship Me.”"
+  ],
+  "occasions": [],
+  "aim": "To show the oneness of the messages, by recalling the messengers and their single call: to worship Allah alone.",
+  "themes": [
+    "The nearness of the reckoning",
+    "Proofs of tawḥīd",
+    "Ibrāhīm and the idols",
+    "The prayers of the prophets, answered",
+    "One community",
+    "Gog and Magog",
+    "A mercy to the worlds"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 15,
+      "title": "Heedless, as it draws near",
+      "summary": "Their reckoning has drawn near to mankind, while they turn away in heedlessness. They whisper: “Is this anything but a human being like you?… Muddled dreams; no, he has invented it; no, he is a poet.” We sent before you only men to whom We revealed — so ask the people of the Reminder, if you do not know. We have sent down to you a Book in which is your own mention. How many a town We shattered."
+    },
+    {
+      "from": 16,
+      "to": 33,
+      "title": "Not in play",
+      "summary": "We did not create the heaven and the earth and what is between them in play. Had there been in them gods besides Allah, both would have been ruined. He is not asked about what He does; they will be asked. Have those who disbelieve not seen that the heavens and the earth were joined, and We split them apart, and made from water every living thing? Each floats in an orbit."
+    },
+    {
+      "from": 34,
+      "to": 50,
+      "title": "The mockers, and the scales",
+      "summary": "We granted no human being before you eternal life. Every soul will taste death; and We test you with evil and with good as a trial. When those who disbelieve see you, they take you only in mockery. Man was created of haste. We shall set up the scales of justice for the Day of Resurrection, and no soul will be wronged at all — though it be the weight of a mustard seed."
+    },
+    {
+      "from": 51,
+      "to": 75,
+      "title": "Ibrāhīm and the idols",
+      "summary": "We gave Ibrāhīm his right judgement before. “What are these images to which you are devoted?” He broke them to pieces, all but the largest. “Who has done this to our gods?” — “Rather, this, their chief, did it; ask them, if they can speak.” They said: “Burn him, and help your gods.” We said: “O fire, be coolness and safety for Ibrāhīm.” We saved him and Lūṭ, and gave him Isḥāq, and Yaʿqūb besides."
+    },
+    {
+      "from": 76,
+      "to": 91,
+      "title": "Each called, and was answered",
+      "summary": "Nūḥ, when he called before, and We answered him. Dāwūd and Sulaymān, when they gave judgement. Ayyūb, when he called to his Lord, “Harm has touched me.” Ismāʿīl, Idrīs and Dhū l-Kifl — all were patient. Dhū l-Nūn, when he went off in anger, and called out in the darknesses: “There is no god but You; glory be to You; I have been among the wrongdoers” — and thus We save the believers. Zakariyyā. And she who guarded her chastity."
+    },
+    {
+      "from": 92,
+      "to": 104,
+      "title": "One community, and the end",
+      "summary": "This community of yours is one community, and I am your Lord, so worship Me. When Gog and Magog are let loose and they pour down from every height, the true promise has drawn near. You and what you worship besides Allah are fuel for Hell. Those for whom the best has already gone forth from Us will be kept far from it. The Day We roll up the sky like the rolling of a scroll: as We began the first creation, We shall repeat it."
+    },
+    {
+      "from": 105,
+      "to": 112,
+      "title": "A mercy to the worlds",
+      "summary": "We wrote in the Psalms, after the Reminder, that My righteous servants will inherit the earth. We have not sent you but as a mercy to the worlds (21:107). Say: it is revealed to me only that your God is One God; will you then submit? He said: “My Lord, judge in truth. Our Lord is the Most Merciful, whose help is sought against what you describe.”"
+    }
+  ],
+  "keyAyah": {
+    "ayah": 107,
+    "why": "The Qurʾan’s description of his mission, placed after the stories of all who came before him."
+  },
+  "virtues": [
+    {
+      "text": "“The supplication of Dhū l-Nūn, when he called upon his Lord from the belly of the fish: ‘There is no god but You; glory be to You; I have been among the wrongdoers.’ No Muslim ever calls with it concerning anything but Allah answers him.”",
+      "arabic": "لاَ إِلَهَ إِلاَّ أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ",
+      "narrator": "Saʿd ibn Abī Waqqāṣ",
+      "source": "Jāmiʿ al-Tirmidhī, 3505",
+      "refs": [
+        {
+          "book": "tirmidhi",
+          "number": "3505"
+        }
+      ],
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
+    },
+    {
+      "text": "The Prophet ﷺ addressed the people: “You will be gathered to Allah barefoot, naked and uncircumcised: ‘As We began the first creation, We shall repeat it — a promise binding upon Us.’ And the first of creation to be clothed on the Day of Resurrection will be Ibrāhīm.”",
+      "narrator": "Ibn ʿAbbās",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4740",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4740"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "It was said: “Messenger of Allah, pray against the idolaters.” He said: “I was not sent as one who curses. I was sent only as a mercy.”",
+      "arabic": "إِنِّي لَمْ أُبْعَثْ لَعَّانًا وَإِنَّمَا بُعِثْتُ رَحْمَةً",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ Muslim, 2599",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "2599"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "before": "Ṭā-Hā ended: “Say: everyone is waiting; so wait.” Al-Anbiyāʾ opens by saying how little waiting is left.",
+  "after": "Al-Anbiyāʾ opens with the reckoning drawn near. Al-Ḥajj opens with the Hour itself: “The quaking of the Hour is a tremendous thing.”",
+  "notable": [
+    {
+      "ayah": 22,
+      "label": "Had there been gods besides Allah, both would be ruined"
+    },
+    {
+      "ayah": 30,
+      "label": "The heavens and the earth, joined and then split"
+    },
+    {
+      "ayah": 35,
+      "label": "Every soul will taste death"
+    },
+    {
+      "ayah": 69,
+      "label": "“O fire, be coolness and safety for Ibrāhīm”"
+    },
+    {
+      "ayah": 83,
+      "to": 84,
+      "label": "The prayer of Ayyūb"
+    },
+    {
+      "ayah": 87,
+      "to": 88,
+      "label": "The prayer of Dhū l-Nūn"
+    },
+    {
+      "ayah": 92,
+      "label": "One community"
+    },
+    {
+      "ayah": 107,
+      "label": "A mercy to the worlds"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; Jāmiʿ al-Tirmidhī"
+  ]
+}

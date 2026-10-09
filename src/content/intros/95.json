@@ -1,0 +1,126 @@
+{
+  "surah": 95,
+  "epithet": "The finest form, and the lowest of the low",
+  "lede": "Four oaths by the lands where revelation came down, and then one claim about the human being: he was made in the best of shapes, and what he does with that is the whole of his story.",
+  "names": [
+    {
+      "arabic": "التين",
+      "name": "al-Tīn",
+      "meaning": "The Fig",
+      "note": "After the first thing it swears by. Al-Barāʾ ibn ʿĀzib refers to it by its opening words, wa-l-tīni wa-l-zaytūn, when he describes the Prophet ﷺ reciting it (al-Bukhārī 767)."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by the majority",
+    "detail": "Most hold it to be Makkan — al-Ḥasan and ʿAṭāʾ among them, and Ibn al-Jawzī gives this as the view of the majority. That it is Madinan is reported from Ibn ʿAbbās and Qatādah. Its own third oath weighs for the first view: “by this secure city” is said of a place one is standing in, and the secure city is Makkah.",
+    "period": "makkah-early",
+    "when": "The early years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَفِيها قَوْلانِ: أحَدُهُما: مَكِّيَّةٌ، قالَهُ الجُمْهُورُ، مِنهُمُ الحَسَنُ، وعَطاءٌ. والثّانِي: أنَّها مَدَنِيَّةٌ، حَكاهُ الماوَرْدِيُّ عَنِ ابْنِ عَبّاسٍ، وقَتادَةُ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "مَكِّيَّةٌ فِي قَوْلِ الْأَكْثَرِ. وَقَالَ ابْنُ عَبَّاسٍ وَقَتَادَةُ: هِيَ مَدَنِيَّةٌ وَهِيَ ثَمَانِي آيَاتٍ"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ التِّينِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: أُنْزِلَتْ سُورَةُ ﴿والتِّينِ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ في قَوْلِ الجُمْهُورِ، ورَوى القُرْطُبِيُّ عَنِ ابْنِ عَبّاسٍ أنَّها مَدَنِيَّةٌ",
+        "says": "Makkan, in the saying of the majority; al-Qurṭubī relates from Ibn ʿAbbās that it is Madinan."
+      }
+    ]
+  },
+  "setting": [
+    "No occasion is reported for it. It belongs with the short surahs of the first Makkan years, whose argument is always the same and always brief: you were made, you will be brought back, and you will be judged.",
+    "What is particular to it is where it stands to say so. The fig and the olive were taken by many of the early commentators as the land of Shām, where ʿĪsā was sent; Mount Sinai is where Allah spoke to Mūsā; and the secure city is Makkah, where the last revelation was at that moment coming down. Ibn Kathīr gives this reading from some of the leading scholars: three places, in each of which Allah sent a messenger of the greatest resolve. Others, Ibn ʿAbbās among them, took the fig and the olive simply as the fruits. Either way the oath is by what Allah has honoured."
+  ],
+  "occasions": [],
+  "aim": "To set out man’s worth and honour in his religion, and his lowness and disgrace in abandoning it — which is why it swears by the places where revelation came down.",
+  "themes": [
+    "The honour of the human being",
+    "Faith and deeds",
+    "Recompense",
+    "Allah’s justice"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 3,
+      "title": "Four oaths",
+      "summary": "By the fig and the olive, by Mount Sinai, and by this city made secure."
+    },
+    {
+      "from": 4,
+      "to": 6,
+      "title": "What they are sworn to",
+      "summary": "We created the human being in the finest form; then We brought him down to the lowest of the low — except those who believe and do righteous deeds, whose reward is never cut off. Read of this life, it is the decline of old age; read of the next, it is the Fire. The exception is the same in both."
+    },
+    {
+      "from": 7,
+      "to": 8,
+      "title": "The question",
+      "summary": "What, then, can make you deny the Recompense after this? Is Allah not the most just of judges?"
+    }
+  ],
+  "keyAyah": {
+    "ayah": 4,
+    "why": "The claim the four oaths are sworn to, and the measure the rest of the surah holds a person against."
+  },
+  "virtues": [
+    {
+      "text": "The Prophet ﷺ was on a journey and recited “By the fig and the olive” in one of the two units of the night prayer. “I never heard anyone with a more beautiful voice, or a more beautiful recitation, than his.”",
+      "narrator": "al-Barāʾ ibn ʿĀzib",
+      "source": "Ṣaḥīḥ al-Bukhārī, 769 · Ṣaḥīḥ Muslim, 464",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "769"
+        },
+        {
+          "book": "muslim",
+          "number": "464"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "before": "Al-Sharḥ spoke of the most complete of human beings, his chest opened and his mention raised. Al-Tīn speaks of the kind he belongs to, and of the two ends it can come to.",
+  "after": "Al-ʿAlaq takes up the same subject from the other side: the one made in the finest form began as a clinging clot, and what lifts him is that his Lord taught him.",
+  "notable": [
+    {
+      "ayah": 4,
+      "label": "In the finest form"
+    },
+    {
+      "ayah": 8,
+      "label": "The most just of judges"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

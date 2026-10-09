@@ -45,7 +45,7 @@
 .ghost {
   position: absolute;
   top: -46px;
-  right: -18px;
+  inset-inline-end: -18px;
   font-family: var(--font-amiri-quran), serif;
   font-size: 168px;
   line-height: 1;
@@ -82,7 +82,7 @@
   font-style: italic;
   font-size: 14.5px;
   color: color-mix(in srgb, var(--mk-hero-ink) 74%, transparent);
-  text-align: right;
+  text-align: end;
 }
 
 .daily {
@@ -296,8 +296,8 @@
   .ghost { font-size: 88px; right: 0; }
   .heroHead { flex-wrap: wrap; gap: 6px; }
   .heroHeadGap { display: none; }
-  .theme { text-align: left; }
+  .theme { text-align: start; }
   .words { gap: 0 0.28em; }
   .editorial { padding-top: 48px; }
-  .columnText { text-align: left; }
+  .columnText { text-align: start; }
 }

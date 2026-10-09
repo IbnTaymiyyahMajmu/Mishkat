@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
 import { useLibrary } from "@/lib/store/library";
-import { useChapters } from "@/lib/store/chapters";
 import { useToast } from "@/components/Toast";
 import { noteMatches } from "@/lib/notes";
-import { SURAH_NAMES } from "@/lib/quran/surahNames";
+import { useT } from "@/lib/i18n";
+import { useSurahNames } from "@/lib/i18n/surah";
 import type { Note } from "@/lib/store/types";
 import { NoteCard } from "./NoteCard";
 import { NoteComposer, type ComposerResult } from "./NoteComposer";
@@ -14,14 +14,15 @@ import styles from "./NotesPage.module.css";
 
 export function NotesPage() {
   const { notes, ready, updateNote, deleteNote, exportJson, importJson } = useLibrary();
-  const { byId } = useChapters();
   const toast = useToast();
+  const t = useT();
+  const names = useSurahNames();
 
   const [query, setQuery] = useState("");
   const [editing, setEditing] = useState<Note | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const surahName = (n: number) => byId(n)?.name_simple ?? SURAH_NAMES[n - 1]?.english ?? `Surah ${n}`;
+  const surahName = names.name;
 
   /** Grouped by surah, and within a surah by ayah, so a page of notes reads in
    *  the order the Qur'an does rather than the order they happened to be typed. */
@@ -49,7 +50,7 @@ export function NotesPage() {
     a.download = `mishkat-notes-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
-    toast("Exported");
+    toast(t("common.exported"));
   };
 
   const onFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,9 +58,9 @@ export function NotesPage() {
     if (!file) return;
     try {
       const added = importJson(await file.text(), "merge");
-      toast(`Imported ${added.notes} notes and ${added.bookmarks} bookmarks`);
+      toast(t("toast.imported", { notes: added.notes, bookmarks: added.bookmarks }));
     } catch {
-      toast("That file could not be read as a Mishkāt export.");
+      toast(t("toast.importFailed"));
     } finally {
       e.target.value = "";
     }
@@ -69,7 +70,7 @@ export function NotesPage() {
     if (!editing) return;
     updateNote(editing.id, { title: result.title, body: result.body, quotes: result.quotes });
     setEditing(null);
-    toast("Note updated");
+    toast(t("toast.noteUpdated"));
   };
 
   return (
@@ -77,10 +78,10 @@ export function NotesPage() {
       <div className={styles.body}>
         <header className={styles.head}>
           <div>
-            <div className="kicker">Written</div>
-            <h1 className={styles.title}>Notes</h1>
+            <div className="kicker">{t("notes.kicker")}</div>
+            <h1 className={styles.title}>{t("notes.title")}</h1>
             <p className={styles.sub}>
-              Kept in this browser and nowhere else. Nothing about your reading leaves the device.
+              {t("notes.sub")}
             </p>
           </div>
           <div className={styles.tools}>
@@ -88,14 +89,14 @@ export function NotesPage() {
               className={`input ${styles.search}`}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search your notes"
-              aria-label="Search notes"
+              placeholder={t("notes.search")}
+              aria-label={t("notes.searchLabel")}
             />
             <button className="btn btn-secondary" style={{ fontSize: 13 }} onClick={download} disabled={!notes.length}>
-              Export
+              {t("notes.export")}
             </button>
             <button className="btn btn-secondary" style={{ fontSize: 13 }} onClick={() => fileRef.current?.click()}>
-              Import
+              {t("notes.import")}
             </button>
             <input ref={fileRef} type="file" accept="application/json,.json" onChange={onFile} hidden />
           </div>
@@ -104,7 +105,7 @@ export function NotesPage() {
         {editing && (
           <div className={styles.editing}>
             <div className="kicker kicker-sm" style={{ marginBottom: 10 }}>
-              Editing · {editing.verseKey ?? surahName(editing.surah)}
+              {t("notes.editing", { where: editing.verseKey ?? surahName(editing.surah) })}
             </div>
             <NoteComposer
               surah={editing.surah}
@@ -120,19 +121,18 @@ export function NotesPage() {
         {ready && notes.length === 0 && (
           <div className={styles.empty}>
             <div className={styles.emptyMark}>۞</div>
-            <p className={styles.emptyText}>Nothing written yet.</p>
+            <p className={styles.emptyText}>{t("notes.empty")}</p>
             <p className={styles.emptyHint}>
-              Open a surah and press the pencil on any ayah — you can quote the ayah into the note
-              and write around it.
+              {t("notes.emptyHint")}
             </p>
             <Link href="/read/1/" className="btn btn-primary">
-              Open the reader
+              {t("common.openReader")}
             </Link>
           </div>
         )}
 
         {notes.length > 0 && groups.length === 0 && (
-          <p className={styles.noMatch}>No note matches “{query.trim()}”.</p>
+          <p className={styles.noMatch}>{t("notes.noMatch", { query: query.trim() })}</p>
         )}
 
         {groups.map((group) => (
@@ -143,7 +143,7 @@ export function NotesPage() {
               </Link>
               <span className={styles.groupRule} />
               <span className={styles.groupCount}>
-                {group.notes.length} {group.notes.length === 1 ? "note" : "notes"}
+                {t("common.notes", { count: group.notes.length })}
               </span>
             </div>
 
@@ -155,7 +155,7 @@ export function NotesPage() {
                 onEdit={setEditing}
                 onDelete={(n) => {
                   deleteNote(n.id);
-                  toast("Note deleted");
+                  toast(t("toast.noteDeleted"));
                 }}
               />
             ))}

@@ -46,6 +46,12 @@ jobs:
       - name: Check the tafsir library is whole
         run: npm run mirror:tafsir -- --verify
 
+      # The surah introductions quote from that library. Find every quotation
+      # in the copy again, word for word, and check each introduction is whole:
+      # one that has drifted from its sources is not published.
+      - name: Check the introductions against their sources
+        run: npm run check:intros
+
       - name: Build the static export
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
@@ -71,6 +77,8 @@ jobs:
           # has gone wrong with the static params.
           test "$(find out/read -mindepth 1 -maxdepth 1 -type d -regex '.*/[0-9]+' | wc -l)" -eq 114
           test "$(find out/read -name 'index.html' -path '*mushaf*' | wc -l)" -eq 114
+          # And an introduction to each.
+          test "$(find out/read -name 'index.html' -path '*about*' | wc -l)" -eq 114
           echo "published site: $(du -sh out | cut -f1)"
 
       - uses: actions/upload-pages-artifact@v3

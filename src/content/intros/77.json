@@ -1,0 +1,172 @@
+{
+  "surah": 77,
+  "epithet": "Woe, that Day, to the deniers",
+  "lede": "It came down in a cave at Minā, and it was the last surah Umm al-Faḍl ever heard the Prophet ﷺ recite. One line returns in it ten times, after each proof and each scene, like the tolling of a bell.",
+  "names": [
+    {
+      "arabic": "المرسلات",
+      "name": "al-Mursalāt",
+      "meaning": "Those Sent Forth",
+      "note": "After the oath it opens with. Ibn Masʿūd, Ibn ʿAbbās, Mujāhid and Qatādah said they are the winds, sent one after another; others, the angels sent with Allah’s command. The Companions called the surah Wa-l-mursalāt, or Wa-l-mursalāti ʿurfan."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by the majority",
+    "detail": "The majority hold all of it to be Makkan. It is related from Ibn ʿAbbās, Qatādah and Muqātil that one ayah is Madinan: “When it is said to them, ‘Bow’, they do not bow” (77:48). Its place of revelation is known more exactly than that of almost any other surah: Ibn Masʿūd was there.",
+    "period": "makkah-early",
+    "when": "Makkah: a cave at Minā, with the Prophet ﷺ and a group of his Companions",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ المُرْسَلاتِ مَكِّيَّةٌ كُلُّها في قَوْلِ الجُمْهُورِ وَحُكِيَ عَنِ ابْنِ عَبّاسٍ، وقَتادَةَ، ومُقاتِلٍ أنَّ فِيها آيَةً مَدَنِيَّةً"
+      },
+      {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "عَنْ عَبْدِ اللَّهِ -هُوَ ابْنُ مَسْعُودٍ-قَالَ: بَيْنَمَا نَحْنُ مَعَ النَّبِيِّ ﷺ، فِي غَارٍ بِمِنًى، إِذْ نَزَلَتْ عَلَيْهِ: \" وَالْمُرْسَلاتِ \" فَإِنَّهُ لَيَتْلُوهَا"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْمُرْسَلَاتِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ المُرْسَلاتِ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ في قَوْلِ الحَسَنِ، وعِكْرِمَةَ، وعَطاءٍ، وجابِرٍ",
+        "says": "Makkan, in the saying of al-Ḥasan, ʿIkrimah, ʿAṭāʾ and Jābir ibn Zayd."
+      }
+    ]
+  },
+  "setting": [
+    "ʿAbd Allāh ibn Masʿūd tells it. “We were with the Prophet ﷺ in a cave at Minā when ‘Wa-l-mursalāt’ came down upon him. He was reciting it, and I was taking it from his mouth while his mouth was still moist with it, when a snake sprang out at us. The Prophet ﷺ said, ‘Kill it.’ We rushed at it and it got away. He said: ‘It has been spared your harm, as you have been spared its harm.’”",
+    "So we know the place, and who was present, and that the surah was learned by its first hearers at the very moment of its arrival.",
+    "Its construction is unlike anything else in the Qurʾan. A short passage — the end of the stars and the mountains; the destruction of earlier peoples; the making of man from a lowly fluid; the earth that holds the living and the dead; the shadow of the Fire that gives no shade; the gardens of the mindful — and after each one the same sentence: “Woe, that Day, to the deniers.” Ten times. The effect is of a case being made point by point before a court, with the verdict read out after every piece of evidence.",
+    "And it ends with a question that has never been answered: in what message, after this one, will they believe?"
+  ],
+  "occasions": [
+    {
+      "title": "The cave at Minā",
+      "text": "“While we were with the Prophet ﷺ in a cave at Minā, ‘Wa-l-mursalāt’ was sent down upon him. He was reciting it and I was receiving it from his mouth, his mouth still moist with it, when a snake leapt out at us…”",
+      "source": "ʿAbd Allāh ibn Masʿūd: al-Bukhārī (1830, 4930) and Muslim (2234).",
+      "rank": "agreed"
+    }
+  ],
+  "aim": "To establish the Resurrection by confronting the deniers with proofs — each followed by threat and warning.",
+  "themes": [
+    "The Day of Decision",
+    "The destroyed nations",
+    "The creation of man",
+    "The Fire and the Garden",
+    "The refrain of woe"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 7,
+      "title": "The oath",
+      "summary": "By those sent forth one after another, storming on with force; by those that scatter far and wide, then separate one thing from another, then deliver a reminder — to excuse or to warn: what you are promised will surely come to pass."
+    },
+    {
+      "from": 8,
+      "to": 15,
+      "title": "The Day of Decision",
+      "summary": "When the stars are put out, the sky is torn open, the mountains are blown away and the messengers are given their appointed time — for what Day has it been deferred? For the Day of Decision. Woe, that Day, to the deniers."
+    },
+    {
+      "from": 16,
+      "to": 28,
+      "title": "Three proofs",
+      "summary": "Did We not destroy the earlier peoples, and then send the later ones after them? Did We not create you from a lowly fluid, lodged in a secure place for a known term? Did We not make the earth a container for the living and the dead, and set on it lofty mountains, and give you sweet water to drink? After each: woe, that Day, to the deniers."
+    },
+    {
+      "from": 29,
+      "to": 40,
+      "title": "“Go to what you used to deny”",
+      "summary": "Go to a shadow of three columns, which gives no shade and no defence against the flame; it throws out sparks like fortresses, like tawny camels. This is a Day they will not speak, nor be allowed to make excuses. This is the Day of Decision; We have gathered you and those of old. If you have any plot, then plot against Me."
+    },
+    {
+      "from": 41,
+      "to": 50,
+      "title": "The mindful, and the last question",
+      "summary": "The mindful will be among shades and springs, with whatever fruit they desire. As for you: eat and enjoy yourselves a little — you are guilty. When they are told to bow, they do not bow. In what message, after this, will they believe?"
+    }
+  ],
+  "keyAyah": {
+    "ayah": 50,
+    "why": "The surah’s last word, and its challenge: if not this, then what?"
+  },
+  "virtues": [
+    {
+      "text": "Umm al-Faḍl heard her son Ibn ʿAbbās reciting “Wa-l-mursalāti ʿurfan” and said: “My son, by your recitation of this surah you have reminded me: it is the last thing I heard from the Messenger of Allah ﷺ. He was reciting it in the sunset prayer.”",
+      "narrator": "Umm al-Faḍl bint al-Ḥārith",
+      "source": "Ṣaḥīḥ al-Bukhārī, 763 · Ṣaḥīḥ Muslim, 462",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "763"
+        },
+        {
+          "book": "muslim",
+          "number": "462"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "“Hūd, al-Wāqiʿah, al-Mursalāt, ‘ʿAmma yatasāʾalūn’ and ‘Idhā l-shamsu kuwwirat’ have turned me grey.”",
+      "narrator": "Ibn ʿAbbās",
+      "source": "Jāmiʿ al-Tirmidhī, 3297",
+      "refs": [
+        {
+          "book": "tirmidhi",
+          "number": "3297"
+        }
+      ],
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
+    }
+  ],
+  "before": "Al-Insān described at length what is prepared for the righteous. Al-Mursalāt turns to those who deny that anything is prepared at all.",
+  "after": "This surah ends: in what message after this will they believe? Al-Nabaʾ opens on the same people, still asking one another about the great news.",
+  "notable": [
+    {
+      "ayah": 13,
+      "to": 15,
+      "label": "The Day of Decision; woe to the deniers"
+    },
+    {
+      "ayah": 20,
+      "to": 22,
+      "label": "From a lowly fluid, in a secure place"
+    },
+    {
+      "ayah": 25,
+      "to": 26,
+      "label": "The earth, holding the living and the dead"
+    },
+    {
+      "ayah": 50,
+      "label": "In what message after this will they believe?"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; Jāmiʿ al-Tirmidhī"
+  ]
+}

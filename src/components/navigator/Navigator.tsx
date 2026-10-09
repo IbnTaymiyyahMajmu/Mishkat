@@ -8,6 +8,8 @@ import { SURAH_NAMES } from "@/lib/quran/surahNames";
 import { NAMED } from "@/lib/quran/marks";
 import { juzStartsIn } from "@/lib/quran/juz";
 import { resolveGoto, type Destination, type SurahRow } from "@/lib/quran/goto";
+import { useLocale, type MessageKey } from "@/lib/i18n";
+import { useSurahNames } from "@/lib/i18n/surah";
 import styles from "./Navigator.module.css";
 
 /**
@@ -46,10 +48,10 @@ interface Row extends SurahRow {
   meccan: boolean;
 }
 
-const KIND: Record<Destination["kind"], string> = {
-  ayah: "Ayah",
-  surah: "Surah",
-  juz: "Juz",
+const KIND: Record<Destination["kind"], MessageKey> = {
+  ayah: "common.ayah",
+  surah: "common.surah",
+  juz: "common.juz",
 };
 
 /**
@@ -66,6 +68,8 @@ function centre(box: HTMLElement | null, selector: string) {
 export function Navigator({ surah, ayah, onGo, onClose }: Props) {
   const { chapters } = useChapters();
   const { bookmarks, notes } = useLibrary();
+  const { t, rich, arrows } = useLocale();
+  const names = useSurahNames();
 
   const [query, setQuery] = useState("");
   const [picked, setPicked] = useState(surah);
@@ -103,7 +107,10 @@ export function Navigator({ surah, ayah, onGo, onClose }: Props) {
 
   const row = rows[picked - 1] ?? rows[0];
   const typing = query.trim().length > 0;
-  const answers = useMemo(() => resolveGoto(query, rows, picked), [query, rows, picked]);
+  const answers = useMemo(
+    () => resolveGoto(query, rows, picked, { t, name: names.name, meaning: names.meaning }),
+    [query, rows, picked, t, names],
+  );
   const cursorIndex = Math.min(cursor, Math.max(0, answers.length - 1));
 
   // ── the reader's own marks on the surah picked ────────────────────────────
@@ -122,17 +129,17 @@ export function Navigator({ surah, ayah, onGo, onClose }: Props) {
   /** The places in this surah that have a name, ahead of the numbers. */
   const shortcuts = useMemo(() => {
     const out: { ayah: number; label: string }[] = [];
-    if (stop && stop <= row.ayat) out.push({ ayah: stop, label: "Where you stopped" });
+    if (stop && stop <= row.ayat) out.push({ ayah: stop, label: t("goto.shortcutStopped") });
     for (const [key, label] of Object.entries(NAMED)) {
       const [s, a] = key.split(":").map(Number);
       // At the head of a surah the name is the surah's own, and says nothing.
-      if (s === picked && a > 1 && a <= row.ayat) out.push({ ayah: a, label: label.split(" — ")[0] });
+      if (s === picked && a > 1 && a <= row.ayat) out.push({ ayah: a, label: t(label).split(" — ")[0] });
     }
     for (const j of juzStartsIn(picked)) {
-      if (j.ayah > 1) out.push({ ayah: j.ayah, label: `Juz ${j.n} begins` });
+      if (j.ayah > 1) out.push({ ayah: j.ayah, label: t("goto.shortcutJuz", { n: j.n }) });
     }
     return out.sort((x, y) => x.ayah - y.ayah);
-  }, [picked, row.ayat, stop]);
+  }, [picked, row.ayat, stop, t]);
 
   // ── opening ───────────────────────────────────────────────────────────────
   useEffect(() => {
@@ -183,11 +190,11 @@ export function Navigator({ surah, ayah, onGo, onClose }: Props) {
 
   const place = (n: number): string =>
     [
-      `Ayah ${n}`,
-      picked === surah && n === ayah ? "where you are" : "",
-      n === stop ? "where you stopped" : "",
-      marks.saved.has(n) ? "bookmarked" : "",
-      marks.noted.has(n) ? "has a note" : "",
+      t("common.ayahN", { n }),
+      picked === surah && n === ayah ? t("goto.here") : "",
+      n === stop ? t("goto.stopped") : "",
+      marks.saved.has(n) ? t("goto.bookmarked") : "",
+      marks.noted.has(n) ? t("goto.noted") : "",
     ]
       .filter(Boolean)
       .join(", ");
@@ -201,7 +208,7 @@ export function Navigator({ surah, ayah, onGo, onClose }: Props) {
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
-        aria-label="Go to an ayah or another surah"
+        aria-label={t("goto.dialog")}
       >
         <form
           className={styles.head}
@@ -223,8 +230,8 @@ export function Navigator({ surah, ayah, onGo, onClose }: Props) {
               setCursor(0);
             }}
             onKeyDown={onKeyDown}
-            placeholder="Ayah, 2:255 or a surah"
-            aria-label="Where to go: an ayah number, a reference, or a surah’s name"
+            placeholder={t("goto.placeholder")}
+            aria-label={t("goto.input")}
             enterKeyHint="go"
             autoCapitalize="off"
             autoCorrect="off"
@@ -239,7 +246,7 @@ export function Navigator({ surah, ayah, onGo, onClose }: Props) {
                 setQuery("");
                 inputRef.current?.focus();
               }}
-              aria-label="Clear"
+              aria-label={t("common.clear")}
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
                 <path d="M17 7 7 17" />
@@ -248,7 +255,7 @@ export function Navigator({ surah, ayah, onGo, onClose }: Props) {
             </button>
           )}
           <button type="button" onClick={onClose} className={styles.close}>
-            Close
+            {t("common.close")}
           </button>
         </form>
 
@@ -256,9 +263,9 @@ export function Navigator({ surah, ayah, onGo, onClose }: Props) {
           <div className={styles.answers}>
             {answers.length === 0 && (
               <p className={styles.none}>
-                Nothing by that number or name.
+                {t("goto.none")}
                 <br />
-                Try <b>11</b> for an ayah of {row.english}, <b>2 255</b>, <b>kahf 10</b> or <b>juz 30</b>.
+                {rich("goto.noneTry", { b: (words) => <b>{words}</b> }, { surah: names.name(row.id) })}
               </p>
             )}
             {answers.map((d, i) => (
@@ -268,21 +275,23 @@ export function Navigator({ surah, ayah, onGo, onClose }: Props) {
                 onClick={() => go(d)}
                 onMouseEnter={() => setCursor(i)}
               >
-                <span className={styles.answerKind}>{KIND[d.kind]}</span>
+                <span className={styles.answerKind}>{t(KIND[d.kind])}</span>
                 <span className={styles.answerText}>
                   <span className={styles.answerTitle}>{d.title}</span>
                   <span className={styles.answerDetail}>{d.detail}</span>
                 </span>
-                <span className={styles.answerArabic} dir="rtl">
-                  {rows[d.surah - 1]?.arabic}
-                </span>
-                {i === cursorIndex && <span className={styles.answerGo}>↵ Go</span>}
+                {!names.arabic && (
+                  <span className={styles.answerArabic} dir="rtl">
+                    {rows[d.surah - 1]?.arabic}
+                  </span>
+                )}
+                {i === cursorIndex && <span className={styles.answerGo}>↵ {t("goto.go")}</span>}
               </button>
             ))}
           </div>
         ) : (
           <div className={styles.browse}>
-            <div className={styles.surahs} ref={listRef} role="listbox" aria-label="Surahs">
+            <div className={styles.surahs} ref={listRef} role="listbox" aria-label={t("goto.surahs")}>
               {rows.map((r) => {
                 const at = r.id === surah ? ayah : stops[r.id];
                 return (
@@ -296,16 +305,18 @@ export function Navigator({ surah, ayah, onGo, onClose }: Props) {
                   >
                     <span className={styles.surahNum}>{r.id}</span>
                     <span className={styles.surahText}>
-                      <span className={styles.surahName}>{r.english}</span>
+                      <span className={`${styles.surahName} ${names.arabic ? styles.surahNameArabic : ""}`}>
+                        {names.name(r.id)}
+                      </span>
                       <span className={`${styles.surahSub} ${at ? styles.surahAt : ""}`}>
                         {r.id === surah
-                          ? `Reading · ${ayah} of ${r.ayat}`
+                          ? t("goto.reading", { ayah, total: r.ayat })
                           : at
-                            ? `Stopped at ${at} of ${r.ayat}`
-                            : `${r.ayat} ayat`}
+                            ? t("goto.stoppedAt", { ayah: at, total: r.ayat })
+                            : t("common.ayat", { count: r.ayat })}
                       </span>
                     </span>
-                    <span className={styles.surahArabic}>{r.arabic}</span>
+                    {!names.arabic && <span className={styles.surahArabic}>{r.arabic}</span>}
                   </button>
                 );
               })}
@@ -315,19 +326,25 @@ export function Navigator({ surah, ayah, onGo, onClose }: Props) {
               <div className={styles.ayatHead}>
                 <div className={styles.ayatTitle}>
                   <div className={styles.ayatName}>
-                    {row.english}
-                    <span className={styles.ayatArabic}>{row.arabic}</span>
+                    {names.arabic ? (
+                      <span className={styles.ayatNameArabic}>{row.arabic}</span>
+                    ) : (
+                      <>
+                        {names.name(row.id)}
+                        <span className={styles.ayatArabic}>{row.arabic}</span>
+                      </>
+                    )}
                   </div>
                   <div className={styles.ayatSub}>
-                    {row.meaning && <span className={styles.ayatMeaning}>{row.meaning} · </span>}
-                    {row.ayat} ayat · {row.meccan ? "Meccan" : "Medinan"}
+                    {names.meaning(row.id) && <span className={styles.ayatMeaning}>{names.meaning(row.id)} · </span>}
+                    {t("common.ayat", { count: row.ayat })} · {t(row.meccan ? "common.meccan" : "common.medinan")}
                   </div>
                 </div>
                 <button
                   className={`btn ${picked === surah ? "btn-secondary" : "btn-primary"} ${styles.open}`}
                   onClick={() => onGo(picked, null)}
                 >
-                  {picked === surah ? "To the top" : "Open →"}
+                  {picked === surah ? t("goto.toTop") : `${t("goto.openSurah")} ${arrows.next}`}
                 </button>
               </div>
 
@@ -346,7 +363,7 @@ export function Navigator({ surah, ayah, onGo, onClose }: Props) {
                 </div>
               )}
 
-              <div className={styles.grid} role="group" aria-label={`The ayat of ${row.english}`}>
+              <div className={styles.grid} role="group" aria-label={t("goto.ayatOf", { surah: names.name(row.id) })}>
                 {Array.from({ length: row.ayat }, (_, i) => i + 1).map((n) => {
                   const here = picked === surah && n === ayah;
                   return (
@@ -371,17 +388,17 @@ export function Navigator({ surah, ayah, onGo, onClose }: Props) {
                 <div className={styles.legend}>
                   {picked === surah && (
                     <span>
-                      <i className={`${styles.key} ${styles.keyHere}`} /> where you are
+                      <i className={`${styles.key} ${styles.keyHere}`} /> {t("goto.here")}
                     </span>
                   )}
                   {stop && (
                     <span>
-                      <i className={`${styles.key} ${styles.keyStop}`} /> where you stopped
+                      <i className={`${styles.key} ${styles.keyStop}`} /> {t("goto.stopped")}
                     </span>
                   )}
                   {anyMarked && (
                     <span>
-                      <i className={`${styles.key} ${styles.keyDot}`} /> bookmarked or noted
+                      <i className={`${styles.key} ${styles.keyDot}`} /> {t("goto.marked")}
                     </span>
                   )}
                 </div>
@@ -394,13 +411,15 @@ export function Navigator({ surah, ayah, onGo, onClose }: Props) {
           <span className={styles.footNote}>
             {typing
               ? answers.length
-                ? "The first is where Enter goes"
-                : "A number, a reference, a surah’s name or a juz"
-              : `Tap an ayah — or type its number, a reference like 2:255, or a surah’s name`}
+                ? t("goto.footFirst")
+                : t("goto.footKinds")
+              : t("goto.footBrowse")}
           </span>
           <span className={styles.keys}>
-            <kbd className={styles.kbd}>↵</kbd>go
-            <kbd className={styles.kbd}>esc</kbd>close
+            <kbd className={styles.kbd}>↵</kbd>
+            {t("keys.go")}
+            <kbd className={styles.kbd}>esc</kbd>
+            {t("keys.close")}
           </span>
         </div>
       </div>

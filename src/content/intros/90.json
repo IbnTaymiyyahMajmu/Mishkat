@@ -1,0 +1,144 @@
+{
+  "surah": 90,
+  "epithet": "The steep road",
+  "lede": "Man was created into hardship, and there is no avoiding it. The only question is which hardship he chooses: the toil of gathering and boasting, or the climb that this surah describes in three plain acts.",
+  "names": [
+    {
+      "arabic": "البلد",
+      "name": "al-Balad",
+      "meaning": "The City",
+      "note": "After the oath it opens with — by this city: Makkah, the Sacred City. It is also called by its opening words, Lā uqsimu."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "It is Makkan by agreement, as both Ibn al-Jawzī and al-Qurṭubī record. Its opening is said of Makkah by one standing in it: “And you are a dweller in this city.” The traditional order places it thirty-fifth.",
+    "period": "makkah-middle",
+    "when": "The middle years in Makkah, while the Prophet ﷺ was being harmed in his own sanctuary",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ البَلَدِ وَهِيَ مَكِّيَّةٌ كُلُّها بِإجْماعِهِمْ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ \"الْبَلَدِ\" مَكِّيَّةٌ بِاتِّفَاقٍ. وَهِيَ عِشْرُونَ آيَةً"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْبَلَدِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿لا أُقْسِمُ بِهَذا البَلَدِ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ بِلا خِلافٍ",
+        "says": "Makkan, by agreement."
+      }
+    ]
+  },
+  "setting": [
+    "Makkah was a sanctuary. By a custom older than Quraysh could remember, no blood was shed there, no game hunted, no tree cut; a man might meet his father’s killer in its precincts and leave him be. And in that city the one person whose honour was not respected was the Messenger of Allah ﷺ.",
+    "The second ayah is read against that. “And you are ḥill in this city.” Some of the early commentators took it as: you are a resident here — so the oath is by Makkah as the place he lives. Others, Ibn ʿAbbās and Mujāhid among them, took ḥill in its legal sense, free of restriction: a time will come when this city is made lawful to you, to fight in it for an hour. If so, it is a promise of the Conquest made years before the Hijrah, to a man who at that moment could not pray at the Kaʿbah without being assaulted. The Prophet ﷺ said on the day it came true: “It was made lawful for me for one hour of one day.”",
+    "The rest is addressed to the kind of man who was doing the harm: sure that no one has power over him, boasting, “I have squandered wealth in heaps.” Does he think no one saw how he spent it? He was given two eyes, a tongue and two lips, and shown the two roads. He has not attempted the steep one."
+  ],
+  "occasions": [],
+  "aim": "To describe the human condition — between the toil of disbelief and punishment, and the climb up the ladder of mercy and faith, in both worlds.",
+  "themes": [
+    "The sanctity of Makkah",
+    "Man created in toil",
+    "Freeing the slave",
+    "Feeding the orphan and the poor",
+    "Patience and compassion"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 4,
+      "title": "The oath",
+      "summary": "I swear by this city — and you are a free dweller in this city — and by the parent and what he begot: We have created man in hardship."
+    },
+    {
+      "from": 5,
+      "to": 10,
+      "title": "The delusion",
+      "summary": "Does he think that no one will have power over him? He says, “I have spent wealth in abundance.” Does he think that no one has seen him? Have We not given him two eyes, a tongue and two lips, and shown him the two ways?"
+    },
+    {
+      "from": 11,
+      "to": 16,
+      "title": "The steep road",
+      "summary": "Yet he has not attempted the steep road. And what will make you know what the steep road is? The freeing of a slave; or feeding, on a day of hunger, an orphan who is near of kin, or a poor man lying in the dust."
+    },
+    {
+      "from": 17,
+      "to": 20,
+      "title": "The two companies",
+      "summary": "And then to be among those who believe, and urge one another to patience, and urge one another to compassion: those are the people of the right hand. Those who deny Our signs are the people of the left; over them is a fire, closed in."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 11,
+    "why": "The image the surah is built on. What it asks for is not a feeling but three costly acts, and then faith to make them count."
+  },
+  "virtues": [
+    {
+      "text": "On the day Makkah was opened he ﷺ said: “Allah made this city sacred on the day He created the heavens and the earth… Fighting in it was not lawful for anyone before me, and it was made lawful for me only for an hour of a day.”",
+      "narrator": "Ibn ʿAbbās",
+      "source": "Ṣaḥīḥ al-Bukhārī, 1834 · Ṣaḥīḥ Muslim, 1353",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "1834"
+        },
+        {
+          "book": "muslim",
+          "number": "1353"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "before": "Al-Fajr charged them: you do not honour the orphan, nor urge the feeding of the poor (89:17). Al-Balad makes those very acts the road to safety.",
+  "after": "Al-Balad ends with two companies, shown the two ways. Al-Shams says where the choice between them is made: in the soul, which was inspired with its wrong and its right.",
+  "notable": [
+    {
+      "ayah": 4,
+      "label": "We created man in hardship"
+    },
+    {
+      "ayah": 10,
+      "label": "And shown him the two ways"
+    },
+    {
+      "ayah": 11,
+      "to": 16,
+      "label": "The steep road"
+    },
+    {
+      "ayah": 17,
+      "label": "Patience and compassion"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "al-Ṭabarī, Jāmiʿ al-Bayān",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "surah": 114,
+  "epithet": "Refuge from the whisper within",
+  "lede": "The Qurʾan’s last surah is a prayer for protection against the enemy that is hardest to see, because it speaks in one’s own voice. Against that single danger it calls on Allah by three names.",
+  "names": [
+    {
+      "arabic": "الناس",
+      "name": "al-Nās",
+      "meaning": "Mankind",
+      "note": "After the word that ends five of its six ayat. The Prophet ﷺ called it by its opening: Qul aʿūdhu bi-rabbi l-nās."
+    },
+    {
+      "arabic": "المعوّذتان",
+      "name": "al-Muʿawwidhatān",
+      "meaning": "The Two Surahs of Refuge",
+      "note": "The name it shares with al-Falaq."
+    }
+  ],
+  "revelation": {
+    "place": "disputed",
+    "verdict": "Differed over, as al-Falaq is",
+    "detail": "It goes with al-Falaq: the two came down together and the same two views are reported, both from Ibn ʿAbbās — that it is Madinan, in the report of Abū Ṣāliḥ, and that it is Makkan, in another. Al-Qurṭubī says simply that it is like al-Falaq, being one of the two surahs of refuge. The muṣḥaf heads it Makkan.",
+    "period": "makkah-early",
+    "when": "With al-Falaq: Makkah on one view, Madinah on the other",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَفِيها قَوْلانِ. أحَدُهُما: أنَّها مَدَنِيَّةٌ، رَواهُ أبُو صالِحٍ عَنِ ابْنِ عَبّاسٍ. والثّانِي: أنَّها مَكِّيَّةٌ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ \"النَّاسِ\" مِثْلُ \"الْفَلَقِ\" لِأَنَّهَا إِحْدَى الْمُعَوِّذَتَيْنِ"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ النَّاسِ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنْ عَبْدِ اللهِ بْنِ الزُّبَيْرِ قالَ: أُنْزِلَ بِالمَدِينَةِ ﴿قُلْ أعُوذُ بِرَبِّ النّاسِ",
+        "says": "Ibn al-Zubayr: it came down in Madinah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "والخِلافُ في كَوْنِها مَكِّيَّةً أوْ مَدَنِيَّةً كالخِلافِ الَّذِي تَقَدَّمَ في سُورَةِ الفَلَقِ",
+        "says": "The difference over whether it is Makkan or Madinan is as already described for Sūrat al-Falaq."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: أُنْزِلَ بِمَكَّةَ ﴿قُلْ أعُوذُ بِرَبِّ النّاسِ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      }
+    ]
+  },
+  "setting": [
+    "What is reported of al-Falaq’s setting is reported of this surah too; they were sent down as a pair, and the Prophet ﷺ announced them together: “Ayat have been sent down tonight the like of which has never been seen.”",
+    "The two divide the field between them. Al-Falaq asks protection from what happens to a person — things done by others, which may harm his body or his life but do not make him guilty of anything. Al-Nās asks protection from the one harm that does: the prompting to do wrong himself. That is why, Ibn al-Qayyim observes, the balance is reversed. There, one name of Allah stands against four evils. Here, three names — Lord, King, God — stand against one.",
+    "The one is al-waswās al-khannās: the whisperer who draws back. The early commentators explained the second word from Ibn ʿAbbās: the devil crouches over the heart of the son of Ādam; when he is heedless, it whispers, and when he remembers Allah, it withdraws."
+  ],
+  "occasions": [],
+  "aim": "To hold fast to Allah and take shelter in Him from the evil of the devil and his whispering, and from the evils that are hidden.",
+  "themes": [
+    "Seeking refuge in Allah",
+    "Lordship, kingship, divinity",
+    "The whisper of the devil"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 3,
+      "title": "With Whom",
+      "summary": "Say: I seek refuge with the Lord of mankind, the King of mankind, the God of mankind. He who made and sustains them, He who rules them, and He alone whom they are to worship: the three together leave no one else to turn to."
+    },
+    {
+      "from": 4,
+      "to": 6,
+      "title": "From what",
+      "summary": "From the evil of the whisperer who withdraws, who whispers into the breasts of mankind — from among jinn and men. The whisperer is not only a devil unseen; a human companion can do the same work."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 4,
+    "why": "The one danger the surah was sent against, named so that it can be recognised."
+  },
+  "virtues": [
+    {
+      "text": "“Have you not seen the ayat that were sent down tonight, the like of which has never been seen? ‘Say: I seek refuge with the Lord of the daybreak’ and ‘Say: I seek refuge with the Lord of mankind’.”",
+      "narrator": "ʿUqbah ibn ʿĀmir",
+      "source": "Ṣaḥīḥ Muslim, 814",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "814"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "Each night when the Prophet ﷺ went to his bed he would bring his palms together, blow into them and recite into them “Qul huwa Allāhu aḥad”, “Qul aʿūdhu bi-rabbi l-falaq” and “Qul aʿūdhu bi-rabbi l-nās”, then wipe with them as much of his body as he could, beginning with his head and face and the front of his body. He would do that three times.",
+      "narrator": "ʿĀʾishah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 5017",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "5017"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "“Say ‘Qul huwa Allāhu aḥad’ and the two surahs of refuge three times when evening comes and when morning comes: they will suffice you against everything.”",
+      "narrator": "ʿAbd Allāh ibn Khubayb",
+      "source": "Sunan Abī Dāwūd, 5082 · Jāmiʿ al-Tirmidhī, 3575",
+      "refs": [
+        {
+          "book": "abudawud",
+          "number": "5082"
+        },
+        {
+          "book": "tirmidhi",
+          "number": "3575"
+        }
+      ],
+      "grade": "Ḥasan according to al-Albānī",
+      "rank": "hasan"
+    }
+  ],
+  "before": "Al-Falaq sought refuge from four evils that come from outside, by one of Allah’s attributes. Al-Nās seeks refuge from one that works within, by three.",
+  "notable": [
+    {
+      "ayah": 1,
+      "to": 3,
+      "label": "Lord, King and God of mankind"
+    },
+    {
+      "ayah": 4,
+      "label": "The whisperer who withdraws"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "Ibn al-Qayyim, on the two surahs of refuge",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; the Sunan of Abū Dāwūd and al-Tirmidhī"
+  ]
+}

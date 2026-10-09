@@ -1,0 +1,396 @@
+{
+  "surah": 2,
+  "epithet": "The pavilion of the Qurʾan",
+  "lede": "The longest surah, and the work of years: begun when the Prophet ﷺ reached Madinah, and still receiving ayat in the last weeks of his life. It holds the greatest ayah in the Qurʾan and the longest. A new community is taught, law by law, how to carry a Book — by first being shown a people who were given one before.",
+  "names": [
+    {
+      "arabic": "البقرة",
+      "name": "al-Baqarah",
+      "meaning": "The Cow",
+      "note": "After the cow that the Children of Israel were told to slaughter, and asked question after question about before they did (2:67–73). The Prophet ﷺ himself called it by this name."
+    },
+    {
+      "arabic": "فسطاط القرآن",
+      "name": "Fusṭāṭ al-Qurʾān",
+      "meaning": "The pavilion of the Qurʾan",
+      "note": "So Khālid ibn Maʿdān called it — al-Qurṭubī explains: for its greatness and splendour, and the number of its rulings and counsels."
+    },
+    {
+      "arabic": "الزهراء",
+      "name": "al-Zahrāʾ",
+      "meaning": "The Radiant",
+      "note": "The Prophet ﷺ called this surah and Āl ʿImrān together al-Zahrāwān, the two radiant ones."
+    }
+  ],
+  "revelation": {
+    "place": "madinah",
+    "verdict": "Madinan — the first surah of Madinah",
+    "detail": "Ibn ʿAbbās said it was the first to come down in Madinah, and that is the saying of al-Ḥasan, Mujāhid, ʿIkrimah, Jābir ibn Zayd and Qatādah. But it was not sent down at once: al-Qurṭubī says it came down over separate periods, and that its ayat on usury are among the last of the Qurʾan to be revealed. Ibn ʿAbbās said the last ayah sent down to the Prophet ﷺ was the ayah of usury; and its two hundred and eighty-first ayah — “Be mindful of a Day on which you will be returned to Allah” — is reported from him as the very last, which some placed at Minā during the Farewell Pilgrimage. The traditional order places it eighty-seventh: the first after the Hijrah.",
+    "period": "madinah-early",
+    "when": "Madinah, from the first year after the Hijrah — and added to until the last",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "قالَ ابْنُ عَبّاسٍ: هي أوَّلُ ما نَزَلَ بِالمَدِينَةِ، وهَذا قَوْلُ الحَسَنِ، ومُجاهِدٌ، وعِكْرِمَةُ، وَجابِرُ بْنُ زَيْدٍ، وقَتادَةُ، ومُقاتِلٌ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْبَقَرَةِ مَدَنِيَّةٌ، نَزَلَتْ فِي مُدَدٍ شَتَّى"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "وَيُقَالُ لَهَا: فُسْطَاطُ الْقُرْآنِ، قَالَهُ خَالِدُ بْنُ مَعْدَانَ. وَذَلِكَ لِعِظَمِهَا وَبِهَائِهَا، وَكَثْرَةِ أَحْكَامِهَا وَمَوَاعِظِهَا"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةِ الْبَقَرَةِ مَدَنِيَّةٌ وَهِيَ مِائَتَانِ وَثَمَانُونَ وَسَبْعُ آيَاتٍ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ في فَضائِلِهِ وأبُو جَعْفَرٍ النَّحّاسُ في ”النّاسِخِ والمَنسُوخِ“، وابْنُ مَرْدُوَيْهِ والبَيْهَقِيُّ في ”دَلائِلِ النُّبُوَّةِ“ مِن طُرُقٍ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ بِالمَدِينَةِ سُورَةُ البَقَرَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī, through several chains."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "قالَ القُرْطُبِيُّ في تَفْسِيرِ سُورَةِ البَقَرَةِ: مَدَنِيَّةٌ نَزَلَتْ في مُدَدٍ شَتّى",
+        "says": "Madinan, citing al-Qurṭubī."
+      }
+    ]
+  },
+  "setting": [
+    "In Makkah the Qurʾan had spoken to one kind of opponent. In Madinah the Prophet ﷺ found a city of three populations: those who believed, the Emigrants and the Helpers; the Jewish tribes of the oasis, who had a scripture and had long spoken of a prophet to come; and a class Makkah had never produced, because there had been nothing to gain there by pretending — the hypocrites. The surah opens by sorting mankind into exactly these. Mujāhid counted it: four ayat describing the believers, two the disbelievers, and thirteen the hypocrites.",
+    "Then, for nearly a third of its length, it speaks to the Children of Israel. They are reminded of what they were given — rescue from Pharaoh, the sea parted, the Book, manna and quails, water struck from the rock — and of what they did with it: the calf, the grumbling, the covenant taken under the raised mountain and broken. The story that gives the surah its name is the smallest of these and the most telling. Told to slaughter a cow, they asked what kind, what colour, what sort exactly, until a simple command had become nearly impossible; “and they slaughtered it, though they almost did not.” The new community is listening. This is what it looks like to be handed a revelation and to argue with it.",
+    "Then the surah turns. It goes back behind Mūsā to Ibrāhīm, raising the foundations of the House with Ismāʿīl and praying for a messenger from among their descendants — and announces the change that followed from it. For sixteen or seventeen months in Madinah the Prophet ﷺ had prayed towards Jerusalem, and he longed for it to be the Kaʿbah. “We see the turning of your face to the sky; so We shall turn you to a qiblah that will please you.” Al-Barāʾ relates that a man who had prayed that prayer with him passed a mosque where people were bowing, and said: I bear witness by Allah that I have just prayed with the Prophet ﷺ facing Makkah. They turned as they were, towards the House. “Thus We have made you a middle nation, that you may be witnesses over mankind.”",
+    "What follows is the law a community needs in order to be one: retaliation and bequest, the fast of Ramaḍān, the Pilgrimage, fighting, wine and gambling at their first stage, orphans, marriage and divorce, the nursing of children, the mourning of widows, charity, usury, and the writing down of debts — in the longest ayah of the Qurʾan. The laws do not come as a code. They come between stories and prayers, and each ends by naming the thing it is for: “that you may be mindful.”",
+    "Its close is one of the most moving reports in the Ṣaḥīḥ. When the ayah came down, “whether you disclose what is within yourselves or conceal it, Allah will call you to account for it,” the Companions came to the Prophet ﷺ and went down on their knees: we have been charged with what we can bear — the prayer, the fast, striving, charity — but this we cannot bear. He said: “Do you wish to say what the people of the two Books said before you — ‘we hear and we disobey’? Say rather: we hear and we obey; Your forgiveness, our Lord; to You is the return.” They said it, until their tongues were at ease with it. Then the last two ayat came down, with their prayer — “Our Lord, do not take us to task if we forget or err” — and after each petition Allah said: “I have done so.” The surah that began by recounting a people who said we hear and disobey ends with a people who said we hear and obey, and were relieved."
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        142,
+        144
+      ],
+      "title": "The change of the qiblah",
+      "text": "The Messenger of Allah ﷺ prayed towards Jerusalem for sixteen or seventeen months, and he wished that his qiblah might be towards the House. The first prayer he prayed towards it was the afternoon prayer, and people prayed with him. A man who had prayed with him went out and passed the people of a mosque while they were bowing, and said: “I bear witness by Allah that I have prayed with the Prophet ﷺ towards Makkah.” And they turned round, as they were, towards the House.",
+      "source": "Al-Barāʾ ibn ʿĀzib: al-Bukhārī (4486) and Muslim (525).",
+      "rank": "agreed"
+    },
+    {
+      "ayat": [
+        158,
+        158
+      ],
+      "title": "Al-Ṣafā and al-Marwah",
+      "text": "ʿUrwah said to ʿĀʾishah: it seems to me there is no harm on one who does not go between them. She said: “How wrong, son of my sister. Had it been as you take it, it would have said: no blame on him if he does not go between them. It was sent down about the Helpers: before Islam they used to dedicate themselves to the idol Manāt, and those who did felt uneasy about going between al-Ṣafā and al-Marwah. When they became Muslims they asked the Messenger of Allah ﷺ about it, and Allah sent down: ‘Al-Ṣafā and al-Marwah are among the symbols of Allah.’”",
+      "source": "ʿĀʾishah: al-Bukhārī (1643) and Muslim (1277).",
+      "rank": "agreed"
+    },
+    {
+      "ayat": [
+        187,
+        187
+      ],
+      "title": "The nights of Ramaḍān",
+      "text": "“When the fast of Ramaḍān was sent down, they would not approach their wives for the whole of Ramaḍān, and some men were betraying themselves. So Allah sent down: ‘Allah knew that you were betraying yourselves, so He turned to you and pardoned you.’”",
+      "source": "Al-Barāʾ ibn ʿĀzib: al-Bukhārī (4508).",
+      "rank": "agreed"
+    },
+    {
+      "ayat": [
+        219,
+        219
+      ],
+      "title": "“Make it clear to us about wine”",
+      "text": "ʿUmar said: “O Allah, make clear to us about wine, with a clarity that heals.” Then the ayah in al-Baqarah came down. He was called and it was recited to him, and he said the same again; then the ayah in al-Nisāʾ came down, and he said it again; then the one in al-Māʾidah: “Will you then desist?” ʿUmar said: “We desist, we desist.”",
+      "source": "ʿUmar ibn al-Khaṭṭāb: al-Tirmidhī (3049); ṣaḥīḥ according to al-Albānī.",
+      "rank": "sahih"
+    },
+    {
+      "ayat": [
+        238,
+        238
+      ],
+      "title": "Silence in the prayer",
+      "text": "“We used to speak during the prayer — a man would talk to his companion about what he needed — until this ayah came down: ‘Guard the prayers, and the middle prayer, and stand before Allah in devotion.’ Then we were commanded to be silent.”",
+      "source": "Zayd ibn Arqam: al-Bukhārī (4534) and Muslim (539).",
+      "rank": "agreed"
+    },
+    {
+      "ayat": [
+        284,
+        286
+      ],
+      "title": "“We hear and we obey”",
+      "text": "When “whether you disclose what is in yourselves or conceal it, Allah will call you to account for it” came down, it bore heavily on the Companions. They came and knelt: “Messenger of Allah, this ayah has been sent down to you and we cannot bear it.” He said: “Do you wish to say as the people of the two Books said before you, ‘We hear and we disobey’? Rather say: ‘We hear and we obey; Your forgiveness, our Lord, and to You is the return.’” When they had recited it and their tongues had yielded to it, Allah sent down after it: “The Messenger believes in what was sent down to him from his Lord, and so do the believers…” and then: “Allah does not burden a soul beyond its capacity.”",
+      "source": "Abū Hurayrah: Muslim (125); and from Ibn ʿAbbās, with “I have done so” after each petition: Muslim (126).",
+      "rank": "agreed"
+    }
+  ],
+  "aim": "To prepare the community to cultivate the earth and to uphold the religion of Allah, and to set out the kinds of people; in it are the foundations of faith and the universal principles of the Law.",
+  "themes": [
+    "Believers, disbelievers and hypocrites",
+    "Ādam, and the trust of the earth",
+    "The Children of Israel and their covenant",
+    "Ibrāhīm and the House",
+    "The qiblah and the middle nation",
+    "Fasting, pilgrimage and the laws of the family",
+    "Āyat al-Kursī",
+    "Spending, usury and debt",
+    "“We hear and we obey”"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 20,
+      "title": "Three kinds of people",
+      "summary": "Alif Lām Mīm. This is the Book in which there is no doubt, a guidance for the mindful: those who believe in the unseen, keep up the prayer and spend of what We have given them. As for those who disbelieve, it is the same to them whether you warn them or not. And among people are those who say “We believe in Allah and the Last Day,” and they are not believers. They are like one who kindled a fire, and when it lit up what was around him, Allah took away their light — or like a rainstorm from the sky, with darkness, thunder and lightning."
+    },
+    {
+      "from": 21,
+      "to": 39,
+      "title": "O mankind — and the first man",
+      "summary": "O mankind, worship your Lord who created you. If you are in doubt about what We have sent down upon Our servant, then produce a surah like it. Your Lord said to the angels: “I am placing a successor on the earth.” He taught Ādam the names, all of them. The angels prostrated, except Iblīs. Ādam and his wife were brought down from the Garden; then Ādam received words from his Lord, and He turned to him. “When guidance comes to you from Me, whoever follows My guidance — no fear will be on them, nor will they grieve.”"
+    },
+    {
+      "from": 40,
+      "to": 74,
+      "title": "Children of Israel: remember My favour",
+      "summary": "Children of Israel, remember My favour which I bestowed upon you, and fulfil My covenant. Seek help in patience and prayer. We saved you from the people of Pharaoh; We parted the sea for you; you took the calf; We sent down manna and quails; Mūsā struck the rock. You said, “We cannot endure one kind of food.” We raised the Mount above you. And Mūsā said to his people: “Allah commands you to slaughter a cow.” — “Ask your Lord to make clear to us what she is.” Then your hearts hardened after that, like stones, or harder."
+    },
+    {
+      "from": 75,
+      "to": 123,
+      "title": "What they did with the Book",
+      "summary": "Do you hope that they will believe you, when a party of them used to hear the word of Allah and then distort it? Woe to those who write the Book with their own hands and say, “This is from Allah.” We took your covenant: you shall not shed one another’s blood. They said: “We hear and we disobey.” Whoever is an enemy to Jibrīl — it is he who brought it down upon your heart. They followed what the devils recited in the reign of Sulaymān. We do not abrogate an ayah but We bring one better or the like of it. To Allah belong the east and the west: wherever you turn, there is the Face of Allah."
+    },
+    {
+      "from": 124,
+      "to": 141,
+      "title": "Ibrāhīm, and the House",
+      "summary": "When his Lord tested Ibrāhīm with words and he fulfilled them, He said: “I am making you a leader for mankind.” We made the House a place of return for people, and a sanctuary. Ibrāhīm and Ismāʿīl raised its foundations: “Our Lord, accept this from us… and raise up among them a messenger from among themselves.” Who turns away from the religion of Ibrāhīm but one who makes a fool of himself? Say: we believe in Allah and what was sent down to us, and to Ibrāhīm, Ismāʿīl, Isḥāq, Yaʿqūb and the tribes. The colouring of Allah — and who is better than Allah in colouring?"
+    },
+    {
+      "from": 142,
+      "to": 152,
+      "title": "The qiblah turned",
+      "summary": "The foolish among the people will say, “What has turned them from the qiblah they used to face?” Say: to Allah belong the east and the west. Thus We have made you a middle nation, that you may be witnesses over mankind (2:143). We see the turning of your face to the sky; so turn your face towards the Sacred Mosque, and wherever you are, turn your faces towards it. Each has a direction to which he turns; so race to what is good. Remember Me; I will remember you."
+    },
+    {
+      "from": 153,
+      "to": 177,
+      "title": "Patience, and what righteousness is",
+      "summary": "O you who believe, seek help in patience and prayer; Allah is with the patient. Do not say of those killed in the way of Allah, “dead.” We shall test you with something of fear and hunger; give good news to the patient, who say when struck: “To Allah we belong, and to Him we return.” Your God is One God. Eat of the good things of the earth. Righteousness is not that you turn your faces east or west; righteousness is one who believes in Allah and the Last Day, gives wealth for love of Him, keeps up the prayer, fulfils his pledge, and is patient in hardship."
+    },
+    {
+      "from": 178,
+      "to": 203,
+      "title": "Retaliation, the fast, the Pilgrimage",
+      "summary": "Retaliation is prescribed for you in cases of murder — and in retaliation there is life for you. Fasting is prescribed for you as it was for those before you, that you may be mindful. The month of Ramaḍān, in which the Qurʾan was sent down. When My servants ask you about Me: I am near; I answer the call of the caller when he calls on Me (2:186). Fight in the way of Allah those who fight you, and do not transgress. Complete the Pilgrimage and the ʿumrah for Allah. “Our Lord, give us good in this world and good in the next, and protect us from the punishment of the Fire.”"
+    },
+    {
+      "from": 204,
+      "to": 242,
+      "title": "They ask you…",
+      "summary": "Enter into submission wholly. Fighting is prescribed for you, though you dislike it; perhaps you dislike a thing and it is good for you. They ask you about wine and gambling; about what they should spend; about orphans; about menstruation. Do not marry idolatresses until they believe. Divorce is twice: then keep her honourably, or release her with kindness. Mothers shall nurse their children two full years. Guard the prayers, and the middle prayer. For divorced women, a fair provision."
+    },
+    {
+      "from": 243,
+      "to": 254,
+      "title": "Ṭālūt, and the few who stood",
+      "summary": "Have you not seen the chiefs of the Children of Israel after Mūsā, who said to a prophet of theirs, “Appoint us a king”? Allah sent Ṭālūt; they said, “How can he have kingship over us?” He tested them with a river, and all but a few drank. “How many a small company has overcome a large one, by Allah’s leave.” And Dāwūd killed Jālūt. Those are the messengers; We favoured some above others."
+    },
+    {
+      "from": 255,
+      "to": 260,
+      "title": "The Throne, and the giving of life",
+      "summary": "Allah — there is no god but He, the Living, the Sustainer. Neither slumber overtakes Him nor sleep. His Kursī extends over the heavens and the earth, and guarding them does not weary Him. There is no compulsion in religion: right guidance stands clear from error. Allah is the ally of those who believe: He brings them out of darknesses into the light. The one who argued with Ibrāhīm about his Lord; the one who passed by a town fallen in on its roofs; and Ibrāhīm: “My Lord, show me how You give life to the dead.”"
+    },
+    {
+      "from": 261,
+      "to": 283,
+      "title": "Spending, usury, and the written debt",
+      "summary": "The likeness of those who spend their wealth in the way of Allah is that of a grain that grows seven ears, in every ear a hundred grains. A kind word and forgiveness are better than charity followed by hurt. Those who devour usury will not stand except as one whom Satan has struck with madness. Allah blots out usury and makes charity grow. Be mindful of a Day on which you will be returned to Allah (2:281). O you who believe, when you contract a debt for a fixed term, write it down."
+    },
+    {
+      "from": 284,
+      "to": 286,
+      "title": "The close",
+      "summary": "To Allah belongs what is in the heavens and what is on the earth. The Messenger believes in what has been sent down to him from his Lord, and so do the believers: each believes in Allah, His angels, His books and His messengers. They say: “We hear and we obey. Your forgiveness, our Lord; to You is the return.” Allah does not burden a soul beyond its capacity. “Our Lord, do not take us to task if we forget or err… Pardon us, forgive us, have mercy on us. You are our Protector; so help us against the disbelieving people.”"
+    }
+  ],
+  "keyAyah": {
+    "ayah": 255,
+    "why": "Āyat al-Kursī. The Prophet ﷺ asked Ubayy ibn Kaʿb which ayah of the Book of Allah was greatest; when he answered with this one, he struck him on the chest and said: “May knowledge delight you, Abū l-Mundhir.”"
+  },
+  "virtues": [
+    {
+      "text": "“Recite Sūrat al-Baqarah: to take hold of it is a blessing, to leave it is a cause of regret, and the sorcerers cannot prevail against it.”",
+      "arabic": "اقْرَءُوا سُورَةَ الْبَقَرَةِ فَإِنَّ أَخْذَهَا بَرَكَةٌ وَتَرْكَهَا حَسْرَةٌ وَلاَ تَسْتَطِيعُهَا الْبَطَلَةُ",
+      "narrator": "Abū Umāmah al-Bāhilī",
+      "source": "Ṣaḥīḥ Muslim, 804",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "804"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "“Do not make your houses into graveyards. Satan flees from the house in which Sūrat al-Baqarah is recited.”",
+      "arabic": "إِنَّ الشَّيْطَانَ يَنْفِرُ مِنَ الْبَيْتِ الَّذِي تُقْرَأُ فِيهِ سُورَةُ الْبَقَرَةِ",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ Muslim, 780",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "780"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "The Messenger of Allah ﷺ said: “Abū l-Mundhir, do you know which ayah of the Book of Allah that you have is greatest?” I said: “Allah — there is no god but He, the Living, the Sustainer.” He struck me on the chest and said: “By Allah, may knowledge delight you, Abū l-Mundhir.”",
+      "arabic": "وَاللَّهِ لِيَهْنِكَ الْعِلْمُ أَبَا الْمُنْذِرِ",
+      "narrator": "Ubayy ibn Kaʿb",
+      "source": "Ṣaḥīḥ Muslim, 810",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "810"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "Abū Hurayrah was set to guard the zakāh of Ramaḍān, and for three nights caught a thief taking from it. On the third the thief said: “Let me go, and I will teach you words by which Allah will benefit you. When you go to your bed, recite Āyat al-Kursī to its end: a guardian from Allah will remain over you, and no devil will come near you until morning.” The Prophet ﷺ said: “He told you the truth, though he is a liar. That was a devil.”",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 5010",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "5010"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "“Whoever recites the two ayat at the end of Sūrat al-Baqarah in a night, they will suffice him.”",
+      "arabic": "مَنْ قَرَأَ بِالآيَتَيْنِ مِنْ آخِرِ سُورَةِ الْبَقَرَةِ فِي لَيْلَةٍ كَفَتَاهُ",
+      "narrator": "Abū Masʿūd al-Anṣārī",
+      "source": "Ṣaḥīḥ al-Bukhārī, 5009 · Ṣaḥīḥ Muslim, 807",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "5009"
+        },
+        {
+          "book": "muslim",
+          "number": "807"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "While Jibrīl was sitting with the Prophet ﷺ, an angel came down who had never come down before, and said: “Rejoice in two lights that you have been given, which no prophet before you was given: the Opening of the Book, and the closing ayat of Sūrat al-Baqarah. You will not recite a letter of them but you will be given it.”",
+      "narrator": "Ibn ʿAbbās",
+      "source": "Ṣaḥīḥ Muslim, 806",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "806"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "before": "Al-Fātiḥah asked: “Guide us to the straight path.” Al-Baqarah opens with the answer: “This is the Book in which there is no doubt, a guidance for the mindful.”",
+  "after": "The Prophet ﷺ named the two together: the radiant pair. Al-Baqarah speaks at length to the Jews among the People of the Book; Āl ʿImrān turns to the Christians. Both open with Alif Lām Mīm.",
+  "notable": [
+    {
+      "ayah": 2,
+      "to": 5,
+      "label": "The Book, and the mindful"
+    },
+    {
+      "ayah": 30,
+      "label": "“I am placing a successor on the earth”"
+    },
+    {
+      "ayah": 67,
+      "to": 73,
+      "label": "The cow"
+    },
+    {
+      "ayah": 127,
+      "to": 129,
+      "label": "Ibrāhīm’s prayer at the House"
+    },
+    {
+      "ayah": 143,
+      "to": 144,
+      "label": "The middle nation, and the qiblah"
+    },
+    {
+      "ayah": 152,
+      "label": "Remember Me; I will remember you"
+    },
+    {
+      "ayah": 155,
+      "to": 157,
+      "label": "“To Allah we belong, and to Him we return”"
+    },
+    {
+      "ayah": 177,
+      "label": "The ayah of righteousness"
+    },
+    {
+      "ayah": 183,
+      "to": 185,
+      "label": "The fast of Ramaḍān"
+    },
+    {
+      "ayah": 186,
+      "label": "“I am near”"
+    },
+    {
+      "ayah": 255,
+      "label": "Āyat al-Kursī"
+    },
+    {
+      "ayah": 256,
+      "label": "No compulsion in religion"
+    },
+    {
+      "ayah": 282,
+      "label": "The ayah of debt — the longest in the Qurʾan"
+    },
+    {
+      "ayah": 285,
+      "to": 286,
+      "label": "The closing ayat"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; Jāmiʿ al-Tirmidhī"
+  ]
+}

@@ -74,7 +74,8 @@
 .notes {
   list-style: none;
   margin: 8px 0 4px;
-  padding: 9px 12px 9px 6px;
+  padding-block: 9px;
+  padding-inline: 6px 12px;
   border-radius: var(--radius-md);
   background: color-mix(in srgb, var(--color-accent) 7%, transparent);
   display: flex;
@@ -283,7 +284,8 @@
 .select {
   width: 100%;
   height: 38px;
-  padding: 0 34px 0 12px;
+  padding-block: 0;
+  padding-inline: 12px 34px;
   appearance: none;
   background: transparent;
   border: 1px solid var(--color-divider);
@@ -334,7 +336,8 @@
 .entryBody {
   flex: 1;
   min-width: 0;
-  padding: 13px 10px 14px 14px;
+  padding-block: 13px 14px;
+  padding-inline: 14px 10px;
 }
 
 .entryHead {

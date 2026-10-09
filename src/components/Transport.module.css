@@ -32,6 +32,14 @@
     color-mix(in srgb, var(--color-text) 8%, transparent) var(--progress, 0%)
   );
 }
+/* A range runs the way the page reads, so its filled part does too. */
+:global([dir="rtl"]) .scrub {
+  background: linear-gradient(
+    to left,
+    var(--color-accent) var(--progress, 0%),
+    color-mix(in srgb, var(--color-text) 8%, transparent) var(--progress, 0%)
+  );
+}
 .scrub:disabled { cursor: default; }
 .scrub::-webkit-slider-thumb {
   -webkit-appearance: none;

@@ -1,0 +1,128 @@
+{
+  "surah": 99,
+  "epithet": "When the earth tells what it knows",
+  "lede": "The ground that people walked on, built on and buried their secrets in will shake, give up everything it holds, and speak. And on that day nothing is too small to be seen — not the weight of an atom.",
+  "names": [
+    {
+      "arabic": "الزلزلة",
+      "name": "al-Zalzalah",
+      "meaning": "The Earthquake",
+      "note": "After the shaking it opens with. It is also called al-Zilzāl, and in the hadith by its first words, Idhā zulzilat."
+    }
+  ],
+  "revelation": {
+    "place": "madinah",
+    "verdict": "Madinan, by the majority — and differed over",
+    "detail": "Ibn al-Jawzī gives two views. That it is Madinan is the saying of Ibn ʿAbbās, Qatādah and Muqātil, and he attributes it to the majority; it is how the muṣḥaf heads the surah. That it is Makkan is the saying of Ibn Masʿūd, Jābir and ʿAṭāʾ — and its manner is that of the Makkan surahs: short, rhymed, and wholly about the Last Day. Ibn Kathīr gives it as Makkan.",
+    "period": "madinah-early",
+    "when": "Madinah, on the majority’s view; Makkah on the other",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وَفِيها قَوْلانِ: أحَدُهُما: أنَّها مَدَنِيَّةٌ، قالَهُ ابْنُ عَبّاسٍ، وقَتادَةُ، ومُقاتِلٌ، والجُمْهُورُ. والثّانِي: مَكِّيَّةٌ، قالَهُ ابْنُ مَسْعُودٍ، وجابِرٌ، وعَطاءٌ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "مَدَنِيَّةٌ فِي قَوْلِ ابْنِ عَبَّاسٍ وَقَتَادَةَ. وَمَكِّيَّةٌ فِي قَوْلِ ابْنِ مَسْعُودٍ وَعَطَاءٍ وَجَابِرٍ"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الزَّلْزَلَةِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿إذا زُلْزِلَتِ﴾ بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَدَنِيَّةٌ في قَوْلِ ابْنِ عَبّاسٍ، وقَتادَةَ، ومَكِّيَّةٌ في قَوْلِ ابْنِ مَسْعُودٍ، وعَطاءٍ، وجابِرٍ",
+        "says": "Madinan in the saying of Ibn ʿAbbās and Qatādah; Makkan in the saying of Ibn Masʿūd, ʿAṭāʾ and Jābir."
+      }
+    ]
+  },
+  "setting": [
+    "No occasion is transmitted for the surah as a whole. Its hearers were people who did not believe that anything they did would be remembered: a deed was done, the day passed, and the earth closed over it.",
+    "The surah takes that earth and makes it the witness. On that day it will be shaken with its final shaking and throw out its burdens — its dead, and all it hid — and the human being will say, “What is the matter with it?” Then it will tell its news, because its Lord has inspired it to.",
+    "Its closing pair of ayat changed how the Companions thought about small things. The Prophet ﷺ was asked about the reward for keeping donkeys, and said that nothing had been revealed to him about them except “this single, all-embracing ayah” — and recited: whoever does an atom’s weight of good will see it, and whoever does an atom’s weight of evil will see it."
+  ],
+  "occasions": [],
+  "aim": "To shake heedless hearts into certainty of the Reckoning, and of how exact its count is.",
+  "themes": [
+    "The Last Day",
+    "The earth as witness",
+    "The weighing of deeds"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 3,
+      "title": "The shaking",
+      "summary": "When the earth is shaken with its shaking, and brings out its burdens, and man says: what is wrong with it?"
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "title": "The witness",
+      "summary": "On that day it will report its news — because your Lord has inspired it."
+    },
+    {
+      "from": 6,
+      "to": 8,
+      "title": "The showing of deeds",
+      "summary": "On that day people will come forward in scattered groups to be shown their deeds. Whoever has done an atom’s weight of good will see it; whoever has done an atom’s weight of evil will see it."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 7,
+    "why": "With the ayah after it, the one the Prophet ﷺ called single and all-embracing: nothing of good is too small to count."
+  },
+  "virtues": [
+    {
+      "text": "The Prophet ﷺ was asked about donkeys, and said: “Nothing has been sent down to me concerning them except this single, all-embracing ayah: ‘Whoever does an atom’s weight of good will see it, and whoever does an atom’s weight of evil will see it.’”",
+      "arabic": "مَا أَنْزَلَ اللَّهُ عَلَيَّ فِيهَا إِلاَّ هَذِهِ الآيَةَ الْفَاذَّةَ الْجَامِعَةَ",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4962 · Ṣaḥīḥ Muslim, 987",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4962"
+        },
+        {
+          "book": "muslim",
+          "number": "987"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "before": "Al-Bayyinah ended with the reward kept for those who fear their Lord. Al-Zalzalah shows the Day it is handed out, and the scale it is measured on.",
+  "after": "Al-ʿĀdiyāt turns to why people forget that Day — ingratitude, and a fierce love of wealth — and ends, as this surah begins, at the opening of the graves.",
+  "notable": [
+    {
+      "ayah": 4,
+      "label": "The earth reports its news"
+    },
+    {
+      "ayah": 7,
+      "to": 8,
+      "label": "An atom’s weight of good, an atom’s weight of evil"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

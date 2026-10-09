@@ -1,0 +1,157 @@
+{
+  "surah": 91,
+  "epithet": "He has succeeded who purifies it",
+  "lede": "Eleven oaths in a row — the longest run in the Qurʾan — by the sun, the moon, the day, the night, the sky, the earth and the soul. All of them are sworn to a single sentence about that last one.",
+  "names": [
+    {
+      "arabic": "الشمس",
+      "name": "al-Shams",
+      "meaning": "The Sun",
+      "note": "After the first thing it swears by. The Prophet ﷺ named it by its opening words, Wa-l-shamsi wa-ḍuḥāhā, when he told Muʿādh what to recite (al-Bukhārī 705)."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "It is Makkan by agreement; both Ibn al-Jawzī and al-Qurṭubī say so. The traditional order places it twenty-sixth.",
+    "period": "makkah-early",
+    "when": "The early years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ الشَّمْسِ وَهِيَ مَكِيهٌ كُلُّها بِإجْماعِهِمْ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ \"الشَّمْسِ\" مَكِّيَّةٌ بِاتِّفَاقٍ، وَهِيَ خَمْسَ عَشْرَةَ آية"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الشَّمْسِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ ﴿والشَّمْسِ وضُحاها﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ بِلا خِلافٍ",
+        "says": "Makkan, by agreement."
+      }
+    ]
+  },
+  "setting": [
+    "No occasion is reported for it. It belongs to the first years of the call, and it is built the way those early surahs often are: an oath, a truth, and an example.",
+    "The oath takes in the whole visible world in pairs — sun and moon, day and night, sky and earth — and comes to rest on something that cannot be seen at all: the soul, and the One who shaped it and inspired it with its wickedness and its piety. Every human being is given the knowledge of both.",
+    "The truth sworn to is the shortest statement of success and failure in the Qurʾan. He has succeeded who purifies it; he has failed who buries it. The second verb, dassāhā, is to press a thing down into the earth and hide it: the soul is not destroyed by sin so much as smothered.",
+    "The example is Thamūd. They had been given a sign they had asked for — the she-camel — and told to leave her to drink in her turn. The most wretched man among them rose to kill her; they followed, and their Lord levelled them for it. Quraysh, who travelled past the ruins of Thamūd on the road to Shām, are being told what the denial of a messenger has cost before."
+  ],
+  "occasions": [],
+  "aim": "To display the signs and favours of Allah in the horizons and in souls, so that souls are purified and held back from disobedience.",
+  "themes": [
+    "Signs in creation",
+    "The soul",
+    "Purification",
+    "Thamūd and the she-camel"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 8,
+      "title": "The oaths",
+      "summary": "By the sun and its brightness, the moon as it follows it, the day as it displays it, the night as it covers it; by the sky and the One who built it, the earth and the One who spread it; by the soul and the One who proportioned it, and inspired it with its wickedness and its righteousness."
+    },
+    {
+      "from": 9,
+      "to": 10,
+      "title": "What they are sworn to",
+      "summary": "He has succeeded who purifies it, and he has failed who buries it."
+    },
+    {
+      "from": 11,
+      "to": 15,
+      "title": "Thamūd",
+      "summary": "Thamūd denied, in their transgression, when the most wretched of them rose up. The messenger of Allah said to them: the she-camel of Allah, and her turn to drink. But they called him a liar and hamstrung her — so their Lord crushed them for their sin and levelled them. And He does not fear the outcome."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 9,
+    "why": "The answer to eleven oaths. The Prophet ﷺ turned it into a supplication."
+  },
+  "virtues": [
+    {
+      "text": "The Prophet ﷺ used to say: “O Allah, grant my soul its piety and purify it; You are the best to purify it. You are its Guardian and its Master.”",
+      "arabic": "اللَّهُمَّ آتِ نَفْسِي تَقْوَاهَا وَزَكِّهَا أَنْتَ خَيْرُ مَنْ زَكَّاهَا أَنْتَ وَلِيُّهَا وَمَوْلاَهَا",
+      "narrator": "Zayd ibn Arqam",
+      "source": "Ṣaḥīḥ Muslim, 2722",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "2722"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "The Prophet ﷺ spoke of the man who hamstrung the she-camel, and said: “There rose to it a man of power and standing among his people, like Abū Zamʿah.”",
+      "narrator": "ʿAbd Allāh ibn Zamʿah",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4942",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4942"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "To Muʿādh, who had made the prayer long for his people: “Why did you not pray with ‘Glorify the name of your Lord, the Most High’, ‘By the sun and its brightness’ and ‘By the night when it covers’?”",
+      "narrator": "Jābir ibn ʿAbd Allāh",
+      "source": "Ṣaḥīḥ al-Bukhārī, 705",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "705"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "before": "Al-Balad said man was shown the two ways. Al-Shams says where: in his own soul, inspired with its wrong and its right.",
+  "after": "Al-Shams divides people into the one who purifies the soul and the one who buries it. Al-Layl describes each at work — the one who gives and is mindful, and the one who withholds and thinks he needs nothing.",
+  "notable": [
+    {
+      "ayah": 7,
+      "to": 8,
+      "label": "The soul, and what it was inspired with"
+    },
+    {
+      "ayah": 9,
+      "to": 10,
+      "label": "Success and failure"
+    },
+    {
+      "ayah": 13,
+      "label": "The she-camel of Allah"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

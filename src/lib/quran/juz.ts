@@ -1,5 +1,4 @@
-import { SURAH_NAMES } from "./surahNames";
-import type { Chapter } from "./types";
+import type { Translate } from "../i18n/types";
 
 /**
  * The thirty juz, as the first and last ayah of each.
@@ -45,17 +44,14 @@ export interface JuzRow {
   /** "Al-Baqarah 142 → Al-Baqarah 252" */
   range: string;
   sub: string;
-  arabic: string;
 }
 
 /**
- * The thirty rows, named. `byId` is the live chapter table when it has landed;
- * the baked-in names stand in until it does, so the list is never thirty blanks
- * waiting on a network call.
+ * The thirty rows, named. `name` is how this reader names a surah (see
+ * `useSurahNames`), `t` how the rest is said, and `arrow` which way "to"
+ * points on a page read in their direction.
  */
-export function juzRows(byId: (id: number) => Chapter | undefined): JuzRow[] {
-  const name = (n: number) => byId(n)?.name_simple ?? SURAH_NAMES[n - 1]?.english ?? `Surah ${n}`;
-  const arabic = (n: number) => byId(n)?.name_arabic ?? SURAH_NAMES[n - 1]?.arabic ?? "";
+export function juzRows(name: (id: number) => string, t: Translate, arrow: string): JuzRow[] {
 
   return JUZ_START.map((start, i) => {
     const end = JUZ_END[i];
@@ -67,12 +63,11 @@ export function juzRows(byId: (id: number) => Chapter | undefined): JuzRow[] {
       n: i + 1,
       startKey: start,
       startSurah: from,
-      range: `${name(from)} ${startAyah} → ${name(to)} ${endAyah}`,
+      range: `${name(from)} ${startAyah} ${arrow} ${name(to)} ${endAyah}`,
       sub:
         from === to
-          ? `Within ${name(from)}`
-          : `${to - from + 1} surahs · ${name(from)} to ${name(to)}`,
-      arabic: arabic(from),
+          ? t("juz.within", { surah: name(from) })
+          : t("juz.span", { count: to - from + 1, from: name(from), to: name(to) }),
     };
   });
 }

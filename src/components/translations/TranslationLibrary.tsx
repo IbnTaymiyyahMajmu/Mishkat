@@ -7,6 +7,7 @@ import { shelvesFor, translationName } from "@/lib/quran/translations";
 import { TRANSLATION_FILES } from "@/lib/quran/translationFiles";
 import { TranslationText } from "./TranslationText";
 import { useTranslationShelf } from "./useTranslationShelf";
+import { useLocale } from "@/lib/i18n";
 import styles from "./Translation.module.css";
 
 interface Props {
@@ -42,6 +43,7 @@ export function TranslationLibrary({ verseKey, showAyah = false }: Props) {
   const { ids, catalogue, failed, retry, toggle, lead, full } = useTranslationShelf();
   const [chosen, setChosen] = useState<string | null>(null);
   const pickId = useId();
+  const { t, rich } = useLocale();
 
   // The Arabic is the corpus's, asked for rather than typed in here: the text
   // of the Qur'an is not something to be set down from memory in a component.
@@ -90,16 +92,28 @@ export function TranslationLibrary({ verseKey, showAyah = false }: Props) {
   /** `undefined` while on its way, `null` if it could not be had. */
   const texts = answer?.stamp === stamp ? answer.texts : undefined;
 
+  /** Where a translation stands under the ayah: read first, or set second, third… */
+  const placeLabel = (place: number) =>
+    place === 0
+      ? t("translations.readFirst")
+      : place === 1
+        ? t("translations.place.2")
+        : place === 2
+          ? t("translations.place.3")
+          : place === 3
+            ? t("translations.place.4")
+            : t("translations.place.n", { n: place + 1 });
+
   if (!catalogue) {
     return failed ? (
       <div className={styles.unreached}>
-        <p>The list of translations could not be reached.</p>
+        <p>{t("translations.unreached")}</p>
         <button className="btn btn-primary" onClick={retry}>
-          Try again
+          {t("common.tryAgain")}
         </button>
       </div>
     ) : (
-      <p className={styles.waiting}>Opening the library…</p>
+      <p className={styles.waiting}>{t("translations.opening")}</p>
     );
   }
 
@@ -107,12 +121,10 @@ export function TranslationLibrary({ verseKey, showAyah = false }: Props) {
     <div className={styles.library}>
       {/* What is already chosen, and in what order. The first is the one a
           bookmark is saved in and a search looks through. */}
-      <section className={styles.kept} aria-label="The translations set under each ayah">
+      <section className={styles.kept} aria-label={t("translations.keptLabel")}>
         <h3 className={styles.keptTitle}>
-          Under each ayah
-          <span className={styles.keptCount}>
-            {ids.length} of {MAX_TRANSLATIONS}
-          </span>
+          {t("translations.under")}
+          <span className={styles.keptCount}>{t("translations.countOf", { count: ids.length, max: MAX_TRANSLATIONS })}</span>
         </h3>
         <ol className={styles.keptList}>
           {ids.map((id, i) => {
@@ -124,20 +136,20 @@ export function TranslationLibrary({ verseKey, showAyah = false }: Props) {
                   {i + 1}
                 </span>
                 <span className={styles.keptName}>
-                  {edition?.name || translationName(id) || `Translation ${id}`}
+                  {edition?.name || translationName(id) || t("translations.unnamed", { id })}
                   {home && home.key !== "english" && <span className={styles.keptLang}>{home.label}</span>}
                 </span>
                 {i > 0 && (
-                  <button className={styles.keptAct} onClick={() => lead(id)} title="Set this one first">
-                    First
+                  <button className={styles.keptAct} onClick={() => lead(id)} title={t("translations.firstTitle")}>
+                    {t("translations.first")}
                   </button>
                 )}
                 <button
                   className={styles.keptAct}
                   onClick={() => toggle(id)}
                   disabled={ids.length < 2}
-                  aria-label={`Put ${edition?.name ?? "this translation"} away`}
-                  title={ids.length < 2 ? "One translation stays" : "Put away"}
+                  aria-label={t("translations.putAway", { name: edition?.name ?? t("translations.this") })}
+                  title={t(ids.length < 2 ? "translations.oneStays" : "translations.putAwayTitle")}
                 >
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" aria-hidden="true">
                     <path d="M18 6 6 18" />
@@ -152,7 +164,7 @@ export function TranslationLibrary({ verseKey, showAyah = false }: Props) {
 
       <div className={styles.pick}>
         <label className={styles.pickLabel} htmlFor={pickId}>
-          Language
+          {t("translations.language")}
         </label>
         <div className={styles.selectWrap}>
           <select
@@ -178,8 +190,7 @@ export function TranslationLibrary({ verseKey, showAyah = false }: Props) {
       )}
 
       <p className={styles.hint}>
-        Ayah {verseKey} as each rendered it. The pin sets a translation under every ayah
-        {full ? " — put one away first to make room" : ""}.
+        {t(full ? "translations.hintFull" : "translations.hint", { key: verseKey })}
       </p>
 
       {shelf?.editions.map((edition) => {
@@ -194,7 +205,7 @@ export function TranslationLibrary({ verseKey, showAyah = false }: Props) {
                 {edition.author && <span className={styles.entryAuthor}>{edition.author}</span>}
                 {kept && (
                   <span className={styles.entryPlace}>
-                    {place === 0 ? "Read first" : `Set ${ORDINALS[place] ?? `no. ${place + 1}`}`}
+                    {placeLabel(place)}
                   </span>
                 )}
               </header>
@@ -206,8 +217,8 @@ export function TranslationLibrary({ verseKey, showAyah = false }: Props) {
                   {texts === undefined
                     ? "…"
                     : texts === null
-                      ? "Could not be reached just now."
-                      : "Has nothing on this ayah."}
+                      ? t("translations.entryUnreached")
+                      : t("translations.entryNothing")}
                 </p>
               )}
 
@@ -215,17 +226,23 @@ export function TranslationLibrary({ verseKey, showAyah = false }: Props) {
                   reader is owed the source of what they are reading. */}
               {edition.filed && (
                 <p className={styles.entrySource}>
-                  Not in the Quran Foundation’s corpus. Read from{" "}
-                  <a href={TRANSLATION_FILES.href} target="_blank" rel="noopener noreferrer">
-                    {TRANSLATION_FILES.name}
-                  </a>
-                  , without the translator’s footnotes.
+                  {rich(
+                    "translations.filed",
+                    {
+                      link: (words) => (
+                        <a href={TRANSLATION_FILES.href} target="_blank" rel="noopener noreferrer">
+                          {words}
+                        </a>
+                      ),
+                    },
+                    { name: TRANSLATION_FILES.name },
+                  )}
                 </p>
               )}
 
               {kept && place > 0 && (
                 <button className={styles.entryLead} onClick={() => lead(edition.id)}>
-                  Read this one first
+                  {t("translations.readThisFirst")}
                 </button>
               )}
             </div>
@@ -235,9 +252,9 @@ export function TranslationLibrary({ verseKey, showAyah = false }: Props) {
               onClick={() => toggle(edition.id)}
               aria-pressed={kept}
               aria-label={
-                kept ? `Take ${edition.name} from under each ayah` : `Set ${edition.name} under each ayah`
+                t(kept ? "translations.take" : "translations.set", { name: edition.name })
               }
-              title={kept ? "Set under each ayah — press to put away" : "Set under each ayah"}
+              title={t(kept ? "translations.setTitleOn" : "translations.setTitle")}
             >
               <svg width="15" height="15" viewBox="0 0 24 24" fill={kept ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M12 17v5" />
@@ -249,12 +266,9 @@ export function TranslationLibrary({ verseKey, showAyah = false }: Props) {
       })}
 
       <p className={styles.credit}>
-        Each translation is its translator’s, shown under his name as published; where two differ, both
-        stand. Quran data provided by Quran Foundation, through which the translations here are sourced
-        unless one says otherwise.
+        {t("translations.credit")}
       </p>
     </div>
   );
 }
 
-const ORDINALS = ["first", "second", "third", "fourth", "fifth"];

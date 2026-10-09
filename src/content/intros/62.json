@@ -1,0 +1,168 @@
+{
+  "surah": 62,
+  "epithet": "The day of gathering",
+  "lede": "A caravan arrived while the Prophet ﷺ was speaking from the pulpit, and all but a dozen of his hearers went out to it. From that Friday came the ayat every Muslim knows: when the call is made on the day of gathering, hasten to the remembrance of Allah, and leave your trade.",
+  "names": [
+    {
+      "arabic": "الجمعة",
+      "name": "al-Jumuʿah",
+      "meaning": "Friday — the Day of Gathering",
+      "note": "After the day named in its ninth ayah. The Prophet ﷺ recited this surah itself in the Friday prayer (Muslim 877)."
+    }
+  ],
+  "revelation": {
+    "place": "madinah",
+    "verdict": "Madinan, by agreement",
+    "detail": "It is Madinan without disagreement. The Friday prayer was established in Madinah, and both of the events tied to its ayat took place there: the address to the Jews of the oasis, and the caravan that emptied the mosque.",
+    "period": "madinah-middle",
+    "when": "Madinah, in the middle years",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ الجُمُعَةِ وَهِيَ مَدَنِيَّةٌ كُلُّها بِإجْماعِهِمْ"
+      },
+      {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "عَنِ ابْنِ عَبَّاسٍ، وَأَبِي هُرَيْرَةَ: أَنَّ رَسُولَ اللَّهِ ﷺ كَانَ يَقْرَأُ فِي صَلَاةِ الْجُمُعَةِ بِسُورَةِ الْجُمُعَةِ وَالْمُنَافِقِينَ. رَوَاهُ مُسْلِمٌ فِي صَحِيحِهِ"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْجُمُعَةِ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، والنَّحّاسُ، وابْنُ مَرْدُويَهْ، والبَيْهَقِيُّ في «الدَّلائِلِ»، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ «الجُمُعَةِ» بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هِيَ مَدَنِيَّةٌ",
+        "says": "Madinan."
+      }
+    ]
+  },
+  "setting": [
+    "The surah has three movements, and each answers something in the life of Madinah.",
+    "The first is a favour. Allah has sent among the unlettered — the Arabs, a people without a scripture — a Messenger from themselves, reciting His ayat to them, purifying them, and teaching them the Book and wisdom, though before that they had been plainly astray. “And others of them who have not yet joined them.” Abū Hurayrah relates that when this came down they asked the Prophet ﷺ who those others were. Salmān the Persian was sitting among them. He laid his hand on Salmān and said: “If faith were at the Pleiades, men from among these would reach it.”",
+    "The second is a warning by example. The Jews of Madinah had been given the Torah and held it up as proof that they were Allah’s chosen. The surah’s image for a scripture that is carried and not acted on is one of the most cutting in the Qurʾan: a donkey loaded with books.",
+    "The third is the Friday itself. Jābir tells what happened. “A caravan arrived on a Friday while we were with the Prophet ﷺ, and the people broke away to it, until only twelve men remained. Then Allah sent down: ‘When they saw some trade or diversion, they rushed off to it and left you standing.’” Madinah had been suffering from high prices and hunger, and the caravan carried food. The correction is not harsh: trade is to stop at the call, and may begin again the moment the prayer is finished — “and seek the bounty of Allah, and remember Allah much, so that you may succeed.”"
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        3,
+        3
+      ],
+      "title": "“Others who have not yet joined them”",
+      "text": "“We were sitting with the Prophet ﷺ when Sūrat al-Jumuʿah was sent down to him: ‘and others of them who have not yet joined them.’ A man said: who are they, Messenger of Allah? He did not answer until he had been asked three times. Salmān the Persian was among us. The Messenger of Allah ﷺ placed his hand on Salmān and said: ‘If faith were at the Pleiades, men from among these would attain it.’”",
+      "source": "Abū Hurayrah: al-Bukhārī (4897) and Muslim (2546).",
+      "rank": "agreed"
+    },
+    {
+      "ayat": [
+        11,
+        11
+      ],
+      "title": "The caravan",
+      "text": "“A caravan came on a Friday while we were with the Prophet ﷺ. The people rushed out to it, until none remained but twelve men. So Allah sent down: ‘And when they saw a transaction or a diversion, they rushed to it and left you standing.’”",
+      "source": "Jābir ibn ʿAbd Allāh: al-Bukhārī (4899) and Muslim (863).",
+      "rank": "agreed"
+    }
+  ],
+  "aim": "To set out Allah’s favour to this community in preferring it and guiding it by the Messenger ﷺ after it had been astray; to bind it to obeying him; and to warn it against resembling the Jews.",
+  "themes": [
+    "The favour of the Messenger ﷺ",
+    "Knowledge without action",
+    "The Friday prayer",
+    "Remembrance before trade"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 4,
+      "title": "The favour",
+      "summary": "All that is in the heavens and the earth glorifies Allah: the King, the Holy, the Almighty, the Wise. It is He who sent among the unlettered a Messenger from themselves, reciting to them His ayat, purifying them, and teaching them the Book and wisdom — and to others of them who have not yet joined them. That is the bounty of Allah, which He gives to whom He wills."
+    },
+    {
+      "from": 5,
+      "to": 8,
+      "title": "Those who were given the Torah",
+      "summary": "The likeness of those charged with the Torah who then did not carry it is that of a donkey carrying volumes. Say: you who are Jews, if you claim that you are the friends of Allah apart from other people, then wish for death, if you are truthful. They will never wish for it, because of what their hands have sent ahead. Say: the death from which you flee will surely meet you."
+    },
+    {
+      "from": 9,
+      "to": 11,
+      "title": "The Friday prayer",
+      "summary": "O you who believe, when the call is made to the prayer on the day of gathering, hasten to the remembrance of Allah and leave off trading: that is better for you. When the prayer is ended, disperse through the land and seek the bounty of Allah, and remember Allah much. Yet when they saw some trade or amusement they rushed to it and left you standing. Say: what is with Allah is better than amusement and trade — and Allah is the best of providers."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 9,
+    "why": "The command that has brought the Muslims of every town together, once a week, for fourteen centuries."
+  },
+  "virtues": [
+    {
+      "text": "The Messenger of Allah ﷺ used to recite in the Friday prayer Sūrat al-Jumuʿah and “When the hypocrites come to you”.",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ Muslim, 877",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "877"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    },
+    {
+      "text": "“The best day on which the sun rises is Friday. On it Ādam was created, on it he was admitted to the Garden, on it he was brought out of it; and the Hour will not come except on a Friday.”",
+      "arabic": "خَيْرُ يَوْمٍ طَلَعَتْ عَلَيْهِ الشَّمْسُ يَوْمُ الْجُمُعَةِ",
+      "narrator": "Abū Hurayrah",
+      "source": "Ṣaḥīḥ Muslim, 854",
+      "refs": [
+        {
+          "book": "muslim",
+          "number": "854"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "before": "Al-Ṣaff told of ʿĪsā announcing a messenger to come after him. Al-Jumuʿah opens with that Messenger sent, and what he does for those he is sent to.",
+  "after": "Al-Jumuʿah ends with people who left the Prophet ﷺ standing, out of weakness. Al-Munāfiqūn turns to those who stood before him and lied. He recited the two together every Friday.",
+  "notable": [
+    {
+      "ayah": 2,
+      "label": "A Messenger among the unlettered"
+    },
+    {
+      "ayah": 5,
+      "label": "A donkey carrying books"
+    },
+    {
+      "ayah": 9,
+      "to": 10,
+      "label": "Hasten to the remembrance of Allah"
+    },
+    {
+      "ayah": 11,
+      "label": "They rushed to it and left you standing"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
+  ]
+}

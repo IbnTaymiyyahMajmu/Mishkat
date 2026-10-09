@@ -8,6 +8,7 @@ import { useLibrary } from "@/lib/store/library";
 import { useToast } from "@/components/Toast";
 import { NoteCard } from "@/components/notes/NoteCard";
 import { NoteComposer, type ComposerResult } from "@/components/notes/NoteComposer";
+import { useLocale } from "@/lib/i18n";
 import styles from "./Panels.module.css";
 
 type Scope = "ayah" | "surah";
@@ -31,6 +32,7 @@ interface Props {
 export function NotesPanel({ surah, surahName, verseKey, loadedVerses, composeOnOpen }: Props) {
   const { notesFor, notesInSurah, createNote, updateNote, deleteNote } = useLibrary();
   const toast = useToast();
+  const { t, rich } = useLocale();
 
   // The panel is keyed on the ayah by its parent, so opening it from a
   // different ayah's note button remounts it: a fresh composer rather than the
@@ -50,7 +52,7 @@ export function NotesPanel({ surah, surahName, verseKey, loadedVerses, composeOn
         body: result.body,
         quotes: result.quotes,
       });
-      toast("Note updated");
+      toast(t("toast.noteUpdated"));
     } else {
       createNote({
         surah,
@@ -59,7 +61,7 @@ export function NotesPanel({ surah, surahName, verseKey, loadedVerses, composeOn
         body: result.body,
         quotes: result.quotes,
       });
-      toast(`Note saved on ${result.verseKey ?? verseKey}`);
+      toast(t("toast.noteSaved", { key: result.verseKey ?? verseKey }));
     }
     setComposing(false);
     setEditing(null);
@@ -67,7 +69,7 @@ export function NotesPanel({ surah, surahName, verseKey, loadedVerses, composeOn
 
   const remove = (note: Note) => {
     deleteNote(note.id);
-    toast("Note deleted");
+    toast(t("toast.noteDeleted"));
   };
 
   return (
@@ -77,13 +79,13 @@ export function NotesPanel({ surah, surahName, verseKey, loadedVerses, composeOn
           className={`${styles.scopeBtn} ${scope === "ayah" ? styles.scopeBtnOn : ""}`}
           onClick={() => setScope("ayah")}
         >
-          This ayah · {ayahNotes.length}
+          {t("notes.thisAyah", { count: ayahNotes.length })}
         </button>
         <button
           className={`${styles.scopeBtn} ${scope === "surah" ? styles.scopeBtnOn : ""}`}
           onClick={() => setScope("surah")}
         >
-          All of {surahName} · {surahNotes.length}
+          {t("notes.allOf", { surah: surahName, count: surahNotes.length })}
         </button>
       </div>
 
@@ -101,16 +103,14 @@ export function NotesPanel({ surah, surahName, verseKey, loadedVerses, composeOn
         />
       ) : (
         <button className="btn btn-primary btn-block" onClick={() => setComposing(true)} style={{ marginTop: 0 }}>
-          Write a note on {verseKey}
+          {t("notes.write", { key: verseKey })}
         </button>
       )}
 
       <div className={styles.notesList}>
         {shown.length === 0 && !composing && (
           <p className={styles.empty}>
-            {scope === "ayah"
-              ? `Nothing written on ${verseKey} yet.`
-              : `Nothing written in ${surahName} yet.`}
+            {scope === "ayah" ? t("notes.noneOn", { key: verseKey }) : t("notes.noneIn", { surah: surahName })}
           </p>
         )}
 
@@ -128,8 +128,7 @@ export function NotesPanel({ surah, surahName, verseKey, loadedVerses, composeOn
       </div>
 
       <p className={styles.footnote}>
-        Notes are kept in this browser and nowhere else. Take a copy from{" "}
-        <Link href="/notes/">the notes page</Link> before clearing your browser data.
+        {rich("notes.kept", { link: (words) => <Link href="/notes/">{words}</Link> })}
       </p>
     </>
   );

@@ -1,0 +1,134 @@
+{
+  "surah": 82,
+  "epithet": "What deceived you about your generous Lord?",
+  "lede": "The sky breaks, the stars scatter, the graves are turned out — and then the surah stops and asks the human being one quiet question. It is the question every excuse on that Day will have to get past.",
+  "names": [
+    {
+      "arabic": "الانفطار",
+      "name": "al-Infiṭār",
+      "meaning": "The Breaking Apart",
+      "note": "From its first ayah: when the sky is cleft. In the hadith it goes by its opening, Idhā l-samāʾu nfaṭarat."
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by agreement",
+    "detail": "It is Makkan with all the scholars, in al-Qurṭubī’s words; Ibn al-Jawzī records the agreement. The traditional order places it eighty-second, with the last group of surahs revealed in Makkah.",
+    "period": "makkah-late",
+    "when": "The later years in Makkah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "سُورَةُ الِانْفِطارِ وَهِيَ مَكِّيَّةٌ كُلُّها بِإجْماعِهِمْ"
+      },
+      {
+        "work": "qurtubi",
+        "ayah": 1,
+        "quote": "سُورَةُ الِانْفِطَارِ مَكِّيَّةٌ عِنْدَ الْجَمِيعِ وَهِيَ تِسْعَ عشرة آية"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الِانْفِطَارِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ والنَّحّاسُ، وابْنُ مَرْدُويَهَ والبَيْهَقِيُّ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ ﴿إذا السَّماءُ انْفَطَرَتْ﴾ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, al-Naḥḥās, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "هي مَكِّيَّةٌ بِلا خِلافٍ",
+        "says": "Makkan, by agreement."
+      }
+    ]
+  },
+  "setting": [
+    "No occasion is reported for it. It stands beside al-Takwīr as a second telling of the same hour, and the Prophet ﷺ named the two together, with al-Inshiqāq, as the surahs to recite if one wishes to see the Day of Resurrection.",
+    "Where al-Takwīr turns, halfway through, to defend the revelation, this surah turns to the listener. “O human being — what has deceived you concerning your Lord, the Generous?” The early Muslims heard the answer inside the question. ʿUmar, on hearing it recited, said: his ignorance. Others said that the very word “Generous” is put there to hand the servant his reply — it was Your generosity that deceived me — and at the same time to take it from him, since generosity is a reason for shame and not for boldness.",
+    "Then it removes the last hiding place. Over each of you are keepers, noble, writing down; they know what you do."
+  ],
+  "occasions": [],
+  "aim": "To picture the Resurrection as the scattering of an ordered creation, and the overturning of its state and course.",
+  "themes": [
+    "The Last Day",
+    "The generosity of Allah",
+    "The recording angels",
+    "The righteous and the wicked"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 5,
+      "title": "Four signs, and one result",
+      "summary": "When the sky breaks apart, the stars are strewn, the seas are burst open and the graves are overturned — a soul will know what it sent ahead and what it left behind."
+    },
+    {
+      "from": 6,
+      "to": 8,
+      "title": "The question",
+      "summary": "O human being, what has deceived you concerning your generous Lord — who created you, shaped you and set you in balance, and put you together in whatever form He willed?"
+    },
+    {
+      "from": 9,
+      "to": 12,
+      "title": "The record",
+      "summary": "No — you deny the Recompense. Yet over you are guardians: noble, recording, who know whatever you do."
+    },
+    {
+      "from": 13,
+      "to": 19,
+      "title": "The Day of Recompense",
+      "summary": "The righteous will be in bliss, and the wicked in a blaze which they enter on the Day of Recompense and are never absent from. And what will make you know what the Day of Recompense is? Again, what will make you know? A Day when no soul can do anything for another, and the command, that Day, belongs to Allah."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 6,
+    "why": "The surah’s whole address to the human being, in one question."
+  },
+  "virtues": [
+    {
+      "text": "“Whoever would be glad to look at the Day of Resurrection as though seeing it with his own eyes, let him recite ‘When the sun is folded up’, ‘When the sky breaks apart’ and ‘When the sky is split open’.”",
+      "narrator": "ʿAbd Allāh ibn ʿUmar",
+      "source": "Jāmiʿ al-Tirmidhī, 3333",
+      "refs": [
+        {
+          "book": "tirmidhi",
+          "number": "3333"
+        }
+      ],
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
+    }
+  ],
+  "before": "Al-Takwīr ended: it is a reminder for whoever wills to go straight. Al-Infiṭār asks the one who has not: what deceived you?",
+  "after": "This surah speaks of angels who record every deed. Al-Muṭaffifīn says where the records are kept — the book of the wicked in Sijjīn, the book of the righteous in ʿIlliyyūn — and begins with a sin people think too small to be written.",
+  "notable": [
+    {
+      "ayah": 6,
+      "label": "What deceived you about your generous Lord?"
+    },
+    {
+      "ayah": 10,
+      "to": 12,
+      "label": "Noble guardians, recording"
+    },
+    {
+      "ayah": 19,
+      "label": "The command, that Day, is Allah’s"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Jāmiʿ al-Tirmidhī"
+  ]
+}

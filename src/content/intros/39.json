@@ -1,0 +1,203 @@
+{
+  "surah": 39,
+  "epithet": "Do not despair of the mercy of Allah",
+  "lede": "It begins by commanding that the religion be made Allah’s alone, and ends with mankind driven in throngs to the two gates. And two-thirds of the way through stands the ayah that the early Muslims called the most hopeful in the Qurʾan.",
+  "names": [
+    {
+      "arabic": "الزمر",
+      "name": "al-Zumar",
+      "meaning": "The Throngs",
+      "note": "From its closing scene, where the word comes twice: the disbelievers driven to Hell in throngs, and the mindful led to the Garden in throngs."
+    },
+    {
+      "arabic": "الغرف",
+      "name": "al-Ghuraf",
+      "meaning": "The Lofty Chambers",
+      "note": "A name recorded by Ibn al-Jawzī and al-Qurṭubī, from its twentieth ayah: “for them are lofty chambers, above them chambers built high.”"
+    }
+  ],
+  "revelation": {
+    "place": "makkah",
+    "verdict": "Makkan, by the majority",
+    "detail": "It is Makkan in the saying of Ibn ʿAbbās, al-Ḥasan, Mujāhid, ʿIkrimah, Qatādah and Jābir ibn Zayd. A report from Ibn ʿAbbās excepts two ayat as Madinan (39:23 and 39:53), and Muqātil a third (39:10). The traditional order places it fifty-ninth, immediately before the seven Ḥā Mīm surahs.",
+    "period": "makkah-late",
+    "when": "The later years in Makkah, as the believers were being told that Allah’s earth is wide",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "رَوى العَوْفِيُّ وابْنُ أبِي طَلْحَةَ عَنِ ابْنِ عَبّاسٍ أنَّها مَكِّيَّةٌ، وبِهِ قالَ الحَسَنُ، ومُجاهِدٌ، وعِكْرِمَةُ، وقَتادَةُ، وجابِرُ بْنُ زَيْدٍ. ورُوِيَ عَنِ ابْنِ عَبّاسٍ أنَّهُ قالَ: فِيها آَيَتانِ نَزَلَتا بِالمَدِينَةِ"
+      },
+      {
+        "work": "ibn-katheer",
+        "ayah": 1,
+        "quote": "تَفْسِيرُ سُورَةِ الزُّمَرِ وَهِيَ مَكِّيَّةٌ"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الزُّمَرِ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ الضُّرَيْسِ، وابْنُ مَرْدُويَهْ والبَيْهَقِيُّ في ”الدَّلائِلِ“ عَنِ ابْنِ عَبّاسٍ قالَ: أُنْزِلَتْ سُورَةُ ”الزُّمَرِ“ بِمَكَّةَ",
+        "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn al-Ḍurays, Ibn Mardawayh and al-Bayhaqī."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "تَفْسِيرُ سُورَةِ الزُّمَرِ وهِيَ مَكِّيَّةٌ في قَوْلِ الحَسَنِ وعِكْرِمَةَ وجابِرِ بْنِ زَيْدٍ",
+        "says": "Makkan, in the saying of al-Ḥasan, ʿIkrimah and Jābir ibn Zayd."
+      }
+    ]
+  },
+  "setting": [
+    "The idolaters of Makkah had an answer when they were asked why they worshipped images. The surah quotes it: “We worship them only so that they may bring us nearer to Allah.” They did not deny Him. They approached Him through others. The whole of al-Zumar is addressed to that position, and its first command is its summary: “Worship Allah, making the religion sincerely His. Is it not to Allah that sincere religion is due?”",
+    "The word that returns throughout is mukhliṣ — sincere, unmixed. The Prophet ﷺ is told to say that he has been commanded to worship Allah with sincere devotion, and to be the first of those who submit. A parable makes the difference concrete: a man owned by several masters who quarrel over him, and a man who belongs wholly to one. “Are the two equal in comparison?”",
+    "It was sent to believers under pressure, and it speaks to them of leaving: “Say: O My servants who believe, be mindful of your Lord. For those who do good in this world there is good, and Allah’s earth is wide. The patient will be given their reward without measure.” Many of the commentators take this as pointing to the emigration.",
+    "Then comes the ayah of hope. Ibn ʿAbbās relates that some of the idolaters, who had killed much and committed much fornication, came to the Prophet ﷺ and said: what you say and call to is good — if only you could tell us that there is an expiation for what we have done. And there came down: “Say: O My servants who have transgressed against themselves, do not despair of the mercy of Allah. Allah forgives all sins.”",
+    "The surah closes on the Day. The earth is wholly in His grip and the heavens are rolled up in His right hand. The Trumpet sounds twice. The earth shines with the light of its Lord. And two processions move off, each to gates that open as it arrives."
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        53,
+        53
+      ],
+      "title": "“If only you told us there is an expiation”",
+      "text": "“Some people of the idolaters had killed, and killed much, and had fornicated, and done so much. They came to Muḥammad ﷺ and said: ‘What you say and call to is good, if only you would tell us that there is an expiation for what we have done.’ So there came down: ‘Those who do not call upon another god with Allah…’ and there came down: ‘Say: O My servants who have transgressed against themselves, do not despair of the mercy of Allah.’”",
+      "source": "Ibn ʿAbbās: al-Bukhārī (4810) and Muslim (122).",
+      "rank": "agreed"
+    },
+    {
+      "ayat": [
+        67,
+        67
+      ],
+      "title": "“They have not esteemed Allah as He deserves”",
+      "text": "A rabbi came to the Messenger of Allah ﷺ and said: “Muḥammad, we find that Allah will place the heavens on a finger, the earths on a finger, the trees on a finger, the water and the soil on a finger, and the rest of creation on a finger, and say: ‘I am the King.’” The Prophet ﷺ laughed until his molars showed, in confirmation of the rabbi’s words, and then recited: “They have not esteemed Allah with the esteem due to Him, when the whole earth will be in His grip on the Day of Resurrection.”",
+      "source": "ʿAbd Allāh ibn Masʿūd: al-Bukhārī (4811) and Muslim (2786).",
+      "rank": "agreed"
+    }
+  ],
+  "aim": "The call to tawḥīd and sincerity, the rejection of shirk — and the end of each in the Hereafter.",
+  "themes": [
+    "Sincerity of religion",
+    "“Only to bring us nearer”",
+    "Those who know and those who do not",
+    "The best of discourse",
+    "Hope in Allah’s mercy",
+    "The earth in His grip",
+    "The throngs"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 7,
+      "title": "Sincere religion",
+      "summary": "The sending down of the Book is from Allah, the Almighty, the Wise. So worship Allah, making the religion sincerely His. Those who take protectors besides Him say, “We worship them only that they may bring us nearer to Allah.” He created the heavens and the earth in truth; He wraps the night over the day and the day over the night. He created you from a single soul, in the wombs of your mothers, creation after creation, in three darknesses. If you disbelieve, Allah has no need of you; and He is not pleased with ingratitude in His servants."
+    },
+    {
+      "from": 8,
+      "to": 20,
+      "title": "Those who know, and those who do not",
+      "summary": "When harm touches man he calls upon his Lord; when He grants him a favour he forgets. Is one who is devoutly obedient through the hours of the night, prostrating and standing, fearing the Hereafter and hoping for his Lord’s mercy, like one who is not? Say: are those who know equal to those who do not know? (39:9) Allah’s earth is wide; the patient will be paid their reward without count. Give good news to My servants who listen to what is said and follow the best of it. For them are chambers, above them chambers built high."
+    },
+    {
+      "from": 21,
+      "to": 35,
+      "title": "The best of discourse",
+      "summary": "Allah has sent down the best of discourse: a Book consistent, oft-repeated, at which the skins of those who fear their Lord shiver, and then their skins and their hearts soften to the remembrance of Allah. A man who belongs to quarrelling partners, and a man wholly given to one: are they equal? You will die, and they will die; then, on the Day of Resurrection, you will dispute before your Lord. Whoever brings the truth, and whoever confirms it — those are the mindful."
+    },
+    {
+      "from": 36,
+      "to": 52,
+      "title": "Is Allah not enough for His servant?",
+      "summary": "Is Allah not sufficient for His servant? Yet they would frighten you with those besides Him. If you ask them who created the heavens and the earth, they will say, “Allah.” Say: sufficient for me is Allah. It is Allah who takes the souls at the time of their death, and those that have not died, in their sleep. When Allah alone is mentioned, the hearts of those who do not believe in the Hereafter shrink; when others are mentioned, they rejoice."
+    },
+    {
+      "from": 53,
+      "to": 61,
+      "title": "The ayah of hope",
+      "summary": "Say: O My servants who have transgressed against themselves, do not despair of the mercy of Allah. Allah forgives all sins; He is the Forgiving, the Merciful. And turn to your Lord and submit to Him before the punishment comes — lest a soul should say, “Alas for me, for what I neglected in my duty to Allah,” or say, when it sees the punishment, “If only I had another chance.”"
+    },
+    {
+      "from": 62,
+      "to": 70,
+      "title": "The earth in His grip",
+      "summary": "Allah is the Creator of all things. Say: is it other than Allah that you bid me worship, you ignorant ones? It has been revealed to you and to those before you: if you associate others, your work will come to nothing. They have not esteemed Allah as He deserves — the whole earth will be in His grip on the Day of Resurrection, and the heavens rolled up in His right hand. The Trumpet is blown, and all swoon; then it is blown again, and they stand, looking on. The earth shines with the light of its Lord, the record is set down, and the prophets and the witnesses are brought."
+    },
+    {
+      "from": 71,
+      "to": 75,
+      "title": "The throngs",
+      "summary": "Those who disbelieved are driven to Hell in throngs; when they reach it its gates are opened, and its keepers say: “Did messengers not come to you?” Those who were mindful of their Lord are led to the Garden in throngs; when they reach it, and its gates are opened, its keepers say: “Peace be upon you; you have done well, so enter it, to abide.” And you will see the angels surrounding the Throne, glorifying their Lord with praise. And it will be said: “Praise be to Allah, Lord of the worlds.”"
+    }
+  ],
+  "keyAyah": {
+    "ayah": 53,
+    "why": "Addressed to those who have wronged themselves most — and He calls them “My servants”."
+  },
+  "virtues": [
+    {
+      "text": "“The Prophet ﷺ would not sleep until he had recited Banī Isrāʾīl and al-Zumar.”",
+      "narrator": "ʿĀʾishah",
+      "source": "Jāmiʿ al-Tirmidhī, 2920",
+      "refs": [
+        {
+          "book": "tirmidhi",
+          "number": "2920"
+        }
+      ],
+      "grade": "Ṣaḥīḥ according to al-Albānī",
+      "rank": "sahih"
+    }
+  ],
+  "before": "Ṣād ended with Iblīs excepting only Allah’s chosen, sincere servants from his oath. Al-Zumar opens with the command to be exactly that: to make the religion sincerely His.",
+  "after": "Al-Zumar’s last ayah shows the angels around the Throne, glorifying. Ghāfir, a few ayat in, tells what those angels ask for: forgiveness for those who believe.",
+  "notable": [
+    {
+      "ayah": 3,
+      "label": "“Only that they may bring us nearer to Allah”"
+    },
+    {
+      "ayah": 9,
+      "label": "Are those who know equal to those who do not?"
+    },
+    {
+      "ayah": 10,
+      "label": "The patient, rewarded without count"
+    },
+    {
+      "ayah": 23,
+      "label": "The best of discourse"
+    },
+    {
+      "ayah": 42,
+      "label": "Allah takes the souls at death, and in sleep"
+    },
+    {
+      "ayah": 53,
+      "label": "Do not despair of the mercy of Allah"
+    },
+    {
+      "ayah": 67,
+      "label": "The whole earth in His grip"
+    },
+    {
+      "ayah": 73,
+      "label": "“Peace be upon you; enter, to abide”"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; Jāmiʿ al-Tirmidhī"
+  ]
+}

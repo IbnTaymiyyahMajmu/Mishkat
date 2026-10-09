@@ -1,0 +1,221 @@
+{
+  "surah": 22,
+  "epithet": "The call to the Ancient House",
+  "lede": "It opens with the earthquake of the Hour, when every nursing mother forgets her child. It carries Ibrāhīm’s proclamation that still fills the roads to Makkah each year. And it holds the ayah that first gave an oppressed people leave to defend themselves.",
+  "names": [
+    {
+      "arabic": "الحج",
+      "name": "al-Ḥajj",
+      "meaning": "The Pilgrimage",
+      "note": "After the rite whose founding and purpose it sets out (22:26–37). It is the only surah named for one of the pillars of Islam."
+    }
+  ],
+  "revelation": {
+    "place": "disputed",
+    "verdict": "Differed over — part Makkan, part Madinan",
+    "detail": "The reports conflict even from one authority. Ibn al-Jawzī relates from Ibn ʿAbbās, through Abū Ṣāliḥ, that it is Makkan except for two ayat; and, in another report from him, that it is Madinan except for four. ʿAṭāʾ ibn Yasār held it Makkan except for three ayat (22:19–21); al-Qurṭubī gives it as Makkan with three or four exceptions, and Ibn Kathīr as Makkan. The muṣḥaf heads it Madinan, and the traditional order places it one hundred and third. Many of the scholars concluded that it is mixed: its warnings of the Hour and its arguments with the idolaters are Makkan in manner, while the permission to fight and the address “O you who believe” belong to Madinah.",
+    "period": "madinah-early",
+    "when": "Spread across the Hijrah: part in Makkah, part in the first years in Madinah",
+    "evidence": [
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "رَوى أبُو صالِحٍ عَنِ ابْنِ عَبّاسٍ أنَّها مَكِّيَّةٌ كُلُّها، غَيْرُ آيَتَيْنِ نَزَلَتا بِالمَدِينَةِ"
+      },
+      {
+        "work": "zad-almaseer",
+        "ayah": 1,
+        "quote": "وفي رِوايَةٍ أُخْرى عَنِ ابْنِ عَبّاسٍ أنَّها مَدَنِيَّةٌ، إلّا أرْبَعَ آياتٍ نَزَلَتْ بِمَكَّةَ"
+      }
+    ],
+    "attested": [
+      {
+        "work": "baghawi",
+        "ayah": 1,
+        "quote": "سُورَةُ الْحَجِّ مَكِّيَّةٌ غَيْرَ آيَاتٍ",
+        "says": "Makkan, with some ayat excepted."
+      },
+      {
+        "work": "aldur-almanthoor",
+        "ayah": 1,
+        "quote": "أخْرَجَ ابْنُ مَرْدُوَيْهِ، عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ الحَجِّ بِالمَدِينَةِ",
+        "says": "Ibn ʿAbbās: it came down in Madinah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "fath-alqadeer",
+        "ayah": 1,
+        "quote": "اخْتَلَفَ أهْلُ العِلْمِ، هَلْ هي مَكِّيَّةٌ أوْ مَدَنِيَّةٌ ؟ فَأخْرَجَ ابْنُ مَرْدَوَيْهِ عَنِ ابْنِ عَبّاسٍ قالَ: نَزَلَتْ سُورَةُ الحَجِّ بِالمَدِينَةِ",
+        "says": "The scholars differed over it, Makkan or Madinan. Ibn Mardawayh records from Ibn ʿAbbās that it came down in Madinah."
+      }
+    ]
+  },
+  "setting": [
+    "No surah is harder to assign to one city than this, and the difficulty is itself the key to it. It stands at the turn of the Hijrah. Behind it is Makkah: the Sacred Mosque from which the believers have been barred, and a people who argue about Allah without knowledge. Ahead is Madinah: a community that can pray openly, give the zakāh, and — for the first time — fight.",
+    "Ibn ʿAbbās tells how that last change came. When the Prophet ﷺ was driven out of Makkah, Abū Bakr said: “They have driven out their Prophet; to Allah we belong and to Him we return — they will surely be destroyed.” Then there came down: “Permission is given to those who are fought, because they have been wronged; and Allah is able to give them victory.” Abū Bakr said: I knew then that there would be fighting. The ayah that follows gives the reason in terms that reach far beyond the Muslims: were it not that Allah repels some people by means of others, monasteries, churches, synagogues and mosques, in which the name of Allah is much mentioned, would all have been pulled down.",
+    "At the centre of the surah is the House. Ibrāhīm is shown the site and told to purify it for those who go round it and stand and bow and prostrate; and then: “Proclaim the Pilgrimage to mankind. They will come to you on foot and on every lean camel, coming from every distant pass.” The rites are named one by one — the sacrifice, the remembrance of Allah’s name, feeding the poor — and their meaning is stated in a sentence aimed at every religion of blood-offering: “Their flesh does not reach Allah, nor their blood; what reaches Him is the mindfulness in you.”",
+    "Three of its ayat came down about a single morning. Abū Dharr used to swear that “These are two adversaries who dispute about their Lord” was revealed about the six men who stepped out for single combat at Badr: Ḥamzah, ʿAlī and ʿUbaydah ibn al-Ḥārith on one side, and ʿUtbah, Shaybah and al-Walīd ibn ʿUtbah on the other."
+  ],
+  "occasions": [
+    {
+      "ayat": [
+        19,
+        21
+      ],
+      "title": "The duellists of Badr",
+      "text": "Abū Dharr used to swear an oath that this ayah — “These are two adversaries who have disputed about their Lord” — came down about Ḥamzah and his two companions, and ʿUtbah and his two companions, on the day they stepped forward at Badr.",
+      "source": "Abū Dharr: al-Bukhārī (4743) and Muslim (3033).",
+      "rank": "agreed"
+    },
+    {
+      "ayat": [
+        39,
+        40
+      ],
+      "title": "The first permission to fight",
+      "text": "“When the Prophet ﷺ was driven out of Makkah, Abū Bakr said: ‘They have driven out their Prophet; they will surely perish.’ Then Allah sent down: ‘Permission is given to those who are fought, because they have been wronged.’ Abū Bakr said: ‘I knew that there would be fighting.’”",
+      "source": "Ibn ʿAbbās: al-Tirmidhī (3171), who graded it ḥasan; its chain is ṣaḥīḥ according to al-Albānī.",
+      "rank": "sahih"
+    },
+    {
+      "ayat": [
+        11,
+        11
+      ],
+      "title": "Worship “on an edge”",
+      "text": "“A man would come to Madinah; if his wife bore a boy and his mares foaled, he would say: this is a good religion. And if his wife did not bear and his mares did not foal, he would say: this is a bad religion.”",
+      "source": "Ibn ʿAbbās: al-Bukhārī (4742).",
+      "rank": "agreed"
+    }
+  ],
+  "aim": "To call to reverence and surrender before Allah, by setting out scenes of His greatness and His power.",
+  "themes": [
+    "The quaking of the Hour",
+    "Resurrection proved from creation",
+    "The Sacred Mosque and the Pilgrimage",
+    "The meaning of sacrifice",
+    "Permission to fight",
+    "The parable of the fly",
+    "The religion of Ibrāhīm"
+  ],
+  "outline": [
+    {
+      "from": 1,
+      "to": 10,
+      "title": "The quaking of the Hour",
+      "summary": "O mankind, be mindful of your Lord: the quaking of the Hour is a tremendous thing. On the Day you see it, every nursing mother will forget her nursling, every pregnant one will drop her burden, and you will see people as though drunk, though they are not drunk. If you are in doubt about the raising: We created you from dust, then a drop, then a clinging clot, then a lump of flesh. And you see the earth barren, and when We send down water on it, it stirs and swells."
+    },
+    {
+      "from": 11,
+      "to": 24,
+      "title": "Worship on an edge, and the two adversaries",
+      "summary": "Among people is one who worships Allah on an edge: if good comes to him he is content, and if a trial strikes him he turns on his face. Whoever thinks that Allah will not help His Messenger — let him stretch a rope to the sky. Do you not see that to Allah prostrate all who are in the heavens and the earth? These are two adversaries who dispute about their Lord: for those who disbelieve, garments of fire; and those who believe will be admitted to gardens, adorned with bracelets of gold and pearl."
+    },
+    {
+      "from": 25,
+      "to": 37,
+      "title": "The House, and the Pilgrimage",
+      "summary": "Those who disbelieve and bar others from the way of Allah and from the Sacred Mosque. We showed Ibrāhīm the site of the House: “Associate nothing with Me, and purify My House. Proclaim the Pilgrimage to mankind: they will come to you on foot and on every lean mount, from every distant pass” (22:27) — to witness benefits for themselves, mention the name of Allah on the appointed days, and feed the poor. Whoever honours the symbols of Allah, that is from the mindfulness of hearts. Their flesh does not reach Allah, nor their blood; what reaches Him is your mindfulness."
+    },
+    {
+      "from": 38,
+      "to": 48,
+      "title": "Permission, and its purpose",
+      "summary": "Allah defends those who believe. Permission is given to those who are fought, because they have been wronged — those driven from their homes for no reason but that they say, “Our Lord is Allah.” Were it not that Allah repels some people by others, monasteries, churches, synagogues and mosques would have been demolished. Those who, if We establish them in the land, keep up the prayer, give the zakāh, enjoin right and forbid wrong. It is not the eyes that grow blind, but the hearts within the breasts."
+    },
+    {
+      "from": 49,
+      "to": 62,
+      "title": "The warner, and those who emigrate",
+      "summary": "Say: O mankind, I am only a clear warner to you. We sent no messenger or prophet before you but Satan cast something against what he hoped for; then Allah annuls what Satan casts, and makes His own ayat firm. Those who emigrate in the way of Allah and are then killed or die — Allah will surely provide for them well. That is because Allah is the Truth, and what they call upon besides Him is falsehood."
+    },
+    {
+      "from": 63,
+      "to": 72,
+      "title": "His favours, and their gods",
+      "summary": "Do you not see that Allah sends down water from the sky and the earth turns green? He has subjected to you what is on the earth, and the ships that run on the sea by His command. For every community We appointed rites. They worship besides Allah that for which He has sent down no authority."
+    },
+    {
+      "from": 73,
+      "to": 78,
+      "title": "The fly, and the charge",
+      "summary": "O mankind, a likeness is given, so listen: those you call upon besides Allah will never create a fly, though they all combined for it; and if the fly snatched something from them, they could not recover it. Weak are the seeker and the sought. They have not esteemed Allah as He deserves. O you who believe: bow and prostrate, worship your Lord, and do good. Strive for Allah as He deserves. He has chosen you, and laid on you no hardship in the religion — the faith of your father Ibrāhīm. He named you Muslims."
+    }
+  ],
+  "keyAyah": {
+    "ayah": 78,
+    "why": "The surah’s last ayah, and its commission to the community: chosen, unburdened, named, and made witnesses over mankind."
+  },
+  "virtues": [
+    {
+      "text": "“Allah will say on the Day of Resurrection: ‘O Ādam.’ He will say: ‘At Your service, our Lord.’ He will be called: ‘Allah commands you to bring out from your descendants the portion of the Fire.’… Then the pregnant will drop her burden and the child’s hair turn grey: ‘and you will see people as though drunk, though they are not drunk; but the punishment of Allah is severe.’” That weighed on the people until their faces changed, and he ﷺ said: “I hope that you will be a quarter of the people of the Garden… a third… a half.”",
+      "narrator": "Abū Saʿīd al-Khudrī",
+      "source": "Ṣaḥīḥ al-Bukhārī, 4741 · Ṣaḥīḥ Muslim, 222",
+      "refs": [
+        {
+          "book": "bukhari",
+          "number": "4741"
+        },
+        {
+          "book": "muslim",
+          "number": "222"
+        }
+      ],
+      "grade": "Ṣaḥīḥ",
+      "rank": "agreed"
+    }
+  ],
+  "virtuesNote": "The muṣḥaf marks one ayah of prostration in this surah, the eighteenth. A second, at the seventy-seventh, is held by al-Shāfiʿī and Aḥmad, and prostrating twice in al-Ḥajj is reported from ʿUmar and his son.",
+  "before": "Al-Anbiyāʾ began: their reckoning has drawn near. Al-Ḥajj begins with what that Day’s first moment will be like.",
+  "after": "Al-Ḥajj ends by commanding the believers to bow, prostrate, do good and strive. Al-Muʾminūn opens: “Successful indeed are the believers” — and says who they are.",
+  "notable": [
+    {
+      "ayah": 1,
+      "to": 2,
+      "label": "The quaking of the Hour"
+    },
+    {
+      "ayah": 5,
+      "label": "From dust, to a drop, to old age"
+    },
+    {
+      "ayah": 11,
+      "label": "Worship on an edge"
+    },
+    {
+      "ayah": 18,
+      "label": "An ayah of prostration"
+    },
+    {
+      "ayah": 27,
+      "label": "Proclaim the Pilgrimage to mankind"
+    },
+    {
+      "ayah": 37,
+      "label": "Their flesh does not reach Allah, nor their blood"
+    },
+    {
+      "ayah": 39,
+      "to": 40,
+      "label": "The first permission to fight"
+    },
+    {
+      "ayah": 46,
+      "label": "It is the hearts that grow blind"
+    },
+    {
+      "ayah": 73,
+      "label": "They will never create a fly"
+    },
+    {
+      "ayah": 78,
+      "label": "He named you Muslims"
+    }
+  ],
+  "sources": [
+    "Ibn Kathīr, Tafsīr al-Qurʾān al-ʿAẓīm",
+    "Ibn al-Jawzī, Zād al-Masīr",
+    "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
+    "al-Mukhtaṣar fī al-Tafsīr",
+    "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; the Sunan of Abū Dāwūd and al-Tirmidhī"
+  ]
+}

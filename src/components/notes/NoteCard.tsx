@@ -3,7 +3,7 @@
 import { useState } from "react";
 import type { Note } from "@/lib/store/types";
 import { noteHeadline } from "@/lib/notes";
-import { formatDate } from "@/lib/text";
+import { useLocale } from "@/lib/i18n";
 import { NoteBody } from "./NoteBody";
 import styles from "./NoteCard.module.css";
 
@@ -18,15 +18,16 @@ interface Props {
 
 export function NoteCard({ note, surahName, onEdit, onDelete, showSurah }: Props) {
   const [confirming, setConfirming] = useState(false);
+  const { t, date } = useLocale();
 
   return (
     <article className={styles.card}>
       <header className={styles.head}>
-        <h3 className={styles.title}>{noteHeadline(note)}</h3>
+        <h3 className={styles.title}>{noteHeadline(note, t)}</h3>
         <div className={styles.meta}>
           {note.verseKey && <span className={styles.anchor}>{note.verseKey}</span>}
           {showSurah && surahName && <span>{surahName}</span>}
-          <span>{formatDate(note.updatedAt)}</span>
+          <span>{date(note.updatedAt)}</span>
         </div>
       </header>
 
@@ -36,28 +37,28 @@ export function NoteCard({ note, surahName, onEdit, onDelete, showSurah }: Props
         <footer className={styles.actions}>
           {onEdit && (
             <button className="btn btn-ghost" style={{ fontSize: 12 }} onClick={() => onEdit(note)}>
-              Edit
+              {t("common.edit")}
             </button>
           )}
           <div style={{ flex: 1 }} />
           {onDelete &&
             (confirming ? (
               <>
-                <span className={styles.confirm}>Delete this note?</span>
+                <span className={styles.confirm}>{t("notes.deleteAsk")}</span>
                 <button className="btn btn-ghost" style={{ fontSize: 12 }} onClick={() => setConfirming(false)}>
-                  Keep
+                  {t("common.keep")}
                 </button>
                 <button
                   className="btn btn-secondary"
                   style={{ fontSize: 12, padding: "4px 10px" }}
                   onClick={() => onDelete(note)}
                 >
-                  Delete
+                  {t("common.delete")}
                 </button>
               </>
             ) : (
               <button className="btn btn-ghost" style={{ fontSize: 12 }} onClick={() => setConfirming(true)}>
-                Delete
+                {t("common.delete")}
               </button>
             ))}
         </footer>

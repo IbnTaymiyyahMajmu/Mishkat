@@ -9,8 +9,12 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "gen:surahs": "node scripts/generate-surah-names.mjs",
+    "gen:facts": "node scripts/generate-surah-facts.mjs",
+    "lock:intros": "node scripts/lock-intros.mjs",
+    "check:intros": "node scripts/lock-intros.mjs --check",
     "mirror:tafsir": "node scripts/mirror-tafsir.mjs",
-    "relay:qf": "node scripts/qf-relay.mjs"
+    "relay:qf": "node scripts/qf-relay.mjs",
+    "check:messages": "node scripts/check-messages.mjs"
   },
   "dependencies": {
     "next": "16.3.0",
