@@ -26,6 +26,14 @@ import { WordStudyPanel } from "./WordStudyPanel";
 import { TafsirPanel } from "./TafsirPanel";
 import { TranslationsPanel } from "./TranslationsPanel";
 import { NotesPanel } from "./NotesPanel";
+import { XrefPanel } from "./XrefPanel";
+import { TajweedPanel } from "@/components/tajweed/TajweedPanel";
+import { PlanPill } from "@/components/plan/PlanStrip";
+import { TajweedLegend, spotlight } from "@/components/tajweed/TajweedLegend";
+import tjStyles from "@/components/tajweed/Tajweed.module.css";
+import { isRule, useSurahTajweed, type Family } from "@/lib/quran/tajweed";
+import { fetchSurahXrefCounts } from "@/lib/quran/xref";
+import { useReadingTracker } from "@/lib/useReadingTracker";
 import { useTranslationShelf } from "@/components/translations/useTranslationShelf";
 import type { Verse as VerseModel } from "@/lib/quran/types";
 import styles from "./Reader.module.css";
@@ -69,6 +77,17 @@ export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser |
 
   const [limit, setLimit] = useState(CHUNK);
   const [panel, setPanel] = useState<PanelState | null>(null);
+  // The tajweed, laid over the text when the reader reads in colour, and the
+  // one family of rules they may be looking at on its own.
+  // Fetched for the colours, or for the tajweed of a word asked about with
+  // the colours off; the text itself is coloured only when they are on.
+  const tajweed = useSurahTajweed(surah, settings.tajweed || panel?.mode === "tajweed");
+  const colours = settings.tajweed ? tajweed : null;
+  const [tjFocus, setTjFocus] = useState<Family[]>([]);
+  const tajweedOn = useRef(settings.tajweed);
+  useEffect(() => {
+    tajweedOn.current = settings.tajweed;
+  }, [settings.tajweed]);
   const [composeOnOpen, setComposeOnOpen] = useState(false);
   const [flashKey, setFlashKey] = useState<string | null>(null);
   const [navigating, setNavigating] = useState(false);
@@ -141,6 +160,18 @@ export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser |
     }
     tappedRef.current = id;
     setComposeOnOpen(false);
+    // A coloured letter, or a sign for stopping, opens what it means.
+    const target = e.target as HTMLElement;
+    const ruled = target.closest?.("[data-tj]");
+    if (tajweedOn.current && (ruled || target.closest?.("[data-waqf]"))) {
+      setPanel({
+        mode: "tajweed",
+        verseKey: parsed.verseKey,
+        wordPosition: parsed.position,
+        rule: ruled?.getAttribute("data-tj") ?? undefined,
+      });
+      return;
+    }
     setPanel({ mode: "word", verseKey: parsed.verseKey, wordPosition: parsed.position });
   }, []);
 
@@ -186,6 +217,14 @@ export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser |
   );
 
   const shown = useMemo(() => verses.slice(0, limit), [verses, limit]);
+
+  // What has been read here, for the khatm plan and the reader's niche: each ayah
+  // counted once it has been in view long enough to be read.
+  const wordCounts = useMemo(
+    () => new Map(verses.map((v) => [v.verse_key, v.words.filter((w) => w.char_type_name === "word").length])),
+    [verses],
+  );
+  useReadingTracker(scrollerRef, "[data-verse]", "data-verse", (key) => wordCounts.get(key) ?? 10, shown.length);
 
   // ── scrolling to an ayah ──────────────────────────────────────────────────
   //
@@ -300,6 +339,26 @@ export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser |
     if (topKeyRef.current) scrollToVerse(topKeyRef.current, false);
   }, [edition, scrollToVerse]);
 
+  // ── the Qurʾān by the Qurʾān ───────────────────────────────────────────────
+  //
+  // How many ayat the commentators brought in to explain each ayah, for the
+  // line under it that says so. Asked for once the text is up, and not before:
+  // it is a footnote to the surah, and must not hold the surah up.
+  const [xrefCounts, setXrefCounts] = useState<{ surah: number; counts: Map<number, number> } | null>(null);
+  useEffect(() => {
+    if (!arrived) return;
+    let live = true;
+    fetchSurahXrefCounts(surah)
+      .then((counts) => live && setXrefCounts({ surah, counts }))
+      .catch(() => {
+        /* the line is left off; the panel says what went wrong if it is opened */
+      });
+    return () => {
+      live = false;
+    };
+  }, [arrived, surah]);
+  const xrefs = xrefCounts?.surah === surah ? xrefCounts.counts : null;
+
   // ── the transport's queue ─────────────────────────────────────────────────
   useEffect(() => {
     controls.setQueue({ surah, verses });
@@ -398,6 +457,10 @@ export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser |
         setComposeOnOpen(false);
         setPanel({ mode: "translations", verseKey: key });
       },
+      onXref: (key) => {
+        setComposeOnOpen(false);
+        setPanel({ mode: "quran", verseKey: key });
+      },
       onCopyArabic: (verse) => void copy(verse.text_uthmani, t("toast.arabicCopied")),
       onCopyTranslation: (verse) => {
         const first = firstRendering(verse.verse_key);
@@ -460,6 +523,8 @@ export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser |
       : `${chapterName} ${panel.verseKey}`
     : "";
 
+  const panelView = panel;
+
   const placeAyah = placeKey ? Number(placeKey.split(":")[1]) : 1;
   const ayahCount = chapter?.verses_count ?? verses.length;
   const through = ayahCount > 1 ? ((placeAyah - 1) / (ayahCount - 1)) * 100 : 0;
@@ -516,7 +581,10 @@ export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser |
           <span className={styles.placeFill} style={{ width: `${through}%` }} aria-hidden="true" />
         </div>
 
-        <div className={styles.column}>
+        <div
+          className={`${styles.column} ${tjStyles.spot}`}
+          {...(settings.tajweed ? spotlight(tjFocus) : {})}
+        >
           <div className={styles.topBar}>
             <button
               onClick={() => router.push(`/read/${surah - 1}/`)}
@@ -542,6 +610,18 @@ export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser |
               >
                 {t("reader.notes")}
               </button>
+              {/* Colour, for a reader who finds the text hard to read: the
+                  same switch as on the settings page, kept where it is needed. */}
+              <button
+                onClick={() => update({ tajweed: !settings.tajweed })}
+                className={`btn btn-secondary ${settings.tajweed ? "btn-on" : ""}`}
+                style={{ fontSize: 12, padding: "5px 12px" }}
+                aria-pressed={settings.tajweed}
+                title={t("settings.tajweedOn")}
+              >
+                {t("panel.tajweed")}
+              </button>
+              <PlanPill />
             </div>
 
             <button
@@ -559,6 +639,8 @@ export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser |
           {chapter?.bismillah_pre && !loading && (
             <div className={styles.bismillah}>بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</div>
           )}
+
+          {settings.tajweed && !loading && <TajweedLegend map={colours} focus={tjFocus} onFocus={setTjFocus} />}
 
           {loading && <div className={styles.loading}>{t("common.loadingText")}</div>}
 
@@ -600,7 +682,9 @@ export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser |
               playing={playing && currentKey === verse.verse_key}
               bookmarked={isBookmarked(verse.verse_key)}
               noteCount={noteCount(verse.verse_key)}
+              xrefCount={xrefs?.get(verse.verse_number) ?? 0}
               flash={flashKey === verse.verse_key}
+              tajweed={colours?.get(verse.verse_key)}
               handlers={handlers}
             />
           ))}
@@ -635,9 +719,24 @@ export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser |
         <Navigator surah={surah} ayah={placeAyah} onGo={goTo} onClose={closeNavigator} />
       )}
 
-      {panel && (
-        <SidePanel state={panel} title={panelTitle} onSwitch={switchPanel} onClose={() => setPanel(null)}>
-          {panel.mode === "word" && (
+      {panelView && (
+        <SidePanel
+          state={panelView}
+          title={panelTitle}
+          onSwitch={switchPanel}
+          onClose={() => setPanel(null)}
+          noteCount={noteCount(panelView.verseKey)}
+        >
+          {panelView.mode === "tajweed" && (
+            <TajweedPanel
+              verse={panelVerse}
+              markup={tajweed?.get(panelView.verseKey)}
+              wordPosition={panelView.wordPosition}
+              rule={panelView.rule && isRule(panelView.rule) ? panelView.rule : undefined}
+              onPickWord={(position) => setPanel((p) => (p ? { ...p, wordPosition: position, rule: undefined } : p))}
+            />
+          )}
+          {panelView.mode === "word" && (
             <WordStudyPanel
               verse={panelVerse}
               word={panelWord}
@@ -645,28 +744,37 @@ export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser |
               onOpenTafsir={() => switchPanel("tafsir")}
             />
           )}
-          {panel.mode === "tafsir" && (
+          {panelView.mode === "tafsir" && (
             <TafsirPanel
               verse={panelVerse}
-              verseKey={panel.verseKey}
+              verseKey={panelView.verseKey}
               ayahCount={ayahCount}
               onMove={movePanel}
             />
           )}
-          {panel.mode === "translations" && (
+          {panelView.mode === "translations" && (
             <TranslationsPanel
               verse={panelVerse}
-              verseKey={panel.verseKey}
+              verseKey={panelView.verseKey}
               ayahCount={ayahCount}
               onMove={movePanel}
             />
           )}
-          {panel.mode === "notes" && (
+          {panelView.mode === "quran" && (
+            <XrefPanel
+              verse={panelVerse}
+              verseKey={panelView.verseKey}
+              ayahCount={ayahCount}
+              onMove={movePanel}
+              onShowTafsir={() => switchPanel("tafsir")}
+            />
+          )}
+          {panelView.mode === "notes" && (
             <NotesPanel
-              key={`${panel.verseKey}:${composeOnOpen}`}
+              key={`${panelView.verseKey}:${composeOnOpen}`}
               surah={surah}
               surahName={chapterName}
-              verseKey={panel.verseKey}
+              verseKey={panelView.verseKey}
               loadedVerses={quotable}
               composeOnOpen={composeOnOpen}
             />

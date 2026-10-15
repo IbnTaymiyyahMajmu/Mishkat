@@ -194,7 +194,22 @@
   border-color: var(--mk-hero-kicker);
 }
 
+/* The reader's plan, if they have one: a line under the way in. */
+.planLine {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
 /* — everything below the ayah — */
+
+.garden {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 14px;
+  margin-bottom: 54px;
+}
+.garden:empty { display: none; }
 
 .lower {
   max-width: 1040px;

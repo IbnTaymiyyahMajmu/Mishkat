@@ -23,6 +23,7 @@ import {
 import { DEFAULT_TAFSIR_SHELF, reviveTafsirShelf, tafsirWork } from "../quran/tafsir";
 import { DEFAULT_LOCALE, isLocale, type LocaleId } from "../i18n/locales";
 import { createPersistedStore } from "./persisted";
+import { DEFAULT_QARI, isQari, type QariId } from "../audio/qari";
 
 export type Layout = "rows" | "stacked";
 export type WordHighlight = "tint" | "underline" | "both";
@@ -61,6 +62,10 @@ export interface Settings {
   showTranslit: boolean;
   showWbw: boolean;
   showTranslation: boolean;
+  /** Whether the rules of tajweed are drawn in colour in the reader and the muṣḥaf. */
+  tajweed: boolean;
+  /** The Qari whose voice a word is heard in, in the tajweed panel. See lib/audio/qari.ts. */
+  qari: QariId;
   layout: Layout;
   theme: Theme;
   reciterId: number;
@@ -110,6 +115,8 @@ export const DEFAULT_SETTINGS: Settings = {
   showTranslit: true,
   showWbw: true,
   showTranslation: true,
+  tajweed: false,
+  qari: DEFAULT_QARI,
   layout: "rows",
   // Evening is the light the site was drawn in, and the one the landing page's
   // niche belongs to; day and night are departures from it.
@@ -174,6 +181,8 @@ function sanitise(stored: unknown, fallback: Settings): Settings {
     loopEach: Math.round(clamp(s.loopEach, 1, 20)),
     loopTimes: Math.round(clamp(s.loopTimes, 0, 20)),
     loopEcho: !!s.loopEcho,
+    tajweed: !!s.tajweed,
+    qari: isQari(s.qari) ? s.qari : fallback.qari,
   };
 }
 

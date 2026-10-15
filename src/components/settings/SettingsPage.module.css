@@ -174,3 +174,12 @@
   font-size: 1.1em;
   line-height: 1.2;
 }
+
+.tajweedGuide {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.tajweedGuide:hover { text-decoration: underline; }

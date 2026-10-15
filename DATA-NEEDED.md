@@ -716,6 +716,50 @@ build refuses a file that leaves a sentence out.
 
 ---
 
+## 10. The khatm plan, the reader's niche and tajweed — what they rest on
+
+**The plan (`/plan/`).** The paces offered are the steps of the hadith of
+ʿAbdullāh ibn ʿAmr, quoted from the books and checked against an open corpus:
+a month, twenty, ten, seven "and do not go beyond that" (Muslim 1159;
+al-Bukhārī 5054), on to three in al-Bukhārī 1978, and the floor of three in
+Abū Dāwūd 1394, *ṣaḥīḥ* according to al-Albānī. Nothing faster than three days
+can be chosen. The days are cut at the muṣḥaf's own divisions; the page,
+juzʾ, ḥizb, quarter and rukūʿ boundaries are counted from the Quranic Arabic
+Corpus (`npm run gen:structure`, structure only — no text).
+
+**The reader's niche (`/niche/`).** A picture taken from an-Nūr 24:35 — the
+niche the site is named for — and said on the page to be a picture and not an
+explanation of the ayah: a tile of the niche lit for each day read, a
+medallion round the lamp gilded for each juzʾ, another lamp hung for each
+khatm. Under it, Muslim 783 and al-Bukhārī 6464 on deeds done constantly.
+Nothing to supply.
+
+**Tajweed (`/tajweed/`, and in colour in the reader and the muṣḥaf).** The
+rules are marked in the text by the Quran Foundation, word by word
+(`text_uthmani_tajweed`), and asked for as the page is read — not built into
+the site, as the terms in §8 require. The explanations of the rules, the signs
+for stopping and what changes in a word when a reader stops on it are written
+for this site, as Ḥafṣ reads from ʿĀṣim by way of al-Shāṭibiyyah. **They want a
+teacher of tajweed to read them** — the rule cards are in
+`src/lib/i18n/messages/en.ts` under `tj.`, and the stopping rules are worked
+out in `src/lib/quran/tajweed.ts` (`stopping`).
+
+**A word in a Qari's voice.** The tajweed panel plays a word cut from a Qari's
+own recitation of the whole ayah: the recordings are EveryAyah's, and where
+each word falls in them is quran-align's (Collin Fair, CC BY 4.0 — credited on
+the settings page; the author asks to be told by email when the data is used).
+Six reciters: al-Ḥuṣarī, al-Ḥuṣarī's teaching recording, al-Minshāwī, ʿAbd
+al-Bāsiṭ, al-Ṭablāwī and al-ʿAfāsī, each timed for 6,197–6,230 of the 6,236
+ayat (`npm run gen:qari`); an ayah whose words could not be matched is left
+untimed rather than risk the wrong word. **Worth doing:** emailing the author,
+and listening through a few surahs in each voice to be sure the cuts fall
+cleanly.
+
+**The questions of the Qur'an.** Sixteen speakers the commentators differ on
+are set out in `QUESTIONS-REVIEW.md` for you to rule on.
+
+---
+
 ## What I do not need
 
 To be explicit, so you do not spend effort on them:

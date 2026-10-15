@@ -1,0 +1,237 @@
+/* The rhyme of a surah, drawn as a staff: a line to each closing sound, and
+   the surah a gold line stepping along them, an ayah at a time. */
+
+.staff { margin-top: 26px; }
+
+.summary {
+  margin: 0 0 22px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--muted-88);
+  max-width: 64ch;
+  text-wrap: pretty;
+}
+
+.score {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 14px;
+  align-items: start;
+}
+
+/* — the lines' names — */
+.labels {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  color: var(--muted-62);
+  transition: color 160ms ease;
+}
+.labelOn { color: var(--color-accent); }
+
+.labelArabic {
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 17px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.labelCount {
+  min-width: 2.2em;
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-45);
+  text-align: end;
+}
+
+/* — the staff — */
+.plot {
+  display: block;
+  width: 100%;
+  overflow: visible;
+  touch-action: pan-y;
+  cursor: crosshair;
+  border-block: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+}
+
+/* The ayat run on from where the run of an ending begins: its ending is written
+   just above the line there. */
+.plotWrap { position: relative; }
+
+.marks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.mark {
+  position: absolute;
+  translate: 0 -2px;
+  padding-inline: 3px;
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--color-accent);
+  background: var(--color-bg);
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+/* The muṣḥaf runs from the right; on a page read from the right, so does the staff. */
+.plot:dir(rtl) { transform: scaleX(-1); }
+
+.rule {
+  stroke: color-mix(in srgb, var(--color-text) 11%, transparent);
+  stroke-width: 1;
+}
+
+.boundary {
+  stroke: color-mix(in srgb, var(--color-text) 34%, transparent);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+
+.band { fill: color-mix(in srgb, var(--mk-gold) 12%, transparent); }
+
+.melody {
+  fill: none;
+  stroke: var(--mk-gold);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--mk-gold) 45%, transparent));
+}
+
+.tick {
+  stroke: color-mix(in srgb, var(--color-accent) 70%, transparent);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+
+.cursor {
+  stroke: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  stroke-width: 1;
+}
+
+.cursorMark {
+  stroke: var(--color-accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.ends {
+  grid-column: 2;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--muted-55);
+}
+
+/* — what is under the pointer — */
+.readout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 14px;
+  min-height: 2.6em;
+  margin: 14px 0 0;
+  font-size: 13.5px;
+  color: var(--muted-72);
+}
+
+.readoutAyah {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  color: var(--color-text);
+}
+
+.readoutArabic {
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 18px;
+  color: var(--color-accent);
+}
+
+.readoutPassage { font-style: italic; }
+
+.readoutGo {
+  color: var(--color-accent);
+  text-decoration: none;
+  margin-inline-start: auto;
+  font-size: 12.5px;
+}
+.readoutGo:hover { text-decoration: underline; }
+
+.readoutHint { font-style: italic; color: var(--muted-55); }
+
+/* — every run, as a list: the staff in words — */
+.runs { margin-top: 18px; }
+
+.runs summary {
+  cursor: pointer;
+  font-size: 12.5px;
+  color: var(--color-accent);
+  width: fit-content;
+}
+
+.runs ol {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  gap: 6px 14px;
+}
+
+.runs li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 3px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
+}
+
+.runRange {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-72);
+  text-decoration: none;
+}
+.runRange:hover { color: var(--color-accent); }
+
+.runArabic {
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 16px;
+}
+
+/* Arriving: the line is drawn from the first ayah to the last, once. Waits only
+   where the page has said it will reveal things (data-live), as the rest of
+   the introduction does. */
+:global([data-live]) .staff[data-reveal]:not([data-seen]) .plot { clip-path: inset(0 100% 0 0); }
+:global([data-live]) .staff[data-reveal][data-seen] .plot {
+  animation: draw 1400ms cubic-bezier(0.3, 0.6, 0.2, 1) both;
+}
+
+@keyframes draw {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global([data-live]) .staff[data-reveal] .plot { animation: none; clip-path: none; }
+}
+
+@media (max-width: 640px) {
+  .score { column-gap: 10px; }
+  .labelArabic { font-size: 15px; }
+  .summary { font-size: 15px; }
+}

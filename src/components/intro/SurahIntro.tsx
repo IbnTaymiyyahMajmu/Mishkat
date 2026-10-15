@@ -12,6 +12,8 @@ import { useSurahNames } from "@/lib/i18n/surah";
 import { ordinal } from "@/lib/text";
 import { useDailyAyah } from "../home/useDailyAyah";
 import { useTafsirSay } from "../tafsir/useTafsirSay";
+import { RhymeStaff } from "./RhymeStaff";
+import { QUESTIONS } from "@/lib/quran/questions";
 import { Shamsa } from "./Shamsa";
 import styles from "./SurahIntro.module.css";
 
@@ -115,6 +117,8 @@ interface Props {
   /** al-Mukhtaṣar's statement of the surah's aim, in its own Arabic. */
   aimArabic: string;
   ayahWords: number[];
+  /** The sound each ayah closes on, as `family|ending`. */
+  rhyme: string[];
 }
 
 interface Stop {
@@ -122,7 +126,7 @@ interface Stop {
   label: string;
 }
 
-export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
+export function SurahIntro({ surah, intro, aimArabic, ayahWords, rhyme }: Props) {
   const { t, n, arrows, locale } = useLocale();
   const names = useSurahNames();
   const say = useTafsirSay();
@@ -166,6 +170,7 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
   }, [intro]);
 
   const juz = useMemo(() => juzStartsIn(surah), [surah]);
+  const asked = useMemo(() => QUESTIONS.filter((q) => q.surah === surah && !q.within).length, [surah]);
   const place = intro?.revelation.place ?? facts.place;
   const range = (from: number, to: number) =>
     from === to ? t("common.ayahN", { n: from }) : t("common.ayahRange", { from, to });
@@ -175,6 +180,7 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
     { id: "revelation", label: t("intro.stop.revelation") },
     { id: "aim", label: t("intro.stop.aim") },
     ...(passages.length ? [{ id: "map", label: t("intro.stop.map") }] : []),
+    ...(rhyme.length > 1 ? [{ id: "rhyme", label: t("intro.stop.rhyme") }] : []),
     ...(intro ? [{ id: "narrated", label: t("intro.stop.narrated") }] : []),
     ...(intro?.names.length ? [{ id: "names", label: t("intro.stop.names") }] : []),
     { id: "neighbours", label: t("intro.stop.neighbours") },
@@ -499,6 +505,17 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
             </section>
           )}
 
+          {/* ── its rhyme ──────────────────────────────────────────────── */}
+          {rhyme.length > 1 && (
+            <section id="rhyme" className={styles.section} data-reveal="head">
+              <div className="kicker">{t("intro.rhyme.kicker")}</div>
+              <h2 className={styles.title}>{t("intro.rhyme.title")}</h2>
+              <p className={styles.prose}>{t("intro.rhyme.lead")}</p>
+              <RhymeStaff surah={surah} codes={rhyme} passages={passages} active={active} onActive={setActive} />
+              <p className={styles.note}>{t("intro.rhyme.note")}</p>
+            </section>
+          )}
+
           {intro?.keyAyah && <KeyAyah surah={surah} ayah={intro.keyAyah.ayah} why={intro.keyAyah.why} />}
 
           {/* ── what is narrated ───────────────────────────────────────── */}
@@ -693,6 +710,11 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords }: Props) {
               <Link href={`/tafsir/?v=${surah}:1`} className="btn btn-ghost">
                 {t("intro.end.tafsir")}
               </Link>
+              {asked > 0 && (
+                <Link href={`/questions/?s=${surah}`} className="btn btn-ghost">
+                  {t("intro.end.questions", { count: asked, countText: n(asked) })}
+                </Link>
+              )}
             </div>
           </footer>
         </article>

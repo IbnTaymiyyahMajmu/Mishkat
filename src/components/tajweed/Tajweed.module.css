@@ -1,0 +1,58 @@
+/* The rules of tajweed, in the colours set in globals.css (--tj-*). Colour
+   only — no weight, no spacing, no opacity — so that the letters on either
+   side of a run still join: the shaping of a word goes through a change of
+   colour, and through nothing else as reliably. */
+
+/* Each rule's colour is held in --tj-c, so that a family can be put out and
+   lit again without the rule's own colour having to be named twice. */
+.seg {
+  color: var(--tj-c);
+  transition: color 200ms ease, text-shadow 200ms ease;
+}
+
+.madd2 { --tj-c: var(--tj-madd2); }
+.madd246 { --tj-c: var(--tj-madd246); }
+.madd45 { --tj-c: var(--tj-madd45); }
+.madd6 { --tj-c: var(--tj-madd6); }
+.nasal { --tj-c: var(--tj-nasal); }
+.bounce { --tj-c: var(--tj-bounce); }
+.merge { --tj-c: var(--tj-merge); }
+.silent { --tj-c: var(--tj-silent); }
+
+/* A swatch is the colour itself. */
+.swatch.madd2, .swatch.madd246, .swatch.madd45, .swatch.madd6,
+.swatch.nasal, .swatch.bounce, .swatch.merge, .swatch.silent { color: var(--tj-c); }
+
+.waqf { color: var(--color-accent); }
+
+/* Some families in view and the rest as plain text — any two, any three —
+   to learn a few rules at a time. Which are shown is said on the text's
+   container: data-tj-focus that any are chosen, data-tj-show-<family> for
+   each that is. */
+.spot[data-tj-focus] .seg { color: inherit; }
+
+.spot[data-tj-show-hold] .hold,
+.spot[data-tj-show-nasal] .nasalFamily,
+.spot[data-tj-show-bounce] .bounceFamily,
+.spot[data-tj-show-merge] .mergeFamily,
+.spot[data-tj-show-silent] .silentFamily {
+  color: var(--tj-c);
+  text-shadow: 0 0 0.3em color-mix(in srgb, var(--tj-c) 55%, transparent);
+}
+
+/* The one rule a card is about, in its word: lit from behind, since a box
+   round a letter of the Qurʾānic face is as tall as its marks reach. */
+.picked {
+  text-shadow:
+    0 0 0.18em color-mix(in srgb, currentColor 70%, transparent),
+    0 0 0.45em color-mix(in srgb, currentColor 45%, transparent);
+}
+
+.swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}

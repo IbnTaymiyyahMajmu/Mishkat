@@ -162,6 +162,20 @@
   --arabic-size: 40px;
   --trans-size: 15px;
   --reader-max: 780px;
+
+  /* Tajweed: the colours the printed tajweed muṣḥafs use, so a reader moving
+     between them is not taught twice — warm for the lengthenings, deepening
+     with the length; green for the nasal sounds; blue for the bounce; slate
+     for a letter run into the next; grey for what is written and not said.
+     Drawn here for paper, and again for the night. See lib/quran/tajweed.ts. */
+  --tj-madd2: #a8740f;
+  --tj-madd246: #d0680c;
+  --tj-madd45: #cc2b2b;
+  --tj-madd6: #8c1111;
+  --tj-nasal: #23843a;
+  --tj-bounce: #1c62c7;
+  --tj-merge: #6f7d8c;
+  --tj-silent: color-mix(in srgb, var(--color-text) 34%, transparent);
 }
 
 /* Day. Nearly white paper and a sun overhead: the one light in which the
@@ -210,6 +224,13 @@
 /* Night. A dark ground under a cold, still light, with the gold turned up to
    carry it: on paper the mid gold is a stroke, here it has to be visible ink. */
 :root[data-theme="night"] {
+  --tj-madd2: #e6c15a;
+  --tj-madd246: #ffa64a;
+  --tj-madd45: #ff7a5c;
+  --tj-madd6: #f2507a;
+  --tj-nasal: #5fd27a;
+  --tj-bounce: #6aa9ff;
+  --tj-merge: #9eabb8;
   color-scheme: dark;
   --mk-paper: #0d0e10;
   --mk-ink: #ebe6da;

@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import { SiteHeader } from "./SiteHeader";
 import { SearchOverlay } from "./search/SearchOverlay";
 import { Transport } from "./Transport";
+import { PlanKeeper } from "./plan/PlanKeeper";
+import { NicheKeeper } from "./niche/NicheKeeper";
 import { useT } from "@/lib/i18n";
 import styles from "./AppShell.module.css";
 
@@ -36,6 +38,10 @@ export function AppShell({ children }: { children: ReactNode }) {
       </main>
       <Transport />
       <SearchOverlay />
+      {/* The plan speaks last, so that when both have something to say at
+          once — a portion and a juzʾ finished together — the plan is heard. */}
+      <NicheKeeper />
+      <PlanKeeper />
     </div>
   );
 }

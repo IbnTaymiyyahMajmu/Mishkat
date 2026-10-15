@@ -16,6 +16,9 @@ import { TafsirLibrary } from "@/components/tafsir/TafsirShelf";
 import { useTafsirShelf } from "@/components/tafsir/useTafsirShelf";
 import written from "@/content/intros-written.json";
 import { LOCALES, useLocale, type MessageKey } from "@/lib/i18n";
+import { TajweedSwatches } from "@/components/tajweed/TajweedSwatches";
+import { QARIS } from "@/lib/audio/qari";
+import Link from "next/link";
 import styles from "./SettingsPage.module.css";
 
 /**
@@ -257,6 +260,34 @@ export function SettingsPage() {
           </div>
         </Section>
 
+        {/* The rules of recitation in colour, read in both the reader and the
+            muṣḥaf. */}
+        <Section title={t("settings.tajweed")} note={t("settings.tajweedNote")}>
+          <div className={styles.toggles}>
+            <Toggle on={settings.tajweed} onClick={() => update({ tajweed: !settings.tajweed })}>
+              {t("settings.tajweedOn")}
+            </Toggle>
+          </div>
+          <TajweedSwatches />
+
+          {/* Whose voice a word is heard in, in the tajweed panel. */}
+          <div style={{ marginTop: 22 }}>
+            <div className="field">
+              <label>{t("settings.qari")}</label>
+            </div>
+            <div className={styles.chips}>
+              {QARIS.map((q) => (
+                <Chip key={q.id} on={settings.qari === q.id} onClick={() => update({ qari: q.id })} title={q.arabic}>
+                  {arabicScript ? q.arabic : q.name}
+                </Chip>
+              ))}
+            </div>
+          </div>
+          <Link href="/tajweed/" className={styles.tajweedGuide}>
+            {t("settings.tajweedGuide")}
+          </Link>
+        </Section>
+
         <Section title={t("settings.reciter")} note={t("settings.reciterNote")}>
           <div className={styles.chips}>
             {RECITERS.map((r) => (
@@ -395,6 +426,10 @@ export function SettingsPage() {
               <tr>
                 <td className={styles.layer}>{t("settings.src.recitation")}</td>
                 <td className={styles.source}>{t("settings.src.recitationValue")}</td>
+              </tr>
+              <tr>
+                <td className={styles.layer}>{t("settings.src.qari")}</td>
+                <td className={styles.source}>{t("settings.src.qariValue")}</td>
               </tr>
               <tr>
                 <td className={styles.layer}>{t("settings.src.intros")}</td>

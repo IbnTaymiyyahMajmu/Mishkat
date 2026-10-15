@@ -1,0 +1,131 @@
+/* The cards of the tajweed: a rule, a sign for stopping, what to do on
+   stopping. Paper, in the page's own tokens; the colour of the rule is the
+   swatch, and the text stays the text's. */
+
+.card {
+  padding: 14px 16px 14px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+}
+
+.cardPicked {
+  border-color: color-mix(in srgb, var(--mk-gold) 70%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--mk-gold) 40%, transparent) inset;
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
+
+.cardName {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.cardArabic {
+  margin-inline-start: auto;
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 17px;
+  color: var(--muted-72);
+}
+
+.cardDo {
+  margin: 8px 0 0;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+
+.cardCounts {
+  font-weight: 600;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+.cardWhen {
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--muted-62);
+}
+
+/* Counting. */
+.beats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  margin-top: 10px;
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1.5px solid color-mix(in srgb, var(--mk-gold) 70%, transparent);
+  transition: background-color 120ms ease, transform 120ms ease;
+}
+
+/* Where a permitted length ends. */
+.dotStop { box-shadow: 0 0 0 2px color-mix(in srgb, var(--mk-gold) 22%, transparent); }
+
+.dotOn {
+  background: var(--mk-gold);
+  transform: scale(1.12);
+}
+
+.beatButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.beatButton { font-size: 12.5px; padding: 4px 8px; }
+
+.waqfMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 30px;
+  font-family: var(--arabic-font);
+  font-size: 30px;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.stopCard { border-style: dashed; }
+
+.stopIcon {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--mk-gold) 16%, transparent);
+  color: var(--color-accent);
+}
+
+.stops {
+  margin: 8px 0 0;
+  padding-inline-start: 18px;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.stops li + li { margin-top: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dot { transition: none; }
+}

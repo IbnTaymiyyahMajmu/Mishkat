@@ -6,6 +6,8 @@ import { DAILY } from "@/lib/quran/daily";
 import { useLocale } from "@/lib/i18n";
 import { useSurahNames } from "@/lib/i18n/surah";
 import { arabicNumber, verseKeyParts } from "@/lib/text";
+import { PlanInvite, PlanLine } from "../plan/PlanStrip";
+import { NicheCard } from "../niche/NicheCard";
 import { HomeSurahList } from "./HomeSurahList";
 import { LampSky } from "./LampSky";
 import { useDailyAyah, useDailyIndex } from "./useDailyAyah";
@@ -87,6 +89,9 @@ export function Home() {
               </Link>
             </div>
           )}
+          <div className={styles.planLine}>
+            <PlanLine />
+          </div>
         </div>
       </section>
 
@@ -95,6 +100,13 @@ export function Home() {
             below the fold on purpose. */}
         <div aria-hidden="true" className={styles.gap} />
 
+        {/* What the reader is lighting: their niche always, and an invitation
+            to a plan for a reader without one (with one, it is under the
+            ayah above). */}
+        <div className={styles.garden}>
+          <NicheCard />
+          <PlanInvite />
+        </div>
         <HomeSurahList />
 
         <section className={styles.editorial}>

@@ -1,0 +1,89 @@
+/* The word in a Qari's voice: three ways to hear it, and whose voice. */
+
+.voice {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border: 1px solid var(--color-divider);
+  border-radius: 999px;
+  background: none;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+.button:hover { border-color: var(--mk-gold); }
+.button svg { color: var(--color-accent); }
+
+.on {
+  border-color: var(--mk-gold);
+  background: color-mix(in srgb, var(--mk-gold) 14%, transparent);
+}
+
+/* Listen and repeat: whose turn it is. */
+.cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted-72);
+}
+
+.cueTurn {
+  color: var(--color-accent);
+  font-weight: 600;
+  animation: turn 1.2s ease-in-out infinite;
+}
+
+@keyframes turn {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+.rounds { display: inline-flex; gap: 4px; }
+.rounds > span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid var(--mk-gold);
+}
+.rounds > .roundOn { background: var(--mk-gold); }
+
+.pick {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted-62);
+}
+
+.pick select {
+  max-width: 230px;
+  padding: 4px 8px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 12.5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cueTurn { animation: none; }
+}
