@@ -60,6 +60,7 @@ export const fa: Messages = {
   "nav.settings": "تنظیمات",
   "nav.search": "جستجو",
   "nav.searchLabel": "جستجو در قرآن",
+  "nav.menu": "منو",
   "light.group": "نور مطالعه",
   "light.day": "روز — کاغذ روشن",
   "light.evening": "شامگاه — نور چراغ",
