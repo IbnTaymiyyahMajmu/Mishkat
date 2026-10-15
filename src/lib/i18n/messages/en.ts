@@ -70,6 +70,7 @@ export const en = {
   "nav.settings": "Settings",
   "nav.search": "Search",
   "nav.searchLabel": "Search the Qur’an",
+  "nav.menu": "Menu",
   "light.group": "Reading light",
   "light.day": "Day — bright paper",
   "light.evening": "Evening — sepia lamplight",

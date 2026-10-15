@@ -64,6 +64,7 @@ export const ps: Messages = {
   "nav.settings": "امستنې",
   "nav.search": "لټون",
   "nav.searchLabel": "په قرآن کې لټون",
+  "nav.menu": "مینو",
   "light.group": "د لوستلو رڼا",
   "light.day": "ورځ — روښانه کاغذ",
   "light.evening": "ماښام — د څراغ رڼا",

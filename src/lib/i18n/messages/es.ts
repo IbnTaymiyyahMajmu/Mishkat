@@ -59,6 +59,7 @@ export const es: Messages = {
   "nav.settings": "Ajustes",
   "nav.search": "Buscar",
   "nav.searchLabel": "Buscar en el Corán",
+  "nav.menu": "Menú",
   "light.group": "Luz de lectura",
   "light.day": "Día — papel claro",
   "light.evening": "Atardecer — luz de lámpara",
