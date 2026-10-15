@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import aims from "@/content/surah-aims.json";
 import ayahWords from "@/content/ayah-words.json";
+import rhyme from "@/content/rhyme.json";
 import type { Intro, IntroTeaser } from "./types";
 
 /**
@@ -38,6 +39,14 @@ export function loadTeaser(surah: number): IntroTeaser | null {
 /** What al-Mukhtaṣar says the surah is for, in its own Arabic. */
 export function aimArabic(surah: number): string {
   return (aims as string[])[surah - 1] ?? "";
+}
+
+/**
+ * The sound each ayah of the surah closes on, as `family|ending` — what its
+ * rhyme is drawn from. Counted from the text by scripts/build-rhyme.mjs.
+ */
+export function rhymeOf(surah: number): string[] {
+  return (rhyme as Record<string, string[]>)[String(surah)] ?? [];
 }
 
 /** How many words each ayah of the surah has: what its map is drawn to scale by. */

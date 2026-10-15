@@ -1,0 +1,609 @@
+/* The questions of the Qurʾān. The head of the page is lit as the
+   introductions' frontispieces are — the day's question set in gold in the
+   niche — and below it the page is paper, and a list. */
+
+.shell { overflow-x: hidden; }
+
+/* ── the frontispiece ───────────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  background: var(--mk-hero-bg);
+  color: var(--mk-hero-ink);
+  border-bottom: 1px solid color-mix(in srgb, var(--mk-gold) 38%, transparent);
+}
+
+.heroInner {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 44px 32px 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 470px);
+  column-gap: 56px;
+  row-gap: 30px;
+  align-items: center;
+}
+
+.heroText > * { animation: rise 720ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+.heroText > :nth-child(2) { animation-delay: 70ms; }
+.heroText > :nth-child(3) { animation-delay: 140ms; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+.kicker {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mk-hero-kicker);
+}
+
+.title {
+  margin: 12px 0 0;
+  font-weight: 400;
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-image: var(--mk-shine);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  padding-bottom: 0.08em;
+  animation: rise 720ms cubic-bezier(0.22, 0.61, 0.36, 1) both 70ms, shine 16s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.lede {
+  margin: 16px 0 0;
+  max-width: 54ch;
+  font-size: 16.5px;
+  line-height: 1.78;
+  color: color-mix(in srgb, var(--mk-hero-ink) 90%, transparent);
+  text-wrap: pretty;
+}
+
+/* The day's question, in the niche. */
+.opener {
+  margin: 0;
+  padding: 26px 28px 22px;
+  border: 1px solid color-mix(in srgb, var(--mk-gold) 34%, transparent);
+  border-radius: var(--radius-lg);
+  background: radial-gradient(120% 90% at 50% 0%, color-mix(in srgb, var(--mk-gold) 16%, transparent), transparent 70%);
+  text-align: center;
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: rise 900ms cubic-bezier(0.22, 0.61, 0.36, 1) both 200ms;
+}
+
+.openerKicker {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mk-hero-kicker);
+}
+
+.openerArabic {
+  margin: 14px 0 10px;
+  font-family: var(--arabic-font);
+  font-size: clamp(26px, 3.2vw, 36px);
+  line-height: 2.1;
+  padding-bottom: var(--quran-descender-pad);
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-image: var(--mk-shine);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 16s ease-in-out infinite;
+}
+
+.openerWho {
+  margin: 0;
+  font-size: 13px;
+  color: color-mix(in srgb, var(--mk-hero-ink) 82%, transparent);
+}
+
+.openerLink {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--mk-hero-kicker);
+  text-decoration: none;
+}
+.openerLink:hover { text-decoration: underline; }
+
+.openerBlank { min-height: 150px; }
+
+.motes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.motes::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 -240px;
+  background-image:
+    radial-gradient(circle, color-mix(in srgb, var(--mk-gold-pale) 75%, transparent) 0 1px, transparent 1.7px),
+    radial-gradient(circle, color-mix(in srgb, var(--mk-gold) 60%, transparent) 0 1.2px, transparent 2px);
+  background-size: 210px 240px, 330px 240px;
+  background-position: 30px 40px, 180px 140px;
+  opacity: 0.38;
+  mask-image: radial-gradient(ellipse 70% 70% at 70% 45%, #000 0, transparent 100%);
+  animation: drift 60s linear infinite;
+}
+
+@keyframes drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-240px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroText > *, .title, .opener, .openerArabic, .motes::before, .card { animation: none; }
+}
+
+/* ── the body ───────────────────────────────────────────────────────────── */
+
+.body {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 40px 32px 90px;
+}
+
+.sectionTitle {
+  margin: 0 0 14px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 19px;
+}
+
+.overview {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+/* Who asks: a bar to a family, all in the one gold — the bars say how many,
+   and the names say who. */
+.bars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.bar {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(96px, 9.5em) minmax(0, 1fr) 3.4em;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 6px;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 13px;
+  text-align: start;
+  cursor: pointer;
+}
+.bar:hover:not(:disabled) { background: color-mix(in srgb, var(--color-text) 5%, transparent); }
+.bar:disabled { opacity: 0.4; cursor: default; }
+.barOn { background: color-mix(in srgb, var(--mk-gold) 13%, transparent); }
+
+.barName { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.barTrack {
+  height: 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-text) 7%, transparent);
+  overflow: hidden;
+}
+
+.barFill {
+  display: block;
+  height: 100%;
+  width: var(--w);
+  min-width: 3px;
+  border-radius: 999px;
+  background: var(--mk-gold);
+  transition: width 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.barOn .barFill { background: var(--color-accent); }
+
+.barCount {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-62);
+  text-align: end;
+}
+
+/* Where they fall: the 114 surahs, in the order of the muṣḥaf. */
+.stripBars {
+  display: flex;
+  align-items: flex-end;
+  gap: 1px;
+  height: 120px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.stripBar {
+  flex: 1;
+  height: var(--h);
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 1px 1px 0 0;
+  background: color-mix(in srgb, var(--mk-gold) 62%, transparent);
+  cursor: pointer;
+  transition: height 420ms cubic-bezier(0.22, 0.61, 0.36, 1), background 150ms ease;
+}
+.stripBar:hover, .stripBar:focus-visible { background: var(--color-accent); outline: none; }
+.stripNone { background: color-mix(in srgb, var(--color-text) 10%, transparent); }
+.stripOn { background: var(--color-accent); box-shadow: 0 0 8px color-mix(in srgb, var(--mk-gold) 70%, transparent); }
+
+.stripEnds {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--muted-55);
+}
+
+.stripRead {
+  margin: 8px 0 0;
+  min-height: 1.5em;
+  font-size: 13px;
+  color: var(--muted-72);
+}
+
+/* ── the filters ────────────────────────────────────────────────────────── */
+
+.filters {
+  margin-top: 26px;
+  display: grid;
+  gap: 12px;
+}
+
+.filterRow {
+  display: grid;
+  grid-template-columns: 9em minmax(0, 1fr);
+  align-items: baseline;
+  gap: 12px;
+}
+
+.filterLabel {
+  font-family: var(--font-heading);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-55);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font: inherit;
+  font-size: 12.5px;
+  line-height: 1.2;
+  padding: 6px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--color-divider);
+  background: transparent;
+  color: var(--muted-88);
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+.chip:hover:not(:disabled) { border-color: color-mix(in srgb, var(--color-accent) 55%, transparent); color: var(--color-accent); }
+.chip:disabled { opacity: 0.4; cursor: default; }
+.chipOn {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 9%, transparent);
+}
+
+.chipCount {
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-55);
+}
+
+.wordChip { padding-block: 4px; }
+.wordArabic {
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 17px;
+  line-height: 1;
+}
+.wordGloss { font-size: 11.5px; color: var(--muted-62); }
+
+.select {
+  justify-self: start;
+  max-width: 100%;
+  font: inherit;
+  font-size: 13px;
+  padding: 6px 10px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  padding-inline-start: calc(9em + 12px);
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: var(--muted-72);
+  cursor: pointer;
+}
+.toggle input { accent-color: var(--color-accent); }
+
+/* ── the list ───────────────────────────────────────────────────────────── */
+
+.status {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 30px 0 14px;
+  font-size: 14px;
+  color: var(--muted-72);
+}
+.status b { color: var(--color-text); font-weight: 600; }
+
+.clear {
+  font: inherit;
+  font-size: 12.5px;
+  background: none;
+  border: 0;
+  color: var(--color-accent);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.clear:hover { text-decoration: underline; }
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.card {
+  padding: 16px 20px 14px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--color-text) 1.6%, transparent);
+  animation: rise 420ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation-delay: calc(min(var(--i, 0), 10) * 35ms);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 220px;
+}
+
+.cardHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+}
+
+.pair {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 9px;
+  font-size: 14px;
+}
+
+.asker {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 16px;
+  color: var(--color-text);
+}
+.asker::first-letter { text-transform: uppercase; }
+
+.arrow { color: var(--mk-gold); }
+.asked { color: var(--muted-72); }
+
+.withinLabel {
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--muted-55);
+}
+
+.place {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  font-size: 13px;
+  color: var(--muted-72);
+  text-decoration: none;
+}
+.place:hover { color: var(--color-accent); }
+.placeKey {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-accent);
+  unicode-bidi: isolate;
+  direction: ltr;
+}
+
+.arabic {
+  margin: 12px 0 4px;
+  font-family: var(--arabic-font);
+  font-size: clamp(22px, 2.5vw, 27px);
+  line-height: 2.1;
+  text-align: right;
+  color: color-mix(in srgb, var(--color-text) 52%, transparent);
+  padding-bottom: 0.2em;
+}
+
+/* The question itself, lit in the ayah it is asked in. */
+.lit {
+  color: var(--color-text);
+  background: linear-gradient(transparent 62%, color-mix(in srgb, var(--mk-gold) 22%, transparent) 62%, color-mix(in srgb, var(--mk-gold) 22%, transparent) 88%, transparent 88%);
+}
+:global(:root[data-theme="night"]) .lit { color: var(--mk-gold-pale); }
+
+.translation {
+  margin: 0 0 6px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--muted-72);
+}
+
+.waiting {
+  margin: 14px 0;
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--muted-45);
+}
+
+.cardFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin-top: 6px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  color: var(--muted-62);
+  background: color-mix(in srgb, var(--color-text) 5%, transparent);
+}
+.tagArabic {
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--color-accent);
+}
+.tagScene {
+  color: var(--color-accent);
+  background: color-mix(in srgb, var(--mk-gold) 12%, transparent);
+}
+
+.again {
+  font: inherit;
+  font-size: 12px;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--color-accent);
+  cursor: pointer;
+  margin-inline-start: auto;
+}
+.again:hover { text-decoration: underline; }
+
+.places {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 10px 0 0;
+  border-top: 1px dashed var(--color-divider);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+.places a { color: var(--color-accent); text-decoration: none; }
+.places a:hover { text-decoration: underline; }
+
+/* The commentators differ on who is speaking: a small sign, with the reason. */
+.doubt {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 60%, transparent);
+  font-size: 10.5px;
+  color: var(--color-accent);
+  cursor: help;
+}
+.doubtWhy {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  inset-inline-start: 50%;
+  translate: -50% 0;
+  width: max-content;
+  max-width: 260px;
+  padding: 8px 11px;
+  border-radius: var(--radius-md);
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease;
+  z-index: 5;
+}
+.doubt:hover .doubtWhy, .doubt:focus .doubtWhy { opacity: 1; }
+:global([dir="rtl"]) .doubtWhy { translate: 50% 0; }
+
+.moreWrap { display: flex; justify-content: center; margin-top: 22px; }
+.more { font-size: 13px; }
+
+.empty { margin: 30px 0; color: var(--muted-55); font-style: italic; }
+
+.method {
+  margin-top: 60px;
+  padding-top: 26px;
+  border-top: 1px solid var(--color-divider);
+  max-width: 70ch;
+}
+.method p { margin: 0 0 12px; font-size: 13.5px; line-height: 1.75; color: var(--muted-72); }
+.method .source { font-size: 11.5px; color: var(--muted-45); }
+
+/* ── a phone ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .heroInner { grid-template-columns: minmax(0, 1fr); padding: 30px 18px 34px; }
+  .overview { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .body { padding: 28px 16px 70px; }
+  .filterRow { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .toggles { padding-inline-start: 0; }
+  .card { padding: 14px 14px 12px; }
+  .stripBars { height: 96px; }
+}

@@ -1,0 +1,952 @@
+/* The khatm plan. The head is lit like the other frontispieces, with the
+   reading drawn as a ring in the niche; below it the page is paper. */
+
+.shell { overflow-x: hidden; }
+
+/* ── the frontispiece ───────────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  background: var(--mk-hero-bg);
+  color: var(--mk-hero-ink);
+  border-bottom: 1px solid color-mix(in srgb, var(--mk-gold) 38%, transparent);
+}
+
+.heroInner {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 32px 44px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
+  column-gap: 56px;
+  row-gap: 26px;
+  align-items: center;
+}
+
+.heroText > * { animation: rise 720ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+.heroText > :nth-child(2) { animation-delay: 70ms; }
+.heroText > :nth-child(3) { animation-delay: 140ms; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+.kicker {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mk-hero-kicker);
+}
+
+.title {
+  margin: 12px 0 0;
+  font-weight: 400;
+  font-size: clamp(40px, 5.6vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-image: var(--mk-shine);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  padding-bottom: 0.08em;
+  animation: rise 720ms cubic-bezier(0.22, 0.61, 0.36, 1) both 70ms, shine 16s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.lede {
+  margin: 16px 0 0;
+  max-width: 54ch;
+  font-size: 16.5px;
+  line-height: 1.78;
+  color: color-mix(in srgb, var(--mk-hero-ink) 90%, transparent);
+  text-wrap: pretty;
+}
+
+.heroRing {
+  display: flex;
+  justify-content: center;
+  animation: rise 900ms cubic-bezier(0.22, 0.61, 0.36, 1) both 160ms;
+}
+
+.motes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.motes::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 -240px;
+  background-image:
+    radial-gradient(circle, color-mix(in srgb, var(--mk-gold-pale) 75%, transparent) 0 1px, transparent 1.7px),
+    radial-gradient(circle, color-mix(in srgb, var(--mk-gold) 60%, transparent) 0 1.2px, transparent 2px);
+  background-size: 210px 240px, 330px 240px;
+  background-position: 30px 40px, 180px 140px;
+  opacity: 0.38;
+  mask-image: radial-gradient(ellipse 70% 70% at 75% 45%, #000 0, transparent 100%);
+  animation: drift 60s linear infinite;
+}
+
+@keyframes drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-240px); }
+}
+
+/* ── the ring ───────────────────────────────────────────────────────────── */
+
+.ring {
+  position: relative;
+  width: min(100%, 340px);
+  aspect-ratio: 1;
+}
+
+.ringSvg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.ringTicks {
+  fill: none;
+  stroke: color-mix(in srgb, var(--mk-hero-kicker) 55%, transparent);
+  stroke-width: 0.9;
+  stroke-linecap: round;
+}
+
+.ringGround {
+  fill: none;
+  stroke: color-mix(in srgb, var(--mk-hero-ink) 7%, transparent);
+  stroke-width: 15;
+}
+
+.ringBefore {
+  fill: none;
+  stroke: color-mix(in srgb, var(--mk-gold) 34%, transparent);
+  stroke-width: 13;
+  stroke-dasharray: 1.2 2.4;
+}
+
+.ringDay {
+  fill: none;
+  stroke: color-mix(in srgb, var(--mk-gold) 26%, transparent);
+  stroke-width: 13;
+  transition: stroke 300ms ease;
+}
+
+.ringDayLit {
+  stroke: color-mix(in srgb, var(--mk-gold-pale) 55%, transparent);
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--mk-gold-pale) 70%, transparent));
+  animation: lit 3.2s ease-in-out infinite;
+}
+
+@keyframes lit {
+  0%, 100% { stroke-opacity: 1; }
+  50% { stroke-opacity: 0.62; }
+}
+
+.ringRead {
+  fill: none;
+  stroke: var(--mk-gold);
+  stroke-width: 13;
+}
+
+.ringHalo {
+  fill: color-mix(in srgb, var(--mk-gold-pale) 30%, transparent);
+  animation: halo 2.6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes halo {
+  0%, 100% { transform: scale(0.8); opacity: 0.9; }
+  50% { transform: scale(1.25); opacity: 0.35; }
+}
+
+.ringBead {
+  fill: var(--mk-gold-pale);
+  stroke: color-mix(in srgb, var(--mk-hero-ink) 80%, transparent);
+  stroke-width: 0.8;
+}
+
+/* A reading finished: the whole ring gold, and a slow light round it. */
+.ringDone .ringRead {
+  stroke: var(--mk-gold-pale);
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--mk-gold-pale) 60%, transparent));
+}
+.ringDone::after {
+  content: "";
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0 78%, color-mix(in srgb, var(--mk-gold-pale) 40%, transparent) 90%, transparent 100%);
+  mask: radial-gradient(closest-side, transparent 78%, #000 80%, #000 92%, transparent 94%);
+  animation: turn 7s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes turn {
+  to { transform: rotate(1turn); }
+}
+
+.ringCentre {
+  position: absolute;
+  inset: 22%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+
+.centreBig {
+  font-family: var(--font-heading);
+  font-size: clamp(44px, 6vw, 62px);
+  line-height: 1;
+  color: var(--mk-hero-ink);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.centreSmall {
+  margin-top: 4px;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mk-hero-kicker);
+}
+
+.centreNote {
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: color-mix(in srgb, var(--mk-hero-ink) 74%, transparent);
+}
+
+:global(html[data-script="arabic"]) .centreSmall,
+:global(html[data-script="arabic"]) .kicker {
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroText > *, .title, .heroRing, .motes::before, .ringDayLit, .ringHalo, .ringDone::after { animation: none; }
+}
+
+/* ── the body ───────────────────────────────────────────────────────────── */
+
+.body {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 32px 90px;
+}
+
+.sectionTitle {
+  margin: 0 0 8px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 21px;
+}
+
+.sectionLede {
+  margin: 0 0 22px;
+  max-width: 60ch;
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--muted-72);
+  text-wrap: pretty;
+}
+
+/* ── the planner ────────────────────────────────────────────────────────── */
+
+.planner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+  gap: 48px;
+  align-items: start;
+}
+
+/* The steps of the conversation, one under another, joined by what
+   ʿAbdullāh said back. */
+.ladder {
+  position: relative;
+  display: grid;
+}
+
+.rung {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  padding: 14px 16px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+.rung:hover { border-color: color-mix(in srgb, var(--mk-gold) 60%, transparent); }
+.rung:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+.rungOn {
+  border-color: var(--mk-gold);
+  background: color-mix(in srgb, var(--mk-gold) 9%, var(--color-bg));
+  box-shadow: 0 0 0 1px var(--mk-gold) inset, 0 6px 22px color-mix(in srgb, var(--mk-gold) 16%, transparent);
+}
+
+.rungDays {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2px;
+}
+
+.rungNumber {
+  font-family: var(--font-heading);
+  font-size: 38px;
+  line-height: 1;
+  color: var(--color-accent);
+  font-variant-numeric: lining-nums;
+}
+
+.rungUnit {
+  margin-top: 3px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-62);
+}
+
+.rungBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.rungName {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+/* The name of a pace of one's own is the control itself. */
+.rungPick {
+  align-self: flex-start;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  text-align: start;
+}
+
+.rungArabic {
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 21px;
+  line-height: 1.7;
+  color: var(--color-accent);
+}
+
+.rungSaid {
+  font-size: 14px;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--muted-88);
+}
+
+.rungSource {
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--muted-55);
+}
+
+/* What ʿAbdullāh said back, on the line that joins two steps. */
+.reply {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 12px;
+  padding-block: 10px;
+  padding-inline: 92px 16px;
+  font-size: 13px;
+}
+.reply::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 54px;
+  top: 0;
+  bottom: 0;
+  border-inline-start: 1px dashed color-mix(in srgb, var(--mk-gold) 55%, transparent);
+}
+
+.replyArabic {
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 16px;
+  color: var(--muted-72);
+}
+
+.replySaid {
+  font-style: italic;
+  color: var(--muted-62);
+}
+
+.other,
+.ownTitle {
+  margin: 24px 0 10px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--muted-72);
+}
+
+.ownTitle {
+  margin-top: 30px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 17px;
+  color: var(--color-text);
+}
+
+/* The floor: no plan here is faster. */
+.floor {
+  margin: 12px 0 0;
+  padding: 12px 16px 12px 18px;
+  border-inline-start: 2px solid var(--mk-gold);
+  background: color-mix(in srgb, var(--mk-gold) 6%, transparent);
+  border-start-end-radius: var(--radius-md);
+  border-end-end-radius: var(--radius-md);
+}
+
+.floorArabic {
+  margin: 0 0 4px;
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 19px;
+  line-height: 1.8;
+  color: var(--color-accent);
+}
+
+.floorSaid {
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--muted-88);
+}
+
+.rungOwn {
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: 10px;
+  cursor: default;
+}
+
+.inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--muted-88);
+}
+
+.number { width: 5.5em; text-align: center; }
+.date { width: auto; min-width: 11em; }
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.chip {
+  padding: 5px 11px;
+  border: 1px solid var(--color-divider);
+  border-radius: 999px;
+  background: none;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+.chip:hover { border-color: var(--mk-gold); }
+.chipOn {
+  border-color: var(--mk-gold);
+  background: color-mix(in srgb, var(--mk-gold) 14%, transparent);
+  color: var(--color-accent);
+}
+
+/* The other choices, and the plan they come to — kept in view on a wide
+   screen while the steps are read. */
+.side {
+  position: sticky;
+  top: 18px;
+  display: grid;
+  gap: 16px;
+}
+
+.panel {
+  padding: 18px 20px 20px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+}
+
+.panelTitle {
+  margin: 0 0 12px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 18px;
+}
+
+.starts {
+  display: grid;
+  gap: 8px;
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.option input {
+  margin: 3px 0 0;
+  accent-color: var(--mk-gold);
+  flex: none;
+}
+
+.choose {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  margin-block-start: 2px;
+  margin-inline-start: 26px;
+}
+
+.repeat {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-divider);
+}
+
+.summary { background: color-mix(in srgb, var(--mk-gold) 5%, var(--color-bg)); }
+
+.problem {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-accent);
+}
+
+.sumLead {
+  margin: 0 0 6px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+.sumLine {
+  margin: 0 0 6px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--muted-72);
+}
+.sumLine b { color: var(--color-text); font-weight: 600; }
+
+.preview {
+  list-style: none;
+  margin: 14px 0 16px;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+  border-top: 1px solid var(--color-divider);
+}
+
+.previewRow {
+  display: grid;
+  grid-template-columns: 4.6em minmax(0, 1fr);
+  column-gap: 10px;
+  padding: 8px 0 6px;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
+  font-size: 13.5px;
+}
+
+.previewDay {
+  grid-row: span 2;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  color: var(--color-accent);
+}
+
+.previewRange { line-height: 1.45; }
+
+.previewMeta {
+  font-size: 11.5px;
+  color: var(--muted-55);
+}
+
+.previewGap {
+  padding: 0;
+  text-align: center;
+  line-height: 1.2;
+  color: var(--muted-45);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.actions :global(.btn-primary) { padding-inline: 22px; font-size: 15px; }
+
+/* ── a plan under way ───────────────────────────────────────────────────── */
+
+/* The Qurʾān finished. */
+.khatm {
+  position: relative;
+  /* Clipped, not hidden: a hidden box can still be scrolled, and is — when
+     the focused button inside it goes away, the browser scrolls the light
+     into view and the words out of it. */
+  overflow: clip;
+  margin-bottom: 26px;
+  padding: 26px 28px;
+  border: 1px solid color-mix(in srgb, var(--mk-gold) 50%, transparent);
+  border-radius: var(--radius-lg);
+  background: radial-gradient(120% 140% at 50% 0%, color-mix(in srgb, var(--mk-gold) 18%, transparent), transparent 70%);
+  text-align: center;
+}
+
+.khatmRays {
+  position: absolute;
+  inset: -60% -10% auto;
+  height: 220%;
+  background: repeating-conic-gradient(from 0deg at 50% 0%, color-mix(in srgb, var(--mk-gold) 10%, transparent) 0 4deg, transparent 4deg 12deg);
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000, transparent 75%);
+  pointer-events: none;
+}
+
+.khatmTitle {
+  position: relative;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 3.4vw, 34px);
+  color: var(--color-accent);
+}
+
+.khatmText {
+  position: relative;
+  margin: 8px 0 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted-88);
+}
+.khatmText :global(.btn) { margin-inline-start: 8px; }
+
+.today {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px 36px;
+  align-items: end;
+  padding: 24px 26px 22px;
+  border: 1px solid color-mix(in srgb, var(--mk-gold) 45%, transparent);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--mk-gold) 5%, var(--color-bg));
+}
+
+.todayMain { min-width: 0; }
+
+.todayDone {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: var(--color-accent);
+}
+
+.todayRange {
+  margin: 8px 0 0;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.2;
+}
+
+.todayMeta {
+  margin: 6px 0 0;
+  font-size: 13.5px;
+  color: var(--muted-62);
+}
+
+.opening {
+  margin: 12px 0 0;
+  min-height: 1.9em;
+  font-family: var(--arabic-font);
+  font-size: 26px;
+  line-height: 1.9;
+  padding-bottom: var(--quran-descender-pad);
+  color: var(--color-text);
+  text-align: right;
+}
+/* On a page read left to right, the opening words stand at the left with
+   everything else in the card, rather than alone at the far side of it. */
+:global(html[dir="ltr"]) .opening { text-align: left; }
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.progressTrack {
+  flex: 1;
+  max-width: 420px;
+  height: 7px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-text) 9%, transparent);
+  overflow: hidden;
+}
+
+.progressFill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--mk-gold), var(--mk-gold-pale));
+  transition: width 500ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+:global(html[dir="rtl"]) .progressFill { background: linear-gradient(270deg, var(--mk-gold), var(--mk-gold-pale)); }
+
+.progressText {
+  font-size: 12.5px;
+  color: var(--muted-62);
+  font-variant-numeric: tabular-nums;
+}
+
+.todayActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.go { padding: 11px 20px; font-size: 15px; }
+
+.markLine {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--muted-62);
+  text-align: end;
+}
+
+.marked {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--muted-72);
+}
+
+.notice {
+  margin-top: 18px;
+  padding: 18px 22px;
+  border: 1px solid var(--color-divider);
+  border-inline-start: 3px solid var(--mk-gold);
+  border-radius: var(--radius-md);
+}
+
+.noticeTitle {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 18px;
+}
+
+.noticeText {
+  margin: 6px 0 12px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--muted-72);
+}
+
+.days { margin-top: 40px; }
+
+.dayList {
+  list-style: none;
+  margin: 10px 0 8px;
+  padding: 0;
+  border-top: 1px solid var(--color-divider);
+}
+
+.dayRow {
+  display: grid;
+  grid-template-columns: 22px 4.8em 7.5em minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 8px;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-text) 9%, transparent);
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 140ms ease;
+}
+.dayRow:hover { background: color-mix(in srgb, var(--color-text) 4%, transparent); }
+
+.dayToday {
+  background: color-mix(in srgb, var(--mk-gold) 10%, transparent);
+  box-shadow: inset 3px 0 0 var(--mk-gold);
+}
+:global(html[dir="rtl"]) .dayToday { box-shadow: inset -3px 0 0 var(--mk-gold); }
+
+.dayMark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: var(--color-bg);
+}
+.dayDone .dayMark { background: var(--mk-gold); }
+
+.dayPie {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--mk-gold) 70%, transparent);
+  background: conic-gradient(var(--mk-gold) 0 var(--p), transparent var(--p) 100%);
+}
+
+.dayNumber {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  color: var(--color-accent);
+}
+
+.dayDate {
+  font-size: 12.5px;
+  color: var(--muted-62);
+}
+.dayToday .dayDate { color: var(--color-accent); font-weight: 600; }
+
+.dayRange {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dayDone .dayRange { color: var(--muted-72); }
+
+.dayMeta {
+  font-size: 12px;
+  color: var(--muted-55);
+  white-space: nowrap;
+}
+
+.history { margin-top: 36px; }
+
+.historyList {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--muted-88);
+}
+.historyList li { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+
+.historyNumber {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  color: var(--color-accent);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-divider);
+}
+
+.ask {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--muted-72);
+}
+
+.method {
+  margin-top: 28px;
+  max-width: 70ch;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--muted-62);
+}
+.method p { margin: 0; }
+
+.methodTitle {
+  margin: 0 0 4px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 15px;
+  color: var(--muted-88);
+}
+
+/* ── narrow screens ─────────────────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .heroInner {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 28px 16px 30px;
+  }
+  .heroRing { order: 2; }
+  .ring { width: min(78vw, 290px); }
+  .body { padding: 26px 16px 80px; }
+  .planner { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .side { position: static; }
+  .today { grid-template-columns: minmax(0, 1fr); padding: 20px 18px; }
+  .todayActions { align-items: stretch; }
+  .markLine { text-align: start; }
+}
+
+@media (max-width: 560px) {
+  .rung { grid-template-columns: 54px minmax(0, 1fr); gap: 12px; padding: 12px; }
+  .rungNumber { font-size: 30px; }
+  .rungArabic { font-size: 19px; }
+  .reply { padding-inline-start: 66px; }
+  .reply::before { inset-inline-start: 38px; }
+  .dayRow {
+    grid-template-columns: 22px minmax(0, 1fr) auto;
+    grid-template-areas: "mark number date" "mark range meta";
+    row-gap: 2px;
+  }
+  .dayMark { grid-area: mark; }
+  .dayNumber { grid-area: number; }
+  .dayDate { grid-area: date; text-align: end; }
+  .dayRange { grid-area: range; }
+  .dayMeta { grid-area: meta; text-align: end; }
+  .choose { margin-inline-start: 0; grid-template-columns: minmax(0, 1fr) 6em; }
+}

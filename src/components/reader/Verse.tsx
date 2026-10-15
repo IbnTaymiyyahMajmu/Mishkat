@@ -6,6 +6,7 @@ import type { Rendering } from "@/lib/quran/useSurahTranslations";
 import { arabicNumber } from "@/lib/text";
 import { wordDomId } from "@/lib/highlight";
 import { TranslationText } from "@/components/translations/TranslationText";
+import { TajweedWord } from "@/components/tajweed/TajweedWord";
 import { useLocale } from "@/lib/i18n";
 import styles from "./Verse.module.css";
 
@@ -16,6 +17,8 @@ export interface VerseHandlers {
   onNote: (key: string) => void;
   onTafsir: (key: string) => void;
   onTranslations: (key: string) => void;
+  /** The ayat the commentators brought in to explain this one. */
+  onXref: (key: string) => void;
   onCopyArabic: (verse: VerseModel) => void;
   onCopyTranslation: (verse: VerseModel) => void;
   onShare: (key: string) => void;
@@ -41,7 +44,11 @@ interface Props {
   playing: boolean;
   bookmarked: boolean;
   noteCount: number;
+  /** How many ayat the commentators brought in to explain this one; 0 hides the line. */
+  xrefCount: number;
   flash: boolean;
+  /** The words' tajweed, by position, when the reader reads in colour. */
+  tajweed?: string[];
   handlers: VerseHandlers;
 }
 
@@ -57,7 +64,9 @@ function VerseImpl({
   playing,
   bookmarked,
   noteCount,
+  xrefCount,
   flash,
+  tajweed,
   handlers,
 }: Props) {
   const key = verse.verse_key;
@@ -183,7 +192,9 @@ function VerseImpl({
             className={styles.word}
             aria-label={wordAria(w)}
           >
-            <span className={styles.arabic}>{w.text_uthmani || w.text}</span>
+            <span className={styles.arabic}>
+              {tajweed?.[w.position] ? <TajweedWord markup={tajweed[w.position]} /> : w.text_uthmani || w.text}
+            </span>
             {showTranslit && (
               <span dir="ltr" className={styles.translit}>
                 {w.transliteration?.text || "—"}
@@ -223,6 +234,11 @@ function VerseImpl({
                     <button className={styles.tafsirLink} onClick={() => handlers.onTranslations(key)}>
                       {t("verse.otherTranslations")}
                     </button>
+                    {xrefCount > 0 && (
+                      <button className={styles.tafsirLink} onClick={() => handlers.onXref(key)}>
+                        {t("verse.explainedBy", { count: xrefCount })}
+                      </button>
+                    )}
                     <button className={styles.tafsirLink} onClick={() => handlers.onTafsir(key)}>
                       {t("common.tafsir")} <span aria-hidden="true">{arrows.next}</span>
                     </button>

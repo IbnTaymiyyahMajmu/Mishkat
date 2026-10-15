@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SurahIntro } from "@/components/intro/SurahIntro";
-import { aimArabic, loadIntro, wordsByAyah } from "@/lib/intros/load";
+import { aimArabic, loadIntro, rhymeOf, wordsByAyah } from "@/lib/intros/load";
 import { SURAH_NAMES } from "@/lib/quran/surahNames";
 
 /**
@@ -46,5 +46,14 @@ export default async function IntroPage({ params }: { params: Promise<{ surah: s
   if (!Number.isInteger(n) || n < 1 || n > 114) notFound();
   // Keyed on the surah, as the reader is: which passage is picked out on the
   // medallion belongs to one surah and should not follow the reader to the next.
-  return <SurahIntro key={n} surah={n} intro={loadIntro(n)} aimArabic={aimArabic(n)} ayahWords={wordsByAyah(n)} />;
+  return (
+    <SurahIntro
+      key={n}
+      surah={n}
+      intro={loadIntro(n)}
+      aimArabic={aimArabic(n)}
+      ayahWords={wordsByAyah(n)}
+      rhyme={rhymeOf(n)}
+    />
+  );
 }

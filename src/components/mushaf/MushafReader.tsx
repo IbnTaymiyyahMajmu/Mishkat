@@ -1,20 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { fetchMushaf, fetchRecitation, fetchVerse } from "@/lib/quran/api";
 import type { Verse } from "@/lib/quran/types";
 import { useChapters } from "@/lib/store/chapters";
-import { THEMES, useSettings } from "@/lib/store/settings";
+import { useSettings } from "@/lib/store/settings";
 import { useLibrary } from "@/lib/store/library";
 import { usePlayerControls, usePlayerStatus } from "@/lib/audio/player";
 import { useToast } from "@/components/Toast";
 import { arabicNumber, plainText } from "@/lib/text";
-import { ARABIC_FONTS } from "@/lib/quran/resources";
 import { translationName } from "@/lib/quran/translations";
 import { useLocale } from "@/lib/i18n";
 import { useSurahNames } from "@/lib/i18n/surah";
+import { useReadingTracker } from "@/lib/useReadingTracker";
+import { useSurahTajweed, type Family } from "@/lib/quran/tajweed";
+import { TajweedWord } from "@/components/tajweed/TajweedWord";
+import { TajweedLegend, spotlight } from "@/components/tajweed/TajweedLegend";
+import tjStyles from "@/components/tajweed/Tajweed.module.css";
 import styles from "./MushafReader.module.css";
 
 const SIZES = [30, 36, 42, 48, 56, 64];
@@ -122,7 +126,18 @@ export function MushafReader({ surah }: { surah: number }) {
   // study reader does. Without this the muṣḥaf played a surah and gave no sign
   // of where in it the reciter was.
   const bodyRef = useRef<HTMLDivElement>(null);
-  const reciting = currentKey && Number(currentKey.split(":")[0]) === surah ? currentKey : null;
+  // Read here counts as read anywhere — for the khatm plan and the reader's niche.
+  // See useReadingTracker.
+  const wordCounts = useMemo(
+    () => new Map(verses.map((v) => [v.verse_key, v.text_uthmani.split(" ").filter((t) => /[ء-يٱ-ۓ]/.test(t)).length])),
+    [verses],
+  );
+  useReadingTracker(bodyRef, "[data-key]", "data-key", (key) => wordCounts.get(key) ?? 10, verses.length);
+
+  // The rules of tajweed in colour, when the reader reads that way.
+  const tajweed = useSurahTajweed(surah, settings.tajweed);
+  const [tjFocus, setTjFocus] = useState<Family[]>([]);
+  const reciting =currentKey && Number(currentKey.split(":")[0]) === surah ? currentKey : null;
   useEffect(() => {
     if (!reciting || !settings.follow) return;
     bodyRef.current
@@ -160,13 +175,12 @@ export function MushafReader({ surah }: { surah: number }) {
 
   const prevName = surah > 1 ? names.name(surah - 1) : "";
   const nextName = surah < 114 ? names.name(surah + 1) : "";
-  const nextLight = THEMES[(THEMES.indexOf(settings.theme) + 1) % THEMES.length];
 
   return (
     <div className={styles.wrap}>
       <div className={styles.bar}>
         <Link href={`/read/${surah}/`} className="btn btn-secondary" style={{ fontSize: 12, padding: "5px 12px" }}>
-          {arrows.prev} {t("mushaf.study")}
+          {arrows.prev} <span className={styles.barWord}>{t("mushaf.study")}</span>
         </Link>
 
         <div className={styles.barCentre}>
@@ -192,27 +206,22 @@ export function MushafReader({ surah }: { surah: number }) {
             </button>
           </div>
 
-          <div className={styles.fonts} role="group" aria-label={t("mushaf.typeface")}>
-            {ARABIC_FONTS.map((f) => (
-              <button
-                key={f.id}
-                onClick={() => update({ arabicFont: f.id })}
-                className={`${styles.fontBtn} ${settings.arabicFont === f.id ? styles.fontBtnOn : ""}`}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
-
-          {/* The muṣḥaf bar has no room for three lamps, so here the light is a
-              cycle: pressing it names the light it is about to move to. */}
+          {/* The typeface and the light are the settings page's and the
+              header's; what belongs to the page being read is its colour. */}
           <button
-            onClick={() => update({ theme: nextLight })}
-            className="btn btn-secondary"
+            onClick={() => update({ tajweed: !settings.tajweed })}
+            className={`btn btn-secondary ${settings.tajweed ? "btn-on" : ""}`}
             style={{ fontSize: 12, padding: "5px 12px" }}
+            aria-pressed={settings.tajweed}
+            title={t("settings.tajweedOn")}
           >
-            {t(`light.${nextLight}.short`)}
+            {t("panel.tajweed")}
           </button>
+          {settings.tajweed && (
+            <div className={styles.barLegend}>
+              <TajweedLegend map={tajweed} focus={tjFocus} onFocus={setTjFocus} compact />
+            </div>
+          )}
         </div>
 
         <button
@@ -221,7 +230,7 @@ export function MushafReader({ surah }: { surah: number }) {
           style={{ fontSize: 13 }}
           disabled={surah >= 114}
         >
-          {nextName} {arrows.next}
+          <span className={styles.barWord}>{nextName}</span> {arrows.next}
         </button>
       </div>
 
@@ -255,7 +264,8 @@ export function MushafReader({ surah }: { surah: number }) {
         {!loading && !failed && (
           <div
             ref={bodyRef}
-            className={styles.body}
+            className={`${styles.body} ${tjStyles.spot}`}
+            {...(settings.tajweed ? spotlight(tjFocus) : {})}
             dir="rtl"
             lang="ar"
             style={{ fontSize: `${size}px` }}
@@ -286,7 +296,17 @@ export function MushafReader({ surah }: { surah: number }) {
                 }}
                 aria-label={t("verse.label", { key: v.verse_key })}
               >
-                {v.text_uthmani}
+                {tajweed?.get(v.verse_key)
+                  ? tajweed
+                      .get(v.verse_key)!
+                      .filter(Boolean)
+                      .map((markup, i) => (
+                        <Fragment key={i}>
+                          {i > 0 && " "}
+                          <TajweedWord markup={markup} />
+                        </Fragment>
+                      ))
+                  : v.text_uthmani}
                 <span className={styles.marker} aria-hidden="true">
                   {arabicNumber(v.verse_number)}
                 </span>{" "}

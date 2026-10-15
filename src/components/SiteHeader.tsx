@@ -39,6 +39,7 @@ const LIGHTS: { id: Theme; title: MessageKey; icon: React.ReactNode }[] = [
 
 const NAV: { href: string; label: MessageKey; match: (p: string) => boolean }[] = [
   { href: "/surahs/", label: "nav.surahs", match: (p) => p.startsWith("/surahs") },
+  { href: "/plan/", label: "nav.plan", match: (p) => p.startsWith("/plan") },
   { href: "/tafsir/", label: "nav.tafsir", match: (p) => p.startsWith("/tafsir") },
   { href: "/notes/", label: "nav.notes", match: (p) => p.startsWith("/notes") },
   { href: "/bookmarks/", label: "nav.bookmarks", match: (p) => p.startsWith("/bookmarks") },

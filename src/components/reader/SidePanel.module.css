@@ -34,20 +34,73 @@
 .close { width: 30px; height: 30px; flex: none; }
 .close:hover { background: color-mix(in srgb, var(--color-text) 8%, transparent); }
 
-/* Four tabs fit beside the text and on most phones. On the narrowest the row
-   runs on rather than folding, and is drawn along with a thumb. */
-.tabs {
-  display: flex;
-  gap: 2px;
-  padding: 0 16px;
-  border-bottom: 1px solid var(--color-divider);
+/* Two steps: what the panel is about, then how to look at it. */
+.nav {
   flex: none;
-  overflow-x: auto;
-  scrollbar-width: none;
+  padding: 0 16px 0;
+  border-bottom: 1px solid var(--color-divider);
 }
-.tabs::-webkit-scrollbar { display: none; }
 
-.tab {
+/* The thing: a word, an ayah, or the reader's notes — a single switch of
+   three, each with its sign, all in sight on the narrowest phone. */
+.levels {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3px;
+  padding: 3px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--color-text) 6%, transparent);
+}
+
+.level {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 0;
+  padding: 7px 6px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--muted-62);
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 13.5px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease, box-shadow 150ms ease;
+}
+.level span { overflow: hidden; text-overflow: ellipsis; }
+.level svg { flex: none; }
+.level:hover { color: var(--color-text); }
+
+.levelOn {
+  background: var(--color-bg);
+  color: var(--color-accent);
+  box-shadow: var(--shadow-sm), 0 0 0 1px color-mix(in srgb, var(--mk-gold) 35%, transparent);
+}
+
+.badge {
+  min-width: 17px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--mk-gold) 22%, transparent);
+  color: var(--color-accent);
+  font-family: var(--font-body);
+  font-size: 10.5px;
+  line-height: 17px;
+  text-align: center;
+}
+
+/* The ways of looking at it: no more than three, so they never run off. */
+.unders {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  margin-top: 6px;
+}
+
+.under {
   font-family: var(--font-heading);
   font-weight: var(--font-heading-weight);
   font-size: 12px;
@@ -55,16 +108,20 @@
   text-transform: uppercase;
   background: none;
   border: 0;
-  border-bottom: 1px solid transparent;
-  color: var(--muted-45);
-  padding: 6px 10px;
-  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  color: var(--muted-55);
+  padding: 7px 10px 6px;
   margin-bottom: -1px;
-  flex: none;
+  cursor: pointer;
   white-space: nowrap;
 }
-.tab:hover { color: var(--color-accent); }
-.tabOn { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+.under:hover { color: var(--color-accent); }
+.underOn { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+
+:global(html[data-script="arabic"]) .under { letter-spacing: 0; text-transform: none; font-size: 13px; }
+
+/* With nothing under it, the switch alone closes the head. */
+.levels:last-child { margin-bottom: 12px; }
 
 .scroll {
   flex: 1;
@@ -103,9 +160,8 @@
   }
 }
 
-/* Four tabs across a phone: drawn a little closer, so the last is not cut by
-   the edge of the sheet. */
 @media (max-width: 420px) {
-  .tabs { padding: 0 12px; gap: 0; }
-  .tab { padding: 6px 8px; letter-spacing: 0.03em; }
+  .nav { padding: 0 12px; }
+  .level { font-size: 12.5px; gap: 4px; }
+  .under { padding: 7px 8px 6px; letter-spacing: 0.03em; }
 }

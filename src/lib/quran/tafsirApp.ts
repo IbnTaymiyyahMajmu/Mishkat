@@ -350,6 +350,26 @@ export async function fetchTafsirApp(id: string, verseKey: string): Promise<Tafs
 }
 
 /**
+ * A passage of this site's copy exactly as it is stored — page marks, editors'
+ * notes and all — for a screen that needs to find a place in it by where it
+ * stands in the stored text. The cross-references are such places: see
+ * `xref.ts`. Null where the work is not copied or has nothing on the ayah.
+ */
+export async function fetchMirroredPassage(
+  id: string,
+  surah: number,
+  ayah: number,
+): Promise<{ from: number; to: number; text: string } | null> {
+  if (!tafsirAppMirrored(id)) return null;
+  const index = await file<WorkIndex>(`${HOME}/${id}/index.json`);
+  const first = (index.surahs[String(surah)] ?? []).filter((start) => start <= ayah).pop();
+  if (first === undefined) return null;
+  const part = await file<{ passages: Stored[] }>(`${HOME}/${id}/${surah}-${first}.json`);
+  const found = part.passages.find(([from, to]) => from <= ayah && ayah <= to);
+  return found ? { from: found[0], to: found[1], text: found[2] } : null;
+}
+
+/**
  * What tafsir.app says about a work: the author's own account of what he set
  * out to do, and what later scholars said of the result. Copied with the work,
  * so it is there for the works this site holds and for no others.

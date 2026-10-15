@@ -25,6 +25,10 @@ function titleFor(pathname: string, t: Translate, arabicNames: boolean): string 
   if (pathname.startsWith("/bookmarks")) return page(t("bookmarks.title"));
   if (pathname.startsWith("/settings")) return page(t("settings.title"));
   if (pathname.startsWith("/study")) return page(t("title.study"));
+  if (pathname.startsWith("/questions")) return page(t("q.title"));
+  if (pathname.startsWith("/plan")) return page(t("plan.title"));
+  if (pathname.startsWith("/niche")) return page(t("niche.title"));
+  if (pathname.startsWith("/tajweed")) return page(t("tjg.kicker"));
   return t("title.home");
 }
 

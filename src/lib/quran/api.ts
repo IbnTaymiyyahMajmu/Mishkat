@@ -187,6 +187,32 @@ export async function fetchVerseWithWords(
   }
 }
 
+export interface TajweedVerse {
+  verse_key: string;
+  words: { position: number; char_type_name: string; text_uthmani_tajweed?: string | null }[];
+}
+
+/**
+ * A page of the surah's words with the rules of tajweed marked in them —
+ * `<rule class=ikhafa>نْ</rule>` — and nothing more asked for. It is laid over
+ * the text the reader or the muṣḥaf already has (`useSurahTajweed`), so
+ * turning the colours on colours the Arabic on the screen rather than taking
+ * it away to fetch it again. Asked for a word at a time because the corpus's
+ * marking of whole ayat is written for a typeface of its own.
+ */
+export async function fetchTajweedPage(surah: number, page: number): Promise<{ verses: TajweedVerse[]; totalPages: number }> {
+  const params = new URLSearchParams({
+    words: "true",
+    per_page: "50",
+    page: String(page),
+    word_fields: "text_uthmani_tajweed",
+  });
+  const j = await get<{ verses: TajweedVerse[]; pagination?: { total_pages?: number } }>(
+    `verses/by_chapter/${surah}?${params}`,
+  );
+  return { verses: j.verses ?? [], totalPages: j.pagination?.total_pages ?? 1 };
+}
+
 /**
  * The whole surah as Uthmānī text and nothing else — no words, no translation,
  * no audio. This is what the muṣḥaf view reads, and it is a fraction of the

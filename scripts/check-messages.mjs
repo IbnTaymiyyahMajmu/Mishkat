@@ -33,7 +33,15 @@ function read(lang) {
   for (let i = 0; i < lines.length; i++) {
     const entry = /^  "([^"]+)":\s*(.*)$/.exec(lines[i]);
     if (!entry) continue;
-    // The value is on this line, or on the next where it was too long for one.
+    // The value is on this line, or on the next where it was too long for one —
+    // or, for a plural too long for one line, on the lines down to its brace.
+    if (entry[2].trim() === "{") {
+      const forms = [];
+      while (i + 1 < lines.length && !/^\s*\},?\s*$/.test(lines[i + 1])) forms.push(lines[++i].trim());
+      i++;
+      out[entry[1]] = `{ ${forms.join(" ")} }`;
+      continue;
+    }
     out[entry[1]] = entry[2].trim() ? entry[2] : (lines[++i] ?? "").trim();
   }
   return out;

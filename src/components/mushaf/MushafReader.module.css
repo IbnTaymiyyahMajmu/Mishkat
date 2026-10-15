@@ -40,22 +40,25 @@
   text-align: center;
 }
 
-.fonts { display: flex; gap: 4px; }
+.barLegend { min-width: 0; }
 
-.fontBtn {
-  font-family: var(--font-heading);
-  font-weight: var(--font-heading-weight);
-  font-size: 12px;
-  padding: 5px 10px;
-  border: 1px solid var(--color-divider);
-  border-radius: var(--radius-md);
-  background: transparent;
-  color: var(--muted-62);
-  cursor: pointer;
-  white-space: nowrap;
+/* On a phone the bar is two rows and no more: the way back and on as arrows,
+   the size and the colour between them, and the legend as one row of its
+   own that runs on under a thumb rather than folding. */
+@media (max-width: 620px) {
+  .bar { flex-wrap: nowrap; padding: 8px 12px; gap: 8px; }
+  .barWord { display: none; }
+  .barCentre { flex: 1; min-width: 0; justify-content: center; gap: 8px; }
+  .barLegend {
+    order: 9;
+    flex-basis: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    mask-image: linear-gradient(to right, #000 calc(100% - 16px), transparent);
+  }
+  .barLegend::-webkit-scrollbar { display: none; }
+  .barLegend > div { flex-wrap: nowrap; width: max-content; }
 }
-.fontBtn:hover { border-color: var(--color-accent); }
-.fontBtnOn { border-color: var(--color-accent); color: var(--color-accent); }
 
 .page {
   flex: 1;
