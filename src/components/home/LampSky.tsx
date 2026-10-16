@@ -7,8 +7,9 @@ import styles from "./LampSky.module.css";
  * The sky the landing page is read against — one for each reading light.
  *
  * Evening is مِشْكَاةٍ itself: the niche that holds the lamp, its halo, the
- * shaft it throws down the page and the embers it sends up. Day replaces the
- * lamp with a sun and its shafts, and the embers with the dust they light.
+ * shaft it throws down the page and the embers it sends up. Day is the same
+ * niche at noon: the sun where the lamp was, its beam down the page with the
+ * dust turning in it, and small lights rising where the lamp sends up embers.
  * Night keeps the niche and cools it to starlight.
  *
  * All three skies stay mounted and cross-fade on `--mk-scene-*`, so the sky is
@@ -193,8 +194,106 @@ function chromaGlow(s: Star): string {
 
 const round = (n: number) => Math.round(n * 10) / 10;
 
+/* ── day: the niche at noon ──────────────────────────────────────────────────
+   Built as the other two lights are built, layer for layer, with the sun
+   where the lamp hangs: its wash over the whole sky, the warmth it leaves on
+   the walls, the beam it throws down the page, the rays it fans out, the haze
+   it lifts, and its corona, glare and disc. Where the lamp sends up embers the
+   sun sends up small lamps of light; where night has stars, day has the dust
+   turning in its beam, each mote flashing as it catches the light. */
+
+/**
+ * The rays the sun fans out about itself: uneven in width and strength, with
+ * uneven gaps between, so it reads as light and not as a sunburst drawn with a
+ * ruler. Deterministic.
+ */
+function rays(seed: number): string {
+  let n = seed;
+  const rand = () => {
+    n = (n * 1664525 + 1013904223) % 4294967296;
+    return n / 4294967296;
+  };
+  const ink = "255, 252, 240";
+  const stops = [`rgba(${ink}, 0) 0deg`, `rgba(${ink}, 0) 104deg`];
+  for (let a = 104 + rand() * 3; ; ) {
+    const w = 2 + rand() * 6;
+    if (a + w > 256) break;
+    const alpha = (0.26 + rand() * 0.5).toFixed(2);
+    stops.push(
+      `rgba(${ink}, 0) ${a.toFixed(1)}deg`,
+      `rgba(${ink}, ${alpha}) ${(a + w / 2).toFixed(1)}deg`,
+      `rgba(${ink}, 0) ${(a + w).toFixed(1)}deg`,
+    );
+    a += w + 2 + rand() * 7;
+  }
+  stops.push(`rgba(${ink}, 0) 360deg`);
+  return `conic-gradient(from 0deg at 50% var(--day-sun-y), ${stops.join(", ")})`;
+}
+
+const DAY_RAYS_A = rays(24350);
+const DAY_RAYS_B = rays(1435);
+/** `[left%, size px, path, seconds, delay]` — the embers' own paths, a little larger. */
+const DAY_LAMPS = motes(24, 17, 30, 970411).map(
+  ([left, size, , , path, seconds, delay]) => [left, round(size * 2.3), path, seconds, delay] as const,
+);
+
+interface Glint {
+  /** Where it hangs, in per cent of the sky. */
+  left: number;
+  top: number;
+  size: number;
+  alpha: number;
+  /** Its slow wander in the air: period, phase and how far it goes. */
+  drift: number;
+  driftFrom: number;
+  dx: number;
+  dy: number;
+  /** Its flashing as it turns: which shape, period, phase, how dark between. */
+  pattern: 1 | 2 | 3;
+  fast: number;
+  fastFrom: number;
+  floor: number;
+}
+
+/**
+ * The dust in the sunbeam. Only what is in the beam is lit, so the motes are
+ * placed inside it: a column under the sun that widens as it falls, thickest
+ * down its middle. Each wanders a little in the air and flashes as it turns —
+ * the stars' scintillation, but deeper, because a mote of dust is only bright
+ * for the moment its face is to the sun. Deterministic.
+ */
+function glints(count: number, seed: number): Glint[] {
+  let n = seed;
+  const rand = () => {
+    n = (n * 1664525 + 1013904223) % 4294967296;
+    return n / 4294967296;
+  };
+  return Array.from({ length: count }, () => {
+    const top = round(9 + Math.pow(rand(), 0.85) * 80);
+    const half = 7 + top * 0.17;
+    const drift = round(16 + rand() * 22);
+    const fast = round(1.6 + rand() * 2.8);
+    const big = Math.pow(rand(), 2.2);
+    return {
+      left: round(50 + (rand() + rand() - 1) * half),
+      top,
+      size: round(2 + big * 3.6),
+      alpha: round(0.62 + rand() * 0.38),
+      drift,
+      driftFrom: round(-rand() * drift),
+      dx: Math.round((rand() * 2 - 1) * 22),
+      dy: Math.round(-8 - rand() * 26),
+      pattern: (1 + Math.floor(rand() * 3)) as 1 | 2 | 3,
+      fast,
+      fastFrom: round(-rand() * fast),
+      floor: round(0.12 + rand() * 0.3),
+    };
+  });
+}
+
+const DAY_GLINTS = glints(64, 3141529);
+
 const EVENING_EMBERS = motes(28, 24, 43, 20250814);
-const DAY_MOTES = motes(26, 14, 24, 970411);
 const NIGHT_EMBERS = motes(26, 16, 27, 616131);
 const NIGHT_STARS = stars(62, 114255);
 
@@ -250,14 +349,77 @@ export function LampSky() {
         <div className={styles.vignette} />
       </div>
 
-      {/* — day: the sun and the shafts it drops through the room — */}
+      {/* — day: the sun where the lamp hangs — */}
       <div className={`${styles.scene} ${styles.sceneDay}`}>
         <div className={styles.dayWash} />
-        <div className={styles.sun} />
-        <div className={`${styles.ray} ${styles.rayA}`} />
-        <div className={`${styles.ray} ${styles.rayB}`} />
-        <div className={`${styles.ray} ${styles.rayC}`} />
-        {light === "day" && <MoteField field={DAY_MOTES} rgb="126,88,32" glowRgb="168,124,56" />}
+        <div className={styles.dayWallA} />
+        <div className={styles.dayWallB} />
+        <div className={styles.dayShaft} />
+        <div className={styles.dayShaftCore} />
+        <div className={`${styles.dayRays} ${styles.dayRaysA}`} style={{ backgroundImage: DAY_RAYS_A }} />
+        <div className={`${styles.dayRays} ${styles.dayRaysB}`} style={{ backgroundImage: DAY_RAYS_B }} />
+        <div className={styles.dayHazeA} />
+        <div className={styles.dayHazeB} />
+        <div className={styles.sunRing} />
+        <div className={styles.sunCorona} />
+        <div className={styles.sunGlare} />
+        <div className={styles.sunHalo} />
+        <div className={styles.sunDisc} />
+        {light === "day" && (
+          <>
+            {/* The dust in the beam, catching the light as it turns. */}
+            <div className={styles.motes}>
+              {DAY_GLINTS.map((g, i) => (
+                <span
+                  key={i}
+                  className={styles.glint}
+                  style={
+                    {
+                      left: `${g.left}%`,
+                      top: `${g.top}%`,
+                      width: g.size,
+                      height: g.size,
+                      opacity: g.alpha,
+                      animationDuration: `${g.drift}s`,
+                      animationDelay: `${g.driftFrom}s`,
+                      "--glint-x": `${g.dx}px`,
+                      "--glint-y": `${g.dy}px`,
+                    } as React.CSSProperties
+                  }
+                >
+                  <span
+                    className={`${styles.glintCore} ${styles[`scint${g.pattern}`]}`}
+                    style={
+                      {
+                        boxShadow: `0 0 ${(g.size * 3.4).toFixed(1)}px ${(g.size * 1.1).toFixed(1)}px rgba(255, 226, 160, ${(g.alpha * 0.8).toFixed(2)})`,
+                        animationDuration: `${g.fast}s`,
+                        animationDelay: `${g.fastFrom}s`,
+                        "--mk-star-floor": g.floor,
+                      } as React.CSSProperties
+                    }
+                  />
+                </span>
+              ))}
+            </div>
+            {/* What the lamp sends up as embers, the sun sends up as lamps of
+                its own: small lights rising, warm at the heart. */}
+            <div className={styles.motes}>
+              {DAY_LAMPS.map(([left, size, path, seconds, delay], i) => (
+                <span
+                  key={i}
+                  className={`${styles.mote} ${styles[`mote${path}`]} ${styles.lamp}`}
+                  style={{
+                    left: `${left}%`,
+                    width: size,
+                    height: size,
+                    animationDuration: `${seconds}s`,
+                    animationDelay: `${delay}s`,
+                  }}
+                />
+              ))}
+            </div>
+          </>
+        )}
         <div className={styles.vignette} />
       </div>
 

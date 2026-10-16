@@ -31,11 +31,16 @@
    in evening and night it is a dark niche with pale ink, in day it is bright.
    `--mk-scene-*` is which of the three skies is on; see LampSky.module.css. */
 :root {
-  --mk-paper: #f4eee2;
-  --mk-ink: #2b2318;
-  --mk-gold: #b68235;
-  --mk-gold-deep: #8a6224;
-  --mk-gold-deeper: #7d5411;
+  /* Evening's paper is lamplit, so its colours are held strong: a sepia with
+     real warmth in it, an ink near to brown-black that the muted mixes below
+     stay legible in, a gold with its saturation kept, and warm neutrals —
+     a grey chip on sepia reads as dirt, not as paper. Day and night state
+     every one of these for themselves. */
+  --mk-paper: #f2e7d3;
+  --mk-ink: #24190d;
+  --mk-gold: #b0731f;
+  --mk-gold-deep: #855414;
+  --mk-gold-deeper: #714407;
   --mk-gold-pale: #e9c88d;
   --mk-hero-bg: radial-gradient(
     150% 105% at 50% -6%,
@@ -69,7 +74,7 @@
   --mk-scene-night: 0;
 
   --color-bg: var(--mk-paper);
-  --color-surface: #ebe3d4;
+  --color-surface: #e8d9bf;
   --color-text: var(--mk-ink);
   /* The accent is text far more often than it is a stroke — eyebrows, ayah
      numbers, the ordinal on a bookmark — so it takes the deep step of the gold
@@ -82,17 +87,17 @@
 
   /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
      same step of any role matches the others in visual value. */
-  --color-neutral-100: #f8f3e9;
+  --color-neutral-100: #f8eedb;
   --color-neutral-200: #eae7e7;
   --color-neutral-300: #d7d3d3;
   --color-neutral-400: #bab6b6;
   --color-neutral-500: #9b9797;
   --color-neutral-600: #7d7979;
   --color-neutral-700: #605d5d;
-  --color-neutral-800: #444141;
+  --color-neutral-800: #4a3a28;
   --color-neutral-900: #2d2b2b;
 
-  --color-accent-100: #f5e6cd;
+  --color-accent-100: #f3deb8;
   --color-accent-200: #ffe3bf;
   --color-accent-300: #facb8d;
   --color-accent-400: #e1ad66;
@@ -101,7 +106,7 @@
   /* The step that carries accent-coloured *text* — links above all — is the
      light's own deep gold, so it stays legible in all three grounds. */
   --color-accent-700: var(--mk-gold-deeper);
-  --color-accent-800: #6d4d14;
+  --color-accent-800: #64400a;
   --color-accent-900: #3a270d;
 
   --color-accent-2-100: #fff3e4;
@@ -184,7 +189,9 @@
 
 /* Day. Nearly white paper and a sun overhead: the one light in which the
    landing page is bright rather than lit, so its hero ink is dark and its
-   pale gold is not pale at all. */
+   pale gold is not pale at all. The landing page is the open sky at midday:
+   bleached white round the sun at the top, and the pale, hazed blue of a hot
+   country's sky away from it, deepest in the upper corners. */
 :root[data-theme="day"] {
   --mk-paper: #fbfaf8;
   --mk-ink: #1c1b19;
@@ -192,16 +199,14 @@
   --mk-gold-deep: #85591a;
   --mk-gold-deeper: #6f4a13;
   --mk-gold-pale: #8a5f1c;
-  /* Five stops, like the other two lights. A gradient only interpolates with
-     another of the same shape, so a four-stop day would jump to and from
-     evening and night while those two faded into each other. */
+  /* Five stops, like the other two lights: the same sky, differently lit. */
   --mk-hero-bg: radial-gradient(
     150% 105% at 50% -6%,
-    #fffdf7 0%,
-    #fdfbf5 17%,
-    #faf7ef 38%,
-    #f4f0e6 68%,
-    #efe9dd 100%
+    #fdfbf2 0%,
+    #e8eff1 15%,
+    #c7dcea 36%,
+    #a3c4e1 66%,
+    #8ab2d8 100%
   );
   --mk-hero-ink: #26241f;
   --mk-hero-kicker: #6b4711;
@@ -533,32 +538,15 @@ textarea.input { min-height: 90px; resize: vertical; font-family: var(--font-bod
      fade:  opacity 0 → 1
      sheet: opacity 0 → 1, translateY(18px) → none */
 
-/* The window a change of reading light is made inside — see setTheme() in
-   lib/store/settings.tsx. It lends every element the same transition for as
-   long as the light takes to arrive, so the page turns as one thing rather than
-   in instalments, and takes it away again afterwards so nothing carries a
-   transition it never asked for. `!important` because it has to outrank the
-   transitions components declare for their own hover and route changes.
-
-   `background-image` is in the list, which is why all three of `--mk-hero-bg`'s
-   variants are written with the same five stops: gradients interpolate only
-   with gradients of the same shape, and one written differently would jump
-   while everything around it faded.
-
-   Not applied under reduced motion — setTheme never opens the window there, so
-   the change is instant, which is what that preference asks for. */
-:root[data-light-changing] *,
-:root[data-light-changing] *::before,
-:root[data-light-changing] *::after {
-  transition:
-    background-color 500ms ease,
-    background-image 500ms ease,
-    border-color 500ms ease,
-    box-shadow 500ms ease,
-    color 500ms ease,
-    fill 500ms ease,
-    opacity 500ms ease,
-    stroke 500ms ease !important;
+/* A change of reading light — see setTheme() in lib/store/settings.tsx. It is
+   made as a view transition: the page in the old light, held as one picture,
+   dissolving into the page in the new. One picture fades however many
+   elements the page holds, so a long surah turns as quickly as the landing
+   page. Not used under reduced motion; there the change is instant. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 500ms;
+  animation-timing-function: ease;
 }
 
 @media (prefers-reduced-motion: reduce) {

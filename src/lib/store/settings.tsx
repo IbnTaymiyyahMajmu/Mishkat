@@ -212,33 +212,25 @@ function reviveLastRead(stored: unknown): LastRead | null {
 }
 
 /**
- * How long a change of reading light takes. Must match the duration in the
- * `[data-light-changing]` rule in globals.css.
- */
-const LIGHT_MS = 500;
-
-let lightTimer: ReturnType<typeof setTimeout> | null = null;
-
-/**
  * Move the whole document to another reading light.
  *
  * Every colour on the site is a `--mk-*` token on the document element, so the
  * change itself is one attribute. Making it *look* like one change is the
- * harder half: hundreds of elements read those tokens, and each would otherwise
- * move on whatever transition it happens to declare — the landing page's ground
- * over 700ms, the header over 300ms, and everything that simply states
- * `color: var(--mk-hero-ink)` not at all. The result was a light that arrived in
+ * harder half: each element reading those tokens would otherwise move on
+ * whatever transition it happens to declare, and the light would arrive in
  * instalments.
  *
- * So the change is made inside a window that lends every element the same
- * transition, and takes it away again once the light has arrived. Nothing
- * carries a transition it did not ask for outside those five hundred
- * milliseconds, and inside them the whole page turns together.
+ * So the change is made as a view transition: the browser keeps a picture of
+ * the page in the old light, makes the change underneath it, and dissolves the
+ * picture into the new light (the duration is in globals.css). The whole page
+ * turns as one, and it costs the same on a surah of two hundred ayat as on the
+ * landing page. It used to be done by lending every element a transition for
+ * the length of the change, which on a long surah meant some eighteen thousand
+ * elements restyled on every frame — seconds of a frozen page, with the words
+ * half-faded while it struggled.
  *
- * The order matters. The window has to be open, and a style recalc has to have
- * run under it, before the tokens change: a transition interpolates from the
- * style an element had when the change landed, so if the window opened in the
- * same pass there would be nothing to move from.
+ * Where the browser has no view transitions, or the reader has asked for
+ * stillness, the light simply changes.
  */
 function setTheme(root: HTMLElement, theme: Theme) {
   const previous = root.dataset.theme;
@@ -249,22 +241,17 @@ function setTheme(root: HTMLElement, theme: Theme) {
   const changing = !!previous && previous !== theme;
   const still = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
-  if (changing && !still) {
-    root.dataset.lightChanging = "";
-    void root.offsetHeight; // fix the old light as the style to move from
+  if (changing && !still && typeof document.startViewTransition === "function") {
+    const transition = document.startViewTransition(() => {
+      root.dataset.theme = theme;
+    });
+    // The browser skips the dissolve when it cannot show one — a hidden tab,
+    // or another change of light before this one has finished — and says so
+    // by rejecting `ready`. The light has changed all the same.
+    transition.ready.catch(() => {});
+    return;
   }
-
   root.dataset.theme = theme;
-
-  if (lightTimer) clearTimeout(lightTimer);
-  if (changing && !still) {
-    lightTimer = setTimeout(() => {
-      delete root.dataset.lightChanging;
-      lightTimer = null;
-    }, LIGHT_MS + 60);
-  } else {
-    delete root.dataset.lightChanging;
-  }
 }
 
 const settingsStore = createPersistedStore<Settings>("mishkat.settings.v1", DEFAULT_SETTINGS, sanitise);
