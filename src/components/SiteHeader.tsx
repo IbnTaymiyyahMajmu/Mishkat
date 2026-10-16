@@ -38,10 +38,7 @@ const LIGHTS: { id: Theme; title: MessageKey; icon: React.ReactNode }[] = [
   },
 ];
 
-/**
- * Where the site goes. The icon is only drawn on a phone, where the places are
- * laid out as niches and each needs something in it besides its name.
- */
+/** Where the site goes, each with what is drawn in its niche above its name. */
 const NAV: { href: string; label: MessageKey; match: (p: string) => boolean; icon: React.ReactNode }[] = [
   {
     href: "/surahs/",
@@ -135,9 +132,10 @@ export function SiteHeader() {
   // the site is a page, and the bar is the page's own colour.
   const onHome = pathname === "/";
 
-  // On a phone the six places do not fit beside the name, the lights and the
-  // search, and squeezed in together none of them could be read or reached.
-  // So there they are folded into a menu that drops from the bar.
+  // The six places are kept in a menu that drops from the bar, at every width.
+  // Laid out as a row of niches they are a map of the site rather than a line
+  // of words squeezed in beside everything else, and the bar is left holding
+  // only what a reader reaches for while reading: the light and the search.
   //
   // The menu is open on the page it was opened on, and only there: arriving
   // anywhere else — by one of its own niches, the back button, a link in the
@@ -171,22 +169,6 @@ export function SiteHeader() {
         {!arabicScript && <span className={styles.brandName}>{t("brand.name")}</span>}
         <span className={styles.brandKicker}>{t("brand.kicker")}</span>
       </Link>
-
-      <nav className={styles.nav} aria-label={t("nav.primary")}>
-        {NAV.map((item) => {
-          const current = item.match(pathname);
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              aria-current={current ? "page" : undefined}
-              className={`${styles.navLink} ${current ? styles.navLinkOn : ""}`}
-            >
-              {t(item.label)}
-            </Link>
-          );
-        })}
-      </nav>
 
       <div className={styles.lights} role="group" aria-label={t("light.group")}>
         {LIGHTS.map((light) => {
@@ -245,6 +227,7 @@ export function SiteHeader() {
           <span />
           <span />
         </span>
+        <span className={styles.menuLabel}>{t("nav.menu")}</span>
       </button>
 
       {/* The page under an open menu is dimmed and out of reach, and a tap on

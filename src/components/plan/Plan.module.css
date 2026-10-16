@@ -450,7 +450,10 @@
   color: var(--muted-88);
 }
 
-.rungOwn {
+/* No number to give a column to, so the one column is the whole width. Held
+   at two classes so the phone's narrower number column below does not take
+   it back and pour the whole card into that column. */
+.rung.rungOwn {
   grid-template-columns: minmax(0, 1fr);
   margin-top: 10px;
   cursor: default;
