@@ -26,12 +26,6 @@
 }
 .headerHome .brandArabic { color: var(--mk-gold-pale); }
 .headerHome .brandKicker { color: color-mix(in srgb, var(--mk-hero-ink) 58%, transparent); }
-.headerHome .navLink { color: color-mix(in srgb, var(--mk-hero-ink) 72%, transparent); }
-.headerHome .navLink:hover { color: var(--mk-gold-pale); }
-.headerHome .navLinkOn {
-  color: var(--mk-gold-pale);
-  border-bottom-color: var(--mk-gold-pale);
-}
 /* The secondary button's border is mixed from the body ink, which is invisible
    here; the search control keeps its outline in the page's own pale. */
 .headerHome .search,
@@ -83,32 +77,6 @@
   text-transform: uppercase;
   color: var(--muted-45);
   font-family: var(--font-heading);
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.nav::-webkit-scrollbar { display: none; }
-
-.navLink {
-  font-family: var(--font-heading);
-  font-weight: var(--font-heading-weight);
-  font-size: 14px;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  padding: 6px 10px;
-  letter-spacing: 0.01em;
-  color: var(--color-text);
-  white-space: nowrap;
-}
-.navLink:hover { color: var(--color-accent); }
-.navLinkOn {
-  color: var(--color-accent);
-  border-bottom-color: var(--color-accent);
 }
 
 /* — the reading light —
@@ -174,22 +142,23 @@
 }
 
 /* — the menu —
-   A phone's way to the six places: a button in the bar, a sheet of niches that
-   drops from it, and the page dimmed underneath. None of it is drawn until the
-   bar is too narrow to hold the places itself; see the rules at the end. */
-.header .menuButton,
-.scrim,
-.sheet {
-  display: none;
-}
+   The way to the six places, at every width: a button in the bar, a sheet of
+   niches that drops from it, and the page dimmed underneath. */
 
-/* Two strokes, the lower one shorter, that cross into a mark to close it. */
+/* Two strokes, the lower one shorter, that cross into a mark to close it. A
+   pill with its name beside it where there is room, as the search is. */
 .menuButton {
-  width: 34px;
+  gap: 9px;
   height: 34px;
   padding: 0;
-  border-radius: 50%;
+  padding-inline: 12px 14px;
+  border-radius: 999px;
   flex: none;
+}
+.menuLabel {
+  opacity: 0.72;
+  font-size: 12.5px;
+  letter-spacing: 0.03em;
 }
 .menuGlyph {
   position: relative;
@@ -249,7 +218,7 @@
   position: absolute;
   top: 100%;
   inset-inline: 0;
-  padding: 18px 16px 24px;
+  padding: 26px 24px 30px;
   color: var(--color-text);
   background: var(--sheet-ground);
   border-bottom: 1px solid var(--color-divider);
@@ -286,17 +255,17 @@
 .glowMid { stop-color: var(--mk-gold); stop-opacity: 0.1; }
 .glowFar { stop-color: var(--mk-gold); stop-opacity: 0; }
 
-/* Three to a row, two rows: every place in reach of a thumb, none of them
-   scrolled past. Capped, so on a wide phone held sideways the niches stay
-   niches and do not grow into doorways. */
+/* One arcade of six across the width of a desk; on a phone, three to a row
+   and two rows, every place in reach of a thumb and none scrolled past. Capped
+   either way, so the niches stay niches and do not grow into doorways. */
 .niches {
   list-style: none;
   margin: 0 auto;
   padding: 0;
-  max-width: 420px;
+  max-width: 900px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px 12px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
 }
 /* Each comes down a moment after the one before it, in reading order. */
 .niches > li {
@@ -416,46 +385,50 @@
   .headerHome .niche:hover .nicheOuter { stroke: color-mix(in srgb, var(--mk-gold-pale) 60%, transparent); }
 }
 
+/* Open, the bar and the sheet are one piece: above the page and anything
+   floating on it, with no rule between them. */
+.headerOpen {
+  z-index: 80;
+  border-bottom-color: transparent;
+}
+/* On the landing page the bar has no ground to share, so while the menu is
+   open it takes on the sheet's glass. */
+.headerHome::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: color-mix(in srgb, var(--mk-hero-ground) 78%, transparent);
+  -webkit-backdrop-filter: blur(20px) saturate(1.25);
+  backdrop-filter: blur(20px) saturate(1.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 260ms ease;
+}
+.headerHome.headerOpen::before { opacity: 1; }
+
 @media (max-width: 860px) {
   .header { gap: 12px; padding: 0 14px; }
   .brandKicker { display: none; }
-  .searchLabel, .kbd { display: none; }
+  .searchLabel, .kbd, .menuLabel { display: none; }
   .search { width: 36px; padding-inline: 0; }
+  .menuButton { width: 36px; height: 36px; padding-inline: 0; }
+  .niches { max-width: 640px; gap: 12px; }
 }
 
-/* Too narrow for the six places beside everything else: below this they go
-   into the menu, and the bar keeps the name, the lights, the search and the
-   way to the rest — each at a size a thumb can find. */
-@media (max-width: 760px) {
+/* A phone: the bar keeps the name, the lights, the search and the way to the
+   rest, each at a size a thumb can find, and the niches go three to a row. */
+@media (max-width: 620px) {
   .header { gap: 8px; padding: 0 16px; }
-  .nav { display: none; }
   .brand { gap: 9px; }
-  .search { width: 34px; height: 34px; }
-  .header .menuButton { display: inline-flex; }
-  .scrim,
-  .sheet { display: block; }
-
-  /* Open, the bar and the sheet are one piece: above the page and anything
-     floating on it, with no rule between them. */
-  .headerOpen {
-    z-index: 80;
-    border-bottom-color: transparent;
+  .search,
+  .menuButton { width: 34px; height: 34px; }
+  .sheet { padding: 18px 16px 24px; }
+  .niches {
+    max-width: 420px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px 12px;
   }
-  /* On the landing page the bar has no ground to share, so while the menu is
-     open it takes on the sheet's glass. */
-  .headerHome::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: color-mix(in srgb, var(--mk-hero-ground) 78%, transparent);
-    -webkit-backdrop-filter: blur(20px) saturate(1.25);
-    backdrop-filter: blur(20px) saturate(1.25);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 260ms ease;
-  }
-  .headerHome.headerOpen::before { opacity: 1; }
 }
 
 /* The narrowest phones keep the name in Arabic alone. */

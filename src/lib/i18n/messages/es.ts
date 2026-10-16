@@ -98,7 +98,7 @@ export const es: Messages = {
   "daily.94:5": "En medio de la dificultad",
   "daily.65:3": "Preocupación por el sustento",
   "daily.39:53": "Sentirse más allá del perdón",
-  "daily.3:139": "Desánimo",
+  "daily.3:139": "Cuando pierdes el ánimo",
   "daily.20:114": "Antes de estudiar",
   "daily.29:69": "Intentar seguir adelante",
   "daily.17:82": "Sanación",

@@ -110,7 +110,7 @@ export const en = {
   "daily.94:5": "In the middle of hardship",
   "daily.65:3": "Worry about provision",
   "daily.39:53": "Feeling past forgiving",
-  "daily.3:139": "Discouragement",
+  "daily.3:139": "When you are losing heart",
   "daily.20:114": "Before study",
   "daily.29:69": "Trying to keep on",
   "daily.17:82": "Healing",

@@ -8,8 +8,8 @@
    darkens it — except the vignette, which closes the frame.
 
    Day is the exception and the reason `screen` is set per scene rather than on
-   `.layer`: on near-white paper `screen` is a no-op, so the sun and its shafts
-   are painted normally.
+   `.layer`: on a ground this pale `screen` is a no-op, so the sun and its
+   sky are painted normally.
 
    The three grounds are stacked and cross-faded on `--mk-scene-*`, which the
    light sets in globals.css. It is one fixed element behind a scrolling page,
@@ -28,8 +28,9 @@
 /* Which sky is lit is a variable rather than React state, so a hard load of the
    landing page in night paints the night sky in the first frame — the inline
    script in the layout has set the light before any of this is parsed. The
-   dissolve between skies is lent by the window in globals.css, so it runs at
-   the same rate as the ground and the ink rather than on a timing of its own. */
+   dissolve between skies is the page's own change of light (a view transition,
+   see globals.css), so it runs with the ground and the ink rather than on a
+   timing of its own. */
 .scene {
   position: absolute;
   inset: 0;
@@ -192,90 +193,292 @@
 }
 
 /* ── day ──────────────────────────────────────────────────────────────────
-   No blend mode here: on paper this near-white, `screen` would erase it. */
+   The niche at noon, built as the lamp is built, layer for layer, with the
+   sun where the lamp hangs: the wash it spreads over the whole sky, the warmth
+   it leaves on the walls, the beam it throws down the page, the rays it fans
+   out, the haze it lifts, the ring the high air draws about it, and its
+   corona, glare and disc. The sky itself is the ground (globals.css): white
+   round the sun and deepening to blue in the corners, so that the light laid
+   over it — all of it white and gold — has somewhere to show.
+
+   No blend mode: on a ground this pale, `screen` would erase it. */
+
+.sceneDay {
+  --day-sun-y: 0px;
+}
+
+/* In the other two lights the day's sky stays in the page, unseen, so that a
+   change of light can dissolve into it — but it holds still while it waits:
+   a beam pulsing at nothing's opacity still costs a frame. */
+:global(html:not([data-theme="day"])) .sceneDay * {
+  animation-play-state: paused;
+}
 
 .dayWash {
   position: absolute;
   left: 50%;
   top: -8%;
-  width: 1560px;
-  height: 1320px;
+  width: 1700px;
+  height: 1400px;
   background: radial-gradient(
     50% 50% at 50% 50%,
-    rgba(255, 234, 178, 0.3) 0%,
-    rgba(255, 218, 138, 0.15) 30%,
-    rgba(240, 200, 116, 0.055) 56%,
-    rgba(240, 200, 116, 0) 78%
+    rgba(255, 250, 230, 0.55) 0%,
+    rgba(255, 240, 200, 0.24) 26%,
+    rgba(250, 232, 190, 0.08) 52%,
+    rgba(250, 232, 190, 0) 76%
   );
   animation: breathe 30s ease-in-out infinite;
 }
 
-.sun {
+/* — the warmth the walls hold, off to either side, as in the evening — */
+.dayWallA,
+.dayWallB {
   position: absolute;
-  left: 50%;
-  top: -5%;
-  width: 210px;
-  height: 210px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 253, 242, 0.85) 0%,
-    rgba(255, 246, 214, 0.55) 42%,
-    rgba(255, 236, 178, 0.2) 68%,
-    rgba(255, 236, 178, 0) 84%
-  );
-  filter: blur(8px);
-  animation: glow 14s ease-in-out infinite;
+  background: radial-gradient(58% 52% at 50% 50%, rgba(255, 246, 226, 0.5) 0%, rgba(255, 238, 206, 0) 72%);
+}
+.dayWallA {
+  left: 8%;
+  top: 56%;
+  width: 820px;
+  height: 640px;
+  animation: breathe 25s ease-in-out infinite;
+}
+.dayWallB {
+  left: 92%;
+  top: 80%;
+  width: 900px;
+  height: 720px;
+  animation: breathe 33s ease-in-out infinite 9s;
 }
 
-/* Three shafts leaning off the vertical, as light does through a high window.
-   Only opacity animates, so the lean can live on `transform`. */
-.ray {
+/* — the beam —
+   The light falling down the page, as the lamp's shaft falls in the evening:
+   a broad column widening as it goes, and a brighter heart inside it, the two
+   pulsing out of step. The column's shape is cut on a child and the blur laid
+   on the parent, so its edges are soft and not ruled. Only the opacity
+   moves, so each carries its own centring transform. */
+.dayShaft,
+.dayShaftCore {
   position: absolute;
-  top: -20%;
-  height: 150vh;
-  transform-origin: top center;
-  animation: pulse 17s ease-in-out infinite;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0);
 }
-.rayA {
-  left: 18%;
-  width: 300px;
-  transform: rotate(-13deg);
+.dayShaft::before,
+.dayShaftCore::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.dayShaft {
+  width: 900px;
+  height: 92vh;
+  filter: blur(30px);
+  animation: pulse 11s ease-in-out infinite 1.2s;
+}
+.dayShaft::before {
+  clip-path: polygon(36% 0, 64% 0, 100% 100%, 0 100%);
   background: linear-gradient(
     180deg,
-    rgba(255, 224, 144, 0.38) 0%,
-    rgba(252, 220, 150, 0.17) 36%,
-    rgba(248, 220, 164, 0) 76%
+    rgba(255, 252, 240, 0.72) 0%,
+    rgba(255, 249, 232, 0.44) 30%,
+    rgba(255, 247, 228, 0.2) 64%,
+    rgba(255, 247, 228, 0) 96%
   );
-  filter: blur(22px);
 }
-.rayB {
-  left: 46%;
-  width: 420px;
-  transform: rotate(-5deg);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 230, 160, 0.42) 0%,
-    rgba(252, 222, 156, 0.19) 40%,
-    rgba(248, 220, 164, 0) 78%
-  );
-  filter: blur(26px);
-  animation-duration: 21s;
-  animation-delay: 3s;
-}
-.rayC {
-  left: 74%;
-  width: 260px;
-  transform: rotate(6deg);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 224, 144, 0.32) 0%,
-    rgba(252, 220, 150, 0.14) 34%,
-    rgba(248, 220, 164, 0) 74%
-  );
+.dayShaftCore {
+  width: 440px;
+  height: 82vh;
   filter: blur(20px);
-  animation-duration: 19s;
-  animation-delay: 7s;
+  animation: pulse 7.7s ease-in-out infinite;
+}
+.dayShaftCore::before {
+  clip-path: polygon(40% 0, 60% 0, 84% 100%, 16% 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 250, 0.78) 0%,
+    rgba(255, 252, 240, 0.4) 38%,
+    rgba(255, 250, 236, 0.1) 70%,
+    rgba(255, 250, 236, 0) 92%
+  );
+}
+
+/* — the rays —
+   Two fans from the sun, drawn differently, breathing out of step and swaying
+   a degree or two about it, so the light seems to shift without ever being
+   seen to move. They fade with distance. */
+.dayRays {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% var(--day-sun-y);
+  filter: blur(7px);
+  -webkit-mask-image: radial-gradient(110% 92% at 50% 0%, #000 0%, rgba(0, 0, 0, 0.75) 34%, rgba(0, 0, 0, 0.28) 64%, transparent 90%);
+  mask-image: radial-gradient(110% 92% at 50% 0%, #000 0%, rgba(0, 0, 0, 0.75) 34%, rgba(0, 0, 0, 0.28) 64%, transparent 90%);
+}
+.dayRaysA { animation: rays-a 23s ease-in-out infinite; }
+.dayRaysB { animation: rays-b 31s ease-in-out infinite; }
+
+/* — the haze —
+   The heat the sun lifts, drifting up and away across most of a minute, as
+   the lamp's smoke does. */
+.dayHazeA,
+.dayHazeB {
+  position: absolute;
+  border-radius: 50%;
+}
+.dayHazeA {
+  left: 22%;
+  top: 40%;
+  width: 520px;
+  height: 620px;
+  background: radial-gradient(circle, rgba(255, 252, 244, 0.34) 0%, rgba(255, 252, 244, 0) 70%);
+  filter: blur(26px);
+  animation: smoke 36s ease-in-out infinite;
+}
+.dayHazeB {
+  left: 70%;
+  top: 54%;
+  width: 600px;
+  height: 720px;
+  background: radial-gradient(circle, rgba(255, 252, 244, 0.28) 0%, rgba(255, 252, 244, 0) 70%);
+  filter: blur(32px);
+  animation: smoke 48s ease-in-out infinite 13s;
+}
+
+/* — the ring —
+   The halo the high air draws about a sun near the top of the sky: a faint
+   circle well out from it, warm on its inner edge and cool on its outer,
+   coming and going as the air does. */
+.sunRing {
+  position: absolute;
+  left: 50%;
+  top: var(--day-sun-y);
+  width: 780px;
+  aspect-ratio: 1;
+  margin: -390px 0 0 -390px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle closest-side,
+    rgba(255, 255, 255, 0) 83%,
+    rgba(255, 190, 140, 0.3) 87.5%,
+    rgba(255, 246, 226, 0.42) 90.5%,
+    rgba(190, 216, 255, 0.3) 93.5%,
+    rgba(190, 216, 255, 0) 98%
+  );
+  filter: blur(2.5px);
+  animation: ring 21s ease-in-out infinite;
+}
+
+/* — the sun —
+   Risen to the top edge of the page, so its lower half hangs in the sky: a
+   white disc too bright to have an edge, a warm corona that swells and
+   settles, and the glare the eye adds — fine spokes of light, turning so
+   slowly that it is only ever seen to have moved. */
+.sunCorona {
+  position: absolute;
+  left: 50%;
+  top: var(--day-sun-y);
+  width: 1400px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle closest-side,
+    rgba(255, 255, 252, 0.98) 0%,
+    rgba(255, 252, 238, 0.86) 7%,
+    rgba(255, 244, 212, 0.5) 18%,
+    rgba(255, 236, 196, 0.2) 38%,
+    rgba(255, 236, 196, 0.06) 62%,
+    rgba(255, 236, 196, 0) 100%
+  );
+  animation: glow 16s ease-in-out infinite;
+}
+
+.sunGlare {
+  position: absolute;
+  left: 50%;
+  top: var(--day-sun-y);
+  width: 880px;
+  aspect-ratio: 1;
+  margin: -440px 0 0 -440px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 4deg,
+    rgba(255, 252, 236, 0) 0deg,
+    rgba(255, 250, 228, 0.7) 1.1deg,
+    rgba(255, 252, 236, 0) 2.4deg,
+    rgba(255, 252, 236, 0) 7.5deg
+  );
+  -webkit-mask-image: radial-gradient(circle closest-side, #000 8%, rgba(0, 0, 0, 0.5) 30%, transparent 78%);
+  mask-image: radial-gradient(circle closest-side, #000 8%, rgba(0, 0, 0, 0.5) 30%, transparent 78%);
+  filter: blur(1.2px);
+  animation: glare-turn 300s linear infinite;
+}
+
+/* The glare close about the disc, brightening and settling as a flame does,
+   but slowly. */
+.sunHalo {
+  position: absolute;
+  left: 50%;
+  top: var(--day-sun-y);
+  width: 160px;
+  height: 160px;
+  margin: -80px 0 0 -80px;
+  border-radius: 50%;
+  box-shadow:
+    0 0 90px 36px rgba(255, 248, 224, 0.8),
+    0 0 220px 90px rgba(255, 234, 186, 0.42);
+  animation: pulse 8.3s ease-in-out infinite;
+}
+
+.sunDisc {
+  position: absolute;
+  left: 50%;
+  top: var(--day-sun-y);
+  width: 160px;
+  height: 160px;
+  margin: -80px 0 0 -80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #fffffb 62%, #fff4d6 84%, rgba(255, 236, 190, 0) 100%);
+  box-shadow: 0 0 30px 10px rgba(255, 255, 250, 0.98);
+  animation: sun-breathe 9s ease-in-out infinite;
+}
+
+/* — the dust in the beam —
+   Where night has stars, day has the motes turning in its light: each one
+   wandering a little in the air, and flashing — deeper than a star wavers,
+   because a mote is only bright for the moment its face is to the sun. The
+   wander sits on the wrapper and the flash on the core, as with the stars. */
+.glint {
+  position: absolute;
+  animation-name: glint-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.glintCore {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fffef8 0%, #fff3d0 45%, rgba(255, 214, 140, 0) 100%);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* — the lamps —
+   The embers' paths, but each a small light rather than a spark: white at
+   the heart, gold around it, and a glow wider than itself, so on a bright
+   sky it reads as something lit and not as a speck. */
+.lamp {
+  background: radial-gradient(
+    circle,
+    #fffef4 0%,
+    #fff1c6 34%,
+    rgba(255, 206, 112, 0.92) 62%,
+    rgba(246, 180, 72, 0) 100%
+  );
+  box-shadow:
+    0 0 10px 3px rgba(255, 204, 108, 0.6),
+    0 0 26px 8px rgba(255, 226, 160, 0.34);
 }
 
 /* ── night ────────────────────────────────────────────────────────────────
@@ -495,9 +698,9 @@
 .sceneDay .vignette {
   background: radial-gradient(
     140% 100% at 50% 6%,
-    rgba(198, 176, 140, 0) 42%,
-    rgba(198, 176, 140, 0.14) 78%,
-    rgba(186, 163, 124, 0.26) 100%
+    rgba(96, 132, 172, 0) 48%,
+    rgba(96, 132, 172, 0.12) 78%,
+    rgba(80, 116, 158, 0.26) 100%
   );
 }
 .sceneNight .vignette {
@@ -607,6 +810,37 @@
   100% { transform: translate3d(-40px, -280px, 0) scale(1.3); opacity: 0; }
 }
 
+/* Day's motions. Only opacity and transform, and nothing on the same period
+   as anything else. */
+@keyframes rays-a {
+  0%, 100% { opacity: 0.95; transform: rotate(-1.4deg); }
+  50% { opacity: 0.35; transform: rotate(1.2deg); }
+}
+
+@keyframes rays-b {
+  0%, 100% { opacity: 0.3; transform: rotate(1.6deg); }
+  50% { opacity: 0.9; transform: rotate(-1deg); }
+}
+
+@keyframes ring {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
+@keyframes sun-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes glint-drift {
+  from { transform: translate(0, 0); }
+  to { transform: translate(var(--glint-x), var(--glint-y)); }
+}
+
+@keyframes glare-turn {
+  to { transform: rotate(360deg); }
+}
+
 @keyframes ember-a {
   0% { transform: translate3d(0, 40px, 0) scale(0.7); opacity: 0; }
   12% { opacity: 1; }
@@ -635,9 +869,14 @@
   .halo, .nightHalo { width: 720px; height: 720px; }
   .shaft, .nightShaft { width: 100%; }
   .wallA, .wallB, .smokeA, .smokeB, .nightSmokeA, .nightSmokeB { display: none; }
-  .rayA, .rayC { display: none; }
-  .rayB { left: 50%; width: 80%; transform: translateX(-50%) rotate(-3deg); }
+  /* A smaller sun on a narrower sky. The walls and the haze go as the
+     evening's do, and half the dust with the half of the stars. */
+  .dayWallA, .dayWallB, .dayHazeA, .dayHazeB { display: none; }
+  .sunRing { width: 540px; margin: -270px 0 0 -270px; }
+  .sunCorona { width: 900px; }
+  .sunGlare { width: 560px; margin: -280px 0 0 -280px; }
+  .sunDisc, .sunHalo { width: 116px; height: 116px; margin: -58px 0 0 -58px; }
   .mote:nth-child(2n) { display: none; }
   /* Half the field, on a screen where the other half was a pixel wide anyway. */
-  .star:nth-child(2n) { display: none; }
+  .star:nth-child(2n), .glint:nth-child(2n) { display: none; }
 }
