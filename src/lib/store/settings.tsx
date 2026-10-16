@@ -231,9 +231,18 @@ function reviveLastRead(stored: unknown): LastRead | null {
  *
  * Where the browser has no view transitions, or the reader has asked for
  * stillness, the light simply changes.
+ *
+ * A dissolve puts its light on the element a frame or more after it is asked
+ * for, so the element is not a record of what was last chosen. That is kept
+ * here instead, and it is what a dissolve applies when it comes to land: a
+ * change asked for earlier must never arrive after one asked for since, and
+ * leave the page in a light the buttons say it is not in.
  */
+let wantedTheme: Theme | null = null;
+
 function setTheme(root: HTMLElement, theme: Theme) {
-  const previous = root.dataset.theme;
+  const previous = wantedTheme ?? root.dataset.theme;
+  wantedTheme = theme;
 
   // Nothing to fade. Either this is the first application — the inline script
   // has already put the reader's light on the element, and it should not
@@ -243,7 +252,7 @@ function setTheme(root: HTMLElement, theme: Theme) {
 
   if (changing && !still && typeof document.startViewTransition === "function") {
     const transition = document.startViewTransition(() => {
-      root.dataset.theme = theme;
+      root.dataset.theme = wantedTheme ?? theme;
     });
     // The browser skips the dissolve when it cannot show one — a hidden tab,
     // or another change of light before this one has finished — and says so
@@ -289,7 +298,12 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     root.style.setProperty("--arabic-size", `${settings.arabicSize}px`);
     root.style.setProperty("--trans-size", `${settings.transSize}px`);
     root.style.setProperty("--reader-max", `${settings.readerWidth}px`);
-    setTheme(root, settings.theme);
+    // Read from the store, not from this render. The first render in the
+    // browser is hydration, drawn from the server's settings — the defaults —
+    // and its effects run before React draws again with the reader's own. Its
+    // light is evening for everyone, and applying it would start a reader of
+    // day or night dissolving into evening on arrival.
+    setTheme(root, settingsStore.getSnapshot().theme);
   }, [
     settings.arabicFont,
     settings.arabicSize,
