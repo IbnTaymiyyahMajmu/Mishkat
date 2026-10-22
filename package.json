@@ -20,7 +20,8 @@
     "gen:questions": "node scripts/build-questions.mjs",
     "gen:structure": "node scripts/build-structure.mjs",
     "gen:qari": "node scripts/build-qari.mjs",
-    "gen:footage": "node scripts/build-horizons-footage.mjs"
+    "gen:footage": "node scripts/build-horizons-footage.mjs",
+    "find:footage": "node scripts/find-horizons-footage.mjs"
   },
   "dependencies": {
     "next": "16.3.0",
