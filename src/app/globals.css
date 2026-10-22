@@ -17,7 +17,8 @@
    often on a bright morning on one that is set to dark.
 
      day      bright paper, a sun overhead
-     evening  sepia lamplight, the niche and its embers — the default
+     evening  a dark, warm room under a lamp, the niche and its embers —
+              the default
      night    a dark ground under a cold, still light
 
    Everything downstream is stated in the `--mk-*` tokens below, and the
@@ -31,16 +32,20 @@
    in evening and night it is a dark niche with pale ink, in day it is bright.
    `--mk-scene-*` is which of the three skies is on; see LampSky.module.css. */
 :root {
-  /* Evening's paper is lamplit, so its colours are held strong: a sepia with
-     real warmth in it, an ink near to brown-black that the muted mixes below
-     stay legible in, a gold with its saturation kept, and warm neutrals —
-     a grey chip on sepia reads as dirt, not as paper. Day and night state
-     every one of these for themselves. */
-  --mk-paper: #f2e7d3;
-  --mk-ink: #24190d;
-  --mk-gold: #b0731f;
-  --mk-gold-deep: #855414;
-  --mk-gold-deeper: #714407;
+  /* Evening is read in the room the landing page's lamp hangs in, so the
+     page is not paper at all but the dark under the lamp: a deep umber with
+     the warmth of the flame still in it — brown, never the neutral black of
+     night, which is how the two dark lights tell themselves apart at a
+     glance — an ink of lamplit parchment, and a gold turned up until it
+     glows, as night's is, because on a dark ground the gold has to be ink
+     and not a stroke. Day and night state every one of these for
+     themselves. */
+  color-scheme: dark;
+  --mk-paper: #1b130b;
+  --mk-ink: #efe2c5;
+  --mk-gold: #d29c4a;
+  --mk-gold-deep: #e0b26b;
+  --mk-gold-deeper: #eac485;
   --mk-gold-pale: #e9c88d;
   --mk-hero-bg: radial-gradient(
     150% 105% at 50% -6%,
@@ -57,7 +62,7 @@
      something solid and should look like the light it sits in. */
   --mk-hero-ground: #261c0f;
   /* Ink for text sitting on a gold search mark. */
-  --mk-mark-ink: #4a3110;
+  --mk-mark-ink: #fff0d0;
 
   /* The gold leaf the landing page's ayah is painted through. */
   --mk-shine: linear-gradient(
@@ -73,8 +78,22 @@
   --mk-scene-eve: 1;
   --mk-scene-night: 0;
 
+  /* The pool the lamp throws on the head of a surah, in the reader and the
+     muṣḥaf. It is drawn to the sides of whatever box it is laid in and is
+     nothing by the time it reaches them, so it never shows an edge of its own;
+     where it falls is that box's to say. Day and night hang no lamp. */
+  --mk-lamp: radial-gradient(
+    closest-side,
+    rgb(240 184 98 / 17%) 0%,
+    rgb(232 170 84 / 11%) 20%,
+    rgb(222 158 74 / 6%) 40%,
+    rgb(212 148 68 / 2.8%) 60%,
+    rgb(204 140 62 / 0.8%) 80%,
+    transparent 100%
+  );
+
   --color-bg: var(--mk-paper);
-  --color-surface: #e8d9bf;
+  --color-surface: #281d11;
   --color-text: var(--mk-ink);
   /* The accent is text far more often than it is a stroke — eyebrows, ayah
      numbers, the ordinal on a bookmark — so it takes the deep step of the gold
@@ -83,21 +102,23 @@
      word-by-word tint, the mark a search leaves on a hit. */
   --color-accent: var(--mk-gold-deeper);
   --color-accent-2: #ac803e;
-  --color-divider: color-mix(in srgb, var(--color-text) 17%, transparent);
+  --color-divider: color-mix(in srgb, var(--color-text) 19%, transparent);
 
   /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
-     same step of any role matches the others in visual value. */
-  --color-neutral-100: #f8eedb;
+     same step of any role matches the others in visual value. The steps a
+     light turns over — 100 is a chip's ground and 800 its ink — are stated
+     here for the lamp and again by day and night. */
+  --color-neutral-100: #281e13;
   --color-neutral-200: #eae7e7;
   --color-neutral-300: #d7d3d3;
   --color-neutral-400: #bab6b6;
   --color-neutral-500: #9b9797;
   --color-neutral-600: #7d7979;
   --color-neutral-700: #605d5d;
-  --color-neutral-800: #4a3a28;
+  --color-neutral-800: #e2d3b6;
   --color-neutral-900: #2d2b2b;
 
-  --color-accent-100: #f3deb8;
+  --color-accent-100: #3b2a14;
   --color-accent-200: #ffe3bf;
   --color-accent-300: #facb8d;
   --color-accent-400: #e1ad66;
@@ -106,7 +127,7 @@
   /* The step that carries accent-coloured *text* — links above all — is the
      light's own deep gold, so it stays legible in all three grounds. */
   --color-accent-700: var(--mk-gold-deeper);
-  --color-accent-800: #64400a;
+  --color-accent-800: #f2d8a6;
   --color-accent-900: #3a270d;
 
   --color-accent-2-100: #fff3e4;
@@ -138,9 +159,11 @@
   --radius-md: 4px;
   --radius-lg: 7px;
 
+  /* A shadow on a dark ground has to be deeper than the ground to be seen at
+     all; day casts its own, paler ones. */
   --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
-  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
-  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
+  --shadow-md: 0 3px 10px rgb(0 0 0 / 45%);
+  --shadow-lg: 0 12px 32px rgb(0 0 0 / 55%);
 
   /* — application additions — */
   --tint: color-mix(in srgb, var(--mk-gold) 17%, transparent);
@@ -176,14 +199,15 @@
      between them is not taught twice — warm for the lengthenings, deepening
      with the length; green for the nasal sounds; blue for the bounce; slate
      for a letter run into the next; grey for what is written and not said.
-     Drawn here for paper, and again for the night. See lib/quran/tajweed.ts. */
-  --tj-madd2: #a8740f;
-  --tj-madd246: #d0680c;
-  --tj-madd45: #cc2b2b;
-  --tj-madd6: #8c1111;
-  --tj-nasal: #23843a;
-  --tj-bounce: #1c62c7;
-  --tj-merge: #6f7d8c;
+     Drawn here for a dark ground, which evening and night share, and again
+     for day's paper. See lib/quran/tajweed.ts. */
+  --tj-madd2: #e6c15a;
+  --tj-madd246: #ffa64a;
+  --tj-madd45: #ff7a5c;
+  --tj-madd6: #f2507a;
+  --tj-nasal: #5fd27a;
+  --tj-bounce: #6aa9ff;
+  --tj-merge: #9eabb8;
   --tj-silent: color-mix(in srgb, var(--color-text) 34%, transparent);
 }
 
@@ -191,8 +215,18 @@
    landing page is bright rather than lit, so its hero ink is dark and its
    pale gold is not pale at all. The landing page is the open sky at midday:
    bleached white round the sun at the top, and the pale, hazed blue of a hot
-   country's sky away from it, deepest in the upper corners. */
+   country's sky away from it, deepest in the upper corners.
+   Day is the one light read on paper, so it states everything a dark ground
+   changes: the scheme, the tajweed colours, the mark's ink and the shadows. */
 :root[data-theme="day"] {
+  color-scheme: light;
+  --tj-madd2: #a8740f;
+  --tj-madd246: #d0680c;
+  --tj-madd45: #cc2b2b;
+  --tj-madd6: #8c1111;
+  --tj-nasal: #23843a;
+  --tj-bounce: #1c62c7;
+  --tj-merge: #6f7d8c;
   --mk-paper: #fbfaf8;
   --mk-ink: #1c1b19;
   --mk-gold: #9d6d22;
@@ -211,6 +245,7 @@
   --mk-hero-ink: #26241f;
   --mk-hero-kicker: #6b4711;
   --mk-hero-ground: #fbf8f1;
+  --mk-mark-ink: #4a3110;
 
   --mk-shine: linear-gradient(
     100deg,
@@ -223,25 +258,23 @@
   );
   --mk-scene-day: 1;
   --mk-scene-eve: 0;
+  --mk-lamp: none;
 
+  --color-divider: color-mix(in srgb, var(--color-text) 17%, transparent);
   --color-surface: #f1efea;
   --color-neutral-100: #f8f7f4;
   --color-neutral-800: #423f3b;
   --color-accent-100: #f4ead7;
   --color-accent-800: #5f4110;
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
 }
 
 /* Night. A dark ground under a cold, still light, with the gold turned up to
-   carry it: on paper the mid gold is a stroke, here it has to be visible ink. */
+   carry it: on paper the mid gold is a stroke, here it has to be visible ink.
+   The scheme, the tajweed colours and the shadows of a dark ground it shares
+   with evening, above. */
 :root[data-theme="night"] {
-  --tj-madd2: #e6c15a;
-  --tj-madd246: #ffa64a;
-  --tj-madd45: #ff7a5c;
-  --tj-madd6: #f2507a;
-  --tj-nasal: #5fd27a;
-  --tj-bounce: #6aa9ff;
-  --tj-merge: #9eabb8;
-  color-scheme: dark;
   --mk-paper: #0d0e10;
   --mk-ink: #ebe6da;
   --mk-gold: #cfa25c;
@@ -272,6 +305,7 @@
   );
   --mk-scene-night: 1;
   --mk-scene-eve: 0;
+  --mk-lamp: none;
 
   --color-divider: color-mix(in srgb, var(--color-text) 20%, transparent);
   --color-surface: #17191d;
@@ -279,8 +313,6 @@
   --color-neutral-800: #d2ccbf;
   --color-accent-100: #34291a;
   --color-accent-800: #f0d6a8;
-  --shadow-lg: 0 12px 32px rgb(0 0 0 / 55%);
-  --shadow-md: 0 3px 10px rgb(0 0 0 / 45%);
 }
 
 /* ── The interface in an Arabic script ─────────────────────────────────────

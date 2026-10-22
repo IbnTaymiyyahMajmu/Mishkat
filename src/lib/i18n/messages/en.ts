@@ -73,7 +73,7 @@ export const en = {
   "nav.menu": "Menu",
   "light.group": "Reading light",
   "light.day": "Day — bright paper",
-  "light.evening": "Evening — sepia lamplight",
+  "light.evening": "Evening — lamplight",
   "light.night": "Night — dark ground",
   "language.title": "Language",
   "language.note":

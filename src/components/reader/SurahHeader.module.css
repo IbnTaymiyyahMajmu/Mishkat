@@ -1,8 +1,27 @@
 .header {
+  position: relative;
+  isolation: isolate;
   text-align: center;
   padding: 36px 0 30px;
   border-bottom: 1px solid var(--color-divider);
   margin-bottom: 8px;
+}
+
+/* ── the surah under the lamp ──────────────────────────────────────────────
+   In evening the surah opens as the landing page does: in a pool of the
+   lamp's light (`--mk-lamp`, which day and night leave empty), with its name
+   laid in gold leaf. The pool's box is centred on the name and as wide as the
+   column, and the light is spent before the bar above. It belongs to the head
+   of the surah and scrolls away with it; the ayat below are read on the
+   plain dark of the room. */
+.header::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -150px 0 auto;
+  height: 560px;
+  background: var(--mk-lamp);
+  pointer-events: none;
 }
 
 .arabic {
@@ -12,6 +31,22 @@
   direction: rtl;
   margin: 6px 0 2px;
   padding-bottom: var(--quran-descender-pad);
+}
+
+/* Gold leaf, as the landing page's ayah is: the letters are a window onto a
+   gradient wider than they are, slid slowly across. Amiri Quran's marks hang
+   above the line box, and leaf is only laid inside the box, so it is grown to
+   cover them and the margin hands the room straight back. */
+:global(:root[data-theme="evening"]) .arabic {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-image: var(--mk-shine);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  padding-top: var(--quran-ascender-pad);
+  margin-top: calc(6px - var(--quran-ascender-pad));
+  animation: sheen 12s linear infinite;
 }
 
 .name {
@@ -82,6 +117,11 @@
 @keyframes fade {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+/* The leaf's slow passage, as the introduction's name has it. */
+@keyframes sheen {
+  from { background-position: 130% 0; }
+  to { background-position: -130% 0; }
 }
 
 @media (max-width: 640px) {

@@ -28,7 +28,7 @@
   text-wrap: balance;
 }
 
-:global(:root[data-theme="night"]) .toast {
+:global(:root:not([data-theme="day"])) .toast {
   background: var(--color-surface);
   color: var(--color-text);
   border: 1px solid var(--color-divider);

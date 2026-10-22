@@ -68,11 +68,27 @@
 }
 
 .head {
+  position: relative;
+  isolation: isolate;
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
   padding: 36px 0 20px;
   border-bottom: 1px solid var(--color-divider);
+}
+
+/* The lamp's pool on the surah's name, as the reader's head has it (see
+   SurahHeader.module.css). The bar sits close above the name here, so the
+   pool is smaller than the reader's, and spent by the time it reaches it. */
+.head::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -44px;
+  height: 270px;
+  inset-inline: max(0px, calc(50% - 330px));
+  background: var(--mk-lamp);
+  pointer-events: none;
 }
 
 .headArabic {
@@ -81,6 +97,19 @@
   line-height: 1.8;
   direction: rtl;
   padding-bottom: var(--quran-descender-pad);
+}
+
+/* In evening the name is laid in gold leaf, as the reader's is. */
+:global(:root[data-theme="evening"]) .headArabic {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-image: var(--mk-shine);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  padding-top: var(--quran-ascender-pad);
+  margin-top: calc(-1 * var(--quran-ascender-pad));
+  animation: sheen 12s linear infinite;
 }
 
 .headName {
@@ -232,6 +261,11 @@
 @keyframes sheet {
   from { transform: translateY(18px); opacity: 0; }
   to { transform: none; opacity: 1; }
+}
+/* The leaf's slow passage, as the introduction's name has it. */
+@keyframes sheen {
+  from { background-position: 130% 0; }
+  to { background-position: -130% 0; }
 }
 
 @media (max-width: 780px) {

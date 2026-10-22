@@ -477,7 +477,7 @@
   color: var(--color-text);
   background: linear-gradient(transparent 62%, color-mix(in srgb, var(--mk-gold) 22%, transparent) 62%, color-mix(in srgb, var(--mk-gold) 22%, transparent) 88%, transparent 88%);
 }
-:global(:root[data-theme="night"]) .lit { color: var(--mk-gold-pale); }
+:global(:root:not([data-theme="day"])) .lit { color: var(--mk-gold-pale); }
 
 .translation {
   margin: 0 0 6px;
