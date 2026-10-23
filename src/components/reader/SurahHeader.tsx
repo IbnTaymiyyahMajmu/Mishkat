@@ -67,9 +67,20 @@ export function SurahHeader({ surah, chapter, teaser }: Props) {
             <p className={styles.lede}>{teaser.lede}</p>
           </div>
         )}
-        <Link href={`/read/${surah}/about/`} className={styles.introLink}>
-          {t(teaser ? "surahHeader.introduction" : "surahHeader.about")} {arrows.next}
-        </Link>
+        <div className={styles.doors}>
+          <Link href={`/read/${surah}/about/`} className={styles.introLink}>
+            {t(teaser ? "surahHeader.introduction" : "surahHeader.about")} {arrows.next}
+          </Link>
+          {/* The surah as a film: recited over the signs it names. */}
+          <Link href={`/read/${surah}/horizons/`} className={styles.watchLink} title={t("horizons.watchLong")}>
+            <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" aria-hidden="true">
+              <path d="M1 12.5h20" />
+              <path d="M6.5 12.5a4.5 4.5 0 0 1 9 0" />
+              <path d="M11 3.2V1.4M5.2 5.6 4 4.4M16.8 5.6 18 4.4M2.6 9.4H1.4M19.4 9.4h1.2" />
+            </svg>
+            {t("horizons.watch")}
+          </Link>
+        </div>
       </div>
     </header>
   );

@@ -84,20 +84,41 @@ export function KhatmRing({
   );
 
   const beadDeg = bead > 0 ? at(bead - 1) : -1;
+  const beading = beadDeg >= 0 && !done;
+  const lit = today >= 0 && today < arcs.length ? arcs[today] : null;
+  // Where the bead sits, as a share of the ring's box: the drawing is 220
+  // units square, centred on the bead's circle.
+  const beadAt = beading
+    ? {
+        left: `${(((R * Math.sin((beadDeg * Math.PI) / 180) + 110) / 220) * 100).toFixed(3)}%`,
+        top: `${(((-R * Math.cos((beadDeg * Math.PI) / 180) + 110) / 220) * 100).toFixed(3)}%`,
+      }
+    : null;
 
+  // In layers, each the ring's whole size, so that what pulses for as long as
+  // the page is open — the day being read, the halo round the bead — pulses as
+  // a whole layer, which the graphics chip does without painting anything.
+  // Pulsed inside one drawing, they painted the whole ring again every frame.
+  // The layers keep the order the ring was always drawn in.
   return (
     <div className={`${styles.ring} ${done ? styles.ringDone : ""}`}>
       <svg viewBox="-110 -110 220 220" role="img" aria-label={label} className={styles.ringSvg}>
         <path d={ticks.join(" ")} className={styles.ringTicks} />
         <circle r={R} className={styles.ringGround} />
         {from > 1 && <path d={arc(R, 0, at(from - 1))} className={styles.ringBefore} />}
+      </svg>
+      {lit && (
+        <svg viewBox="-110 -110 220 220" className={`${styles.ringLayer} ${styles.ringLit}`} aria-hidden="true">
+          <path d={lit.track} className={`${styles.ringDay} ${styles.ringDayLit}`} />
+        </svg>
+      )}
+      <svg viewBox="-110 -110 220 220" className={styles.ringLayer} aria-hidden="true">
         {arcs.map((a, i) => {
           const r = read?.[i] ?? 0;
           const full = done || r >= ENOUGH;
-          const lit = i === today;
           return (
             <g key={i}>
-              <path d={a.track} className={`${styles.ringDay} ${lit ? styles.ringDayLit : ""}`} />
+              {i !== today && <path d={a.track} className={styles.ringDay} />}
               {(full || r > 0) && (
                 <path
                   d={full ? a.track : arc(R, a.a0, a.a0 + (a.a1 - a.a0) * r)}
@@ -107,13 +128,17 @@ export function KhatmRing({
             </g>
           );
         })}
-        {beadDeg >= 0 && !done && (
-          <g transform={`rotate(${beadDeg.toFixed(2)})`}>
-            <circle cy={-R} r={7.5} className={styles.ringHalo} />
-            <circle cy={-R} r={3.6} className={styles.ringBead} />
-          </g>
-        )}
       </svg>
+      {beadAt && (
+        <>
+          <span className={styles.ringHalo} style={beadAt} aria-hidden="true" />
+          <svg viewBox="-110 -110 220 220" className={styles.ringLayer} aria-hidden="true">
+            <g transform={`rotate(${beadDeg.toFixed(2)})`}>
+              <circle cy={-R} r={3.6} className={styles.ringBead} />
+            </g>
+          </svg>
+        </>
+      )}
       <div className={styles.ringCentre}>{children}</div>
     </div>
   );

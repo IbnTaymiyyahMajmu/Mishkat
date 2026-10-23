@@ -180,3 +180,25 @@ Generated; do not edit.
   them.
 - `ayah-words.json` — the number of words in each ayah, written by
   `gen:facts`. The medallion places each ayah's tick by it.
+
+## `horizons/direction.txt` — the direction of the films
+
+Hand-written, and read only by `npm run gen:horizons`, which writes the
+per-surah scores to `public/horizons/` (those are generated; do not edit
+them). The generator finds the signs and the unseen in every ayah from the
+corpus's lemmas; this file sets right what a list of words gets wrong, one
+line to a point:
+
+- `veil 81:1-14` — the unseen, though no word in the ayah names it.
+- `see 13:4` — this world, though a word for the unseen is in it. The word
+  for the unseen in it is left alone: nothing is shown for it and nothing
+  marks it (the Throne in 7:54 and its like, by the owner's ruling).
+- `quiet 69:7 palms` — a sign that is not a sign here (most often a simile);
+  with no sign named, every sign in the ayah is dropped.
+- `sign 24:40 deep at بحر` — a sign set by hand, at the first word of the
+  ayah carrying that root.
+
+The signs themselves, and what each looks like, are in
+`src/lib/horizons/signs.ts`. The rules and the calls left open are in
+`HORIZONS-REVIEW.md` at the root. A line naming a sign that does not exist,
+a reference outside its surah, or a root not in the ayah stops the run.

@@ -185,7 +185,9 @@ export function QuestionsPage() {
         <div className={styles.heroInner}>
           <div className={styles.heroText}>
             <div className={styles.kicker}>{t("q.kicker")}</div>
-            <h1 className={styles.title}>{t("q.title")}</h1>
+            <h1 className={`${styles.title} mk-shine`} data-text={t("q.title")}>
+              {t("q.title")}
+            </h1>
             <p className={styles.lede}>{t("q.lede", { count: all.length, countText: n(all.length) })}</p>
           </div>
           <figure className={styles.opener} aria-live="polite">
@@ -394,7 +396,12 @@ function Opener({ q }: { q: Question }) {
       <figcaption className={styles.openerKicker}>{t("q.today")}</figcaption>
       {text && span && span[0] >= 0 ? (
         <>
-          <blockquote lang="ar" dir="rtl" className={styles.openerArabic}>
+          <blockquote
+            lang="ar"
+            dir="rtl"
+            className={`${styles.openerArabic} mk-shine`}
+            data-text={text.tokens.slice(span[0], span[1] + 1).join(" ")}
+          >
             {text.tokens.slice(span[0], span[1] + 1).join(" ")}
           </blockquote>
           <p className={styles.openerWho}>

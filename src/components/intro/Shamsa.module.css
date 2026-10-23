@@ -10,14 +10,41 @@
    the rim is pricked in, the band is laid piece by piece, the name last.
    ══════════════════════════════════════════════════════════════════════════ */
 
+/* The five layers (Shamsa.tsx) share one square: the still medallion sets its
+   size, and the others lie over it, edge to edge. */
+.frame {
+  position: relative;
+  isolation: isolate;
+  --line: color-mix(in srgb, var(--mk-gold-pale) 78%, transparent);
+  --line-soft: color-mix(in srgb, var(--mk-gold-pale) 34%, transparent);
+}
+
 .shamsa {
+  position: relative;
   display: block;
   width: 100%;
   height: auto;
   overflow: visible;
-  --line: color-mix(in srgb, var(--mk-gold-pale) 78%, transparent);
-  --line-soft: color-mix(in srgb, var(--mk-gold-pale) 34%, transparent);
 }
+
+.layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.layer > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* The glow is behind the medallion; the turning rosette and what holds still
+   over it are in front — the order they were always drawn in. */
+.halo { z-index: -1; }
 
 .goldA { stop-color: var(--mk-gold); }
 .goldB { stop-color: var(--mk-gold-pale); }
@@ -108,7 +135,6 @@
 
 /* The glow behind it all breathes, slowly. */
 .halo {
-  transform-origin: 300px 300px;
   animation: breathe 9s ease-in-out 2200ms infinite;
 }
 .band:focus-visible path {
@@ -131,8 +157,9 @@
   stroke: var(--line);
   stroke-width: 1;
   stroke-linejoin: round;
-  transform-origin: 300px 300px;
-  animation: turn 360s linear infinite;
+  animation:
+    fade 1400ms ease both 300ms,
+    turn 360s linear infinite;
 }
 
 .star {
@@ -140,8 +167,9 @@
   stroke: var(--line);
   stroke-width: 1;
   stroke-linejoin: round;
-  transform-origin: 300px 300px;
-  animation: turn 520s linear infinite reverse;
+  animation:
+    fade 1400ms ease both 300ms,
+    turn 520s linear infinite reverse;
 }
 
 .flower {

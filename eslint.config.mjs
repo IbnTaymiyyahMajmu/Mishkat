@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Worktrees the Claude app makes for side sessions, with builds of their own.
     ".claude/**",
+    // The Android app: Java, and a copy of the export it carries.
+    "android/**",
   ]),
 ]);
 

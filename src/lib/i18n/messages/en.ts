@@ -1005,6 +1005,45 @@ export const en = {
   "mushaf.openStudy": "Open in study view",
   "mushaf.clear": "Clear selection",
 
+  // ── Horizons: the surah recited over the signs it names ─────────────────
+  "horizons.title": "Horizons",
+  "horizons.watch": "Watch",
+  "horizons.watchLong": "Watch the surah recited over the signs it names",
+  "horizons.begin": "Begin",
+  "horizons.preparing": "Laying out the land…",
+  "horizons.recitedBy": "Recited by {name}",
+  "horizons.back": "Back to {surah}",
+  "horizons.settings": "Film settings",
+  "horizons.fullscreen": "Full screen",
+  "horizons.exitFullscreen": "Leave full screen",
+  "horizons.wordsLabel": "Words on screen",
+  "horizons.words.ayah": "Ayah",
+  "horizons.words.word": "Word",
+  "horizons.words.none": "None",
+  "horizons.motion": "Motion",
+  "horizons.motion.full": "Full",
+  "horizons.motion.gentle": "Gentle",
+  "horizons.motion.still": "Still",
+  "horizons.translation": "Translation under the words",
+  "horizons.drag": "Drag across the picture to look around; it turns back by itself.",
+  "horizons.unseen": "Of the unseen — heard, not shown",
+  "horizons.bow": "An ayah of prostration",
+  "horizons.prev": "Previous ayah",
+  "horizons.next": "Next ayah",
+  "horizons.play": "Play",
+  "horizons.pause": "Pause",
+  "horizons.shownTitle": "What is shown, and what is not",
+  "horizons.shown": "Only what can be seen in creation: the sky and its lights, the weather, water, the land and what grows from it — each as the word that names it is recited. Nothing with a soul is drawn, no person, animal or bird, and nothing of the unseen: when an ayah speaks of the Hereafter, the angels or the Throne, the world gives way to the light of the lamp and the words are left to be heard. Nothing is heard but the recitation.",
+  "horizons.memoryTitle": "Every ayah has its place.",
+  "horizons.memory": "The land is laid out from the surah itself, and an ayah is always flown over the same stretch of it — so a passage looped from the player to be learned is the same country every time.",
+  "horizons.noScore": "The direction for this surah could not be loaded; it is flown over its land without its signs.",
+  "horizons.signsTitle": "The signs it named",
+  "horizons.signsNone": "This surah names none of the signs the film can show. It was recited over the land it was revealed in.",
+  "horizons.again": "Watch again",
+  "horizons.nextSurah": "Next: {surah}",
+  "horizons.read": "Read it",
+  "horizons.noGl": "This browser cannot draw the land, so only its light is shown — the hours still follow the recitation.",
+
   // ── tafsir ────────────────────────────────────────────────────────────────
   "tafsir.textSize": "Text size",
   "tafsir.smaller": "Smaller text",
@@ -1276,6 +1315,40 @@ export const en = {
   "grammar.inna": "of inna and its sisters",
   "grammar.kada": "of kāda and its sisters",
 
+  // ── privacy ───────────────────────────────────────────────────────────────
+  "privacy.kicker": "Privacy",
+  "privacy.title": "What stays with you",
+  "privacy.lede":
+    "Mishkāt has no accounts, no analytics, no advertising and no tracking. It collects nothing about anyone who reads it, children included, and sends nothing to the people who make it — on the website or in the Android app.",
+  "privacy.kept.title": "Kept on your device",
+  "privacy.kept.text":
+    "Your notes and bookmarks, the place you reached in each surah, the days you have read, your khatm plan and your settings are kept on your device — in this browser, or in the app’s own storage — and are sent nowhere. Clearing the site’s data, or uninstalling the app, deletes them; <link>Settings</link> can export them to a file first.",
+  "privacy.kept.cache":
+    "Some of what is asked for from elsewhere is kept on your device for a while too, so that a surah opened twice is asked for once.",
+  "privacy.fetched.title": "Asked for from elsewhere",
+  "privacy.fetched.text":
+    "To show you the Qur’an and what has been written on it, Mishkāt asks for it from those who publish it. Each request carries what is asked for — a surah, a translation, a word — and what every request on the internet carries: your device’s address. What each of them does with a request is in its own policy.",
+  "privacy.fetched.corpus":
+    "<b>api.quran.com</b>, the Quran Foundation’s — the text, the translations, the meanings of the words, the tajweed marks, much of the tafsir, and search",
+  "privacy.fetched.audio": "<b>verses.quran.com</b> and <b>everyayah.com</b> — the recitations",
+  "privacy.fetched.tafsir": "<b>cdn.jsdelivr.net</b> — al-Mukhtaṣar and al-Jalālayn in English",
+  "privacy.fetched.lexicons":
+    "<b>al-nuqta.com</b> — a word’s root, its grammar and the classical lexicons, when you study it",
+  "privacy.fetched.clear": "<b>ibntaymiyyahmajmu.github.io</b> — The Clear Qur’an, if you read it",
+  "privacy.fetched.search":
+    "A search sends the words you search for to api.quran.com, which finds the ayat that match. Nothing else you write — your notes least of all — leaves your device.",
+  "privacy.fetched.links":
+    "A link to another site — tafsir.app, sunnah.com, a lexicon — takes you there, under that site’s own policy.",
+  "privacy.served.title": "Where the pages come from",
+  "privacy.served.text":
+    "The website is served by GitHub Pages, which, like any host, sees each page that is asked for. The Android app carries the pages inside it and asks for none of them.",
+  "privacy.app.title": "In the Android app",
+  "privacy.app.text":
+    "The app asks for nothing on your phone but the internet: not your contacts, your location, your camera, your microphone or your files. While a recitation plays it shows a notification with its controls, so that the recitation can go on with the screen off.",
+  "privacy.questions.title": "Questions",
+  "privacy.questions.text": "Write to <link>{email}</link>.",
+  "privacy.updated": "Last changed {date}.",
+
   // ── settings ──────────────────────────────────────────────────────────────
   "settings.kicker": "Preferences",
   "settings.title": "Reading settings",
@@ -1319,6 +1392,7 @@ export const en = {
   "settings.clearAsk": "Delete all notes and bookmarks?",
   "settings.clear": "Clear the library",
   "settings.reset": "Reset settings",
+  "settings.privacy": "Privacy: what is kept, and where",
   "settings.sources": "Sources in this build",
   "settings.layer": "Layer",
   "settings.source": "Source",

@@ -69,6 +69,22 @@ export interface LoopPlace {
   pass: number;
 }
 
+/**
+ * Where the recitation stands this instant, read straight from the element.
+ * For a screen that has to keep time with the voice frame by frame — the
+ * film — and so cannot wait on the clock the transport is told four times a
+ * second.
+ */
+export interface PlayerClock {
+  /** The ayah loaded, playing or not. */
+  key: string | null;
+  /** Seconds into that ayah. In the silence left after it, all of it. */
+  seconds: number;
+  /** How long its recording is, once the recording has said. */
+  recorded: number | null;
+  playing: boolean;
+}
+
 export interface PlayerControls {
   setQueue: (queue: PlayerQueue) => void;
   play: (verseKey: string) => void;
@@ -88,6 +104,8 @@ export interface PlayerControls {
   endLoop: () => void;
   /** From this ayah to the end of its rukūʿ — a passage with a natural close. */
   passageAround: (verseKey: string | null) => { from: number; to: number } | null;
+  /** Where the recitation is, this instant. Cheap: it reads, and changes nothing. */
+  clock: () => PlayerClock;
 }
 
 export interface PlayerStatus {
@@ -1048,9 +1066,20 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     };
   }, [toggle, step, seek, stop]);
 
+  const clock = useCallback<PlayerControls["clock"]>(() => {
+    const el = audioRef.current;
+    const recorded = !silenceRef.current && el && Number.isFinite(el.duration) ? el.duration : null;
+    return {
+      key: currentRef.current,
+      seconds: currentRef.current ? standing() : 0,
+      recorded,
+      playing: wantsPlayRef.current && !!el && !el.paused,
+    };
+  }, [standing]);
+
   const controls = useMemo<PlayerControls>(
-    () => ({ setQueue, play, playOrPause, toggle, stop, step, seek, loopPassage, endLoop, passageAround }),
-    [setQueue, play, playOrPause, toggle, stop, step, seek, loopPassage, endLoop, passageAround],
+    () => ({ setQueue, play, playOrPause, toggle, stop, step, seek, loopPassage, endLoop, passageAround, clock }),
+    [setQueue, play, playOrPause, toggle, stop, step, seek, loopPassage, endLoop, passageAround, clock],
   );
   const status = useMemo<PlayerStatus>(
     () => ({ open, playing, currentKey, error, loop, loopAt, echoing }),

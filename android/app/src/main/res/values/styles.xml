@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:background">@null</item>
+        <item name="android:windowBackground">@color/evening</item>
+    </style>
+
+    <!-- The lamp, while the first page loads, on the landing page's ground in
+         the light the reader last read in. Evening is the site's own default;
+         Shell.java picks Day or Night for the next launch once a reader has
+         chosen one (Android 13 and later — earlier, it is always evening). -->
+    <style name="AppTheme.NoActionBarLaunch" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/evening</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/lamp_lit</item>
+        <item name="postSplashScreenTheme">@style/AppTheme.NoActionBar</item>
+    </style>
+
+    <style name="AppTheme.NoActionBarLaunch.Day">
+        <item name="windowSplashScreenBackground">@color/day</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/lamp</item>
+    </style>
+
+    <style name="AppTheme.NoActionBarLaunch.Night">
+        <item name="windowSplashScreenBackground">@color/night</item>
+    </style>
+</resources>

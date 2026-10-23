@@ -55,13 +55,9 @@
   -webkit-background-clip: text;
   background-clip: text;
   padding-bottom: 0.08em;
-  animation: rise 720ms cubic-bezier(0.22, 0.61, 0.36, 1) both 70ms, shine 16s ease-in-out infinite;
+  animation: rise 720ms cubic-bezier(0.22, 0.61, 0.36, 1) both 70ms;
 }
 
-@keyframes shine {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
 
 .lede {
   margin: 16px 0 0;
@@ -107,7 +103,6 @@
   background-size: 260% 100%;
   -webkit-background-clip: text;
   background-clip: text;
-  animation: shine 16s ease-in-out infinite;
 }
 
 .openerWho {
@@ -477,7 +472,7 @@
   color: var(--color-text);
   background: linear-gradient(transparent 62%, color-mix(in srgb, var(--mk-gold) 22%, transparent) 62%, color-mix(in srgb, var(--mk-gold) 22%, transparent) 88%, transparent 88%);
 }
-:global(:root[data-theme="night"]) .lit { color: var(--mk-gold-pale); }
+:global(:root:not([data-theme="day"])) .lit { color: var(--mk-gold-pale); }
 
 .translation {
   margin: 0 0 6px;

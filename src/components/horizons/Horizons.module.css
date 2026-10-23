@@ -1,0 +1,762 @@
+/* Horizons — the film. It is its own dark room: whatever light the site is
+   read in, a film is watched with the lights down. Gold for what is lit,
+   cream for what is read, and the words always over a scrim of shadow so
+   they read against a noon sky as well as a night one. */
+
+.film {
+  --gold: #f0c773;
+  --gold-deep: #c9953f;
+  --cream: #f6eddc;
+  --shade: rgba(5, 4, 3, 0.62);
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  overflow: hidden;
+  background: #050403;
+  color: var(--cream);
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+  cursor: grab;
+}
+.canvas:active {
+  cursor: grabbing;
+}
+.film[data-chrome="off"] .canvas {
+  cursor: none;
+}
+
+.fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 88px 24px 0;
+}
+.fallback p {
+  max-width: 34em;
+  font-size: 13px;
+  opacity: 0.75;
+  text-align: center;
+}
+
+/* A shadow under the words and the controls, and a lighter one over the top bar. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(4, 3, 2, 0.78) 0%, rgba(4, 3, 2, 0.42) 22%, rgba(4, 3, 2, 0) 46%),
+    linear-gradient(to bottom, rgba(4, 3, 2, 0.45) 0%, rgba(4, 3, 2, 0) 16%);
+}
+
+/* ── the top bar ─────────────────────────────────────────────────────────── */
+
+.top {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: max(14px, env(safe-area-inset-top)) 16px 14px;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  /* Over the opening and closing cards (5), which fill the screen: the way
+     back, the settings and full screen are always within reach. */
+  z-index: 6;
+}
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  color: var(--cream);
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
+  padding: 6px 10px 6px 4px;
+  border-radius: 999px;
+}
+.back span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.back:hover,
+.back:focus-visible {
+  color: var(--gold);
+}
+.topActions {
+  display: flex;
+  gap: 6px;
+  flex: none;
+}
+
+.icon {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(246, 237, 220, 0.18);
+  background: rgba(10, 8, 6, 0.38);
+  color: var(--cream);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.icon:hover:not(:disabled),
+.icon:focus-visible {
+  color: var(--gold);
+  border-color: rgba(240, 199, 115, 0.5);
+  background: rgba(30, 22, 12, 0.55);
+}
+.icon:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.flip {
+  transform: scaleX(var(--dir-flip, 1));
+}
+:global([dir="rtl"]) .flip {
+  --dir-flip: -1;
+}
+
+.film[data-chrome="off"] .top,
+.film[data-chrome="off"] .bottom {
+  opacity: 0;
+  pointer-events: none;
+}
+/* The player waits behind the opening, and goes once the surah has ended. */
+.film[data-stage="opening"] .bottom,
+.film[data-stage="end"] .bottom {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.film[data-chrome="off"] .top {
+  transform: translateY(-8px);
+}
+
+/* ── the settings ────────────────────────────────────────────────────────── */
+
+.tuning {
+  position: absolute;
+  inset-block-start: calc(max(14px, env(safe-area-inset-top)) + 50px);
+  inset-inline-end: 16px;
+  z-index: 7;
+  width: min(330px, calc(100vw - 32px));
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(14, 11, 8, 0.86);
+  border: 1px solid rgba(240, 199, 115, 0.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+  display: grid;
+  gap: 14px;
+  animation: rise 0.25s ease;
+}
+.tuneRow {
+  display: grid;
+  gap: 7px;
+}
+.tuneLabel {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(246, 237, 220, 0.62);
+}
+.segmented {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 3px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+}
+.segmented button {
+  border: 0;
+  background: transparent;
+  color: var(--cream);
+  font: inherit;
+  font-size: 13px;
+  padding: 7px 4px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.segmented button[aria-pressed="true"] {
+  background: rgba(240, 199, 115, 0.2);
+  color: var(--gold);
+}
+.tuneCheck {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.tuneCheck input {
+  accent-color: var(--gold-deep);
+  width: 16px;
+  height: 16px;
+}
+.tuneNote {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(246, 237, 220, 0.55);
+}
+
+/* ── a sign, named: the word, and what it means ──────────────────────────── */
+
+.captions {
+  position: absolute;
+  inset-block-start: 15%;
+  inset-inline: 0;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  pointer-events: none;
+  z-index: 2;
+}
+.caption {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  animation: caption 4.6s ease forwards;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.75), 0 0 2px rgba(0, 0, 0, 0.6);
+}
+.captionArabic {
+  font-size: clamp(30px, 4.4vw, 46px);
+  line-height: 1.5;
+  color: var(--gold);
+  text-align: center;
+}
+.captionGloss {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-style: italic;
+  letter-spacing: 0.03em;
+  color: rgba(246, 237, 220, 0.86);
+}
+@keyframes caption {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  12% {
+    opacity: 1;
+    transform: none;
+  }
+  78% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+.unseen {
+  position: absolute;
+  inset-block-start: calc(max(14px, env(safe-area-inset-top)) + 58px);
+  inset-inline: 0;
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: rgba(246, 222, 170, 0.66);
+  animation: fade 1.6s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.bow {
+  position: absolute;
+  inset-block-start: 26%;
+  inset-inline: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 44px;
+  color: var(--gold);
+  text-shadow: 0 0 24px rgba(240, 199, 115, 0.6);
+  animation: fade 1.2s ease;
+  pointer-events: none;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+/* ── the words ───────────────────────────────────────────────────────────── */
+
+.words {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: calc(116px + env(safe-area-inset-bottom));
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  pointer-events: none;
+  z-index: 2;
+  transition: inset-block-end 0.6s ease;
+}
+.film[data-chrome="off"] .words {
+  inset-block-end: calc(56px + env(safe-area-inset-bottom));
+}
+.phrase {
+  margin: 0;
+  padding-bottom: 0.2em;
+  text-wrap: balance;
+  max-width: min(1100px, 100%);
+  text-align: center;
+  font-size: clamp(28px, 4.6vw, 54px);
+  line-height: 1.9;
+  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.8), 0 0 3px rgba(0, 0, 0, 0.7);
+  animation: phrase 0.6s ease;
+}
+/* Words arrive by rising and fading, never by a blur, which over a film
+   already drawing every frame would be worked out again on each one. */
+@keyframes phrase {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+.word {
+  color: rgba(246, 237, 220, 0.55);
+  transition: color 0.35s ease, text-shadow 0.35s ease;
+}
+.word[data-state="past"] {
+  color: rgba(246, 237, 220, 0.94);
+}
+.word[data-state="now"] {
+  color: var(--gold);
+  text-shadow: 0 0 22px rgba(240, 199, 115, 0.55), 0 2px 18px rgba(0, 0, 0, 0.8);
+}
+.ayahEnd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.5em;
+  height: 1.5em;
+  margin-inline-start: 0.2em;
+  font-size: 0.5em;
+  vertical-align: 0.35em;
+  color: var(--gold);
+  border: 1px solid rgba(240, 199, 115, 0.55);
+  border-radius: 999px;
+}
+
+.single {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+.singleArabic {
+  margin: 0;
+  font-size: clamp(54px, 10vw, 112px);
+  line-height: 1.6;
+  color: var(--gold);
+  text-shadow: 0 0 34px rgba(240, 199, 115, 0.45), 0 3px 26px rgba(0, 0, 0, 0.85);
+  animation: single 0.45s ease;
+}
+@keyframes single {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+.singleGloss {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(18px, 2.4vw, 24px);
+  font-style: italic;
+  color: rgba(246, 237, 220, 0.9);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
+}
+
+.translation {
+  max-width: min(760px, 100%);
+  max-height: calc(1.55em * 3);
+  overflow: hidden;
+  font-size: clamp(14px, 1.6vw, 17px);
+  line-height: 1.55;
+  text-align: center;
+  color: rgba(246, 237, 220, 0.84);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.85);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 0.9em, #000 calc(100% - 0.5em), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 0.9em, #000 calc(100% - 0.5em), transparent 100%);
+}
+.translation p {
+  margin: 0;
+  transition: transform 1.2s linear;
+}
+
+/* ── the ribbon and the controls ─────────────────────────────────────────── */
+
+.bottom {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  padding: 0 16px max(14px, env(safe-area-inset-bottom));
+  display: grid;
+  gap: 10px;
+  transition: opacity 0.6s ease;
+  z-index: 3;
+}
+.ribbon {
+  position: relative;
+  height: 14px;
+  display: flex;
+  align-items: center;
+}
+.ribbonTrack {
+  display: flex;
+  width: 100%;
+  height: 5px;
+  gap: 1px;
+  border-radius: 999px;
+  overflow: hidden;
+  transition: height 0.2s ease;
+  opacity: 0.88;
+}
+.ribbon:hover .ribbonTrack {
+  height: 11px;
+  opacity: 1;
+}
+.ribbonAyah {
+  flex: 1 1 0;
+  min-width: 1px;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.ribbonAyah:hover,
+.ribbonAyah:focus-visible {
+  filter: brightness(1.6);
+}
+.ribbonHead {
+  position: absolute;
+  top: 50%;
+  width: 13px;
+  height: 13px;
+  margin-inline-start: -6.5px;
+  border-radius: 999px;
+  background: var(--gold);
+  box-shadow: 0 0 0 3px rgba(240, 199, 115, 0.25), 0 0 14px rgba(240, 199, 115, 0.7);
+  transform: translateY(-50%);
+  transition: inset-inline-start 0.5s linear;
+  pointer-events: none;
+}
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.play {
+  display: inline-grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 999px;
+  border: 0;
+  background: var(--gold);
+  color: #1d1408;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(240, 199, 115, 0.28);
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+.play:hover:not(:disabled) {
+  transform: scale(1.05);
+  background: #f6d38c;
+}
+.play:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.where {
+  margin-inline-start: 6px;
+  min-width: 0;
+  font-size: 13px;
+  color: rgba(246, 237, 220, 0.78);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+}
+.whereReciter {
+  color: rgba(246, 237, 220, 0.55);
+}
+
+/* ── the opening, beneath the niche ──────────────────────────────────────── */
+
+.opening,
+.end {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0 20px calc(28px + env(safe-area-inset-bottom));
+  background: linear-gradient(to top, rgba(8, 6, 3, 0.86) 0%, rgba(8, 6, 3, 0.55) 30%, rgba(8, 6, 3, 0) 44%);
+  overflow-y: auto;
+  animation: fade 1.4s ease;
+}
+.openingInner,
+.endInner {
+  width: min(560px, 100%);
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 8px;
+}
+.kicker {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.kicker span {
+  letter-spacing: 0;
+  font-family: var(--font-amiri), serif;
+  font-size: 15px;
+  text-transform: none;
+}
+.title {
+  margin: 0;
+  display: grid;
+  gap: 0;
+  font-weight: 400;
+  line-height: 1.1;
+}
+.title :global(.surah-ar) {
+  font-size: clamp(36px, 7vw, 54px);
+  color: var(--cream);
+  line-height: 1.5;
+}
+.titleLatin {
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 3.6vw, 30px);
+}
+.meaning {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 16px;
+  color: rgba(246, 237, 220, 0.7);
+}
+.epigraph {
+  margin: 6px 0 4px;
+  display: grid;
+  gap: 2px;
+}
+.epigraphArabic {
+  margin: 0;
+  font-size: clamp(20px, 3vw, 26px);
+  line-height: 1.8;
+  text-align: center;
+  color: var(--gold);
+}
+.epigraph figcaption {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 15px;
+  color: rgba(246, 237, 220, 0.74);
+}
+.epigraph cite {
+  font-style: normal;
+  font-size: 12px;
+  margin-inline-start: 6px;
+  color: rgba(246, 237, 220, 0.5);
+}
+.begin {
+  margin-top: 6px;
+  min-width: 170px;
+  padding: 12px 28px;
+  border-radius: 999px;
+  border: 0;
+  background: var(--gold);
+  color: #1d1408;
+  font-family: var(--font-heading);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 10px 34px rgba(240, 199, 115, 0.3);
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+.begin:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #f6d38c;
+}
+.begin:disabled {
+  background: rgba(240, 199, 115, 0.35);
+  color: rgba(29, 20, 8, 0.75);
+  cursor: progress;
+}
+.reciter {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(246, 237, 220, 0.62);
+}
+.about {
+  max-width: 34em;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(246, 237, 220, 0.72);
+}
+.about summary {
+  cursor: pointer;
+  color: rgba(246, 237, 220, 0.82);
+  list-style: none;
+  font-size: 13px;
+  text-decoration: underline;
+  text-decoration-color: rgba(240, 199, 115, 0.5);
+  text-underline-offset: 3px;
+}
+.about summary::-webkit-details-marker {
+  display: none;
+}
+.about p {
+  margin: 8px 0 0;
+}
+.about b {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ── the end: the signs of the surah ─────────────────────────────────────── */
+
+.endTitle {
+  margin: 0 0 6px;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(24px, 4vw, 32px);
+}
+.signs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-height: 34vh;
+  overflow-y: auto;
+}
+.signs button {
+  display: grid;
+  justify-items: center;
+  gap: 0;
+  padding: 6px 14px 8px;
+  border-radius: 14px;
+  border: 1px solid rgba(240, 199, 115, 0.28);
+  background: rgba(20, 15, 9, 0.55);
+  color: var(--cream);
+  cursor: pointer;
+  font: inherit;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.signs button:hover,
+.signs button:focus-visible {
+  border-color: rgba(240, 199, 115, 0.7);
+  background: rgba(40, 28, 14, 0.7);
+}
+.signArabic {
+  font-size: 22px;
+  line-height: 1.7;
+  color: var(--gold);
+}
+.signGloss {
+  font-size: 12px;
+  font-style: italic;
+  color: rgba(246, 237, 220, 0.8);
+}
+.signRef {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: rgba(246, 237, 220, 0.5);
+}
+.endNote {
+  margin: 0;
+  max-width: 30em;
+  font-size: 14px;
+  color: rgba(246, 237, 220, 0.72);
+}
+.endActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 18px;
+  margin-top: 8px;
+}
+.endActions .begin {
+  margin-top: 0;
+}
+.endLink {
+  color: var(--cream);
+  font-size: 14px;
+  text-decoration: underline;
+  text-decoration-color: rgba(240, 199, 115, 0.5);
+  text-underline-offset: 3px;
+}
+.endLink:hover {
+  color: var(--gold);
+}
+
+@media (max-width: 640px) {
+  .words {
+    inset-block-end: calc(104px + env(safe-area-inset-bottom));
+    padding: 0 14px;
+  }
+  .phrase {
+    line-height: 1.85;
+  }
+  .captions {
+    inset-block-start: 13%;
+  }
+  .where {
+    font-size: 12px;
+  }
+  .whereReciter {
+    display: none;
+  }
+  .opening,
+  .end {
+    padding-bottom: calc(20px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caption,
+  .phrase,
+  .singleArabic,
+  .opening,
+  .end {
+    animation-duration: 0.01s;
+  }
+}

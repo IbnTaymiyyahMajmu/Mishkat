@@ -84,11 +84,17 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f2e7d3" },
+    { media: "(prefers-color-scheme: light)", color: "#221810" },
     { media: "(prefers-color-scheme: dark)", color: "#0d0e10" },
   ],
   width: "device-width",
   initialScale: 1,
+  // The Android app lets the page run up under the status bar and down under
+  // the gesture bar, as an app's own screens do, so the lamp's light reaches
+  // the top of the glass (scripts/build-android.mjs). The page keeps its words
+  // clear of both through `env(safe-area-inset-*)`. A browser has bars of its
+  // own and is left as it was.
+  ...(process.env.NEXT_PUBLIC_EDGE_TO_EDGE ? { viewportFit: "cover" as const } : {}),
 };
 
 /* Runs in <head>, synchronously, while the browser is still parsing the

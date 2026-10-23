@@ -17,13 +17,19 @@
   overflow-x: hidden;
   color: var(--mk-hero-ink);
   background: transparent;
-  /* The global thumb is drawn with a rim of the paper background, which is a
-     pale line down the edge of this page. Here it is gold at a low alpha. */
-  scrollbar-color: color-mix(in srgb, var(--mk-gold) 45%, transparent) transparent;
 }
-.shell::-webkit-scrollbar-thumb {
-  background: color-mix(in srgb, var(--mk-gold) 38%, transparent);
-  border: 0;
+
+/* The global thumb is drawn with a rim of the paper background, which is a
+   pale line down the edge of this page. Here it is gold at a low alpha — where
+   a thumb is drawn at all (globals.css). */
+@media (hover: hover) and (pointer: fine) {
+  .shell {
+    scrollbar-color: color-mix(in srgb, var(--mk-gold) 45%, transparent) transparent;
+  }
+  .shell::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--mk-gold) 38%, transparent);
+    border: 0;
+  }
 }
 
 /* Everything the reader sees sits above the niche. */
@@ -102,17 +108,23 @@
 
 /* — the ayah — */
 
+.ayah {
+  position: relative;
+  margin-top: 30px;
+}
+
 .words {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0 0.34em;
-  margin: 30px 0 0;
+  margin: 0;
 }
 
-/* Gold leaf: the word is a window onto a gradient, and the gradient is drawn
-   three and a half times wider than the word so it can be slid across it. */
-.word {
+/* Gold leaf: the word is a window onto a gradient, drawn three and a half times
+   wider than the word and set where its warmest stretch falls. */
+.word,
+.litWord {
   font-family: var(--font-amiri-quran), serif;
   font-size: clamp(28px, 5.4vw, 42px);
   line-height: 2.15;
@@ -120,6 +132,7 @@
   -webkit-text-fill-color: transparent;
   background-image: var(--mk-shine);
   background-size: 340% 100%;
+  background-position: 62% 0;
   -webkit-background-clip: text;
   background-clip: text;
   /* The gradient is only painted inside this box, and the letters are drawn in
@@ -133,9 +146,50 @@
   padding-bottom: var(--quran-descender-pad);
   margin-top: calc(-1 * var(--quran-ascender-pad));
   margin-bottom: calc(-1 * var(--quran-descender-pad));
-  animation:
-    word 760ms cubic-bezier(0.22, 0.61, 0.36, 1) both,
-    sheen 7s linear infinite;
+}
+.word {
+  animation: word 760ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* — the light crossing it —
+   Not the leaf's gradient sliding through the letters: a gradient moving inside
+   text has to be painted again, every word, every frame, and on a phone that
+   was most of what the page could do. Instead the ayah is set a second time,
+   in the bright of the leaf, exactly over the first, and seen only through a
+   soft slit. The slit moves across; the bright ayah inside it moves back by
+   the same amount, so the words stand still while the light passes over them.
+   Two transforms, both the graphics chip's: nothing is painted after the
+   first frame. It crosses once every seven seconds, from where the ayah
+   begins, and only after the words have risen.
+
+   The box reaches well above and below the lines, because a mask hides
+   whatever falls outside it and Amiri Quran's marks hang far past its line
+   box (see .word). */
+.sweep {
+  position: absolute;
+  inset: -48px 0;
+  pointer-events: none;
+}
+.slit {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 38%, #000 62%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 38%, #000 62%, transparent 100%);
+  -webkit-mask-size: 32% 100%;
+  mask-size: 32% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 50% 0;
+  mask-position: 50% 0;
+  animation: slit 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) 1.6s infinite both;
+}
+.lit {
+  position: absolute;
+  inset: 48px 0 auto;
+  animation: hold 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) 1.6s infinite both;
+}
+.litWord {
+  background-image: linear-gradient(100deg, #f0d398 0%, #fff6dc 50%, #f0d398 100%);
 }
 
 .translation {
@@ -289,9 +343,16 @@
   to { opacity: 1; transform: none; }
 }
 
-@keyframes sheen {
-  0% { background-position: 100% 0; }
-  100% { background-position: -240% 0; }
+/* The slit crosses from the ayah's first word, on the right, to its last, in
+   a little over two seconds, and is gone for the rest of the seven; the bright
+   copy inside it is carried back by exactly as much. */
+@keyframes slit {
+  0% { transform: translateX(68%); }
+  32%, 100% { transform: translateX(-68%); }
+}
+@keyframes hold {
+  0% { transform: translateX(-68%); }
+  32%, 100% { transform: translateX(68%); }
 }
 
 @keyframes drift {

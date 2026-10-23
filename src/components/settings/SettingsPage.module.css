@@ -175,11 +175,11 @@
   line-height: 1.2;
 }
 
-.tajweedGuide {
+.guide {
   display: inline-block;
   margin-top: 12px;
   font-size: 13px;
   color: var(--color-accent);
   text-decoration: none;
 }
-.tajweedGuide:hover { text-decoration: underline; }
+.guide:hover { text-decoration: underline; }

@@ -129,122 +129,151 @@ export function Shamsa({ name, ayahWords, passages, juz, sajdah, active, onActiv
   const letters = name.replace(/[ً-ْٰ\s]/g, "").length;
   const size = letters <= 3 ? 76 : letters <= 5 ? 62 : letters <= 7 ? 52 : letters <= 9 ? 44 : 36;
 
+  // Drawn as five layers, one over another, each the whole medallion's size.
+  // What moves for as long as the page is open — the glow breathing, the
+  // petals and the star turning — has a layer of its own and moves as a whole:
+  // the graphics chip turns a finished picture, and nothing is painted again.
+  // The moving layers are boxes holding a drawing, not drawings: Chrome will
+  // not hand a turn of an <svg> element itself to the graphics chip.
+  // Turned inside one drawing instead, every frame of a turn far too slow to
+  // see painted the whole medallion afresh, tick by tick and band by band,
+  // which was most of what a phone could do on this page. The layers are
+  // stacked in the order the medallion was always drawn in.
   return (
-    <svg viewBox="0 0 600 600" className={styles.shamsa} role="group" aria-label={title}>
-      <defs>
-        <linearGradient id="shamsa-gold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" className={styles.goldA} />
-          <stop offset="0.5" className={styles.goldB} />
-          <stop offset="1" className={styles.goldA} />
-        </linearGradient>
-        <radialGradient id="shamsa-glow">
-          <stop offset="0" className={styles.glowIn} />
-          <stop offset="1" className={styles.glowOut} />
-        </radialGradient>
-        {/* The flower's circles all pass through the centre, where the name
-            is; they are kept to the ring between the star and the heart. */}
-        <clipPath id="shamsa-between">
-          <path
-            clipRule="evenodd"
-            d={
-              `M ${C - R.star} ${C} a ${R.star} ${R.star} 0 1 0 ${2 * R.star} 0 a ${R.star} ${R.star} 0 1 0 ${-2 * R.star} 0 Z ` +
-              `M ${C - R.disc} ${C} a ${R.disc} ${R.disc} 0 1 0 ${2 * R.disc} 0 a ${R.disc} ${R.disc} 0 1 0 ${-2 * R.disc} 0 Z`
-            }
-          />
-        </clipPath>
-      </defs>
+    <div className={styles.frame}>
+      {/* The glow behind it all, breathing. */}
+      <div className={`${styles.layer} ${styles.halo}`} aria-hidden="true">
+        <svg viewBox="0 0 600 600">
+          <defs>
+            <radialGradient id="shamsa-glow">
+              <stop offset="0" className={styles.glowIn} />
+              <stop offset="1" className={styles.glowOut} />
+            </radialGradient>
+          </defs>
+          <circle cx={C} cy={C} r={300} fill="url(#shamsa-glow)" />
+        </svg>
+      </div>
 
-      <circle cx={C} cy={C} r={300} fill="url(#shamsa-glow)" className={styles.halo} />
+      {/* The medallion that holds still — and the band, which is the part a
+          reader can touch. */}
+      <svg viewBox="0 0 600 600" className={styles.shamsa} role="group" aria-label={title}>
+        <defs>
+          <linearGradient id="shamsa-gold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" className={styles.goldA} />
+            <stop offset="0.5" className={styles.goldB} />
+            <stop offset="1" className={styles.goldA} />
+          </linearGradient>
+          {/* The flower's circles all pass through the centre, where the name
+              is; they are kept to the ring between the star and the heart. */}
+          <clipPath id="shamsa-between">
+            <path
+              clipRule="evenodd"
+              d={
+                `M ${C - R.star} ${C} a ${R.star} ${R.star} 0 1 0 ${2 * R.star} 0 a ${R.star} ${R.star} 0 1 0 ${-2 * R.star} 0 Z ` +
+                `M ${C - R.disc} ${C} a ${R.disc} ${R.disc} 0 1 0 ${2 * R.disc} 0 a ${R.disc} ${R.disc} 0 1 0 ${-2 * R.disc} 0 Z`
+              }
+            />
+          </clipPath>
+        </defs>
 
-      {/* ── the rim: every ayah ─────────────────────────────────────────── */}
-      <g className={`${styles.ticks} ${geometry.thin ? styles.ticksThin : ""}`} aria-hidden="true">
-        {geometry.ticks.map((d, i) => (
-          <path key={i} d={d} style={{ "--k": (i / geometry.ticks.length).toFixed(3) } as CSSProperties} />
-        ))}
-      </g>
-      <g className={styles.marks} aria-hidden="true">
-        {/* Where the surah begins. */}
-        <path d={`M ${C} ${C - R.tickLong - 16} l 5 8 l -5 8 l -5 -8 Z`} className={styles.head} />
-        {geometry.juz.map(([x, y], i) => (
-          <path key={`j${i}`} d={`M ${f(x)} ${f(y - 5)} l 4 5 l -4 5 l -4 -5 Z`} className={styles.juz} />
-        ))}
-        {geometry.sajdah.map(([x, y], i) => (
-          <circle key={`s${i}`} cx={f(x)} cy={f(y)} r={4} className={styles.sajdah} />
-        ))}
-      </g>
-
-      {/* ── the band: the passages ──────────────────────────────────────── */}
-      <circle cx={C} cy={C} r={R.bandOut + 3.5} className={styles.ring} pathLength={1} />
-      <circle cx={C} cy={C} r={R.bandIn - 3.5} className={styles.ring} pathLength={1} />
-      {geometry.bands.length > 0 ? (
-        <g>
-          {geometry.bands.map((d, i) => (
-            <a
-              key={i}
-              href={`#passage-${passages[i].from}`}
-              aria-label={label(passages[i])}
-              className={`${styles.band} ${i % 2 ? styles.bandOdd : ""} ${active === i ? styles.bandOn : ""}`}
-              style={{ animationDelay: `${Math.min(900, 380 + i * 55)}ms` }}
-              onMouseEnter={() => onActive(i)}
-              onFocus={() => onActive(i)}
-              onClick={(event) => {
-                // On a screen with no pointer to hover with, the first touch
-                // says what the passage is and the second goes to it.
-                if (active !== i) {
-                  event.preventDefault();
-                  onActive(i);
-                }
-              }}
-            >
-              <path d={d} />
-            </a>
+        {/* ── the rim: every ayah ───────────────────────────────────────── */}
+        <g className={`${styles.ticks} ${geometry.thin ? styles.ticksThin : ""}`} aria-hidden="true">
+          {geometry.ticks.map((d, i) => (
+            <path key={i} d={d} style={{ "--k": (i / geometry.ticks.length).toFixed(3) } as CSSProperties} />
           ))}
         </g>
-      ) : (
-        <circle cx={C} cy={C} r={(R.bandIn + R.bandOut) / 2} className={styles.bandBlank} />
-      )}
+        <g className={styles.marks} aria-hidden="true">
+          {/* Where the surah begins. */}
+          <path d={`M ${C} ${C - R.tickLong - 16} l 5 8 l -5 8 l -5 -8 Z`} className={styles.head} />
+          {geometry.juz.map(([x, y], i) => (
+            <path key={`j${i}`} d={`M ${f(x)} ${f(y - 5)} l 4 5 l -4 5 l -4 -5 Z`} className={styles.juz} />
+          ))}
+          {geometry.sajdah.map(([x, y], i) => (
+            <circle key={`s${i}`} cx={f(x)} cy={f(y)} r={4} className={styles.sajdah} />
+          ))}
+        </g>
 
-      {/* A light that goes once round the band, the way the surah is read. */}
-      <circle cx={C} cy={C} r={(R.bandIn + R.bandOut) / 2} className={styles.comet} pathLength={1} aria-hidden="true" />
+        {/* ── the band: the passages ────────────────────────────────────── */}
+        <circle cx={C} cy={C} r={R.bandOut + 3.5} className={styles.ring} pathLength={1} />
+        <circle cx={C} cy={C} r={R.bandIn - 3.5} className={styles.ring} pathLength={1} />
+        {geometry.bands.length > 0 ? (
+          <g>
+            {geometry.bands.map((d, i) => (
+              <a
+                key={i}
+                href={`#passage-${passages[i].from}`}
+                aria-label={label(passages[i])}
+                className={`${styles.band} ${i % 2 ? styles.bandOdd : ""} ${active === i ? styles.bandOn : ""}`}
+                style={{ animationDelay: `${Math.min(900, 380 + i * 55)}ms` }}
+                onMouseEnter={() => onActive(i)}
+                onFocus={() => onActive(i)}
+                onClick={(event) => {
+                  // On a screen with no pointer to hover with, the first touch
+                  // says what the passage is and the second goes to it.
+                  if (active !== i) {
+                    event.preventDefault();
+                    onActive(i);
+                  }
+                }}
+              >
+                <path d={d} />
+              </a>
+            ))}
+          </g>
+        ) : (
+          <circle cx={C} cy={C} r={(R.bandIn + R.bandOut) / 2} className={styles.bandBlank} />
+        )}
 
-      {/* ── the rosette ─────────────────────────────────────────────────── */}
-      <g className={styles.rosette} aria-hidden="true">
-        <g className={styles.petals}>
+        {/* A light that goes once round the band, the way the surah is read. */}
+        <circle cx={C} cy={C} r={(R.bandIn + R.bandOut) / 2} className={styles.comet} pathLength={1} aria-hidden="true" />
+      </svg>
+
+      {/* ── the rosette: the petals and the star, turning opposite ways ──── */}
+      <div className={`${styles.layer} ${styles.petals}`} aria-hidden="true">
+        <svg viewBox="0 0 600 600">
           {Array.from({ length: PETALS }, (_, i) => (
             <path key={i} d={petal(i / PETALS)} />
           ))}
-        </g>
-        <circle cx={C} cy={C} r={R.petalBase - 4} className={styles.ring} pathLength={1} />
-        <g className={styles.star}>
+        </svg>
+      </div>
+      <div className={`${styles.layer} ${styles.star}`} aria-hidden="true">
+        <svg viewBox="0 0 600 600">
           <polygon points={square(0)} />
           <polygon points={square(1 / 8)} />
-        </g>
-        <g className={styles.flower} clipPath="url(#shamsa-between)">
-          {Array.from({ length: 8 }, (_, i) => {
-            const [x, y] = at(R.star / 2, i / 8 + 1 / 16);
-            return <circle key={i} cx={f(x)} cy={f(y)} r={R.star / 2} />;
-          })}
-        </g>
-      </g>
+        </svg>
+      </div>
 
-      {/* ── the heart: the name ─────────────────────────────────────────── */}
-      <circle cx={C} cy={C} r={R.disc} className={styles.disc} />
-      <circle cx={C} cy={C} r={R.disc} className={styles.ring} pathLength={1} />
-      <circle cx={C} cy={C} r={R.disc - 7} className={styles.ringFine} />
-      <text
-        x={C}
-        y={C}
-        className={styles.name}
-        fill="url(#shamsa-gold)"
-        style={{ fontSize: size }}
-        textAnchor="middle"
-        dominantBaseline="central"
-        direction="rtl"
-        lang="ar"
-        aria-hidden="true"
-      >
-        {name}
-      </text>
-    </svg>
+      {/* What lies over them and holds still: the ring the petals rise from,
+          the flower, and the heart with the name in it. */}
+      <svg viewBox="0 0 600 600" className={styles.layer} aria-hidden="true">
+        <g className={styles.rosette}>
+          <circle cx={C} cy={C} r={R.petalBase - 4} className={styles.ring} pathLength={1} />
+          <g className={styles.flower} clipPath="url(#shamsa-between)">
+            {Array.from({ length: 8 }, (_, i) => {
+              const [x, y] = at(R.star / 2, i / 8 + 1 / 16);
+              return <circle key={i} cx={f(x)} cy={f(y)} r={R.star / 2} />;
+            })}
+          </g>
+        </g>
+
+        {/* ── the heart: the name ───────────────────────────────────────── */}
+        <circle cx={C} cy={C} r={R.disc} className={styles.disc} />
+        <circle cx={C} cy={C} r={R.disc} className={styles.ring} pathLength={1} />
+        <circle cx={C} cy={C} r={R.disc - 7} className={styles.ringFine} />
+        <text
+          x={C}
+          y={C}
+          className={styles.name}
+          fill="url(#shamsa-gold)"
+          style={{ fontSize: size }}
+          textAnchor="middle"
+          dominantBaseline="central"
+          direction="rtl"
+          lang="ar"
+        >
+          {name}
+        </text>
+      </svg>
+    </div>
   );
 }

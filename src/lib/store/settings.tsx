@@ -240,7 +240,21 @@ function reviveLastRead(stored: unknown): LastRead | null {
  */
 let wantedTheme: Theme | null = null;
 
-function setTheme(root: HTMLElement, theme: Theme) {
+/** How many dissolves are under way; while any is, nothing transitions (see below). */
+let dissolving = 0;
+
+/**
+ * Applies a light to the document, dissolving into it when it is a change.
+ * Returns once the light is on the page — at the end of the dissolve, if
+ * there is one.
+ *
+ * While a dissolve runs, the document carries `data-changing`, and nothing on
+ * the page runs a transition of its own (globals.css). The bar, the buttons
+ * and the panels each declare one for their colours; under a dissolve that
+ * already carries the page from one light to the other, those would only
+ * repaint the page on every frame of it, which a phone shows as a stutter.
+ */
+function setTheme(root: HTMLElement, theme: Theme): Promise<void> {
   const previous = wantedTheme ?? root.dataset.theme;
   wantedTheme = theme;
 
@@ -251,16 +265,63 @@ function setTheme(root: HTMLElement, theme: Theme) {
   const still = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
   if (changing && !still && typeof document.startViewTransition === "function") {
+    dissolving++;
     const transition = document.startViewTransition(() => {
+      root.dataset.changing = "";
       root.dataset.theme = wantedTheme ?? theme;
     });
     // The browser skips the dissolve when it cannot show one — a hidden tab,
     // or another change of light before this one has finished — and says so
     // by rejecting `ready`. The light has changed all the same.
     transition.ready.catch(() => {});
-    return;
+    return transition.finished
+      .catch(() => {})
+      .finally(() => {
+        if (--dissolving === 0) delete root.dataset.changing;
+      });
   }
   root.dataset.theme = theme;
+  return Promise.resolve();
+}
+
+/**
+ * The reader choosing a light, from the bar or the settings page.
+ *
+ * The dissolve starts on the tap itself. The setting is kept — and with it
+ * everything that reads the settings drawn again — only once the dissolve
+ * is over, when nothing on the page is moving: done first, it would hold the
+ * dissolve back by however long the whole page takes to draw, which on a phone
+ * is long enough to feel. What has to change with the light — the sky, which
+ * of the three buttons is lit — reads it from the page (`useLight`) and turns
+ * inside the dissolve. A light chosen and then changed before its dissolve has
+ * ended is not kept; the one chosen last is.
+ */
+export function chooseLight(theme: Theme) {
+  const keep = () => {
+    if (wantedTheme !== theme || settingsStore.getSnapshot().theme === theme) return;
+    settingsStore.set(sanitise({ ...settingsStore.getSnapshot(), theme }, DEFAULT_SETTINGS));
+  };
+  void setTheme(document.documentElement, theme).then(keep);
+}
+
+function subscribeLight(onChange: () => void) {
+  const watch = new MutationObserver(onChange);
+  watch.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  return () => watch.disconnect();
+}
+
+function lightOnPage(): Theme {
+  const light = document.documentElement.dataset.theme;
+  return light === "day" || light === "night" ? light : "evening";
+}
+
+/**
+ * The light the page is in, read from the page — so it changes inside the
+ * dissolve, with the colours, rather than after it with the setting. Before
+ * the page is in the browser it is the default, as the settings are.
+ */
+export function useLight(): Theme {
+  return useSyncExternalStore(subscribeLight, lightOnPage, () => DEFAULT_SETTINGS.theme);
 }
 
 const settingsStore = createPersistedStore<Settings>("mishkat.settings.v1", DEFAULT_SETTINGS, sanitise);
@@ -303,7 +364,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     // and its effects run before React draws again with the reader's own. Its
     // light is evening for everyone, and applying it would start a reader of
     // day or night dissolving into evening on arrival.
-    setTheme(root, settingsStore.getSnapshot().theme);
+    void setTheme(root, settingsStore.getSnapshot().theme);
   }, [
     settings.arabicFont,
     settings.arabicSize,

@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: 22px;
-  padding: 0 22px;
+  padding: env(safe-area-inset-top, 0px) 22px 0;
   height: var(--header-h);
   flex: none;
   position: relative;
@@ -191,12 +191,13 @@
   border-color: color-mix(in srgb, var(--mk-gold-pale) 55%, transparent);
 }
 
+/* Under the sheet, which is itself beneath the bar's contents (-1): the
+   page is dimmed, and the sheet over it is what the reader touches. */
 .scrim {
   position: fixed;
+  z-index: -2;
   inset: var(--header-h) 0 0;
   background: color-mix(in srgb, #0b0906 34%, transparent);
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -212,10 +213,14 @@
 }
 
 /* The sheet is the bar let down: the same ground, unrolled from under it,
-   with no seam where the one becomes the other. */
+   with no seam where the one becomes the other. It comes down from behind the
+   bar — beneath the bar's contents (z-index -1) though over its ground, which
+   is the sheet's own — so it moves rather than being cut open: a clip that
+   grows has to be painted again each frame, and a phone shows it. */
 .sheet {
   --sheet-ground: var(--color-bg);
   position: absolute;
+  z-index: -1;
   top: 100%;
   inset-inline: 0;
   padding: 26px 24px 30px;
@@ -224,15 +229,15 @@
   border-bottom: 1px solid var(--color-divider);
   border-radius: 0 0 22px 22px;
   box-shadow: var(--shadow-lg);
+  /* Its shadow falls on the page, not up across the bar it hangs from. */
+  clip-path: inset(0 -48px -64px);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateY(-6px);
-  clip-path: inset(0 0 100% 0);
+  transform: translateY(-100%);
   transition:
-    opacity 200ms ease,
-    transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    clip-path 340ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 220ms ease,
+    transform 340ms cubic-bezier(0.2, 0.8, 0.2, 1),
     visibility 0s linear 340ms;
 }
 .sheet[data-open] {
@@ -240,8 +245,6 @@
   visibility: visible;
   pointer-events: auto;
   transform: none;
-  /* Open below, so the shadow the sheet casts on the page is not cut off. */
-  clip-path: inset(0 0 -48px 0);
   transition-delay: 0s;
 }
 
@@ -366,14 +369,12 @@
 }
 .nicheLamp { fill: var(--mk-gold); }
 
-/* Over the landing page the sheet is glass rather than paper: the niche's own
-   dark, let through and softened, with the light still in it. */
+/* Over the landing page the sheet is the niche's own dark rather than paper:
+   glass, with the light softened through it, where a mouse is (below). */
 .headerHome .sheet {
-  --sheet-ground: color-mix(in srgb, var(--mk-hero-ground) 78%, transparent);
+  --sheet-ground: var(--mk-hero-ground);
   color: var(--mk-hero-ink);
   border-bottom-color: color-mix(in srgb, var(--mk-gold-pale) 22%, transparent);
-  -webkit-backdrop-filter: blur(20px) saturate(1.25);
-  backdrop-filter: blur(20px) saturate(1.25);
 }
 .headerHome .niche { color: color-mix(in srgb, var(--mk-hero-ink) 62%, transparent); }
 .headerHome .nicheLabel { color: var(--mk-hero-ink); }
@@ -398,17 +399,33 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: color-mix(in srgb, var(--mk-hero-ground) 78%, transparent);
-  -webkit-backdrop-filter: blur(20px) saturate(1.25);
-  backdrop-filter: blur(20px) saturate(1.25);
+  background: var(--mk-hero-ground);
   opacity: 0;
   pointer-events: none;
   transition: opacity 260ms ease;
 }
 .headerHome.headerOpen::before { opacity: 1; }
 
+/* The glass softens what is behind it, on a screen with a mouse. A blur over
+   the landing page is worked out again every frame the sky moves, which a
+   desk does not notice and a phone does. Unblurred, the ayah behind would
+   show through and tangle with the menu, so on a phone the sheet is solid. */
+@media (hover: hover) and (pointer: fine) {
+  .scrim {
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+  }
+  .headerHome .sheet,
+  .headerHome::before {
+    --sheet-ground: color-mix(in srgb, var(--mk-hero-ground) 78%, transparent);
+    background: var(--sheet-ground);
+    -webkit-backdrop-filter: blur(20px) saturate(1.25);
+    backdrop-filter: blur(20px) saturate(1.25);
+  }
+}
+
 @media (max-width: 860px) {
-  .header { gap: 12px; padding: 0 14px; }
+  .header { gap: 12px; padding-inline: 14px; }
   .brandKicker { display: none; }
   .searchLabel, .kbd, .menuLabel { display: none; }
   .search { width: 36px; padding-inline: 0; }
@@ -419,7 +436,7 @@
 /* A phone: the bar keeps the name, the lights, the search and the way to the
    rest, each at a size a thumb can find, and the niches go three to a row. */
 @media (max-width: 620px) {
-  .header { gap: 8px; padding: 0 16px; }
+  .header { gap: 8px; padding-inline: 16px; }
   .brand { gap: 9px; }
   .search,
   .menuButton { width: 34px; height: 34px; }

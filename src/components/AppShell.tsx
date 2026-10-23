@@ -24,7 +24,12 @@ import styles from "./AppShell.module.css";
  * against the viewport while the page scrolls through it.
  */
 export function AppShell({ children }: { children: ReactNode }) {
-  const onHome = (usePathname() || "/") === "/";
+  const path = usePathname() || "/";
+  const onHome = path === "/";
+  // A film is watched with nothing round it: no header over the sky, and no
+  // second transport under the film's own.
+  const parts = path.split("/").filter(Boolean);
+  const watching = parts[0] === "read" && parts[2] === "horizons";
   const t = useT();
 
   return (
@@ -32,11 +37,11 @@ export function AppShell({ children }: { children: ReactNode }) {
       <a href="#main" className="skip-link">
         {t("shell.skip")}
       </a>
-      <SiteHeader />
+      {!watching && <SiteHeader />}
       <main id="main" className={styles.main}>
         {children}
       </main>
-      <Transport />
+      {!watching && <Transport />}
       <SearchOverlay />
       {/* The plan speaks last, so that when both have something to say at
           once — a portion and a juzʾ finished together — the plan is heard. */}

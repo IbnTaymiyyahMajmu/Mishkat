@@ -1,5 +1,9 @@
+/* The whole screen, to its edges: where the device has something at a side —
+   a camera, a phone turned on its side — the page keeps clear of it, and its
+   ground still runs underneath. Nothing, in a browser. */
 .shell {
   height: 100dvh;
+  padding-inline: env(safe-area-inset-left, 0px) env(safe-area-inset-right, 0px);
   display: flex;
   flex-direction: column;
   overflow: hidden;

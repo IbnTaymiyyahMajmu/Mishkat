@@ -992,6 +992,45 @@ export const es: Messages = {
   "mushaf.openStudy": "Abrir en la vista de estudio",
   "mushaf.clear": "Quitar la selección",
 
+  // ── Horizons: the surah recited over the signs it names ─────────────────
+  "horizons.title": "Horizontes",
+  "horizons.watch": "Ver",
+  "horizons.watchLong": "Ver la sura recitada sobre los signos que nombra",
+  "horizons.begin": "Comenzar",
+  "horizons.preparing": "Trazando la tierra…",
+  "horizons.recitedBy": "Recitada por {name}",
+  "horizons.back": "Volver a {surah}",
+  "horizons.settings": "Ajustes de la película",
+  "horizons.fullscreen": "Pantalla completa",
+  "horizons.exitFullscreen": "Salir de pantalla completa",
+  "horizons.wordsLabel": "Palabras en pantalla",
+  "horizons.words.ayah": "Aleya",
+  "horizons.words.word": "Palabra",
+  "horizons.words.none": "Ninguna",
+  "horizons.motion": "Movimiento",
+  "horizons.motion.full": "Pleno",
+  "horizons.motion.gentle": "Suave",
+  "horizons.motion.still": "Quieto",
+  "horizons.translation": "Traducción bajo las palabras",
+  "horizons.drag": "Arrastre la imagen para mirar alrededor; vuelve sola.",
+  "horizons.unseen": "De lo oculto: se oye, no se muestra",
+  "horizons.bow": "Una aleya de postración",
+  "horizons.prev": "Aleya anterior",
+  "horizons.next": "Aleya siguiente",
+  "horizons.play": "Reproducir",
+  "horizons.pause": "Pausa",
+  "horizons.shownTitle": "Qué se muestra y qué no",
+  "horizons.shown": "Solo lo que puede verse en la creación: el cielo y sus luces, el tiempo, el agua, la tierra y lo que brota de ella, cada cosa cuando se recita la palabra que la nombra. No se dibuja nada que tenga alma —ni persona, ni animal, ni ave— ni nada de lo oculto: cuando una aleya habla de la Otra Vida, de los ángeles o del Trono, el mundo cede a la luz de la lámpara y las palabras quedan para ser oídas. No se oye más que la recitación.",
+  "horizons.memoryTitle": "Cada aleya tiene su lugar.",
+  "horizons.memory": "La tierra está trazada a partir de la propia sura, y cada aleya se sobrevuela siempre por el mismo tramo, así que un pasaje repetido desde el reproductor para aprenderlo es siempre el mismo paisaje.",
+  "horizons.noScore": "No se pudo cargar la dirección de esta sura; se sobrevuela su tierra sin sus signos.",
+  "horizons.signsTitle": "Los signos que nombró",
+  "horizons.signsNone": "Esta sura no nombra ninguno de los signos que la película puede mostrar. Se recitó sobre la tierra en la que fue revelada.",
+  "horizons.again": "Ver de nuevo",
+  "horizons.nextSurah": "Siguiente: {surah}",
+  "horizons.read": "Leerla",
+  "horizons.noGl": "Este navegador no puede dibujar la tierra, así que solo se muestra su luz; las horas siguen la recitación.",
+
   // ── tafsir ────────────────────────────────────────────────────────────────
   "tafsir.textSize": "Tamaño del texto",
   "tafsir.smaller": "Texto más pequeño",
@@ -1258,6 +1297,40 @@ export const es: Messages = {
   "grammar.inna": "de inna y sus hermanas",
   "grammar.kada": "de kāda y sus hermanas",
 
+  // ── privacy ───────────────────────────────────────────────────────────────
+  "privacy.kicker": "Privacidad",
+  "privacy.title": "Lo que se queda contigo",
+  "privacy.lede":
+    "Mishkāt no tiene cuentas, ni analítica, ni publicidad, ni rastreo. No recoge nada de nadie que la lea, tampoco de los niños, y no envía nada a quienes la hacen, ni en la web ni en la aplicación para Android.",
+  "privacy.kept.title": "Guardado en tu dispositivo",
+  "privacy.kept.text":
+    "Tus notas y marcadores, el punto al que llegaste en cada sura, los días que has leído, tu plan para completar el Corán y tus ajustes se guardan en tu dispositivo —en este navegador, o en el almacenamiento propio de la aplicación— y no se envían a ningún sitio. Borrar los datos del sitio, o desinstalar la aplicación, los elimina; en <link>Ajustes</link> puedes exportarlos antes a un archivo.",
+  "privacy.kept.cache":
+    "Parte de lo que se pide a otros también se guarda un tiempo en tu dispositivo, para que una sura abierta dos veces se pida una sola vez.",
+  "privacy.fetched.title": "Lo que se pide a otros",
+  "privacy.fetched.text":
+    "Para mostrarte el Corán y lo que se ha escrito sobre él, Mishkāt lo pide a quienes lo publican. Cada petición lleva lo que se pide —una sura, una traducción, una palabra— y lo que lleva toda petición en internet: la dirección de tu dispositivo. Lo que cada uno hace con ella está en su propia política.",
+  "privacy.fetched.corpus":
+    "<b>api.quran.com</b>, de la Quran Foundation: el texto, las traducciones, el significado de las palabras, las marcas de tajwid, buena parte del tafsir y la búsqueda",
+  "privacy.fetched.audio": "<b>verses.quran.com</b> y <b>everyayah.com</b>: las recitaciones",
+  "privacy.fetched.tafsir": "<b>cdn.jsdelivr.net</b>: al-Mukhtaṣar y al-Jalālayn en inglés",
+  "privacy.fetched.lexicons":
+    "<b>al-nuqta.com</b>: la raíz de una palabra, su gramática y los léxicos clásicos, cuando la estudias",
+  "privacy.fetched.clear": "<b>ibntaymiyyahmajmu.github.io</b>: The Clear Qur’an, si la lees",
+  "privacy.fetched.search":
+    "Una búsqueda envía las palabras que buscas a api.quran.com, que encuentra las aleyas que coinciden. Nada más de lo que escribes —y menos que nada tus notas— sale de tu dispositivo.",
+  "privacy.fetched.links":
+    "Un enlace a otro sitio —tafsir.app, sunnah.com, un léxico— te lleva allí, bajo la política de ese sitio.",
+  "privacy.served.title": "De dónde vienen las páginas",
+  "privacy.served.text":
+    "La web la sirve GitHub Pages, que, como cualquier servidor, ve cada página que se pide. La aplicación para Android lleva las páginas dentro y no pide ninguna.",
+  "privacy.app.title": "En la aplicación para Android",
+  "privacy.app.text":
+    "La aplicación no pide en tu teléfono más que internet: ni tus contactos, ni tu ubicación, ni la cámara, ni el micrófono, ni tus archivos. Mientras suena una recitación muestra una notificación con sus controles, para que la recitación pueda seguir con la pantalla apagada.",
+  "privacy.questions.title": "Preguntas",
+  "privacy.questions.text": "Escribe a <link>{email}</link>.",
+  "privacy.updated": "Última modificación: {date}.",
+
   // ── settings ──────────────────────────────────────────────────────────────
   "settings.kicker": "Preferencias",
   "settings.title": "Ajustes de lectura",
@@ -1301,6 +1374,7 @@ export const es: Messages = {
   "settings.clearAsk": "¿Eliminar todas las notas y marcadores?",
   "settings.clear": "Vaciar la biblioteca",
   "settings.reset": "Restablecer los ajustes",
+  "settings.privacy": "Privacidad: qué se guarda, y dónde",
   "settings.sources": "Fuentes de esta versión",
   "settings.layer": "Capa",
   "settings.source": "Fuente",

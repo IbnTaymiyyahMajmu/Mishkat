@@ -173,100 +173,141 @@ export function NicheScene({
     [],
   );
 
+  // Where today's tile is, if a tile was lit today: it pulses in a layer of its own.
+  const todayTile = light.since === 0 && lit > 0 ? lit - 1 : -1;
+  const tileClass = (k: number) => {
+    const level = strength(light.perDay.get(light.days[k]) ?? 0);
+    return [styles.tile, styles[`tile${level}`], k < again && styles.tileAgain, k >= firstFresh && styles.kindle]
+      .filter(Boolean)
+      .join(" ");
+  };
+  const kindleDelay = (k: number) => (k >= firstFresh ? { animationDelay: `${300 + (k - firstFresh) * 110}ms` } : undefined);
+
+  // Drawn in layers, each the whole niche's size, stacked in the order the
+  // niche was always drawn in. What moves for as long as the page is open —
+  // the tile lit today, the glow round the lamp, the flame — has a layer of
+  // its own, a box holding a drawing, and moves as a whole: the graphics chip
+  // does it, and nothing is painted again. Moved inside one drawing instead,
+  // every frame of a flicker painted the whole niche afresh, every tile of
+  // its pattern, which on a phone was most of what the page could do.
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={label} className={styles.scene}>
-      <defs>
-        <radialGradient id={id("niche-glow")}>
-          <stop offset="0" stopColor="#fff1c8" stopOpacity="0.9" />
-          <stop offset="0.3" stopColor="#f3c86e" stopOpacity="0.38" />
-          <stop offset="1" stopColor="#f3c86e" stopOpacity="0" />
-        </radialGradient>
-        <radialGradient id={id("niche-glass")} cx="0.45" cy="0.42">
-          <stop offset="0" stopColor="#fff6dc" stopOpacity={flame ? 0.95 : 0.22} />
-          <stop offset="1" stopColor="#d9ab5c" stopOpacity={flame ? 0.4 : 0.08} />
-        </radialGradient>
-        <radialGradient id={id("niche-wash")} cx={LAMP.x / W} cy={LAMP.y / H} r="0.75">
-          <stop offset="0" stopColor="#f6d58c" stopOpacity={0.05 + Math.min(1, light.lit / 120) * 0.22} />
-          <stop offset="1" stopColor="#f6d58c" stopOpacity="0" />
-        </radialGradient>
-        <clipPath id={id("niche-recess")}>
-          <path d={archPath(0)} />
-        </clipPath>
-      </defs>
+    <div className={styles.scene}>
+      <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={label} className={styles.base}>
+        <defs>
+          <radialGradient id={id("niche-glow")}>
+            <stop offset="0" stopColor="#fff1c8" stopOpacity="0.9" />
+            <stop offset="0.3" stopColor="#f3c86e" stopOpacity="0.38" />
+            <stop offset="1" stopColor="#f3c86e" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id={id("niche-glass")} cx="0.45" cy="0.42">
+            <stop offset="0" stopColor="#fff6dc" stopOpacity={flame ? 0.95 : 0.22} />
+            <stop offset="1" stopColor="#d9ab5c" stopOpacity={flame ? 0.4 : 0.08} />
+          </radialGradient>
+          <radialGradient id={id("niche-wash")} cx={LAMP.x / W} cy={LAMP.y / H} r="0.75">
+            <stop offset="0" stopColor="#f6d58c" stopOpacity={0.05 + Math.min(1, light.lit / 120) * 0.22} />
+            <stop offset="1" stopColor="#f6d58c" stopOpacity="0" />
+          </radialGradient>
+          <clipPath id={id("niche-recess")}>
+            <path d={archPath(0)} />
+          </clipPath>
+        </defs>
 
-      {/* The niche: its frame, and the recess within it. */}
-      <path d={archPath(16)} className={styles.frame} />
-      <path d={archPath(8)} className={styles.frameLine} />
-      <path d={archPath(0)} className={styles.recess} />
+        {/* The niche: its frame, and the recess within it. */}
+        <path d={archPath(16)} className={styles.frame} />
+        <path d={archPath(8)} className={styles.frameLine} />
+        <path d={archPath(0)} className={styles.recess} />
 
-      <g clipPath={`url(#${id("niche-recess")})`}>
-        <rect x={L} y={0} width={R - L} height={H} fill={`url(#${id("niche-wash")})`} />
-        {TILES.map((tile, k) => {
-          if (k >= lit) return <path key={k} d={tile.d} className={styles.tileDark} />;
-          const day = light.days[k];
-          const level = strength(light.perDay.get(day) ?? 0);
-          const isToday = light.since === 0 && k === lit - 1;
+        <g clipPath={`url(#${id("niche-recess")})`}>
+          <rect x={L} y={0} width={R - L} height={H} fill={`url(#${id("niche-wash")})`} />
+          {TILES.map((tile, k) => {
+            if (k >= lit) return <path key={k} d={tile.d} className={styles.tileDark} />;
+            // Today's tile is drawn in its own layer, above; here it keeps
+            // only its name, for the pointer that rests on it.
+            if (k === todayTile) {
+              return (
+                <path key={k} d={tile.d} className={styles.tileHeld}>
+                  {dayTitle && <title>{dayTitle(light.days[k])}</title>}
+                </path>
+              );
+            }
+            return (
+              <path key={k} d={tile.d} className={tileClass(k)} style={kindleDelay(k)}>
+                {dayTitle && <title>{dayTitle(light.days[k])}</title>}
+              </path>
+            );
+          })}
+        </g>
+
+        {/* The lamps hung for each reading finished: light upon light. They
+            burn steadily; the lamp of the niche is the one that flickers. */}
+        {HUNG.slice(0, light.lamps).map(([x, y], i) => (
+          <g key={i} className={styles.hung}>
+            <line x1={x} y1={archTop(x) + 6} x2={x} y2={y - 16} className={styles.chain} />
+            {/* A clearing in the pattern, so a lamp hung in a niche already full of light is still seen. */}
+            <circle cx={x} cy={y} r={21} className={styles.hungBack} />
+            <circle cx={x} cy={y} r={30} fill={`url(#${id("niche-glow")})`} />
+            <path d={lampPath(x, y, 0.42)} fill={`url(#${id("niche-glass")})`} className={styles.lamp} />
+            <path d={flamePath(x, y + 1, 0.45)} className={styles.flame} />
+          </g>
+        ))}
+      </svg>
+
+      {todayTile >= 0 && (
+        <div className={`${styles.layer} ${styles.today}`} aria-hidden="true">
+          <svg viewBox={`0 0 ${W} ${H}`}>
+            <g clipPath={`url(#${id("niche-recess")})`}>
+              <path d={TILES[todayTile].d} className={tileClass(todayTile)} style={kindleDelay(todayTile)} />
+            </g>
+          </svg>
+        </div>
+      )}
+
+      {glow > 0 && (
+        <div className={`${styles.layer} ${styles.glow}`} aria-hidden="true">
+          <svg viewBox={`0 0 ${W} ${H}`}>
+            <circle cx={LAMP.x} cy={LAMP.y} r={glow} fill={`url(#${id("niche-glow")})`} />
+          </svg>
+        </div>
+      )}
+
+      {/* The lamp itself, and round its glass a medallion for every juzʾ. */}
+      <svg viewBox={`0 0 ${W} ${H}`} className={styles.layer} aria-hidden={juzTitle ? undefined : true}>
+        <line x1={CX} y1={APEX + 4} x2={CX} y2={128} className={styles.chain} />
+        <path d={`M${CX} 128L${CX - 19} 169M${CX} 128L${CX} 169M${CX} 128L${CX + 19} 169`} className={styles.chain} />
+        {petals.map(({ j, a0, a1 }) => {
+          const read = light.juz[j];
+          const done = read >= ENOUGH;
           return (
-            <path
-              key={k}
-              d={tile.d}
-              className={[
-                styles.tile,
-                styles[`tile${level}`],
-                k < again && styles.tileAgain,
-                isToday && styles.tileToday,
-                k >= firstFresh && styles.kindle,
-              ]
-                .filter(Boolean)
-                .join(" ")}
-              style={k >= firstFresh ? { animationDelay: `${300 + (k - firstFresh) * 110}ms` } : undefined}
-            >
-              {dayTitle && <title>{dayTitle(day)}</title>}
-            </path>
+            <g key={j}>
+              <path d={arc(ROSETTE, a0, a1)} className={styles.petal} />
+              {read > 0.02 && (
+                <path d={arc(ROSETTE, a0, done ? a1 : a0 + (a1 - a0) * read)} className={done ? styles.petalDone : styles.petalPart} />
+              )}
+              {juzTitle && (
+                <path d={arc(ROSETTE, a0, a1)} className={styles.petalHit}>
+                  <title>{juzTitle(j + 1)}</title>
+                </path>
+              )}
+            </g>
           );
         })}
-      </g>
+        <path d={lampPath(LAMP.x, LAMP.y, 1)} fill={`url(#${id("niche-glass")})`} className={`${styles.lamp} ${flame ? "" : styles.lampDark}`} />
+        <path d={`M${LAMP.x - 16} ${LAMP.y - 30}H${LAMP.x + 16}`} className={styles.enamel} />
+        <path d={`M${LAMP.x - 24} ${LAMP.y + 8}Q${LAMP.x} ${LAMP.y + 16} ${LAMP.x + 24} ${LAMP.y + 8}`} className={styles.enamel} />
+      </svg>
 
-      {/* The lamps hung for each reading finished: light upon light. */}
-      {HUNG.slice(0, light.lamps).map(([x, y], i) => (
-        <g key={i} className={styles.hung}>
-          <line x1={x} y1={archTop(x) + 6} x2={x} y2={y - 16} className={styles.chain} />
-          {/* A clearing in the pattern, so a lamp hung in a niche already full of light is still seen. */}
-          <circle cx={x} cy={y} r={21} className={styles.hungBack} />
-          <circle cx={x} cy={y} r={30} fill={`url(#${id("niche-glow")})`} className={styles.glow} />
-          <path d={lampPath(x, y, 0.42)} fill={`url(#${id("niche-glass")})`} className={styles.lamp} />
-          <path d={flamePath(x, y + 1, 0.45)} className={styles.flame} />
-        </g>
-      ))}
-
-      {/* The lamp. */}
-      {glow > 0 && <circle cx={LAMP.x} cy={LAMP.y} r={glow} fill={`url(#${id("niche-glow")})`} className={styles.glow} />}
-      <line x1={CX} y1={APEX + 4} x2={CX} y2={128} className={styles.chain} />
-      <path d={`M${CX} 128L${CX - 19} 169M${CX} 128L${CX} 169M${CX} 128L${CX + 19} 169`} className={styles.chain} />
-
-      {/* Round the glass, a medallion for every juzʾ. */}
-      {petals.map(({ j, a0, a1 }) => {
-        const read = light.juz[j];
-        const done = read >= ENOUGH;
-        return (
-          <g key={j}>
-            <path d={arc(ROSETTE, a0, a1)} className={styles.petal} />
-            {read > 0.02 && (
-              <path d={arc(ROSETTE, a0, done ? a1 : a0 + (a1 - a0) * read)} className={done ? styles.petalDone : styles.petalPart} />
-            )}
-            {juzTitle && (
-              <path d={arc(ROSETTE, a0, a1)} className={styles.petalHit}>
-                <title>{juzTitle(j + 1)}</title>
-              </path>
-            )}
-          </g>
-        );
-      })}
-
-      <path d={lampPath(LAMP.x, LAMP.y, 1)} fill={`url(#${id("niche-glass")})`} className={`${styles.lamp} ${flame ? "" : styles.lampDark}`} />
-      <path d={`M${LAMP.x - 16} ${LAMP.y - 30}H${LAMP.x + 16}`} className={styles.enamel} />
-      <path d={`M${LAMP.x - 24} ${LAMP.y + 8}Q${LAMP.x} ${LAMP.y + 16} ${LAMP.x + 24} ${LAMP.y + 8}`} className={styles.enamel} />
-      {flame > 0 && <path d={flamePath(LAMP.x, LAMP.y + 4, flame)} className={styles.flame} />}
-    </svg>
+      {flame > 0 && (
+        <div
+          className={`${styles.layer} ${styles.flicker}`}
+          // The flame flickers from its foot, as a flame does.
+          style={{ transformOrigin: `${((LAMP.x / W) * 100).toFixed(2)}% ${(((LAMP.y + 7) / H) * 100).toFixed(2)}%` }}
+          aria-hidden="true"
+        >
+          <svg viewBox={`0 0 ${W} ${H}`}>
+            <path d={flamePath(LAMP.x, LAMP.y + 4, flame)} className={styles.flame} />
+          </svg>
+        </div>
+      )}
+    </div>
   );
 }

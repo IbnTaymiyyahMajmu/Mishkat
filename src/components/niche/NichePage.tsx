@@ -108,6 +108,7 @@ export function NichePage() {
           ? t("niche.status.yesterday")
           : t("niche.status.waiting", { count: light.since, countText: n(light.since) });
 
+  const heading = ready ? t(STAGE[light.stage]) : t("niche.title");
   const label = t("niche.label", {
     stage: t(STAGE[light.stage]),
     days: t("niche.days", { count: light.lit, countText: n(light.lit) }),
@@ -120,7 +121,9 @@ export function NichePage() {
         <div aria-hidden="true" className={styles.motes} />
         <div className={styles.heroInner}>
           <span className={styles.kicker}>{t("niche.kicker")}</span>
-          <h1 className={styles.title}>{ready ? t(STAGE[light.stage]) : t("niche.title")}</h1>
+          <h1 className={`${styles.title} mk-shine`} data-text={heading}>
+            {heading}
+          </h1>
           <p className={styles.status}>{ready ? status : " "}</p>
 
           <div className={styles.stage}>
