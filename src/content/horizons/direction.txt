@@ -23,7 +23,7 @@
 #                            carrying that root (or at its first word).
 #
 # The rules behind it are in src/lib/horizons/signs.ts and the reasons for
-# the harder calls in HORIZONS-REVIEW.md, by section letter.
+# the harder calls in docs/HORIZONS-REVIEW.md, by section letter.
 
 # ── 1 al-Fātiḥah ───────────────────────────────────────────────────────────
 # "Master of the Day of Judgement" is veiled by its words; "the straight path"

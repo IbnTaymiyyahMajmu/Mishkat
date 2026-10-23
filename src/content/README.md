@@ -200,5 +200,5 @@ line to a point:
 
 The signs themselves, and what each looks like, are in
 `src/lib/horizons/signs.ts`. The rules and the calls left open are in
-`HORIZONS-REVIEW.md` at the root. A line naming a sign that does not exist,
+`docs/HORIZONS-REVIEW.md`. A line naming a sign that does not exist,
 a reference outside its surah, or a root not in the ayah stops the run.

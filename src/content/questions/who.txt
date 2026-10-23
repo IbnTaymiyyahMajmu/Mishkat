@@ -17,10 +17,10 @@
 #   @day          asked on the Day of Resurrection or after it.
 #   @death        asked at death.
 #   ?             the commentators differ on who is speaking; listed in
-#                 QUESTIONS-REVIEW.md for a reader of knowledge to settle.
+#                 docs/QUESTIONS-REVIEW.md for a reader of knowledge to settle.
 #
 # Written for this site from the text, the context of each ayah and the
-# tafsir; not yet read by a scholar. See DATA-NEEDED.md.
+# tafsir; not yet read by a scholar. See docs/DATA-NEEDED.md.
 
 2:13:9     hypocrites>believers
 2:26:24    disbelievers>themselves

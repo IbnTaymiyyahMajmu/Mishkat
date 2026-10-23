@@ -124,7 +124,7 @@ takes nothing taller than twice its width.
 ### Before it is public
 
 Google Play takes an app down when someone shows it carries their work without
-leave, so the rights in [DATA-NEEDED.md](../DATA-NEEDED.md) want settling first —
+leave, so the rights in [DATA-NEEDED.md](../docs/DATA-NEEDED.md) want settling first —
 above all The Clear Qur'an (§4), for which no permission from its publisher has
 been shown. The app also *carries* the tafsir library, which is a copy handed to
 every phone that installs it rather than one served from a website; it is worth
