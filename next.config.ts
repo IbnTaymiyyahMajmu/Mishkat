@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
   // transport puts play. It never ships — the export has no dev server behind
   // it — but while developing it covers the control it is sitting on.
   devIndicators: false,
+  // `next dev` writes its note for coding agents to AGENTS.md and CLAUDE.md at
+  // the root whenever it finds them missing. The note is kept in
+  // .claude/CLAUDE.md instead, so the top of the repository holds only what
+  // the tools need there.
+  agentRules: false,
 };
 
 export default nextConfig;

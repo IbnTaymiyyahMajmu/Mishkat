@@ -23,7 +23,7 @@ import { keptJson } from "./kept";
  * is one line — "The translators hold the copyright for the translated
  * content" — and that is the whole of the position. Whether this site may
  * show The Clear Qur'an is a question for its publisher, not for the fork it
- * is read from. See DATA-NEEDED.md.
+ * is read from. See docs/DATA-NEEDED.md.
  *
  * The text is read from where it is published, like the corpus, and is not
  * copied into this site.
