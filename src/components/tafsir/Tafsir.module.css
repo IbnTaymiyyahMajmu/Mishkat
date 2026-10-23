@@ -61,7 +61,7 @@
   background: color-mix(in srgb, var(--color-accent) 13%, transparent);
   color: var(--color-accent-800);
 }
-:global(:root[data-theme="night"]) .tabOn { color: var(--color-accent); }
+:global(:root:not([data-theme="day"])) .tabOn { color: var(--color-accent); }
 
 .tabLang {
   font-family: var(--font-body);

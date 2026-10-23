@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { useSearch } from "./search/SearchProvider";
 import { useLocale, type MessageKey } from "@/lib/i18n";
-import { useSettings, type Theme } from "@/lib/store/settings";
+import { chooseLight, useLight, type Theme } from "@/lib/store/settings";
 import styles from "./SiteHeader.module.css";
 
 /** The three reading lights, in the order the day runs. */
@@ -123,7 +123,10 @@ const NICHE_LAMP =
 export function SiteHeader() {
   const pathname = usePathname() || "/";
   const { openSearch } = useSearch();
-  const { settings, update } = useSettings();
+  // The light, read from the page, so the lit button turns with the dissolve
+  // rather than after it; and nothing else here reads the settings, so the
+  // bar is not drawn again when one changes.
+  const lit = useLight();
   const { t, arabicScript } = useLocale();
 
   // The landing page is read against a lit niche rather than paper, so the bar
@@ -172,11 +175,11 @@ export function SiteHeader() {
 
       <div className={styles.lights} role="group" aria-label={t("light.group")}>
         {LIGHTS.map((light) => {
-          const on = settings.theme === light.id;
+          const on = lit === light.id;
           return (
             <button
               key={light.id}
-              onClick={() => update({ theme: light.id })}
+              onClick={() => chooseLight(light.id)}
               aria-pressed={on}
               title={t(light.title)}
               aria-label={t(light.title)}

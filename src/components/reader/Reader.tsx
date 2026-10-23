@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { startTransition, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSettings } from "@/lib/store/settings";
 import { useChapters } from "@/lib/store/chapters";
@@ -40,6 +40,14 @@ import styles from "./Reader.module.css";
 
 /** How many ayat are added to the DOM at a time. */
 const CHUNK = 12;
+
+/**
+ * Where a copied link to an ayah points. Unset, it is wherever the page is
+ * being read. The Android app sets it (scripts/build-android.mjs): the app is
+ * served from the phone's own https://localhost, which nobody the link is sent
+ * to could open, so its links name the site on the web.
+ */
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "";
 
 export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser | null }) {
   const router = useRouter();
@@ -191,8 +199,18 @@ export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser |
         if (key && key !== topKeyRef.current) {
           topKeyRef.current = key;
           setPlaceKey(key);
-          // …so "continue reading" returns here.
-          setLastRead({ surah, verseKey: key });
+          // …so "continue reading" returns here. Kept once the place has
+          // settled rather than at every ayah scrolled past: keeping it touches
+          // the settings, and everything that reads them is drawn again, which
+          // in the middle of a scroll is a stutter. Leaving the page keeps it
+          // at once (below).
+          keepPlace.current = { surah, verseKey: key };
+          if (keepTimer.current) clearTimeout(keepTimer.current);
+          keepTimer.current = setTimeout(() => {
+            keepTimer.current = null;
+            if (keepPlace.current) setLastRead(keepPlace.current);
+            keepPlace.current = null;
+          }, 800);
         }
         return;
       }
@@ -200,6 +218,17 @@ export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser |
   }, [surah, setLastRead]);
 
   useEffect(() => () => void (placeTimer.current && clearTimeout(placeTimer.current)), []);
+
+  // A place not yet kept when the reader leaves the page is kept as they go.
+  const keepPlace = useRef<{ surah: number; verseKey: string } | null>(null);
+  const keepTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(
+    () => () => {
+      if (keepTimer.current) clearTimeout(keepTimer.current);
+      if (keepPlace.current) setLastRead(keepPlace.current);
+    },
+    [setLastRead],
+  );
 
   // ── chunked rendering ─────────────────────────────────────────────────────
   const count = verses.length;
@@ -209,7 +238,9 @@ export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser |
       // Only while there is more to show: at the foot of a surah there is not,
       // and counting on regardless re-rendered the reader for nothing.
       if (el.scrollHeight - el.scrollTop - el.clientHeight <= 900) {
-        setLimit((l) => (l < count ? l + CHUNK : l));
+        // Drawn as it can be, between frames, so the scroll that asked for the
+        // next ayat is not held while they are drawn.
+        startTransition(() => setLimit((l) => (l < count ? l + CHUNK : l)));
       }
       if (!placeTimer.current) placeTimer.current = setTimeout(recordPlace, 200);
     },
@@ -471,7 +502,7 @@ export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser |
         void copy(`${plainText(first.text)}\n— ${first.name}, ${verse.verse_key}`, t("toast.translationCopied"));
       },
       onShare: (key) =>
-        void copy(`${location.origin}${location.pathname}#${key}`, t("toast.linkCopied", { key })),
+        void copy(`${SITE || location.origin}${location.pathname}#${key}`, t("toast.linkCopied", { key })),
     }),
     [controls, update, toast, toggleBookmark, surah, firstRendering, copy, t],
   );

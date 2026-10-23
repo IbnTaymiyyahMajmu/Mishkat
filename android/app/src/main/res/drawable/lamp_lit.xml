@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The lamp alight, as public/now-playing.jpg draws it: pale gold, with the
+     flame glowing in the glass. The app icon's foreground, and the splash
+     screen's in evening and night. Laid out as lamp.xml is. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:scaleX="2.2"
+        android:scaleY="2.2"
+        android:translateX="18.8"
+        android:translateY="13.85">
+        <path android:pathData="M13,15.5a3,3 0,1 0,6 0a3,3 0,1 0,-6 0">
+            <aapt:attr name="android:fillColor">
+                <gradient
+                    android:centerX="16"
+                    android:centerY="15.5"
+                    android:gradientRadius="3"
+                    android:type="radial">
+                    <item android:color="#FFFFF6DC" android:offset="0" />
+                    <item android:color="#B3F3D08A" android:offset="0.45" />
+                    <item android:color="#00F3D08A" android:offset="1" />
+                </gradient>
+            </aapt:attr>
+        </path>
+        <path
+            android:pathData="M9,27V15a7,7 0,0 1,14 0v12"
+            android:strokeColor="@color/lamp_lit"
+            android:strokeWidth="1.8" />
+        <path
+            android:pathData="M12.6,15.5a3.4,3.4 0,1 0,6.8 0a3.4,3.4 0,1 0,-6.8 0"
+            android:strokeColor="@color/lamp_lit"
+            android:strokeWidth="1.6" />
+        <path
+            android:pathData="M16,12.1V9.4"
+            android:strokeColor="@color/lamp_lit"
+            android:strokeWidth="1.6"
+            android:strokeLineCap="round" />
+        <path
+            android:pathData="M9,27h14"
+            android:strokeColor="@color/lamp_lit"
+            android:strokeWidth="1.8"
+            android:strokeLineCap="round" />
+    </group>
+</vector>

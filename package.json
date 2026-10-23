@@ -19,14 +19,19 @@
     "gen:rhyme": "node scripts/build-rhyme.mjs",
     "gen:questions": "node scripts/build-questions.mjs",
     "gen:structure": "node scripts/build-structure.mjs",
-    "gen:qari": "node scripts/build-qari.mjs"
+    "gen:qari": "node scripts/build-qari.mjs",
+    "gen:horizons": "node scripts/build-horizons.mjs",
+    "android": "node scripts/build-android.mjs"
   },
   "dependencies": {
+    "@capacitor/android": "^8.5.3",
+    "@capacitor/core": "^8.5.3",
     "next": "16.3.0",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
   "devDependencies": {
+    "@capacitor/cli": "^8.5.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

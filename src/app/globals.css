@@ -31,17 +31,22 @@
    in evening and night it is a dark niche with pale ink, in day it is bright.
    `--mk-scene-*` is which of the three skies is on; see LampSky.module.css. */
 :root {
-  /* Evening's paper is lamplit, so its colours are held strong: a sepia with
-     real warmth in it, an ink near to brown-black that the muted mixes below
-     stay legible in, a gold with its saturation kept, and warm neutrals —
-     a grey chip on sepia reads as dirt, not as paper. Day and night state
-     every one of these for themselves. */
-  --mk-paper: #f2e7d3;
-  --mk-ink: #24190d;
-  --mk-gold: #b0731f;
-  --mk-gold-deep: #855414;
-  --mk-gold-deeper: #714407;
-  --mk-gold-pale: #e9c88d;
+  /* Evening is the niche by lamplight, and the page is read in it: a warm dark,
+     the brown-black of the landing page's niche a little below the lamp, with
+     the words in a cream the lamp would throw, and the gold lit rather than
+     printed. It is the dark of a room with one light in it — warm, where night
+     is the cold dark of the sky. The colours are held strong, and the
+     neutrals warm: a grey on this ground reads as ash.
+
+     These are the site's base, so day restates everything that would not
+     survive on paper: the tajweed colours, the shadows, the mark ink. */
+  color-scheme: dark;
+  --mk-paper: #221810;
+  --mk-ink: #eedfc2;
+  --mk-gold: #d2a253;
+  --mk-gold-deep: #dfb46f;
+  --mk-gold-deeper: #e9c487;
+  --mk-gold-pale: #ecc98c;
   --mk-hero-bg: radial-gradient(
     150% 105% at 50% -6%,
     #4a3719 0%,
@@ -57,7 +62,7 @@
      something solid and should look like the light it sits in. */
   --mk-hero-ground: #261c0f;
   /* Ink for text sitting on a gold search mark. */
-  --mk-mark-ink: #4a3110;
+  --mk-mark-ink: #fff0d0;
 
   /* The gold leaf the landing page's ayah is painted through. */
   --mk-shine: linear-gradient(
@@ -74,7 +79,7 @@
   --mk-scene-night: 0;
 
   --color-bg: var(--mk-paper);
-  --color-surface: #e8d9bf;
+  --color-surface: #2c2016;
   --color-text: var(--mk-ink);
   /* The accent is text far more often than it is a stroke — eyebrows, ayah
      numbers, the ordinal on a bookmark — so it takes the deep step of the gold
@@ -83,21 +88,21 @@
      word-by-word tint, the mark a search leaves on a hit. */
   --color-accent: var(--mk-gold-deeper);
   --color-accent-2: #ac803e;
-  --color-divider: color-mix(in srgb, var(--color-text) 17%, transparent);
+  --color-divider: color-mix(in srgb, var(--color-text) 19%, transparent);
 
   /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
      same step of any role matches the others in visual value. */
-  --color-neutral-100: #f8eedb;
+  --color-neutral-100: #2e2218;
   --color-neutral-200: #eae7e7;
   --color-neutral-300: #d7d3d3;
   --color-neutral-400: #bab6b6;
   --color-neutral-500: #9b9797;
   --color-neutral-600: #7d7979;
   --color-neutral-700: #605d5d;
-  --color-neutral-800: #4a3a28;
+  --color-neutral-800: #d8c9ad;
   --color-neutral-900: #2d2b2b;
 
-  --color-accent-100: #f3deb8;
+  --color-accent-100: #3b2b16;
   --color-accent-200: #ffe3bf;
   --color-accent-300: #facb8d;
   --color-accent-400: #e1ad66;
@@ -106,7 +111,7 @@
   /* The step that carries accent-coloured *text* — links above all — is the
      light's own deep gold, so it stays legible in all three grounds. */
   --color-accent-700: var(--mk-gold-deeper);
-  --color-accent-800: #64400a;
+  --color-accent-800: #f2d8a8;
   --color-accent-900: #3a270d;
 
   --color-accent-2-100: #fff3e4;
@@ -138,13 +143,18 @@
   --radius-md: 4px;
   --radius-lg: 7px;
 
-  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
-  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
-  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 30%);
+  --shadow-md: 0 3px 10px rgb(0 0 0 / 40%);
+  --shadow-lg: 0 12px 32px rgb(0 0 0 / 50%);
 
   /* — application additions — */
   --tint: color-mix(in srgb, var(--mk-gold) 17%, transparent);
-  --header-h: 62px;
+  /* The bar at the head of every page, with whatever the device keeps above it.
+     In a browser that is nothing. In the Android app the page runs up under the
+     status bar (viewport-fit=cover, scripts/build-android.mjs), the bar grows by
+     the status bar's height and keeps its contents below it — and everything
+     placed against the bar's foot, which reads this, moves with it. */
+  --header-h: calc(62px + env(safe-area-inset-top, 0px));
   --muted-45: color-mix(in srgb, var(--color-text) 45%, transparent);
   --muted-55: color-mix(in srgb, var(--color-text) 55%, transparent);
   --muted-62: color-mix(in srgb, var(--color-text) 62%, transparent);
@@ -177,13 +187,13 @@
      with the length; green for the nasal sounds; blue for the bounce; slate
      for a letter run into the next; grey for what is written and not said.
      Drawn here for paper, and again for the night. See lib/quran/tajweed.ts. */
-  --tj-madd2: #a8740f;
-  --tj-madd246: #d0680c;
-  --tj-madd45: #cc2b2b;
-  --tj-madd6: #8c1111;
-  --tj-nasal: #23843a;
-  --tj-bounce: #1c62c7;
-  --tj-merge: #6f7d8c;
+  --tj-madd2: #e8c25a;
+  --tj-madd246: #ffa452;
+  --tj-madd45: #ff7d61;
+  --tj-madd6: #f45d82;
+  --tj-nasal: #69d487;
+  --tj-bounce: #7cb0ff;
+  --tj-merge: #b3aa99;
   --tj-silent: color-mix(in srgb, var(--color-text) 34%, transparent);
 }
 
@@ -193,6 +203,20 @@
    bleached white round the sun at the top, and the pale, hazed blue of a hot
    country's sky away from it, deepest in the upper corners. */
 :root[data-theme="day"] {
+  /* What the base (evening) states for a dark ground, put back for paper. */
+  color-scheme: light;
+  --mk-mark-ink: #4a3110;
+  --color-divider: color-mix(in srgb, var(--color-text) 17%, transparent);
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
+  --tj-madd2: #a8740f;
+  --tj-madd246: #d0680c;
+  --tj-madd45: #cc2b2b;
+  --tj-madd6: #8c1111;
+  --tj-nasal: #23843a;
+  --tj-bounce: #1c62c7;
+  --tj-merge: #6f7d8c;
   --mk-paper: #fbfaf8;
   --mk-ink: #1c1b19;
   --mk-gold: #9d6d22;
@@ -341,6 +365,13 @@ body {
   height: 100%;
 }
 
+/* A touch screen marks whatever was tapped with a tinted box of its own,
+   which over a lit niche reads as a blue square. Every control here shows
+   its own pressed and chosen states, so the device's is not wanted. */
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -389,13 +420,19 @@ img { display: block; max-width: 100%; }
 }
 ::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
 
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-thumb {
-  background: color-mix(in srgb, var(--color-text) 18%, transparent);
-  border-radius: 6px;
-  border: 3px solid var(--color-bg);
+/* A drawn scrollbar is for a mouse. On a touch screen it would stand in a
+   gutter of its own, a strip of paper down the edge of every page — beside a
+   lit niche, a pale stripe — so there the device's own, which floats over the
+   page while it moves and is gone when it stops, is left alone. */
+@media (hover: hover) and (pointer: fine) {
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--color-text) 18%, transparent);
+    border-radius: 6px;
+    border: 3px solid var(--color-bg);
+  }
+  ::-webkit-scrollbar-track { background: transparent; }
 }
-::-webkit-scrollbar-track { background: transparent; }
 
 .text-muted { color: var(--muted-55); }
 
@@ -538,11 +575,53 @@ textarea.input { min-height: 90px; resize: vertical; font-family: var(--font-bod
      fade:  opacity 0 → 1
      sheet: opacity 0 → 1, translateY(18px) → none */
 
+/* Gold leaf that catches the light: a heading painted through --mk-shine, with
+   the light moving slowly across it. The light is a second copy of the words
+   (`::after`, read from `data-text`), with the leaf shifted to its far side,
+   fading in and out over the first — which is what the eye takes for the
+   gradient drifting. A gradient that really drifts inside letters has to be
+   painted again every frame; a fade is the graphics chip's and costs nothing.
+   The element sets its own leaf (background-image, size, clip) and carries
+   `data-text` with its words; the empty alternative after the slash keeps a
+   screen reader from reading them twice. */
+.mk-shine {
+  position: relative;
+}
+.mk-shine::after {
+  content: attr(data-text);
+  content: attr(data-text) / "";
+  position: absolute;
+  inset: 0;
+  padding: inherit;
+  background: inherit;
+  background-position: 100% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  pointer-events: none;
+  animation: mk-shine 16s ease-in-out infinite;
+}
+@keyframes mk-shine {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
 /* A change of reading light — see setTheme() in lib/store/settings.tsx. It is
    made as a view transition: the page in the old light, held as one picture,
    dissolving into the page in the new. One picture fades however many
    elements the page holds, so a long surah turns as quickly as the landing
    page. Not used under reduced motion; there the change is instant. */
+/* Nothing transitions while a change of light dissolves: the dissolve already
+   carries every colour from one light to the other, and a transition running
+   underneath it would repaint the page on every frame. See setTheme(). */
+:root[data-changing] *,
+:root[data-changing] *::before,
+:root[data-changing] *::after {
+  transition: none !important;
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 500ms;

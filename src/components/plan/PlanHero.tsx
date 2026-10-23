@@ -21,7 +21,9 @@ export function PlanHero({
       <div className={styles.heroInner}>
         <div className={styles.heroText}>
           <span className={styles.kicker}>{kicker}</span>
-          <h1 className={styles.title}>{title}</h1>
+          <h1 className={`${styles.title} mk-shine`} data-text={title}>
+            {title}
+          </h1>
           {children}
         </div>
         <div className={styles.heroRing}>{ring}</div>

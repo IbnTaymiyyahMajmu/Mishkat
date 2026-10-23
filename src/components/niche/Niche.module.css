@@ -5,11 +5,13 @@
 
 /* ── the scene ──────────────────────────────────────────────────────────── */
 
+/* The niche in layers (NicheScene.tsx), one square box: the drawing at the
+   bottom sets its size, and the others lie over it, edge to edge. */
 .scene {
+  position: relative;
   display: block;
   width: 100%;
-  height: auto;
-  overflow: visible;
+  height: 100%;
   --recess: color-mix(in srgb, #000 34%, transparent);
   --tile-line: color-mix(in srgb, var(--mk-gold) 24%, transparent);
   --tile-lit: #d9a94f;
@@ -23,6 +25,30 @@
   --tile-again: #e9b64c;
   --hung-back: #f1e7d3;
 }
+
+.base {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.layer > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+/* The medallions round the glass answer the pointer, in the layer above. */
+.petalHit { pointer-events: stroke; }
 
 .frame {
   fill: color-mix(in srgb, var(--mk-gold) 9%, transparent);
@@ -63,12 +89,14 @@
 /* Every tile lit, and more days still: brightened again, from the lamp out. */
 .tileAgain { fill: var(--tile-again); fill-opacity: 0.95; }
 
-/* The day just lit. */
-.tileToday { animation: today 2.8s ease-in-out infinite; }
+/* The day just lit, pulsing in its own layer. Underneath, the tile it covers
+   is left clear and keeps only its name. */
+.today { animation: today 2.8s ease-in-out infinite; }
+.tileHeld { fill: transparent; }
 
 @keyframes today {
-  0%, 100% { fill-opacity: 1; }
-  50% { fill-opacity: 0.55; }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
 }
 
 /* A tile lit since the last visit catches the light. */
@@ -142,10 +170,8 @@
 .flame {
   fill: #ffd27a;
   filter: drop-shadow(0 0 3px #ffb347);
-  transform-box: fill-box;
-  transform-origin: 50% 100%;
-  animation: flicker 2.4s ease-in-out infinite;
 }
+.flicker { animation: flicker 2.4s ease-in-out infinite; }
 
 @keyframes flicker {
   0%, 100% { transform: scale(1, 1); }
@@ -220,13 +246,8 @@
   -webkit-background-clip: text;
   background-clip: text;
   padding-bottom: 0.08em;
-  animation: shine 16s ease-in-out infinite;
 }
 
-@keyframes shine {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
 
 .status {
   margin: 10px 0 0;

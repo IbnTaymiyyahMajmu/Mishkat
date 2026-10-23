@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="18 18 72 72" width="512" height="512">
+  <!-- Google Play's icon: the app's launcher icon (res/drawable/icon_ground.xml
+       under res/drawable/lamp_lit.xml), cut to the 72dp a launcher shows. -->
+  <defs>
+    <radialGradient id="sky" cx="54" cy="50" r="72" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2B261E" />
+      <stop offset="0.55" stop-color="#161619" />
+      <stop offset="1" stop-color="#0D0F14" />
+    </radialGradient>
+    <radialGradient id="flame" cx="16" cy="15.5" r="3" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF6DC" />
+      <stop offset="0.45" stop-color="#F3D08A" stop-opacity="0.7" />
+      <stop offset="1" stop-color="#F3D08A" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect x="0" y="0" width="108" height="108" fill="url(#sky)" />
+  <g transform="translate(18.8 13.85) scale(2.2)" fill="none" stroke="#DEB46E">
+    <circle cx="16" cy="15.5" r="3" fill="url(#flame)" stroke="none" />
+    <path d="M9 27V15a7 7 0 0 1 14 0v12" stroke-width="1.8" />
+    <circle cx="16" cy="15.5" r="3.4" stroke-width="1.6" />
+    <path d="M16 12.1V9.4" stroke-width="1.6" stroke-linecap="round" />
+    <path d="M9 27h14" stroke-width="1.8" stroke-linecap="round" />
+  </g>
+</svg>

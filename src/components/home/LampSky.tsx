@@ -1,6 +1,6 @@
 "use client";
 
-import { useSettings } from "@/lib/store/settings";
+import { useLight } from "@/lib/store/settings";
 import styles from "./LampSky.module.css";
 
 /**
@@ -326,8 +326,9 @@ function MoteField({ field, rgb, glowRgb }: { field: Mote[]; rgb: string; glowRg
 }
 
 export function LampSky() {
-  const { settings } = useSettings();
-  const light = settings.theme;
+  // Read from the page, so the lit sky's motes and stars arrive inside the
+  // dissolve between lights, not after it (chooseLight in lib/store/settings).
+  const light = useLight();
 
   return (
     <div aria-hidden="true" className={styles.sky}>

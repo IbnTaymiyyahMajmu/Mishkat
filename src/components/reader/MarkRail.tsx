@@ -256,12 +256,25 @@ export function MarkRail({ surah, verses, total, loop, scrollerRef, onJump }: Pr
     }
   }, [scrollerRef, pctOf, n, surah, t]);
 
+  // Once a frame at most, however many scroll events the frame brings — and not
+  // at all while the rail is not shown, as on a phone.
   useEffect(() => {
     const scroller = scrollerRef.current;
     if (!scroller) return;
     paint();
-    scroller.addEventListener("scroll", paint, { passive: true });
-    return () => scroller.removeEventListener("scroll", paint);
+    let queued = 0;
+    const onScroll = () => {
+      if (queued || !fillRef.current?.offsetParent) return;
+      queued = requestAnimationFrame(() => {
+        queued = 0;
+        paint();
+      });
+    };
+    scroller.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      scroller.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(queued);
+    };
   }, [scrollerRef, paint]);
 
   // Ayat arriving or being rendered move every mark, so the position is

@@ -1,0 +1,87 @@
+/* The privacy page: a page of prose, set as the settings page is — the same
+   head, the same rules between sections — at a measure for reading. */
+
+.body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 46px 32px 120px;
+}
+
+.head {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 42px;
+  margin: 6px 0 0;
+}
+
+.lede {
+  margin: 16px 0 0;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--muted-88);
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+
+.section {
+  padding: 28px 0 20px;
+  border-bottom: 1px solid var(--color-divider);
+}
+.section:last-child { border-bottom: 0; }
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 20px;
+  margin: 0 0 10px;
+}
+
+.section p,
+.hosts {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--muted-88);
+  margin: 0 0 12px;
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+
+.section a {
+  color: var(--color-accent);
+}
+
+/* Whom the site asks, one to a line, each by the address it is asked at. */
+.hosts {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 16px;
+}
+
+.hosts li {
+  padding: 8px 0;
+  border-top: 1px solid var(--color-divider);
+}
+.hosts li:last-child { border-bottom: 1px solid var(--color-divider); }
+
+.host {
+  color: var(--color-text);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.updated {
+  font-size: 13px;
+  color: var(--muted-55);
+  margin-top: 18px;
+}
+
+@media (max-width: 640px) {
+  .body { padding: 32px 20px 110px; }
+  .title { font-size: 32px; }
+  .lede { font-size: 16px; }
+}

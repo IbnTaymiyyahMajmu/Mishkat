@@ -3,13 +3,18 @@
 
    Evening and night are made of light: a lamp burning just above the top edge
    of the screen, its halo, the shaft it throws down the middle, two slow drifts
-   of smoke to either side, and what it sends up. Every layer there is painted
-   in `screen`, so it only ever adds light to the ground beneath it and never
-   darkens it — except the vignette, which closes the frame.
+   of smoke to either side, and what it sends up. Every layer there is a colour
+   brighter than any ground it falls on, so it only ever adds light to what is
+   beneath it and never darkens it — except the vignette, which closes the frame.
 
-   Day is the exception and the reason `screen` is set per scene rather than on
-   `.layer`: on a ground this pale `screen` is a no-op, so the sun and its
-   sky are painted normally.
+   How it is drawn matters as much as what is drawn, because it is drawn every
+   frame, for as long as the page is open, on a phone as well as a desk. Only
+   opacity and transform move, which a browser hands to the graphics chip and
+   never repaints. Nothing is blurred or blended as it moves: a live blur or
+   blend mode is recomputed over the whole layer on every frame, which a
+   phone's screen, three device pixels to the CSS pixel, could not keep up
+   with. Softness is in the gradients themselves, which all fall to nothing at
+   their edges, and is drawn once. And a sky not on screen holds still.
 
    The three grounds are stacked and cross-faded on `--mk-scene-*`, which the
    light sets in globals.css. It is one fixed element behind a scrolling page,
@@ -42,7 +47,6 @@
 
 .layer {
   position: absolute;
-  mix-blend-mode: screen;
 }
 
 /* ── evening ──────────────────────────────────────────────────────────────
@@ -77,15 +81,14 @@
     rgba(120, 72, 22, 0.03) 58%,
     rgba(0, 0, 0, 0) 74%
   );
-  filter: blur(2px);
   animation: flicker 7.5s ease-in-out infinite;
 }
 
 .core {
   left: 50%;
   top: -1%;
-  width: 520px;
-  height: 520px;
+  width: 548px;
+  height: 548px;
   border-radius: 50%;
   background: radial-gradient(
     circle,
@@ -94,15 +97,14 @@
     rgba(255, 196, 110, 0.07) 52%,
     rgba(255, 196, 110, 0) 74%
   );
-  filter: blur(14px);
   animation: flicker 4.1s ease-in-out infinite 0.6s;
 }
 
 .flame {
   left: 50%;
   top: -1.6%;
-  width: 172px;
-  height: 240px;
+  width: 190px;
+  height: 258px;
   background: radial-gradient(
     46% 50% at 50% 58%,
     rgba(255, 250, 232, 0.55) 0%,
@@ -110,41 +112,39 @@
     rgba(255, 214, 140, 0.1) 62%,
     rgba(255, 214, 140, 0) 80%
   );
-  filter: blur(9px);
   animation: flame 2.6s ease-in-out infinite;
 }
 
 .wick {
   left: 50%;
   top: -1.4%;
-  width: 46px;
-  height: 74px;
+  width: 60px;
+  height: 88px;
   background: radial-gradient(
     50% 50% at 50% 55%,
     rgba(255, 252, 240, 0.62) 0%,
     rgba(255, 240, 196, 0.34) 44%,
     rgba(255, 240, 196, 0) 78%
   );
-  filter: blur(7px);
   animation: flame 1.9s ease-in-out infinite 0.3s;
 }
 
-/* The light falling down the page. Only its opacity moves, so unlike the
-   layers above it this one carries its own centring transform. */
+/* The light falling down the page: brightest under the lamp, thinning as it
+   falls and towards either side. Only its opacity moves, so unlike the layers
+   above it this one carries its own centring transform. */
 .shaft {
   left: 50%;
   top: 0;
   width: 720px;
   height: 78vh;
   transform: translate(-50%, 0);
-  background: linear-gradient(
-    180deg,
+  background: radial-gradient(
+    50% 100% at 50% 0%,
     rgba(255, 214, 146, 0.11) 0%,
-    rgba(226, 166, 86, 0.055) 26%,
-    rgba(160, 104, 38, 0.02) 56%,
-    rgba(0, 0, 0, 0) 82%
+    rgba(226, 166, 86, 0.055) 30%,
+    rgba(160, 104, 38, 0.02) 60%,
+    rgba(160, 104, 38, 0) 88%
   );
-  filter: blur(30px);
   animation: pulse 9.3s ease-in-out infinite 1.4s;
 }
 
@@ -153,22 +153,20 @@
 .smokeA {
   left: 24%;
   top: 34%;
-  width: 460px;
-  height: 560px;
+  width: 516px;
+  height: 616px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(255, 226, 172, 0.075) 0%, rgba(255, 226, 172, 0) 70%);
-  filter: blur(28px);
   animation: smoke 34s ease-in-out infinite;
 }
 
 .smokeB {
   left: 68%;
   top: 48%;
-  width: 560px;
-  height: 680px;
+  width: 628px;
+  height: 748px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(255, 226, 172, 0.06) 0%, rgba(255, 226, 172, 0) 70%);
-  filter: blur(34px);
   animation: smoke 46s ease-in-out infinite 12s;
 }
 
@@ -199,19 +197,23 @@
    out, the haze it lifts, the ring the high air draws about it, and its
    corona, glare and disc. The sky itself is the ground (globals.css): white
    round the sun and deepening to blue in the corners, so that the light laid
-   over it — all of it white and gold — has somewhere to show.
-
-   No blend mode: on a ground this pale, `screen` would erase it. */
+   over it — all of it white and gold — has somewhere to show. */
 
 .sceneDay {
   --day-sun-y: 0px;
 }
 
-/* In the other two lights the day's sky stays in the page, unseen, so that a
-   change of light can dissolve into it — but it holds still while it waits:
-   a beam pulsing at nothing's opacity still costs a frame. */
-:global(html:not([data-theme="day"])) .sceneDay * {
-  animation-play-state: paused;
+/* Only the lit sky is in the page. A change of light is a dissolve of the
+   whole page from one picture to the next (globals.css), so a sky waiting
+   unseen for its turn has nothing to dissolve into — and every layer of it,
+   still or not, would be carried in every frame and every picture taken.
+   Evening is the light with no attribute of its own until the settings have
+   loaded, so it is the one hidden by naming the other two. */
+:global(html:not([data-theme="day"])) .sceneDay,
+:global(html:not([data-theme="night"])) .sceneNight,
+:global(html[data-theme="day"]) .sceneEve,
+:global(html[data-theme="night"]) .sceneEve {
+  display: none;
 }
 
 .dayWash {
@@ -253,9 +255,9 @@
 
 /* — the beam —
    The light falling down the page, as the lamp's shaft falls in the evening:
-   a broad column widening as it goes, and a brighter heart inside it, the two
-   pulsing out of step. The column's shape is cut on a child and the blur laid
-   on the parent, so its edges are soft and not ruled. Only the opacity
+   a broad column spreading from the sun, and a brighter heart inside it, the
+   two pulsing out of step. Each is a long ellipse of light hung from the top
+   edge, so it is soft on every side without being blurred. Only the opacity
    moves, so each carries its own centring transform. */
 .dayShaft,
 .dayShaftCore {
@@ -273,32 +275,28 @@
 .dayShaft {
   width: 900px;
   height: 92vh;
-  filter: blur(30px);
   animation: pulse 11s ease-in-out infinite 1.2s;
 }
 .dayShaft::before {
-  clip-path: polygon(36% 0, 64% 0, 100% 100%, 0 100%);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 252, 240, 0.72) 0%,
-    rgba(255, 249, 232, 0.44) 30%,
-    rgba(255, 247, 228, 0.2) 64%,
-    rgba(255, 247, 228, 0) 96%
+  background: radial-gradient(
+    46% 100% at 50% 0%,
+    rgba(255, 252, 240, 0.6) 0%,
+    rgba(255, 249, 232, 0.36) 30%,
+    rgba(255, 247, 228, 0.15) 62%,
+    rgba(255, 247, 228, 0) 94%
   );
 }
 .dayShaftCore {
   width: 440px;
   height: 82vh;
-  filter: blur(20px);
   animation: pulse 7.7s ease-in-out infinite;
 }
 .dayShaftCore::before {
-  clip-path: polygon(40% 0, 60% 0, 84% 100%, 16% 100%);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 250, 0.78) 0%,
-    rgba(255, 252, 240, 0.4) 38%,
-    rgba(255, 250, 236, 0.1) 70%,
+  background: radial-gradient(
+    38% 100% at 50% 0%,
+    rgba(255, 255, 250, 0.7) 0%,
+    rgba(255, 252, 240, 0.36) 36%,
+    rgba(255, 250, 236, 0.09) 68%,
     rgba(255, 250, 236, 0) 92%
   );
 }
@@ -311,7 +309,6 @@
   position: absolute;
   inset: 0;
   transform-origin: 50% var(--day-sun-y);
-  filter: blur(7px);
   -webkit-mask-image: radial-gradient(110% 92% at 50% 0%, #000 0%, rgba(0, 0, 0, 0.75) 34%, rgba(0, 0, 0, 0.28) 64%, transparent 90%);
   mask-image: radial-gradient(110% 92% at 50% 0%, #000 0%, rgba(0, 0, 0, 0.75) 34%, rgba(0, 0, 0, 0.28) 64%, transparent 90%);
 }
@@ -329,19 +326,17 @@
 .dayHazeA {
   left: 22%;
   top: 40%;
-  width: 520px;
-  height: 620px;
+  width: 572px;
+  height: 672px;
   background: radial-gradient(circle, rgba(255, 252, 244, 0.34) 0%, rgba(255, 252, 244, 0) 70%);
-  filter: blur(26px);
   animation: smoke 36s ease-in-out infinite;
 }
 .dayHazeB {
   left: 70%;
   top: 54%;
-  width: 600px;
-  height: 720px;
+  width: 664px;
+  height: 784px;
   background: radial-gradient(circle, rgba(255, 252, 244, 0.28) 0%, rgba(255, 252, 244, 0) 70%);
-  filter: blur(32px);
   animation: smoke 48s ease-in-out infinite 13s;
 }
 
@@ -359,13 +354,12 @@
   border-radius: 50%;
   background: radial-gradient(
     circle closest-side,
-    rgba(255, 255, 255, 0) 83%,
-    rgba(255, 190, 140, 0.3) 87.5%,
-    rgba(255, 246, 226, 0.42) 90.5%,
-    rgba(190, 216, 255, 0.3) 93.5%,
-    rgba(190, 216, 255, 0) 98%
+    rgba(255, 255, 255, 0) 82%,
+    rgba(255, 190, 140, 0.28) 87.5%,
+    rgba(255, 246, 226, 0.4) 90.5%,
+    rgba(190, 216, 255, 0.28) 93.5%,
+    rgba(190, 216, 255, 0) 99%
   );
-  filter: blur(2.5px);
   animation: ring 21s ease-in-out infinite;
 }
 
@@ -404,13 +398,12 @@
   background: repeating-conic-gradient(
     from 4deg,
     rgba(255, 252, 236, 0) 0deg,
-    rgba(255, 250, 228, 0.7) 1.1deg,
-    rgba(255, 252, 236, 0) 2.4deg,
+    rgba(255, 250, 228, 0.62) 1.2deg,
+    rgba(255, 252, 236, 0) 2.6deg,
     rgba(255, 252, 236, 0) 7.5deg
   );
   -webkit-mask-image: radial-gradient(circle closest-side, #000 8%, rgba(0, 0, 0, 0.5) 30%, transparent 78%);
   mask-image: radial-gradient(circle closest-side, #000 8%, rgba(0, 0, 0, 0.5) 30%, transparent 78%);
-  filter: blur(1.2px);
   animation: glare-turn 300s linear infinite;
 }
 
@@ -514,15 +507,14 @@
     rgba(88, 116, 170, 0.028) 58%,
     rgba(0, 0, 0, 0) 74%
   );
-  filter: blur(3px);
   animation: glow 19s ease-in-out infinite;
 }
 
 .nightCore {
   left: 50%;
   top: -1%;
-  width: 540px;
-  height: 540px;
+  width: 572px;
+  height: 572px;
   border-radius: 50%;
   background: radial-gradient(
     circle,
@@ -531,15 +523,14 @@
     rgba(178, 204, 246, 0.07) 52%,
     rgba(178, 204, 246, 0) 74%
   );
-  filter: blur(16px);
   animation: glow 12s ease-in-out infinite 1.2s;
 }
 
 .nightFlame {
   left: 50%;
   top: -1.4%;
-  width: 210px;
-  height: 250px;
+  width: 238px;
+  height: 278px;
   background: radial-gradient(
     46% 50% at 50% 56%,
     rgba(252, 254, 255, 0.62) 0%,
@@ -547,22 +538,20 @@
     rgba(206, 226, 255, 0.12) 62%,
     rgba(206, 226, 255, 0) 80%
   );
-  filter: blur(14px);
   animation: breathe 9.5s ease-in-out infinite;
 }
 
 .nightWick {
   left: 50%;
   top: -1.2%;
-  width: 74px;
-  height: 96px;
+  width: 94px;
+  height: 116px;
   background: radial-gradient(
     50% 50% at 50% 54%,
     rgba(255, 255, 255, 0.7) 0%,
     rgba(240, 248, 255, 0.38) 44%,
     rgba(240, 248, 255, 0) 78%
   );
-  filter: blur(10px);
   animation: breathe 6.8s ease-in-out infinite 0.5s;
 }
 
@@ -572,36 +561,33 @@
   width: 800px;
   height: 80vh;
   transform: translate(-50%, 0);
-  background: linear-gradient(
-    180deg,
+  background: radial-gradient(
+    50% 100% at 50% 0%,
     rgba(212, 230, 255, 0.12) 0%,
-    rgba(166, 192, 236, 0.06) 28%,
-    rgba(112, 140, 190, 0.02) 56%,
-    rgba(0, 0, 0, 0) 82%
+    rgba(166, 192, 236, 0.06) 32%,
+    rgba(112, 140, 190, 0.02) 60%,
+    rgba(112, 140, 190, 0) 88%
   );
-  filter: blur(32px);
   animation: pulse 13s ease-in-out infinite 2s;
 }
 
 .nightSmokeA {
   left: 22%;
   top: 38%;
-  width: 500px;
-  height: 600px;
+  width: 560px;
+  height: 660px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(198, 218, 252, 0.055) 0%, rgba(198, 218, 252, 0) 70%);
-  filter: blur(30px);
   animation: smoke 42s ease-in-out infinite;
 }
 
 .nightSmokeB {
   left: 70%;
   top: 52%;
-  width: 600px;
-  height: 700px;
+  width: 672px;
+  height: 772px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(198, 218, 252, 0.045) 0%, rgba(198, 218, 252, 0) 70%);
-  filter: blur(36px);
   animation: smoke 54s ease-in-out infinite 14s;
 }
 
@@ -677,7 +663,7 @@
 }
 
 /* The frame. This is the one layer that takes light away rather than adding
-   it, so it is the only one never set in `screen`.
+   it.
 
    Each sky states its own rather than reading a token off the document. A token
    would be the *current* light's vignette, which means the sky on its way out

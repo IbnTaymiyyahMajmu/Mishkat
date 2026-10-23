@@ -77,6 +77,36 @@
 }
 .introLink:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
 
+/* The two doors out of the head of a surah: its introduction, and its film. */
+.doors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.watchLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 13.5px;
+  letter-spacing: 0.02em;
+  padding: 7px 18px 7px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 92%, #fff 8%), var(--color-accent));
+  color: var(--color-bg, #fff);
+  text-decoration: none;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--color-accent) 28%, transparent);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.watchLink:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--color-accent) 36%, transparent);
+}
+
 /* The shared fade curve, declared locally because a module cannot reference a
    global keyframe — see the note in globals.css. */
 @keyframes fade {

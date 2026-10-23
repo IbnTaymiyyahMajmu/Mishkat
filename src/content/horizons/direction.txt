@@ -1,0 +1,406 @@
+# The direction of the films — what the lexicon cannot be left to decide.
+#
+# `scripts/build-horizons.mjs` reads every word of the Qur'an from the
+# corpus's morphology and finds the signs by their lemmas: شَمْس is the sun,
+# جِبَال mountains, and مَآء sent down مِنَ ٱلسَّمَآءِ is rain. It finds the
+# unseen the same way — جَنَّة, جَهَنَّم, ٱلْقِيَٰمَة, مَلٰٓئِكَة — and from the
+# word that names it to the end of its ayah the world is veiled. What follows
+# is what a list of words gets wrong, set right by hand, one line to a point.
+#
+#   veil  81:1-14            the unseen, though no word names it outright:
+#                            the sun wrapped, the mountains moving, the Garden
+#                            described with no word for the Garden in it
+#   see   13:4               this world, though a word for the unseen is in it:
+#                            an earthly garden, a fire kindled, a throne of a
+#                            king. A word for the unseen in a seen ayah is
+#                            left alone: nothing is shown for it, nothing
+#                            marks it, and the ayah's creation goes on.
+#   quiet 69:7 palms         a sign the lexicon found that is not a sign here —
+#                            most often a simile: "as if they were the trunks
+#                            of hollow palms" is said of the dead. With no
+#                            sign named, every sign in the ayah is dropped.
+#   sign  24:40 deep at بحر  a sign set by hand, at the first word of the ayah
+#                            carrying that root (or at its first word).
+#
+# The rules behind it are in src/lib/horizons/signs.ts and the reasons for
+# the harder calls in HORIZONS-REVIEW.md, by section letter.
+
+# ── 1 al-Fātiḥah ───────────────────────────────────────────────────────────
+# "Master of the Day of Judgement" is veiled by its words; "the straight path"
+# runs the camera's line straight for the horizon.
+
+# ── 2 al-Baqarah ───────────────────────────────────────────────────────────
+see   2:17                     # the fire kindled in the parable, then the dark
+veil  2:30-39                  # Ādam, the angels, Iblīs, the Garden
+veil  2:55                     # "until we see Allah outright"
+sign  2:74 rock at حجر
+veil  2:210                    # Allah coming in the shadows of cloud, and the angels
+quiet 2:205 2:223
+# Āyat al-Kursī: the owner's ruling (B1) — "show Allah's might and majestic
+# creation instead". Nothing is shown for the Kursī. At the heavens the camera
+# is high over a great range of mountains in the last of the night, and the
+# sun comes up over the peaks as the ayah goes on; at "extends over" it rises
+# out past the air, the earth's curve below and the sun over its rim.
+see   2:255
+quiet 2:255
+sign  2:255 majesty at سمو
+sign  2:255 space at وسع
+sign  2:264 rock at صفو
+see   2:265-266                # the gardens of the two parables
+quiet 2:266 fire
+
+# ── 3 Āl ʿImrān ────────────────────────────────────────────────────────────
+# 3:27, 3:190 — the night into the day, the alternation — are found by their words.
+
+# ── 4 an-Nisāʾ ─────────────────────────────────────────────────────────────
+quiet 4:78                     # "fortified towers", not the constellations
+
+# ── 6 al-Anʿām ─────────────────────────────────────────────────────────────
+veil  6:73                     # the Day the trumpet is blown
+see   6:99 6:141               # gardens of grapes, of trellised vines
+quiet 6:76 sunset              # the star "set": the night stays
+
+# ── 7 al-Aʿrāf ─────────────────────────────────────────────────────────────
+veil  7:11-27                  # Ādam, Iblīs, the Garden
+veil  7:37-53                  # the Fire, the Garden, the Heights
+see   7:54                     # "then He rose over the Throne" — named, not shown
+veil  7:143                    # His Lord manifested to the mountain
+sign  7:160 spring at بجس
+
+
+# ── 10 Yūnus ───────────────────────────────────────────────────────────────
+see   10:3
+sign  10:5 phases at نزل       # "and determined for it phases"
+
+# ── 11 Hūd ─────────────────────────────────────────────────────────────────
+veil  11:7                     # His Throne was upon the water
+quiet 11:42 mountains          # waves "like mountains"
+sign  11:44 clearing at قلع
+sign  11:44 mountains at جود
+
+# ── 13 ar-Raʿd ─────────────────────────────────────────────────────────────
+see   13:2 13:4
+see   13:13                    # the thunder exalts Him, "and the angels from fear of Him"
+see   13:17
+quiet 13:17 fire               # the metal heated for ornaments: the torrent is the image
+quiet 13:31                    # "a Qur'an by which mountains were moved": a supposition
+
+# ── 14 Ibrāhīm ─────────────────────────────────────────────────────────────
+quiet 14:37 crops valley       # "a valley without cultivation"
+sign  14:37 rock at ودي
+veil  14:48-51                 # the earth changed for another earth
+
+# ── 15 al-Ḥijr ─────────────────────────────────────────────────────────────
+veil  15:26-48                 # Ādam, Iblīs, the Fire, the Garden
+
+# ── 16 an-Naḥl ─────────────────────────────────────────────────────────────
+# 16:3-18 and 16:65-69 are found by their words. The bee is not drawn; the
+# mountains and the trees it is told to make its homes in are.
+
+# ── 17 al-Isrāʾ ────────────────────────────────────────────────────────────
+# The Night Journey: the owner's ruling (B2) — the vast journey, top-down over
+# the desert at night to Jerusalem and the golden dome, then rising into
+# space. Never the Prophet ﷺ, never any figure, never al-Burāq.
+see   17:1
+quiet 17:1
+sign  17:1 haram                # from the opening words, over Makkah by night
+sign  17:1 nightRoad at من     # "from al-Masjid al-Haram to al-Masjid al-Aqsa": the road north
+sign  17:1 aqsa at قصو
+sign  17:1 ascent at رأي
+sign  17:1 space at سمع
+quiet 17:90-93                 # the demands made of the Prophet ﷺ: not signs
+
+# ── 18 al-Kahf ─────────────────────────────────────────────────────────────
+see   18:32-42                 # the two gardens of the parable
+sign  18:60 twoSeas at بحر     # the junction of the two seas
+sign  18:86 sea at عين         # "setting in a spring of dark mud"
+sign  18:93 mountains at سدد
+veil  18:47-53
+veil  18:99-108
+
+# ── 19 Maryam ──────────────────────────────────────────────────────────────
+sign  19:24 river at سري
+veil  19:60-63 19:66-72 19:85-95
+
+# ── 20 Ṭā Hā ───────────────────────────────────────────────────────────────
+veil  20:9-16                  # the fire Mūsā saw, and the Voice from it
+veil  20:102-112
+veil  20:115-123
+
+# ── 21 al-Anbiyāʾ ──────────────────────────────────────────────────────────
+sign  21:30 heavens at سمو
+veil  21:96-104
+
+# ── 22 al-Ḥajj ─────────────────────────────────────────────────────────────
+veil  22:1-2
+quiet 22:31                    # "as if he had fallen from the sky": a simile
+
+# ── 23 al-Muʾminūn ─────────────────────────────────────────────────────────
+see   23:19
+veil  23:99-115
+
+# ── 24 an-Nūr ──────────────────────────────────────────────────────────────
+see   24:35
+quiet 24:35                    # the lamp, the glass, the star, the olive: one image
+sign  24:35 niche at شكو       # "like a niche within which is a lamp"
+sign  24:40 deep at بحر
+quiet 24:43 mountains          # "mountains" of cloud, within the sky
+
+# ── 25 al-Furqān ───────────────────────────────────────────────────────────
+veil  25:22-29
+see   25:59
+
+# ── 26 ash-Shuʿarāʾ ────────────────────────────────────────────────────────
+see   26:57 26:134 26:147
+veil  26:87-102
+quiet 26:225                   # the poets "in every valley"
+
+# ── 27 an-Naml ─────────────────────────────────────────────────────────────
+veil  27:7-12                  # the fire, and the Voice
+sign  27:61 twoSeas at حجز
+veil  27:82-90
+
+# ── 28 al-Qaṣaṣ ────────────────────────────────────────────────────────────
+veil  28:29-35
+
+# ── 30 ar-Rūm ──────────────────────────────────────────────────────────────
+veil  30:12-16
+sign  30:17 morningEvening at مسو
+sign  30:18 noon at ظهر
+
+# ── 31 Luqmān ──────────────────────────────────────────────────────────────
+quiet 31:16                    # the mustard seed: a deed, not a plant
+see   31:34                    # the Hour named, the rain sent down
+
+# ── 32 as-Sajdah ───────────────────────────────────────────────────────────
+see   32:4
+veil  32:10-14
+sign  32:27 rain at موه
+
+# ── 33–35 ──────────────────────────────────────────────────────────────────
+see   34:12 34:15-16           # Sulaymān's wind; the two gardens of Sabaʾ
+veil  34:51-54
+sign  35:27 strata at جبل
+quiet 35:27 mountains
+
+# ── 36 Yā Sīn ──────────────────────────────────────────────────────────────
+see   36:34
+quiet 36:37 36:38
+sign  36:37 sunset at ليل      # "We strip the day from the night
+sign  36:37 night at ظلم       #  and they are in darkness"
+sign  36:38 sun at شمس         # the sun runs to its resting place
+quiet 36:39
+sign  36:39 phases at قمر
+sign  36:39 crescent at عرجن   # until it returns like the old date-stalk
+veil  36:48-65
+see   36:80                    # fire from the green tree
+
+# ── 37 aṣ-Ṣāffāt ───────────────────────────────────────────────────────────
+veil  37:1-3 37:7-9
+veil  37:19-74
+# 37:146 — the gourd plant over Yūnus — is found by its lemma.
+veil  37:164-166
+
+# ── 38 Ṣād ─────────────────────────────────────────────────────────────────
+quiet 38:12                    # "Pharaoh of the stakes"
+sign  38:32 sunset at حجب      # until it was hidden behind the veil
+veil  38:49-64 38:71-85
+
+# ── 39 az-Zumar ────────────────────────────────────────────────────────────
+quiet 39:6                     # three darknesses: of the womb
+veil  39:20
+sign  39:21 lifecycle at نزل
+veil  39:67-75
+
+# ── 40 Ghāfir ──────────────────────────────────────────────────────────────
+veil  40:7-22
+quiet 40:36-37                 # Pharaoh's tower to the ways of the heavens
+
+# ── 41 Fuṣṣilat ────────────────────────────────────────────────────────────
+veil  41:11                    # the sky as smoke, before it was made
+veil  41:19-31
+
+# ── 42 ash-Shūrā ───────────────────────────────────────────────────────────
+quiet 42:33 wind
+sign  42:33 calm at ريح
+
+# ── 43–46 ──────────────────────────────────────────────────────────────────
+veil  43:66-80
+veil  44:10-16                 # the smoke
+sign  44:24 calm at بحر
+see   44:25-27
+quiet 44:29                    # "the heaven and the earth did not weep for them"
+veil  44:40-57
+veil  45:26-35
+veil  46:29-32
+
+# ── 48 al-Fatḥ ─────────────────────────────────────────────────────────────
+quiet 48:29 crops
+sign  48:29 sprout at زرع      # a crop that puts out its shoot, and stands on its stem
+
+# ── 50 Qāf ─────────────────────────────────────────────────────────────────
+see   50:9
+veil  50:19-35 50:41-44
+
+# ── 51 adh-Dhāriyāt ────────────────────────────────────────────────────────
+sign  51:1 wind at ذرو
+sign  51:2 cloud at حمل
+sign  51:3 sea at جري
+veil  51:4-6
+sign  51:7 stars at سمو
+veil  51:10-16 51:24-34
+sign  51:47 skyRaised at سمو
+
+# ── 52 aṭ-Ṭūr ──────────────────────────────────────────────────────────────
+veil  52:4                     # the frequented House
+sign  52:5 skyRaised at سقف
+veil  52:7-28
+sign  52:49 dawn at دبر        # and the retreat of the stars
+
+# ── 53 an-Najm ─────────────────────────────────────────────────────────────
+quiet 53:1
+sign  53:1 meteor at نجم       # by the star when it falls
+veil  53:4-18                  # the Revelation, the Ascension, the Lote-tree
+sign  53:49 sirius at شعر
+
+# ── 54 al-Qamar ────────────────────────────────────────────────────────────
+veil  54:1-8
+sign  54:11 rain at موه        # the gates of heaven opened with pouring water
+sign  54:14 sea at جري
+quiet 54:20 54:31              # palms uprooted, twigs dried: similes for the dead
+veil  54:46-55
+
+# ── 55 ar-Raḥmān ───────────────────────────────────────────────────────────
+quiet 55:6 stars
+sign  55:6 plants at نجم       # the herbs and the trees prostrate
+sign  55:10 earthSpread at أرض
+veil  55:14-15                 # man from clay, the jinn from fire
+quiet 55:24 mountains
+veil  55:26-27                 # all perish, and the Face of your Lord remains
+veil  55:31-78
+
+# ── 56 al-Wāqiʿah ──────────────────────────────────────────────────────────
+veil  56:1-56
+sign  56:69 rain at مزن
+see   56:71-73                 # the fire you kindle, and its tree
+veil  56:83-96
+
+# ── 57 al-Ḥadīd ────────────────────────────────────────────────────────────
+see   57:4
+veil  57:12-15
+
+# ── 59–67 ──────────────────────────────────────────────────────────────────
+sign  67:3 skyRaised at طبق    # seven heavens in layers — look again
+see   67:5                     # the lamps of the nearest heaven
+quiet 67:16-17
+
+# ── 68 al-Qalam ────────────────────────────────────────────────────────────
+see   68:17-33                 # the owners of the garden
+sign  68:20 dry at صرم         # it became as if reaped
+veil  68:42-43
+
+# ── 69 al-Ḥāqqah ───────────────────────────────────────────────────────────
+veil  69:1-3
+quiet 69:7 palms
+veil  69:13-37
+
+# ── 70 al-Maʿārij ──────────────────────────────────────────────────────────
+veil  70:1-18
+
+# ── 71 Nūḥ ─────────────────────────────────────────────────────────────────
+sign  71:11 rain at سمو
+see   71:12
+sign  71:15 skyRaised at طبق
+
+# ── 72 al-Jinn ─────────────────────────────────────────────────────────────
+veil  72:1-15
+sign  72:16 rain at موه
+veil  72:26-28
+
+# ── 73 al-Muzzammil ────────────────────────────────────────────────────────
+veil  73:14 73:17-18
+
+# ── 74 al-Muddaththir ──────────────────────────────────────────────────────
+veil  74:8-10 74:26-31
+sign  74:33 nightDeparts at دبر
+veil  74:38-48
+
+# ── 75 al-Qiyāmah ──────────────────────────────────────────────────────────
+veil  75:1-15 75:20-30
+
+# ── 76 al-Insān ────────────────────────────────────────────────────────────
+veil  76:4-22
+
+# ── 77 al-Mursalāt ─────────────────────────────────────────────────────────
+sign  77:1 wind at رسل
+sign  77:3 cloud at نشر
+veil  77:4-15
+sign  77:25 earthSpread at أرض
+sign  77:27 river at فرت
+veil  77:29-45
+
+# ── 78 an-Nabaʾ ────────────────────────────────────────────────────────────
+sign  78:12 skyRaised at بني
+sign  78:14 rain at عصر
+see   78:16
+veil  78:17-40
+
+# ── 79 an-Nāziʿāt ──────────────────────────────────────────────────────────
+veil  79:1-14 79:16
+sign  79:31 spring at موه
+veil  79:34-46
+
+# ── 80 ʿAbasa ──────────────────────────────────────────────────────────────
+sign  80:25 rain at موه
+sign  80:26 sprout at شقق
+veil  80:33-42
+
+# ── 81 at-Takwīr ───────────────────────────────────────────────────────────
+veil  81:1-14
+quiet 81:16 sea                # al-jawār: the planets that run, not ships
+veil  81:19-25
+
+# ── 82–84 ──────────────────────────────────────────────────────────────────
+veil  82:1-5 82:10-19
+veil  83:4-36
+veil  84:1-15
+quiet 84:18
+sign  84:18 fullMoon at قمر
+
+# ── 85 al-Burūj ────────────────────────────────────────────────────────────
+veil  85:2
+
+# ── 86 aṭ-Ṭāriq ────────────────────────────────────────────────────────────
+sign  86:1 stars at سمو
+quiet 86:3 meteor              # the piercing star: steady, not falling
+veil  86:9-10
+sign  86:11 rain at رجع
+sign  86:12 sprout at صدع
+
+# ── 87 al-Aʿlā ─────────────────────────────────────────────────────────────
+sign  87:5 dry at غثو
+
+# ── 88 al-Ghāshiyah ────────────────────────────────────────────────────────
+veil  88:1-16
+
+# ── 89 al-Fajr ─────────────────────────────────────────────────────────────
+quiet 89:4
+sign  89:4 nightDeparts at ليل
+quiet 89:10
+veil  89:21-30
+
+# ── 91 ash-Shams ───────────────────────────────────────────────────────────
+quiet 91:2
+sign  91:2 moonrise at قمر     # the moon as it follows it
+
+# ── 95 at-Tīn ──────────────────────────────────────────────────────────────
+sign  95:3 rock at بلد
+
+# ── 99–103 ─────────────────────────────────────────────────────────────────
+veil  99:1-8
+sign  100:4 wind at ثور
+veil  100:9-11
+veil  101:1-11
+veil  102:5-8
+sign  103:1 afternoon at عصر
+quiet 105:5

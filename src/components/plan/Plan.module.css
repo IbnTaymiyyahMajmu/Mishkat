@@ -54,13 +54,9 @@
   -webkit-background-clip: text;
   background-clip: text;
   padding-bottom: 0.08em;
-  animation: rise 720ms cubic-bezier(0.22, 0.61, 0.36, 1) both 70ms, shine 16s ease-in-out infinite;
+  animation: rise 720ms cubic-bezier(0.22, 0.61, 0.36, 1) both 70ms;
 }
 
-@keyframes shine {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
 
 .lede {
   margin: 16px 0 0;
@@ -117,6 +113,16 @@
   overflow: visible;
 }
 
+/* The layers over the first (KhatmRing.tsx), each the ring’s whole size. */
+.ringLayer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
 .ringTicks {
   fill: none;
   stroke: color-mix(in srgb, var(--mk-hero-kicker) 55%, transparent);
@@ -147,12 +153,16 @@
 .ringDayLit {
   stroke: color-mix(in srgb, var(--mk-gold-pale) 55%, transparent);
   filter: drop-shadow(0 0 5px color-mix(in srgb, var(--mk-gold-pale) 70%, transparent));
+}
+
+/* The day being read pulses as a layer of its own, so its glow is drawn once. */
+.ringLit {
   animation: lit 3.2s ease-in-out infinite;
 }
 
 @keyframes lit {
-  0%, 100% { stroke-opacity: 1; }
-  50% { stroke-opacity: 0.62; }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.62; }
 }
 
 .ringRead {
@@ -161,11 +171,17 @@
   stroke-width: 13;
 }
 
+/* The halo round the bead: a disc fifteen units across in the ring’s 220,
+   set where the bead is (KhatmRing.tsx) and pulsing by itself. */
 .ringHalo {
-  fill: color-mix(in srgb, var(--mk-gold-pale) 30%, transparent);
+  position: absolute;
+  width: 6.818%;
+  aspect-ratio: 1;
+  margin: -3.409% 0 0 -3.409%;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--mk-gold-pale) 30%, transparent);
+  pointer-events: none;
   animation: halo 2.6s ease-in-out infinite;
-  transform-box: fill-box;
-  transform-origin: center;
 }
 
 @keyframes halo {

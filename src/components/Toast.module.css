@@ -28,7 +28,7 @@
   text-wrap: balance;
 }
 
-:global(:root[data-theme="night"]) .toast {
+:global(:root:not([data-theme="day"])) .toast {
   background: var(--color-surface);
   color: var(--color-text);
   border: 1px solid var(--color-divider);
@@ -39,4 +39,11 @@
 @keyframes sheet {
   from { transform: translateY(18px); opacity: 0; }
   to { transform: none; opacity: 1; }
+}
+
+/* Over a film the words are at the foot of the screen, so a message comes in
+   at the head of it instead (HorizonsPage marks the body while it is open). */
+:global(body[data-watching]) .region {
+  top: calc(max(14px, env(safe-area-inset-top)) + 62px);
+  bottom: auto;
 }

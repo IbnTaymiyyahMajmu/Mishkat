@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 7, which has no adaptive icons: the same lamp on the same sky. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/icon_ground" />
+    <item android:drawable="@drawable/lamp_lit" />
+</layer-list>

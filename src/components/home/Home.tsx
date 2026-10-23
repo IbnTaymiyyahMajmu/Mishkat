@@ -55,17 +55,28 @@ export function Home() {
 
           {ayah ? (
             <div className={styles.daily}>
-              <p lang="ar" dir="rtl" className={styles.words}>
-                {words.map((word, i) => (
-                  <span
-                    key={i}
-                    className={styles.word}
-                    style={{ animationDelay: wordDelays(i, words.length) }}
-                  >
-                    {word}
-                  </span>
-                ))}
-              </p>
+              <div className={styles.ayah}>
+                <p lang="ar" dir="rtl" className={styles.words}>
+                  {words.map((word, i) => (
+                    <span key={i} className={styles.word} style={{ animationDelay: riseDelay(i, words.length) }}>
+                      {word}
+                    </span>
+                  ))}
+                </p>
+                {/* The light crossing the ayah: the same words in the bright of
+                    the leaf, seen through a slit that moves (Home.module.css). */}
+                <div className={styles.sweep} aria-hidden="true">
+                  <div className={styles.slit}>
+                    <p lang="ar" dir="rtl" className={`${styles.words} ${styles.lit}`}>
+                      {words.map((word, i) => (
+                        <span key={i} className={styles.litWord}>
+                          {word}
+                        </span>
+                      ))}
+                    </p>
+                  </div>
+                </div>
+              </div>
               <p className={styles.translation} dir="auto">
                 {ayah.failed ? t("home.unreached") : ayah.translation}
               </p>
@@ -137,14 +148,12 @@ export function Home() {
 }
 
 /**
- * Each word rises in turn, and the sheen crosses them as one: the rise is
- * staggered forward from the first word, the sheen offset backwards, so the
- * whole ayah reads as a single surface catching the light rather than as a row
- * of separately animated words.
+ * Each word rises in turn, staggered forward from the first, and the sheen
+ * then crosses them as one (Home.module.css), so the whole ayah reads as a
+ * single surface catching the light rather than as a row of separately
+ * animated words.
  */
-function wordDelays(i: number, count: number): string {
+function riseDelay(i: number, count: number): string {
   const step = Math.max(18, Math.min(58, Math.round(1000 / count)));
-  const rise = 90 + i * step;
-  const sheen = -i * Math.round(7000 / Math.max(1, count));
-  return `${rise}ms, ${sheen}ms`;
+  return `${90 + i * step}ms`;
 }

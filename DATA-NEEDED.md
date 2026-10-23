@@ -689,6 +689,11 @@ read and corrected by someone who has never seen the code. Afterwards,
 choices — *سپاره* over *جزء*, *امستنې* over *تنظیمات* — and are yours to make
 differently.
 
+The privacy page (`/privacy/`, the `privacy.*` sentences, added 2026-10-22)
+wants that reader before the others: it is the page Google Play links to, and
+it says what the site does and does not do with a reader's data, so a sentence
+that says it loosely says something untrue. Its Pashto, as ever, most of all.
+
 **What stays in English or Arabic, and why.** Names of translators and
 translations are as the corpus gives them. The lexicon entries, the English
 gloss under each word are other people's writing, not the site's, and are not

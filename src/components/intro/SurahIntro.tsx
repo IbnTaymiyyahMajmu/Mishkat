@@ -227,7 +227,9 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords, rhyme }: Props)
           </Link>
           <div className={styles.heroText}>
             <div className={styles.kicker}>{t("intro.kicker", { n: surah })}</div>
-            <h1 className={`${styles.name} ${names.arabic ? styles.nameArabic : ""}`}>{name}</h1>
+            <h1 className={`${styles.name} ${names.arabic ? styles.nameArabic : ""} mk-shine`} data-text={name}>
+              {name}
+            </h1>
             {names.meaning(surah) && <div className={styles.meaning}>{names.meaning(surah)}</div>}
 
             {intro ? (
@@ -706,6 +708,9 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords, rhyme }: Props)
             <div className={styles.endMore}>
               <Link href={`/read/${surah}/mushaf/`} className="btn btn-ghost">
                 {t("reader.mushafView")}
+              </Link>
+              <Link href={`/read/${surah}/horizons/`} className="btn btn-ghost" title={t("horizons.watchLong")}>
+                {t("horizons.watch")}
               </Link>
               <Link href={`/tafsir/?v=${surah}:1`} className="btn btn-ghost">
                 {t("intro.end.tafsir")}

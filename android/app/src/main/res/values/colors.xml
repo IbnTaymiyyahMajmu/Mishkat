@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The ground of the landing page in each of the site's three lights,
+         which is what the app opens on: mk-hero-ground in src/app/globals.css. -->
+    <color name="day">#FBF8F1</color>
+    <color name="evening">#261C0F</color>
+    <color name="night">#11141A</color>
+    <!-- The lamp's gold: day's, to read on paper (mk-gold), and lit, as
+         public/now-playing.jpg draws it on the night sky. -->
+    <color name="lamp">#9D6D22</color>
+    <color name="lamp_lit">#DEB46E</color>
+</resources>

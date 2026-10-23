@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { useSettings, type Theme } from "@/lib/store/settings";
+import { chooseLight, useLight, useSettings, type Theme } from "@/lib/store/settings";
 import { useLibrary } from "@/lib/store/library";
 import { useToast } from "@/components/Toast";
 import { ARABIC_FONTS, GLOSS_LANGUAGES, MAX_TRANSLATIONS, RECITERS } from "@/lib/quran/resources";
@@ -52,6 +52,7 @@ const out = (href: string) =>
 
 export function SettingsPage() {
   const { settings, update, reset } = useSettings();
+  const lit = useLight();
   const { notes, bookmarks, exportJson, importJson, clearAll } = useLibrary();
   const toast = useToast();
   const { t, rich, chosen, setLocale, arabicScript } = useLocale();
@@ -127,8 +128,8 @@ export function SettingsPage() {
             {LIGHTS.map((light) => (
               <Chip
                 key={light.id}
-                on={settings.theme === light.id}
-                onClick={() => update({ theme: light.id })}
+                on={lit === light.id}
+                onClick={() => chooseLight(light.id)}
               >
                 {t(light.label)}
               </Chip>
@@ -283,7 +284,7 @@ export function SettingsPage() {
               ))}
             </div>
           </div>
-          <Link href="/tajweed/" className={styles.tajweedGuide}>
+          <Link href="/tajweed/" className={styles.guide}>
             {t("settings.tajweedGuide")}
           </Link>
         </Section>
@@ -350,6 +351,11 @@ export function SettingsPage() {
               {t("settings.reset")}
             </button>
           </div>
+          {/* Where the library is kept is the reader's first question about
+              their privacy; the page that answers the rest is one step away. */}
+          <Link href="/privacy/" className={styles.guide}>
+            {t("settings.privacy")}
+          </Link>
         </Section>
 
         <Section title={t("settings.sources")}>
