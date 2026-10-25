@@ -19,6 +19,8 @@ import { useSurahTajweed, type Family } from "@/lib/quran/tajweed";
 import { TajweedWord } from "@/components/tajweed/TajweedWord";
 import { TajweedLegend, spotlight } from "@/components/tajweed/TajweedLegend";
 import tjStyles from "@/components/tajweed/Tajweed.module.css";
+import { CopyReference } from "@/components/reader/CopyReference";
+import { useClosedByBack } from "@/lib/back";
 import styles from "./MushafReader.module.css";
 
 const SIZES = [30, 36, 42, 48, 56, 64];
@@ -102,6 +104,8 @@ export function MushafReader({ surah }: { surah: number }) {
     () => verses.find((v) => v.verse_key === selected),
     [verses, selected],
   );
+  // The bar raised over a tapped ayah is put down by Back, as a sheet is.
+  useClosedByBack(!!selectedVerse, () => setSelected(null));
 
   // Audio metadata is fetched only when the reader asks to hear something, so
   // reading the page costs nothing extra.
@@ -343,7 +347,8 @@ export function MushafReader({ surah }: { surah: number }) {
           with the things you would want at that moment. */}
       {selectedVerse && (
         <div className={`${styles.selection} ${playerOpen ? styles.selectionRaised : ""}`}>
-          <span className={styles.selectionKey}>{selectedVerse.verse_key}</span>
+          {/* The reference copies itself, as it does at the head of an ayah in the study view. */}
+          <CopyReference verseKey={selectedVerse.verse_key} className={styles.selectionKey} />
           <button
             className="btn btn-ghost"
             style={{ fontSize: 12 }}

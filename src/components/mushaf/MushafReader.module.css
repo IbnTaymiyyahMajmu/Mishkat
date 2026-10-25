@@ -184,21 +184,28 @@
 
 .selection {
   position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 24px;
+  /* Centred by its margins between the two edges. It used to be hung from the
+     middle by a transform, which the animation that brings it in replaced
+     with its own, ending at none: the bar came to rest with its left edge at
+     the middle of the screen, and on a phone it was pressed into the right
+     half in three rows, running into the edge. */
+  left: 12px;
+  right: 12px;
+  width: fit-content;
+  margin-inline: auto;
+  /* Above the gesture bar, or the buttons, where the app runs under them. */
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
   z-index: 65;
   display: flex;
   align-items: center;
   gap: 4px;
   padding-block: 6px;
-  padding-inline: 14px 8px;
+  padding-inline: 10px 8px;
   background: var(--color-bg);
   border: 1px solid var(--color-divider);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   animation: sheet 180ms ease both;
-  max-width: calc(100vw - 24px);
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -226,6 +233,28 @@
   padding: 4px 8px;
 }
 .selectionClose:hover { color: var(--color-text); }
+
+/* On a phone the bar has no width for one line, and what wrapped was whatever
+   came last — the ✕ alone on a second row. So it is two lines on purpose: the
+   ayah and the way to put it down at the top, as a card's head, and the four
+   things to do with it beneath. */
+@media (max-width: 600px) {
+  .selection {
+    width: auto;
+    row-gap: 2px;
+    padding-block: 8px 4px;
+  }
+  .selection::before {
+    content: "";
+    order: -1;
+    flex-basis: 100%;
+  }
+  .selectionKey { order: -2; }
+  .selectionClose {
+    order: -2;
+    margin-inline-start: auto;
+  }
+}
 
 /* The shared sheet curve, declared locally because a module cannot reference a
    global keyframe — see the note in globals.css. */

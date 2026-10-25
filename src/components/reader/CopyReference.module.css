@@ -1,0 +1,54 @@
+/* An ayah's reference, made to be pressed: a hairline pill round the words,
+   and the clipboard's mark after them. How the words themselves are set is
+   the place's own — the class it is given beside this one — so the reference
+   reads as it always has, at the head of an ayah or in the muṣḥaf's bar; this
+   is only what makes it a control. */
+.ref {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding-block: 4px;
+  padding-inline: 10px 9px;
+  border: 1px solid var(--color-divider);
+  border-radius: 999px;
+  background: none;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+/* Small to look at and the size of a fingertip to press: the reach is lent by
+   a margin no one sees. */
+.ref::after {
+  content: "";
+  position: absolute;
+  inset: -9px -5px;
+}
+
+.ref svg { flex: none; }
+
+@media (hover: hover) {
+  .ref:hover {
+    color: var(--color-accent);
+    border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  }
+}
+.ref:active { background: color-mix(in srgb, var(--color-accent) 12%, transparent); }
+
+/* Copied: the clipboard ticked, in the accent, for as long as it takes to see.
+   Two classes, so that it holds over the colour the place gives the words. */
+.ref.done {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+.ref.done svg { animation: tick 280ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+@keyframes tick {
+  from { transform: scale(0.55); opacity: 0.4; }
+  to { transform: none; opacity: 1; }
+}

@@ -44,8 +44,9 @@ import java.util.Set;
  * <p>The recitation, which goes on when the app is out of sight, with its
  * notification and the lock screen's controls: {@link Recitation}.
  *
- * <p>Back, which goes back a page. And the splash screen, which on Android 13
- * and later opens on the light the reader last chose.
+ * <p>Back, which puts down an open sheet before it goes back a page. And the
+ * splash screen, which on Android 13 and later opens on the light the reader
+ * last chose.
  */
 @CapacitorPlugin(name = "Shell")
 public class Shell extends Plugin {
@@ -70,20 +71,33 @@ public class Shell extends Plugin {
     private String light;
 
     /**
-     * Back goes back a page, as a browser's does; from the first page it
-     * leaves the app, as Android's does.
+     * Asks the page to put down the sheet in front, if one is open — the
+     * search, the menu, the study panel (the site's lib/back.ts) — and
+     * answers whether it did. A page that does not know the question, or is
+     * not yet there to be asked, answers no.
+     */
+    private static final String CLOSE_FRONT =
+        "(function () { try { return !!(window.__mishkatBack && window.__mishkatBack()); } catch (e) { return false; } })()";
+
+    /**
+     * Back puts down whatever sheet is open over the page first, as it does
+     * in any Android app; with none, it goes back a page, as a browser's
+     * does; and from the first page it leaves the app, as Android's does.
      */
     private final OnBackPressedCallback back = new OnBackPressedCallback(true) {
         @Override
         public void handleOnBackPressed() {
             WebView web = bridge.getWebView();
-            if (web.canGoBack()) {
-                web.goBack();
-                return;
-            }
-            setEnabled(false);
-            getActivity().getOnBackPressedDispatcher().onBackPressed();
-            setEnabled(true);
+            web.evaluateJavascript(CLOSE_FRONT, (closed) -> {
+                if ("true".equals(closed)) return;
+                if (web.canGoBack()) {
+                    web.goBack();
+                    return;
+                }
+                setEnabled(false);
+                getActivity().getOnBackPressedDispatcher().onBackPressed();
+                setEnabled(true);
+            });
         }
     };
 

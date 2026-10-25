@@ -8,6 +8,7 @@ import { RECITERS } from "@/lib/quran/resources";
 import { formatClock } from "@/lib/text";
 import { useLocale, type MessageKey } from "@/lib/i18n";
 import { useSurahNames } from "@/lib/i18n/surah";
+import { useClosedByBack } from "@/lib/back";
 import styles from "./Transport.module.css";
 
 /** Slow enough to follow an unfamiliar word, fast enough to review a page. */
@@ -70,6 +71,7 @@ export function Transport() {
       document.removeEventListener("pointerdown", onDown);
     };
   }, [tuning, closeTuning]);
+  useClosedByBack(tuning, closeTuning);
 
   // Nothing to tune once the transport has gone: the panel should not be
   // waiting, still open, the next time a reader presses play. Adjusted during

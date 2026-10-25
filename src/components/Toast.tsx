@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
+import { useT } from "@/lib/i18n";
 import styles from "./Toast.module.css";
 
 /** How long a message is shown unless it asks for longer. */
@@ -37,4 +38,27 @@ export function ToastProvider({ children }: { children: ReactNode }) {
 
 export function useToast(): (message: string, ms?: number) => void {
   return useContext(Ctx);
+}
+
+/**
+ * Text put on the clipboard, and a word that it is there — or that the
+ * browser would not allow it. Resolves to whether the text was put there, for
+ * a control that marks the moment itself.
+ */
+export function useCopy(): (text: string, message: string) => Promise<boolean> {
+  const toast = useToast();
+  const t = useT();
+  return useCallback(
+    async (text: string, message: string) => {
+      try {
+        await navigator.clipboard.writeText(text);
+        toast(message);
+        return true;
+      } catch {
+        toast(t("toast.clipboard"));
+        return false;
+      }
+    },
+    [toast, t],
+  );
 }
