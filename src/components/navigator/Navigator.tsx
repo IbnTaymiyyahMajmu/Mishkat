@@ -10,6 +10,7 @@ import { juzStartsIn } from "@/lib/quran/juz";
 import { resolveGoto, type Destination, type SurahRow } from "@/lib/quran/goto";
 import { useLocale, type MessageKey } from "@/lib/i18n";
 import { useSurahNames } from "@/lib/i18n/surah";
+import { useClosedByBack } from "@/lib/back";
 import styles from "./Navigator.module.css";
 
 /**
@@ -162,6 +163,8 @@ export function Navigator({ surah, ayah, onGo, onClose }: Props) {
     window.addEventListener("keydown", onKey, true);
     return () => window.removeEventListener("keydown", onKey, true);
   }, [onClose]);
+  // …and Back's, in the app, where a thumb has no Escape.
+  useClosedByBack(true, onClose);
 
   // Both panes open on what they are about: the list at the surah in hand, the
   // ayat at the one the reader is on.

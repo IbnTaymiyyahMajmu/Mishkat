@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 import { useLocale, type MessageKey } from "@/lib/i18n";
+import { useClosedByBack } from "@/lib/back";
 import styles from "./SidePanel.module.css";
 
 export type PanelMode = "word" | "translations" | "tafsir" | "quran" | "notes" | "tajweed";
@@ -118,6 +119,7 @@ export function SidePanel({ state, title, onSwitch, onClose, noteCount = 0, chil
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
+  useClosedByBack(true, onClose);
 
   // Scroll the panel back to the top when it changes what it is about, rather
   // than leaving the reader halfway down the previous ayah's tafsir.

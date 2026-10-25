@@ -8,6 +8,7 @@ import { wordDomId } from "@/lib/highlight";
 import { TranslationText } from "@/components/translations/TranslationText";
 import { TajweedWord } from "@/components/tajweed/TajweedWord";
 import { useLocale } from "@/lib/i18n";
+import { CopyReference } from "./CopyReference";
 import styles from "./Verse.module.css";
 
 export interface VerseHandlers {
@@ -92,7 +93,8 @@ function VerseImpl({
         <div className={styles.disc} aria-hidden="true">
           {number}
         </div>
-        <div className={styles.key}>{key}</div>
+        {/* Pressed, it copies itself with the surah's name: "Al-Kahf 18:10". */}
+        <CopyReference verseKey={key} className={styles.key} />
         {noteCount > 0 && (
           <span className={styles.noteBadge} title={t("verse.notesOn", { count: noteCount })}>
             {t("common.notes", { count: noteCount })}

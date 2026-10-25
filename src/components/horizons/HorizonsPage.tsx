@@ -14,6 +14,7 @@ import { useTranslationShelf } from "@/components/translations/useTranslationShe
 import { arabicNumber, plainText } from "@/lib/text";
 import { useLocale } from "@/lib/i18n";
 import { useSurahNames } from "@/lib/i18n/surah";
+import { useClosedByBack } from "@/lib/back";
 import { fetchScore, type Score } from "@/lib/horizons/score";
 import { Film, hourColour, moonPhase, type Caption } from "@/lib/horizons/director";
 import { useFilmLoop, type FilmMoment, type Look, type Motion } from "./useFilmLoop";
@@ -177,6 +178,8 @@ export function HorizonsPage({ surah }: { surah: number }) {
   const [begun, setBegun] = useState<number | null>(null);
   const [chrome, setChrome] = useState(true);
   const [tuning, setTuning] = useState(false);
+  // The panel of settings over the film is put down by Back before the film is left.
+  useClosedByBack(tuning, () => setTuning(false));
   // Arriving with the surah already being recited, the niche is open from the
   // start. Adjusted during render rather than in an effect, so the opening
   // card is never drawn for a frame over a film already under way.

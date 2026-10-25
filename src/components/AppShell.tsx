@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { SiteHeader } from "./SiteHeader";
 import { SearchOverlay } from "./search/SearchOverlay";
@@ -8,6 +8,7 @@ import { Transport } from "./Transport";
 import { PlanKeeper } from "./plan/PlanKeeper";
 import { NicheKeeper } from "./niche/NicheKeeper";
 import { useT } from "@/lib/i18n";
+import { closeFront } from "@/lib/back";
 import styles from "./AppShell.module.css";
 
 /**
@@ -31,6 +32,16 @@ export function AppShell({ children }: { children: ReactNode }) {
   const parts = path.split("/").filter(Boolean);
   const watching = parts[0] === "read" && parts[2] === "horizons";
   const t = useT();
+
+  // The app's Back asks the page to put down the sheet in front before it
+  // leaves the page (lib/back.ts; Shell.java calls this). A browser never asks.
+  useEffect(() => {
+    const page = window as Window & { __mishkatBack?: () => boolean };
+    page.__mishkatBack = closeFront;
+    return () => {
+      delete page.__mishkatBack;
+    };
+  }, []);
 
   return (
     <div className={`${styles.shell} ${onHome ? styles.shellHome : ""}`}>

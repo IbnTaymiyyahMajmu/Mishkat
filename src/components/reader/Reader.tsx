@@ -13,7 +13,7 @@ import { translationName } from "@/lib/quran/translations";
 import { highlight, parseWordDomId } from "@/lib/highlight";
 import { isValidVerseKey, plainText } from "@/lib/text";
 import { SCROLL_TO_VERSE, type ScrollToVerseDetail } from "@/lib/useGoToVerse";
-import { useToast } from "@/components/Toast";
+import { useCopy, useToast } from "@/components/Toast";
 import { useLocale } from "@/lib/i18n";
 import { useSurahNames } from "@/lib/i18n/surah";
 import { Navigator } from "@/components/navigator/Navigator";
@@ -442,17 +442,7 @@ export function Reader({ surah, teaser }: { surah: number; teaser: IntroTeaser |
   // translations: the one they read first is the one they mean.
   const firstRendering = useCallback((key: string) => renderingsRef.current.get(key)?.[0], []);
 
-  const copy = useCallback(
-    async (text: string, message: string) => {
-      try {
-        await navigator.clipboard.writeText(text);
-        toast(message);
-      } catch {
-        toast(t("toast.clipboard"));
-      }
-    },
-    [toast, t],
-  );
+  const copy = useCopy();
 
   const handlers = useMemo<VerseHandlers>(
     () => ({

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type RefObject } from "react";
 import { useSearch } from "./SearchProvider";
 import { search as runSearch, fetchVerse } from "@/lib/quran/api";
 import type { Chapter, SearchResult } from "@/lib/quran/types";
@@ -12,6 +12,7 @@ import { isValidVerseKey, plainText } from "@/lib/text";
 import { foldToText, markMatches, type MatchPart } from "@/lib/match";
 import { useT, type MessageKey } from "@/lib/i18n";
 import { useSurahNames } from "@/lib/i18n/surah";
+import { useClosedByBack } from "@/lib/back";
 import styles from "./SearchOverlay.module.css";
 
 type Scope = "all" | "quran" | "translation" | "tafsir";
@@ -51,6 +52,8 @@ export function SearchOverlay() {
 
 function SearchDialog({ seed }: { seed: string }) {
   const { closeSearch } = useSearch();
+  // Here only while it is open, so it is Back's to close for as long as it is here.
+  useClosedByBack(true, closeSearch);
   const { settings } = useSettings();
   const { chapters, byId } = useChapters();
   const { recent, remember, clear: clearRecent } = useRecentSearches();
@@ -85,6 +88,7 @@ function SearchDialog({ seed }: { seed: string }) {
 
   const inputRef = useRef<HTMLInputElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
+  const placeholder = useFitting(inputRef, t("search.placeholder"), t("nav.searchLabel"));
 
   useEffect(() => {
     const t = setTimeout(() => inputRef.current?.focus(), 30);
@@ -298,8 +302,15 @@ function SearchDialog({ seed }: { seed: string }) {
               setCursor(0);
             }}
             onKeyDown={onKeyDown}
-            placeholder={t("search.placeholder")}
+            placeholder={placeholder}
             aria-label={t("search.input")}
+            // A phone's keyboard: its last key says Search, and nothing typed
+            // is "corrected" on its way in — `kahf` is not a misspelt `kale`.
+            enterKeyHint="search"
+            autoCapitalize="off"
+            autoCorrect="off"
+            autoComplete="off"
+            spellCheck={false}
           />
           {query.length > 0 && (
             <button onClick={clearQuery} className={styles.clear} aria-label={t("search.clear")}>
@@ -311,8 +322,11 @@ function SearchDialog({ seed }: { seed: string }) {
             </button>
           )}
           <span className={styles.headRule} aria-hidden="true" />
+          {/* Named for the key that closes it where there is a keyboard, and
+              for what it does where there is only a finger. */}
           <button onClick={closeSearch} className={styles.esc} aria-label={t("search.close")}>
-            Esc
+            <span className={styles.escKey}>Esc</span>
+            <span className={styles.escWord}>{t("common.close")}</span>
           </button>
         </div>
 
@@ -488,6 +502,48 @@ function SearchDialog({ seed }: { seed: string }) {
       </div>
     </div>
   );
+}
+
+/**
+ * The placeholder that fits the box: the whole of what can be typed where
+ * there is room for it, and the shorter of the two where there is not.
+ *
+ * On a phone the long one was cut off mid-word — "Search Arabic, an English
+ * phras" — and a box that trails off reads as broken. Measured rather than
+ * guessed from the width of the screen, because how much room the words need
+ * is a matter of the language as much as the phone: the Spanish runs longer
+ * than the English, and a folding phone opened out is neither phone nor desk.
+ * Nothing is lost by the short one: the list under the empty box says what
+ * the long one did.
+ */
+function useFitting(input: RefObject<HTMLInputElement | null>, long: string, short: string): string {
+  const [fits, setFits] = useState(true);
+
+  // Before paint, so the long words are never drawn and then swapped.
+  useLayoutEffect(() => {
+    const box = input.current;
+    const pad = document.createElement("canvas").getContext("2d");
+    if (!box || !pad) return;
+    const measure = () => {
+      const style = getComputedStyle(box);
+      // The placeholder is set in italic (the stylesheet's ::placeholder).
+      pad.font = `italic ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+      setFits(pad.measureText(long).width <= box.clientWidth);
+    };
+    measure();
+    // Again once the face has arrived, if it had not; and whenever the box
+    // changes width — the phone turned, the window drawn narrower.
+    let live = true;
+    document.fonts?.ready.then(() => live && measure());
+    const watch = new ResizeObserver(measure);
+    watch.observe(box);
+    return () => {
+      live = false;
+      watch.disconnect();
+    };
+  }, [input, long]);
+
+  return fits ? long : short;
 }
 
 /** The reader's term lit up inside the text it was found in. */

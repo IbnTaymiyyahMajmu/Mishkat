@@ -6,6 +6,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { useSearch } from "./search/SearchProvider";
 import { useLocale, type MessageKey } from "@/lib/i18n";
 import { chooseLight, useLight, type Theme } from "@/lib/store/settings";
+import { useClosedByBack } from "@/lib/back";
 import styles from "./SiteHeader.module.css";
 
 /** The three reading lights, in the order the day runs. */
@@ -149,6 +150,7 @@ export function SiteHeader() {
   const menuButton = useRef<HTMLButtonElement>(null);
   const menuId = useId();
   const glowId = useId();
+  useClosedByBack(menuOpen, closeMenu);
 
   useEffect(() => {
     if (!menuOpen) return;
