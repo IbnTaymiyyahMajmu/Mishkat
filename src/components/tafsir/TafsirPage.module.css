@@ -2,10 +2,13 @@
    Tafsir, given a page.
 
    Three things, top to bottom: a bar that says which ayah this is and moves
-   between ayat; the ayah itself; and the passage — in a measure a person can
-   read at length, with the library down the side of it. Below 1040px there is
-   no room for a side, so the library folds into the tabs that sit above the
-   passage, exactly as it does in the panel beside the text.
+   between ayat; the ayah itself; and under it the tafsir, read one of three
+   ways. Reading one work, it is the passage — in a measure a person can read
+   at length, with the library down the side of it; below 1040px there is no
+   room for a side, so the library folds into the tabs that sit above the
+   passage, exactly as it does in the panel beside the text. Comparing, or
+   looking along the library, the page wants its whole width, and the side
+   gives it up (TafsirCompare.module.css, TafsirLibraryView.module.css).
    ══════════════════════════════════════════════════════════════════════════ */
 
 /* — the bar — */
@@ -126,6 +129,10 @@
 
 .body { min-width: 0; }
 
+/* Comparing and the library want the page's width; the rail is the library
+   already, and is not needed beside either. */
+.layoutWide { grid-template-columns: minmax(0, 1fr); }
+
 /* — the rail —
    The library as an outline, one language at a time: the run a work belongs
    to, then the work. A row is two lines — the name it is known by, and one
@@ -186,7 +193,6 @@
   border-inline-start-color: var(--color-accent);
   background: color-mix(in srgb, var(--color-accent) 11%, transparent);
 }
-.railBeside { border-inline-start-color: color-mix(in srgb, var(--color-accent) 55%, transparent); }
 
 .railLead {
   font-size: 10.5px;
@@ -303,7 +309,66 @@
 }
 .ayahUnfold:hover { border-bottom-color: var(--color-accent); }
 
-/* — the passage, or two — */
+/* — the three ways of reading —
+   Read, Compare, Library: one control, three halves, the one in use lit.
+   It stands between the ayah and the tafsir, which is where the question of
+   how to read the tafsir is asked, and it is the same three at every width. */
+
+.views {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  width: min(420px, 100%);
+  margin: 0 auto 24px;
+  padding: 3px;
+  border: 1px solid var(--color-divider);
+  border-radius: 999px;
+}
+
+.viewTab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 0 12px;
+  background: none;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 14.5px;
+  line-height: 1;
+  color: var(--muted-62);
+  transition: background 140ms ease, color 140ms ease;
+}
+.viewTab:hover { color: var(--color-text); }
+.viewOn,
+.viewOn:hover {
+  background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+  color: var(--color-accent-800);
+}
+.viewTab:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+
+/* How many works are being compared, so a reader reading one knows the
+   comparison they set up is still there. */
+.viewCount {
+  display: inline-grid;
+  place-items: center;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-bg);
+  background: var(--mk-gold);
+}
+
+/* — the passage — */
 
 /* Pinned under the bar, so another work is in reach from the foot of a long
    passage as it is from the head of it. */
@@ -318,74 +383,27 @@
   border-bottom: 1px solid var(--color-divider);
 }
 
-/* The second work is chosen from the first one's own line of tools. */
-.beside {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--muted-55);
-}
-
-.besideSelect {
-  max-width: 190px;
-  min-height: 28px;
-  padding: 2px 6px;
-  font: inherit;
-  color: var(--color-text);
-  background: var(--color-bg);
-  border: 1px solid var(--color-divider);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-}
-.besideSelect:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
-.besideSelect:focus-visible { border-color: var(--color-accent); outline-offset: 0; }
-
-.chooser { max-width: 760px; margin: 0 auto; }
-
 /* A measure wide enough to be justified is; anything narrower is set ragged,
    since Arabic is justified by its spaces and a short line shows every one. */
 .columns { max-width: 760px; margin: 0 auto; --tafsir-align: justify; }
 
-.columnsTwo {
-  max-width: none;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 44px;
-  align-items: start;
-}
-.columnsTwo .column + .column {
-  padding-inline-start: 44px;
-  margin-inline-start: -22px;
-  border-inline-start: 1px solid var(--color-divider);
-}
-
 .column { position: relative; min-width: 0; }
 
-/* With two works open each says which it is, so that "close" is plainly
-   attached to the one it closes and the two headings still sit level. */
-.columnLabel {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  font-family: var(--font-heading);
-  font-weight: var(--font-heading-weight);
-  font-size: 10px;
-  letter-spacing: 0.17em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-}
+/* The next work, brought in by a stroke across the passage, comes from the
+   side the stroke drew it from. */
+.inNext { animation: in-next 220ms ease-out; }
+.inPrev { animation: in-prev 220ms ease-out; }
+:global([dir="rtl"]) .inNext { animation-name: in-prev; }
+:global([dir="rtl"]) .inPrev { animation-name: in-next; }
 
-.closeSecond {
-  padding: 0;
-  background: none;
-  border: 0;
-  cursor: pointer;
-  font: inherit;
-  letter-spacing: 0.08em;
-  color: var(--muted-55);
+@keyframes in-next {
+  from { opacity: 0; transform: translateX(26px); }
+  to { opacity: 1; transform: none; }
 }
-.closeSecond:hover { color: var(--color-accent); }
+@keyframes in-prev {
+  from { opacity: 0; transform: translateX(-26px); }
+  to { opacity: 1; transform: none; }
+}
 
 .foot {
   display: flex;
@@ -397,24 +415,8 @@
   padding-top: 20px;
   border-top: 1px solid var(--color-divider);
 }
-.columnsTwo + .foot { max-width: none; }
+.footWide { max-width: none; }
 .foot :global(.btn) { font-size: 13px; }
-
-/* Two works side by side want width. Where there is not enough, one goes
-   under the other, each still under its own heading. */
-.columnsTwo { --tafsir-align: start; }
-
-@media (max-width: 1240px) {
-  .columnsTwo { grid-template-columns: 1fr; gap: 40px; max-width: 760px; --tafsir-align: justify; }
-  .columnsTwo .column + .column {
-    padding-inline-start: 0;
-    margin-inline-start: 0;
-    border-inline-start: 0;
-    padding-top: 30px;
-    border-top: 1px solid var(--color-divider);
-  }
-  .columnsTwo + .foot { max-width: 760px; }
-}
 
 @media (max-width: 1040px) {
   .layout { grid-template-columns: 1fr; gap: 0; padding: 22px 22px 150px; }
@@ -435,9 +437,15 @@
   .layout { padding: 18px 16px 150px; }
   .tabs { margin-inline: -16px; padding-inline: 16px; }
   .ayah { padding-bottom: 16px; margin-bottom: 0; border-bottom: 0; }
-  .beside { display: none; }
-  .columns, .columnsTwo { --tafsir-align: start; }
+  .columns { --tafsir-align: start; }
+  .views { margin-bottom: 18px; }
+  .viewTab { font-size: 14px; padding: 0 8px; }
   .ayahArabic { font-size: 25px; line-height: 2; }
   .ayahEnglish { font-size: 14.5px; }
   .foot { margin-top: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inNext,
+  .inPrev { animation: none; }
 }

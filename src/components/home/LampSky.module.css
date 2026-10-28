@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════════════════
-   The sky behind the landing page — three of them, one per reading light.
+   The sky behind the landing page — four of them, one per reading light.
 
    Evening and night are made of light: a lamp burning just above the top edge
    of the screen, its halo, the shaft it throws down the middle, two slow drifts
@@ -41,6 +41,7 @@
   inset: 0;
   overflow: hidden;
 }
+.sceneDawn { opacity: var(--mk-scene-dawn); }
 .sceneDay { opacity: var(--mk-scene-day); }
 .sceneEve { opacity: var(--mk-scene-eve); }
 .sceneNight { opacity: var(--mk-scene-night); }
@@ -208,9 +209,11 @@
    unseen for its turn has nothing to dissolve into — and every layer of it,
    still or not, would be carried in every frame and every picture taken.
    Evening is the light with no attribute of its own until the settings have
-   loaded, so it is the one hidden by naming the other two. */
+   loaded, so it is the one hidden by naming the other three. */
+:global(html:not([data-theme="dawn"])) .sceneDawn,
 :global(html:not([data-theme="day"])) .sceneDay,
 :global(html:not([data-theme="night"])) .sceneNight,
+:global(html[data-theme="dawn"]) .sceneEve,
 :global(html[data-theme="day"]) .sceneEve,
 :global(html[data-theme="night"]) .sceneEve {
   display: none;
@@ -474,6 +477,231 @@
     0 0 26px 8px rgba(255, 226, 160, 0.34);
 }
 
+/* ── dawn ─────────────────────────────────────────────────────────────────
+   The hour before the sun, built as day is built, layer for layer, with the
+   sun under the horizon at the foot of the page instead of over the niche at
+   its head: the wash it sends up the sky, the cool light the walls catch
+   first, the white thread of the dawn drawn across the horizon with a brighter
+   heart, the rays it fans up from below, the mist it lifts, the arch of colour
+   over the place it will rise, its glow under the edge — and, where day has
+   its disc, the morning star. The sky itself is the ground (globals.css):
+   warm at the horizon, pearl up the sky, and the night's grey-blue still in
+   the upper corners, so the light laid over it — white and gold — has
+   somewhere to show. */
+
+.sceneDawn {
+  --dawn-y: 100%;
+}
+
+.dawnWash {
+  position: absolute;
+  left: 50%;
+  top: var(--dawn-y);
+  width: 1900px;
+  height: 1500px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(255, 240, 216, 0.6) 0%,
+    rgba(255, 232, 204, 0.26) 26%,
+    rgba(248, 226, 206, 0.08) 52%,
+    rgba(248, 226, 206, 0) 76%
+  );
+  animation: breathe 30s ease-in-out infinite;
+}
+
+/* — the walls, catching the first light high up, before the floor does — */
+.dawnWallA,
+.dawnWallB {
+  position: absolute;
+  background: radial-gradient(58% 52% at 50% 50%, rgba(240, 244, 252, 0.46) 0%, rgba(240, 244, 252, 0) 72%);
+}
+.dawnWallA {
+  left: 8%;
+  top: 30%;
+  width: 820px;
+  height: 640px;
+  animation: breathe 27s ease-in-out infinite;
+}
+.dawnWallB {
+  left: 92%;
+  top: 16%;
+  width: 900px;
+  height: 720px;
+  animation: breathe 35s ease-in-out infinite 9s;
+}
+
+/* — the white thread —
+   "until the white thread of the dawn becomes distinct to you from the
+   black": the true dawn is not a column of light but a line, spread along
+   the horizon from one side to the other. A long, flat ellipse of white laid
+   on the foot of the page, and a narrower, brighter one inside it, pulsing
+   out of step. Only their opacity moves, so each carries its own centring. */
+.dawnBand,
+.dawnBandCore {
+  position: absolute;
+  left: 50%;
+  top: var(--dawn-y);
+  transform: translate(-50%, -50%);
+}
+.dawnBand {
+  width: 170vw;
+  height: 34vh;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(255, 253, 246, 0.82) 0%,
+    rgba(255, 249, 238, 0.5) 30%,
+    rgba(255, 244, 230, 0.16) 64%,
+    rgba(255, 244, 230, 0) 96%
+  );
+  animation: pulse 12s ease-in-out infinite 1.4s;
+}
+.dawnBandCore {
+  width: 120vw;
+  height: 11vh;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(255, 255, 252, 0.95) 0%,
+    rgba(255, 253, 246, 0.6) 34%,
+    rgba(255, 250, 240, 0.14) 70%,
+    rgba(255, 250, 240, 0) 96%
+  );
+  animation: pulse 8.1s ease-in-out infinite;
+}
+
+/* — the rays —
+   The fans the sun throws up while it is still under the edge, as day's fall
+   from it, swaying a degree or two about the point it will rise from. */
+.dawnRays {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% calc(100% + 16vh);
+  -webkit-mask-image: radial-gradient(110% 92% at 50% 100%, #000 0%, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0.24) 60%, transparent 86%);
+  mask-image: radial-gradient(110% 92% at 50% 100%, #000 0%, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0.24) 60%, transparent 86%);
+}
+.dawnRaysA { animation: rays-a 25s ease-in-out infinite; }
+.dawnRaysB { animation: rays-b 33s ease-in-out infinite; }
+
+/* — the mist —
+   What the cool of the night leaves lying low, lifted and carried off as the
+   light comes, as the lamp's smoke and the noon haze are. */
+.dawnMistA,
+.dawnMistB {
+  position: absolute;
+  border-radius: 50%;
+}
+.dawnMistA {
+  left: 20%;
+  top: 68%;
+  width: 600px;
+  height: 640px;
+  background: radial-gradient(circle, rgba(250, 251, 255, 0.36) 0%, rgba(250, 251, 255, 0) 70%);
+  animation: smoke 38s ease-in-out infinite;
+}
+.dawnMistB {
+  left: 74%;
+  top: 80%;
+  width: 680px;
+  height: 760px;
+  background: radial-gradient(circle, rgba(250, 251, 255, 0.3) 0%, rgba(250, 251, 255, 0) 70%);
+  animation: smoke 50s ease-in-out infinite 14s;
+}
+
+/* — the arch —
+   Over the place the sun will rise, the sky is lit in a broad arch: rose on
+   its inner edge, pale gold, then the blue going cool again — the colours in
+   the order the eye sees them at first light, coming and going as the air
+   does. Day's ring, laid on the horizon. */
+.dawnArch {
+  position: absolute;
+  left: 50%;
+  top: var(--dawn-y);
+  width: 1500px;
+  aspect-ratio: 1;
+  margin: -750px 0 0 -750px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle closest-side,
+    rgba(255, 255, 255, 0) 52%,
+    rgba(255, 200, 176, 0.26) 64%,
+    rgba(255, 228, 190, 0.32) 74%,
+    rgba(255, 246, 228, 0.2) 84%,
+    rgba(196, 214, 240, 0.12) 92%,
+    rgba(196, 214, 240, 0) 100%
+  );
+  animation: ring 23s ease-in-out infinite;
+}
+
+/* — the sun, under the edge —
+   Not seen: only its glow, wide and warm, swelling and settling over the
+   place on the horizon it is about to come up from, and close about that
+   place a brighter light, flattened against the edge. */
+.dawnGlow {
+  position: absolute;
+  left: 50%;
+  top: var(--dawn-y);
+  width: 1300px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle closest-side,
+    rgba(255, 248, 232, 0.88) 0%,
+    rgba(255, 234, 202, 0.56) 9%,
+    rgba(255, 220, 184, 0.26) 24%,
+    rgba(255, 214, 184, 0.08) 46%,
+    rgba(255, 214, 184, 0) 70%
+  );
+  animation: glow 17s ease-in-out infinite;
+}
+.dawnHalo {
+  position: absolute;
+  left: 50%;
+  top: var(--dawn-y);
+  width: 260px;
+  height: 40px;
+  margin: -20px 0 0 -130px;
+  border-radius: 50%;
+  box-shadow:
+    0 0 80px 40px rgba(255, 250, 236, 0.8),
+    0 0 220px 110px rgba(255, 232, 196, 0.38);
+  animation: pulse 9.1s ease-in-out infinite;
+}
+
+/* — the morning star —
+   The brightest thing left in the sky once the stars have gone, and the last
+   to go: a steady point, high on the side away from the light, too bright to
+   waver as a star does, with a glare about it that breathes slowly. */
+.morningStar {
+  position: absolute;
+  left: 73%;
+  top: 15%;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: #fffefa;
+  box-shadow:
+    0 0 6px 2px rgba(255, 255, 255, 0.95),
+    0 0 22px 6px rgba(236, 244, 255, 0.55),
+    0 0 60px 16px rgba(226, 236, 255, 0.22);
+  animation: sun-breathe 7.3s ease-in-out infinite;
+}
+
+/* — the lamps —
+   The embers' paths again, a little smaller than day's: pale at the heart,
+   with a warm glow about them, so on a pale sky each reads as a light. */
+.dawnLamp {
+  background: radial-gradient(
+    circle,
+    #fffefa 0%,
+    #fff3d8 36%,
+    rgba(255, 214, 150, 0.85) 64%,
+    rgba(250, 196, 120, 0) 100%
+  );
+  box-shadow:
+    0 0 9px 3px rgba(255, 214, 150, 0.5),
+    0 0 24px 8px rgba(255, 236, 206, 0.32);
+}
+
 /* ── night ────────────────────────────────────────────────────────────────
    The same niche, but the light in it has gone out and what is left is the
    sky: the flicker becomes a slow breath, the gold becomes blue. */
@@ -689,6 +917,14 @@
     rgba(80, 116, 158, 0.26) 100%
   );
 }
+.sceneDawn .vignette {
+  background: radial-gradient(
+    140% 100% at 50% 100%,
+    rgba(72, 88, 116, 0) 44%,
+    rgba(72, 88, 116, 0.14) 74%,
+    rgba(56, 70, 98, 0.3) 100%
+  );
+}
 .sceneNight .vignette {
   background: radial-gradient(
     140% 100% at 50% 6%,
@@ -862,6 +1098,13 @@
   .sunCorona { width: 900px; }
   .sunGlare { width: 560px; margin: -280px 0 0 -280px; }
   .sunDisc, .sunHalo { width: 116px; height: 116px; margin: -58px 0 0 -58px; }
+  /* Dawn the same way: the walls and the mist go, the glow and the arch
+     narrow with the sky, and the thread keeps its width, which is the sky's. */
+  .dawnWallA, .dawnWallB, .dawnMistA, .dawnMistB { display: none; }
+  .dawnWash { width: 1000px; height: 900px; }
+  .dawnGlow { width: 860px; }
+  .dawnArch { width: 980px; margin: -490px 0 0 -490px; }
+  .dawnHalo { width: 180px; margin-inline-start: -90px; }
   .mote:nth-child(2n) { display: none; }
   /* Half the field, on a screen where the other half was a pixel wide anyway. */
   .star:nth-child(2n), .glint:nth-child(2n) { display: none; }

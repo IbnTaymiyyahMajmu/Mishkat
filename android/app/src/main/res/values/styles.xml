@@ -16,12 +16,17 @@
 
     <!-- The lamp, while the first page loads, on the landing page's ground in
          the light the reader last read in. Evening is the site's own default;
-         Shell.java picks Day or Night for the next launch once a reader has
+         Shell.java picks Dawn, Day or Night for the next launch once a reader has
          chosen one (Android 13 and later — earlier, it is always evening). -->
     <style name="AppTheme.NoActionBarLaunch" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/evening</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/lamp_lit</item>
         <item name="postSplashScreenTheme">@style/AppTheme.NoActionBar</item>
+    </style>
+
+    <style name="AppTheme.NoActionBarLaunch.Dawn">
+        <item name="windowSplashScreenBackground">@color/dawn</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/lamp</item>
     </style>
 
     <style name="AppTheme.NoActionBarLaunch.Day">

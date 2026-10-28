@@ -105,7 +105,7 @@ export const viewport: Viewport = {
    The language is set here too, and for the same reason: see LOCALE_BOOTSTRAP.
    It is tried separately, so that storage which cannot be read still leaves a
    reader with their device's language rather than with none. */
-const BOOTSTRAP = `(function(){var d=document.documentElement,s={};try{s=JSON.parse(localStorage.getItem('mishkat.settings.v1')||'{}')||{};if(s.theme==='day'||s.theme==='night')d.dataset.theme=s.theme;if(s.arabicSize)d.style.setProperty('--arabic-size',s.arabicSize+'px');}catch(e){s={}}try{${LOCALE_BOOTSTRAP}}catch(e){}})()`;
+const BOOTSTRAP = `(function(){var d=document.documentElement,s={};try{s=JSON.parse(localStorage.getItem('mishkat.settings.v1')||'{}')||{};if(s.theme==='dawn'||s.theme==='day'||s.theme==='night')d.dataset.theme=s.theme;if(s.arabicSize)d.style.setProperty('--arabic-size',s.arabicSize+'px');}catch(e){s={}}try{${LOCALE_BOOTSTRAP}}catch(e){}})()`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const fontVars = [

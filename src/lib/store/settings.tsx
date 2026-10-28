@@ -28,10 +28,10 @@ import { DEFAULT_QARI, isQari, type QariId } from "../audio/qari";
 export type Layout = "rows" | "stacked";
 export type WordHighlight = "tint" | "underline" | "both";
 export type Repeat = "off" | "ayah" | "surah";
-/** The three grounds the site is read in. See the note in globals.css. */
-export type Theme = "day" | "evening" | "night";
+/** The four grounds the site is read in, in the order the day runs. See the note in globals.css. */
+export type Theme = "dawn" | "day" | "evening" | "night";
 
-export const THEMES: Theme[] = ["day", "evening", "night"];
+export const THEMES: Theme[] = ["dawn", "day", "evening", "night"];
 
 export interface Settings {
   /**
@@ -119,7 +119,7 @@ export const DEFAULT_SETTINGS: Settings = {
   qari: DEFAULT_QARI,
   layout: "rows",
   // Evening is the light the site was drawn in, and the one the landing page's
-  // niche belongs to; day and night are departures from it.
+  // niche belongs to; dawn, day and night are departures from it.
   theme: "evening",
   reciterId: DEFAULT_RECITER,
   wordHighlight: "both",
@@ -311,8 +311,8 @@ function subscribeLight(onChange: () => void) {
 }
 
 function lightOnPage(): Theme {
-  const light = document.documentElement.dataset.theme;
-  return light === "day" || light === "night" ? light : "evening";
+  const light = document.documentElement.dataset.theme as Theme | undefined;
+  return light && THEMES.includes(light) ? light : "evening";
 }
 
 /**

@@ -10,12 +10,13 @@
    which self-hosts them at build time: no request leaves the page for a font.
    ══════════════════════════════════════════════════════════════════════════ */
 
-/* ── The three reading lights ──────────────────────────────────────────────
-   The site is read in one of three grounds, and the reader picks which from
+/* ── The four reading lights ───────────────────────────────────────────────
+   The site is read in one of four grounds, and the reader picks which from
    the bar rather than inheriting it from their operating system: a muṣḥaf is
    often read in a dark room on a device that is set to light, and just as
    often on a bright morning on one that is set to dark.
 
+     dawn     soft grey paper, the first light along the horizon
      day      bright paper, a sun overhead
      evening  sepia lamplight, the niche and its embers — the default
      night    a dark ground under a cold, still light
@@ -29,7 +30,7 @@
 
    The `--mk-hero-*` set is the landing page, which is lit rather than printed:
    in evening and night it is a dark niche with pale ink, in day it is bright.
-   `--mk-scene-*` is which of the three skies is on; see LampSky.module.css. */
+   `--mk-scene-*` is which of the four skies is on; see LampSky.module.css. */
 :root {
   /* Evening is the niche by lamplight, and the page is read in it: a warm dark,
      the brown-black of the landing page's niche a little below the lamp, with
@@ -74,6 +75,7 @@
     #c69a52 68%,
     #e3c48d 100%
   );
+  --mk-scene-dawn: 0;
   --mk-scene-day: 0;
   --mk-scene-eve: 1;
   --mk-scene-night: 0;
@@ -253,6 +255,76 @@
   --color-neutral-800: #423f3b;
   --color-accent-100: #f4ead7;
   --color-accent-800: #5f4110;
+}
+
+/* Dawn. The hour before the sun: the light grey and soft, the gold only
+   beginning. These are the colours the Classical design system was handed
+   over in — a stone-pale paper, a near-black ink, one gold drawn as a stroke —
+   kept as they were given, so the system is read once in its own light. The
+   paper is greyer and dimmer than day's, which is the reason to choose it: a
+   page that does not glare, in a room not yet lit.
+
+   The gold is the system's mid gold for what is drawn — rails, rings, the
+   tint a chosen thing takes — and its seventh step for what is read, which
+   the guide asks for wherever the accent is text: the mid gold on this paper
+   is three to one, enough for a stroke and not for a word.
+
+   The landing page is the sky at first light: the zenith still holding the
+   night's blue, paling to pearl down the sky, and warm along the horizon,
+   where the white thread of the dawn is drawn across the foot of the screen
+   (al-Baqarah 2:187). Its ink is dark, as day's is. */
+:root[data-theme="dawn"] {
+  /* What the base (evening) states for a dark ground, put back for paper. */
+  color-scheme: light;
+  --mk-mark-ink: #4a3110;
+  --color-divider: color-mix(in srgb, var(--color-text) 16%, transparent);
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
+  --tj-madd2: #a26f0c;
+  --tj-madd246: #c8620b;
+  --tj-madd45: #c42a2a;
+  --tj-madd6: #861212;
+  --tj-nasal: #22803a;
+  --tj-bounce: #1b5ec0;
+  --tj-merge: #66737f;
+  --mk-paper: #f3f2f2;
+  --mk-ink: #201f1d;
+  --mk-gold: #b68235;
+  --mk-gold-deep: #a06f24;
+  --mk-gold-deeper: #7d5411;
+  --mk-gold-pale: #835a17;
+  /* Five stops, like the other lights, but lit from below: warm white at the
+     horizon, pearl, then the grey-blue the night leaves overhead. */
+  --mk-hero-bg: radial-gradient(
+    150% 108% at 50% 106%,
+    #fff1dc 0%,
+    #f2e3d2 15%,
+    #dfdcda 36%,
+    #c2c8d1 64%,
+    #9daabb 100%
+  );
+  --mk-hero-ink: #23211d;
+  --mk-hero-kicker: #6b4a14;
+  --mk-hero-ground: #ece9e6;
+
+  --mk-shine: linear-gradient(
+    100deg,
+    #7d5411 0%,
+    #a06f24 22%,
+    #c3913f 34%,
+    #a06f24 46%,
+    #7d5411 68%,
+    #93671e 100%
+  );
+  --mk-scene-dawn: 1;
+  --mk-scene-eve: 0;
+
+  --color-surface: #eae9e9;
+  --color-neutral-100: #f8f4f4;
+  --color-neutral-800: #444141;
+  --color-accent-100: #fff3e4;
+  --color-accent-800: #5a3b0a;
 }
 
 /* Night. A dark ground under a cold, still light, with the gold turned up to

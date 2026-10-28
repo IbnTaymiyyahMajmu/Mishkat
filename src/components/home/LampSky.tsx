@@ -10,9 +10,11 @@ import styles from "./LampSky.module.css";
  * shaft it throws down the page and the embers it sends up. Day is the same
  * niche at noon: the sun where the lamp was, its beam down the page with the
  * dust turning in it, and small lights rising where the lamp sends up embers.
- * Night keeps the niche and cools it to starlight.
+ * Night keeps the niche and cools it to starlight. Dawn is the hour between
+ * night and day: the sun still under the horizon, the white thread of the
+ * dawn drawn along it, and the last stars going out overhead.
  *
- * All three skies stay mounted and cross-fade on `--mk-scene-*`, so the sky is
+ * All four skies stay mounted and cross-fade on `--mk-scene-*`, so the sky is
  * right in the first painted frame rather than after hydration, and changing
  * the light is a dissolve rather than a cut. Only the lit sky's motes are
  * rendered, though: an ember animating at zero opacity still costs a composite
@@ -207,13 +209,12 @@ const round = (n: number) => Math.round(n * 10) / 10;
  * uneven gaps between, so it reads as light and not as a sunburst drawn with a
  * ruler. Deterministic.
  */
-function rays(seed: number): string {
+function rays(seed: number, at = "50% var(--day-sun-y)", from = "0deg", ink = "255, 252, 240"): string {
   let n = seed;
   const rand = () => {
     n = (n * 1664525 + 1013904223) % 4294967296;
     return n / 4294967296;
   };
-  const ink = "255, 252, 240";
   const stops = [`rgba(${ink}, 0) 0deg`, `rgba(${ink}, 0) 104deg`];
   for (let a = 104 + rand() * 3; ; ) {
     const w = 2 + rand() * 6;
@@ -227,7 +228,7 @@ function rays(seed: number): string {
     a += w + 2 + rand() * 7;
   }
   stops.push(`rgba(${ink}, 0) 360deg`);
-  return `conic-gradient(from 0deg at 50% var(--day-sun-y), ${stops.join(", ")})`;
+  return `conic-gradient(from ${from} at ${at}, ${stops.join(", ")})`;
 }
 
 const DAY_RAYS_A = rays(24350);
@@ -293,6 +294,31 @@ function glints(count: number, seed: number): Glint[] {
 
 const DAY_GLINTS = glints(64, 3141529);
 
+/* ── dawn: the hour before the sun ───────────────────────────────────────────
+   Built as day is built, layer for layer, with the sun under the horizon
+   instead of over the niche: its wash rising up the sky, the cool light the
+   walls catch first, the white thread of the dawn laid along the horizon with
+   a brighter heart, the rays it fans up from below, the mist it lifts, the
+   arch of colour over the place it will rise, and the glow of it under the
+   edge. Where day has its disc, dawn has the morning star; where night has its
+   field, the last few stars, the faintest already gone; and the same small
+   lights rising. */
+
+/** The rays, fanned upward from under the horizon: the same fans, turned over. */
+const DAWN_RAYS_A = rays(80713, "50% calc(100% + 16vh)", "180deg", "255, 246, 230");
+const DAWN_RAYS_B = rays(5521, "50% calc(100% + 16vh)", "180deg", "255, 240, 222");
+/**
+ * The last stars: only the upper sky still holds any, and the lower a star
+ * stands the more of the dawn it is lost in.
+ */
+const DAWN_STARS = stars(40, 77017)
+  .filter((s) => s.top < 30)
+  .map((s) => ({ ...s, alpha: round(s.alpha * (1 - s.top / 34)) }))
+  .filter((s) => s.alpha >= 0.12);
+const DAWN_LAMPS = motes(20, 22, 36, 431007).map(
+  ([left, size, , , path, seconds, delay]) => [left, round(size * 1.9), path, seconds, delay] as const,
+);
+
 const EVENING_EMBERS = motes(28, 24, 43, 20250814);
 const NIGHT_EMBERS = motes(26, 16, 27, 616131);
 const NIGHT_STARS = stars(62, 114255);
@@ -332,6 +358,77 @@ export function LampSky() {
 
   return (
     <div aria-hidden="true" className={styles.sky}>
+      {/* — dawn: the sun still under the horizon — */}
+      <div className={`${styles.scene} ${styles.sceneDawn}`}>
+        <div className={styles.dawnWash} />
+        <div className={styles.dawnWallA} />
+        <div className={styles.dawnWallB} />
+        <div className={styles.dawnBand} />
+        <div className={styles.dawnBandCore} />
+        <div className={`${styles.dawnRays} ${styles.dawnRaysA}`} style={{ backgroundImage: DAWN_RAYS_A }} />
+        <div className={`${styles.dawnRays} ${styles.dawnRaysB}`} style={{ backgroundImage: DAWN_RAYS_B }} />
+        <div className={styles.dawnMistA} />
+        <div className={styles.dawnMistB} />
+        <div className={styles.dawnArch} />
+        <div className={styles.dawnGlow} />
+        <div className={styles.dawnHalo} />
+        <div className={styles.morningStar} />
+        {light === "dawn" && (
+          <>
+            <div className={styles.motes}>
+              {DAWN_STARS.map((s, i) => (
+                <span
+                  key={i}
+                  className={styles.star}
+                  style={
+                    {
+                      left: `${s.left}%`,
+                      top: `${s.top}%`,
+                      width: s.size,
+                      height: s.size,
+                      animationDuration: `${s.slow}s`,
+                      animationDelay: `${s.slowFrom}s`,
+                      "--mk-star-swell": s.swell,
+                    } as React.CSSProperties
+                  }
+                >
+                  <span
+                    className={`${styles.starCore} ${styles[`scint${s.pattern}`]}`}
+                    style={
+                      {
+                        background: `rgba(${TINTS[1]},${s.alpha})`,
+                        boxShadow: starGlow(s),
+                        animationDuration: `${s.fast}s`,
+                        animationDelay: `${s.fastFrom}s`,
+                        "--mk-star-floor": s.floor,
+                      } as React.CSSProperties
+                    }
+                  />
+                </span>
+              ))}
+            </div>
+            {/* What the lamp sends up as embers, the dawn sends up off the
+                horizon: small lights rising, pale at the heart. */}
+            <div className={styles.motes}>
+              {DAWN_LAMPS.map(([left, size, path, seconds, delay], i) => (
+                <span
+                  key={i}
+                  className={`${styles.mote} ${styles[`mote${path}`]} ${styles.dawnLamp}`}
+                  style={{
+                    left: `${left}%`,
+                    width: size,
+                    height: size,
+                    animationDuration: `${seconds}s`,
+                    animationDelay: `${delay}s`,
+                  }}
+                />
+              ))}
+            </div>
+          </>
+        )}
+        <div className={styles.vignette} />
+      </div>
+
       {/* — evening: the lamp in its niche — */}
       <div className={`${styles.scene} ${styles.sceneEve}`}>
         <div className={`${styles.layer} ${styles.wash}`} />

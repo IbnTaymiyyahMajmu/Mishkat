@@ -154,6 +154,14 @@ export function tafsirAppMirrored(id: string): boolean {
   return id in MIRRORED;
 }
 
+/**
+ * How many of the 6,236 ayat this site's copy of the work has a passage on, as
+ * the copying script counted them. Unknown for a work that is not copied.
+ */
+export function tafsirAppCoverage(id: string): number | undefined {
+  return MIRRORED[id]?.ayat;
+}
+
 /** Whether the work's text can be shown in the panel, or only linked to. */
 export function tafsirAppReadable(id: string): boolean {
   return tafsirAppMirrored(id) || RELAY !== "";

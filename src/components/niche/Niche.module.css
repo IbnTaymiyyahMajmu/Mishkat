@@ -18,7 +18,8 @@
   --tile-again: #ffe6a8;
   --hung-back: #1b140c;
 }
-:global(html[data-theme="day"]) .scene {
+:global(html[data-theme="day"]) .scene,
+:global(html[data-theme="dawn"]) .scene {
   --recess: color-mix(in srgb, var(--mk-hero-ink) 7%, transparent);
   --tile-line: color-mix(in srgb, var(--mk-gold) 30%, transparent);
   --tile-lit: #c08a2c;
