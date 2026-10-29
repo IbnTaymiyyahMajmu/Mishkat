@@ -7,8 +7,8 @@ import type { TafsirWork } from "./tafsir";
  * `scripts/build-tafsir-map.mjs` measures this site's copy of every classical
  * work once — for each passage, the ayat it covers and the words it runs to —
  * and keeps it a surah to a file in `public/tafsir-map/`. This reads it back,
- * so a screen can show at a glance which of fifteen works speak on an ayah and
- * at what length, for the price of one small file rather than fifteen large
+ * so a screen can show at a glance which of fifty works speak on an ayah and
+ * at what length, for the price of one small file rather than fifty large
  * ones.
  *
  * The works not copied here — the corpus's, and the two English editions of

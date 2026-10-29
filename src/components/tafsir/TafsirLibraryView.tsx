@@ -24,8 +24,16 @@ const AYAT = 6236;
 const KNOWN = ["1:1", "2:255", "24:35", "112:1"];
 
 /** The line runs from the first century anything here is from to the last. */
-const FIRST_YEAR = 300;
+const FIRST_YEAR = 100;
 const LAST_YEAR = 1450;
+
+/** The names on the line: how wide a letter is at the size they are set, how
+   far apart two must stand to be read slanting, at what slant, and how high the
+   hairline from a pin rises before its name begins. */
+const CHAR = 6.4;
+const GAP = 16;
+const SLANT_RAD = (58 * Math.PI) / 180;
+const LEADER = 24;
 
 interface Props {
   verseKey: string;
@@ -80,10 +88,12 @@ interface Point {
  *
  * The works are placed on a line of the centuries of the hijra, as they would
  * be on a historian's chart, and listed under their centuries, so that the
- * order of the list is itself the history: al-Ṭabarī first, the rest in the
- * order they wrote, each leaning on the ones before. The two works written by
- * committees of our own day have no one death to place them by, and are kept
- * apart at the foot rather than given a date they do not have.
+ * order of the list is itself the history: Qatāda first, the rest in the
+ * order they wrote, each leaning on the ones before. The works of our own day
+ * written by committees, or by authors still living, have no death to place
+ * them by, and are kept apart at the foot rather than given a date they do not
+ * have. Or the list can be set out by shelf instead, as tafsir.app shelves the
+ * works and as the library is arranged everywhere else on the site.
  *
  * Nothing here ranks the works or speaks for them. What a work is said to be
  * is the one line the library gives it everywhere; what is said of it at more
@@ -94,6 +104,9 @@ export function TafsirLibraryView({ verseKey, active, kept, compared, onRead, on
   const say = useTafsirSay();
   const names = useSurahNames();
   const [lang, setLang] = useState<TafsirLang | "all">("all");
+  // The list is the history, century by century — or the shelves, as the
+  // library is arranged everywhere else on the site.
+  const [arrange, setArrange] = useState<"century" | "shelf">("century");
   const [open, setOpen] = useState<string | null>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -148,48 +161,41 @@ export function TafsirLibraryView({ verseKey, active, kept, compared, onRead, on
     return () => watch.disconnect();
   }, []);
 
+  // Some fifty authors on one line, and a dozen of them in the century after
+  // al-Ṭabarī: set flat, their names would need a dozen rows. So the names are
+  // set as a historian's chart sets them, slanting up from the line, and where
+  // two pins stand too close for their names to be told apart the names are
+  // eased apart along the line, each joined to its own pin by a hairline. The
+  // order along the line is never changed, so a name is always between its
+  // neighbours' names, as its author lived between theirs.
   const laid = useMemo(() => {
-    if (!width) return { rows: 0, items: [] as { p: Point; x: number; x2: number; row: number; label: string; left: number; stem: number }[] };
+    const none = { height: 0, items: [] as { p: Point; label: string; x: number; x2: number; anchor: number }[] };
+    if (!width) return none;
     const at = (year: number) => ((year - FIRST_YEAR) / (LAST_YEAR - FIRST_YEAR)) * width;
-    // Each name is set over its own pin, in the lowest of the first two rows
-    // where it touches no other. Where the authors crowd — six of them in the
-    // last seventy years — that is not to be had, and a name is set instead
-    // just before its stem, in the lowest row free there: so a stem never
-    // passes through a name, and the later the author the higher his name. Its
-    // width is reckoned from its letters, near enough at the size it is set.
-    const rows: [number, number][][] = [];
-    const free = (row: number, span: [number, number]) =>
-      (rows[row] ?? []).every(([a, b]) => span[1] <= a || span[0] >= b);
-    const take = (row: number, span: [number, number]) => {
-      while (rows.length <= row) rows.push([]);
-      rows[row].push(span);
-    };
-    const items = points.map((p) => {
-      // Named as the Arabic work is, where it is here in two languages.
-      const label = say.short(p.works.find((w) => w.lang === "ar") ?? p.works[0]);
-      const x = at(p.when.from);
-      const x2 = at(p.when.to);
-      const mid = (x + x2) / 2;
-      const size = label.length * 7.1 + 12;
-      const over = Math.max(0, Math.min(width - size, mid - size / 2));
-      const before = Math.max(0, mid - 5 - size);
-      const spanAt = (left: number): [number, number] => [left - 6, left + size + 6];
-      for (const row of [0, 1]) {
-        if (free(row, spanAt(over))) {
-          take(row, spanAt(over));
-          return { p, x, x2, row, label, left: over, stem: mid };
-        }
-      }
-      let row = 0;
-      while (!free(row, spanAt(before))) row++;
-      take(row, spanAt(before));
-      return { p, x, x2, row, label, left: before, stem: mid };
-    });
-    return { rows: rows.length, items };
+    const run = (label: string) => label.length * CHAR + 6;
+    const items = points
+      .map((p) => {
+        // Named as the Arabic work is, where it is here in two languages.
+        const label = say.short(p.works.find((w) => w.lang === "ar") ?? p.works[0]);
+        const x = at(p.when.from);
+        const x2 = at(p.when.to);
+        return { p, label, x, x2, anchor: (x + x2) / 2 };
+      })
+      .sort((a, b) => a.anchor - b.anchor);
+    // Eased apart going forward, then drawn back from the far end, where a
+    // name slanting off the edge of the line would leave the page.
+    for (let i = 1; i < items.length; i++) items[i].anchor = Math.max(items[i].anchor, items[i - 1].anchor + GAP);
+    let limit = Infinity;
+    for (let i = items.length - 1; i >= 0; i--) {
+      const room = width - run(items[i].label) * Math.cos(SLANT_RAD);
+      items[i].anchor = Math.max(0, Math.min(items[i].anchor, room, limit - GAP));
+      limit = items[i].anchor;
+    }
+    const longest = Math.max(0, ...items.map((item) => run(item.label)));
+    return { height: Math.ceil(LEADER + longest * Math.sin(SLANT_RAD) + 22), items };
   }, [points, width, say]);
 
-  const ROW = 25;
-  const lineHeight = laid.rows * ROW + 22;
+  const lineHeight = Math.max(laid.height, 60);
 
   /** Open a work's card, and bring it into sight. */
   const reveal = (id: string) => {
@@ -232,40 +238,39 @@ export function TafsirLibraryView({ verseKey, active, kept, compared, onRead, on
       {/* ── the line ────────────────────────────────────────────────── */}
       <figure className={styles.line} aria-hidden="true">
         <div className={styles.lineBox} ref={lineRef} style={{ height: lineHeight }}>
-          {/* The stems and pins first, and every name over them, so that a stem
-              passing a name it is not the stem of goes behind it. */}
+          {/* The hairlines from each pin to its name, drawn in the line's own
+              terms and turned over with it on a page read right to left. */}
+          {width > 0 && (
+            <svg className={styles.leaders} width={width} height={lineHeight} aria-hidden="true">
+              {laid.items.map(({ p, x, x2, anchor }) => (
+                <line
+                  key={p.key}
+                  className={pointShown(p) ? "" : styles.pointDim}
+                  x1={(x + x2) / 2}
+                  y1={lineHeight - 8}
+                  x2={anchor}
+                  y2={lineHeight - 4 - LEADER}
+                />
+              ))}
+            </svg>
+          )}
           {width > 0 &&
-            laid.items.map(({ p, x, x2, row, stem }) => {
-              const top = (laid.rows - 1 - row) * ROW;
-              return (
-                <div key={p.key} className={`${styles.point} ${pointShown(p) ? "" : styles.pointDim}`}>
-                  <span
-                    className={styles.stem}
-                    style={{ insetInlineStart: stem, top: top + 10, height: lineHeight - top - 10 - 4 }}
-                  />
-                  {x2 > x + 1 && <span className={styles.span} style={{ insetInlineStart: x, width: x2 - x }} />}
-                  <span className={styles.pin} style={{ insetInlineStart: x }} />
-                  {x2 > x + 1 && <span className={styles.pin} style={{ insetInlineStart: x2 }} />}
-                </div>
-              );
-            })}
-          {width > 0 &&
-            laid.items.map(({ p, row, label, left }) => {
-              const top = (laid.rows - 1 - row) * ROW;
-              return (
-                <div key={p.key} className={`${styles.point} ${pointShown(p) ? "" : styles.pointDim}`}>
-                  <button
-                    tabIndex={-1}
-                    className={styles.pointLabel}
-                    style={{ insetInlineStart: left, top }}
-                    onClick={() => reveal((p.works.find(shown) ?? p.works[0]).id)}
-                    title={`${label} — ${say.era(p.works[0])}`}
-                  >
-                    {label}
-                  </button>
-                </div>
-              );
-            })}
+            laid.items.map(({ p, x, x2, anchor, label }) => (
+              <div key={p.key} className={`${styles.point} ${pointShown(p) ? "" : styles.pointDim}`}>
+                {x2 > x + 1 && <span className={styles.span} style={{ insetInlineStart: x, width: x2 - x }} />}
+                <span className={styles.pin} style={{ insetInlineStart: x }} />
+                {x2 > x + 1 && <span className={styles.pin} style={{ insetInlineStart: x2 }} />}
+                <button
+                  tabIndex={-1}
+                  className={styles.pointLabel}
+                  style={{ insetInlineStart: anchor, bottom: 4 + LEADER }}
+                  onClick={() => reveal((p.works.find(shown) ?? p.works[0]).id)}
+                  title={`${label} — ${say.era(p.works[0])}`}
+                >
+                  {label}
+                </button>
+              </div>
+            ))}
           <span className={styles.axis} />
         </div>
         {/* A mark where each century begins, and its name in the middle of it. */}
@@ -292,9 +297,62 @@ export function TafsirLibraryView({ verseKey, active, kept, compared, onRead, on
         </figcaption>
       </figure>
 
-      {/* ── the works, century by century ───────────────────────────── */}
+      {/* ── the works, century by century or shelf by shelf ─────────── */}
+      <div className={styles.arrange} role="tablist" aria-label={t("library.arrange")}>
+        {(["century", "shelf"] as const).map((id) => (
+          <button
+            key={id}
+            role="tab"
+            aria-selected={arrange === id}
+            className={`${styles.arrangeOption} ${arrange === id ? styles.arrangeOn : ""}`}
+            onClick={() => setArrange(id)}
+          >
+            {t(id === "century" ? "library.byCentury" : "library.byShelf")}
+          </button>
+        ))}
+      </div>
+
       <div className={styles.list} ref={listRef}>
-        {centuries.map(({ century, rows }) => {
+        {arrange === "shelf" &&
+          say.shelves
+            .filter((shelf) => lang === "all" || shelf.lang === lang)
+            .map((shelf) => (
+              <div key={shelf.id} className={styles.shelf}>
+                {lang === "all" && (
+                  <h3 className={styles.shelfTitle}>{t("tafsir.in", { language: say.language(shelf.lang) })}</h3>
+                )}
+                {shelf.sections.map((section) => (
+                  <section key={section.id} className={styles.century}>
+                    <h4 className={styles.centuryTitle}>
+                      {say.section(section)}
+                      {section.titleArabic && (
+                        <span className={styles.sectionArabic} dir="rtl" lang="ar">
+                          {section.titleArabic}
+                        </span>
+                      )}
+                    </h4>
+                    {section.works.map((work) => (
+                      <WorkCard
+                        key={work.id}
+                        work={work}
+                        when={whenOf(work)}
+                        verseKey={verseKey}
+                        open={open === work.id}
+                        onOpen={() => setOpen(open === work.id ? null : work.id)}
+                        active={active === work.id}
+                        kept={kept.includes(work.id)}
+                        compared={compared.includes(work.id)}
+                        onRead={onRead}
+                        onCompare={onCompare}
+                        onToggle={onToggle}
+                        surahName={names.name}
+                      />
+                    ))}
+                  </section>
+                ))}
+              </div>
+            ))}
+        {arrange === "century" && centuries.map(({ century, rows }) => {
           const visible = rows.filter((r) => shown(r.work));
           if (!visible.length) return null;
           return (

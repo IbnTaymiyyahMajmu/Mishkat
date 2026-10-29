@@ -3,9 +3,9 @@
    under their centuries, each opening to a card.
 
    The line is drawn as a historian's chart is drawn — one hairline, a tick
-   where each century begins, a gold pin where each author died and a stem up
-   to his name — and the names find their own rows so that none overlaps
-   another. It wants a page's width. On a phone the list below it is already
+   where each century begins, a gold pin where each author died, and his name
+   slanting up from it, eased along the line where the pins crowd and joined
+   to its pin by a hairline. It wants a page's width. On a phone the list below it is already
    in the order of the centuries and headed by them, which is the same line
    turned on its side, so the drawing is left out.
    ══════════════════════════════════════════════════════════════════════════ */
@@ -99,25 +99,36 @@
 
 .pointLabel {
   position: absolute;
-  padding: 1px 6px;
-  background: var(--color-bg);
+  padding: 0 2px;
+  background: none;
   border: 0;
-  border-radius: var(--radius-sm);
   cursor: pointer;
   font-family: var(--font-heading);
   font-weight: var(--font-heading-weight);
-  font-size: 13px;
-  line-height: 1.35;
+  font-size: 12.5px;
+  line-height: 1.2;
   white-space: nowrap;
   color: var(--color-text);
-  transition: color 120ms ease, background 120ms ease;
+  transform-origin: 0 100%;
+  transform: rotate(-58deg);
+  transition: color 120ms ease;
 }
-.pointLabel:hover { color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 10%, var(--color-bg)); }
+.pointLabel:hover { color: var(--color-accent); }
+/* Read right to left, the names slant up the other way. */
+:global([dir="rtl"]) .pointLabel { transform-origin: 100% 100%; transform: rotate(58deg); }
 
-.stem {
+.leaders {
   position: absolute;
-  width: 1px;
-  background: color-mix(in srgb, var(--mk-gold) 70%, transparent);
+  top: 0;
+  inset-inline-start: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+:global([dir="rtl"]) .leaders { transform: scaleX(-1); }
+.leaders line {
+  stroke: color-mix(in srgb, var(--mk-gold) 65%, transparent);
+  stroke-width: 1;
+  transition: opacity 180ms ease;
 }
 
 .pin {
@@ -174,7 +185,58 @@
 
 /* — the works — */
 
-.list { margin-top: 28px; }
+/* Century by century, or shelf by shelf: two halves of one small control,
+   set at the head of the list it arranges. */
+.arrange {
+  display: inline-grid;
+  grid-auto-flow: column;
+  margin-top: 26px;
+  padding: 2px;
+  border: 1px solid var(--color-divider);
+  border-radius: 999px;
+}
+
+.arrangeOption {
+  min-height: 28px;
+  padding: 0 14px;
+  background: none;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 13px;
+  color: var(--muted-62);
+  transition: background 140ms ease, color 140ms ease;
+}
+.arrangeOption:hover { color: var(--color-text); }
+.arrangeOn,
+.arrangeOn:hover {
+  background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+  color: var(--color-accent-800);
+}
+.arrangeOption:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+
+.list { margin-top: 10px; }
+
+.shelf + .shelf { margin-top: 30px; }
+
+.shelfTitle {
+  margin: 22px 0 0;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 22px;
+}
+
+.sectionArabic {
+  margin-inline-start: 10px;
+  font-family: var(--font-amiri), serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--muted-45);
+}
 
 .century { margin-top: 26px; }
 
@@ -407,9 +469,14 @@
   color: var(--muted-45);
 }
 
-@media (max-width: 760px) {
+/* Fifty names want a page's width to stand apart. Narrower, the list below
+   — the same history, century by century — is the line turned on its side. */
+@media (max-width: 900px) {
   .line { display: none; }
-  .list { margin-top: 18px; }
+}
+
+@media (max-width: 760px) {
+  .arrange { margin-top: 18px; }
   .workRow { grid-template-columns: 40px minmax(0, 1fr) 16px; gap: 10px; padding: 11px 4px; }
   .workMeta { grid-column: 2; grid-row: 2; justify-content: flex-start; }
   .chevron { grid-column: 3; grid-row: 1 / span 2; }

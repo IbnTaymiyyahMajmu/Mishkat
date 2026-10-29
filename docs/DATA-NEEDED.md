@@ -100,11 +100,11 @@ commission from someone who can answer for it, not one for me to produce.
 
 ## 2. Tafsir corpora, as texts rather than as an API
 
-**Status.** Twenty-two works, from three places, shown as one library. Five are
+**Status.** Sixty works, from three places, shown as one library. Five are
 served **per ayah** from Quran.com: Ibn Kathīr (abridged), Maʿārif al-Qurʾān,
 Tazkirul Qurʾān, al-Saʿdī, al-Muyassar. Two short works in English come from the
-Tafsir API. Fifteen works in Arabic are held on the site itself: the thirteen of
-the classical shelf, and the Arabic of those two short works. The last two
+Tafsir API. Fifty-three works in Arabic are held on the site itself: tafsir.app's
+tafsir shelf and the books on its sciences shelf that explain the Qurʾan. The last two
 sources are set out at the end of this section.
 
 **Two limits this creates.**
@@ -175,8 +175,27 @@ Royal Aal al-Bayt Institute for Hamza's al-Jalālayn.
 
 **Status: done.** You asked for tafsir.app (الباحث القرآني, by Nuqayah) as the
 source, obtained their permission to copy it, and then said which of it you
-wanted: not everything, but the main work of each kind. Fifteen works are now
+wanted: not everything, but the main work of each kind. Fifteen works were
 this site's own data — 337 MB.
+
+**Update, 28 October 2026: the rest of the library.** You then asked for every
+work the site did not yet hold, organised as tafsir.app organises them, and
+chose both of its tabs: the **Tafsir** shelf, and from the **Sciences** shelf
+the books that explain the Qurʾan — its rare words and meanings (gharīb,
+maʿānī), the occasions of its revelation, and its rulings (aḥkām, with
+abrogation). The grammars, the readings and the dictionaries stay out. Thirty-
+eight works were added; the site now holds **53 works, 689 MB in about 7,650
+files**, and the Arabic shelf is laid out on tafsir.app's thirteen shelves, in
+its order, earliest author first (`group` in `tafsirWorks.json`).
+
+Left out, by your decision: **al-Kashshāf** (al-Zamakhsharī), which tafsir.app
+marks as Muʿtazilī, and the tafsir of **Muqātil ibn Sulaymān**, whom the
+critics of hadith abandoned. By the same rule, **al-Akhfash's Maʿānī al-Qurʾān**,
+which tafsir.app also marks as Muʿtazilī — say if you want it in. Not there to
+copy: **Ibn Taymiyya's** collected tafsir is on tafsir.app as pictures of the
+printed pages, not text, and the Shāṭibī Institute's **Mawsūʿat al-tafsīr
+al-maʾthūr** is a link to a site of its own. Al-Muyassar and al-Saʿdī are on
+tafsir.app too, and are still read from Quran.com.
 
 **The shelf.** tafsir.app sorts its tafsir by what each sets out to do. All
 four of its mother works are here, and Ibn ʿUthaymīn from the contemporary, as
@@ -251,8 +270,9 @@ decided differently later without copying anything again.
    credit is in the tafsir panel, on the settings page and in
    `public/tafsir/SOURCE.md`; if they would word it differently, it is three
    strings in `src/lib/quran/tafsirApp.ts`.
-2. **Committing it.** The copy is 337 MB in about 2,800 files. That fits
-   GitHub Pages, which publishes sites up to 1 GB, and it is what the deploy
+2. **Committing it.** The copy is 689 MB in about 7,650 files (337 MB before
+   October's additions). That still fits GitHub Pages, which publishes sites up
+   to 1 GB, though with less room than before, and it is what the deploy
    workflow expects to find in the repository. It will make the repository a
    few hundred megabytes heavier to clone; if you would rather it lived
    somewhere else — a repository of its own, or object storage — say so and I

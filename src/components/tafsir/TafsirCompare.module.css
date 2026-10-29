@@ -109,6 +109,25 @@
   border-bottom: 1px solid var(--color-divider);
 }
 
+/* A shelf within a language: quieter than the language over it. */
+.sectionRow th {
+  padding: 12px 8px 4px;
+  text-align: start;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12.5px;
+  color: var(--muted-62);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.sectionArabic {
+  margin-inline-start: 10px;
+  font-family: var(--font-amiri), serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--muted-45);
+}
+
 .row td,
 .row th { border-bottom: 1px solid var(--color-divider); }
 .row { transition: background 120ms ease; }

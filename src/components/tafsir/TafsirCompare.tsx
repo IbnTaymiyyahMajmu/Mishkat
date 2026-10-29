@@ -145,7 +145,6 @@ export function TafsirCompare({ verseKey, works, onChange, onRead, onGo }: Props
   };
   const swipeRef = useSwipe(turn, narrow && works.length > 1);
 
-  const groups = say.shelves.map((shelf) => ({ shelf, works: shelf.works }));
   const ref = (link: XrefLink) => `${link.surah}:${link.ayah}`;
 
   const column = (work: TafsirWork, i: number) => {
@@ -224,85 +223,99 @@ export function TafsirCompare({ verseKey, works, onChange, onRead, onGo }: Props
                 ))}
               </tr>
             </thead>
-            {groups.map(({ shelf, works: shelved }) => (
+            {say.shelves.map((shelf) => (
               <tbody key={shelf.id}>
                 <tr className={styles.groupRow}>
                   <th scope="rowgroup" colSpan={2 + meeting.length}>
                     {t("tafsir.in", { language: say.language(shelf.lang) })}
                   </th>
                 </tr>
-                {shelved.map((work) => {
-                  const m = measureOf(work.id);
-                  const on = ids.includes(work.id);
-                  const empty = m.status === "ready" && !m.measure;
-                  const blocked = !on && (full || empty);
-                  const extent = m.status === "ready" && m.measure ? m.measure : null;
-                  return (
-                    <tr key={work.id} className={`${styles.row} ${on ? styles.rowOn : ""} ${empty ? styles.rowEmpty : ""}`}>
-                      <th scope="row" className={styles.tdWork}>
-                        <button
-                          className={styles.pick}
-                          onClick={() => toggle(work.id)}
-                          aria-pressed={on}
-                          disabled={blocked || (on && works.length === 1)}
-                          title={
-                            on
-                              ? t("compare.remove", { work: say.short(work) })
-                              : empty
-                                ? t("compare.nothingTitle", { work: say.short(work) })
-                                : full
-                                  ? t("compare.fullTitle", { max: MAX_COMPARED })
-                                  : t("compare.add", { work: say.short(work) })
-                          }
-                        >
-                          <span className={styles.mark} aria-hidden="true" />
-                          <span className={styles.pickNames}>
-                            <span className={styles.pickShort}>{say.short(work)}</span>
-                            <span className={styles.pickEra}>{say.era(work) || say.kind(work)}</span>
-                          </span>
-                        </button>
-                      </th>
-                      <td className={styles.tdExtent}>
-                        {m.status === "loading" && <span className={styles.barPending} />}
-                        {m.status === "failed" && <span className={styles.quiet}>{t("compare.unreached")}</span>}
-                        {empty && <span className={styles.quiet}>{t("compare.nothing")}</span>}
-                        {extent && (
-                          <span className={styles.extent}>
-                            <span className={styles.bar} aria-hidden="true">
-                              <span
-                                className={styles.barFill}
-                                style={{ width: `${Math.max(2, Math.sqrt(extent.words / longest) * 100)}%` }}
-                              />
+                {/* Each language's shelf under its own headings, as the
+                    library sets it out: the Arabic one as tafsir.app does. */}
+                {shelf.sections.flatMap((section) => [
+                  <tr key={section.id} className={styles.sectionRow}>
+                    <th scope="rowgroup" colSpan={2 + meeting.length}>
+                      {say.section(section)}
+                      {section.titleArabic && (
+                        <span className={styles.sectionArabic} dir="rtl" lang="ar">
+                          {section.titleArabic}
+                        </span>
+                      )}
+                    </th>
+                  </tr>,
+                  ...section.works.map((work) => {
+                    const m = measureOf(work.id);
+                    const on = ids.includes(work.id);
+                    const empty = m.status === "ready" && !m.measure;
+                    const blocked = !on && (full || empty);
+                    const extent = m.status === "ready" && m.measure ? m.measure : null;
+                    return (
+                      <tr key={work.id} className={`${styles.row} ${on ? styles.rowOn : ""} ${empty ? styles.rowEmpty : ""}`}>
+                        <th scope="row" className={styles.tdWork}>
+                          <button
+                            className={styles.pick}
+                            onClick={() => toggle(work.id)}
+                            aria-pressed={on}
+                            disabled={blocked || (on && works.length === 1)}
+                            title={
+                              on
+                                ? t("compare.remove", { work: say.short(work) })
+                                : empty
+                                  ? t("compare.nothingTitle", { work: say.short(work) })
+                                  : full
+                                    ? t("compare.fullTitle", { max: MAX_COMPARED })
+                                    : t("compare.add", { work: say.short(work) })
+                            }
+                          >
+                            <span className={styles.mark} aria-hidden="true" />
+                            <span className={styles.pickNames}>
+                              <span className={styles.pickShort}>{say.short(work)}</span>
+                              <span className={styles.pickEra}>{say.era(work) || say.kind(work)}</span>
                             </span>
-                            <span className={styles.words}>
-                              {t("compare.words", { count: extent.words, countText: n(extent.words) })}
-                              {extent.from !== extent.to && (
-                                <>
-                                  <span className={styles.sep}> · </span>
-                                  <span className={styles.together}>
-                                    {t("compare.together", { from: n(extent.from), to: n(extent.to) })}
-                                  </span>
-                                </>
-                              )}
+                          </button>
+                        </th>
+                        <td className={styles.tdExtent}>
+                          {m.status === "loading" && <span className={styles.barPending} />}
+                          {m.status === "failed" && <span className={styles.quiet}>{t("compare.unreached")}</span>}
+                          {empty && <span className={styles.quiet}>{t("compare.nothing")}</span>}
+                          {extent && (
+                            <span className={styles.extent}>
+                              <span className={styles.bar} aria-hidden="true">
+                                <span
+                                  className={styles.barFill}
+                                  style={{ width: `${Math.max(2, Math.sqrt(extent.words / longest) * 100)}%` }}
+                                />
+                              </span>
+                              <span className={styles.words}>
+                                {t("compare.words", { count: extent.words, countText: n(extent.words) })}
+                                {extent.from !== extent.to && (
+                                  <>
+                                    <span className={styles.sep}> · </span>
+                                    <span className={styles.together}>
+                                      {t("compare.together", { from: n(extent.from), to: n(extent.to) })}
+                                    </span>
+                                  </>
+                                )}
+                              </span>
                             </span>
-                          </span>
-                        )}
-                      </td>
-                      {meeting.map((link) => (
-                        <td key={link.key} className={styles.tdMeet}>
-                          {quotes(work, link) && (
-                            <span
-                              className={styles.dot}
-                              role="img"
-                              aria-label={t("compare.quotes", { work: say.short(work), ref: ref(link) })}
-                              title={t("compare.quotes", { work: say.short(work), ref: ref(link) })}
-                            />
                           )}
                         </td>
-                      ))}
-                    </tr>
-                  );
-                })}
+                        {meeting.map((link) => (
+                          <td key={link.key} className={styles.tdMeet}>
+                            {quotes(work, link) && (
+                              <span
+                                className={styles.dot}
+                                role="img"
+                                aria-label={t("compare.quotes", { work: say.short(work), ref: ref(link) })}
+                                title={t("compare.quotes", { work: say.short(work), ref: ref(link) })}
+                              />
+                            )}
+                          </td>
+                        ))}
+                      </tr>
+                    );
+                  }),
+                ])}
               </tbody>
             ))}
           </table>
