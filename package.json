@@ -13,16 +13,20 @@
     "lock:intros": "node scripts/lock-intros.mjs",
     "check:intros": "node scripts/lock-intros.mjs --check",
     "mirror:tafsir": "node scripts/mirror-tafsir.mjs",
+    "mirror:ulum": "node scripts/mirror-tafsir.mjs --shelf ulum",
     "relay:qf": "node scripts/qf-relay.mjs",
     "check:messages": "node scripts/check-messages.mjs",
     "gen:xref": "node scripts/build-xref.mjs",
     "gen:tafsir-map": "node scripts/build-tafsir-map.mjs",
+    "gen:ulum": "node scripts/build-ulum.mjs",
+    "check:ulum": "node scripts/check-ulum.mjs",
     "gen:rhyme": "node scripts/build-rhyme.mjs",
     "gen:questions": "node scripts/build-questions.mjs",
     "gen:structure": "node scripts/build-structure.mjs",
     "gen:qari": "node scripts/build-qari.mjs",
     "gen:horizons": "node scripts/build-horizons.mjs",
-    "android": "node scripts/build-android.mjs"
+    "android": "node scripts/build-android.mjs",
+    "gen:fiqh": "node scripts/build-fiqh.mjs"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.3",

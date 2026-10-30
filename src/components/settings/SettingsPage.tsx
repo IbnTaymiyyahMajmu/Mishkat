@@ -20,6 +20,9 @@ import { TajweedSwatches } from "@/components/tajweed/TajweedSwatches";
 import { QARIS } from "@/lib/audio/qari";
 import Link from "next/link";
 import styles from "./SettingsPage.module.css";
+import ulumWorks from "@/lib/quran/ulumWorks.json";
+
+const ULUM_WORKS = ulumWorks as unknown[];
 
 /**
  * The ayah the translations are shown rendering here, where there is no ayah
@@ -429,6 +432,18 @@ export function SettingsPage() {
               <tr>
                 <td className={styles.layer}>{t("settings.src.lexicons")}</td>
                 <td className={styles.source}>{t("settings.src.lexiconsValue")}</td>
+              </tr>
+              <tr>
+                <td className={styles.layer}>{t("settings.src.ulum")}</td>
+                <td className={styles.source}>{t("settings.src.ulumValue", { count: ULUM_WORKS.length })}</td>
+              </tr>
+              <tr>
+                <td className={styles.layer}>{t("settings.src.hadith")}</td>
+                <td className={styles.source}>{t("settings.src.hadithValue")}</td>
+              </tr>
+              <tr>
+                <td className={styles.layer}>{t("settings.src.fiqh")}</td>
+                <td className={styles.source}>{t("settings.src.fiqhValue")}</td>
               </tr>
               <tr>
                 <td className={styles.layer}>{t("settings.src.recitation")}</td>

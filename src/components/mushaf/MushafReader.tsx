@@ -367,6 +367,14 @@ export function MushafReader({ surah }: { surah: number }) {
           <Link href={`/tafsir/?v=${selectedVerse.verse_key}`} className="btn btn-ghost" style={{ fontSize: 12 }}>
             {t("common.tafsir")}
           </Link>
+          <Link
+            href={`/ayah/?v=${selectedVerse.verse_key}`}
+            className="btn btn-ghost"
+            style={{ fontSize: 12 }}
+            title={t("ulum.openHint")}
+          >
+            {t("ulum.open")}
+          </Link>
           <Link href={`/read/${surah}/#${selectedVerse.verse_key}`} className="btn btn-ghost" style={{ fontSize: 12 }}>
             {t("mushaf.openStudy")}
           </Link>

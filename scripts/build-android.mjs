@@ -24,7 +24,7 @@
 // copy of both files somewhere safe.
 
 import { spawnSync } from "node:child_process";
-import { existsSync, writeFileSync } from "node:fs";
+import { existsSync, rmSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -42,8 +42,13 @@ function run(command, args, options = {}) {
 }
 
 run(process.execPath, [join(ROOT, "node_modules/next/dist/bin/next"), "build"], {
-  env: { ...process.env, NEXT_PUBLIC_BASE_PATH: "", NEXT_PUBLIC_SITE_URL: SITE, NEXT_PUBLIC_EDGE_TO_EDGE: "1" },
+  env: { ...process.env, NEXT_PUBLIC_BASE_PATH: "", NEXT_PUBLIC_SITE_URL: SITE, NEXT_PUBLIC_EDGE_TO_EDGE: "1", NEXT_PUBLIC_ULUM_ORIGIN: SITE },
 });
+// The books of grammar, readings and fiqh the ayah study reads are left out of
+// the app — they would take it past what the store accepts — and read from the
+// site instead (NEXT_PUBLIC_ULUM_ORIGIN, src/lib/ulum/books.ts).
+rmSync(join(ROOT, "out", "ulum"), { recursive: true, force: true });
+rmSync(join(ROOT, "out", "fiqh"), { recursive: true, force: true });
 run(process.execPath, [join(ROOT, "node_modules/@capacitor/cli/bin/capacitor"), "sync", "android"]);
 
 if (!apk && !release) process.exit(0);

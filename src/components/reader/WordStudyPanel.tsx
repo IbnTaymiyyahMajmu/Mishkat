@@ -185,6 +185,14 @@ export function WordStudyPanel({ verse, word, surahName, onOpenTafsir }: Props) 
       <Link href={`/study/?w=${studyKey}`} className="btn btn-secondary btn-block" style={{ marginTop: 18 }}>
         {t("word.inFull")}
       </Link>
+      {/* And the whole ayah the word stands in, science by science. */}
+      <Link
+        href={`/ayah/?v=${verseKey}${word?.position && word.position > 1 ? `&w=${word.position}` : ""}`}
+        className="btn btn-ghost btn-block"
+        title={t("ulum.openHint")}
+      >
+        {t("ulum.open")}
+      </Link>
 
       {/* ── what the word is made of ───────────────────────────────────── */}
       <section className={styles.section}>
