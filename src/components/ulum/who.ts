@@ -29,7 +29,8 @@ const SLOT: Record<string, number> = {
   "iraab-alnahas": 6,
   "mujtaba-mushkil-iraab": 7,
   // the schools
-  aljasas: 1,
+  almabsut: 1,
+  "badai-sanai": 8,
   "ilkia-alharrasee": 2,
   "ahkam-ibn-alarabee": 3,
   almughni: 4,

@@ -151,6 +151,8 @@ const aimsNow = existsSync(AIMS) ? await readFile(AIMS, "utf8") : "";
  * work, are in src/content/README.md.
  */
 const QUOTABLE = new Set([
+  "alrazi",
+  "abu-alsuod",
   "mukhtasar",
   "tabari",
   "baghawi",

@@ -26,7 +26,8 @@
     "gen:qari": "node scripts/build-qari.mjs",
     "gen:horizons": "node scripts/build-horizons.mjs",
     "android": "node scripts/build-android.mjs",
-    "gen:fiqh": "node scripts/build-fiqh.mjs"
+    "gen:fiqh": "node scripts/build-fiqh.mjs",
+    "gen:voices": "node scripts/build-voices.mjs"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.3",

@@ -46,6 +46,18 @@
         "ayah": 1,
         "quote": "هي مَكِّيَّةٌ بِلا خِلافٍ",
         "says": "Makkan, by agreement."
+      },
+      {
+        "work": "alrazi",
+        "ayah": 1,
+        "quote": "وهِيَ عِشْرُونَ وخَمْسُ آياتٍ مَكِّيَّةٍ",
+        "says": "Makkan."
+      },
+      {
+        "work": "abu-alsuod",
+        "ayah": 1,
+        "quote": "مَكِّيَّةٌ وآيُها خَمْسٌ وعِشْرُونَ",
+        "says": "Makkan."
       }
     ]
   },
@@ -156,5 +168,13 @@
     "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
     "al-Mukhtaṣar fī al-Tafsīr",
     "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
-  ]
+  ],
+  "voices": {
+    "ashur": {
+      "quote": "ابتدئت بوصف أشراط الساعة وحلول يوم البعث واختلاف أحوال الخلق يومئذ بين أهل نعيم وأهل شقاء.",
+      "vol": 30,
+      "page": 217,
+      "shamela": 10640
+    }
+  }
 }

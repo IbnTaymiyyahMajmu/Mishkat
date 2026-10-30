@@ -7,18 +7,18 @@ are for answering by, and will not move.
 | Section | Status |
 |---|---|
 | **A** What was left out of the handoff | **Ruled: stays out** |
-| **B** Who is on the shelf | **Ruled** — see the section; one question left on al-Jaṣṣāṣ |
+| **B** Who is on the shelf | **Ruled** — see the section |
 | **C** Weak reports | **Ruled: shown, and labelled** (L) |
 | **D** The Sunnah column | **Ruled: the Sunan added**, with al-Albānī's gradings |
 | **E** The generations of the reports | **Ruled: the list stands, bare names resolved** |
 | **F** The sentences of an ayah | **Ruled: every scholar's count shown** |
-| **G** The fourth school | **Ruled: the column stands** |
+| **G** The fourth school | **Ruled: the column stands**; the Ḥanafī column is new, please check it |
 | **H** Page numbers | **Ruled: citing by ayah is fine** |
 | **I** The mirror's permission | **Ruled: verbal permission, cite the sources** |
 | **J** The other three languages | **Ruled: kept as they are** |
 | **K** Where the scholars differ | Built on your rulings; al-Māwardī removed |
 | **L** Weak reports, labelled | Built on your rulings |
-| **M** What each scholar was | **New, please check the list** |
+| **M** What each scholar was | Ibn al-Jawzī ruled; **the rest are mine, please check** |
 
 **What is not in doubt**, so you need not look at it:
 
@@ -81,12 +81,13 @@ books' own benefits instead.
 Darwīsh, al-Daʿʿās, al-Iʿrāb al-muyassar and al-Kharrāṭ, and the readings of Ibn
 al-Jazarī, al-Kirmānī and al-Abyārī.
 
-1. **Al-Rāzī, Ibn ʿĀshūr and Abū al-Suʿūd stay**, labelled (M). You said to "add them
-   in"; the study page has them. I have **not** changed the introductions.
+1. **Al-Rāzī, Ibn ʿĀshūr and Abū al-Suʿūd stay**, labelled (M), on the study page and,
+   as you ruled, in the introductions too: section J of `INTROS-REVIEW.md`.
 2. **Al-Samīn** is labelled Ashʿarī in creed and Shāfiʿī in fiqh. **Al-Naḥḥās** is
    labelled Ahl al-Sunnah, as you ruled, whatever tafsir.app's label says.
-3. **Al-Māwardī is off the page.** He stays in the tafsir library, where he was
-   before this work; say if you want him out of that too.
+3. **Al-Māwardī is out of the study page and the tafsir library**, as you ruled.
+   **Al-Jaṣṣāṣ is out of both too.** You said to take him out; I took that to cover the
+   library as well as the column, since al-Māwardī's did. It can be reversed on your word.
 4. **Al-Kirmānī: two different men.** Our book is *Mafātīḥ al-aghānī* by Abū al-ʿAlāʾ
    al-Kirmānī (d. after 563 AH), a Ḥanafī. The *Lubāb al-tafāsīr* and *Gharāʾib
    al-tafsīr* you described are by Tāj al-Qurrāʾ Maḥmūd ibn Ḥamza al-Kirmānī, which is
@@ -102,9 +103,6 @@ al-Jazarī, al-Kirmānī and al-Abyārī.
    bare «مقاتل» that cannot be Ibn Ḥayyān is now taken to be him and left off (E).
    Ibn al-Jawzī's lists do name Muqātil in places, as his book wrote it.
 
-**One question:** al-Jaṣṣāṣ, the Ḥanafī column, was also accused of leaning Muʿtazilī,
-as far as I recall. You removed al-Māwardī on that ground. He has no creed label for
-now. Should he stay, with what label?
 
 ## C. Weak reports inside the books
 
@@ -239,14 +237,15 @@ on request, and the volume and page with a link to that page on Shamela.
 
 **How a place is found.** The Shamela typing of both editions marks each quotation
 with its reference: «{وأشهدوا إذا تبايعتم} [البقرة: 282]». A quotation is kept only if
-its words stand in the ayah named. `npm run gen:fiqh` writes `public/fiqh` (11 MB).
+its words stand in the ayah named. `npm run gen:fiqh` writes `public/fiqh` (24.7 MB, with
+the Ḥanafī books below).
 
 | | Quotations | Stand in the ayah named | Too short to test | Failed | Ayat |
 |---|---:|---:|---:|---:|---:|
 | al-Mughnī | 2,503 | 2,495 | 8 | 0 | 773 |
 | al-Mubdiʿ | 1,184 | 1,182 | 2 | 0 | 545 |
 
-Together that is 882 ayat in 3,115 places, against 972 for al-Jaṣṣāṣ. Moved on by
+Together that is 882 ayat in 3,115 places. Moved on by
 one ayah, about 1 in 100 of the same quotations still pass, where a phrase repeats.
 Sampled against Shamela's own pages, 92 of 92 places stood on the volume and page
 they name. A page mark in this copy closes its page, so the page is the first mark
@@ -267,6 +266,21 @@ What this does not prove:
    last one (187 places).
 5. **Al-Mubdiʿ here is the commentary alone.** OpenITI split off the text of
    al-Muqniʿ printed above it, so only what Ibn Mufliḥ repeats of it appears.
+
+**The Ḥanafī column changed.** You took al-Jaṣṣāṣ out, which left the school with no
+book, so I replaced him, and **you did not name the replacements**: **al-Mabsūṭ** of
+al-Sarakhsī (d. 483 AH) and **Badāʾiʿ al-ṣanāʾiʿ** of al-Kāsānī (d. 587 AH), from the same
+corpus and read the same way. The column now reads like the Ḥanbalī one, every place
+they quote the ayah, rather than a passage on it.
+
+| | Quotations | Failed | Ayat |
+|---|---:|---:|---:|
+| al-Mabsūṭ | 2,203 | 0 | 780 |
+| Badāʾiʿ al-ṣanāʾiʿ | 2,250 | 0 | 640 |
+
+Sampled against Shamela's own pages, 41 of 41 places stood on the volume and page they
+name. A section longer than 3,500 letters is cut into stretches under its heading, as
+these two run a section over many pages.
 
 **Ruled 2026-10-30: Ibn Taymiyya stays out of the column.** *Majmūʿ al-Fatāwā* is in
 the same corpus, but its copy gives no references, so there is nothing to test a
@@ -394,9 +408,9 @@ knowledge, not checked in a source. Please correct any.**
 |---|---|
 | Ahl al-Sunnah | al-Ṭabarī, Ibn Abī Ḥātim, al-Naḥḥās, Ibn Qutayba, al-Baghawī, al-Samʿānī, Ibn Qudāma, Ibn Kathīr, Ibn Mufliḥ, al-Shinqīṭī, Ibn ʿUthaymīn, al-Jazāʾirī, al-Ṭarīfī |
 | Ashʿarī | al-Harrāsī, Ibn al-ʿArabī, al-Rāzī, al-Qurṭubī, al-Samīn, al-Biqāʿī, al-Suyūṭī, Ibn ʿĀshūr |
-| Māturīdī | Abū al-Suʿūd |
-| No creed label | Ibn al-Jawzī, al-Jaṣṣāṣ, al-Wāḥidī, Makkī, Ibn al-Jazarī, al-Kirmānī, the modern grammarians |
+| Māturīdī | Abū al-Suʿūd, al-Kāsānī |
+| No creed label | Ibn al-Jawzī, al-Sarakhsī, al-Wāḥidī, Makkī, Ibn al-Jazarī, al-Kirmānī, the modern grammarians |
 
 Fiqh is shown where it is known: Ḥanafī, Mālikī, Shāfiʿī, Ḥanbalī, or al-Ṭabarī's own
-school. **Ibn al-Jawzī has no creed label** because I did not want to word it wrongly:
-he was Ḥanbalī, and criticised by Ḥanbalīs for his interpretation of the attributes.
+school. **Ibn al-Jawzī has no creed label, by your ruling**, only his school. Al-Sarakhsī
+has none because I do not know that any is well established.

@@ -589,6 +589,33 @@
   padding: 0;
   margin: 26px 0 0;
 }
+/* Ibn ʿĀshūr's statement of the aims: a page of his book, under the aim and its themes. */
+.aims {
+  margin: 36px 0 0;
+  padding: 18px 22px 14px;
+  text-align: start;
+  border-inline-start: 2px solid var(--mk-gold);
+  background: color-mix(in srgb, var(--mk-gold) 7%, transparent);
+  border-start-end-radius: var(--radius-lg);
+  border-end-end-radius: var(--radius-lg);
+}
+.aimsLine {
+  margin: 0 0 8px;
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 19px;
+  line-height: 2;
+  text-align: start;
+  color: var(--color-text);
+}
+.label {
+  padding: 0 8px;
+  border: 1px solid var(--color-divider);
+  border-radius: 999px;
+  font-size: 11px;
+  line-height: 1.7;
+  white-space: nowrap;
+  color: var(--muted-62);
+}
 
 /* ── passage by passage ───────────────────────────────────────────────── */
 
@@ -1216,6 +1243,13 @@
   line-height: 1.4;
   color: var(--muted-45);
 }
+.attestedLabels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 5px;
+}
+.attestedLabels:empty { display: none; }
 .attestedSays {
   margin: 0;
   font-size: 14.5px;
@@ -1477,8 +1511,14 @@
   .attestedWho {
     grid-column: 1 / -1;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: baseline;
-    gap: 10px;
+    gap: 2px 10px;
+  }
+  .attestedAuthor { white-space: nowrap; }
+  .attestedLabels {
+    flex-basis: 100%;
+    margin-top: 3px;
   }
   .works { grid-template-columns: 1fr; }
 }
@@ -1564,6 +1604,7 @@
 .shell [data-reveal="aim"][data-seen] > .aimEnglish { animation-delay: 400ms; }
 .shell [data-reveal="aim"][data-seen] > .aimCredit { animation-delay: 580ms; }
 .shell [data-reveal="aim"][data-seen] > .themes { animation-delay: 660ms; }
+.shell [data-reveal="aim"][data-seen] > .aims { animation-delay: 780ms; }
 
 /* The one ayah: the card opens, the light comes up behind it, the Arabic clears. */
 .shell [data-reveal="key"][data-seen] { animation: bloom 1100ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }

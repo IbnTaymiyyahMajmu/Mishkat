@@ -48,6 +48,16 @@ export interface Evidence {
   says?: string;
 }
 
+/** A scholar's words from a book the site does not hold them in, with their place in the print. */
+export interface Voice {
+  quote: string;
+  /** In the print: 0 and 0 where the typing leaves the page unnumbered. */
+  vol: number;
+  page: number;
+  /** Its page on shamela.ws. */
+  shamela: number;
+}
+
 export interface IntroName {
   arabic: string;
   /** The name in Latin letters: "al-Sabʿ al-Mathānī". */
@@ -167,6 +177,8 @@ export interface Intro {
   /** al-Mukhtaṣar's statement of the surah's aim, put into English. The Arabic is in `surah-aims.json`. */
   aim: string;
   themes: string[];
+  /** Ibn ʿĀshūr's own statement of the surah's aims: see `scripts/build-voices.mjs`. */
+  voices?: { ashur: Voice };
   /** The surah from its first ayah to its last, with nothing left out. */
   outline: Passage[];
   /** One ayah to carry away, shown in the reader's own translation. */

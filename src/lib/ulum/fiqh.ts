@@ -1,7 +1,7 @@
 import { book, file, ORIGIN } from "./books";
 
 /**
- * The places the Ḥanbalī jurists quote an ayah.
+ * The places the Ḥanafī and Ḥanbalī jurists quote an ayah.
  *
  * Their great books go by the chapters of fiqh, so they have no passage "on" an
  * ayah to read the way the other books of rulings do. `scripts/build-fiqh.mjs`
@@ -11,7 +11,7 @@ import { book, file, ORIGIN } from "./books";
  */
 
 /** The book of each row, by its first number. Set by `scripts/build-fiqh.mjs`. */
-const WORKS = ["almughni", "almubdi"];
+const WORKS = ["almughni", "almubdi", "almabsut", "badai-sanai"];
 /** Sections to a file. Set by `scripts/build-fiqh.mjs`. */
 const BUCKET = 16;
 

@@ -52,6 +52,18 @@
         "ayah": 1,
         "quote": "هي مَكِّيَّةٌ في قَوْلِ ابْنِ مَسْعُودٍ، والحَسَنِ، وعِكْرِمَةَ",
         "says": "Makkan, in the saying of Ibn Masʿūd, al-Ḥasan and ʿIkrimah."
+      },
+      {
+        "work": "alrazi",
+        "ayah": 1,
+        "quote": "سِتُّ آياتٍ، مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "abu-alsuod",
+        "ayah": 1,
+        "quote": "مَكِّيَّةٌ وآيُها سِتٌّ",
+        "says": "Makkan."
       }
     ]
   },
@@ -168,5 +180,13 @@
     "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
     "al-Mukhtaṣar fī al-Tafsīr",
     "Ṣaḥīḥ Muslim; the Sunan of Abū Dāwūd and al-Tirmidhī"
-  ]
+  ],
+  "voices": {
+    "ashur": {
+      "quote": "وبهذا يعلم الغرض الذي اشتملت عليه وأنه تأييسهم من أن يوافقهم في شيء مما هم عليه من الكفر بالقول الفصل المؤكد في الحال والاستقبال وأن دين الإسلام لا يخالط شيئا من دين الشرك.",
+      "vol": 30,
+      "page": 580,
+      "shamela": 10990
+    }
+  }
 }

@@ -40,6 +40,18 @@
         "ayah": 1,
         "quote": "أخْرَجَ ابْنُ مَرْدُويَهَ عَنِ ابْنِ عَبّاسٍ قالَ: أنْزَلَ ﴿ويْلٌ لِكُلِّ هُمَزَةٍ﴾ بِمَكَّةَ",
         "says": "Ibn ʿAbbās: it came down in Makkah. Recorded by Ibn Mardawayh."
+      },
+      {
+        "work": "alrazi",
+        "ayah": 1,
+        "quote": "تِسْعُ آياتٍ، مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "abu-alsuod",
+        "ayah": 1,
+        "quote": "مَكِّيَّةٌ وآيُها تِسْعٌ",
+        "says": "Makkan."
       }
     ]
   },
@@ -108,5 +120,13 @@
     "Ibn al-Jawzī, Zād al-Masīr",
     "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
     "al-Mukhtaṣar fī al-Tafsīr"
-  ]
+  ],
+  "voices": {
+    "ashur": {
+      "quote": "فغرض هذه السورة وعيد جماعة من المشركين جعلوا همز المسلمين ولمزهم ضربا من ضروب أذاهم طمعا في أن يلجئهم الملل من أصناف الأذى، إلى الانصراف عن الإسلام والرجوع إلى الشرك.",
+      "vol": 30,
+      "page": 535,
+      "shamela": 10948
+    }
+  }
 }

@@ -119,7 +119,8 @@ Rules the files keep to:
 
 ### The works an introduction may quote
 
-Only works by scholars of Ahl al-Sunnah wa-l-Jamāʿah. The list is in
+Works by scholars of Ahl al-Sunnah wa-l-Jamāʿah, and three the owner added for
+one thing each. The list is in
 `scripts/lock-intros.mjs` (`QUOTABLE`), and a quotation from anything else is
 an error — the script will not write the file, and the deploy will not
 publish it.
@@ -137,12 +138,24 @@ publish it.
 | Aḍwāʾ al-bayān | al-Shinqīṭī (d. 1394) | — not yet quoted |
 | Tafsīr Ibn ʿUthaymīn | Ibn ʿUthaymīn (d. 1421) | — not yet quoted |
 | al-Mukhtaṣar fī al-tafsīr | Markaz Tafsīr | the aim of each surah |
+| Mafātīḥ al-ghayb | al-Rāzī (d. 606) | **where a surah came down only** — his opening line |
+| Irshād al-ʿaql al-salīm | Abū al-Suʿūd (d. 982) | **where a surah came down only** — his opening line |
 
-The site's library also holds *Mafātīḥ al-ghayb* (al-Rāzī), *Anwār al-tanzīl*
-(al-Bayḍāwī), *Tafsīr al-Jalālayn* and *al-Taḥrīr wa-l-tanwīr* (Ibn ʿĀshūr).
-They are kept for readers of the tafsir pages and are **not** on the list: each
-interprets the attributes of Allah by the way of kalām, and an introduction is
-not the place to send a reader into that.
+Ibn ʿĀshūr (*al-Taḥrīr wa-l-tanwīr*) is quoted for **the aims of each surah
+only**, in `voices`. The site's copy does not hold his prefaces, so these come
+from OpenITI's Shamela typing, and `lock-intros` does not check them.
+
+These three are the owner's addition, written by `scripts/build-voices.mjs`,
+which keeps to the rules here: a line carrying a report is left out, Ibn
+ʿĀshūr's reports and al-Zamakhsharī's words are cut from his aims, surah by
+surah, and each scholar's creed and school stand beside his name. Sources says
+what they are quoted for, and nothing on the attributes of Allah is taken from
+them.
+
+The site's library also holds *Anwār al-tanzīl* (al-Bayḍāwī) and *Tafsīr
+al-Jalālayn*. They are kept for readers of the tafsir pages and are **not** on
+the list: each interprets the attributes of Allah by the way of kalām, and an
+introduction is not the place to send a reader into that.
 
 al-Qurṭubī stays on the list by the owner's decision, with a condition: every
 quotation from him carries a line under it — "Quoted for what he relates, not

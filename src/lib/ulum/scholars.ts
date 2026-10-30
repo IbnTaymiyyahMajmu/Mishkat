@@ -33,7 +33,8 @@ const LABELS: Record<string, { creed?: Creed; fiqh?: Fiqh }> = {
   "wahidi-asbab": { fiqh: "shafii" },
   "ghareeb-ibn-qutaybah": { creed: "sunni" },
   // rulings
-  aljasas: { fiqh: "hanafi" },
+  almabsut: { fiqh: "hanafi" },
+  "badai-sanai": { creed: "maturidi", fiqh: "hanafi" },
   "ilkia-alharrasee": { creed: "ashari", fiqh: "shafii" },
   "ahkam-ibn-alarabee": { creed: "ashari", fiqh: "maliki" },
   almughni: { creed: "sunni", fiqh: "hanbali" },

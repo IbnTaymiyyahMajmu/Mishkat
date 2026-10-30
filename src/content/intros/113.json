@@ -46,6 +46,18 @@
         "ayah": 1,
         "quote": "هي مَكِّيَّةٌ في قَوْلِ الحَسَنِ، وعِكْرِمَةَ، وعَطاءٍ، وجابِرٍ، ومَدَنِيَّةٌ في أحَدِ قَوْلَيِ ابْنِ عَبّاسٍ، وقَتادَةَ",
         "says": "Makkan in the saying of al-Ḥasan, ʿIkrimah, ʿAṭāʾ and Jābir; Madinan in one of two reports from Ibn ʿAbbās, and in the saying of Qatādah."
+      },
+      {
+        "work": "alrazi",
+        "ayah": 1,
+        "quote": "خَمْسُ آياتٍ، مَدَنِيَّةٌ",
+        "says": "Madinan."
+      },
+      {
+        "work": "abu-alsuod",
+        "ayah": 1,
+        "quote": "مَكِّيَّةٌ مُخْتَلَفٌ فِيها، وآيُها خَمْسٌ",
+        "says": "Makkan, with a difference over it."
       }
     ]
   },
@@ -183,5 +195,13 @@
     "Ibn al-Qayyim, on the two surahs of refuge",
     "al-Mukhtaṣar fī al-Tafsīr",
     "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; the Sunan"
-  ]
+  ],
+  "voices": {
+    "ashur": {
+      "quote": "والغرض منها تعليم النبيء صلى الله عليه وسلم كلمات للتعوذ بالله من شر ما يتقى شره من المخلوقات الشريرة، والأوقات التي يكثر فيها حدوث الشر، والأحوال التي يستر أفعال الشر من ورائها لئلا يرمى فاعلوها بتبعاتها، فعلم الله نبيئه هذه المعوذة ليتعوذ بها، وقد ثبت أن النبيء صلى الله عليه وسلم كان يتعوذ بهذه السورة وأختها ويأمر أصحابه بالتعوذ بهما، فكان التعوذ بهما من سنة المسلمين.",
+      "vol": 30,
+      "page": 625,
+      "shamela": 11032
+    }
+  }
 }
