@@ -52,6 +52,18 @@
         "ayah": 1,
         "quote": "هي مَكِّيَّةٌ عِنْدَ أكْثَرِ المُفَسِّرِينَ",
         "says": "Makkan, according to most of the commentators."
+      },
+      {
+        "work": "alrazi",
+        "ayah": 1,
+        "quote": "خَمْسُ آياتٍ مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "abu-alsuod",
+        "ayah": 1,
+        "quote": "سُورَةٌ مَكِّيَّةٌ مُخْتَلَفٌ فِيها، وآيُها خَمْسٌ",
+        "says": "Makkan, with a difference over it."
       }
     ]
   },
@@ -159,5 +171,13 @@
     "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
     "al-Mukhtaṣar fī al-Tafsīr",
     "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; the Sunan of al-Tirmidhī and Ibn Mājah"
-  ]
+  ],
+  "voices": {
+    "ashur": {
+      "quote": "التنويه بفضل القرآن وعظمته بإسناد إنزاله إلى الله تعالى ...\nوالرد على الذين جحدوا أن يكون القرآن منزلا من الله تعالى.\nورفع شأن الوقت الذي أنزل فيه ونزول الملائكة في ليلة إنزاله.\nوتفضيل الليلة التي توافق ليلة إنزاله من كل عام.\nويستتبع ذلك تحريض المسلمين على تحين ليلة القدر بالقيام والتصدق.",
+      "vol": 30,
+      "page": 455,
+      "shamela": 10873
+    }
+  }
 }

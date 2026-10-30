@@ -14,7 +14,7 @@ If you are looking for these works, read them at tafsir.app, where they are kept
 up to date. If you want to reuse them, ask Nuqayah, not us — the permission to
 copy them was given to this site and is not ours to pass on.
 
-Made by `scripts/mirror-tafsir.mjs`. 53 works, 689 MB.
+Made by `scripts/mirror-tafsir.mjs`. 51 works, 659 MB.
 
 | الكتاب | Work | Author | Passages | Size | Copied |
 |---|---|---|---:|---:|---|
@@ -22,7 +22,6 @@ Made by `scripts/mirror-tafsir.mjs`. 53 works, 689 MB.
 | تفسير البغوي | Maʿālim al-tanzīl | al-Ḥusayn al-Baghawī | 2,152 | 14.4 MB | 2026-10-01 |
 | تفسير القرطبي | al-Jāmiʿ li-aḥkām al-Qurʾān | Shams al-Dīn al-Qurṭubī | 3,259 | 32.3 MB | 2026-10-01 |
 | تفسير ابن كثير | Tafsīr al-Qurʾān al-ʿaẓīm | Ismāʿīl ibn Kathīr | 1,911 | 24.8 MB | 2026-10-01 |
-| تفسير الماوردي | al-Nukat wa-l-ʿuyūn | Abū al-Ḥasan al-Māwardī | 1,709 | 7.1 MB | 2026-10-28 |
 | تفسير ابن الجوزي | Zād al-masīr | Abū al-Faraj ibn al-Jawzī | 2,184 | 10.2 MB | 2026-10-01 |
 | تفسير ابن القيم | Tafsīr Ibn al-Qayyim | Ibn Qayyim al-Jawziyya | 1,389 | 18.7 MB | 2026-10-01 |
 | تفسير السمرقندي | Baḥr al-ʿulūm | Abū al-Layth al-Samarqandī | 1,525 | 6.3 MB | 2026-10-28 |
@@ -65,7 +64,6 @@ Made by `scripts/mirror-tafsir.mjs`. 53 works, 689 MB.
 | غريب القرآن للخضيري | al-Sirāj fī bayān gharīb al-Qurʾān | Muḥammad al-Khuḍayrī | 3,654 | 0.6 MB | 2026-10-28 |
 | الميسر في غريب القرآن الكريم | al-Muyassar fī gharīb al-Qurʾān | King Fahd Complex | 5,069 | 1.1 MB | 2026-10-28 |
 | أسباب النزول للواحدي | Asbāb nuzūl al-Qurʾān | Abū al-Ḥasan al-Wāḥidī | 442 | 1.3 MB | 2026-10-28 |
-| أحكام القرآن للجصاص | Aḥkām al-Qurʾān | Abū Bakr al-Jaṣṣāṣ | 840 | 10.1 MB | 2026-10-28 |
 | ناسخ القرآن ومنسوخه لمكي | al-Īḍāḥ li-nāsikh al-Qurʾān wa-mansūkhih | Makkī ibn Abī Ṭālib | 182 | 0.4 MB | 2026-10-28 |
 | أحكام القرآن لإلكيا الهراسي | Aḥkām al-Qurʾān | Ilkiyā al-Harrāsī | 504 | 2.3 MB | 2026-10-28 |
 | أحكام القرآن لابن العربي | Aḥkām al-Qurʾān | Abū Bakr ibn al-ʿArabī | 787 | 8.3 MB | 2026-10-28 |

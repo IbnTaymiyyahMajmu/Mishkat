@@ -52,6 +52,18 @@
         "ayah": 1,
         "quote": "هي مَكِّيَّةٌ في قَوْلِ عَطاءٍ، وجابِرٍ، وأحَدِ قَوْلَيِ ابْنِ عَبّاسٍ، ومَدَنِيَّةٌ في قَوْلِ قَتادَةَ وآخَرِينَ",
         "says": "Makkan in the saying of ʿAṭāʾ and Jābir, and in one of two reports from Ibn ʿAbbās; Madinan in the saying of Qatādah and others."
+      },
+      {
+        "work": "alrazi",
+        "ayah": 1,
+        "quote": "سَبْعُ آياتٍ، مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "abu-alsuod",
+        "ayah": 1,
+        "quote": "مَكِّيَّةٌ مُخْتَلَفٌ فِيها، وآيُها سَبْعٌ",
+        "says": "Makkan, with a difference over it."
       }
     ]
   },
@@ -111,5 +123,13 @@
     "Ibn al-Jawzī, Zād al-Masīr",
     "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
     "al-Mukhtaṣar fī al-Tafsīr"
-  ]
+  ],
+  "voices": {
+    "ashur": {
+      "quote": "من مقاصدها التعجيب من حال من كذبوا بالبعث وتفظيع أعمالهم من الاعتداء على الضعيف واحتقاره والإمساك عن إطعام المسكين، والإعراض عن قواعد الإسلام من الصلاة والزكاة لأنه لا يخطر بباله أن يكون في فعله ذلك ما يجلب له غضب الله وعقابه.",
+      "vol": 30,
+      "page": 564,
+      "shamela": 10976
+    }
+  }
 }

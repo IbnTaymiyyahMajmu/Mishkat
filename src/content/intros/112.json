@@ -46,6 +46,18 @@
         "ayah": 1,
         "quote": "هي مَكِّيَّةٌ في قَوْلِ ابْنِ مَسْعُودٍ، والحَسَنِ، وعَطاءٍ، وعِكْرِمَةَ، وجابِرٍ، ومَدَنِيَّةٌ في أحَدِ قَوْلَيِ ابْنِ عَبّاسٍ، وقَتادَةَ، والضَّحّاكِ، والسُّدِّيِّ",
         "says": "Makkan in the saying of Ibn Masʿūd, al-Ḥasan, ʿAṭāʾ, ʿIkrimah and Jābir; Madinan in one of two reports from Ibn ʿAbbās, and in the saying of Qatādah, al-Ḍaḥḥāk and al-Suddī."
+      },
+      {
+        "work": "alrazi",
+        "ayah": 1,
+        "quote": "أرْبَعُ آياتٍ، مَكِّيَّةٌ",
+        "says": "Makkan."
+      },
+      {
+        "work": "abu-alsuod",
+        "ayah": 1,
+        "quote": "مَكِّيَّةٌ مُخْتَلَفٌ فِيها وآيُها أرْبَعٌ",
+        "says": "Makkan, with a difference over it."
       }
     ]
   },
@@ -199,5 +211,13 @@
     "al-Ṭabarī, Jāmiʿ al-Bayān",
     "al-Mukhtaṣar fī al-Tafsīr",
     "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim; the Sunan of Abū Dāwūd and al-Tirmidhī"
-  ]
+  ],
+  "voices": {
+    "ashur": {
+      "quote": "إثبات وحدانية الله تعالى.\nوأنه لا يقصد في الحوائج غيره وتنزيهه عن سمات المحدثات.\nوإبطال أن يكون له ابن.\nوإبطال أن يكون المولود إلها مثل عيسى عليه السلام.",
+      "vol": 30,
+      "page": 612,
+      "shamela": 11020
+    }
+  }
 }

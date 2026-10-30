@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Fragment, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
-import type { Evidence, HadithRef, Intro, Passage, Period, Rank } from "@/lib/intros/types";
+import type { Evidence, HadithRef, Intro, Passage, Period, Rank, Voice } from "@/lib/intros/types";
 import { juzStartsIn } from "@/lib/quran/juz";
 import { MAKKAN_COUNT, REVELATION_ORDER, SURAH_FACTS } from "@/lib/quran/surahFacts";
 import { SURAH_NAMES } from "@/lib/quran/surahNames";
@@ -10,8 +10,10 @@ import { tafsirWork, type TafsirWork } from "@/lib/quran/tafsir";
 import { useLocale, type MessageKey } from "@/lib/i18n";
 import { useSurahNames } from "@/lib/i18n/surah";
 import { ordinal } from "@/lib/text";
+import { labelsOf } from "@/lib/ulum/scholars";
 import { useDailyAyah } from "../home/useDailyAyah";
 import { useTafsirSay } from "../tafsir/useTafsirSay";
+import { Leaves } from "../ulum/Chapter";
 import { RhymeStaff } from "./RhymeStaff";
 import { QUESTIONS } from "@/lib/quran/questions";
 import { Shamsa } from "./Shamsa";
@@ -92,6 +94,9 @@ const WORKS: [id: string, named: RegExp][] = [
   ["fath-alqadeer", /^al-Shawkānī/],
   ["adwaa-albayan", /^al-Shinqīṭī/],
   ["ibn-uthaymeen", /^Ibn ʿUthaymīn/],
+  ["alrazi", /^al-Rāzī/],
+  ["abu-alsuod", /^Abū al-Suʿūd/],
+  ["ibn-aashoor", /^Ibn ʿĀshūr/],
   ["mukhtasar", /^al-Mukhtaṣar/],
 ];
 
@@ -101,11 +106,17 @@ const WORKS: [id: string, named: RegExp][] = [
  */
 const REPORTS_ONLY = new Set(["qurtubi"]);
 
+/** Works quoted for one thing each, which Sources names. */
+const NAMED_FOR = new Set(["alrazi", "abu-alsuod", "ibn-aashoor"]);
+
 /** A gatherer of reports who does not grade them; neither does the page, and it says so. */
 const UNGRADED = new Set(["aldur-almanthoor"]);
 
 /** What the copy wraps a phrase in, and a quotation taken from inside it does not want. */
 const BRACKETS = "«»“”()[]" + String.fromCharCode(34);
+
+/** al-Taḥrīr wa-l-tanwīr on Shamela, where his statements of the aims can be checked. */
+const ASHUR_BOOK = "https://shamela.ws/book/9776";
 
 /** The collections sunnah.com numbers the way the scholars cite them. */
 const LOOKUP = new Set(["bukhari", "muslim", "tirmidhi", "abudawud", "nasai", "ibnmajah"]);
@@ -150,6 +161,7 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords, rhyme }: Props)
     if (!intro) return { works: [] as TafsirWork[], others: [] as string[] };
     const quoted = new Set<string>([
       "mukhtasar",
+      ...(intro.voices ? ["ibn-aashoor"] : []),
       ...intro.revelation.evidence.map((e) => e.work),
       ...(intro.revelation.attested ?? []).map((e) => e.work),
       ...intro.occasions.flatMap((o) => (o.evidence ? [o.evidence.work] : [])),
@@ -442,6 +454,7 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords, rhyme }: Props)
                 ))}
               </ul>
             )}
+            {intro?.voices && <AshurAims voice={intro.voices.ashur} />}
           </section>
 
           {/* ── passage by passage ─────────────────────────────────────── */}
@@ -681,6 +694,9 @@ export function SurahIntro({ surah, intro, aimArabic, ayahWords, rhyme }: Props)
                   {t("intro.sources.qurtubi")}
                 </p>
               )}
+              {works.some((work) => NAMED_FOR.has(work.id.replace("app:", ""))) && (
+                <p className={`${styles.note} ${styles.noteMarked}`}>{t("intro.sources.voices")}</p>
+              )}
               <p className={styles.note}>{t("intro.sources.grades")}</p>
 
               {others.length > 0 && (
@@ -885,6 +901,50 @@ function Quoted({ surah, evidence }: { surah: number; evidence: Evidence }) {
   );
 }
 
+/** What a scholar was, by creed and by school, for reading him with discernment. */
+function Labels({ id }: { id: string }) {
+  const { t } = useLocale();
+  const { creed, fiqh } = labelsOf(id);
+
+  return (
+    <>
+      {creed && <span className={styles.label}>{t(`ulum.creed.${creed}`)}</span>}
+      {fiqh && (
+        <span className={styles.label}>
+          {fiqh === "mujtahid" ? t("ulum.fiqh.mujtahid") : t("ulum.fiqh.of", { school: t(`ulum.school.${fiqh}`) })}
+        </span>
+      )}
+    </>
+  );
+}
+
+/** Ibn ʿĀshūr's own statement of what the surah sets out to do, turning where it runs long. */
+function AshurAims({ voice }: { voice: Voice }) {
+  const { t, n } = useLocale();
+  const say = useTafsirSay();
+  const work = tafsirWork("app:ibn-aashoor");
+  const lines = useMemo(() => voice.quote.split("\n"), [voice]);
+
+  return (
+    <figure className={styles.aims}>
+      <h3 className={styles.attestedTitle}>{t("intro.aims.title")}</h3>
+      <Leaves lines={lines} lineClass={styles.aimsLine} />
+      <figcaption className={styles.quotedBy}>
+        {work && (
+          <>
+            <span>{say.credit(work)}</span>
+            <span className={styles.quotedWork}>{say.name(work)}</span>
+          </>
+        )}
+        <Labels id="ibn-aashoor" />
+        <a href={`${ASHUR_BOOK}/${voice.shamela}`} target="_blank" rel="noopener noreferrer" className={styles.quotedLink}>
+          {voice.vol ? t("intro.aims.check", { vol: n(voice.vol), page: n(voice.page) }) : t("ulum.checkShamela")}
+        </a>
+      </figcaption>
+    </figure>
+  );
+}
+
 /**
  * How a report stands, set under it: a word for its standing, and — where it
  * is anything less than ṣaḥīḥ — a sentence saying what that means.
@@ -932,6 +992,9 @@ function Attested({ surah, items }: { surah: number; items: Evidence[] }) {
               <div className={styles.attestedWho}>
                 <span className={styles.attestedAuthor}>{work ? say.short(work) : e.work}</span>
                 {work && <span className={styles.attestedWork}>{say.name(work)}</span>}
+                <span className={styles.attestedLabels}>
+                  <Labels id={e.work} />
+                </span>
               </div>
               <div>
                 {e.says && (

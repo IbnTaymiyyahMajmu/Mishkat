@@ -92,24 +92,6 @@
       "sha256": "b70fa348d1d4808b1c2c405f43166d7e5dbaeaa48f17985c8d15e492674c8274",
       "mirroredAt": "2026-10-28T12:02:00.246Z"
     },
-    "aljasas": {
-      "passages": 840,
-      "ayat": 972,
-      "chars": 5385939,
-      "bytes": 10050957,
-      "files": 123,
-      "sha256": "f9dc1d73a5f2a85215ce15a4dcc1a01e4167c91b96f0a46f2e76957257ba8fa9",
-      "mirroredAt": "2026-10-28T12:10:32.124Z"
-    },
-    "almawirdee": {
-      "passages": 1709,
-      "ayat": 6236,
-      "chars": 3757352,
-      "bytes": 7061845,
-      "files": 119,
-      "sha256": "fbf5f5662c49ecb25e991b82e85d70c6508aa9b217a98902010ba3e86dc9b18e",
-      "mirroredAt": "2026-10-28T12:11:12.022Z"
-    },
     "almuyassar-ghareeb": {
       "passages": 5069,
       "ayat": 5069,

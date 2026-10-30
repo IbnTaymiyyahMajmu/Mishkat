@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { useLocale } from "@/lib/i18n";
 import { Block, BookText, By, Chapter, Cite, Silent } from "./Chapter";
-import { HanbaliPlaces, useHanbali } from "./Hanbali";
+import { SchoolPlaces, usePlaces } from "./SchoolPlaces";
 import { useBook, useNear, type StudyCtx } from "./study";
 import { whoStyle } from "./who";
 import styles from "./AyahStudy.module.css";
@@ -11,18 +11,17 @@ import styles from "./AyahStudy.module.css";
 /**
  * 09 · Aḥkām — what it asks of the believer.
  *
- * The books of rulings on the shelf, one to a school where the shelf has one:
- * al-Jaṣṣāṣ for the Ḥanafīs, Ilkiyā al-Harrāsī for the Shāfiʿīs, Ibn al-ʿArabī
- * for the Mālikīs — each taking up the ayat a jurist of his school takes up,
- * and silent on the rest, as the page says. The shelf has no such book for the
- * Ḥanbalīs, so theirs is the places al-Mughnī and al-Mubdiʿ quote the ayah. Then
+ * The books of rulings on the shelf: Ilkiyā al-Harrāsī for the Shāfiʿīs and Ibn
+ * al-ʿArabī for the Mālikīs, each taking up the ayat a jurist of his school takes
+ * up, and silent on the rest, as the page says. The Ḥanafīs and Ḥanbalīs are the
+ * places their great works quote the ayah: al-Mabsūṭ and Badāʾiʿ al-ṣanāʾiʿ, and
+ * al-Mughnī and al-Mubdiʿ. Then
  * al-Suyūṭī's al-Iklīl, al-Ṭarīfī's Aḥkām, and Makkī on what of the ayah was
  * abrogated, if anything. The rulings are theirs and in their words; none is
  * summarised here.
  */
 
 const SCHOOLS = [
-  { id: "aljasas", school: "ulum.school.hanafi" },
   { id: "ilkia-alharrasee", school: "ulum.school.shafii" },
   { id: "ahkam-ibn-alarabee", school: "ulum.school.maliki" },
 ] as const;
@@ -33,11 +32,11 @@ export function Ahkam({ ctx }: { ctx: StudyCtx }) {
   const ref = useRef<HTMLElement>(null);
   const near = useNear(ref);
   const lit = ctx.seen("ahkam");
-  const schools = [useBook(SCHOOLS[0].id, ctx, near), useBook(SCHOOLS[1].id, ctx, near), useBook(SCHOOLS[2].id, ctx, near)];
+  const schools = [useBook(SCHOOLS[0].id, ctx, near), useBook(SCHOOLS[1].id, ctx, near)];
   const later = [useBook(LATER[0], ctx, near), useBook(LATER[1], ctx, near), useBook(LATER[2], ctx, near)];
-  const hanbali = useHanbali(ctx, near);
-  const any = [...schools, ...later].some((r) => r.p) || hanbali.places.length > 0;
-  const loading = [...schools, ...later].some((r) => r.loading) || hanbali.loading;
+  const places = usePlaces(ctx, near);
+  const any = [...schools, ...later].some((r) => r.p) || places.places.length > 0;
+  const loading = [...schools, ...later].some((r) => r.loading) || places.loading;
 
   return (
     <Chapter id="ahkam" num="09" kicker={t("ulum.k.ahkam")} title={t("ulum.t.ahkam")} sub={t("ulum.s.ahkam")} arabic="الأحكام" ctx={ctx} innerRef={ref}>
@@ -50,10 +49,14 @@ export function Ahkam({ ctx }: { ctx: StudyCtx }) {
         <>
           <Block kicker={t("ulum.ahkam.schools")} title={t("ulum.ahkam.schoolsTitle")}>
             <div className={styles.schools}>
+              <article className={`${styles.school} ${lit ? styles.risen : ""}`} style={{ ...whoStyle("almabsut"), transitionDelay: "200ms" }}>
+                <div className={`${styles.schoolName} ${styles.whoName}`}>{t("ulum.school.hanafi")}</div>
+                <SchoolPlaces key={ctx.key} read={places} books={["almabsut", "badai-sanai"]} note="ulum.ahkam.hanafiNote" ctx={ctx} />
+              </article>
               {SCHOOLS.map((s, k) => {
                 const read = schools[k];
                 return (
-                  <article key={s.id} className={`${styles.school} ${lit ? styles.risen : ""}`} style={{ ...whoStyle(s.id), transitionDelay: `${200 + k * 120}ms` }}>
+                  <article key={s.id} className={`${styles.school} ${lit ? styles.risen : ""}`} style={{ ...whoStyle(s.id), transitionDelay: `${320 + k * 120}ms` }}>
                     <div className={`${styles.schoolName} ${styles.whoName}`}>{t(s.school)}</div>
                     {read.p ? (
                       ctx.scholar ? (
@@ -68,9 +71,9 @@ export function Ahkam({ ctx }: { ctx: StudyCtx }) {
                   </article>
                 );
               })}
-              <article className={`${styles.school} ${lit ? styles.risen : ""}`} style={{ ...whoStyle("almughni"), transitionDelay: `${200 + SCHOOLS.length * 120}ms` }}>
+              <article className={`${styles.school} ${lit ? styles.risen : ""}`} style={{ ...whoStyle("almughni"), transitionDelay: "680ms" }}>
                 <div className={`${styles.schoolName} ${styles.whoName}`}>{t("ulum.school.hanbali")}</div>
-                <HanbaliPlaces key={ctx.key} read={hanbali} ctx={ctx} />
+                <SchoolPlaces key={ctx.key} read={places} books={["almughni", "almubdi"]} note="ulum.ahkam.hanbaliNote" ctx={ctx} />
               </article>
             </div>
           </Block>

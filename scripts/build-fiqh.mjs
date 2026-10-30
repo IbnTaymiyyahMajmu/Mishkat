@@ -1,11 +1,12 @@
 /**
- * Where the Ḥanbalī jurists quote each ayah.
+ * Where the Ḥanafī and Ḥanbalī jurists quote each ayah.
  *
- * Chapter nine of the ayah study sets the schools side by side. The Ḥanafī,
- * Shāfiʿī and Mālikī columns are books of aḥkām that go through the Qurʾān ayah
- * by ayah, and tafsir.app holds them. No Ḥanbalī book of that kind is there, and
- * the school's great works go by the chapters of fiqh instead. So this turns two
- * of them round: every place they quote an ayah, gathered under that ayah.
+ * Chapter nine of the ayah study sets the schools side by side. The Shāfiʿī and
+ * Mālikī columns are books of aḥkām that go through the Qurʾān ayah by ayah, and
+ * tafsir.app holds them. The two other schools' great works go by the chapters of
+ * fiqh instead: no Ḥanbalī book of that kind is there, and the owner ruled the
+ * Ḥanafī one out. So this turns four of them round: every place they quote an ayah,
+ * gathered under that ayah.
  *
  *   node scripts/build-fiqh.mjs         (npm run gen:fiqh)
  *
@@ -18,7 +19,7 @@
  *   <book>/<n>.json      those sections whole, a few to a file, read only when a
  *                        reader asks for one.
  *
- * Nothing is matched by guess. The Shamela typing of these two editions marks
+ * Nothing is matched by guess. The Shamela typing of these editions marks
  * each quotation of the Qurʾān with its braces and its reference — «{وأشهدوا إذا
  * تبايعتم} [البقرة: 282]» — and a quotation is kept only where its words stand in
  * the ayah so named, compared by the skeleton `build-xref.mjs` uses. A phrase
@@ -43,6 +44,11 @@ const FORMAT = 1;
 const BUCKET = 16;
 /** Fewer letters than this in a quotation's skeleton and it could be anything. */
 const LEAST_LETTERS = 3;
+/**
+ * Letters to a stretch of a section. Some works run a section over many pages, and
+ * a reader asking for the whole of it wants the discussion around the quotation.
+ */
+const STRETCH = 3500;
 /** How far from the ayah named a quotation that runs over several may begin or end. */
 const REACH = 4;
 
@@ -57,6 +63,16 @@ const WORKS = [
     id: "almubdi",
     firstPage: 1,
     url: "https://raw.githubusercontent.com/OpenITI/0900AH/271ff65bd8364d3a46b5806ca529617d1ffc3393/data/0884AbuIshaqIbnMuflih/0884AbuIshaqIbnMuflih.MubdicFiSharhMuqnic/0884AbuIshaqIbnMuflih.MubdicFiSharhMuqnic.Shamela0021619BK2-ara1",
+  },
+  {
+    id: "almabsut",
+    firstPage: 0,
+    url: "https://raw.githubusercontent.com/OpenITI/0500AH/fff9e21790e2e54f14826322ae49ab7671f12744/data/0483IbnAhmadSarakhsi/0483IbnAhmadSarakhsi.Mabsut/0483IbnAhmadSarakhsi.Mabsut.Shamela0005423-ara1",
+  },
+  {
+    id: "badai-sanai",
+    firstPage: 0,
+    url: "https://raw.githubusercontent.com/OpenITI/0600AH/ea4bdc6517a49d07106f223aa0869aa7c21b9589/data/0587IbnMascudCalaDinKasani/0587IbnMascudCalaDinKasani.BadaicSanaic/0587IbnMascudCalaDinKasani.BadaicSanaic.Shamela0008183-ara1",
   },
 ];
 
@@ -225,7 +241,23 @@ function read(raw, firstPage) {
       if (p.marks.length) next = p.marks[0];
     }
   }
-  return sections;
+  // A long section in stretches, each under the section's own heading.
+  return sections.flatMap((sec) => {
+    const stretches = [];
+    let held = [];
+    let size = 0;
+    for (const p of sec.paras) {
+      if (held.length && size + p.text.length > STRETCH) {
+        stretches.push({ ...sec, paras: held });
+        held = [];
+        size = 0;
+      }
+      held.push(p);
+      size += p.text.length;
+    }
+    stretches.push({ ...sec, paras: held });
+    return stretches;
+  });
 }
 
 function pageOf(para, at, last) {
@@ -328,16 +360,21 @@ await writeFile(
   new URL("SOURCE.md", OUT),
   `# Where these files come from
 
-They are worked out by \`scripts/build-fiqh.mjs\` from the digital text of two
-Ḥanbalī works of fiqh, as held by the Open Islamicate Texts Initiative:
+They are worked out by \`scripts/build-fiqh.mjs\` from the digital text of four
+works of fiqh, as held by the Open Islamicate Texts Initiative:
 
 - **al-Mughnī** of Ibn Qudāma al-Maqdisī (d. 620 AH), Maktabat al-Qāhira, 1388/1968,
   ten volumes. OpenITI \`0620IbnQudamaMaqdisi.Mughni.Shamela0008463-ara1\`.
 - **al-Mubdiʿ fī sharḥ al-Muqniʿ** of Burhān al-Dīn Ibn Mufliḥ (d. 884 AH), Dār
   al-Kutub al-ʿIlmiyya, 1418/1997, eight volumes. OpenITI
   \`0884AbuIshaqIbnMuflih.MubdicFiSharhMuqnic.Shamela0021619BK2-ara1\`.
+- **al-Mabsūṭ** of Shams al-Aʾimma al-Sarakhsī (d. 483 AH), Dār al-Maʿrifa, Beirut,
+  1414/1993, thirty volumes. OpenITI \`0483IbnAhmadSarakhsi.Mabsut.Shamela0005423-ara1\`.
+- **Badāʾiʿ al-ṣanāʾiʿ** of ʿAlāʾ al-Dīn al-Kāsānī (d. 587 AH), Dār al-Kutub al-ʿIlmiyya,
+  second edition, 1406/1986, seven volumes. OpenITI
+  \`0587IbnMascudCalaDinKasani.BadaicSanaic.Shamela0008183-ara1\`.
 
-Both were typed by al-Maktaba al-Shāmila (shamela.ws), whose page numbers the
+All four were typed by al-Maktaba al-Shāmila (shamela.ws), whose page numbers the
 links here follow. OpenITI publishes its corpus under Creative Commons
 Attribution-NonCommercial-ShareAlike 4.0
 (<https://creativecommons.org/licenses/by-nc-sa/4.0/>), and these files are

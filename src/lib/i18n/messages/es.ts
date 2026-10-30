@@ -260,6 +260,8 @@ export const es: Messages = {
   "intro.aim.kicker": "Para qué es",
   "intro.aim.credit": "El propósito de la sura, según al-Mukhtaṣar fī al-Tafsīr",
   "intro.aim.themes": "Sus temas",
+  "intro.aims.title": "Sus propósitos, según los expone Ibn ʿĀshūr",
+  "intro.aims.check": "Vol. {vol}, pág. {page} · Leer en Shamela",
   "intro.map.kicker": "Pasaje a pasaje",
   "intro.map.title": "De su primera aleya a la última",
   "intro.map.share": { one: "{count} aleya · {percent}% de la sura", other: "{count} aleyas · {percent}% de la sura" },
@@ -304,8 +306,9 @@ export const es: Messages = {
   "intro.notable.title": "Aleyas que oirá nombrar",
   "intro.sources.quoted": "Obras citadas en esta página",
   "intro.sources.also": "También se ha recurrido a",
-  "intro.sources.only": "Toda obra citada aquí es de un sabio de Ahl al-Sunnah wa-l-Yamāʿah. La biblioteca del sitio guarda también otros comentarios; las introducciones no recurren a ellos.",
+  "intro.sources.only": "Junto a cada sabio citado figuran su credo y su escuela de fiqh, para que se le lea con discernimiento. La biblioteca del sitio contiene también otros comentarios; las introducciones no recurren a ellos.",
   "intro.sources.qurtubi": "A al-Qurṭubī se le cita en estas páginas solo por lo que transmite: quién dijo que una sura es mequí o medinense, y cómo se la ha llamado. Sobre los atributos de Allah su comentario interpreta, en algunos lugares, a la manera de los ashʿaríes y no a la de los Salaf, y nada de eso se toma de él aquí.",
+  "intro.sources.voices": "A al-Rāzī y a Abū al-Suʿūd se les cita en estas páginas solo por el lugar donde descendió una sura, y a Ibn ʿĀshūr solo por los propósitos de la sura. No se toma de ellos nada sobre los atributos de Allah, ni ningún relato llega por ellos. La exposición de los propósitos de Ibn ʿĀshūr no está en la copia de su libro que guarda el sitio: se lee de la transcripción de Shamela tal como la conserva OpenITI, sin los relatos ni las palabras de al-Zamajsharī, y enlaza con su página allí.",
   "intro.sources.grades": "Todo hadiz dice aquí dónde está recogido y cómo se califica. Lo que está en al-Bujārī o en Muslim se marca como ṣaḥīḥ. Fuera de ambos se sigue la calificación de al-Albānī; donde no se halló ninguna suya, se nombra al sabio que lo calificó. Un relato que se sabe débil o inventado no se recoge aquí en absoluto. Un relato que es ḥasan, o el dicho de un Compañero, o lo que relatan los comentaristas sin cadena calificada, lo dice a su lado. En el relato de lo que ocurría, un pequeño signo tras una frase dice lo mismo del relato que esa frase cuenta, y un signo de interrogación señala una fecha o una cifra que no es segura, o acompaña a una calificación —subrayada— que tiene algo que decir sobre su propia fuente: al posarse sobre él, o tocarlo, da la razón. Lo que procede de la sīrah —las campañas, las fechas, quién estuvo presente— es historia tal como la transmiten sus sabios, y no se califica aquí.",
   "intro.sources.kicker": "Fuentes",
   "intro.sources.title": "De dónde viene esto",
@@ -1484,9 +1487,9 @@ export const es: Messages = {
   "settings.src.hadith": "Los dos Ṣaḥīḥ",
   "settings.src.hadithValue":
     "Al-Bujārī, Muslim y las Sunan por número, con las calificaciones de al-Albānī, en el texto y la traducción del hadith-api abierto (fawazahmed0), para los relatos que cita Ibn Kathīr",
-  "settings.src.fiqh": "Fiqh ḥanbalí",
+  "settings.src.fiqh": "Fiqh y propósitos de las suras",
   "settings.src.fiqhValue":
-    "Al-Mughnī de Ibn Qudāma y al-Mubdiʿ de Ibn Mufliḥ, en la transcripción de al-Maktaba al-Shāmila, por medio de OpenITI (CC BY-NC-SA 4.0), para los lugares donde citan una aleya",
+    "Al-Mughnī de Ibn Qudāma y al-Mubdiʿ de Ibn Mufliḥ (ḥanbalíes), al-Mabsūṭ de al-Sarakhsī y Badāʾiʿ al-ṣanāʾiʿ de al-Kāsānī (ḥanafíes), para los lugares donde citan una aleya, y las exposiciones de Ibn ʿĀshūr sobre los propósitos de las suras, en la transcripción de al-Maktaba al-Shāmila, por medio de OpenITI (CC BY-NC-SA 4.0)",
   "settings.src.recitation": "Recitación",
   "settings.src.recitationValue": "CDN de audio de Quran.com, con segmentos de tiempo palabra por palabra",
   "settings.src.qari": "Una palabra en la voz de un recitador",
@@ -1823,13 +1826,15 @@ export const es: Messages = {
   "ulum.school.maliki": "Mālikí",
   "ulum.school.hanbali": "Ḥanbalí",
   "ulum.ahkam.silent": "Su copia no tiene un pasaje sobre esta aleya.",
+  "ulum.ahkam.hanafiNote":
+    "Al-Mabsūṭ y Badāʾiʿ al-ṣanāʾiʿ siguen los capítulos del fiqh, no el orden del muṣḥaf; estos son los lugares donde sus ediciones señalan esta aleya como citada. Los volúmenes y páginas son de al-Mabsūṭ, Dār al-Maʿrifa, 1993, y de Badāʾiʿ, Dār al-Kutub al-ʿIlmiyya, 1986.",
   "ulum.ahkam.hanbaliNote":
     "Al-Mughnī y al-Mubdiʿ siguen los capítulos del fiqh, no el orden del muṣḥaf; estos son los lugares donde sus ediciones señalan esta aleya como citada. Los volúmenes y páginas son de al-Mughnī, Maktabat al-Qāhira, 1968, y de al-Mubdiʿ, Dār al-Kutub al-ʿIlmiyya, 1997.",
-  "ulum.ahkam.hanbaliCited": {
+  "ulum.ahkam.placesCited": {
     one: "Estos dos libros citan la aleya en un lugar. Cambia a la vista de erudito para leerlo.",
     other: "Estos dos libros citan la aleya en {count} lugares. Cambia a la vista de erudito para leerlos.",
   },
-  "ulum.ahkam.hanbaliSilent": "Sus ediciones no señalan ninguna cita de esta aleya.",
+  "ulum.ahkam.placesSilent": "Sus ediciones no señalan ninguna cita de esta aleya.",
   "ulum.ahkam.volPage": "vol. {vol}, p. {page}",
   "ulum.ahkam.takes": "Este libro trata la aleya. Cambia a la vista de erudito para leerlo.",
   "ulum.ahkam.later": "Obras posteriores",
@@ -1856,7 +1861,7 @@ export const es: Messages = {
   "ulum.k.sources": { one: "Colofón · una obra", other: "Colofón · {count} obras" },
   "ulum.s.sources": "Cada obra que cita este estudio, con los lugares en que se abrió.",
   "ulum.colophon":
-    "Este estudio repite lo que registraron sus fuentes y no añade nada propio salvo la disposición, los recuentos y los nombres de los términos. La gramática de las palabras procede de {corpus}; cada libro salvo dos es el texto de {site}, copiado con permiso de Nuqayah; al-Mughnī y al-Mubdiʿ son la transcripción de {shamela}, por medio de {openiti}.",
+    "Este estudio repite lo que registraron sus fuentes y no añade nada propio salvo la disposición, los recuentos y los nombres de los términos. La gramática de las palabras procede de {corpus}; al-Mughnī, al-Mubdiʿ, al-Mabsūṭ, Badāʾiʿ al-ṣanāʾiʿ y al-Itqān son la transcripción de {shamela}, por medio de {openiti}; cada uno de los demás libros es el texto de {site}, copiado con permiso de Nuqayah.",
   "ulum.open": "Estudiar esta aleya",
   "ulum.openHint": "Sus palabras, gramática, lecturas y juicios, libro por libro",
 
@@ -1911,7 +1916,6 @@ export const tafsirWords: TafsirWords = {
       "Explica unas aleyas por otras, con largos tratamientos de las normas. Cubre aproximadamente un tercio de las aleyas.",
     "app:ibn-uthaymeen":
       "Sus lecciones, transcritas: la explicación y luego los provechos que se extraen de cada aleya. Cubre aproximadamente la mitad de las aleyas.",
-    "app:almawirdee": "Numera las opiniones sobre cada frase y nombra a quien sostuvo cada una, añadiendo su propio razonamiento donde difieren.",
     "app:samaani": "Un tafsir de extensión moderada de un erudito shāfiʿí del hadiz, atento a los relatos y al credo de las primeras generaciones.",
     "app:makki": "Un tafsir completo del maestro andalusí de las lecturas: el significado, las lecturas, la gramática y lo abrogado, aleya por aleya.",
     "app:mahasin-altaweel": "Un comentario tardío de un erudito de Damasco que cita por extenso a los maestros anteriores en cada pasaje, sobre todo a Ibn Taymiyya y a Ibn al-Qayyim.",
@@ -1943,7 +1947,6 @@ export const tafsirWords: TafsirWords = {
     "app:zajjaj": "Un gramático de Bagdad sobre los significados del Corán: cómo se analiza cada frase y lo que de ello se sigue para su sentido.",
     "app:nahaas-meanings": "Los significados de las palabras y frases del Corán, con las opiniones de los primeros gramáticos y comentaristas confrontadas. Se conserva solo en parte.",
     "app:wahidi-asbab": "Los relatos sobre lo que ocasionó determinadas aleyas, con sus cadenas: el libro más conocido de su género. No todos sus relatos son sólidos.",
-    "app:aljasas": "Las aleyas que contienen normas, leídas por un destacado jurista ḥanafí de Bagdad, con los argumentos entre las escuelas.",
     "app:ilkia-alharrasee": "Las aleyas de normas desde el lado shāfiʿí, por un discípulo de al-Juwaynī.",
     "app:ahkam-ibn-alarabee": "El juez mālikí de Sevilla sobre las aleyas que contienen normas, cuestión por cuestión.",
     "app:alikleel": "El breve libro de al-Suyūṭī sobre las normas y enseñanzas que se han extraído de las aleyas.",
@@ -2012,7 +2015,6 @@ export const tafsirWords: TafsirWords = {
     "app:ibn-aashoor": "La verificación y la iluminación",
     "app:adwaa-albayan": "Las luces de la aclaración",
     "app:ibn-uthaymeen": "El tafsir de Ibn ʿUthaymīn",
-    "app:almawirdee": "Puntos sutiles y fuentes escogidas",
     "app:samaani": "Comentario del Corán",
     "app:makki": "La guía hasta el último fin",
     "app:mahasin-altaweel": "Las bellezas de la interpretación",
@@ -2044,7 +2046,6 @@ export const tafsirWords: TafsirWords = {
     "app:zajjaj": "Los significados del Corán y su gramática",
     "app:nahaas-meanings": "Los significados del Corán",
     "app:wahidi-asbab": "Las circunstancias de la revelación",
-    "app:aljasas": "Las normas del Corán",
     "app:ilkia-alharrasee": "Las normas del Corán",
     "app:ahkam-ibn-alarabee": "Las normas del Corán",
     "app:alikleel": "La corona, sobre las normas que se extraen de la Revelación",

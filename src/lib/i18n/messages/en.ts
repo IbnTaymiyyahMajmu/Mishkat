@@ -272,6 +272,8 @@ export const en = {
   "intro.aim.kicker": "What it is for",
   "intro.aim.credit": "The surah’s aim, as al-Mukhtaṣar fī al-Tafsīr states it",
   "intro.aim.themes": "Its themes",
+  "intro.aims.title": "Its aims, as Ibn ʿĀshūr sets them out",
+  "intro.aims.check": "Vol. {vol}, p. {page} · Read it on Shamela",
   "intro.map.kicker": "Passage by passage",
   "intro.map.title": "From its first ayah to its last",
   "intro.map.share": { one: "{count} ayah · {percent}% of the surah", other: "{count} ayat · {percent}% of the surah" },
@@ -316,8 +318,9 @@ export const en = {
   "intro.notable.title": "Ayat you will hear named",
   "intro.sources.quoted": "Works quoted on this page",
   "intro.sources.also": "Also drawn on",
-  "intro.sources.only": "Every work quoted here is by a scholar of Ahl al-Sunnah wa-l-Jamāʿah. The site’s library holds other commentaries as well; the introductions do not draw on them.",
+  "intro.sources.only": "Beside each scholar quoted stand his creed and his school of fiqh, so that he can be read with discernment. The site’s library holds other commentaries as well; the introductions do not draw on them.",
   "intro.sources.qurtubi": "al-Qurṭubī is quoted on these pages only for what he transmits: who said a surah is Makkan or Madinan, and what it has been called. On the attributes of Allah his commentary interprets, in places, in the way of the Ashʿarīs rather than the way of the Salaf, and nothing of that is taken from him here.",
+  "intro.sources.voices": "al-Rāzī and Abū al-Suʿūd are quoted on these pages only for where a surah came down, and Ibn ʿĀshūr only for the aims of the surah. Nothing on the attributes of Allah is taken from them, and no report comes by way of them. Ibn ʿĀshūr’s statement of the aims is not in the site’s copy of his book: it is read from the Shamela typing as OpenITI holds it, with reports and al-Zamakhsharī’s words left out, and it links to its page there.",
   "intro.sources.grades": "Every hadith here says where it is recorded and how it is graded. What is in al-Bukhārī or Muslim is marked ṣaḥīḥ. Outside the two, the grading followed is al-Albānī’s; where none of his was found, the scholar who graded it is named. A report known to be weak or fabricated is not given here at all. A report that is ḥasan, or a Companion’s own saying, or related by the commentators without a graded chain, says so beside it. In the account of what was happening, a small sign after a sentence says the same of the report that sentence tells, and a question mark stands where a date or a figure is not certain, or beside a grading — underlined — that has something to say about its own source: rest on it, or touch it, and it gives the reason. What is drawn from the sīrah — the campaigns, the dates, who was present — is history as its scholars transmit it, and is not graded here.",
   "intro.sources.kicker": "Sources",
   "intro.sources.title": "Where this comes from",
@@ -1505,9 +1508,9 @@ export const en = {
   "settings.src.hadith": "The two Ṣaḥīḥs",
   "settings.src.hadithValue":
     "Al-Bukhārī, Muslim and the Sunan by number, with al-Albānī’s gradings, in the text and translation of the open hadith-api (fawazahmed0), for the reports Ibn Kathīr quotes",
-  "settings.src.fiqh": "Ḥanbalī fiqh",
+  "settings.src.fiqh": "Fiqh and surah aims",
   "settings.src.fiqhValue":
-    "Al-Mughnī of Ibn Qudāma and al-Mubdiʿ of Ibn Mufliḥ, as typed by al-Maktaba al-Shāmila, by way of OpenITI (CC BY-NC-SA 4.0), for the places they quote an ayah",
+    "Al-Mughnī of Ibn Qudāma and al-Mubdiʿ of Ibn Mufliḥ (Ḥanbalī), al-Mabsūṭ of al-Sarakhsī and Badāʾiʿ al-ṣanāʾiʿ of al-Kāsānī (Ḥanafī), for the places they quote an ayah, and Ibn ʿĀshūr’s statements of the surahs’ aims, as typed by al-Maktaba al-Shāmila, by way of OpenITI (CC BY-NC-SA 4.0)",
   "settings.src.recitation": "Recitation",
   "settings.src.recitationValue": "Quran.com audio CDN, with word-level timing segments",
   "settings.src.qari": "A word in a Qari’s voice",
@@ -1844,13 +1847,15 @@ export const en = {
   "ulum.school.maliki": "Mālikī",
   "ulum.school.hanbali": "Ḥanbalī",
   "ulum.ahkam.silent": "Its copy has no passage set against this ayah.",
+  "ulum.ahkam.hanafiNote":
+    "Al-Mabsūṭ and Badāʾiʿ al-ṣanāʾiʿ go by the chapters of fiqh, not the order of the muṣḥaf, so these are the places their editions mark this ayah as quoted. Volumes and pages are of al-Mabsūṭ, Dār al-Maʿrifa, 1993, and Badāʾiʿ, Dār al-Kutub al-ʿIlmiyya, 1986.",
   "ulum.ahkam.hanbaliNote":
     "Al-Mughnī and al-Mubdiʿ go by the chapters of fiqh, not the order of the muṣḥaf, so these are the places their editions mark this ayah as quoted. Volumes and pages are of al-Mughnī, Maktabat al-Qāhira, 1968, and al-Mubdiʿ, Dār al-Kutub al-ʿIlmiyya, 1997.",
-  "ulum.ahkam.hanbaliCited": {
+  "ulum.ahkam.placesCited": {
     one: "These two books quote the ayah in one place. Switch to the scholar’s view to read it.",
     other: "These two books quote the ayah in {count} places. Switch to the scholar’s view to read them.",
   },
-  "ulum.ahkam.hanbaliSilent": "Their editions mark no quotation of this ayah.",
+  "ulum.ahkam.placesSilent": "Their editions mark no quotation of this ayah.",
   "ulum.ahkam.volPage": "vol. {vol}, p. {page}",
   "ulum.ahkam.takes": "This book takes the ayah up. Switch to the scholar’s view to read it.",
   "ulum.ahkam.later": "Later works",
@@ -1877,7 +1882,7 @@ export const en = {
   "ulum.k.sources": { one: "Colophon · one work", other: "Colophon · {count} works" },
   "ulum.s.sources": "Every work this study cites, with the places it was opened.",
   "ulum.colophon":
-    "This study repeats what its sources recorded and adds nothing of its own but the arrangement, the counts and the English names of the terms. The grammar of the words is from {corpus}; every book but two is the text of {site}, copied with Nuqayah’s permission; al-Mughnī and al-Mubdiʿ are the typing of {shamela}, by way of {openiti}.",
+    "This study repeats what its sources recorded and adds nothing of its own but the arrangement, the counts and the English names of the terms. The grammar of the words is from {corpus}; al-Mughnī, al-Mubdiʿ, al-Mabsūṭ, Badāʾiʿ al-ṣanāʾiʿ and al-Itqān are the typing of {shamela}, by way of {openiti}; every other book is the text of {site}, copied with Nuqayah’s permission.",
   "ulum.open": "Study this ayah",
   "ulum.openHint": "Its words, grammar, readings and rulings, book by book",
 

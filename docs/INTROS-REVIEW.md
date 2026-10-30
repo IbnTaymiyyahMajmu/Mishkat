@@ -17,11 +17,13 @@ After any correction: `npm run lock:intros`.
 | **G** Wording | **Open** — you have not said |
 | **H** What I did not do | **Open** |
 | **I** The stories, told in full | **New.** Seventeen written from the hadith texts; three things to look at |
+| **J** al-Rāzī, Abū al-Suʿūd and Ibn ʿĀshūr | **Ruled: add them.** Built; please read what was cut |
 
 **What is not in doubt**, so you need not look at it:
 
-- The 591 Arabic quotations. Each is found in the site's copy of the book by
-  the lock script and printed as the copy has it.
+- The 788 Arabic quotations. Each is found in the site's copy of the book by
+  the lock script and printed as the copy has it. Ibn ʿĀshūr's aims (J) are the one
+  exception, as the site's copy does not hold them.
 - The counted facts — ayat, words, pages, juzʾ, the place in the order.
 - The hadith *numbers* for all six books, checked against an open corpus —
   apart from the two in B4.
@@ -443,6 +445,50 @@ tayammum (5), the delegation of Banū Tamīm (49), the guest of the Helper
 judgement between al-Zubayr and the Helper (4), the people of the trench in
 the longer form of Aḥmad.
 
+## J. al-Rāzī, Abū al-Suʿūd and Ibn ʿĀshūr
+
+**Ruled 2026-10-30: add them to the introductions.** They were refused under A, because
+they interpret the attributes by way of kalām, so each is used for one thing, and
+*Sources* says which. All of it is written by `npm run gen:voices`
+(`scripts/build-voices.mjs`); after it, run `npm run lock:intros`.
+
+- **al-Rāzī (97 surahs) and Abū al-Suʿūd (100)** stand under "The same, in other works":
+  the opening line of the surah, saying where it came down, with a line of English. In
+  a surah where the line has none, or carries a report, or is the printer's heading with
+  figures, he is not shown. Where one of them differs from the page's own finding, both
+  stand: nothing was changed to agree.
+- **Ibn ʿĀshūr (all 114)** has his own statement of the aims under the surah's aim,
+  whole, turning like a book's pages where it runs long, with his volume and page and a
+  link to that page on Shamela (`voices`). All 114 links were opened and his words
+  stood on that page; 113 printed pages matched too, and al-Aʿrāf's page is unnumbered
+  in the typing, so it gives the link alone. `public/tafsir/ibn-aashoor` lacks his
+  prefaces, so these come from OpenITI's typing, and the lock script does not check them.
+- **His creed and school** stand beside his name, and "The same, in other works" now
+  shows them for everyone in the list, since two labels among unlabelled rows would
+  say the others had none. *Sources* no longer says every work is by a scholar of Ahl
+  al-Sunnah, as that is no longer so.
+
+**Where his aims were not simply taken from his heading to the first ayah:**
+
+1. **Left out as reports** (your rule, B): the story of al-Naḍr (12), Ibn ʿAbbās on the
+   Tawrāh (17, with what follows it), «قلب القرآن» and al-Ghazālī's reason for it (36,
+   the weak hadith), Muqātil on Abū Sufyān (34), the virtues of 6, 32, 40 and 112, ʿUmar's
+   saying without a chain (75), the Companions' parting recitation and al-Shāfiʿī's
+   saying (103).
+2. **Opened after the occasion:** 12, 31, 38 and 109, whose statements begin with a
+   report. 38 therefore opens partway through his sentence.
+3. **Left out as not about the aims:** the mufaṣṣal by school (49), Ibn al-Faras on
+   abrogation (27), al-Rāzī's reason for al-Anʿām coming down at once (6, resting on a
+   weak report).
+4. **Al-Zamakhsharī:** two quotations from *al-Kashshāf* (26, 55), since he stays out.
+5. **Mentions left in, since they are sound:** the delegation of ʿAbd al-Qays (66), and
+   Abū Lahab's words in 111. Of al-Fātiḥah he says its aims are known from why it is called
+   Umm al-Qurʾān, so that reason is what stands there.
+
+**Please look at:** whether a statement of aims that reasons from an occasion should
+stay, as with the Jews in 19, Māriyah in 66 and the opening of 33. Those are his own
+reasoning and quote no report, so they stayed.
+
 ---
 
 ## Settled — kept here for the record
@@ -453,8 +499,9 @@ the longer form of Aḥmad.
   relates, and each quotation says so under it: "Quoted for what he relates,
   not for creed", leading to a paragraph in *Sources*.
 - **Ibn al-Jawzī** stays, quoted for reports of place and occasion only.
-- **Not quoted at all**, and refused by the lock script: al-Rāzī, al-Bayḍāwī,
-  *al-Jalālayn*, Ibn ʿĀshūr. They remain on the site's tafsir pages.
+- **Not quoted at all**, and refused by the lock script: al-Bayḍāwī, *al-Jalālayn*.
+  They remain on the site's tafsir pages. al-Rāzī, Abū al-Suʿūd and Ibn ʿĀshūr were
+  here too, until your ruling in J.
 - **al-Suyūṭī's** reports in *al-Durr al-Manthūr* are shown under "The same,
   in other works" (115 of them), each with the line "A report he gathers; its
   chain is not graded here."

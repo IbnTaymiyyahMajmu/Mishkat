@@ -52,6 +52,18 @@
         "ayah": 1,
         "quote": "هي مَكِّيَّةٌ بِلا خِلافٍ",
         "says": "Makkan, by agreement."
+      },
+      {
+        "work": "alrazi",
+        "ayah": 1,
+        "quote": "خَمْسُ آياتٍ، مَكِّيَّةٌ بِالِاتِّفاقِ",
+        "says": "Makkan."
+      },
+      {
+        "work": "abu-alsuod",
+        "ayah": 1,
+        "quote": "مَكِّيَّةٌ وآيُها خَمْسٌ",
+        "says": "Makkan."
       }
     ]
   },
@@ -117,5 +129,13 @@
     "al-Qurṭubī, al-Jāmiʿ li-Aḥkām al-Qurʾān",
     "al-Mukhtaṣar fī al-Tafsīr",
     "Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim"
-  ]
+  ],
+  "voices": {
+    "ashur": {
+      "quote": "زجر أبي لهب على قوله: «تبا لك ألهذا جمعتنا؟ ووعيده على ذلك، ووعيد امرأته على انتصارها لزوجها، وبغضها النبيء صلى الله عليه وسلم.",
+      "vol": 30,
+      "page": 600,
+      "shamela": 11009
+    }
+  }
 }
