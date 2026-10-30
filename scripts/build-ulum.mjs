@@ -293,13 +293,22 @@ async function edition(name) {
 /** The collection by the number the editor uses, each number's narrations with their translations. */
 async function collection(arabicName, englishName, numberOf) {
   const english = new Map();
-  for (const h of (await edition(englishName)).hadiths) english.set(h.hadithnumber, h.text?.trim() ?? "");
+  const graded = new Map();
+  for (const h of (await edition(englishName)).hadiths) {
+    english.set(h.hadithnumber, h.text?.trim() ?? "");
+    const albani = h.grades?.find((g) => /albani/i.test(g.name))?.grade?.trim();
+    if (albani) graded.set(h.hadithnumber, albani);
+  }
   const out = new Map();
   for (const h of (await edition(arabicName)).hadiths) {
     if (!h.text?.trim()) continue;
     const n = numberOf(h);
     if (!out.has(n)) out.set(n, []);
-    out.get(n).push({ ar: h.text.replaceAll(String.fromCharCode(0x200f), "").trim(), en: english.get(h.hadithnumber) ?? "" });
+    out.get(n).push({
+      ar: h.text.replaceAll(String.fromCharCode(0x200f), "").trim(),
+      en: english.get(h.hadithnumber) ?? "",
+      grade: graded.get(h.hadithnumber) ?? "",
+    });
   }
   return out;
 }
@@ -307,6 +316,13 @@ async function collection(arabicName, englishName, numberOf) {
 const BUKHARI = await collection("ara-bukhari", "eng-bukhari", (h) => String(Math.floor(Number(h.hadithnumber))));
 // Muslim is numbered by ʿAbd al-Bāqī, which the corpus keeps as `arabicnumber`.
 const MUSLIM = await collection("ara-muslim", "eng-muslim", (h) => String(Math.floor(parseFloat(h.arabicnumber))));
+// The four Sunan, each with al-Albānī's grading where the corpus carries one. A
+// hadith with no grading from him is left out, by the owner's ruling.
+const byNumber = (h) => String(Math.floor(Number(h.hadithnumber)));
+const ABU_DAWUD = await collection("ara-abudawud", "eng-abudawud", byNumber);
+const TIRMIDHI = await collection("ara-tirmidhi", "eng-tirmidhi", byNumber);
+const NASAI = await collection("ara-nasai", "eng-nasai", byNumber);
+const IBN_MAJAH = await collection("ara-ibnmajah", "eng-ibnmajah", byNumber);
 
 const COMMON = new Set(
   [
@@ -342,6 +358,10 @@ const NUMBERS = "\\(([\\d٠-٩]{1,5}(?:\\s*[،,و]\\s*[\\d٠-٩]{1,5})*)\\)";
 const TRACED = [
   ["b", new RegExp(`صحيح\\s+البخاري\\s+برقم\\s*${NUMBERS}`, "gu"), BUKHARI],
   ["m", new RegExp(`صحيح\\s+مسلم\\s+برقم\\s*${NUMBERS}`, "gu"), MUSLIM],
+  ["d", new RegExp(`سنن\\s+[أا]بي\\s+داود(?:\\s+برقم)?\\s*${NUMBERS}`, "gu"), ABU_DAWUD],
+  ["t", new RegExp(`سنن\\s+الترمذي(?:\\s+برقم)?\\s*${NUMBERS}`, "gu"), TIRMIDHI],
+  ["n", new RegExp(`سنن\\s+النسائي(?:\\s+برقم)?\\s*${NUMBERS}`, "gu"), NASAI],
+  ["j", new RegExp(`سنن\\s+ابن\\s+ماج[هة](?:\\s+برقم)?\\s*${NUMBERS}`, "gu"), IBN_MAJAH],
 ];
 
 const sahih = AYAT.map(() => []);
@@ -356,7 +376,11 @@ for (let s = 1; s <= 114; s++) {
       paras.forEach((para, i) => {
         for (const note of para.matchAll(NOTE)) {
           const plain = note[1].replace(VOWELS, "");
+          // A hadith in the two Ṣaḥīḥs needs no other; the Sunan are for the rest.
+          let inTheTwo = false;
           for (const [book, re, narrations] of TRACED) {
+            const fromSunan = book !== "b" && book !== "m";
+            if (fromSunan && inTheTwo) continue;
             for (const m of plain.matchAll(re)) {
               for (const raw of m[1].split(/[،,و]/)) {
                 const n = raw.trim().replace(/[٠-٩]/g, (d) => String(DIGITS.indexOf(d)));
@@ -364,9 +388,10 @@ for (let s = 1; s <= 114; s++) {
                 traced++;
                 const around = new Set(tokens([paras[i - 1] ?? "", para, paras[i + 1] ?? ""].join(" ").replace(NOTE, " ")));
                 const h = matching(narrations.get(n), around);
-                if (!h) continue;
+                if (!h || (fromSunan && !h.grade)) continue;
                 kept.add(`${book}${n}`);
-                sahih[s - 1].push([from, to, book, n, h.ar, h.en]);
+                if (!fromSunan) inTheTwo = true;
+                sahih[s - 1].push(fromSunan ? [from, to, book, n, h.ar, h.en, h.grade] : [from, to, book, n, h.ar, h.en]);
               }
             }
           }
@@ -411,10 +436,12 @@ General Public License; its tags are kept here exactly as it writes them.
 - \`roots.json\` — each root's lemmas, their kinds and counts.
 - \`echo/<surah>.json\` — runs of three or more words an ayah shares, word for
   word, with another.
-- \`sahih/<surah>.json\` — the hadith of Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim that Ibn
-  Kathīr quotes on each passage, by the number his editor gives, in the text and
-  translation of [fawazahmed0/hadith-api](https://github.com/fawazahmed0/hadith-api),
-  kept only where the text matches what he quotes.
+- \`sahih/<surah>.json\` — the hadith of al-Bukhārī, Muslim, Abū Dāwūd, al-Tirmidhī,
+  al-Nasāʾī and Ibn Mājah that Ibn Kathīr quotes on each passage, by the number his
+  editor gives, in the text and translation of
+  [fawazahmed0/hadith-api](https://github.com/fawazahmed0/hadith-api), kept only
+  where the text matches what he quotes. Those of the four Sunan carry al-Albānī's
+  grading as that corpus gives it, and one without a grading is left out.
 `,
 );
 

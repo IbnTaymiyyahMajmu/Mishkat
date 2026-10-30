@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { fiqhPlaces, fiqhSection, shamelaUrl, type FiqhPlace } from "@/lib/ulum/fiqh";
 import { useLocale } from "@/lib/i18n";
-import { Cite, Silent } from "./Chapter";
+import { Cite, Deck, Leaves, Silent } from "./Chapter";
 import type { StudyCtx } from "./study";
 import styles from "./AyahStudy.module.css";
 
@@ -81,16 +81,12 @@ function Place({ place, ctx }: { place: FiqhPlace; ctx: StudyCtx }) {
         {place.kitab && !place.head.includes(place.kitab) && <span className={styles.fiqhKitab}>{place.kitab}</span>}
         {place.head && <span>{place.head}</span>}
       </div>
-      <div className={styles.bookText}>
-        {(open && whole ? whole : [place.text]).map((text, i) => (
-          <Quoting key={i} text={text} reference={place.reference} />
-        ))}
-        {place.paragraphs > 1 && (
-          <button type="button" className={styles.more} onClick={toggle}>
-            {open ? t("ulum.less") : t("ulum.more", { count: place.paragraphs - 1 })}
-          </button>
-        )}
-      </div>
+      <Leaves lines={open && whole ? whole : [place.text]} render={(text, i) => <Quoting key={i} text={text} reference={place.reference} />} />
+      {place.paragraphs > 1 && (
+        <button type="button" className={styles.more} onClick={toggle}>
+          {open ? t("ulum.less") : t("ulum.more", { count: place.paragraphs - 1 })}
+        </button>
+      )}
       {down && <Silent>{t("ulum.booksDown")}</Silent>}
       <PlaceCite place={place} ctx={ctx} />
     </div>
@@ -111,7 +107,6 @@ function PlaceCite({ place, ctx }: { place: FiqhPlace; ctx: StudyCtx }) {
 
 export function HanbaliPlaces({ read, ctx }: { read: HanbaliRead; ctx: StudyCtx }) {
   const { t } = useLocale();
-  const [all, setAll] = useState(false);
   const { places } = read;
 
   if (read.failed) return <Silent>{t("ulum.booksDown")}</Silent>;
@@ -125,20 +120,10 @@ export function HanbaliPlaces({ read, ctx }: { read: HanbaliRead; ctx: StudyCtx 
     );
   }
 
-  // Each book's first place, so that the second is not hidden behind the first.
-  const firsts = places.filter((p, i) => places.findIndex((q) => q.id === p.id) === i);
-  const shown = all ? places : firsts;
   return (
     <>
       <p className={styles.fromBook}>{t("ulum.ahkam.hanbaliNote")}</p>
-      {shown.map((place) => (
-        <Place key={`${place.id}${place.section}`} place={place} ctx={ctx} />
-      ))}
-      {places.length > firsts.length && (
-        <button type="button" className={styles.more} onClick={() => setAll(!all)}>
-          {all ? t("ulum.less") : t("ulum.ahkam.morePlaces", { count: places.length - firsts.length })}
-        </button>
-      )}
+      <Deck items={places.map((place) => <Place key={`${place.id}${place.section}`} place={place} ctx={ctx} />)} wide />
     </>
   );
 }

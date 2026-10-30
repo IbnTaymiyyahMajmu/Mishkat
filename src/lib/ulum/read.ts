@@ -475,7 +475,8 @@ export function namedWords(text: string, words: string[]): Placed[] {
 
 // ── the transmitted reports: Ibn Abī Ḥātim, then al-Ṭabarī and al-Durr ───────
 
-export type Tier = "sahabah" | "tabiun" | "atba" | "marfu" | "unknown";
+/** `out` is a report the owner has ruled off the page: Muqātil ibn Sulaymān's. */
+export type Tier = "sahabah" | "tabiun" | "atba" | "marfu" | "unknown" | "out";
 
 export interface Report {
   /** His number for the report, where the edition numbers them. */
@@ -484,8 +485,10 @@ export interface Report {
   /** The phrase of the ayah the report is given under. */
   phrase: string;
   at: Placed | null;
-  /** The last authority in the chain, as the chain names him. */
+  /** The last authority in the chain. */
   who: string;
+  /** What the chain itself calls him, where that is a bare name the page resolved. */
+  named: string;
   tier: Tier;
   /** «ورُوِيَ عَنْ مُجاهِدٍ، وقَتادَةَ، نَحْوُ ذَلِكَ» — who else is reported to say it. */
   also: string;
@@ -499,10 +502,10 @@ export interface Report {
  *
  * Only the last link of a chain is looked up, and it must be the name: a chain
  * whose last link is a man not listed here is not credited to the listed man
- * before him. A name that could be two men — a bare «عبد الله», «علي», «جابر»,
- * «سعيد», or «مقاتل», who may be Ibn Ḥayyān or Ibn Sulaymān — is not listed
- * either. Such a report is "unknown": the page shows it with its chain and
- * without a generation rather than guess one.
+ * before him. A bare name that could be two men — «عبد الله», «علي», «جابر»,
+ * «سعيد», «مقاتل» — is resolved by `BARE` below, and the page says so. A name not
+ * placed either way is "unknown": the page shows it with its chain and without a
+ * generation.
  */
 const SAHABAH = [
   "ابن عباس", "عبد الله بن عباس", "ابن مسعود", "عبد الله بن مسعود", "علي بن ابي طالب", "عمر بن الخطاب", "عمر",
@@ -514,7 +517,7 @@ const SAHABAH = [
   "عبادة بن الصامت", "ابن ابي اوفى", "عبد الله بن ابي اوفى", "عبد الله بن سلام", "ابي برزة", "النعمان بن بشير",
   "عقبة بن عامر", "ابي ايوب", "سعد بن ابي وقاص", "جندب", "سمرة بن جندب", "ابي قتادة", "عبد الرحمن بن عوف",
   "المغيرة بن شعبة", "عدي بن حاتم", "بريدة", "ثوبان", "سهل بن سعد", "رافع بن خديج", "كعب بن مالك", "صهيب",
-  "ابي الطفيل", "علي رضي الله عنه", "علي رضى الله عنه", "عليا رضي الله عنه",
+  "ابي الطفيل", "ابو الطفيل", "علي رضي الله عنه", "علي رضى الله عنه", "عليا رضي الله عنه",
 ];
 const TABIUN = [
   "مجاهد", "مجاهد بن جبر", "قتادة", "قتادة بن دعامة", "الحسن", "الحسن البصري", "عكرمة", "عكرمة مولى ابن عباس",
@@ -530,11 +533,15 @@ const TABIUN = [
   "قتاده", "القرظي", "يزيد بن رومان", "عبيد بن عمير", "عبد الله بن عبيد بن عمير", "عمرو بن ميمون", "ابي العبيدين",
   "عطاء بن يسار", "شهر بن حوشب", "الربيع بن خثيم", "ابراهيم التيمي", "ابي الضحى", "عبد الله بن شداد", "مصعب بن سعد",
   "ابي ميسرة", "ابي قلابة", "طلق بن حبيب", "علي بن ربيعة", "شريح", "خالد بن عرعرة",
+  "محمد بن جعفر بن الزبير", "مالك بن دينار", "ابن ابي مليكة", "الحكم", "وهب", "ابي عبيدة", "ابي الجوزاء",
+  "سالم بن ابي الجعد", "ابن المسيب", "القاسم بن ابي بزة", "عبد الله بن الحارث", "عبد الرحمن بن ابي ليلى", "خيثمة",
+  "ثابت", "القاسم بن محمد", "ابي عبد الرحمن", "ابي اسحاق", "ابي رجاء", "شمر بن عطية", "شمر", "عاصم", "سليمان التيمي",
+  "عباد بن عبد الله بن الزبير", "علي بن رباح", "ابي نجيح",
 ];
 const ATBA = [
   "ابن جريج", "سفيان", "سفيان الثوري", "الثوري", "ابن عيينة", "سفيان بن عيينة", "مقاتل بن حيان", "ابن زيد",
   "عبد الرحمن بن زيد", "الاوزاعي", "مالك بن انس", "مالك", "سعيد بن عبد العزيز", "ابن ابي نجيح", "خصيف", "معمر",
-  "معمر بن راشد",
+  "معمر بن راشد", "عبد الصمد بن معقل", "زهير بن محمد", "الكلبي", "ابي روق", "ابي جعفر الرازي",
 ];
 
 const NAMES = new Map<string, Tier>([
@@ -569,8 +576,55 @@ export function chainOf(report: string): string {
   return plain.slice(0, chainEnd(plain));
 }
 
+/** «عن أبيه»: whose father, by the son who hands it on. */
+const FATHERS: [RegExp, string][] = [
+  [/ابن\s+طاوس/u, "طاوس"],
+  [/عثمان\s+بن\s+عطاء/u, "عطاء الخراساني"],
+  [/هشام/u, "عروة بن الزبير"],
+  [/المعتمر/u, "سليمان التيمي"],
+  [/يحيى\s+بن\s+عباد/u, "عباد بن عبد الله بن الزبير"],
+  [/جعفر\s+بن\s+محمد/u, "محمد بن علي"],
+  [/ابن\s+ابي\s+جعفر/u, "ابي جعفر الرازي"],
+  [/عبد\s+الرحمن\s+بن\s+زيد|ابن\s+زيد/u, "زيد بن اسلم"],
+  [/مصعب\s+بن\s+سعد/u, "سعد بن ابي وقاص"],
+  [/موسى\s+بن\s+علي/u, "علي بن رباح"],
+  [/سالم/u, "ابن عمر"],
+  [/ابن\s+ابي\s+نجيح/u, "ابي نجيح"],
+];
+
+/**
+ * Who a bare name is. The chains of tafsir have their conventions, and the man
+ * who hands a report on usually settles it: «عبد الله» in these chains is Ibn
+ * Masʿūd, «علي» is the Companion, and «سعيد» is Ibn Jubayr, or Ibn al-Musayyab from
+ * Qatāda and al-Zuhrī. «مقاتل» is Ibn Ḥayyān in Ibn Abī Ḥātim's chains; elsewhere he
+ * may be Ibn Sulaymān, whom the owner has ruled off the page.
+ */
+const BARE: Record<string, (before: string, line: string) => string> = {
+  "عبد الله": () => "ابن مسعود",
+  "عبد الله بن مسعود": () => "ابن مسعود",
+  علي: () => "علي بن ابي طالب",
+  عليا: () => "علي بن ابي طالب",
+  سعيد: (before) => (/قتادة|الزهري|ابن\s+شهاب|يحيى\s+بن\s+سعيد/u.test(before) ? "سعيد بن المسيب" : "سعيد بن جبير"),
+  جابر: () => "جابر بن عبد الله",
+  جابرا: () => "جابر بن عبد الله",
+  مقاتل: (before, line) => (/بكير/u.test(before) || /ابن\s+ابي\s+حاتم/u.test(line) ? "مقاتل بن حيان" : "مقاتل بن سليمان"),
+  ابيه: (before) => FATHERS.find(([son]) => son.test(before))?.[1] ?? "",
+  محمد: (before) => (/ايوب|ابن\s+عون|عوف|هشام/u.test(before) ? "محمد بن سيرين" : ""),
+  عمرو: (before) => (/سفيان/u.test(before) ? "عمرو بن دينار" : ""),
+};
+
+/** A bare name, once the man before it has been consulted. */
+function resolve(name: string, before: string, line: string): { who: string; tier: Tier; named: string } | null {
+  const rule = BARE[name];
+  const who = rule ? rule(before, line) : "";
+  if (!who) return null;
+  if (who === "مقاتل بن سليمان") return { who, tier: "out", named: name };
+  const placed = place(who);
+  return placed ? { ...placed, named: name } : null;
+}
+
 /** Who a chain ends at: its last link, if that is a man the page can place. */
-export function authorityOf(report: string): { who: string; tier: Tier } {
+export function authorityOf(report: string): { who: string; tier: Tier; named: string } {
   const plain = bare(report).replace(/[أإآ]/g, "ا");
   const end = chainEnd(plain);
   const links = [...plain.slice(0, end).matchAll(LINK)];
@@ -586,15 +640,21 @@ export function authorityOf(report: string): { who: string; tier: Tier } {
       .replace(/\s+ب?(?:نحوه|مثله)\.?$|\.$/u, "")
       .trim();
   }
-  if (!name) return { who: "", tier: "unknown" };
-  if (RAISED.test(plain.slice(from, end + 70))) return { who: name, tier: "marfu" };
+  if (!name) return { who: "", tier: "unknown", named: "" };
+  if (RAISED.test(plain.slice(from, end + 70))) return { who: name, tier: "marfu", named: "" };
+  const lastLink = links.findLastIndex((l) => (l.index ?? 0) + l[0].length <= from - 1 || (l.index ?? 0) + l[0].length < from);
+  const before = lastLink >= 0 ? plain.slice((links[lastLink].index ?? 0) + links[lastLink][0].length, from).split(/[،,]|\sعن\s/u)[0].trim() : "";
   // «ثنا سلمة، قال محمد بن إسحاق: …», «عن ابن جريج، قال: قال مجاهد: …» — the chain
   // hands on to a man named after «قال», and he is its last link.
-  const after = /^\s*(?:قال[:：]?\s+)+([^:：،,]{2,40})/u.exec(plain.slice(end));
+  const after = /^\s*(?:قال[:：،,]?\s+)+([^:：،,]{2,40})/u.exec(plain.slice(end));
   const handedOn = after ? plain.slice(end + after[0].length).replace(/^[،,]\s*/u, "") : "";
   // «قال ابن زيد، أخبرني ابن لهيعة، عن…» — and he only hands it on again.
   if (after && LINK_NEXT.test(handedOn)) return authorityOf(handedOn);
-  return (after && place(after[1].trim())) || place(name) || { who: name, tier: "unknown" };
+  const named = (spelled: string) => {
+    const known = place(spelled);
+    return known ? { ...known, named: "" } : null;
+  };
+  return (after && named(after[1].trim())) || resolve(name, before, plain) || named(name) || { who: name, tier: "unknown", named: "" };
 }
 
 /** A name, if it is one of those listed: the whole name, or one the list's two words begin. */
@@ -653,8 +713,8 @@ export function readReports(text: string, words: string[]): Report[] {
     const also = alsoAt >= 0 ? body.slice(alsoAt + 1).trim() : "";
     // «وبه» is the chain of the report before, not repeated.
     const prior = /^\s*وب(?:ه|ِهِ)(?=[\s:،,])/u.test(body) ? out[out.length - 1] : undefined;
-    const { who, tier } = prior ?? authorityOf(main);
-    out.push({ n: r ? (r[1] ?? r[2]) : "", text: main.trim(), phrase, at, who, tier, also });
+    const { who, tier, named } = prior ?? authorityOf(main);
+    out.push({ n: r ? (r[1] ?? r[2]) : "", text: main.trim(), phrase, at, who, named, tier, also });
   }
   return out;
 }
@@ -734,7 +794,7 @@ function readLines(text: string, words: string[], isReport: RegExp, runsOn: bool
       last.also = last.also ? `${last.also} ${body}` : body;
       continue;
     }
-    const { who, tier } = authorityOf(body);
+    const { who, tier, named } = authorityOf(body);
     let own: { quote: string; found: Placed | null } | null = null;
     for (const m of body.matchAll(QUOTED)) {
       const got = quotation(m);
@@ -752,6 +812,7 @@ function readLines(text: string, words: string[], isReport: RegExp, runsOn: bool
       phrase: own ? own.quote : phrase,
       at: own ? own.found : at,
       who,
+      named,
       tier,
       also: "",
     });

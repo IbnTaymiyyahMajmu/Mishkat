@@ -251,7 +251,10 @@ export function AyahStudy() {
       const w = next.w ?? (next.v ? 0 : sel);
       const d = next.depth ?? (scholar ? "scholar" : "student");
       const q = [`v=${vk}`, w > 1 ? `w=${w}` : "", d === "student" ? "depth=student" : ""].filter(Boolean).join("&");
-      router.replace(`/ayah/?${q}`, { scroll: !!next.v });
+      const turn = () => router.replace(`/ayah/?${q}`, { scroll: !!next.v });
+      // A new ayah is a page turned. Where the browser can, it says so.
+      if (next.v && "startViewTransition" in document && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.startViewTransition(turn);
+      else turn();
     },
     [key, sel, scholar, router],
   );
@@ -428,6 +431,7 @@ export function AyahStudy() {
 
   return (
     <div className={styles.page}>
+      <div className={styles.lampThread} aria-hidden />
       <div className={styles.scroller} ref={scroller} data-scroller>
         {/* ── where this is ─────────────────────────────────────────────── */}
         <div className={styles.placeBar} ref={placeRef}>

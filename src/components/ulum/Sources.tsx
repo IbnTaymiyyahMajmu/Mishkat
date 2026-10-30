@@ -6,6 +6,7 @@ import { TAFSIR_APP } from "@/lib/quran/tafsirApp";
 import { useLocale } from "@/lib/i18n";
 import { Chapter } from "./Chapter";
 import { useCitations, type Citations, type StudyCtx } from "./study";
+import { whoStyle } from "./who";
 import styles from "./AyahStudy.module.css";
 
 /**
@@ -32,10 +33,11 @@ export function Sources({ ctx, cited }: { ctx: StudyCtx; cited: Citations }) {
     >
       <div className={styles.ledger}>
         {list.map(({ id, places, b }, k) => (
-          <div key={id} className={styles.ledgerRow}>
+          <div key={id} className={styles.ledgerRow} style={whoStyle(id)}>
             <span className={styles.ledgerNum}>{String(k + 1).padStart(2, "0")}</span>
             <div className={styles.ledgerBody}>
               <div className={styles.ledgerHead}>
+                <span className={styles.whoDot} aria-hidden />
                 <i>{b!.name}</i>
                 <span lang="ar" className={styles.ledgerAr}>
                   {b!.titleArabic ?? b!.nameArabic}

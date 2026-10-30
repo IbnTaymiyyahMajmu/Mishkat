@@ -312,14 +312,14 @@ export function Lughah({ ctx }: { ctx: StudyCtx }) {
         {aysarWords.length > 0 && ctx.scholar && (
           <div className={styles.subBlock}>
             <div className={styles.kicker}>{t("ulum.gloss.aysar")}</div>
-            <BookText lines={aysarWords.map((w) => `${w.quote}: ${w.text}`)} fold={6} />
+            <BookText lines={aysarWords.map((w) => `${w.quote}: ${w.text}`)} />
             <Cite id="aysar-altafasir" ctx={ctx} range={aysar.p} />
           </div>
         )}
         {ctx.scholar && inAyah(dLughah, darwish, n).length > 0 && (
           <div className={styles.subBlock}>
             <div className={styles.kicker}>{t("ulum.gloss.darwish")}</div>
-            <BookText lines={inAyah(dLughah, darwish, n).map(({ r }) => `(${r.quote}) ${r.text}`)} fold={3} />
+            <BookText lines={inAyah(dLughah, darwish, n).map(({ r }) => `(${r.quote}) ${r.text}`)} />
             <Cite id="iraab-aldarweesh" ctx={ctx} range={darwish.p} />
           </div>
         )}

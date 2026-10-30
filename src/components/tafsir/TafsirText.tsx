@@ -1,5 +1,6 @@
 "use client";
 
+import { Marked } from "@/components/ulum/Weak";
 import { Fragment, useState } from "react";
 import type { Para } from "@/lib/quran/types";
 import { EDITOR_NOTE, SECTION_BREAK } from "@/lib/quran/tafsirApp";
@@ -36,14 +37,14 @@ const QURAN = /(﴿[^﴿﴾]*﴾)/g;
 const VERSE_LINE = /^[^∗*\n]{6,90}\s[∗*]\s[^∗*\n]{6,90}$/;
 
 function withQuran(text: string, key: string) {
-  if (!text.includes("﴿")) return text;
+  if (!text.includes("﴿")) return <Marked key={key} text={text} />;
   return text.split(QURAN).map((part, i) =>
     i % 2 ? (
       <span key={`${key}-${i}`} className={styles.quran}>
         {part}
       </span>
     ) : (
-      part
+      <Marked key={`${key}-m${i}`} text={part} />
     ),
   );
 }

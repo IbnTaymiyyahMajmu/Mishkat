@@ -223,7 +223,7 @@ export function Munasabat({ ctx }: { ctx: StudyCtx }) {
         <Block kicker={t("ulum.biqai.kicker")} title={t("ulum.biqai.title")}>
           {biqai.p ? (
             <>
-              <BookText text={biqai.p.text} fold={4} />
+              <BookText text={biqai.p.text} />
               <Cite id="nathm-aldurar" ctx={ctx} range={biqai.p} />
             </>
           ) : (

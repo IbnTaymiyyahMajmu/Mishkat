@@ -34,7 +34,7 @@ for (const name of await readdir(LIB)) {
   await writeFile(new URL(name, TMP), src);
 }
 const read = await import(new URL("read.ts", TMP).href);
-const { readViews } = await import(new URL("views.ts", TMP).href);
+const { readViews, readTabariViews } = await import(new URL("views.ts", TMP).href);
 const { weakOf } = await import(new URL("grades.ts", TMP).href);
 const { skeleton, quoteSkeleton } = await import(new URL("skeleton.ts", TMP).href);
 
@@ -170,7 +170,7 @@ for await (const [s, from, to, text] of passages("ulum", "qiraat-almawsoah")) {
   }
 }
 
-const tiers = { sahabah: 0, tabiun: 0, atba: 0, marfu: 0, unknown: 0 };
+const tiers = { sahabah: 0, tabiun: 0, atba: 0, marfu: 0, unknown: 0, out: 0 };
 let reports = 0;
 let phrased = 0;
 for await (const [s, from, to, text] of passages("tafsir", "ibn-abi-hatim")) {
@@ -190,8 +190,8 @@ for await (const [s, from, to, text] of passages("tafsir", "ibn-abi-hatim")) {
 const OF_A_GENERATION = new Set(["sahabah", "tabiun", "atba"]);
 const speaking = { hatim: new Set(), tabari: new Set(), durr: new Set() };
 const otherTiers = {
-  tabari: { sahabah: 0, tabiun: 0, atba: 0, marfu: 0, unknown: 0 },
-  durr: { sahabah: 0, tabiun: 0, atba: 0, marfu: 0, unknown: 0 },
+  tabari: { sahabah: 0, tabiun: 0, atba: 0, marfu: 0, unknown: 0, out: 0 },
+  durr: { sahabah: 0, tabiun: 0, atba: 0, marfu: 0, unknown: 0, out: 0 },
 };
 async function reach(id, reader, name) {
   for await (const [s, from, to, text] of passages("tafsir", id)) {
@@ -219,7 +219,14 @@ const VOWELS = /[\u064B-\u0652\u0670\u0640]/g;
 const STATED = /(قولان|قولين|وجهان|وجهين|تأويلان|تأويلين|(?:ثلاثة|أربعة|خمسة|ستة|سبعة|ثمانية|تسعة|عشرة)\s+(?:أقوال|أوجه|تأويلات|أقاويل))/g;
 const differing = new Set();
 const lists = {};
-for (const [shelf, id] of [["tafsir", "zad-almaseer"], ["tafsir", "almawirdee"], ["ulum", "aldur-almasoon"]]) {
+for (const [shelf, id, reader] of [
+  ["tafsir", "tabari", readTabariViews],
+  ["tafsir", "zad-almaseer", readViews],
+  ["tafsir", "samaani", readViews],
+  ["tafsir", "qurtubi", readViews],
+  ["tafsir", "adwaa-albayan", readViews],
+  ["ulum", "aldur-almasoon", readViews],
+]) {
   const t = (lists[id] = { said: 0, read: 0, placed: 0, named: 0, views: 0 });
   for await (const [s, from, to, text] of passages(shelf, id)) {
     if (!wanted(s, from, to)) continue;
@@ -227,7 +234,7 @@ for (const [shelf, id] of [["tafsir", "zad-almaseer"], ["tafsir", "almawirdee"],
     const words = await range(s, from, to);
     const counts = [];
     for (let a = from; a <= to; a++) counts.push((await range(s, a, a)).length);
-    for (const d of readViews(text, words)) {
+    for (const d of reader(text, words)) {
       t.read++;
       t.views += d.views.length;
       t.named += d.views.filter((v) => v.holders.length).length;

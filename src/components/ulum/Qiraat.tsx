@@ -4,6 +4,7 @@ import { useMemo, useRef } from "react";
 import { namedWords, readMawsuah } from "@/lib/ulum/read";
 import { bare } from "@/lib/ulum/skeleton";
 import { useLocale } from "@/lib/i18n";
+import { leftOut } from "@/lib/ulum/books";
 import { Block, BookText, Chapter, Cite, Line } from "./Chapter";
 import { local, useBook, useNear, type StudyCtx } from "./study";
 import styles from "./AyahStudy.module.css";
@@ -136,7 +137,8 @@ export function Qiraat({ ctx }: { ctx: StudyCtx }) {
             {books.map(({ id, read }) =>
               read.p ? (
                 <article key={id} className={styles.card}>
-                  {ctx.scholar ? <BookText text={read.p.text} fold={3} /> : <p className={styles.cardText}>{t("ulum.qbooks.student")}</p>}
+                  {ctx.scholar ? <BookText text={read.p.text} /> : <p className={styles.cardText}>{t("ulum.qbooks.student")}</p>}
+                  {leftOut(id, ctx.surah, ctx.ayah) && <p className={styles.fromBook}>{t("ulum.qiraat.leftOut")}</p>}
                   <Cite id={id} ctx={ctx} range={read.p} />
                 </article>
               ) : null,

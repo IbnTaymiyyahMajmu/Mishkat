@@ -117,6 +117,31 @@ export function file<T>(url: string): Promise<T> {
 
 type Stored = [from: number, to: number, text: string];
 
+/** Any Arabic, whatever vowels the copy has put on it. */
+const loose = (words: string) => new RegExp([...words].map((c) => (c === " " ? "\\s+" : `${c}[\\u064B-\\u0652\\u0670]*`)).join(""), "u");
+
+/**
+ * What is left out of a book on the owner's ruling, and says so where it was. Al-
+ * Kirmānī on 6:114 argues that the Qurʾān was not truly sent down, which is not
+ * the position of Ahl al-Sunnah. See section B of `docs/ULUM-REVIEW.md`.
+ */
+const LEFT_OUT: { id: string; surah: number; ayah: number; from: RegExp; to: RegExp }[] = [
+  { id: "mafateeh-alaghanee", surah: 6, ayah: 114, from: loose("فإن قيل: يجب أن يكون قوله مخلوقا"), to: loose("تنزيل وإنزال لا منزل") },
+];
+
+export function leftOut(id: string, surah: number, ayah: number): boolean {
+  return LEFT_OUT.some((x) => x.id === id && x.surah === surah && x.ayah === ayah);
+}
+
+function withoutLeftOut(id: string, surah: number, ayah: number, text: string): string {
+  const out = LEFT_OUT.find((x) => x.id === id && x.surah === surah && x.ayah === ayah);
+  if (!out) return text;
+  const start = text.search(out.from);
+  const end = text.slice(Math.max(0, start)).match(out.to);
+  if (start < 0 || !end) return text;
+  return `${text.slice(0, start).trimEnd()} ${text.slice(start + (end.index ?? 0) + end[0].length).replace(/^[.\s]+/u, "")}`;
+}
+
 /** A book's passage on an ayah, as stored: the ayat it covers, and its text. */
 export interface Passage {
   id: string;
@@ -138,5 +163,5 @@ export async function passage(id: string, surah: number, ayah: number): Promise<
   if (first === undefined) return null;
   const part = await file<{ passages: Stored[] }>(`${home}/${id}/${surah}-${first}.json`);
   const found = part.passages.find(([from, to]) => from <= ayah && ayah <= to);
-  return found ? { id, from: found[0], to: found[1], text: found[2] } : null;
+  return found ? { id, from: found[0], to: found[1], text: withoutLeftOut(id, surah, ayah, found[2]) } : null;
 }

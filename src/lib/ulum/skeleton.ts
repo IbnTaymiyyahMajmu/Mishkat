@@ -68,6 +68,19 @@ export function bare(text: string): string {
   return text.replace(MARKS, "");
 }
 
+/** Arabic with no marks and its hamzas on plain alifs, with the way back to each letter. */
+export function plainMap(text: string): { plain: string; at: number[] } {
+  const at: number[] = [];
+  let plain = "";
+  for (let i = 0; i < text.length; i++) {
+    const kept = bare(text[i]);
+    if (!kept) continue;
+    plain += kept.replace(/[أإآ]/g, "ا");
+    at.push(i);
+  }
+  return { plain, at };
+}
+
 /**
  * The letters a grammarian names when he parses a piece of a word rather than
  * the word: «(الواو) عاطفة», «(الهاء) ضمير مفعول به», «(هم) مضاف إليه». The

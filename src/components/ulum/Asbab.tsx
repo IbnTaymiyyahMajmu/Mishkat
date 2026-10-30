@@ -60,7 +60,7 @@ export function Asbab({ ctx, prevKey, nextKey }: { ctx: StudyCtx; prevKey: strin
           </div>
           <div>
             {ctx.scholar ? (
-              <BookText text={wahidi.p.text} fold={3} />
+              <BookText text={wahidi.p.text} />
             ) : (
               <p className={styles.prose}>{t("ulum.asbab.student")}</p>
             )}

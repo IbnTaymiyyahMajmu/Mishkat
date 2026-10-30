@@ -57,7 +57,7 @@ export function Ahkam({ ctx }: { ctx: StudyCtx }) {
                     <div className={`${styles.schoolName} ${styles.whoName}`}>{t(s.school)}</div>
                     {read.p ? (
                       ctx.scholar ? (
-                        <BookText text={read.p.text} fold={2} />
+                        <BookText text={read.p.text} />
                       ) : (
                         <p className={styles.cardText}>{t("ulum.ahkam.takes")}</p>
                       )
@@ -80,7 +80,7 @@ export function Ahkam({ ctx }: { ctx: StudyCtx }) {
                 {LATER.map((id, k) =>
                   later[k].p ? (
                     <article key={id} className={styles.card}>
-                      {ctx.scholar ? <BookText text={later[k].p!.text} fold={3} /> : <p className={styles.cardText}>{t("ulum.ahkam.takes")}</p>}
+                      {ctx.scholar ? <BookText text={later[k].p!.text} /> : <p className={styles.cardText}>{t("ulum.ahkam.takes")}</p>}
                       <Cite id={id} ctx={ctx} range={later[k].p} />
                     </article>
                   ) : null,

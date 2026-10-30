@@ -6,18 +6,19 @@ are for answering by, and will not move.
 
 | Section | Status |
 |---|---|
-| **A** What was left out of the handoff, and why | **For you to confirm** — the positions matrix is now K |
-| **B** Who is on the shelf | **For you to confirm** — al-Samīn, al-Rāzī, Ibn ʿĀshūr and others |
-| **C** Weak reports inside the books | **Ruled: show them, labelled**, with why (L) |
-| **D** The Sunnah tier | **For you to confirm** |
-| **E** The generations of the reports | **For you to confirm** — a list to check. Al-Durr is **ruled in, labelled** |
-| **F** The sentences of an ayah | **For you to confirm** |
-| **G** The fourth school | **Added, for you to confirm**. Ibn Taymiyya and Ibn al-Bannāʾ are **ruled out** |
-| **H** Page numbers | **For you to confirm** |
+| **A** What was left out of the handoff | **Ruled: stays out** |
+| **B** Who is on the shelf | **Ruled** — see the section; one question left on al-Jaṣṣāṣ |
+| **C** Weak reports | **Ruled: shown, and labelled** (L) |
+| **D** The Sunnah column | **Ruled: the Sunan added**, with al-Albānī's gradings |
+| **E** The generations of the reports | **Ruled: the list stands, bare names resolved** |
+| **F** The sentences of an ayah | **Ruled: every scholar's count shown** |
+| **G** The fourth school | **Ruled: the column stands** |
+| **H** Page numbers | **Ruled: citing by ayah is fine** |
 | **I** The mirror's permission | **Ruled: verbal permission, cite the sources** |
-| **J** The other three languages | Unreviewed, as before |
-| **K** Where the scholars differ | **New, for you to confirm** |
-| **L** Weak reports, labelled | **New, for you to confirm** |
+| **J** The other three languages | **Ruled: kept as they are** |
+| **K** Where the scholars differ | Built on your rulings; al-Māwardī removed |
+| **L** Weak reports, labelled | Built on your rulings |
+| **M** What each scholar was | **New, please check the list** |
 
 **What is not in doubt**, so you need not look at it:
 
@@ -54,12 +55,12 @@ nothing, so these gaps are the books', not missing work:
 | On the page | Ayat | Of 6,236 |
 |---|---:|---:|
 | Words, roots and forms; grammar; rhetoric; the five commentators; benefits; al-Biqāʿī | 6,236 | 100% |
-| The Companions and Followers, from three books (E) | 5,139 | 82.4% |
+| The Companions and Followers, from three books (E) | 5,162 | 82.8% |
 | Qatāda | 4,679 | 75.0% |
-| Differences the books record (K) | 4,180 | 67.0% |
 | Runs of words shared with another ayah | 3,964 | 63.6% |
+| Differences the books record (K) | 3,279 | 52.6% |
 | The readings, any of the four books | 2,830 | 45.4% |
-| The Sunnah column, al-Bukhārī and Muslim | 2,363 | 37.9% |
+| The Sunnah column, the Ṣaḥīḥs and Sunan | 2,865 | 45.9% |
 | Rulings, any book | 2,157 | 34.6% |
 | Rulings, any of the four schools | 1,639 | 26.3% |
 | Occasions of revelation, al-Wāḥidī | 539 | 8.6% |
@@ -68,58 +69,42 @@ nothing, so these gaps are the books', not missing work:
 
 ## A. What was left out of the handoff, and why
 
-Your master prompt's first rule is "repeat what a source recorded, and add
-nothing of your own", and it says no machine-written gloss may pass as a
-scholar's words. The handoff's own data file says its page numbers are
-"indicative and must be verified". So these parts were **not** carried over:
-
-1. **Everything in `kursi-data.js` and `ikhlas-data.js`.** Its English tafsīr,
-   summaries, positions and volume and page numbers were written in the mockup
-   and could not be traced. Nothing from those files is on the site.
-2. **The student and scholar tafsīr, sentence by sentence.** To do this for
-   6,236 ayat I would have had to write it. The books are shown instead. The
-   meaning under the ayah is your chosen translation, whole.
-3. **The positions matrix** (who adopts or reports which view). I could not write
-   this for every ayah without judging what each commentator held. Your ruling of
-   2026-10-30 asked for the differences on every ayah, and K now gives them from
-   the books that record them. The measured table stays beside it.
-4. **Madd bars, reader by reader.** I had no source open to cite for the
-   lengths, and would have been giving them from memory.
-5. **"Counted in the ayah"** (the Names of Allah in 2:255, and *nafy* and
-   *ithbāt*). This was hand-compiled for one ayah and has no general source.
-6. **The hand-written sayings and benefits for 2:255 and 112.** Chapter eleven
-   holds five books' benefits in their own words instead, nothing composed.
-
-**Rule on:** is this the right call? If you want summaries written for
-particular ayat, I can do that as a labelled, hand-checked layer, one ayah at a
-time, but not honestly for all 6,236.
+**Ruled 2026-10-30: it stays out.** You said the handoff's data were guides to help,
+not something to take. So its English tafsīr, summaries, positions, page numbers,
+madd bars and "counted in the ayah" are not on the site. Chapter eleven holds the
+books' own benefits instead.
 
 ## B. Who is on the shelf
 
-You said to consult what I needed. Eleven books were added, in a shelf of their
-own (`src/lib/quran/ulumWorks.json`) so the tafsir library is unchanged:
+**Ruled 2026-10-30.** Eleven books were added in a shelf of their own
+(`src/lib/quran/ulumWorks.json`): the grammars of al-Naḥḥās, al-Samīn, al-Ṣāfī,
+Darwīsh, al-Daʿʿās, al-Iʿrāb al-muyassar and al-Kharrāṭ, and the readings of Ibn
+al-Jazarī, al-Kirmānī and al-Abyārī.
 
-- **Iʿrāb:** al-Naḥḥās, al-Samīn al-Ḥalabī, al-Ṣāfī's al-Jadwal, Darwīsh,
-  al-Daʿʿās and his colleagues, al-Iʿrāb al-muyassar, al-Kharrāṭ's al-Mujtabā.
-- **Qirāʾāt:** Ibn al-Jazarī's al-Nashr and Taḥbīr al-taysīr, al-Kirmānī,
-  al-Abyārī.
+1. **Al-Rāzī, Ibn ʿĀshūr and Abū al-Suʿūd stay**, labelled (M). You said to "add them
+   in"; the study page has them. I have **not** changed the introductions.
+2. **Al-Samīn** is labelled Ashʿarī in creed and Shāfiʿī in fiqh. **Al-Naḥḥās** is
+   labelled Ahl al-Sunnah, as you ruled, whatever tafsir.app's label says.
+3. **Al-Māwardī is off the page.** He stays in the tafsir library, where he was
+   before this work; say if you want him out of that too.
+4. **Al-Kirmānī: two different men.** Our book is *Mafātīḥ al-aghānī* by Abū al-ʿAlāʾ
+   al-Kirmānī (d. after 563 AH), a Ḥanafī. The *Lubāb al-tafāsīr* and *Gharāʾib
+   al-tafsīr* you described are by Tāj al-Qurrāʾ Maḥmūd ibn Ḥamza al-Kirmānī, which is
+   not on the shelf. I still checked ours as you asked, on every creed-sensitive word
+   across its 657 passages. One passage goes against Ahl al-Sunnah: at 6:114 he says
+   the Qurʾān was not truly sent down («ظاهره مجاز… بل القرآن تنزيل وإنزال لا منزل»).
+   It is **left out**, and a note on that ayah says so. The rest is readings.
+5. **Al-Iʿrāb al-muyassar's author is not confirmed.** One listing ties a book of
+   nearly that name to Muḥammad al-Ṭayyib al-Ibrāhīm, but I found no copy to compare
+   the text with, and an exact-text search matched nothing. The page still says
+   tafsir.app names no author. It will say his name the moment a copy matches.
+6. **Al-Kashshāf, al-Akhfash and Muqātil ibn Sulaymān stay out.** A chain ending at a
+   bare «مقاتل» that cannot be Ibn Ḥayyān is now taken to be him and left off (E).
+   Ibn al-Jawzī's lists do name Muqātil in places, as his book wrote it.
 
-Points for you:
-
-1. tafsir.app labels **al-Samīn** Ashʿarī and calls **al-Naḥḥās** "mixed". They
-   are here for grammar, not creed.
-2. **Chapter four** shows Ibn ʿĀshūr and Abū al-Suʿūd, and **chapter eight** has
-   al-Rāzī among its five. Your introductions exclude them, but your handoff
-   names al-Rāzī and Ibn ʿĀshūr, so I followed the handoff.
-3. **Al-Kirmānī** is in tafsir.app's catalogue with no creed given. I have not
-   looked into him.
-4. **Al-Iʿrāb al-muyassar** has no author named on tafsir.app, and the page says
-   so rather than guess. If you know who wrote it, tell me.
-5. **Al-Kashshāf, al-Akhfash and Muqātil ibn Sulaymān stay out**, as you ruled.
-   A chain ending at a bare «مقاتل», which might be him, is not given a
-   generation (see E).
-6. **The lexicons** are read from al-nuqta, as the word study page reads them.
-   The English beside each is its translation, and the page says so.
+**One question:** al-Jaṣṣāṣ, the Ḥanafī column, was also accused of leaning Muʿtazilī,
+as far as I recall. You removed al-Māwardī on that ground. He has no creed label for
+now. Should he stay, with what label?
 
 ## C. Weak reports inside the books
 
@@ -164,67 +149,55 @@ else.
   stay in his text in chapter eight. Nothing is lost, but the column can say
   "no report" where he does mention one.
 
-**Rule on:** do you want the four Sunan added, by al-Albānī's grading? That is
-possible with the same check. I left them out because you asked for his grading
-and it needs care with which grades the corpus carries.
+**Ruled 2026-10-30: the Sunan are in, with al-Albānī's gradings.** 1,267 hadith from
+Abū Dāwūd, al-Tirmidhī and Ibn Mājah, each matched to what Ibn Kathīr quotes, the same
+test as the two Ṣaḥīḥs, and each showing al-Albānī's grade; the weak ones show it in
+red. One with no grading from him is left out. Together the column reaches 2,865 ayat.
+
+**Al-Nasāʾī has none yet**, because Ibn Kathīr's editor cites him by volume and page or
+by al-Kubrā's numbers, and the corpus holds al-Mujtabā's.
+
+**Prophetic reports elsewhere:** as you ruled, graded ones show and ungraded ones do
+not. Al-Ṭabarī's editor grades some, and those appear in this column with his words.
 
 ## E. The generations of the reports
 
-Chapter seven's Companions and Followers come from three books. An ayah takes **the
-first of them with a report of these generations on it**:
+**Ruled 2026-10-30: the list stands, and bare names must be resolved.**
+
+Chapter seven's Companions and Followers come from three books. An ayah takes the first
+of them with a report of these generations on it:
 
 | In turn | Ayat it gives | Chains |
 |---|---:|---|
-| Ibn Abī Ḥātim | 2,098 | Yes, with his numbers |
-| al-Ṭabarī | 2,675 more | Yes |
-| al-Durr al-manthūr of al-Suyūṭī | 366 more | **No.** It names who collected a report and its last authority |
+| Ibn Abī Ḥātim | 2,108 | Yes, with his numbers |
+| al-Ṭabarī | 2,693 more | Yes |
+| al-Durr al-manthūr of al-Suyūṭī | 361 more | **No**, and each says so |
 
-That is **5,139 of the 6,236 ayat**. Tafsir.app's copy of Ibn Abī Ḥātim has only
-surahs 1–13 and 23–29, and is missing some ayat within those. The 1,097 left have
-no report placed on them in any of the three. They fall thickest in surahs 26, 23
-and 37. Every report says "not graded here", and al-Durr's also say "no chain given".
-A note under the tiers says which book they came from. A tier shows five reports
-and folds the rest.
+That is **5,162 of the 6,236 ayat**. Tafsir.app's copy of Ibn Abī Ḥātim has only surahs
+1–13 and 23–29. The 1,074 left have no report placed on them in any of the three.
 
-The generation is read from **the last link of the chain**, against a list I wrote
-(in `src/lib/ulum/read.ts`). Over each whole book:
+The generation is read from the last link of the chain. Over each whole book:
 
 | | Ibn Abī Ḥātim | al-Ṭabarī | al-Durr |
 |---|---:|---:|---:|
-| Companions | 3,307 | 6,239 | 10,205 |
-| Followers | 8,844 | 19,284 | 13,775 |
-| The generation after them (tagged as such) | 1,075 | 2,407 | 1,297 |
-| Prophetic, **left out** of these tiers | 432 | 1,107 | 6,114 |
-| Not placed, shown apart with no generation | 2,678 | 5,668 | 6,292 |
+| Companions | 3,453 | 6,821 | 10,504 |
+| Followers | 9,177 | 20,038 | 14,442 |
+| The generation after them | 1,189 | 3,169 | 1,431 |
+| Prophetic, shown only if graded | 432 | 1,110 | 6,114 |
+| Not placed | 2,079 | 3,567 | 5,183 |
 
-**A correction, 2026-10-30.** The reader knew only one of the ways the copy numbers
-Ibn Abī Ḥātim's reports. About 5,200 of them, nearly a third, ran on inside the
-report before them, under that report's authority. They now stand apart, which is
-why his total rose from 11,047 to 16,336. It also did not follow chains using
-«ثني» or «قال: قال». Earlier figures in this sheet were wrong.
+**How a bare name is resolved** (`BARE` in `src/lib/ulum/read.ts`), and the card says
+what the chain itself wrote:
 
-1. **Ruled 2026-10-30: al-Durr stays, labelled.** A report with no chain cannot be
-   weighed, and al-Suyūṭī gathers strong and weak alike, so it is used only where
-   the other two have nothing, and each of its reports says "no chain given".
-2. **Please check the list.** It is short and yours to correct. Ibn Isḥāq and
-   al-Aʿmash are under the Followers, as younger Followers who saw Anas; Ibn
-   Jurayj, the two Sufyāns and Muqātil ibn Ḥayyān are under the generation after.
-   Added for al-Ṭabarī, from my own knowledge of them: Abū al-Ṭufayl among the
-   Companions; Yazīd ibn Rūmān, ʿUbayd ibn ʿUmayr, ʿAmr ibn Maymūn, ʿAṭāʾ ibn Yasār,
-   Shahr ibn Ḥawshab, al-Rabīʿ ibn Khuthaym, Shurayḥ and others among the Followers;
-   Maʿmar among the generation after.
-3. **A bare name that could be two men is not placed:** «عبد الله», «علي», «جابر»,
-   «سعيد», «مقاتل». A scholar would resolve most of these from the chain. The page
-   does not. «علي» with «رضي الله عنه» after it is placed as the Companion.
-4. **Prophetic reports are not shown in the tiers** from any of the three, since
-   they are ungraded. They remain in the books.
-5. **A report is set on the phrase it quotes.** The copies do not always keep a
-   passage to the ayat it is filed under: al-Ṭabarī's whole of al-ʿĀdiyāt stands
-   under its last two. A report on a phrase outside its passage is left out rather
-   than placed on the wrong ayah.
-6. **I read about 60 sampled reports against their chains** and found them right
-   but for unusual endings: a report al-Shaʿbī gives of ʿĀʾisha stays under
-   al-Shaʿbī. That is a sample, not proof of all 88,000.
+- «عبد الله» is Ibn Masʿūd, the usage of the Kūfan chains.
+- «علي» is ʿAlī ibn Abī Ṭālib, and «جابر» is Jābir ibn ʿAbd Allāh.
+- «سعيد» is Ibn Jubayr, or Ibn al-Musayyab from Qatāda and al-Zuhrī.
+- «مقاتل» is Ibn Ḥayyān from Bukayr or in Ibn Abī Ḥātim, and otherwise left off.
+- «عن أبيه» follows the son: Ibn Ṭāwūs's father is Ṭāwūs, Hishām's is ʿUrwa, and so on.
+
+These are conventions, so a rare exception can be wrong. The reports still unplaced are
+mostly thousands of rarely named men, not bare names. A fuller list could be taken from
+Ibn Ḥajar's *Taqrīb al-tahdhīb*, which gives every narrator's generation.
 
 ## F. The sentences of an ayah
 
@@ -242,10 +215,16 @@ run on from the ayah before.
 "Nominal" or "verbal" is **mine, by rule**: the first word that is not a
 particle. The page says so.
 
-**Rule on:** is one named grammarian's count right, or do you want a different
-basis?
+**Ruled 2026-10-30:** every scholar's count is shown, and none is dropped. Where a
+commentator states a number, chapter three now sets the counts side by side in each
+one's colour: on 2:255, al-Ṣāfī's seven beside Ibn Kathīr's and al-Jazāʾirī's ten. The
+sentences drawn stay al-Ṣāfī's, because his is the only list that gives each sentence
+on every ayah. No book records which count is strongest, so the page does not say.
 
 ## G. The fourth school
+
+**Ruled 2026-10-30:** the column stands as "the places they quote the ayah", and
+Ibn Taymiyya and Ibn al-Bannāʾ stay out.
 
 **Chapter nine now has all four.** The Ḥanbalī column is **al-Mughnī** of Ibn Qudāma
 (d. 620 AH) and **al-Mubdiʿ** of Burhān al-Dīn Ibn Mufliḥ (d. 884 AH), two of the three
@@ -303,6 +282,8 @@ it, and those lists are partial, so this does not prove there is none.
 
 ## H. Page numbers
 
+**Ruled 2026-10-30:** citing by ayah with a link is acceptable.
+
 The master prompt asks for volume and page on every claim. **The page cites by
 ayah instead, with a link to the same place on tafsir.app.** The copies carry
 page marks for only some works, and no volume for any, so I would have been
@@ -335,6 +316,8 @@ if Mishkāt ever earned money that licence would need another look.
 
 ## J. The other three languages
 
+**Ruled 2026-10-30:** they stay as they are.
+
 The page's words are in Spanish, Persian and Pashto, 305 sentences or so, by me
 and unreviewed, Pashto most of all. The chapter names and grammar terms in the
 English-only term tables (`src/components/ulum/terms.ts`) stay in English in
@@ -342,50 +325,51 @@ every language, with the transliterated term.
 
 ## K. Where the scholars differ
 
-**Your ruling of 2026-10-30:** on every ayah, state what each scholar said, and
-where they differ show it, distinct by colour, for scholars and grammarians alike.
-Leave it at that for the reader.
+**Your rulings of 2026-10-30:** on every ayah, state what each scholar said. Where they
+differ, show it, distinct by colour, for grammarians too. Air out every view, then say
+what the majority hold, or the consensus, or which scholar called which view strongest.
 
-**Where it comes from.** Writing this myself would be my judgement of what each
-held. Three books already record it: they say how many views there are on a phrase,
-number them, and name who held each.
+**Where it comes from.** Writing this myself would be my judgement of what each held.
+These books record it, and al-Māwardī is gone as you ruled:
 
 | | Lists it states | Read whole | Views naming who held them |
 |---|---:|---:|---:|
-| Ibn al-Jawzī, Zād al-masīr | 4,789 | 84.5% | 71.7% |
-| al-Māwardī, al-Nukat wa-l-ʿuyūn | 7,678 | 94.3% | 57.3% |
-| al-Samīn al-Ḥalabī, al-Durr al-maṣūn (grammar) | 4,059 | 53.4% | 12.5% |
+| al-Ṭabarī, «اختلف أهل التأويل» | 720 | 84.4% | 88.2% |
+| Ibn al-Jawzī, Zād al-masīr | 4,789 | 84.5% | 71.6% |
+| al-Samʿānī | 515 | 47.8% | 8.4% |
+| al-Qurṭubī | 856 | 17.6% | 32.9% |
+| al-Shinqīṭī | 548 | 46.0% | 13.4% |
+| al-Samīn, the grammar | 4,059 | 53.4% | 11.9% |
 
-Together they give **4,180 of the 6,236 ayat** a recorded difference, on the phrase
-it is about. `npm run check:ulum` measures this.
+Together they give **3,279 of the 6,236 ayat** a recorded difference, down from 4,180
+with al-Māwardī.
 
-**How it shows.** Chapter eight opens with it and chapter three has the grammarians'.
-Each question gives the book, the phrase and what they differ on in the book's
-words. Each view has its own colour with its names beside it, and the page chooses
-nothing. Al-Ṭabarī's own judgement stands beneath, in his colour, where he gives one.
-Every scholar also keeps one colour across the site, on the ayah study and in the
-tafsir page's Compare view.
+**How it shows.** Each question is a card in a deck: the book, the phrase, what they
+differ on, then each view in its colour with its names. Where a book says a view is
+strongest, the majority's, or agreed on, the view says so and says who said it (23,
+222 and 11 of Ibn al-Jawzī's). Al-Ṭabarī's own judgement stands beneath in his words.
 
 **What it does not do:**
 
-1. **A list that cannot be read whole is not shown.** A list cut short would say
-   there are fewer views than the book says. So about 1 in 6 of Ibn al-Jawzī's and
-   about half of al-Samīn's lists are not on the page, and an ayah can differ in a
-   way this does not show. The 2,056 ayat with none are not ayat without difference.
-2. **The views are each book's own.** I did not merge the two books' lists, so the
-   same view can appear in both.
-3. **Names are read from the book's wording.** "The book names no one" means I found
-   no name in the form it uses. A name written another way can be missed.
-4. **Al-Māwardī** is on the page for his lists. As I recall, some scholars accused
-   him of leaning to the Muʿtazila; I have not checked this in a source.
-5. **The other commentators are not sorted into views.** Chapter eight still sets
-   their own words side by side, each in his colour.
+1. **It does not guess which view al-Ṭabarī's judgement means.** I tried, and it
+   marked the wrong view at 21:104. A wrong mark would put words in his mouth, so his
+   judgement stands in his own words and the reader sees what he chose.
+2. **A list that cannot be read whole is not shown.** A short list would misstate the
+   book. So the 2,957 ayat with none are not ayat without difference.
+3. **The same view can appear under two books**, as I do not merge their lists.
+4. **Chapter eight's other commentators are not sorted into views**, as no book of
+   theirs lists them. Their words stand side by side, each in his colour.
+5. **Scholars keep one colour across the ayah study, the tafsir page and the lexicons
+   on the word study page.** The word study page has the colours but no differences.
 
 ## L. Weak reports, labelled
 
-**Your ruling of 2026-10-30:** a weak report may be shown if it is labelled weak and
-why, clearly and visibly. A red box on the report now says what is wrong, whether in
-the chain or in what it says, and who says so. Three sources, and none of them mine:
+**Your ruling of 2026-10-30:** weak reports may be shown if they are labelled weak, with
+why, clearly and visibly. The introductions keep their rule: nothing weak goes in them.
+
+A red box on the report says what is wrong, whether in the chain or the text, and who
+says so. Inside a commentator's running text, in chapter eight and on the tafsir page,
+a named weak route is underlined with a small red mark that opens the same reason.
 
 | Who says so | Ibn Abī Ḥātim | al-Ṭabarī | al-Durr |
 |---|---:|---:|---:|
@@ -393,16 +377,26 @@ the chain or in what it says, and who says so. Three sources, and none of them m
 | The editor's note in the copy | 0 | 152 | 0 |
 | The chain itself names no one at a link | 177 | 1,531 | 106 |
 
-Al-Suyūṭī's routes are al-Kalbī from Abū Ṣāliḥ, the chain of falsehood, Juwaybir,
-Bishr ibn ʿUmāra, al-Ḍaḥḥāk from Ibn ʿAbbās, and al-ʿAwfī. The same routes are marked
-where Ibn al-Jawzī or al-Māwardī name them in a list of views.
+1. **Most reports carry no label, and that does not mean they are sound.** About 3,900
+   of some 80,000 are marked. The rest say "not graded here".
+2. **Running text is marked only where a route is named** in a form the page can read.
+   A weak report told another way is not marked.
+3. **"Unnamed narrator" is what the chain shows**, not a scholar's grading.
 
-1. **Most reports carry no label, and that does not mean they are sound.** About
-   3,900 of some 80,000 are marked. The rest keep "not graded here".
-2. **The book text is not labelled.** The labels are on the report cards and the
-   lists of views. A weak report inside a commentator's running text in chapter
-   eight, or on the tafsir page, is not marked.
-3. **"Unnamed narrator" is what the chain shows, not a grading by a scholar.** It
-   covers «حدثت عن», «عن رجل» and the like.
-4. **The Sunnah column still holds only al-Bukhārī and Muslim**, and Prophetic reports
-   stay out of the tiers, because nothing on the shelf grades them all.
+## M. What each scholar was
+
+**Your ruling of 2026-10-30:** label each scholar for what he was, so the reader follows
+with discernment. The labels sit beside his name wherever he is cited
+(`src/lib/ulum/scholars.ts`). **Apart from al-Samīn and al-Naḥḥās, these are from my own
+knowledge, not checked in a source. Please correct any.**
+
+| Creed | Scholars |
+|---|---|
+| Ahl al-Sunnah | al-Ṭabarī, Ibn Abī Ḥātim, al-Naḥḥās, Ibn Qutayba, al-Baghawī, al-Samʿānī, Ibn Qudāma, Ibn Kathīr, Ibn Mufliḥ, al-Shinqīṭī, Ibn ʿUthaymīn, al-Jazāʾirī, al-Ṭarīfī |
+| Ashʿarī | al-Harrāsī, Ibn al-ʿArabī, al-Rāzī, al-Qurṭubī, al-Samīn, al-Biqāʿī, al-Suyūṭī, Ibn ʿĀshūr |
+| Māturīdī | Abū al-Suʿūd |
+| No creed label | Ibn al-Jawzī, al-Jaṣṣāṣ, al-Wāḥidī, Makkī, Ibn al-Jazarī, al-Kirmānī, the modern grammarians |
+
+Fiqh is shown where it is known: Ḥanafī, Mālikī, Shāfiʿī, Ḥanbalī, or al-Ṭabarī's own
+school. **Ibn al-Jawzī has no creed label** because I did not want to word it wrongly:
+he was Ḥanbalī, and criticised by Ḥanbalīs for his interpretation of the attributes.
