@@ -34,6 +34,8 @@ for (const name of await readdir(LIB)) {
   await writeFile(new URL(name, TMP), src);
 }
 const read = await import(new URL("read.ts", TMP).href);
+const { readViews } = await import(new URL("views.ts", TMP).href);
+const { weakOf } = await import(new URL("grades.ts", TMP).href);
 const { skeleton, quoteSkeleton } = await import(new URL("skeleton.ts", TMP).href);
 
 const morph = new Map();
@@ -212,6 +214,46 @@ await reach("ibn-abi-hatim", read.readReports, "hatim");
 await reach("tabari", read.readTabari, "tabari");
 await reach("aldur-almanthoor", read.readDurr, "durr");
 
+// Where the books say the scholars differ, and how many of their lists read whole.
+const VOWELS = /[\u064B-\u0652\u0670\u0640]/g;
+const STATED = /(قولان|قولين|وجهان|وجهين|تأويلان|تأويلين|(?:ثلاثة|أربعة|خمسة|ستة|سبعة|ثمانية|تسعة|عشرة)\s+(?:أقوال|أوجه|تأويلات|أقاويل))/g;
+const differing = new Set();
+const lists = {};
+for (const [shelf, id] of [["tafsir", "zad-almaseer"], ["tafsir", "almawirdee"], ["ulum", "aldur-almasoon"]]) {
+  const t = (lists[id] = { said: 0, read: 0, placed: 0, named: 0, views: 0 });
+  for await (const [s, from, to, text] of passages(shelf, id)) {
+    if (!wanted(s, from, to)) continue;
+    t.said += (text.replace(VOWELS, "").match(STATED) ?? []).length;
+    const words = await range(s, from, to);
+    const counts = [];
+    for (let a = from; a <= to; a++) counts.push((await range(s, a, a)).length);
+    for (const d of readViews(text, words)) {
+      t.read++;
+      t.views += d.views.length;
+      t.named += d.views.filter((v) => v.holders.length).length;
+      if (!d.at) continue;
+      t.placed++;
+      let start = 0;
+      counts.forEach((c, i) => {
+        if (d.at.to >= start && d.at.from < start + c) differing.add(`${s}:${from + i}`);
+        start += c;
+      });
+    }
+  }
+}
+const marked = {};
+for (const [id, reader] of [["ibn-abi-hatim", read.readReports], ["tabari", read.readTabari], ["aldur-almanthoor", read.readDurr]]) {
+  const t = (marked[id] = {});
+  for await (const [s, from, to, text] of passages("tafsir", id)) {
+    if (!wanted(s, from, to)) continue;
+    for (const r of reader(text, [])) {
+      if (r.tier === "marfu") continue;
+      const weak = weakOf(r.text);
+      if (weak) t[weak.by] = (t[weak.by] ?? 0) + 1;
+    }
+  }
+}
+
 let fawaid = 0;
 for await (const [s, from, to, text] of passages("tafsir", "ibn-uthaymeen")) {
   if (!wanted(s, from, to)) continue;
@@ -238,4 +280,9 @@ console.log(`  al-Ṭabarī: ${JSON.stringify(otherTiers.tabari)}. al-Durr: ${JS
 const byTabari = [...speaking.tabari].filter((k) => !speaking.hatim.has(k));
 const byDurr = [...speaking.durr].filter((k) => !speaking.hatim.has(k) && !speaking.tabari.has(k));
 console.log(`  A report of these generations on an ayah: ${speaking.hatim.size} from Ibn Abī Ḥātim, ${byTabari.length} more from al-Ṭabarī, ${byDurr.length} more from al-Durr.`);
+for (const [id, t] of Object.entries(lists)) {
+  console.log(`  ${id}: said ${t.said} lists, ${t.read} read whole (${pct(t.read, t.said)}), ${t.placed} placed; ${t.views} views, ${pct(t.named, t.views)} naming who held them.`);
+}
+console.log(`  Ayat with a recorded difference: ${differing.size}.`);
+console.log(`  Reports marked weak, by who says so: ${JSON.stringify(marked)}`);
 console.log(`  Ibn ʿUthaymīn: ${fawaid} benefits. Aysar: ${guidance} points of guidance.`);

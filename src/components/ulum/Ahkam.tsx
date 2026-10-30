@@ -5,6 +5,7 @@ import { useLocale } from "@/lib/i18n";
 import { Block, BookText, By, Chapter, Cite, Silent } from "./Chapter";
 import { HanbaliPlaces, useHanbali } from "./Hanbali";
 import { useBook, useNear, type StudyCtx } from "./study";
+import { whoStyle } from "./who";
 import styles from "./AyahStudy.module.css";
 
 /**
@@ -52,8 +53,8 @@ export function Ahkam({ ctx }: { ctx: StudyCtx }) {
               {SCHOOLS.map((s, k) => {
                 const read = schools[k];
                 return (
-                  <article key={s.id} className={`${styles.school} ${lit ? styles.risen : ""}`} style={{ transitionDelay: `${200 + k * 120}ms` }}>
-                    <div className={styles.schoolName}>{t(s.school)}</div>
+                  <article key={s.id} className={`${styles.school} ${lit ? styles.risen : ""}`} style={{ ...whoStyle(s.id), transitionDelay: `${200 + k * 120}ms` }}>
+                    <div className={`${styles.schoolName} ${styles.whoName}`}>{t(s.school)}</div>
                     {read.p ? (
                       ctx.scholar ? (
                         <BookText text={read.p.text} fold={2} />
@@ -67,8 +68,8 @@ export function Ahkam({ ctx }: { ctx: StudyCtx }) {
                   </article>
                 );
               })}
-              <article className={`${styles.school} ${lit ? styles.risen : ""}`} style={{ transitionDelay: `${200 + SCHOOLS.length * 120}ms` }}>
-                <div className={styles.schoolName}>{t("ulum.school.hanbali")}</div>
+              <article className={`${styles.school} ${lit ? styles.risen : ""}`} style={{ ...whoStyle("almughni"), transitionDelay: `${200 + SCHOOLS.length * 120}ms` }}>
+                <div className={`${styles.schoolName} ${styles.whoName}`}>{t("ulum.school.hanbali")}</div>
                 <HanbaliPlaces key={ctx.key} read={hanbali} ctx={ctx} />
               </article>
             </div>

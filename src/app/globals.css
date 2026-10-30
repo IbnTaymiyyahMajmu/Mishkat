@@ -45,6 +45,19 @@
   --mk-paper: #221810;
   --mk-ink: #eedfc2;
   --mk-gold: #d2a253;
+  /* Ten colours to tell scholars and views apart, and one that says "weak"
+     (ayah study, src/components/ulum/who.ts). Day and dawn redraw them for paper. */
+  --who-1: #e8b15a;
+  --who-2: #7fc4e8;
+  --who-3: #e58f8f;
+  --who-4: #8fd19e;
+  --who-5: #c3a2ee;
+  --who-6: #f0a070;
+  --who-7: #62d0c4;
+  --who-8: #e8a0cf;
+  --who-9: #b9c96a;
+  --who-10: #a5b4f0;
+  --mk-weak: #ff9a8a;
   --mk-gold-deep: #dfb46f;
   --mk-gold-deeper: #e9c487;
   --mk-gold-pale: #ecc98c;
@@ -207,6 +220,17 @@
 :root[data-theme="day"] {
   /* What the base (evening) states for a dark ground, put back for paper. */
   color-scheme: light;
+  --who-1: #8a5a00;
+  --who-2: #0b6a9a;
+  --who-3: #b03333;
+  --who-4: #1f7a3d;
+  --who-5: #6a3fb5;
+  --who-6: #b4500f;
+  --who-7: #0a7a6e;
+  --who-8: #a8307f;
+  --who-9: #5f6f10;
+  --who-10: #3b50b8;
+  --mk-weak: #b3261e;
   --mk-mark-ink: #4a3110;
   --color-divider: color-mix(in srgb, var(--color-text) 17%, transparent);
   --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
@@ -274,6 +298,17 @@
    where the white thread of the dawn is drawn across the foot of the screen
    (al-Baqarah 2:187). Its ink is dark, as day's is. */
 :root[data-theme="dawn"] {
+  --who-1: #8a5a00;
+  --who-2: #0b6a9a;
+  --who-3: #b03333;
+  --who-4: #1f7a3d;
+  --who-5: #6a3fb5;
+  --who-6: #b4500f;
+  --who-7: #0a7a6e;
+  --who-8: #a8307f;
+  --who-9: #5f6f10;
+  --who-10: #3b50b8;
+  --mk-weak: #b3261e;
   /* What the base (evening) states for a dark ground, put back for paper. */
   color-scheme: light;
   --mk-mark-ink: #4a3110;

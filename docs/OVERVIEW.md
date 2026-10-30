@@ -280,6 +280,12 @@ book's layout and sets each remark on the words it quotes, and
 Qurʾān. The site's own part is the arrangement, the counts, and the English names
 of the terms (`src/components/ulum/terms.ts`).
 
+*Where scholars differ, and what is weak.* Chapters three and eight set out the
+differences the books themselves record, each view in its own colour with the names
+they give (`src/lib/ulum/views.ts`). A scholar keeps one colour across the site
+(`src/components/ulum/who.ts`). A report said to be weak says so visibly, with why
+and on whose word (`src/lib/ulum/grades.ts`).
+
 *Where it comes from.* The grammars and the books of the readings are a second
 shelf copied from tafsir.app (`npm run mirror:ulum`, `public/ulum`, listed in
 `src/lib/quran/ulumWorks.json`). `npm run gen:ulum` works out, from the Quranic

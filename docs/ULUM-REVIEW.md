@@ -6,16 +6,18 @@ are for answering by, and will not move.
 
 | Section | Status |
 |---|---|
-| **A** What was left out of the handoff, and why | **For you to confirm** |
+| **A** What was left out of the handoff, and why | **For you to confirm** — the positions matrix is now K |
 | **B** Who is on the shelf | **For you to confirm** — al-Samīn, al-Rāzī, Ibn ʿĀshūr and others |
-| **C** Weak reports inside the books | **Ruled: show the books whole**, as the tafsir page does |
+| **C** Weak reports inside the books | **Ruled: show them, labelled**, with why (L) |
 | **D** The Sunnah tier | **For you to confirm** |
 | **E** The generations of the reports | **For you to confirm** — a list to check. Al-Durr is **ruled in, labelled** |
 | **F** The sentences of an ayah | **For you to confirm** |
 | **G** The fourth school | **Added, for you to confirm**. Ibn Taymiyya and Ibn al-Bannāʾ are **ruled out** |
 | **H** Page numbers | **For you to confirm** |
-| **I** The mirror's permission | **Needs your confirmation** — and new terms for the Ḥanbalī books |
+| **I** The mirror's permission | **Ruled: verbal permission, cite the sources** |
 | **J** The other three languages | Unreviewed, as before |
+| **K** Where the scholars differ | **New, for you to confirm** |
+| **L** Weak reports, labelled | **New, for you to confirm** |
 
 **What is not in doubt**, so you need not look at it:
 
@@ -54,6 +56,7 @@ nothing, so these gaps are the books', not missing work:
 | Words, roots and forms; grammar; rhetoric; the five commentators; benefits; al-Biqāʿī | 6,236 | 100% |
 | The Companions and Followers, from three books (E) | 5,139 | 82.4% |
 | Qatāda | 4,679 | 75.0% |
+| Differences the books record (K) | 4,180 | 67.0% |
 | Runs of words shared with another ayah | 3,964 | 63.6% |
 | The readings, any of the four books | 2,830 | 45.4% |
 | The Sunnah column, al-Bukhārī and Muslim | 2,363 | 37.9% |
@@ -76,10 +79,10 @@ scholar's words. The handoff's own data file says its page numbers are
 2. **The student and scholar tafsīr, sentence by sentence.** To do this for
    6,236 ayat I would have had to write it. The books are shown instead. The
    meaning under the ayah is your chosen translation, whole.
-3. **The positions matrix** (who adopts or reports which view). Saying what a
-   commentator held is a judgement, and you set this aside on the tafsir page
-   too. It became a measured table: where each of the five quotes the sentence
-   and how many words he gives it. His words are set side by side beneath it.
+3. **The positions matrix** (who adopts or reports which view). I could not write
+   this for every ayah without judging what each commentator held. Your ruling of
+   2026-10-30 asked for the differences on every ayah, and K now gives them from
+   the books that record them. The measured table stays beside it.
 4. **Madd bars, reader by reader.** I had no source open to cite for the
    lengths, and would have been giving them from memory.
 5. **"Counted in the ayah"** (the Names of Allah in 2:255, and *nafy* and
@@ -139,7 +142,9 @@ What the ruling covers, for example:
 - **Al-Nashr, Ibn al-ʿArabī, al-Biqāʿī** and every tafsir in chapter eight
   quote as their authors quoted, as the tafsir page already does.
 
-No report in these books is graded on the page, and none was removed.
+**Extended 2026-10-30:** weak reports may be shown as long as they are labelled
+weak, with why, whether in the chain or anything else, clearly and visibly. Section
+L says what is labelled so far. No report was removed.
 
 ## D. The Sunnah tier
 
@@ -314,29 +319,90 @@ them. That is still the typing, not the printed book.
 
 ## I. The mirror's permission
 
-These eleven books are copied under the same permission you described for
-tafsir.app. I have not seen that permission, and you may want to confirm it
-covers **the grammars and readings**, which you had left out when you widened it.
-The public repository grows by 56 MB, and the app reads these books from the
-GitHub Pages site, so **it needs a connection for them**, and **they only appear
-in the app once this is deployed**.
+**Ruled 2026-10-30: you have verbal permission for the books used here, and the
+requirement is that the sources are cited.** That covers the eleven grammars and
+books of the readings, and al-Mughnī, al-Mubdiʿ and al-Itqān. I have not seen the
+permission; this records what you told me.
 
-**The two Ḥanbalī books are not under that permission.** They come from OpenITI,
-which publishes its corpus under **Creative Commons BY-NC-SA 4.0**: credit it, no
-commercial use, and share what is made from it on the same terms. The colophon,
-Settings and `public/fiqh/SOURCE.md` credit it. Please note:
+They are cited everywhere they appear: under each passage, in chapter twelve, in
+Settings, and in each folder's `SOURCE.md`. The Ḥanbalī books and al-Itqān are also
+credited to OpenITI and Shamela, and link to the page on Shamela.
 
-1. **Non-commercial.** I have assumed Mishkāt earns nothing. If the app is ever paid
-   or carries advertising, these two books would have to come out.
-2. **Shamela's typing.** OpenITI's licence covers its own release. I have seen no
-   permission from al-Maktaba al-Shāmila, or from the two publishers for their
-   headings and references.
-3. **Size.** The public repository grows by another 11 MB. The app reads these from
-   the site too, so the same two points about connection and deployment apply.
+Two practical points remain true. The app reads the grammars, readings and Ḥanbalī
+books from the site, so **it needs a connection for them**, and **they only appear
+in the app once this is deployed**. And OpenITI publishes under CC BY-NC-SA 4.0, so
+if Mishkāt ever earned money that licence would need another look.
 
 ## J. The other three languages
 
-The page's words are in Spanish, Persian and Pashto, 271 sentences or so, by me
+The page's words are in Spanish, Persian and Pashto, 305 sentences or so, by me
 and unreviewed, Pashto most of all. The chapter names and grammar terms in the
 English-only term tables (`src/components/ulum/terms.ts`) stay in English in
 every language, with the transliterated term.
+
+## K. Where the scholars differ
+
+**Your ruling of 2026-10-30:** on every ayah, state what each scholar said, and
+where they differ show it, distinct by colour, for scholars and grammarians alike.
+Leave it at that for the reader.
+
+**Where it comes from.** Writing this myself would be my judgement of what each
+held. Three books already record it: they say how many views there are on a phrase,
+number them, and name who held each.
+
+| | Lists it states | Read whole | Views naming who held them |
+|---|---:|---:|---:|
+| Ibn al-Jawzī, Zād al-masīr | 4,789 | 84.5% | 71.7% |
+| al-Māwardī, al-Nukat wa-l-ʿuyūn | 7,678 | 94.3% | 57.3% |
+| al-Samīn al-Ḥalabī, al-Durr al-maṣūn (grammar) | 4,059 | 53.4% | 12.5% |
+
+Together they give **4,180 of the 6,236 ayat** a recorded difference, on the phrase
+it is about. `npm run check:ulum` measures this.
+
+**How it shows.** Chapter eight opens with it and chapter three has the grammarians'.
+Each question gives the book, the phrase and what they differ on in the book's
+words. Each view has its own colour with its names beside it, and the page chooses
+nothing. Al-Ṭabarī's own judgement stands beneath, in his colour, where he gives one.
+Every scholar also keeps one colour across the site, on the ayah study and in the
+tafsir page's Compare view.
+
+**What it does not do:**
+
+1. **A list that cannot be read whole is not shown.** A list cut short would say
+   there are fewer views than the book says. So about 1 in 6 of Ibn al-Jawzī's and
+   about half of al-Samīn's lists are not on the page, and an ayah can differ in a
+   way this does not show. The 2,056 ayat with none are not ayat without difference.
+2. **The views are each book's own.** I did not merge the two books' lists, so the
+   same view can appear in both.
+3. **Names are read from the book's wording.** "The book names no one" means I found
+   no name in the form it uses. A name written another way can be missed.
+4. **Al-Māwardī** is on the page for his lists. As I recall, some scholars accused
+   him of leaning to the Muʿtazila; I have not checked this in a source.
+5. **The other commentators are not sorted into views.** Chapter eight still sets
+   their own words side by side, each in his colour.
+
+## L. Weak reports, labelled
+
+**Your ruling of 2026-10-30:** a weak report may be shown if it is labelled weak and
+why, clearly and visibly. A red box on the report now says what is wrong, whether in
+the chain or in what it says, and who says so. Three sources, and none of them mine:
+
+| Who says so | Ibn Abī Ḥātim | al-Ṭabarī | al-Durr |
+|---|---:|---:|---:|
+| al-Suyūṭī, *al-Itqān* 4:239, on the routes from Ibn ʿAbbās | 475 | 1,352 | 142 |
+| The editor's note in the copy | 0 | 152 | 0 |
+| The chain itself names no one at a link | 177 | 1,531 | 106 |
+
+Al-Suyūṭī's routes are al-Kalbī from Abū Ṣāliḥ, the chain of falsehood, Juwaybir,
+Bishr ibn ʿUmāra, al-Ḍaḥḥāk from Ibn ʿAbbās, and al-ʿAwfī. The same routes are marked
+where Ibn al-Jawzī or al-Māwardī name them in a list of views.
+
+1. **Most reports carry no label, and that does not mean they are sound.** About
+   3,900 of some 80,000 are marked. The rest keep "not graded here".
+2. **The book text is not labelled.** The labels are on the report cards and the
+   lists of views. A weak report inside a commentator's running text in chapter
+   eight, or on the tafsir page, is not marked.
+3. **"Unnamed narrator" is what the chain shows, not a grading by a scholar.** It
+   covers «حدثت عن», «عن رجل» and the like.
+4. **The Sunnah column still holds only al-Bukhārī and Muslim**, and Prophetic reports
+   stay out of the tiers, because nothing on the shelf grades them all.

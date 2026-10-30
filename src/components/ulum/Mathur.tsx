@@ -1,16 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { fetchVerse } from "@/lib/quran/api";
 import { fetchAyahXrefs, type XrefLink } from "@/lib/quran/xref";
 import { useSettings } from "@/lib/store/settings";
 import { book } from "@/lib/ulum/books";
 import { fetchSahih, type SahihItem } from "@/lib/ulum/corpus";
+import { weakOf } from "@/lib/ulum/grades";
 import { readDurr, readReports, readTabari, type Report } from "@/lib/ulum/read";
 import { useLocale } from "@/lib/i18n";
-import { BookText, Chapter, Cite, Line, Silent } from "./Chapter";
+import { BookText, Chapter, Cite, Fold, Line, Silent } from "./Chapter";
 import { ar, local, useBook, useNear, type Read, type StudyCtx } from "./study";
+import { WeakNote } from "./Views";
 import styles from "./AyahStudy.module.css";
 
 /**
@@ -31,26 +33,12 @@ import styles from "./AyahStudy.module.css";
  *                  surahs 1–13 and 23–29, so where it has none on an ayah the
  *                  tiers are al-Ṭabarī's, also with chains, and where he has
  *                  none either, al-Durr al-manthūr's, which gives no chains.
- *                  They are not graded here, and each says so.
+ *                  A report said to be weak says so plainly, with why and by
+ *                  whom (`src/lib/ulum/grades.ts`). The rest are not graded
+ *                  here, and each says that.
  */
 
 const GENERATIONS = new Set(["sahabah", "tabiun", "atba"]);
-
-/** A tier's reports, the first few and the rest on asking: al-Ṭabarī can have sixty on an ayah. */
-function Fold({ items, first = 5 }: { items: ReactNode[]; first?: number }) {
-  const { t } = useLocale();
-  const [open, setOpen] = useState(false);
-  return (
-    <>
-      {open ? items : items.slice(0, first)}
-      {items.length > first && (
-        <button type="button" className={styles.more} onClick={() => setOpen(!open)}>
-          {open ? t("ulum.less") : t("ulum.moreReports", { count: items.length - first })}
-        </button>
-      )}
-    </>
-  );
-}
 
 export function Mathur({ ctx }: { ctx: StudyCtx }) {
   const { t, n: num } = useLocale();
@@ -134,7 +122,10 @@ export function Mathur({ ctx }: { ctx: StudyCtx }) {
   const hatimUnknown = needTabari ? hatimReports.filter((r) => r.tier === "unknown" && scoped(r, hatim)) : [];
   const inAyah = reports.filter((r) => local(r.at, read, n) && r.tier !== "marfu").length + hatimUnknown.length;
 
-  const card = (r: Report, k: number, from: Read = read, id: string = bookId) => (
+  const moreReports = (count: number) => t("ulum.moreReports", { count });
+  const card = (r: Report, k: number, from: Read = read, id: string = bookId) => {
+    const weak = weakOf(r.text);
+    return (
     <div key={r.n + k} className={`${styles.tierItem} ${lit ? styles.risen : ""}`} style={{ transitionDelay: `${400 + k * 90}ms` }}>
       <div className={styles.tierItemHead}>
         <span className={styles.tierWho} lang="ar">
@@ -158,14 +149,16 @@ export function Mathur({ ctx }: { ctx: StudyCtx }) {
       )}
       {ctx.scholar && <Line text={r.text} className={styles.tierAr} />}
       {r.also && ctx.scholar && <Line text={r.also} className={styles.cardArNote} />}
+      {weak && <WeakNote weak={weak} ctx={ctx} />}
       <div className={styles.tierFoot}>
         <span className={styles.citeWhere}>{r.n ? t("ulum.hatim.n", { n: r.n }) : book(id)?.short}</span>
         {r.tier === "atba" && <span className={styles.tagOutline}>{t("ulum.tier.atba")}</span>}
         {id === "aldur-almanthoor" && <span className={styles.tagOutline}>{t("ulum.noChain")}</span>}
-        <span className={styles.tagOutline}>{t("ulum.ungraded")}</span>
+        {!weak && <span className={styles.tagOutline}>{t("ulum.ungraded")}</span>}
       </div>
     </div>
-  );
+    );
+  };
 
   const tiers = [
     {
@@ -229,7 +222,7 @@ export function Mathur({ ctx }: { ctx: StudyCtx }) {
       en: t("ulum.tier.sahabah"),
       ar: "الصحابة",
       era: t("ulum.tier.sahabahEra"),
-      body: sahabah.length ? <Fold key={ctx.key} items={sahabah.map((r, k) => card(r, k))} /> : <div className={styles.tierEmpty}>{reading ? t("ulum.loading") : t("ulum.tier.none")}</div>,
+      body: sahabah.length ? <Fold key={ctx.key} items={sahabah.map((r, k) => card(r, k))} label={moreReports} /> : <div className={styles.tierEmpty}>{reading ? t("ulum.loading") : t("ulum.tier.none")}</div>,
     },
     ...(ctx.scholar
       ? [
@@ -239,7 +232,7 @@ export function Mathur({ ctx }: { ctx: StudyCtx }) {
             era: t("ulum.tier.tabiunEra"),
             body: tabiun.length || qatada.p ? (
               <>
-                <Fold key={ctx.key} items={tabiun.map((r, k) => card(r, k))} />
+                <Fold key={ctx.key} items={tabiun.map((r, k) => card(r, k))} label={moreReports} />
                 {qatada.p && (
                   <div className={styles.tierItem}>
                     <div className={styles.tierItemHead}>

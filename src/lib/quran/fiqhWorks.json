@@ -32,5 +32,22 @@
     "group": "hanbali",
     "shamela": 21619,
     "about": "The commentary on Ibn Qudāma's al-Muqniʿ, with the later Ḥanbalī positions and their proofs."
+  },
+  {
+    "id": "al-itqan",
+    "short": "al-Itqān",
+    "name": "al-Itqān fī ʿulūm al-Qurʾān",
+    "nameEnglish": "Mastery in the Sciences of the Qurʾān",
+    "nameArabic": "الإتقان في علوم القرآن",
+    "shortArabic": "الإتقان",
+    "titleArabic": "الإتقان في علوم القرآن",
+    "author": "Jalāl al-Dīn al-Suyūṭī",
+    "authorArabic": "جلال الدين عبد الرحمن بن أبي بكر السيوطي",
+    "died": 911,
+    "field": "ʿUlūm al-Qurʾān",
+    "fieldArabic": "علوم القرآن",
+    "group": "ulum-quran",
+    "shamela": 11728,
+    "about": "Cited for its account of which routes of tafsir from Ibn ʿAbbās are weak, and why."
   }
 ]

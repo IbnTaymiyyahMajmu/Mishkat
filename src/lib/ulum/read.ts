@@ -553,17 +553,26 @@ const SAYS = /\s(?:قال|قالت|قالوا|قوله|في\s+قول|في\s+هذ
 /** That what follows is the Prophet's ﷺ, whoever hands it on. */
 const RAISED = /(?:^|[\s،,«])(?:ان|عن|قال|سمعت|سالت|سال|سئل|رايت)\s+(?:رسول\s+الله|النبي)|^\s*«?(?:رسول\s+الله|النبي)|يرفعه|رفعه|مرفوعا/u;
 
-/** Who a chain ends at: its last link, if that is a man the page can place. */
-export function authorityOf(report: string): { who: string; tier: Tier } {
-  const plain = bare(report).replace(/[أإآ]/g, "ا");
-  let end = plain.length;
+/** Where a report's chain gives way to what was said. */
+function chainEnd(plain: string): number {
   for (const m of plain.matchAll(SAYS)) {
     // «حدثنا أبي، قال: ثنا…» is still the chain.
     const after = plain.slice((m.index ?? 0) + m[0].length).replace(/^[\s:：،,]+/u, "");
-    if (LINK_NEXT.test(after)) continue;
-    end = m.index ?? 0;
-    break;
+    if (!LINK_NEXT.test(after)) return m.index ?? 0;
   }
+  return plain.length;
+}
+
+/** A report's chain, without vowels and with its hamzas on plain alifs. */
+export function chainOf(report: string): string {
+  const plain = bare(report).replace(/[أإآ]/g, "ا");
+  return plain.slice(0, chainEnd(plain));
+}
+
+/** Who a chain ends at: its last link, if that is a man the page can place. */
+export function authorityOf(report: string): { who: string; tier: Tier } {
+  const plain = bare(report).replace(/[أإآ]/g, "ا");
+  const end = chainEnd(plain);
   const links = [...plain.slice(0, end).matchAll(LINK)];
   // The last link with a name after it: «سألت الحسن عن قوله…» ends at al-Ḥasan.
   let from = -1;

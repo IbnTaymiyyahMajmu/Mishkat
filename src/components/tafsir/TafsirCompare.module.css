@@ -366,7 +366,7 @@
   .columns[data-count="3"] .column:nth-child(2),
   .columns[data-count="4"] .column:nth-child(2) { padding-inline-end: 0; }
   .columns[data-count="3"] .column:nth-child(n + 3),
-  .columns[data-count="4"] .column:nth-child(n + 3) { padding-top: 30px; border-top: 1px solid var(--color-divider); }
+  .columns[data-count="4"] .column:nth-child(n + 3) { padding-top: 30px; border-top: 3px solid var(--who, var(--color-divider)); }
   .columns[data-count="4"] .column:nth-child(4) { padding-top: 30px; }
 }
 
@@ -482,4 +482,9 @@
   .barPending { animation: none; }
   .inNext,
   .inPrev { animation: none; }
+}
+
+/* Each work in its colour, the same one it has on the ayah study. */
+.column {
+  border-top: 3px solid var(--who, transparent);
 }

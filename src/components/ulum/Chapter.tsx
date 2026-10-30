@@ -4,6 +4,7 @@ import { useEffect, useState, type ReactNode, type RefObject } from "react";
 import { book, bookUrl, credit } from "@/lib/ulum/books";
 import { useLocale } from "@/lib/i18n";
 import { paras, type StudyCtx } from "./study";
+import { whoStyle } from "./who";
 import styles from "./AyahStudy.module.css";
 
 /**
@@ -115,8 +116,9 @@ export function Cite({
   }, [ctx, id, place]);
   if (!b) return null;
   return (
-    <div className={styles.cite}>
+    <div className={styles.cite} style={whoStyle(id)}>
       <span className={styles.citeWork}>
+        <span className={styles.whoDot} aria-hidden />
         <i>{b.name}</i> · {credit(b)}
       </span>
       <span className={styles.citeWhere}>{place}</span>
@@ -169,6 +171,22 @@ export function BookText({ text, lines, fold = 4 }: { text?: string; lines?: str
         </button>
       )}
     </div>
+  );
+}
+
+/** A long list, its first few and the rest on asking. */
+export function Fold({ items, first = 5, label }: { items: ReactNode[]; first?: number; label: (count: number) => string }) {
+  const { t } = useLocale();
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      {open ? items : items.slice(0, first)}
+      {items.length > first && (
+        <button type="button" className={styles.more} onClick={() => setOpen(!open)}>
+          {open ? t("ulum.less") : label(items.length - first)}
+        </button>
+      )}
+    </>
   );
 }
 

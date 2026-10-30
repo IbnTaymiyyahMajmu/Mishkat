@@ -6,6 +6,8 @@ import { useLocale } from "@/lib/i18n";
 import { Block, BookText, Chapter, Cite, Line, Silent } from "./Chapter";
 import { officeOf } from "./terms";
 import { ar, belongs, inAyah, local, on, useBook, useNear, type Read, type StudyCtx } from "./study";
+import { Differences, useViews } from "./Views";
+import { whoStyle } from "./who";
 import styles from "./AyahStudy.module.css";
 
 /**
@@ -39,7 +41,7 @@ export function Nahw({ ctx, jd }: { ctx: StudyCtx; jd: { j: Jadwal; read: Read }
   const daas = useBook("iraab-daas", ctx, near);
   const muyassar = useBook("aliraab-almuyassar", ctx, near);
   const darwish = useBook("iraab-aldarweesh", ctx, near);
-  const samin = useBook("aldur-almasoon", ctx, near && ctx.scholar);
+  const samin = useBook("aldur-almasoon", ctx, near);
   const nahhas = useBook("iraab-alnahas", ctx, near && ctx.scholar);
   const mujtaba = useBook("mujtaba-mushkil-iraab", ctx, near && ctx.scholar);
 
@@ -47,6 +49,7 @@ export function Nahw({ ctx, jd }: { ctx: StudyCtx; jd: { j: Jadwal; read: Read }
   const mRemarks = useMemo(() => (muyassar.p ? ornate(muyassar.p.text, muyassar.words, true) : []), [muyassar]);
   const dwRemarks = useMemo(() => (darwish.p ? readDarwish(darwish.p.text, darwish.words).iraab : []), [darwish]);
   const sRemarks = useMemo(() => (samin.p ? byPhrase(samin.p.text, samin.words) : []), [samin]);
+  const saminViews = useViews(samin, ctx);
 
   // ── the parse of the sentence being studied ───────────────────────────────
   const sw = words.filter((w) => w.j === sentence.n);
@@ -236,7 +239,7 @@ export function Nahw({ ctx, jd }: { ctx: StudyCtx; jd: { j: Jadwal; read: Read }
         <Block kicker={t("ulum.grammars.kicker")} title={t("ulum.grammars.title", { word: cur.ar })}>
           <div className={styles.cards2}>
             {others.map((o) => (
-              <article key={o.id} className={styles.card}>
+              <article key={o.id} className={`${styles.card} ${styles.whoCard}`} style={whoStyle(o.id)}>
                 {o.rs.slice(0, 2).map((r, k) => (
                   <Line key={k} text={`${o.wrap[0]}${r.quote}${o.wrap[1]} ${r.text}`} className={styles.cardArText} />
                 ))}
@@ -244,6 +247,19 @@ export function Nahw({ ctx, jd }: { ctx: StudyCtx; jd: { j: Jadwal; read: Read }
               </article>
             ))}
           </div>
+        </Block>
+      )}
+
+      {(saminViews.length > 0 || (!samin.loading && !ctx.booksDown)) && (
+        <Block kicker={t("ulum.diff.grammarKicker")} title={t("ulum.diff.grammarTitle", { count: saminViews.length })}>
+          {saminViews.length ? (
+            <>
+              <p className={styles.fromBook}>{t("ulum.diff.grammarNote")}</p>
+              <Differences books={[{ id: "aldur-almasoon", read: samin, views: saminViews }]} ctx={ctx} />
+            </>
+          ) : (
+            <Silent>{t("ulum.diff.grammarNone")}</Silent>
+          )}
         </Block>
       )}
 
