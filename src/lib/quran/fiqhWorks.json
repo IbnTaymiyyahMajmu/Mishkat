@@ -1,0 +1,36 @@
+[
+  {
+    "id": "almughni",
+    "short": "al-Mughnī",
+    "name": "al-Mughnī",
+    "nameEnglish": "The Sufficient",
+    "nameArabic": "المغني لابن قدامة",
+    "shortArabic": "المغني",
+    "titleArabic": "المغني",
+    "author": "Ibn Qudāma al-Maqdisī",
+    "authorArabic": "موفق الدين عبد الله بن أحمد بن قدامة المقدسي",
+    "died": 620,
+    "field": "Fiqh",
+    "fieldArabic": "فقه حنبلي",
+    "group": "hanbali",
+    "shamela": 8463,
+    "about": "The commentary on al-Khiraqī's Mukhtaṣar that became the Ḥanbalī school's great reference, setting each question against the other schools with its proofs."
+  },
+  {
+    "id": "almubdi",
+    "short": "al-Mubdiʿ",
+    "name": "al-Mubdiʿ fī sharḥ al-Muqniʿ",
+    "nameEnglish": "The Originator, a Commentary on al-Muqniʿ",
+    "nameArabic": "المبدع في شرح المقنع",
+    "shortArabic": "المبدع",
+    "titleArabic": "المبدع في شرح المقنع",
+    "author": "Burhān al-Dīn Ibn Mufliḥ",
+    "authorArabic": "برهان الدين إبراهيم بن محمد بن مفلح",
+    "died": 884,
+    "field": "Fiqh",
+    "fieldArabic": "فقه حنبلي",
+    "group": "hanbali",
+    "shamela": 21619,
+    "about": "The commentary on Ibn Qudāma's al-Muqniʿ, with the later Ḥanbalī positions and their proofs."
+  }
+]

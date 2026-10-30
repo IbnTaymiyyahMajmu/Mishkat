@@ -2,3 +2,9 @@
 # Stored byte for byte as written — no line-ending conversion — and left out of
 # diffs and language statistics: it is data, several hundred megabytes of it.
 public/tafsir/** -text -diff linguist-generated=true
+
+# The same for what the ayah study reads: the grammars and readings copied from
+# tafsir.app, what is worked out from the corpus, and the Ḥanbalī books' places.
+public/ulum/** -text -diff linguist-generated=true
+public/corpus/** -text -diff linguist-generated=true
+public/fiqh/** -text -diff linguist-generated=true
