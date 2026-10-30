@@ -361,6 +361,13 @@ export function WordStudy() {
                   </div>
                 </>
               )}
+              <Link
+                href={`/ayah/?v=${verseKey}${position > 1 ? `&w=${position}` : ""}`}
+                className="btn btn-ghost"
+                title={t("ulum.openHint")}
+              >
+                {t("ulum.open")} {arrows.next}
+              </Link>
             </section>
           )}
 

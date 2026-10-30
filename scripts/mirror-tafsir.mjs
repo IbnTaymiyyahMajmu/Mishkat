@@ -6,6 +6,7 @@
  *   node scripts/mirror-tafsir.mjs --verify        check what is already here
  *   node scripts/mirror-tafsir.mjs --force saadi   fetch again from scratch
  *   node scripts/mirror-tafsir.mjs --concurrency 4
+ *   node scripts/mirror-tafsir.mjs --shelf ulum    the grammars and readings
  *
  * tafsir.app (الباحث القرآني) is Nuqayah's, and this is done with their
  * permission. It is their text, their digitising and their proofreading, and
@@ -49,10 +50,44 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const OUT = path.join(ROOT, "public", "tafsir");
+
+/**
+ * The site keeps two shelves of tafsir.app's books, each in a folder of its
+ * own with a catalogue and a record of its own, so that either can be copied,
+ * checked or pruned without the other being touched.
+ *
+ *   tafsir   the tafsir library — the works on tafsir.app's tafsir shelf, and
+ *            the rare words, occasions and rulings beside them.
+ *   ulum     the books the ayah study reads for the sciences the tafsir
+ *            library leaves out: the grammars (iʿrāb) and the readings
+ *            (qirāʾāt). `--shelf ulum`.
+ */
+const SHELVES = {
+  tafsir: {
+    out: path.join(ROOT, "public", "tafsir"),
+    manifest: path.join(ROOT, "src", "content", "tafsir-mirror.json"),
+    catalogue: path.join(ROOT, "src", "lib", "quran", "tafsirWorks.json"),
+    kind: "the classical tafsir works",
+  },
+  ulum: {
+    out: path.join(ROOT, "public", "ulum"),
+    manifest: path.join(ROOT, "src", "content", "ulum-mirror.json"),
+    catalogue: path.join(ROOT, "src", "lib", "quran", "ulumWorks.json"),
+    kind: "the books of iʿrāb and of the readings",
+  },
+};
+const shelfAt = process.argv.indexOf("--shelf");
+const SHELF_NAME = shelfAt >= 0 ? process.argv[shelfAt + 1] : "tafsir";
+const SHELF = SHELVES[SHELF_NAME];
+if (!SHELF) {
+  console.error(`No shelf "${SHELF_NAME}". The shelves are: ${Object.keys(SHELVES).join(", ")}.`);
+  process.exit(1);
+}
+
+const OUT = SHELF.out;
 const CACHE = path.join(ROOT, "node_modules", ".cache", "tafsir-mirror");
-const MANIFEST = path.join(ROOT, "src", "content", "tafsir-mirror.json");
-const CATALOGUE = path.join(ROOT, "src", "lib", "quran", "tafsirWorks.json");
+const MANIFEST = SHELF.manifest;
+const CATALOGUE = SHELF.catalogue;
 const SURAHS = path.join(ROOT, "src", "lib", "quran", "surahNames.ts");
 
 const ORIGIN = "https://tafsir.app";
@@ -79,7 +114,9 @@ const option = (name, fallback) => {
   return i >= 0 && args[i + 1] ? args[i + 1] : fallback;
 };
 const CONCURRENCY = Math.max(1, Math.min(12, Number(option("concurrency", 6)) || 6));
-const named = args.filter((a, i) => !a.startsWith("--") && args[i - 1] !== "--concurrency");
+const named = args.filter(
+  (a, i) => !a.startsWith("--") && args[i - 1] !== "--concurrency" && args[i - 1] !== "--shelf",
+);
 
 // ── what there is to copy ───────────────────────────────────────────────────
 
@@ -279,7 +316,7 @@ Everything in this folder is copied from **[tafsir.app](${ORIGIN})** —
 الباحث القرآني — which is built and maintained by **[Nuqayah](https://nuqayah.com)**.
 It is copied with their permission.
 
-The texts are the classical tafsir works in the Arabic their authors wrote. The
+The texts are ${SHELF.kind} in the Arabic their authors wrote. The
 digitising, the proofreading against the printed editions, and the division of
 each work by ayah are Nuqayah's work and their volunteers'. Nothing here has
 been altered: each passage is stored as tafsir.app served it, editors' footnotes

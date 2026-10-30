@@ -1,0 +1,105 @@
+{
+  "format": 1,
+  "source": "https://tafsir.app",
+  "works": {
+    "aldur-almasoon": {
+      "passages": 4596,
+      "ayat": 4596,
+      "chars": 7509484,
+      "bytes": 13617438,
+      "files": 150,
+      "sha256": "5169df76e9fb2cadee8b5c3c576f3503b6979662e3db7ad179aa84c7aae2e763",
+      "mirroredAt": "2026-10-30T00:58:29.723Z"
+    },
+    "aliraab-almuyassar": {
+      "passages": 6236,
+      "ayat": 6236,
+      "chars": 3391839,
+      "bytes": 6336116,
+      "files": 121,
+      "sha256": "cb1e748e003f9d98f14b291c40457d48759618f41ddbcba07094212b14d11d32",
+      "mirroredAt": "2026-10-30T01:01:52.566Z"
+    },
+    "aljadwal": {
+      "passages": 3257,
+      "ayat": 6236,
+      "chars": 6054756,
+      "bytes": 10666746,
+      "files": 136,
+      "sha256": "d69f88e4bda67f4915bfd7da8e7f393b58ed9728b950c2e8f7c64c1c52a84fed",
+      "mirroredAt": "2026-10-30T00:59:18.305Z"
+    },
+    "alnashir": {
+      "passages": 1426,
+      "ayat": 1426,
+      "chars": 505503,
+      "bytes": 967117,
+      "files": 108,
+      "sha256": "0d00527c8bd7366202107fa6666e40d3d893ac58d61031ff9f8e9940ad05a7a3",
+      "mirroredAt": "2026-10-30T01:03:32.979Z"
+    },
+    "iraab-aldarweesh": {
+      "passages": 1387,
+      "ayat": 6236,
+      "chars": 6291847,
+      "bytes": 11427325,
+      "files": 136,
+      "sha256": "ec7bc5f4f5f1786471b5cf8e924572afe6e4db297014341a9e7d0613e2546866",
+      "mirroredAt": "2026-10-30T00:59:44.040Z"
+    },
+    "iraab-alnahas": {
+      "passages": 4534,
+      "ayat": 5109,
+      "chars": 2188803,
+      "bytes": 3963522,
+      "files": 115,
+      "sha256": "4a0db4b82cc95bf94939b42c78c96b6fe29870a80088c3969cbecb7fd3bc1b5c",
+      "mirroredAt": "2026-10-30T00:57:32.902Z"
+    },
+    "iraab-daas": {
+      "passages": 3639,
+      "ayat": 6236,
+      "chars": 2738384,
+      "bytes": 5206586,
+      "files": 119,
+      "sha256": "483a7d80ed94e21cda14343f4c461f723da1ce5205cdcc481c6484939dd625a6",
+      "mirroredAt": "2026-10-30T01:00:33.859Z"
+    },
+    "mafateeh-alaghanee": {
+      "passages": 657,
+      "ayat": 661,
+      "chars": 180766,
+      "bytes": 337581,
+      "files": 97,
+      "sha256": "051e893366f1b5135441a2fb9e7d52d041115cea1547ae943906bd792f572b55",
+      "mirroredAt": "2026-10-30T01:03:14.526Z"
+    },
+    "mujtaba-mushkil-iraab": {
+      "passages": 5895,
+      "ayat": 5895,
+      "chars": 957200,
+      "bytes": 1807072,
+      "files": 114,
+      "sha256": "9473d68c7dad9f3a9733dd2bfb7175aaf80f225fb5ded614b158541304505fe7",
+      "mirroredAt": "2026-10-30T01:03:05.898Z"
+    },
+    "qiraat-almawsoah": {
+      "passages": 2332,
+      "ayat": 2343,
+      "chars": 484331,
+      "bytes": 900171,
+      "files": 113,
+      "sha256": "ba7fcf9d2191c8a95613e7f5487417b0fe24b433fb27b7688de4abc235671d27",
+      "mirroredAt": "2026-10-30T01:04:20.378Z"
+    },
+    "tahbeer-altayseer": {
+      "passages": 1366,
+      "ayat": 1393,
+      "chars": 211275,
+      "bytes": 419231,
+      "files": 106,
+      "sha256": "5ea7b816aac80ef05af847ebe02091025d771a1c2ac0a3fe426f26fa3ecd37ec",
+      "mirroredAt": "2026-10-30T01:03:50.750Z"
+    }
+  }
+}

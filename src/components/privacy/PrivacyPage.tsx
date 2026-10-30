@@ -15,7 +15,7 @@ import styles from "./PrivacyPage.module.css";
  */
 
 /** The day this page last changed what it says. */
-const UPDATED = Date.UTC(2026, 9, 22);
+const UPDATED = Date.UTC(2026, 9, 30);
 
 /** Where a reader can write with a question about it. Google Play's listing gives the same address. */
 const EMAIL = "MishkatQuran@outlook.com";
@@ -27,6 +27,7 @@ const ASKED: MessageKey[] = [
   "privacy.fetched.tafsir",
   "privacy.fetched.lexicons",
   "privacy.fetched.clear",
+  "privacy.fetched.books",
 ];
 
 /** A host named in a sentence: isolated, so an address keeps its own direction in a Persian or Pashto line. */

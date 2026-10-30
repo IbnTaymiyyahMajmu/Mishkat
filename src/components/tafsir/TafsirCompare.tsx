@@ -7,6 +7,7 @@ import { fetchAyahXrefs, type XrefLink } from "@/lib/quran/xref";
 import { useLocale } from "@/lib/i18n";
 import { useSurahNames } from "@/lib/i18n/surah";
 import { useNarrow, useSwipe } from "@/lib/useSwipe";
+import { whoStyle } from "@/components/ulum/who";
 import { TafsirReading } from "./TafsirReading";
 import { useTafsirSay } from "./useTafsirSay";
 import styles from "./TafsirCompare.module.css";
@@ -391,7 +392,7 @@ export function TafsirCompare({ verseKey, works, onChange, onRead, onGo }: Props
       ) : (
         <div className={styles.columns} data-count={works.length}>
           {works.map((work, i) => (
-            <div key={work.id} className={styles.column}>
+            <div key={work.id} className={styles.column} style={whoStyle(work.id.replace(/^app:/, ""))}>
               {column(work, i)}
             </div>
           ))}

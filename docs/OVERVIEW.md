@@ -262,11 +262,49 @@ the build until it has been said in all four. Adding a language is one entry in
 and end rather than left and right, which is what lets one set of them serve a
 page read in either direction.
 
+## The ayah study
+
+`/ayah/?v=2:255` takes any one ayah through its sciences, chapter by chapter:
+its words and roots, their forms, its grammar, its rhetoric, its readings, its
+occasion, the transmitted reports, the commentators side by side, its rulings,
+where the muṣḥaf says it again, and what is to be drawn from it. It opens from
+the word panel in the reader, the muṣḥaf's ayah bar, the tafsir page and the word
+study page.
+
+*What it stands on.* Nothing on the page is the site's own claim about the ayah.
+Each chapter is the books of that science, in their Arabic, under their names,
+each linked to the same place on tafsir.app, or on Shamela for the two Ḥanbalī
+books. `src/lib/ulum/read.ts` reads each
+book's layout and sets each remark on the words it quotes, and
+`npm run check:ulum` says how much of each book found its words, over the whole
+Qurʾān. The site's own part is the arrangement, the counts, and the English names
+of the terms (`src/components/ulum/terms.ts`).
+
+*Where scholars differ, and what is weak.* Chapters three and eight set out the
+differences the books themselves record, each view in its own colour with the names
+they give (`src/lib/ulum/views.ts`). A scholar keeps one colour across the site
+(`src/components/ulum/who.ts`). A report said to be weak says so visibly, with why
+and on whose word (`src/lib/ulum/grades.ts`).
+
+*Where it comes from.* The grammars and the books of the readings are a second
+shelf copied from tafsir.app (`npm run mirror:ulum`, `public/ulum`, listed in
+`src/lib/quran/ulumWorks.json`). `npm run gen:ulum` works out, from the Quranic
+Arabic Corpus, every word's segments, a tree for every root and the runs of words
+an ayah shares with others, and takes from the open hadith-api the hadith of
+al-Bukhārī and Muslim that Ibn Kathīr quotes, each checked against what he quotes
+(`public/corpus`). `npm run gen:fiqh` takes al-Mughnī and al-Mubdiʿ from OpenITI,
+which go by the chapters of fiqh rather than the ayat, and gathers under each ayah
+the places their editions mark it as quoted, for the Ḥanbalī column of the rulings
+(`public/fiqh`, listed in `src/lib/quran/fiqhWorks.json`). What is left for the owner
+to rule on is in [ULUM-REVIEW.md](ULUM-REVIEW.md).
+
 ## The Android app
 
 The same site, carried inside an Android app for Google Play: `android/`, built
 with Capacitor. It holds a copy of the export, so every page and the tafsir
-library are on the phone, and fetches the rest as the site does. What it adds is
+library are on the phone, and fetches the rest as the site does — including the
+ayah study's grammars, readings and Ḥanbalī fiqh, which are read from the site to
+keep the app under the store's limit. What it adds is
 small and native — each page served as itself, the page running up under the
 status bar as an app's screens do, Back that goes back, and a recitation that
 goes on with the screen off, with the lock screen's controls. `npm run android -- --apk` builds one to

@@ -392,6 +392,9 @@ export function TafsirPage() {
             {shownVerse === null && (
               <p className={styles.ayahPending}>{t("tafsir.ayahUnreached")}</p>
             )}
+            <Link href={`/ayah/?v=${verseKey}`} className="btn btn-ghost" title={t("ulum.openHint")}>
+              {t("ulum.open")} {arrows.next}
+            </Link>
           </header>
 
           {/* ── the three ways of going about it ─────────────────────── */}
