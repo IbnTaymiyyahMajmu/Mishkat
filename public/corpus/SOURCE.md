@@ -11,7 +11,9 @@ General Public License; its tags are kept here exactly as it writes them.
 - `roots.json` — each root's lemmas, their kinds and counts.
 - `echo/<surah>.json` — runs of three or more words an ayah shares, word for
   word, with another.
-- `sahih/<surah>.json` — the hadith of Ṣaḥīḥ al-Bukhārī and Ṣaḥīḥ Muslim that Ibn
-  Kathīr quotes on each passage, by the number his editor gives, in the text and
-  translation of [fawazahmed0/hadith-api](https://github.com/fawazahmed0/hadith-api),
-  kept only where the text matches what he quotes.
+- `sahih/<surah>.json` — the hadith of al-Bukhārī, Muslim, Abū Dāwūd, al-Tirmidhī,
+  al-Nasāʾī and Ibn Mājah that Ibn Kathīr quotes on each passage, by the number his
+  editor gives, in the text and translation of
+  [fawazahmed0/hadith-api](https://github.com/fawazahmed0/hadith-api), kept only
+  where the text matches what he quotes. Those of the four Sunan carry al-Albānī's
+  grading as that corpus gives it, and one without a grading is left out.
