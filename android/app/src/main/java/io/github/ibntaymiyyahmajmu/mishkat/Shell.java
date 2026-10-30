@@ -178,6 +178,7 @@ public class Shell extends Plugin {
         preferences().edit().putString(LIGHT, name).apply();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             int splash = switch (name) {
+                case "dawn" -> R.style.AppTheme_NoActionBarLaunch_Dawn;
                 case "day" -> R.style.AppTheme_NoActionBarLaunch_Day;
                 case "night" -> R.style.AppTheme_NoActionBarLaunch_Night;
                 default -> R.style.AppTheme_NoActionBarLaunch;

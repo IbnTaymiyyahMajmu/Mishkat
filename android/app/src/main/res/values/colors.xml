@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- The ground of the landing page in each of the site's three lights,
+    <!-- The ground of the landing page in each of the site's four lights,
          which is what the app opens on: mk-hero-ground in src/app/globals.css. -->
+    <color name="dawn">#ECE9E6</color>
     <color name="day">#FBF8F1</color>
     <color name="evening">#261C0F</color>
     <color name="night">#11141A</color>

@@ -6,6 +6,8 @@ import type { TafsirWork } from "@/lib/quran/tafsir";
 import { fetchTafsirAppAbout } from "@/lib/quran/tafsirApp";
 import { useSettings } from "@/lib/store/settings";
 import { useT } from "@/lib/i18n";
+import { useSurahNames } from "@/lib/i18n/surah";
+import { useCopy } from "@/components/Toast";
 import { TafsirText, countEditorNotes } from "./TafsirText";
 import { useTafsirPassage } from "./useTafsirPassage";
 import { useTafsirSay } from "./useTafsirSay";
@@ -35,7 +37,8 @@ interface Props {
  *
  * Everything a reader needs in order to trust what they are reading is in the
  * heading — the book, the author and when he died, the kind of work it is —
- * and the way back to the source is at the foot. Under the heading is one line
+ * and the way back to the source is at the foot, with the passage cited in a
+ * line a reader can paste: the book, its author, the ayat and where it is. Under the heading is one line
  * of things that can be done with the work, and it is one line: on a phone the
  * heading is all that stands between the reader and the passage they came for.
  */
@@ -43,6 +46,8 @@ export function TafsirReading({ work, verseKey, opening, onRange, alternatives, 
   const { settings, update } = useSettings();
   const t = useT();
   const say = useTafsirSay();
+  const names = useSurahNames();
+  const copy = useCopy();
   const state = useTafsirPassage(work, verseKey);
   const passage = state.status === "ready" ? state.passage : null;
 
@@ -80,6 +85,26 @@ export function TafsirReading({ work, verseKey, opening, onRange, alternatives, 
   const hasTools = !!other || !!work.aboutId || noteCount > 0 || !!tools;
   const arabic = say.arabic(work);
   const title = say.title(work);
+
+  // The citation is the passage as it is cited: the book, its author and his
+  // dates, the ayat it is on — all of them, where he takes several together —
+  // and where to read it. Its words are the site's, put together here rather
+  // than through the message's own values, which would set marks for the
+  // screen's direction into text that is going to be pasted somewhere else.
+  const cite = () => {
+    if (!passage) return;
+    const surah = Number(verseKey.split(":")[0]);
+    const ayat = passage.from !== passage.to ? `${surah}:${passage.from}–${passage.to}` : verseKey;
+    const parts: Record<string, string> = {
+      title: say.name(work),
+      credit: say.credit(work),
+      place: `${names.name(surah)} ${ayat}`,
+      source: work.origin.href(verseKey),
+    };
+    let line = t("tafsir.citation");
+    for (const [name, value] of Object.entries(parts)) line = line.split(`{${name}}`).join(value);
+    void copy(line, t("toast.citationCopied"));
+  };
 
   return (
     <article className={styles.reading} lang={work.lang === "ar" ? undefined : "en"}>
@@ -213,6 +238,9 @@ export function TafsirReading({ work, verseKey, opening, onRange, alternatives, 
             {noteCount > 0 && t(settings.tafsirNotes ? "tafsir.legendShown" : "tafsir.legendFolded")}
           </span>
           <span className={styles.footGap} />
+          <button className={styles.cite} onClick={cite} title={t("tafsir.citeTitle")}>
+            {t("tafsir.cite")}
+          </button>
           <a href={work.origin.href(verseKey)} target="_blank" rel="noopener noreferrer" className={styles.source}>
             {work.origin.name} ↗
           </a>

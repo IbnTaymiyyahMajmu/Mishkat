@@ -61,7 +61,7 @@
   background: color-mix(in srgb, var(--color-accent) 13%, transparent);
   color: var(--color-accent-800);
 }
-:global(:root:not([data-theme="day"])) .tabOn { color: var(--color-accent); }
+:global(:root:not([data-theme="day"]):not([data-theme="dawn"])) .tabOn { color: var(--color-accent); }
 
 .tabLang {
   font-family: var(--font-body);
@@ -560,6 +560,24 @@
 
 .footNote { font-size: 11px; line-height: 1.6; color: var(--muted-45); }
 .footGap { flex: 1; }
+
+/* The passage cited, put on the clipboard: set as the source beside it is. */
+.cite {
+  flex: none;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+.cite:hover { border-bottom-color: var(--color-accent); }
+.cite:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
 
 .source {
   flex: none;

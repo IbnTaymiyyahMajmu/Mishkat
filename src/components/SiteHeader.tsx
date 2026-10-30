@@ -9,8 +9,21 @@ import { chooseLight, useLight, type Theme } from "@/lib/store/settings";
 import { useClosedByBack } from "@/lib/back";
 import styles from "./SiteHeader.module.css";
 
-/** The three reading lights, in the order the day runs. */
+/** The four reading lights, in the order the day runs. */
 const LIGHTS: { id: Theme; title: MessageKey; icon: React.ReactNode }[] = [
+  {
+    // The first light: a white line along the horizon, the sun still under
+    // it, rising.
+    id: "dawn",
+    title: "light.dawn",
+    icon: (
+      <>
+        <path d="M3.5 18h17" />
+        <path d="M6.6 14.6h10.8" />
+        <path d="M12 3.6v6.2M9.4 6.2 12 3.6l2.6 2.6" />
+      </>
+    ),
+  },
   {
     id: "day",
     title: "light.day",

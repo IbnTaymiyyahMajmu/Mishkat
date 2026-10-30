@@ -29,6 +29,7 @@ import styles from "./SettingsPage.module.css";
 const SAMPLE_AYAH = "2:152";
 
 const LIGHTS: { id: Theme; label: MessageKey }[] = [
+  { id: "dawn", label: "light.dawn" },
   { id: "day", label: "light.day" },
   { id: "evening", label: "light.evening" },
   { id: "night", label: "light.night" },

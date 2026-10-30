@@ -8,9 +8,9 @@ import mirror from "@/content/tafsir-mirror.json";
  * tafsir.app — الباحث القرآني, built by Nuqayah — holds the classical tafsir
  * library set out ayah by ayah: some forty works, in the Arabic their authors
  * wrote. It is by a long way the richest place to read tafsir against a single
- * ayah. This site does not take all of it. It takes the works a reader is
- * most likely to want — see the note on the catalogue below — and sends them
- * to tafsir.app for the rest.
+ * ayah. This site takes its tafsir, and the books beside them that explain
+ * the Qurʾan — see the note on the catalogue below — and sends readers to
+ * tafsir.app for the rest: the grammars, the readings and the dictionaries.
  *
  * ── where a passage comes from ────────────────────────────────────────────
  *
@@ -64,49 +64,66 @@ export interface TafsirAppWork {
   credit?: string;
   /** When it is from, in a word, where the year of one death does not say. */
   era?: string;
-  /**
-   * What kind of tafsir it is, in tafsir.app's own division of the library and
-   * in English. This is why the work is here: it stands for its kind.
-   */
+  /** What kind of tafsir it is, in a few words, in English and in Arabic. */
   field: string;
   fieldArabic: string;
+  /** The shelf tafsir.app sets it on. See `TAFSIR_APP_GROUPS`. */
+  group: TafsirAppGroup;
 }
 
 /**
- * The works this site holds: a shelf, not the library.
+ * The shelves of tafsir.app's library, in its order, under its own headings.
+ * The first ten are its tafsir proper, divided by what each work sets out to
+ * do; the last three are from the shelf it keeps beside them for the sciences
+ * of the Qurʾan — its words, the occasions of its revelation, and its rulings.
+ */
+export const TAFSIR_APP_GROUPS = [
+  { id: "mothers", titleArabic: "أمّهات" },
+  { id: "opinions", titleArabic: "جمع الأقوال" },
+  { id: "gathered", titleArabic: "منتقاة" },
+  { id: "general", titleArabic: "عامّة" },
+  { id: "encyclopaedic", titleArabic: "موسوعات" },
+  { id: "other", titleArabic: "أخرى" },
+  { id: "language", titleArabic: "لغة وبلاغة" },
+  { id: "contemporary", titleArabic: "معاصرة" },
+  { id: "concise", titleArabic: "مركّزة العبارة" },
+  { id: "reports", titleArabic: "آثار" },
+  { id: "gharib", titleArabic: "غريب ومعاني" },
+  { id: "asbab", titleArabic: "أسباب النزول" },
+  { id: "ahkam", titleArabic: "أحكام" },
+] as const;
+
+export type TafsirAppGroup = (typeof TAFSIR_APP_GROUPS)[number]["id"];
+
+/**
+ * The works this site holds: tafsir.app's library, arranged as tafsir.app
+ * arranges it.
  *
- * tafsir.app sorts its tafsir by what each sets out to do — the mother works
- * that the rest lean on, those that gather the opinions, the encyclopaedic,
- * the concise, the linguistic, and so on. All four of the mother works are
- * here, because they are the ones everything else cites. From each of the
- * other kinds there is one, the work that kind is best known by:
+ * At first the site held one work of each kind — the four mother works, Ibn
+ * ʿUthaymīn, and the work each other kind is best known by. In October 2026
+ * the site's owner asked for the rest: every work on tafsir.app's tafsir
+ * shelf, and the works on its sciences shelf that explain the Qurʾan — its
+ * rare words and meanings, the occasions of its revelation, its rulings —
+ * without the grammars, the readings and the dictionaries, which are other
+ * kinds of book. Each work is set on the shelf tafsir.app sets it on (`group`,
+ * and `TAFSIR_APP_GROUPS` above).
  *
- *   gathering the opinions   Zād al-masīr — Ibn al-Jawzī sets the views side
- *                            by side and names who held each
- *   encyclopaedic            Mafātīḥ al-ghayb — al-Rāzī
- *   concise                  Anwār al-tanzīl — al-Bayḍāwī, taught from for
- *                            seven centuries
- *   gathered from his works  Ibn al-Qayyim, whose tafsir is scattered through
- *                            his books and collected here
- *   transmitted reports      al-Durr al-manthūr — al-Suyūṭī
- *   general                  Fatḥ al-qadīr — al-Shawkānī, who joins narration
- *                            and reasoning
- *   language and rhetoric    al-Taḥrīr wa-l-tanwīr — Ibn ʿĀshūr
- *   the Qurʾan by the Qurʾan  Aḍwāʾ al-bayān — al-Shinqīṭī
- *   contemporary             Ibn ʿUthaymīn
+ * Three works were left out by the owner's decision: al-Zamakhsharī's
+ * al-Kashshāf and al-Akhfash's Maʿānī al-Qurʾān, which tafsir.app itself marks
+ * as Muʿtazilī, and the tafsir of Muqātil ibn Sulaymān, whom the critics of
+ * hadith abandoned. Two more could not be copied: the Shāṭibī Institute's
+ * encyclopaedia of transmitted tafsir is a link on tafsir.app to a site of its
+ * own, and Ibn Taymiyya's collected tafsir is there as pictures of the printed
+ * pages rather than as text.
  *
- * The four mother works and Ibn ʿUthaymīn were the site owner's choice; the
- * rest were chosen to that brief.
- *
- * And two short works stand in front of them — al-Mukhtaṣar and al-Jalālayn —
- * for a different reason: they are the two whose English the site also has, so
- * holding their Arabic lets a reader pass between the languages of one work.
+ * Al-Muyassar and al-Saʿdī are on tafsir.app too, and are read here from the
+ * Quran.com corpus, as they were before (lib/quran/tafsir.ts).
  *
  * The list is `tafsirWorks.json`, beside this file, because two things read
  * it: this module, and the script that copies the works named in it. It is in
- * the order it is shown in — the short works, the mother works, then the
- * others, each group earliest author first — and adding or dropping a work is
- * adding or dropping its line.
+ * the order it is shown in — tafsir.app's shelves in tafsir.app's order and,
+ * on each, the earliest author first — and adding or dropping a work is adding
+ * or dropping its line.
  */
 export const TAFSIR_APP_WORKS = works as TafsirAppWork[];
 
@@ -152,6 +169,14 @@ const RELAY = (process.env.NEXT_PUBLIC_TAFSIR_APP_BASE ?? "").trim().replace(/\/
 /** Whether this site holds its own copy of the work. */
 export function tafsirAppMirrored(id: string): boolean {
   return id in MIRRORED;
+}
+
+/**
+ * How many of the 6,236 ayat this site's copy of the work has a passage on, as
+ * the copying script counted them. Unknown for a work that is not copied.
+ */
+export function tafsirAppCoverage(id: string): number | undefined {
+  return MIRRORED[id]?.ayat;
 }
 
 /** Whether the work's text can be shown in the panel, or only linked to. */

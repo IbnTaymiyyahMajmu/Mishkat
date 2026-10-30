@@ -2,20 +2,23 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { fetchVerse } from "@/lib/quran/api";
-import { tafsirWork } from "@/lib/quran/tafsir";
+import { tafsirWork, type TafsirWork } from "@/lib/quran/tafsir";
 import { translationName } from "@/lib/quran/translations";
 import { SURAH_NAMES } from "@/lib/quran/surahNames";
 import type { Verse } from "@/lib/quran/types";
 import { useChapters } from "@/lib/store/chapters";
 import { useSettings } from "@/lib/store/settings";
 import { isValidVerseKey, plainText } from "@/lib/text";
+import { useSwipe } from "@/lib/useSwipe";
 import { Navigator } from "@/components/navigator/Navigator";
-import { useLocale } from "@/lib/i18n";
+import { useLocale, type MessageKey } from "@/lib/i18n";
 import { useSurahNames } from "@/lib/i18n/surah";
+import { TafsirCompare, MAX_COMPARED } from "./TafsirCompare";
+import { TafsirLibraryView } from "./TafsirLibraryView";
 import { TafsirReading } from "./TafsirReading";
-import { TafsirLanguages, TafsirLibrary, TafsirTabs, useShelfLanguage } from "./TafsirShelf";
+import { TafsirLanguages, TafsirTabs, useShelfLanguage } from "./TafsirShelf";
 import { useTafsirSay } from "./useTafsirSay";
 import { useTafsirShelf } from "./useTafsirShelf";
 import styles from "./TafsirPage.module.css";
@@ -30,14 +33,32 @@ import styles from "./TafsirPage.module.css";
  * person can sit with, at a size they choose, and the library down the side,
  * a language at a time.
  *
- * It is also where two works are read against each other. The site's promise
- * about tafsir is that works are set side by side and never merged; here they
- * are, literally, side by side.
+ * And it is where the works are set against each other, which is the site's
+ * whole promise about tafsir: works are set side by side and never merged. So
+ * under the ayah the page offers three ways of going about it, and no more —
  *
- * The ayah and the works are in the address — `/tafsir/?v=2:255&w=app:tabari`
- * — so a passage can be linked to, bookmarked by the browser, and come back to.
- * It is one exported page, not 6,236: the ayah is a query rather than a path.
+ *   Read      one work, at length;
+ *   Compare   the whole library on this ayah at a glance — who speaks on it,
+ *             at what length, and which other ayat they reach for — and up to
+ *             four works side by side;
+ *   Library   the works themselves: when each author lived, what kind of
+ *             tafsir each wrote, how much of the Qurʾan it covers, and what
+ *             the author said he set out to do.
+ *
+ * The ayah, the works and the view are in the address —
+ * `/tafsir/?v=2:255&w=app:tabari&c=app:qurtubi,app:alrazi&view=compare` — so a
+ * comparison can be linked to, bookmarked by the browser, and come back to. It
+ * is one exported page, not 6,236: the ayah is a query rather than a path.
  */
+
+export type TafsirView = "read" | "compare" | "library";
+
+const VIEWS: { id: TafsirView; label: MessageKey }[] = [
+  { id: "read", label: "tafsir.view.read" },
+  { id: "compare", label: "tafsir.view.compare" },
+  { id: "library", label: "tafsir.view.library" },
+];
+
 export function TafsirPage() {
   const router = useRouter();
   const params = useSearchParams();
@@ -65,12 +86,31 @@ export function TafsirPage() {
   const total = ayatIn(surah);
   const placeLabel = total ? t("common.ayahOf", { n: ayah, total }) : t("common.ayahN", { n: ayah });
 
-  // ── which works ───────────────────────────────────────────────────────────
+  // ── which works, and how they are read ────────────────────────────────────
   const primary = tafsirWork(params.get("w")) ?? active;
-  const beside = tafsirWork(params.get("c"));
-  const second = beside && beside.id !== primary?.id ? beside : undefined;
+  // The works set beside it, in the order they were set: up to three more.
+  const besideList = params.get("c") ?? "";
+  const primaryId = primary?.id;
+  const beside = useMemo(
+    () =>
+      [...new Set(besideList.split(",").filter(Boolean))]
+        .map((id) => tafsirWork(id))
+        .filter((w): w is TafsirWork => !!w && w.id !== primaryId)
+        .slice(0, MAX_COMPARED - 1),
+    [besideList, primaryId],
+  );
+  const compared = useMemo(() => (primary ? [primary, ...beside] : beside), [primary, beside]);
 
-  const [choosing, setChoosing] = useState(false);
+  // A link from before there were views, with a second work in it, asked for
+  // two works side by side: that is the comparison now.
+  const viewAsked = params.get("view");
+  const view: TafsirView =
+    viewAsked === "library" || viewAsked === "compare" || viewAsked === "read"
+      ? viewAsked
+      : beside.length
+        ? "compare"
+        : "read";
+
   const [navigating, setNavigating] = useState(false);
   const [railLang, setRailLang] = useShelfLanguage(primary);
   const railShelf = say.shelves.find((s) => s.lang === railLang) ?? say.shelves[0];
@@ -80,28 +120,44 @@ export function TafsirPage() {
 
   /** Rewrite the address. Everything on the page is read back out of it. */
   const go = useCallback(
-    (next: { v?: string; w?: string; c?: string | null }) => {
+    (next: { v?: string; w?: string; c?: string[]; view?: TafsirView }) => {
       const v = next.v ?? verseKey;
       const w = next.w ?? primary?.id;
-      const c = next.c === undefined ? second?.id : next.c;
-      const query = [`v=${v}`, w ? `w=${encodeURIComponent(w)}` : "", c && c !== w ? `c=${encodeURIComponent(c)}` : ""]
+      const c = (next.c ?? beside.map((b) => b.id)).filter((id) => id !== w);
+      const shown = next.view ?? view;
+      // Read is what a bare address means, so it is written out only where the
+      // address would otherwise be read as a comparison.
+      const named = shown === "read" ? (c.length ? "read" : "") : shown;
+      const query = [
+        `v=${v}`,
+        w ? `w=${encodeURIComponent(w)}` : "",
+        c.length ? `c=${c.map(encodeURIComponent).join(",")}` : "",
+        named ? `view=${named}` : "",
+      ]
         .filter(Boolean)
         .join("&");
       router.replace(`/tafsir/?${query}`, { scroll: false });
     },
-    [router, verseKey, primary?.id, second?.id],
+    [router, verseKey, primary?.id, beside, view],
   );
 
+  /** Read this work, on its own, here. */
   const read = useCallback(
     (id: string) => {
       pick(id);
-      setChoosing(false);
-      // Reading the work that is set beside this one swaps the two. Otherwise
-      // it would leave its column to take this one, and a reader who had a
-      // work in both its languages would be left with one.
-      go({ w: id, c: second?.id === id ? (primary?.id ?? null) : undefined });
+      go({ w: id, view: "read" });
     },
-    [pick, go, primary?.id, second?.id],
+    [pick, go],
+  );
+
+  /** The works compared, from now on, in this order. The first is the one read. */
+  const compare = useCallback(
+    (ids: string[]) => {
+      const [first, ...rest] = ids;
+      if (!first) return;
+      go({ w: first, c: rest, view: "compare" });
+    },
+    [go],
   );
 
   // ── the ayah itself ───────────────────────────────────────────────────────
@@ -133,7 +189,6 @@ export function TafsirPage() {
 
   // The work being read is kept in sight in the rail, which is longer than
   // most screens are tall. By arithmetic: `scrollIntoView` would move the page.
-  const primaryId = primary?.id;
   useEffect(() => {
     const rail = railRef.current;
     const row = rail?.querySelector<HTMLElement>('[aria-current="true"]');
@@ -142,13 +197,15 @@ export function TafsirPage() {
     if (top < rail.scrollTop || top + row.offsetHeight > rail.scrollTop + rail.clientHeight) {
       rail.scrollTop = top - (rail.clientHeight - row.offsetHeight) / 2;
     }
-  }, [primaryId]);
+  }, [primaryId, view]);
 
   // ── moving ────────────────────────────────────────────────────────────────
-  // A passage on ayat 1–14 is stepped past as one. Past the end of a surah is
-  // the head of the next, and before its head is the foot of the one before.
+  // A passage on ayat 1–14 is stepped past as one, while one work is being
+  // read. Past the end of a surah is the head of the next, and before its head
+  // is the foot of the one before. Comparing, works take different runs of
+  // ayat, and the step is one ayah.
   const slot = `${primary?.id}|${verseKey}`;
-  const covered = range?.key === slot ? range : null;
+  const covered = view === "read" && range?.key === slot ? range : null;
   const onRange = useCallback(
     (r: { from: number; to: number } | null) =>
       setRange((held) => {
@@ -185,7 +242,25 @@ export function TafsirPage() {
 
   // The tabs are the works kept to hand — and the one being read, if it was
   // arrived at by a link and is not among them.
-  const tabs = primary && !works.some((w) => w.id === primary.id) ? [...works, primary] : works;
+  const tabs = useMemo(
+    () => (primary && !works.some((w) => w.id === primary.id) ? [...works, primary] : works),
+    [works, primary],
+  );
+
+  // On a phone the next work is a stroke across the passage away, as the next
+  // card in a pile would be; it comes in from the side it was fetched from.
+  const [arrival, setArrival] = useState<{ id: string; from: "next" | "prev" } | null>(null);
+  const turn = useCallback(
+    (to: "next" | "prev") => {
+      if (tabs.length < 2 || !primary) return;
+      const at = tabs.findIndex((w) => w.id === primary.id);
+      const next = tabs[(at + (to === "next" ? 1 : tabs.length - 1)) % tabs.length];
+      setArrival({ id: next.id, from: to });
+      read(next.id);
+    },
+    [tabs, primary, read],
+  );
+  const swipeRef = useSwipe(turn, view === "read" && tabs.length > 1);
 
   const translator =
     translation?.resource_name ?? translationName(settings.translationId);
@@ -243,50 +318,45 @@ export function TafsirPage() {
         </div>
       </div>
 
-      <div className={styles.layout}>
-        {/* ── the library, down the side ──────────────────────────────── */}
-        <nav className={styles.rail} aria-label={t("tafsir.works")}>
-          <div className={styles.railInner} ref={railRef}>
-            <TafsirLanguages lang={railLang} onLang={setRailLang} />
-            {railShelf?.sections.map((section) => (
-              <div key={section.id} className={styles.railSection}>
-                <div className={styles.railHeading}>{say.section(section)}</div>
-                {section.works.map((w) => {
-                  const also = w.lang === "ar" ? say.counterpart(w) : undefined;
-                  return (
-                  <button
-                    key={w.id}
-                    className={[
-                      styles.railRow,
-                      primary?.id === w.id ? styles.railOn : "",
-                      second?.id === w.id ? styles.railBeside : "",
-                    ]
-                      .filter(Boolean)
-                      .join(" ")}
-                    onClick={() => read(w.id)}
-                    aria-current={primary?.id === w.id ? "true" : undefined}
-                    title={`${say.name(w)}${say.title(w) ? ` — ${say.title(w)}` : ""}. ${say.credit(w)}. ${say.about(w)}`}
-                  >
-                    {/* Where a section is one work of each kind, the kind
-                        leads: it is the reason the work is on the list. */}
-                    {section.lead === "kind" && <span className={styles.railLead}>{say.kind(w)}</span>}
-                    <span className={styles.railShort}>
-                      {say.short(w)}
-                      {also && (
-                        <span className={styles.railAlso}>
-                          {t("tafsir.also", { language: say.language(also.work.lang) })}
+      <div className={`${styles.layout} ${view === "read" ? "" : styles.layoutWide}`}>
+        {/* ── the library, down the side, while one work is read ─────── */}
+        {view === "read" && (
+          <nav className={styles.rail} aria-label={t("tafsir.works")}>
+            <div className={styles.railInner} ref={railRef}>
+              <TafsirLanguages lang={railLang} onLang={setRailLang} />
+              {railShelf?.sections.map((section) => (
+                <div key={section.id} className={styles.railSection}>
+                  <div className={styles.railHeading}>{say.section(section)}</div>
+                  {section.works.map((w) => {
+                    const also = w.lang === "ar" ? say.counterpart(w) : undefined;
+                    return (
+                      <button
+                        key={w.id}
+                        className={`${styles.railRow} ${primary?.id === w.id ? styles.railOn : ""}`}
+                        onClick={() => read(w.id)}
+                        aria-current={primary?.id === w.id ? "true" : undefined}
+                        title={`${say.name(w)}${say.title(w) ? ` — ${say.title(w)}` : ""}. ${say.credit(w)}. ${say.about(w)}`}
+                      >
+                        {/* Where a section is one work of each kind, the kind
+                            leads: it is the reason the work is on the list. */}
+                        {section.lead === "kind" && <span className={styles.railLead}>{say.kind(w)}</span>}
+                        <span className={styles.railShort}>
+                          {say.short(w)}
+                          {also && (
+                            <span className={styles.railAlso}>
+                              {t("tafsir.also", { language: say.language(also.work.lang) })}
+                            </span>
+                          )}
                         </span>
-                      )}
-                      {second?.id === w.id && <span className={styles.railAlso}>{t("tafsir.besideTag")}</span>}
-                    </span>
-                    {section.lead === "by" && <span className={styles.railBy}>{say.by(w)}</span>}
-                  </button>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
-        </nav>
+                        {section.lead === "by" && <span className={styles.railBy}>{say.by(w)}</span>}
+                      </button>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+          </nav>
+        )}
 
         <div className={styles.body}>
           {/* ── the ayah ─────────────────────────────────────────────── */}
@@ -324,80 +394,94 @@ export function TafsirPage() {
             )}
           </header>
 
-          {/* On a narrow screen there is no room for the rail, so the works
-              are tabs, as they are in the panel, with the library behind them. */}
-          <div className={styles.tabs}>
-            <TafsirTabs
-              works={tabs}
-              active={primary?.id ?? ""}
-              onPick={read}
-              choosing={choosing}
-              onChoose={() => setChoosing((v) => !v)}
-            />
+          {/* ── the three ways of going about it ─────────────────────── */}
+          <div className={styles.views} role="tablist" aria-label={t("tafsir.views")}>
+            {VIEWS.map((v) => (
+              <button
+                key={v.id}
+                role="tab"
+                aria-selected={view === v.id}
+                className={`${styles.viewTab} ${view === v.id ? styles.viewOn : ""}`}
+                onClick={() => go({ view: v.id })}
+              >
+                {t(v.label)}
+                {v.id === "compare" && compared.length > 1 && (
+                  <span className={styles.viewCount}>{compared.length}</span>
+                )}
+              </button>
+            ))}
           </div>
 
-          {choosing ? (
-            <div className={styles.chooser}>
-              <TafsirLibrary shelf={shelf} active={primary?.id} onPick={read} onToggle={toggle} />
-            </div>
-          ) : (
-            <div className={`${styles.columns} ${second ? styles.columnsTwo : ""}`}>
-              {primary && (
-                <div className={styles.column}>
-                  {second && <div className={styles.columnLabel}>{t("tafsir.reading")}</div>}
-                  <TafsirReading
+          {view === "read" && (
+            <>
+              {/* On a narrow screen there is no room for the rail, so the
+                  works are tabs, as they are in the panel, with the library
+                  a view away. */}
+              <div className={styles.tabs}>
+                <TafsirTabs
+                  works={tabs}
+                  active={primary?.id ?? ""}
+                  onPick={(id) => {
+                    setArrival(null);
+                    read(id);
+                  }}
+                  choosing={false}
+                  onChoose={() => go({ view: "library" })}
+                />
+              </div>
+
+              <div className={styles.columns} ref={swipeRef}>
+                {primary && (
+                  <div
                     key={primary.id}
-                    work={primary}
-                    verseKey={verseKey}
-                    onRange={onRange}
-                    alternatives={works.filter((w) => w.id !== primary.id)}
-                    onPick={read}
-                    onBeside={second?.id === say.counterpart(primary)?.work.id ? undefined : (id) => go({ c: id })}
-                    // Setting two works side by side is the site's whole promise
-                    // about tafsir, so the way to do it has its name on it. It
-                    // wants a page's width, and is left out where there is none.
-                    tools={
-                      <label className={styles.beside}>
-                        {t("tafsir.readBeside")}
-                        <select
-                          className={styles.besideSelect}
-                          value={second?.id ?? ""}
-                          onChange={(e) => go({ c: e.target.value || null })}
-                        >
-                          <option value="">{t("tafsir.nothing")}</option>
-                          {say.shelves.map((group) => (
-                            <optgroup key={group.id} label={t("tafsir.in", { language: say.language(group.lang) })}>
-                              {group.works
-                                .filter((w) => w.id !== primary.id)
-                                .map((w) => (
-                                  <option key={w.id} value={w.id}>
-                                    {say.short(w)} — {(w.lang === "ar" && (say.title(w) || say.by(w))) || say.kind(w)}
-                                  </option>
-                                ))}
-                            </optgroup>
-                          ))}
-                        </select>
-                      </label>
-                    }
-                  />
-                </div>
-              )}
-              {second && (
-                <div className={styles.column}>
-                  <div className={styles.columnLabel}>
-                    {t("tafsir.besideIt")}
-                    <button className={styles.closeSecond} onClick={() => go({ c: null })}>
-                      {t("common.close")} ✕
-                    </button>
+                    className={`${styles.column} ${arrival?.id === primary.id ? styles[arrival.from === "next" ? "inNext" : "inPrev"] : ""}`}
+                  >
+                    <TafsirReading
+                      work={primary}
+                      verseKey={verseKey}
+                      onRange={onRange}
+                      alternatives={works.filter((w) => w.id !== primary.id)}
+                      onPick={read}
+                      // Both of a work's languages, side by side, is a
+                      // comparison of two.
+                      onBeside={(id) => compare([primary.id, id])}
+                    />
                   </div>
-                  <TafsirReading key={second.id} work={second} verseKey={verseKey} />
-                </div>
-              )}
-            </div>
+                )}
+              </div>
+            </>
           )}
 
-          {!choosing && (
-            <footer className={styles.foot}>
+          {view === "compare" && (
+            <TafsirCompare
+              verseKey={verseKey}
+              works={compared}
+              onChange={compare}
+              onRead={read}
+              onGo={(v) => go({ v })}
+            />
+          )}
+
+          {view === "library" && (
+            <TafsirLibraryView
+              verseKey={verseKey}
+              active={primary?.id}
+              kept={shelf}
+              compared={compared.map((w) => w.id)}
+              onRead={read}
+              onCompare={(id) =>
+                compare(
+                  compared.some((w) => w.id === id)
+                    ? compared.map((w) => w.id)
+                    : [...compared.map((w) => w.id), id].slice(-MAX_COMPARED),
+                )
+              }
+              onToggle={toggle}
+            />
+          )}
+
+          {view !== "library" && (
+            <footer className={`${styles.foot} ${view === "compare" ? styles.footWide : ""}`}>
               <button className="btn btn-secondary" onClick={() => prevKey && go({ v: prevKey })} disabled={!prevKey}>
                 {arrows.prev} {prevKey ?? t("tafsir.beginning")}
               </button>

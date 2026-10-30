@@ -28,11 +28,14 @@ change; what is stated as fact about the app was checked against it on
 > Loop a passage to learn it — each ayah as many times as you choose, with a
 > silence after it to recite it back.
 >
-> **Tafsir.** Twenty-two works in one library, opened on any ayah, each under its
-> own book and author. In English: al-Mukhtaṣar, al-Jalālayn, the abridged Ibn
-> Kathīr, Maʿārif al-Qurʾān. In Arabic: the mother works — al-Ṭabarī, al-Baghawī,
-> al-Qurṭubī and Ibn Kathīr in full — and the leading work of each kind of tafsir.
-> The Arabic library is on your phone, and opens without a connection.
+> **Tafsir.** Sixty works in one library, opened on any ayah, each under its own
+> book and author. In English: al-Mukhtaṣar, al-Jalālayn, the abridged Ibn
+> Kathīr, Maʿārif al-Qurʾān. In Arabic: the classical library, shelf by shelf —
+> the mother works al-Ṭabarī, al-Baghawī, al-Qurṭubī and Ibn Kathīr in full,
+> al-Rāzī, al-Ālūsī, Ibn ʿAṭiyya, Abū Ḥayyān, Ibn ʿĀshūr and forty more — with
+> the books on the Qurʾan's rare words, the occasions of its revelation and its
+> rulings. Compare up to four side by side. The Arabic library is on your phone,
+> and opens without a connection.
 >
 > **Translations.** Some 125 translations in 66 languages, up to four under each
 > ayah, with their translators' footnotes.

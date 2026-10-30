@@ -1,12 +1,14 @@
 import { fetchTafsir } from "./api";
 import {
   TAFSIR_APP,
+  TAFSIR_APP_GROUPS,
   TAFSIR_APP_WORKS,
   fetchTafsirApp,
   tafsirAppAuthor,
   tafsirAppMirrored,
   tafsirAppReadable,
   tafsirAppUrl,
+  type TafsirAppGroup,
   type TafsirAppWork,
 } from "./tafsirApp";
 import { TAFSIR_CDN, fetchCdnTafsir } from "./tafsirCdn";
@@ -23,9 +25,13 @@ import type { Para } from "./types";
  * opened on an ayah. This file is where the three are made into that one.
  *
  * It is arranged as a person would ask for it. The first question is whether
- * they read Arabic, so the library divides by language before anything else;
- * and within a language, by how much they want — a paragraph, or the work at
- * length — and, for the classical works, by what kind of tafsir each is.
+ * they read Arabic, so the library divides by language before anything else.
+ * The English shelf is short, and divides by how much a reader wants — a
+ * paragraph, or the work at length. The Arabic shelf is the classical library,
+ * and is set out as tafsir.app sets it out, by what each work sets out to do:
+ * the mother works, those that gather the opinions, the general, and so on,
+ * and after them the books on the Qurʾan's words, its occasions and its
+ * rulings.
  *
  * Everything here that is a sentence is written in English, and is said in
  * the reader's own language by `useTafsirSay` (components/tafsir): the
@@ -89,7 +95,7 @@ export interface TafsirPassage {
 /** A run of works that belong together under one heading. */
 export interface TafsirSection {
   /** Its heading is "tafsir.section.<id>" in the site's messages. */
-  id: "en-brief" | "en-length" | "ar-brief" | "ar-mothers" | "ar-kinds";
+  id: "en-brief" | "en-length" | `ar-${TafsirAppGroup}`;
   /** The heading as tafsir.app gives it, where the division is its own. */
   titleArabic?: string;
   /**
@@ -181,8 +187,6 @@ function classical(w: TafsirAppWork): TafsirWork {
 }
 
 const HELD = TAFSIR_APP_WORKS.filter((w) => tafsirAppReadable(w.id));
-const MOTHERS = "The mother works";
-const BRIEF = "Brief";
 
 /**
  * The works held in more than one language, and where each language of each
@@ -300,58 +304,55 @@ const ENGLISH: TafsirSection[] = [
   },
 ];
 
-const ARABIC: TafsirSection[] = [
-  {
-    id: "ar-brief",
-    lead: "by",
-    works: [
-      // The two that are also here in English come first, as they do on the
-      // English shelf, so the same pair heads both lists.
-      ...HELD.filter((w) => w.field === BRIEF).map(classical),
-      corpus(16, {
-        short: "al-Muyassar",
-        shortArabic: "الميسر",
-        name: "al-Tafsīr al-Muyassar",
-        nameEnglish: "The Simplified Commentary",
-        nameArabic: "التفسير الميسر",
-        titleArabic: "التفسير الميسر",
-        authorArabic: "مجمع الملك فهد",
-        credit: "King Fahd Complex",
-        by: "King Fahd Complex",
-        era: "King Fahd Complex",
-        lang: "ar",
-        kind: "Brief",
-        about: "One plain paragraph to an ayah, by a committee of scholars.",
-      }),
-      corpus(91, {
-        short: "al-Saʿdī",
-        shortArabic: "السعدي",
-        name: "Taysīr al-Karīm al-Raḥmān",
-        nameEnglish: "The Facilitation of the Generous, the Merciful",
-        nameArabic: "تفسير السعدي",
-        titleArabic: "تيسير الكريم الرحمن",
-        authorArabic: "عبد الرحمن السعدي",
-        credit: "ʿAbd al-Raḥmān al-Saʿdī (d. 1376 AH)",
-        by: "ʿAbd al-Raḥmān al-Saʿdī",
-        era: "d. 1376 AH",
-        lang: "ar",
-        kind: "Brief",
-        about: "A clear, short commentary on the meaning and what follows from it.",
-      }),
-    ],
-  },
-  {
-    id: "ar-mothers",
-    titleArabic: "أمّهات",
-    lead: "by",
-    works: HELD.filter((w) => w.field === MOTHERS).map(classical),
-  },
-  {
-    id: "ar-kinds",
-    lead: "kind",
-    works: HELD.filter((w) => w.field !== MOTHERS && w.field !== BRIEF).map(classical),
-  },
-];
+/*
+ * Two works of tafsir.app's contemporary shelf are read here from the Quran.com
+ * corpus, as they were before the rest of that shelf arrived.
+ */
+const MUYASSAR = corpus(16, {
+  short: "al-Muyassar",
+  shortArabic: "الميسر",
+  name: "al-Tafsīr al-Muyassar",
+  nameEnglish: "The Simplified Commentary",
+  nameArabic: "التفسير الميسر",
+  titleArabic: "التفسير الميسر",
+  authorArabic: "مجمع الملك فهد",
+  credit: "King Fahd Complex",
+  by: "King Fahd Complex",
+  era: "King Fahd Complex",
+  lang: "ar",
+  kind: "Brief",
+  about: "One plain paragraph to an ayah, by a committee of scholars.",
+});
+const SAADI = corpus(91, {
+  short: "al-Saʿdī",
+  shortArabic: "السعدي",
+  name: "Taysīr al-Karīm al-Raḥmān",
+  nameEnglish: "The Facilitation of the Generous, the Merciful",
+  nameArabic: "تفسير السعدي",
+  titleArabic: "تيسير الكريم الرحمن",
+  authorArabic: "عبد الرحمن السعدي",
+  credit: "ʿAbd al-Raḥmān al-Saʿdī (d. 1376 AH)",
+  by: "ʿAbd al-Raḥmān al-Saʿdī",
+  era: "d. 1376 AH",
+  lang: "ar",
+  kind: "Brief",
+  about: "A clear, short commentary on the meaning and what follows from it.",
+});
+
+/**
+ * The Arabic shelf: tafsir.app's shelves in its order, each under its own
+ * heading, with the works on it earliest author first (tafsirWorks.json is kept
+ * in that order). On the contemporary shelf al-Saʿdī leads, being the earliest,
+ * and al-Muyassar stands with the other works of committees, after the authors.
+ */
+const ARABIC: TafsirSection[] = TAFSIR_APP_GROUPS.map((group) => {
+  const held = HELD.filter((w) => w.group === group.id).map(classical);
+  const works =
+    group.id === "contemporary"
+      ? [SAADI, ...held.filter((w) => w.era.startsWith("d. ")), MUYASSAR, ...held.filter((w) => !w.era.startsWith("d. "))]
+      : held;
+  return { id: `ar-${group.id}` as const, titleArabic: group.titleArabic, lead: "by" as const, works };
+});
 
 const shelf = (lang: TafsirLang, sections: TafsirSection[]): TafsirShelf => {
   const kept = sections.filter((section) => section.works.length > 0);

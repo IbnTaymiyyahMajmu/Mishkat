@@ -165,12 +165,14 @@ own book and author and never merged into one answer.
 
 *What there is.* In English: al-Mukhtaṣar and al-Jalālayn for a short answer,
 and the abridged Ibn Kathīr, Maʿārif al-Qurʾān and Tazkirul Qurʾān at length. In
-Arabic, briefly: al-Mukhtaṣar, al-Jalālayn, al-Muyassar and al-Saʿdī. And the
-classical library, in the
-Arabic its authors wrote: the four mother works — al-Ṭabarī, al-Baghawī,
-al-Qurṭubī and Ibn Kathīr in full — and the leading work of each other kind of
-tafsir, thirteen in all. Every work says in a line what it is, so one can be
-chosen by a reader who has never heard of it.
+Arabic, the classical library as tafsir.app arranges it, in the Arabic its
+authors wrote: the four mother works — al-Ṭabarī, al-Baghawī, al-Qurṭubī and Ibn
+Kathīr in full — then the works that gather the opinions, those gathered from an
+author's other books, the general, the encyclopaedic, the language and rhetoric,
+the contemporary, the concise and the transmitted reports; and beside them the
+books on the Qurʾan's rare words and meanings, the occasions of its revelation
+and its rulings — fifty-six works in Arabic in all. Every work says in a line
+what it is, so one can be chosen by a reader who has never heard of it.
 
 *Across the languages.* The library is two shelves, English and Arabic, and
 shows one at a time: the one the work being read is on, until the reader turns

@@ -16,6 +16,7 @@
     "relay:qf": "node scripts/qf-relay.mjs",
     "check:messages": "node scripts/check-messages.mjs",
     "gen:xref": "node scripts/build-xref.mjs",
+    "gen:tafsir-map": "node scripts/build-tafsir-map.mjs",
     "gen:rhyme": "node scripts/build-rhyme.mjs",
     "gen:questions": "node scripts/build-questions.mjs",
     "gen:structure": "node scripts/build-structure.mjs",
