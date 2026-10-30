@@ -280,19 +280,24 @@ book's layout and sets each remark on the words it quotes, and
 Qurʾān. The site's own part is the arrangement, the counts, and the English names
 of the terms (`src/components/ulum/terms.ts`).
 
-*Where scholars differ, and what is weak.* Chapters three and eight set out the
-differences the books themselves record, each view in its own colour with the names
-they give (`src/lib/ulum/views.ts`). A scholar keeps one colour across the site
-(`src/components/ulum/who.ts`). A report said to be weak says so visibly, with why
-and on whose word (`src/lib/ulum/grades.ts`).
+*Where scholars differ, and what is weak.* Chapters three and eight, and the tafsir
+page, set out the differences the books themselves record, each view in its own colour
+with the names they give and what the book says of them (`src/lib/ulum/views.ts`). A
+scholar keeps one colour across the site (`src/components/ulum/who.ts`), and his creed
+and school stand beside his name (`src/lib/ulum/scholars.ts`). A report said to be weak
+says so visibly, with why and on whose word (`src/lib/ulum/grades.ts`).
+
+*Long text.* Nothing runs down the page. A passage is set on leaves that turn from right
+to left, and many cards are a deck to turn through (`Leaves` and `Deck` in
+`src/components/ulum/Chapter.tsx`).
 
 *Where it comes from.* The grammars and the books of the readings are a second
 shelf copied from tafsir.app (`npm run mirror:ulum`, `public/ulum`, listed in
 `src/lib/quran/ulumWorks.json`). `npm run gen:ulum` works out, from the Quranic
 Arabic Corpus, every word's segments, a tree for every root and the runs of words
 an ayah shares with others, and takes from the open hadith-api the hadith of
-al-Bukhārī and Muslim that Ibn Kathīr quotes, each checked against what he quotes
-(`public/corpus`). `npm run gen:fiqh` takes al-Mughnī and al-Mubdiʿ from OpenITI,
+al-Bukhārī, Muslim and the Sunan that Ibn Kathīr quotes, each checked against what he
+quotes, with al-Albānī's gradings (`public/corpus`). `npm run gen:fiqh` takes al-Mughnī and al-Mubdiʿ from OpenITI,
 which go by the chapters of fiqh rather than the ayat, and gathers under each ayah
 the places their editions mark it as quoted, for the Ḥanbalī column of the rulings
 (`public/fiqh`, listed in `src/lib/quran/fiqhWorks.json`). What is left for the owner

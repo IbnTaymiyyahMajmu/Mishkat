@@ -58,7 +58,9 @@ export function fetchEchoes(surah: number): Promise<{ ayat: EchoRun[][] }> {
  * A hadith Ibn Kathīr brings in on a passage: the ayat the passage covers, the
  * collection (b, m), its number there, and its text and translation there.
  */
-export type SahihItem = [from: number, to: number, book: "b" | "m", n: string, arabic: string, english: string];
+/** al-Bukhārī, Muslim, and the four Sunan, these last with al-Albānī's grading. */
+export type Collection = "b" | "m" | "d" | "t" | "n" | "j";
+export type SahihItem = [from: number, to: number, book: Collection, n: string, arabic: string, english: string, grade?: string];
 
 export function fetchSahih(surah: number): Promise<{ items: SahihItem[] }> {
   return file(`${BASE}/sahih/${surah}.json`);

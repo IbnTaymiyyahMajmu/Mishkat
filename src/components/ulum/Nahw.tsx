@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useMemo, useRef } from "react";
+import { book } from "@/lib/ulum/books";
 import { byPhrase, ornate, readDarwish, type Jadwal, type Remark } from "@/lib/ulum/read";
+import { bare } from "@/lib/ulum/skeleton";
 import { useLocale } from "@/lib/i18n";
 import { Block, BookText, Chapter, Cite, Line, Silent } from "./Chapter";
 import { officeOf } from "./terms";
@@ -30,6 +32,14 @@ function first(text: string, words = 7): string {
   return w.length > words ? `${w.slice(0, words).join(" ")}…` : cut.trim();
 }
 
+const NUMBERS: Record<string, number> = { ثلاث: 3, اربع: 4, خمس: 5, ست: 6, سبع: 7, ثمان: 8, ثماني: 8, تسع: 9, عشر: 10 };
+
+/** How many sentences a commentator says the ayah has, where he says. */
+function sentencesCounted(text?: string): number {
+  const hit = /(ثلاث|اربع|خمس|ست|سبع|ثماني|ثمان|تسع|عشر)\s+جمل/u.exec(bare(text ?? "").replace(/[أإآ]/g, "ا"));
+  return hit ? NUMBERS[hit[1]] : 0;
+}
+
 export function Nahw({ ctx, jd }: { ctx: StudyCtx; jd: { j: Jadwal; read: Read } | null }) {
   const { t, n: num } = useLocale();
   const ref = useRef<HTMLElement>(null);
@@ -50,6 +60,13 @@ export function Nahw({ ctx, jd }: { ctx: StudyCtx; jd: { j: Jadwal; read: Read }
   const dwRemarks = useMemo(() => (darwish.p ? readDarwish(darwish.p.text, darwish.words).iraab : []), [darwish]);
   const sRemarks = useMemo(() => (samin.p ? byPhrase(samin.p.text, samin.words) : []), [samin]);
   const saminViews = useViews(samin, ctx);
+  const kathir = useBook("ibn-katheer", ctx, near);
+  const aysar = useBook("aysar-altafasir", ctx, near);
+  const counts = [
+    { id: "aljadwal", n: sentences.length },
+    { id: "ibn-katheer", n: sentencesCounted(kathir.p?.text) },
+    { id: "aysar-altafasir", n: sentencesCounted(aysar.p?.text) },
+  ].filter((c): c is { id: string; n: number } => !!c.n);
 
   // ── the parse of the sentence being studied ───────────────────────────────
   const sw = words.filter((w) => w.j === sentence.n);
@@ -135,6 +152,18 @@ export function Nahw({ ctx, jd }: { ctx: StudyCtx; jd: { j: Jadwal; read: Read }
           ))}
         </div>
         <p className={styles.fromBook}>{t("ulum.arch.note")}</p>
+        {counts.length > 1 && new Set(counts.map((c) => c.n)).size > 1 && (
+          <div className={styles.counts}>
+            <div className={styles.miniKicker}>{t("ulum.arch.counts")}</div>
+            {counts.map((c) => (
+              <span key={c.id} className={styles.countChip} style={whoStyle(c.id)}>
+                <span className={styles.whoDot} aria-hidden />
+                {book(c.id)?.short} · {t("ulum.arch.count", { count: c.n, countText: num(c.n) })}
+              </span>
+            ))}
+            <p className={styles.fromBook}>{t("ulum.arch.countsNote")}</p>
+          </div>
+        )}
         {jumal.length > 0 && (
           <div className={styles.jumalList}>
             <div className={styles.miniKicker}>{t("ulum.arch.places")}</div>
@@ -271,7 +300,7 @@ export function Nahw({ ctx, jd }: { ctx: StudyCtx; jd: { j: Jadwal; read: Read }
           ].map(({ id, read }) =>
             read.p ? (
               <div key={id} className={styles.subBlock}>
-                <BookText text={read.p.text} fold={3} />
+                <BookText text={read.p.text} />
                 <Cite id={id} ctx={ctx} range={read.p} />
               </div>
             ) : null,
@@ -280,7 +309,6 @@ export function Nahw({ ctx, jd }: { ctx: StudyCtx; jd: { j: Jadwal; read: Read }
             <div className={styles.subBlock}>
               <BookText
                 lines={sRemarks.filter((r) => belongs(r, samin, n)).map((r) => (r.quote ? `{${r.quote}}: ${r.text}` : r.text))}
-                fold={3}
               />
               <Cite id="aldur-almasoon" ctx={ctx} range={samin.p} />
             </div>

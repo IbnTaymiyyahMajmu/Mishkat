@@ -449,3 +449,8 @@
   .inNext,
   .inPrev { animation: none; }
 }
+
+/* The work read, in its colour, the same one it has across the site. */
+.column {
+  border-top: 3px solid var(--who, transparent);
+}

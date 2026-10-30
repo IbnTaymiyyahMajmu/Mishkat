@@ -27,6 +27,7 @@ import { stripDiacritics } from "@/lib/text";
 import { useLocale, type MessageKey, type Translate } from "@/lib/i18n";
 import { useSurahNames } from "@/lib/i18n/surah";
 import { markWords as mark } from "./mark";
+import { whoStyle } from "@/components/ulum/who";
 import styles from "./WordStudy.module.css";
 
 /**
@@ -667,7 +668,7 @@ function LexiconSection({
   scan: string;
 }) {
   return (
-    <section id={`work-${work.id}`} className={styles.work}>
+    <section id={`work-${work.id}`} className={styles.work} style={whoStyle(String(work.id))}>
       <button className={styles.workHead} onClick={onToggle} aria-expanded={open}>
         <span className={styles.workNames}>
           <span className={styles.workName}>{work.name}</span>

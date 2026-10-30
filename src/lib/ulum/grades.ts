@@ -1,5 +1,5 @@
 import { chainOf } from "./read";
-import { bare } from "./skeleton";
+import { bare, plainMap } from "./skeleton";
 
 /**
  * Saying that a report is weak, and why, and who says so.
@@ -89,6 +89,32 @@ export function weakRoute(via: string, who: string): Weak | null {
   return via ? onRoute(plainOf(`عن ${via} عن ${who}`)) : null;
 }
 
+/** The same routes as a book's running text names them. */
+const IN_TEXT: { route: WeakRoute; re: RegExp }[] = [
+  { route: "kalbi", re: /الكلبي[^.؛\n]{0,14}عن\s+ابي\s+صالح[^.؛\n]{0,14}عن\s+ابن\s+عباس/gu },
+  { route: "juwaybir", re: /جويبر[^.؛\n]{0,40}الضحاك[^.؛\n]{0,20}عن\s+ابن\s+عباس/gu },
+  { route: "bishr", re: /بشر\s+بن\s+عمارة[^.؛\n]{0,70}عن\s+ابن\s+عباس/gu },
+  { route: "dahhak", re: /الضحاك[^.؛\n]{0,14}عن\s+ابن\s+عباس/gu },
+  { route: "awfi", re: /العوفي[^.؛\n]{0,14}عن\s+ابن\s+عباس/gu },
+];
+
+/** Where a stretch of a book's text names a weak route, by where it stands in the text. */
+export function weakSpans(text: string): { from: number; to: number; weak: Weak }[] {
+  if (!/ع[\u064B-\u0652]*ب[\u064B-\u0652]*[\u0651]?[\u064B-\u0652]*ا[\u064B-\u0652]*س/u.test(text)) return [];
+  const { plain, at } = plainMap(text);
+  const out: { from: number; to: number; weak: Weak }[] = [];
+  for (const { route, re } of IN_TEXT) {
+    for (const m of plain.matchAll(re)) {
+      const from = at[m.index ?? 0];
+      const to = at[(m.index ?? 0) + m[0].length - 1] + 1;
+      if (out.some((o) => from < o.to && to > o.from)) continue;
+      const known = ROUTES.find((r) => r.route === route);
+      if (known) out.push({ from, to, weak: { kind: known.kind, aspect: "chain", words: known.words, route, by: "itqan" } });
+    }
+  }
+  return out.sort((a, b) => a.from - b.from);
+}
+
 const UNNAMED =
   /(?:^|[\s،,])(حدثت\s+عن|حدثت\s|عن\s+رجل|عن\s+شيخ|عمن\s|عن\s+من\s|عن\s+بعض\s|عن\s+فلان|حدثني\s+رجل|اخبرني\s+رجل|حدثني\s+من\s|اخبرني\s+من\s|ثني\s+رجل|ثنا\s+رجل|ثني\s+من\s|ثنا\s+من\s|سمعت\s+رجلا|بلغني|بلغنا)/u;
 
@@ -111,6 +137,34 @@ const KINDS: Record<string, WeakKind> = {
 const DIGITS = /[٠-٩\d]+/gu;
 const latin = (n: string) => n.replace(/[٠-٩]/gu, (d) => String("٠١٢٣٤٥٦٧٨٩".indexOf(d)));
 
+/** That a report raised to the Prophet ﷺ is graded in the copy, and how. */
+export interface NoteGrade {
+  sound: boolean;
+  words: string;
+}
+
+const SOUND = /(اسناده|اسنادها|هذا\s+اسناد|هذا\s+الاسناد|هذا\s+حديث|حديث)[^.؛]{0,50}?(صحيح|حسن)/u;
+
+/** What the editor's note says of this report, sound or weak; null where it does not grade it. */
+export function noteGrade(report: string): NoteGrade | null {
+  const weak = fromNote(report);
+  if (weak) return { sound: false, words: weak.words };
+  const own = /^\s*([٠-٩\d]{1,6})/u.exec(report)?.[1];
+  for (const m of report.matchAll(/\[\[([\s\S]*?)\]\]/g)) {
+    if (!aboutThis(m[1], own)) continue;
+    for (const sentence of m[1].split(/(?<=[.؛])\s*/u)) {
+      if (SOUND.test(plainOf(sentence))) return { sound: true, words: bare(sentence).replace(/\s+/gu, " ").trim().slice(0, 260) };
+    }
+  }
+  return null;
+}
+
+/** A note that names a report by its number is about that report and no other. */
+function aboutThis(note: string, own: string | undefined): boolean {
+  const named = (/^\s*(?:الحديث|الخبران|الخبر|الأثران|الأثر)[^٠-٩\d]{0,8}((?:[٠-٩\d]+[،,\s-]*)+)/u.exec(note)?.[1].match(DIGITS) ?? []).map(latin);
+  return !named.length || (!!own && named.includes(latin(own)));
+}
+
 /**
  * What an editor's note in the copy says of this report, if it says it is weak.
  * A note that names a report by its number is about that report and no other: the
@@ -119,8 +173,7 @@ const latin = (n: string) => n.replace(/[٠-٩]/gu, (d) => String("٠١٢٣٤٥�
 function fromNote(report: string): Weak | null {
   const own = /^\s*([٠-٩\d]{1,6})/u.exec(report)?.[1];
   for (const m of report.matchAll(/\[\[([\s\S]*?)\]\]/g)) {
-    const named = (/^\s*(?:الحديث|الخبران|الخبر|الأثران|الأثر)[^٠-٩\d]{0,8}((?:[٠-٩\d]+[،,\s-]*)+)/u.exec(m[1])?.[1].match(DIGITS) ?? []).map(latin);
-    if (named.length && (!own || !named.includes(latin(own)))) continue;
+    if (!aboutThis(m[1], own)) continue;
     for (const sentence of m[1].split(/(?<=[.؛])\s*/u)) {
       const hit = VERDICT.exec(plainOf(sentence));
       if (!hit || /صحيح|حسن/u.test(hit[0])) continue;

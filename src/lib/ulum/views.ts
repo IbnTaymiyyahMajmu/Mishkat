@@ -1,13 +1,16 @@
-import { clean } from "./read";
-import { aligner, bare, quoteSkeleton, type Placed } from "./skeleton";
+import { weakOf, type Weak } from "./grades";
+import { authorityOf, chainOf, clean } from "./read";
+import { aligner, bare, plainMap as plainOf, quoteSkeleton, type Placed } from "./skeleton";
 
 /**
  * Where the scholars differ, as the books that record it say so.
  *
- * Some books are built on it. Ibn al-Jawzī and al-Māwardī take a phrase, say how
- * many views there are on it, number them, and name who held each: «وفي المراد
- * بالنجم خمسة أقوال. أحدها: أنه الثريا، رواه العوفي عن ابن عباس… والثاني: …».
- * Al-Samīn does the same for the grammar: «فيه وجهان: أحدهما… والثاني…».
+ * Some books are built on it. Ibn al-Jawzī takes a phrase, says how many views
+ * there are on it, numbers them, and names who held each: «وفي المراد بالنجم خمسة
+ * أقوال. أحدها: أنه الثريا، رواه العوفي عن ابن عباس… والثاني: …». Al-Samīn does the
+ * same for the grammar: «فيه وجهان: أحدهما… والثاني…». Al-Ṭabarī has his own form:
+ * «اختلف أهل التأويل… فقال بعضهم… وقال آخرون…», each view with its reports, and then
+ * his judgement between them.
  *
  * So the differences on the page are not worked out by comparing what scholars
  * wrote, which would be a judgement, and none is summarised. Each is the book's
@@ -21,7 +24,12 @@ export interface Holder {
   who: string;
   /** Through whom, where the book says: «رواه العوفي عن ابن عباس». */
   via: string;
+  /** That the report behind this name is said to be weak, where one is. */
+  weak?: Weak | null;
 }
+
+/** What a book says of a view: the strongest, the majority's, or agreed on. */
+export type Standing = "strongest" | "majority" | "consensus";
 
 export interface View {
   /** Its place in the book's list, from 1. */
@@ -29,6 +37,7 @@ export interface View {
   /** The book's words for it. */
   text: string;
   holders: Holder[];
+  standing?: Standing;
 }
 
 export interface Difference {
@@ -38,6 +47,8 @@ export interface Difference {
   phrase: string;
   at: Placed | null;
   views: View[];
+  /** The author's own judgement between them, where he gives one. */
+  judgement?: string;
 }
 
 const COUNTS: Record<string, number> = {
@@ -61,25 +72,6 @@ const TO_FIRST = 70;
 /** The furthest one view runs before the next is expected. */
 const VIEW_LENGTH = 2600;
 
-interface Plain {
-  plain: string;
-  /** For each letter of `plain`, where it stands in the text. */
-  at: number[];
-}
-
-/** The text without vowels and with its hamzas on plain alifs, and the way back. */
-function plainOf(text: string): Plain {
-  const at: number[] = [];
-  let plain = "";
-  for (let i = 0; i < text.length; i++) {
-    const kept = bare(text[i]);
-    if (!kept) continue;
-    plain += kept.replace(/[أإآ]/g, "ا");
-    at.push(i);
-  }
-  return { plain, at };
-}
-
 const STARTS_VIEW = /[\s.،:؛»"”)﴾}]$/u;
 /** The next view's opening word, where a sentence could begin. */
 function ordinal(plain: string, word: RegExp, from: number, limit: number): { start: number; end: number } | null {
@@ -101,7 +93,8 @@ const THE_PROPHET = /رسول\s+الله|النبي/u;
 function namesIn(run: string): Holder[] {
   const out: Holder[] = [];
   const line = run.split(/[.:؛\n]/u)[0].split(/\s+(?:في\s+رواية|في\s+قول|وقال|فقال|قال|لان|لانه|لانهم|يعني|اي|ومنه|ومن)\b/u)[0];
-  for (const part of line.split(/[،,]|\s+و(?=[^\s]{2})/u)) {
+  // «و» is "and" before a name, and the first letter of وقاص, وهب, وكيع.
+  for (const part of line.split(/[،,]|\s+و(?=ال|ابن|ابي|ابو|ام\s|عبد|عطاء|مجاهد|قتادة|عكرمة|سعيد|طاوس|مقاتل|زيد|علي|عمر|عثمان|جابر|انس|معاذ|كعب|مالك|سفيان|ابراهيم|محمد|عائشة|حذيفة)/u)) {
     const name = part.replace(/^و/u, "").replace(/\s+ايضا$/u, "").trim();
     if (!name) continue;
     // «رواه سالم الأفطس، عن سعيد»: the same man, a comma before who he had it from.
@@ -177,6 +170,26 @@ export function readJudgements(text: string, words: string[]): Judgement[] {
   return out;
 }
 
+const STRONGER = /(?:^|[\s.،:؛-])(?:وهو|هو|وهذا|هذا)\s+(?:القول\s+)?(?:الاظهر|الاصح|الاشبه|الصحيح|الاقوى|الراجح|المختار|الاجود|الصواب|الارجح)(?=[\s.،:؛-]|$)/u;
+const MOST = /(?:قاله|قول|وعليه|هو\s+قول)\s+(?:الاكثرون|الجمهور|الاكثرين|الجماعة|اكثر\s+|جمهور\s+|عامة\s+)/u;
+const AGREED = /(?:اجماع|باجماع|اجمعوا|اجمع\s+العلماء|بالاتفاق|اتفقوا)/u;
+const ORDER = ["", "الاول", "الثاني", "الثالث", "الرابع", "الخامس", "السادس", "السابع", "الثامن"];
+const LAST_WORD = /^[\s.،]*و?(?:القول\s+)?(الاول|الثاني|الثالث|الرابع|الخامس)\s+(?:هو\s+)?(?:اصح|اظهر|اشبه|اقوى|اولى|ارجح|اجود)/u;
+
+/** What the book says of each view: stronger, the majority's, agreed on. */
+function standing(views: View[], plainViews: string[], after: string) {
+  plainViews.forEach((p, i) => {
+    if (AGREED.test(p)) views[i].standing = "consensus";
+    else if (STRONGER.test(p)) views[i].standing = "strongest";
+    else if (MOST.test(p)) views[i].standing = "majority";
+  });
+  const named = LAST_WORD.exec(after);
+  if (named) {
+    const v = views[ORDER.indexOf(named[1]) - 1];
+    if (v) v.standing = "strongest";
+  }
+}
+
 /** Every list of views in a passage, each set on the phrase the book had reached. */
 export function readViews(text: string, words: string[]): Difference[] {
   const source = clean(text).replace(/\[\[[\s\S]*?\]\]/g, " ");
@@ -240,6 +253,11 @@ export function readViews(text: string, words: string[]): Difference[] {
       return { n: i + 1, text: words2, holders };
     });
     if (views.some((v) => !v.text)) continue;
+    standing(
+      views,
+      opening.map((o, i) => plain.slice(o.end, i + 1 < opening.length ? opening[i + 1].start : end)),
+      plain.slice(end, end + 120),
+    );
 
     // What they differ on: back to where the sentence began.
     const lead = plain.slice(Math.max(0, start - 100), start);
@@ -254,5 +272,107 @@ export function readViews(text: string, words: string[]): Difference[] {
     });
     resume = end;
   }
+  return out;
+}
+
+/** How al-Ṭabarī opens a difference, and each view in it. */
+const DIFFERS = /(?:و?قد\s+)?و?اختلف\s+(?:اهل\s+التاويل|اهل\s+العلم|المفسرون|العلماء)/u;
+const FIRST_VIEW = /فقال\s+(?:بعضهم|بعض\s+اهل\s+التاويل|جماعة)[:：،]?\s*/u;
+const NEXT_VIEW = /^و?قال\s+(?:اخرون|بعضهم|غيرهم)[:：،]?\s*/u;
+const HIS_REPORT = /^⁕|^(?:[٠-٩\d]{1,6}\s*[-–]\s*)?و?(?:حدثنا|حدثني|حدثت\s+عن)(?=[\s،,:])/u;
+const OF_A_GENERATION = new Set(["sahabah", "tabiun", "atba"]);
+
+/** What a report says, without its chain or the editor's note. */
+function sayingOf(report: string): string {
+  const body = report.replace(/\[\[[\s\S]*?\]\]/g, " ");
+  const { at: map } = plainOf(body);
+  const said = body.slice(map[chainOf(body).length] ?? 0).replace(/^[\s:：،.]+/u, "").replace(/^(?:قوله|قال|قالت)[:：،]?\s*/u, "");
+  return said.length > 280 ? `${said.slice(0, 280).trimEnd()}…` : said.trim();
+}
+
+/**
+ * Al-Ṭabarī's differences: what he says they differ on, each view in his words
+ * with the men his reports name for it, and his judgement. Only a difference with
+ * two views at the least is one. His judgement stands in his words beneath them:
+ * which view it means is for the reader, and the page does not guess.
+ */
+export function readTabariViews(text: string, words: string[]): Difference[] {
+  const out: Difference[] = [];
+  const align = aligner(words);
+  const whole: Placed | null = words.length ? { from: 0, to: words.length - 1 } : null;
+  let at = whole;
+  let phrase = "";
+  let open: Difference | null = null;
+  const close = () => {
+    if (open && open.views.length > 1) out.push(open);
+    open = null;
+  };
+  const after = (line: string, plain: string, marker: RegExp) => {
+    const m = marker.exec(plain);
+    if (!m) return line;
+    const { at: map } = plainOf(line);
+    return line.slice(map[(m.index ?? 0) + m[0].length] ?? line.length).trim();
+  };
+  for (const raw of clean(text).replace(/\[\[[\s\S]*?\]\]/g, (note) => note.replace(/\n/g, " ")).split("\n")) {
+    const line = raw.trim();
+    if (!line) continue;
+    const plain = bare(line).replace(/[أإآ]/g, "ا");
+    if (HIS_REPORT.test(plain)) {
+      const current = open as Difference | null;
+      const view = current?.views[current.views.length - 1];
+      if (!view) continue;
+      const body = line.replace(/^⁕\s*/u, "");
+      const { who, tier } = authorityOf(body);
+      if (!OF_A_GENERATION.has(tier) || view.holders.some((h) => h.who === who)) continue;
+      view.holders.push({ who, via: "", weak: weakOf(body) });
+      // «وقال آخرون بما:» gives the view only in the report that follows.
+      if (view.text.replace(/[\s:：.]/gu, "").length < 6) view.text = sayingOf(body);
+      continue;
+    }
+    if (/^\*/u.test(plain)) {
+      if (/^\*\s*\*/u.test(plain)) close();
+      continue;
+    }
+    if (JUDGES.test(plain)) {
+      const current = open as Difference | null;
+      if (current) current.judgement = line.replace(/\[\[[\s\S]*?\]\]/g, " ").trim();
+      close();
+      continue;
+    }
+    const quote = /﴿([^﴿﴾]{2,300})﴾/u.exec(line);
+    if (quote && /قوله(?:\s+تعالى)?\s*[:：]?\s*[﴿(]/u.test(plain.slice(0, 120))) {
+      const text2 = quote[1].replace(/\(?[٠-٩\d]+\)?/gu, " ").trim();
+      const found = align.find(text2, 0);
+      if (found) {
+        at = found;
+        phrase = found.from === 0 && found.to === words.length - 1 ? "" : text2;
+      } else {
+        at = null;
+        phrase = "";
+      }
+    }
+    const differs = DIFFERS.exec(plain);
+    if (differs) {
+      close();
+      const topicEnd = FIRST_VIEW.exec(plain);
+      const { at: map } = plainOf(line);
+      const start = map[differs.index ?? 0] ?? 0;
+      const topic = (topicEnd ? line.slice(start, map[topicEnd.index ?? 0] ?? line.length) : line.slice(start)).trim();
+      open = { topic, phrase, at, views: [] };
+      if (topicEnd) {
+        const first = after(line, plain, FIRST_VIEW);
+        if (first) open.views.push({ n: 1, text: first, holders: [] });
+      }
+      continue;
+    }
+    const current = open as Difference | null;
+    if (!current) continue;
+    if (!current.views.length && FIRST_VIEW.test(plain)) {
+      current.views.push({ n: 1, text: after(line, plain, FIRST_VIEW), holders: [] });
+    } else if (NEXT_VIEW.test(plain)) {
+      current.views.push({ n: current.views.length + 1, text: after(line, plain, NEXT_VIEW), holders: [] });
+    }
+  }
+  close();
   return out;
 }

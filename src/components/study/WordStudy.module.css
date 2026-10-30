@@ -684,3 +684,9 @@
   .cog { grid-template-columns: minmax(0, 1fr) auto; }
   .cogWhen { grid-column: 2; }
 }
+
+/* Each lexicon in its colour, as on the ayah study. */
+.work {
+  border-inline-start: 3px solid var(--who, transparent);
+  padding-inline-start: 14px;
+}

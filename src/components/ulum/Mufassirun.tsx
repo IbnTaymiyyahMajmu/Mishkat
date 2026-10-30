@@ -3,20 +3,21 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { book, file } from "@/lib/ulum/books";
 import { quotedIn } from "@/lib/ulum/read";
-import { readJudgements } from "@/lib/ulum/views";
+import { readTabariViews } from "@/lib/ulum/views";
 import { useLocale } from "@/lib/i18n";
-import { Block, BookText, Chapter, Cite, Silent } from "./Chapter";
+import { Block, BookText, Chapter, Cite, Deck, Silent } from "./Chapter";
 import { ar, local, paras, useBook, useNear, type Read, type StudyCtx } from "./study";
-import { Differences, Judgement, useViews } from "./Views";
+import { Differences, useViews } from "./Views";
 import { whoStyle } from "./who";
 import styles from "./AyahStudy.module.css";
 
 /**
  * 08 · The mufassirūn — eleven centuries, side by side, sentence by sentence.
  *
- * Where the scholars differ comes first, as Ibn al-Jawzī and al-Māwardī record
- * it: what they differ on, each view in its colour, and who held it. Al-Ṭabarī's
- * own judgement stands under them, in his words. The page chooses nothing.
+ * Where the scholars differ comes first, as al-Ṭabarī and Ibn al-Jawzī record it,
+ * with al-Samʿānī, al-Qurṭubī and al-Shinqīṭī where they list views too: what they
+ * differ on, each view in its colour, who held it, what the book says of it, and
+ * al-Ṭabarī's own judgement in his words. The page chooses nothing.
  *
  * What a commentator *held* beyond that is a judgement a reader makes by reading
  * him. What the page can show, because it can be counted, is where each one takes
@@ -87,14 +88,14 @@ export function Mufassirun({ ctx }: { ctx: StudyCtx }) {
     "ibn-aashoor": useBook("ibn-aashoor", ctx, near),
   };
   const zad = useBook("zad-almaseer", ctx, near);
-  const mawardi = useBook("almawirdee", ctx, near);
+  const samaani = useBook("samaani", ctx, near);
+  const shinqiti = useBook("adwaa-albayan", ctx, near);
+  const tabariViews = useViews(tabari, ctx, readTabariViews);
   const zadViews = useViews(zad, ctx);
-  const mawardiViews = useViews(mawardi, ctx);
-  const count = ctx.words.length;
-  const judgements = useMemo(
-    () => (tabari.p ? readJudgements(tabari.p.text, tabari.words).filter((j) => local(j.at, tabari, count)) : []),
-    [tabari, count],
-  );
+  const samaaniViews = useViews(samaani, ctx);
+  const qurtubiViews = useViews(reads.qurtubi, ctx);
+  const shinqitiViews = useViews(shinqiti, ctx);
+  const viewCount = tabariViews.length + zadViews.length + samaaniViews.length + qurtubiViews.length + shinqitiViews.length;
   const extraId = chosen.find((id) => !MATRIX.includes(id)) ?? "";
   const extra = useBook(extraId || "tabari", ctx, near && !!extraId);
   if (extraId) reads[extraId] = extra;
@@ -164,25 +165,25 @@ export function Mufassirun({ ctx }: { ctx: StudyCtx }) {
 
       <Block
         kicker={t("ulum.diff.kicker")}
-        title={t("ulum.diff.title", { count: zadViews.length + mawardiViews.length })}
+        title={t("ulum.diff.title", { count: viewCount })}
       >
-        {zadViews.length + mawardiViews.length ? (
+        {viewCount ? (
           <>
             <p className={styles.fromBook}>{t("ulum.diff.note")}</p>
             <Differences
               books={[
+                { id: "tabari", read: tabari, views: tabariViews },
                 { id: "zad-almaseer", read: zad, views: zadViews },
-                { id: "almawirdee", read: mawardi, views: mawardiViews },
+                { id: "samaani", read: samaani, views: samaaniViews },
+                { id: "qurtubi", read: reads.qurtubi, views: qurtubiViews },
+                { id: "adwaa-albayan", read: shinqiti, views: shinqitiViews },
               ]}
               ctx={ctx}
             />
           </>
         ) : (
-          <Silent>{zad.loading || mawardi.loading ? t("ulum.loading") : t("ulum.diff.none")}</Silent>
+          <Silent>{tabari.loading || zad.loading ? t("ulum.loading") : t("ulum.diff.none")}</Silent>
         )}
-        {judgements.map((j, k) => (
-          <Judgement key={k} id="tabari" text={j.text} read={tabari} ctx={ctx} />
-        ))}
       </Block>
 
       <Block kicker={t("ulum.era.kicker")} title={t("ulum.era.title")} aside={<span className={styles.blockNote}>{t("ulum.era.tap")}</span>}>
@@ -304,8 +305,9 @@ export function Mufassirun({ ctx }: { ctx: StudyCtx }) {
       </Block>
 
       <Block kicker={t("ulum.side.kicker")} title={t("ulum.side.title")}>
-        <div className={styles.cards3} style={{ ["--cols" as string]: chosen.length }}>
-          {chosen.map((id) => {
+        <Deck
+          pair
+          items={chosen.map((id) => {
             const read = reads[id];
             const b = book(id);
             const mine = onSentence(split[id] ?? [], sentence.n);
@@ -325,7 +327,7 @@ export function Mufassirun({ ctx }: { ctx: StudyCtx }) {
                   <Silent>{t("ulum.loading")}</Silent>
                 ) : mine.length ? (
                   ctx.scholar ? (
-                    <BookText lines={mine} fold={3} />
+                    <BookText lines={mine} />
                   ) : (
                     <p className={styles.cardText}>{t("ulum.side.student", { count: words(mine) })}</p>
                   )
@@ -338,7 +340,7 @@ export function Mufassirun({ ctx }: { ctx: StudyCtx }) {
               </article>
             );
           })}
-        </div>
+        />
       </Block>
     </Chapter>
   );

@@ -14,10 +14,12 @@ const SLOT: Record<string, number> = {
   "ibn-katheer": 4,
   "ibn-aashoor": 5,
   "zad-almaseer": 6,
-  almawirdee: 7,
+  samaani: 7,
   baghawi: 8,
   "ibn-atiyah": 9,
   "abu-alsuod": 10,
+  "adwaa-albayan": 9,
+  "aysar-altafasir": 3,
   // the grammarians
   aljadwal: 1,
   "iraab-daas": 2,

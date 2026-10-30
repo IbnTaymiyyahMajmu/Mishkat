@@ -17,6 +17,8 @@ import { useLocale, type MessageKey } from "@/lib/i18n";
 import { useSurahNames } from "@/lib/i18n/surah";
 import { TafsirCompare, MAX_COMPARED } from "./TafsirCompare";
 import { TafsirLibraryView } from "./TafsirLibraryView";
+import { AyahViews } from "@/components/ulum/AyahViews";
+import { whoStyle } from "@/components/ulum/who";
 import { TafsirReading } from "./TafsirReading";
 import { TafsirLanguages, TafsirTabs, useShelfLanguage } from "./TafsirShelf";
 import { useTafsirSay } from "./useTafsirSay";
@@ -437,6 +439,7 @@ export function TafsirPage() {
                 {primary && (
                   <div
                     key={primary.id}
+                    style={whoStyle(primary.id.replace(/^app:/, ""))}
                     className={`${styles.column} ${arrival?.id === primary.id ? styles[arrival.from === "next" ? "inNext" : "inPrev"] : ""}`}
                   >
                     <TafsirReading
@@ -452,6 +455,7 @@ export function TafsirPage() {
                   </div>
                 )}
               </div>
+              <AyahViews surah={Number(verseKey.split(":")[0])} ayah={Number(verseKey.split(":")[1])} />
             </>
           )}
 

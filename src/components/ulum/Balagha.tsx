@@ -77,7 +77,7 @@ export function Balagha({ ctx, jd }: { ctx: StudyCtx; jd: { j: Jadwal; read: Rea
                     );
                   })}
                 </div>
-                {ctx.scholar ? <BookText lines={d.text.split("\n")} fold={2} /> : null}
+                {ctx.scholar ? <BookText lines={d.text.split("\n")} /> : null}
                 <Cite id={id} ctx={ctx} range={read.p} />
               </div>
             </div>
@@ -91,7 +91,7 @@ export function Balagha({ ctx, jd }: { ctx: StudyCtx; jd: { j: Jadwal; read: Rea
         <Block kicker={t("ulum.figure.more")} title={t("ulum.figure.moreTitle")}>
           {unnamed.map(({ d, id, read }, k) => (
             <div key={k} className={styles.subBlock}>
-              <BookText lines={d.text.split("\n")} fold={3} />
+              <BookText lines={d.text.split("\n")} />
               <Cite id={id} ctx={ctx} range={read.p} />
             </div>
           ))}
@@ -106,7 +106,7 @@ export function Balagha({ ctx, jd }: { ctx: StudyCtx; jd: { j: Jadwal; read: Rea
               { id: RHETORIC[1], read: suud },
             ].map(({ id, read }) => (
               <article key={id} className={styles.card}>
-                {read.p ? <BookText text={read.p.text} fold={3} /> : <Silent>{read.loading ? t("ulum.loading") : t("ulum.silentOn")}</Silent>}
+                {read.p ? <BookText text={read.p.text} /> : <Silent>{read.loading ? t("ulum.loading") : t("ulum.silentOn")}</Silent>}
                 {read.p && <Cite id={id} ctx={ctx} range={read.p} />}
               </article>
             ))}
