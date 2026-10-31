@@ -144,7 +144,7 @@ function paragraphsOf(stretch) {
       .replace(/\s*\(\d{1,2}\)(?=\s|$)/g, "")
       .replace(/\[\d+(?:\s*[-،]\s*\d+)?\]$/u, "")
       .trim();
-    if (!line || /^[-–.]$/.test(line)) continue;
+    if (!line || /^[-–.#]$/.test(line)) continue;
     if (open || inline) out[out.length - 1] = `${out.at(-1) ?? ""} ${line}`.trim();
     else out.push(line);
     open = inline || !/[.:؟!»]$/u.test(line);
