@@ -11,12 +11,13 @@ function titleFor(pathname: string, t: Translate, arabicNames: boolean): string 
   const page = (name: string) => t("title.page", { page: name });
   if (pathname === "/") return t("title.home");
 
-  const read = /^\/read\/(\d+)\/(mushaf\/?|about\/?)?$/.exec(pathname);
+  const read = /^\/read\/(\d+)\/(mushaf\/?|about\/?|horizons\/?)?$/.exec(pathname);
   if (read) {
     const n = Number(read[1]);
     const surah = SURAH_NAMES[n - 1];
     const name = surah ? (arabicNames ? surah.arabic : surah.english) : t("common.surahN", { n });
     if (read[2]?.startsWith("about")) return page(t("title.intro", { surah: name }));
+    if (read[2]?.startsWith("horizons")) return page(`${name} · ${t("horizons.title")}`);
     return page(read[2] ? t("title.mushaf", { surah: name }) : `${name} · ${t("common.surahN", { n })}`);
   }
   if (pathname.startsWith("/surahs")) return page(t("title.surahs"));
@@ -25,8 +26,10 @@ function titleFor(pathname: string, t: Translate, arabicNames: boolean): string 
   if (pathname.startsWith("/bookmarks")) return page(t("bookmarks.title"));
   if (pathname.startsWith("/settings")) return page(t("settings.title"));
   if (pathname.startsWith("/study")) return page(t("title.study"));
+  if (pathname.startsWith("/ayah")) return page(t("ulum.open"));
   if (pathname.startsWith("/questions")) return page(t("q.title"));
   if (pathname.startsWith("/plan")) return page(t("plan.title"));
+  if (pathname.startsWith("/hifz")) return page(t("hifz.title"));
   if (pathname.startsWith("/niche")) return page(t("niche.title"));
   if (pathname.startsWith("/tajweed")) return page(t("tjg.kicker"));
   if (pathname.startsWith("/privacy")) return page(t("privacy.kicker"));

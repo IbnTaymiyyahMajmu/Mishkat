@@ -15,7 +15,7 @@ import styles from "./PrivacyPage.module.css";
  */
 
 /** The day this page last changed what it says. */
-const UPDATED = Date.UTC(2026, 9, 30);
+const UPDATED = Date.UTC(2026, 10, 16);
 
 /** Where a reader can write with a question about it. Google Play's listing gives the same address. */
 const EMAIL = "MishkatQuran@outlook.com";

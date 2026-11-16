@@ -267,7 +267,7 @@
   padding: 0;
   max-width: 900px;
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 16px;
 }
 /* Each comes down a moment after the one before it, in reading order. */
@@ -284,6 +284,7 @@
 .sheet[data-open] .niches > li:nth-child(4) { transition-delay: 84ms; }
 .sheet[data-open] .niches > li:nth-child(5) { transition-delay: 112ms; }
 .sheet[data-open] .niches > li:nth-child(6) { transition-delay: 140ms; }
+.sheet[data-open] .niches > li:nth-child(7) { transition-delay: 168ms; }
 
 .niche {
   position: relative;
@@ -434,7 +435,8 @@
 }
 
 /* A phone: the bar keeps the name, the lights, the search and the way to the
-   rest, each at a size a thumb can find, and the niches go three to a row. */
+   rest, each at a size a thumb can find, and the niches stand four over
+   three, the shorter row centred under the longer as an arcade is built. */
 @media (max-width: 620px) {
   .header { gap: 8px; padding-inline: 16px; }
   .brand { gap: 9px; }
@@ -443,9 +445,14 @@
   .sheet { padding: 18px 16px 24px; }
   .niches {
     max-width: 420px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px 10px;
   }
+  .niches > li { flex: 0 0 calc((100% - 30px) / 4); min-width: 0; }
+  .niche { gap: 8px; }
+  .nicheLabel { font-size: 13.5px; }
 }
 
 /* The narrowest phones keep the name in Arabic alone. */

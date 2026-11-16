@@ -1,0 +1,715 @@
+/* By heart. The head of the page is the lit niche of the site, as the reader's
+   own niche has it; below it the page is paper. A sitting is the same paper
+   with one ayah on it, behind glass.
+
+   The four depths of light an ayah is held in are the niche's own tiles, lit
+   a little, more, mostly, fully — set here once and used by the bars of what
+   is kept, the legend over them and the seven small flames of a sitting. */
+
+.shell {
+  overflow-x: hidden;
+  --h-line: color-mix(in srgb, var(--mk-gold) 26%, transparent);
+  --h1: color-mix(in srgb, #d9a94f 38%, transparent);
+  --h2: color-mix(in srgb, #d9a94f 60%, transparent);
+  --h3: color-mix(in srgb, #d9a94f 84%, transparent);
+  --h4: #ffe6a8;
+  --glass: linear-gradient(
+    168deg,
+    color-mix(in srgb, var(--mk-gold-pale) 30%, transparent),
+    color-mix(in srgb, var(--mk-gold) 13%, transparent) 46%,
+    color-mix(in srgb, var(--mk-gold) 22%, transparent)
+  );
+  --glass-edge: color-mix(in srgb, var(--mk-gold-pale) 46%, transparent);
+  --slip: var(--mk-weak);
+}
+:global(html[data-theme="day"]) .shell,
+:global(html[data-theme="dawn"]) .shell {
+  --h1: color-mix(in srgb, #c08a2c 30%, transparent);
+  --h2: color-mix(in srgb, #c08a2c 52%, transparent);
+  --h3: color-mix(in srgb, #c08a2c 78%, transparent);
+  --h4: #b87a12;
+  --glass: linear-gradient(
+    168deg,
+    color-mix(in srgb, var(--mk-gold) 26%, transparent),
+    color-mix(in srgb, var(--mk-gold) 12%, transparent) 46%,
+    color-mix(in srgb, var(--mk-gold) 20%, transparent)
+  );
+  --glass-edge: color-mix(in srgb, var(--mk-gold) 50%, transparent);
+  --slip: #b3261e;
+}
+
+/* ── the head of the page ───────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  background: var(--mk-hero-bg);
+  color: var(--mk-hero-ink);
+  border-bottom: 1px solid color-mix(in srgb, var(--mk-gold) 38%, transparent);
+}
+.heroTall { min-height: 100%; border-bottom: 0; display: grid; align-items: center; }
+
+.heroInner {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 38px 16px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.motes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.motes::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 -240px;
+  background-image:
+    radial-gradient(circle, color-mix(in srgb, var(--mk-gold-pale) 75%, transparent) 0 1px, transparent 1.7px),
+    radial-gradient(circle, color-mix(in srgb, var(--mk-gold) 60%, transparent) 0 1.2px, transparent 2px);
+  background-size: 210px 240px, 330px 240px;
+  background-position: 30px 40px, 180px 140px;
+  opacity: 0.32;
+  mask-image: radial-gradient(ellipse 60% 70% at 50% 30%, #000 0, transparent 100%);
+  animation: drift 60s linear infinite;
+}
+@keyframes drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-240px); }
+}
+
+.kicker {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mk-hero-kicker);
+}
+:global(html[data-script="arabic"]) .kicker { letter-spacing: 0; text-transform: none; font-size: 12px; }
+
+.title {
+  margin: 10px 0 0;
+  font-weight: 400;
+  font-size: clamp(36px, 5.4vw, 60px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-image: var(--mk-shine);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  padding-bottom: 0.08em;
+}
+:global(html[data-script="arabic"]) .title { letter-spacing: 0; line-height: 1.5; }
+
+.status {
+  margin: 10px 0 0;
+  max-width: 44ch;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--mk-hero-ink) 86%, transparent);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  width: min(100%, 460px);
+  margin: 26px 0 0;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--h-line);
+}
+.stats > div { display: flex; flex-direction: column-reverse; gap: 2px; }
+.stats dt {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mk-hero-kicker);
+}
+:global(html[data-script="arabic"]) .stats dt { letter-spacing: 0; text-transform: none; font-size: 12px; }
+.stats dd {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 30px;
+  line-height: 1.1;
+  color: var(--mk-hero-ink);
+  font-variant-numeric: lining-nums;
+}
+
+/* The one thing to do next, wherever it stands: recite what is due, begin a
+   passage, cover the ayah. Gold, as the film's door is in the reader. */
+.go {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 22px;
+  padding: 10px 22px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 92%, #fff 8%), var(--color-accent));
+  color: var(--color-bg, #fff);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.go:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--color-accent) 36%, transparent);
+}
+.go:disabled { opacity: 0.45; cursor: not-allowed; }
+:global(html[data-script="arabic"]) .go { letter-spacing: 0; }
+
+/* ── the body ───────────────────────────────────────────────────────────── */
+
+.body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 34px 32px 90px;
+  display: grid;
+  gap: 22px;
+}
+
+.card {
+  padding: 24px 26px;
+  border: 1px solid color-mix(in srgb, var(--mk-gold) 40%, transparent);
+  border-radius: var(--radius-lg);
+  background: radial-gradient(120% 120% at 50% 0%, color-mix(in srgb, var(--mk-gold) 9%, transparent), transparent 70%);
+}
+
+.cardHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 16px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.cardText {
+  margin: 8px 0 0;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--muted-72);
+  max-width: 58ch;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: minmax(0, 2.4fr) minmax(0, 1fr) minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 12px;
+  margin-top: 18px;
+}
+.form .go { margin-top: 0; min-height: 36px; padding-block: 7px; }
+
+.field { display: grid; gap: 5px; min-width: 0; }
+.field > span {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+:global(html[data-script="arabic"]) .field > span { letter-spacing: 0; text-transform: none; font-size: 12px; }
+/* The list of surahs is the browser's own, which draws its options on its own
+   ground: they are given this page's, so a dark light does not open a white
+   list with pale words on it. */
+.field select { appearance: auto; }
+.field option { background: var(--color-surface); color: var(--color-text); }
+
+.formNote {
+  margin: 10px 0 0;
+  min-height: 1.5em;
+  font-size: 13px;
+  color: var(--muted-62);
+}
+
+/* What is kept, a surah to a row. */
+.legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: var(--muted-62);
+}
+.legend i,
+.held i {
+  display: block;
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  border: 1px solid var(--h-line);
+}
+.legend i[data-depth="1"], .held i[data-depth="1"] { background: var(--h1); }
+.legend i[data-depth="2"], .held i[data-depth="2"] { background: var(--h2); }
+.legend i[data-depth="3"], .held i[data-depth="3"] { background: var(--h3); }
+.legend i[data-depth="4"], .held i[data-depth="4"] { background: var(--h4); border-color: transparent; }
+
+.rows {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+}
+.row {
+  padding: 16px 0;
+  border-top: 1px solid var(--color-divider);
+}
+.row:last-child { padding-bottom: 0; }
+
+.rowHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2px 14px;
+}
+.rowName {
+  font-family: var(--font-heading);
+  font-size: 19px;
+  line-height: 1.3;
+}
+.rowName small {
+  font-size: 12px;
+  color: var(--muted-55);
+  font-variant-numeric: lining-nums;
+}
+.rowCount { font-size: 13px; color: var(--muted-62); }
+.rowCount b { font-weight: 600; color: var(--color-accent); }
+
+/* Every ayah of the surah along one bar, each lit by how firmly it is held. */
+.strip {
+  height: 12px;
+  margin-top: 9px;
+  border-radius: 3px;
+  border: 1px solid var(--h-line);
+  background-color: color-mix(in srgb, var(--color-text) 5%, transparent);
+}
+
+.rowActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  margin-top: 11px;
+}
+.rowActions :global(.btn) { font-size: 13px; padding: 6px 14px; }
+.rowAsk { flex: 1 1 100%; font-size: 13.5px; color: var(--muted-72); }
+
+/* Why it comes back, and how. */
+.why { padding: 8px 4px 0; }
+.hadith {
+  margin: 0;
+  padding: 0 0 0 0;
+  padding-inline-start: 18px;
+  border-inline-start: 2px solid color-mix(in srgb, var(--mk-gold) 55%, transparent);
+}
+.hadith p {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 19px;
+  line-height: 1.5;
+}
+.hadith .hadithAr {
+  margin-bottom: 8px;
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 21px;
+  line-height: 1.9;
+  color: var(--color-accent);
+}
+.hadith cite {
+  display: block;
+  margin-top: 6px;
+  font-style: normal;
+  font-size: 12.5px;
+  color: var(--muted-55);
+}
+.whyTitle {
+  margin: 28px 0 0;
+  font-weight: 400;
+  font-size: 22px;
+}
+.whyText {
+  margin: 8px 0 0;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--muted-72);
+  max-width: 62ch;
+}
+
+/* ── a sitting ──────────────────────────────────────────────────────────── */
+
+.sitting {
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(90% 46% at 50% 0%, color-mix(in srgb, var(--mk-gold) 9%, transparent), transparent 72%),
+    var(--color-bg);
+}
+
+/* Where the sitting stands: how to leave it, how far through it is, and a
+   hairline that fills as it goes, as the reader's own does. */
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 18px;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-divider);
+}
+.leave {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  color: var(--muted-72);
+  text-decoration: none;
+}
+.leave:hover { color: var(--color-accent); }
+.count {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  color: var(--muted-72);
+  font-variant-numeric: lining-nums;
+}
+.fill {
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 2px;
+  background: var(--color-accent);
+  transform-origin: 0 50%;
+  transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+:global(html[dir="rtl"]) .fill { transform-origin: 100% 50%; }
+
+/* One ayah. It arrives as a leaf turned to. */
+.leaf {
+  flex: 1 0 auto;
+  width: min(100%, 760px);
+  margin: 0 auto;
+  padding: 26px 22px 30px;
+  animation: turn 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes turn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+.leafHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.leafSurah {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 25px;
+  line-height: 1.2;
+}
+.leafAyah {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+:global(html[data-script="arabic"]) .leafAyah { letter-spacing: 0; text-transform: none; font-size: 13px; }
+
+/* How firmly it is held: seven small panes, lit as far as it has got. */
+.held {
+  display: inline-flex;
+  gap: 3px;
+  flex: none;
+}
+.held i { width: 8px; height: 14px; border-radius: 4px 4px 1px 1px; }
+
+/* The end of the ayah before, to recite on from. */
+.cue {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 22px 0 0;
+  color: var(--muted-55);
+}
+.cue > span {
+  flex: none;
+  font-family: var(--font-heading);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+:global(html[data-script="arabic"]) .cue > span { letter-spacing: 0; text-transform: none; font-size: 12px; }
+.cue bdi {
+  flex: 1;
+  min-width: 0;
+  font-size: 21px;
+  line-height: 1.9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ayah {
+  margin: 14px 0 0;
+  padding: 6px 0 var(--quran-descender-pad);
+  font-size: clamp(27px, 7.4vw, 38px);
+  line-height: 2.25;
+  cursor: default;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* A word, and the pane of glass it stands behind. The pane is as wide as the
+   word because the word is still there under it, only not shown: uncovering
+   moves nothing on the line. What changes is opacity and a small lift, which
+   is the graphics chip's work and nobody else's. */
+.word {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0 0.08em;
+  font: inherit;
+  line-height: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  border-radius: 0.2em;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.word::before {
+  content: "";
+  position: absolute;
+  inset: 0.5em 0.04em 0.34em;
+  border-radius: 0.2em;
+  background: var(--glass);
+  box-shadow:
+    inset 0 0 0 1px var(--glass-edge),
+    inset 0 0.5em 0.5em -0.44em color-mix(in srgb, #fff 34%, transparent);
+  opacity: 0;
+  transform: scale(1.06, 0.72);
+  transition:
+    opacity 380ms ease,
+    transform 460ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+}
+.word[data-state="covered"]::before { opacity: 1; transform: none; }
+.word:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+
+.ink {
+  display: inline-block;
+  transition:
+    opacity 420ms ease 60ms,
+    transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.word[data-state="covered"] .ink {
+  opacity: 0;
+  transform: translateY(0.12em);
+  user-select: none;
+  transition: none;
+}
+
+/* The pane to be uncovered next breathes, a ring of light fading in and out. */
+.word[data-next]::after {
+  content: "";
+  position: absolute;
+  inset: 0.5em 0.04em 0.34em;
+  border-radius: 0.2em;
+  box-shadow:
+    0 0 0 1.5px color-mix(in srgb, var(--color-accent) 80%, transparent),
+    0 0 0.6em color-mix(in srgb, var(--color-accent) 50%, transparent);
+  animation: breathe 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes breathe {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.95; }
+}
+
+/* The letter a covered word opens on, when the reader has asked for them. */
+.letter {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0.14em;
+  color: color-mix(in srgb, var(--color-text) 78%, transparent);
+  pointer-events: none;
+  animation: appear 260ms ease both;
+}
+@keyframes appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* A word slipped on last time: a dot on its glass, as a pencil leaves one. */
+.dot {
+  position: absolute;
+  top: 0.3em;
+  left: 50%;
+  width: 0.16em;
+  height: 0.16em;
+  margin-left: -0.08em;
+  border-radius: 50%;
+  background: var(--slip);
+}
+
+/* …and a word marked as a slip now. */
+.word[data-slip] .ink {
+  color: var(--slip);
+  text-decoration: underline wavy color-mix(in srgb, var(--slip) 70%, transparent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.5em;
+}
+
+.marker {
+  display: inline-grid;
+  place-items: center;
+  width: 1.05em;
+  height: 1.05em;
+  margin: 0 0.18em;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+  border-radius: 50%;
+  font-family: var(--font-amiri), serif;
+  font-size: 0.42em;
+  line-height: 1;
+  color: var(--color-accent);
+  vertical-align: middle;
+  transition: opacity 400ms ease;
+}
+.marker[data-state="covered"] { opacity: 0.35; }
+
+.say {
+  margin: 18px 0 0;
+  min-height: 3.2em;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted-62);
+  text-align: center;
+}
+
+.waiting {
+  margin: 60px 0;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  color: var(--muted-55);
+  text-align: center;
+}
+.waiting p { margin: 0; }
+
+/* What can be done with the ayah, kept at the foot of the screen where a
+   thumb is, however long the ayah above it. */
+.dock {
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
+  padding: 12px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+  /* Solid: a covered word sliding under a pane of the page's own colour at
+     nine-tenths would be a word read through it. */
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-divider);
+}
+.dockInner {
+  width: min(100%, 560px);
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 10px;
+  animation: appear 320ms ease both;
+}
+.dockInner > * {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 46px;
+  margin: 0;
+}
+.dockInner :global(.btn) { font-size: 13.5px; padding-inline: 8px; }
+.dockInner :global(.btn)[aria-pressed="true"] {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+}
+.dockInner .go { flex: 1.6 1 0; }
+
+/* How it went. Three answers, and under each when the ayah comes back. */
+.grade {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  padding: 7px 6px;
+  font: inherit;
+  color: var(--color-text);
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+.grade b {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 15.5px;
+  line-height: 1.25;
+}
+.grade small { font-size: 11.5px; color: var(--muted-55); }
+.grade:hover { transform: translateY(-1px); background: color-mix(in srgb, var(--color-text) 6%, transparent); }
+.grade[data-how="forgot"] { border-color: color-mix(in srgb, var(--slip) 55%, transparent); }
+.grade[data-how="forgot"] b { color: var(--slip); }
+.grade[data-how="knew"] {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+}
+.grade[data-how="knew"] b { color: var(--color-accent); }
+
+.doneDoors {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+.doneDoors .go { margin-top: 0; }
+.doneDoors :global(.btn) { border-color: color-mix(in srgb, var(--mk-hero-ink) 30%, transparent); color: var(--mk-hero-ink); }
+
+@media (max-width: 640px) {
+  .body { padding: 26px 16px 70px; gap: 18px; }
+  .card { padding: 20px 18px; }
+  .cardTitle { font-size: 23px; }
+  .form { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .form .field:first-child { grid-column: 1 / -1; }
+  .form .go { grid-column: 1 / -1; min-height: 44px; }
+  .leaf { padding: 20px 18px 26px; }
+  .leafSurah { font-size: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motes::before, .title, .leaf, .dockInner, .letter, .word[data-next]::after { animation: none; }
+  .word::before, .ink, .fill { transition: none; }
+}

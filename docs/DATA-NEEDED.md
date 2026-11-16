@@ -783,6 +783,25 @@ cleanly.
 **The questions of the Qur'an.** Sixteen speakers the commentators differ on
 are set out in `QUESTIONS-REVIEW.md` for you to rule on.
 
+**By heart (`/hifz/`).** Four things are yours to rule on.
+
+- *The hadith at the foot of the page.* "تعاهدوا القرآن…", al-Bukhārī 5033 and
+  Muslim 791 (ʿAbd al-Bāqī's numbers, both checked against the open hadith
+  corpus by number and wording). The Arabic is al-Bukhārī's as the corpus has
+  it. The English under it is mine — "Keep going back to the Qur'an. By the
+  One in whose hand my soul is, it slips away faster than camels from their
+  tethers" — and wants your eye, as do its Pashto, Persian and Spanish.
+- *The steps.* An ayah recited well is left 1, 2, 4, 7, 14, 30 and then 60
+  days (`STEPS` in `src/lib/store/hifz.ts`). They are a sensible ladder and
+  nothing more; a teacher's own schedule can be put there in one line.
+- *Counting as read.* An ayah judged in a sitting is noted as read that day,
+  so it lights the niche and counts toward a khatm portion. If reciting from
+  memory should not move the khatm plan on, it is one call to take out
+  (`noteReadKey` in `Sitting.tsx`).
+- *The words.* Sixty-two new sentences in each language, unread by a native
+  speaker like the rest (§9); "ḥifẓ" is «حفظ» in Pashto and Persian and "De
+  memoria" in Spanish.
+
 ---
 
 ## What I do not need

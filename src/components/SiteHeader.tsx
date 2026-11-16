@@ -80,6 +80,19 @@ const NAV: { href: string; label: MessageKey; match: (p: string) => boolean; ico
     ),
   },
   {
+    href: "/hifz/",
+    label: "nav.hifz",
+    match: (p) => p.startsWith("/hifz"),
+    // What is kept: a flame, standing in its dish.
+    icon: (
+      <>
+        <path d="M12 4.2c2.5 2.9 4.2 5.1 4.2 7.7a4.2 4.2 0 0 1-8.4 0c0-2.6 1.7-4.8 4.2-7.7z" />
+        <path d="M12 10.4c.9 1.1 1.5 1.9 1.5 2.8a1.5 1.5 0 0 1-3 0c0-.9.6-1.7 1.5-2.8z" opacity="0.5" />
+        <path d="M6.4 19.6h11.2" />
+      </>
+    ),
+  },
+  {
     href: "/tafsir/",
     label: "nav.tafsir",
     match: (p) => p.startsWith("/tafsir"),

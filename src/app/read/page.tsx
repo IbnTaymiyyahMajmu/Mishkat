@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useT } from "@/lib/i18n";
+import { isValidVerseKey } from "@/lib/text";
 
 /**
  * `/read` on its own resumes where the reader stopped. It cannot redirect at
@@ -21,7 +22,10 @@ export default function ReadIndex() {
       const last = JSON.parse(localStorage.getItem("mishkat.last.v1") || "null");
       if (last && Number.isInteger(last.surah)) {
         surah = Math.min(114, Math.max(1, last.surah));
-        verseKey = typeof last.verseKey === "string" ? last.verseKey : null;
+        // Only an ayah of that surah is somewhere to return to; anything else
+        // written there is left out of the address.
+        const key: unknown = last.verseKey;
+        verseKey = typeof key === "string" && isValidVerseKey(key) && key.startsWith(`${surah}:`) ? key : null;
       }
     } catch {
       /* first visit */

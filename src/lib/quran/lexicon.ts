@@ -206,6 +206,24 @@ export async function fetchLexicon(rootKey: string): Promise<LexiconEntry[]> {
  * that Arabic rather than of the summary. Both are shown, and the Arabic is
  * shown first, because the translation is the thing that can be wrong.
  */
+/**
+ * An address from the lexicon service, kept only if it is a web address.
+ *
+ * These are set as links for the reader to follow, and they come from another
+ * server. A link is not a place to trust what arrives: anything that is not
+ * plain http(s) — a `javascript:` or `data:` address above all — is dropped,
+ * and the entry is shown without its link.
+ */
+function webAddress(raw: unknown): string {
+  if (typeof raw !== "string" || !raw) return "";
+  try {
+    const url = new URL(raw);
+    return url.protocol === "https:" || url.protocol === "http:" ? url.href : "";
+  } catch {
+    return "";
+  }
+}
+
 export async function fetchLexiconText(id: number): Promise<LexiconText | null> {
   const j = await get<{ data?: RawEntry }>(`dictionaries/entries/${id}`);
   const d = j?.data;
@@ -213,8 +231,8 @@ export async function fetchLexiconText(id: number): Promise<LexiconText | null> 
   return {
     arabic: (d.original_text_ar ?? "").trim(),
     english: (d.translation_en ?? "").trim(),
-    sourceUrl: d.source_url ?? "",
-    scanUrl: d.ejtaal_url ?? "",
+    sourceUrl: webAddress(d.source_url),
+    scanUrl: webAddress(d.ejtaal_url),
   };
 }
 

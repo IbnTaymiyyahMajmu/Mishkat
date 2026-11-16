@@ -80,6 +80,14 @@ export function SurahHeader({ surah, chapter, teaser }: Props) {
             </svg>
             {t("horizons.watch")}
           </Link>
+          {/* The surah from memory: recited, uncovered, and brought back when due. */}
+          <Link href={`/hifz/?s=${surah}`} className={styles.heartLink}>
+            <svg width="14" height="16" viewBox="0 0 16 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M8 1.6c2.6 3 4.4 5.3 4.4 8a4.4 4.4 0 0 1-8.8 0C3.6 6.9 5.4 4.6 8 1.6z" />
+              <path d="M2.6 16.4h10.8" />
+            </svg>
+            {t("nav.hifz")}
+          </Link>
         </div>
       </div>
     </header>
