@@ -67,6 +67,19 @@ const NAV: { href: string; label: MessageKey; match: (p: string) => boolean; ico
     ),
   },
   {
+    href: "/mushaf/",
+    label: "nav.mushaf",
+    match: (p) => p.startsWith("/mushaf"),
+    // One page of it: its lines, and the band of a surah's name at the head.
+    icon: (
+      <>
+        <path d="M6.2 3.8h11.6v16.4H6.2z" />
+        <path d="M8.6 6.6h6.8v1.9H8.6z" opacity="0.6" />
+        <path d="M8.6 11.2h6.8M8.6 13.9h6.8M8.6 16.6h6.8" />
+      </>
+    ),
+  },
+  {
     href: "/plan/",
     label: "nav.plan",
     match: (p) => p.startsWith("/plan"),
@@ -76,6 +89,19 @@ const NAV: { href: string; label: MessageKey; match: (p: string) => boolean; ico
         <circle cx="12" cy="12" r="8" opacity="0.35" />
         <path d="M12 4a8 8 0 1 1-7.7 10.1" />
         <circle cx="12" cy="4" r="1.1" fill="currentColor" stroke="none" />
+      </>
+    ),
+  },
+  {
+    href: "/hifz/",
+    label: "nav.hifz",
+    match: (p) => p.startsWith("/hifz"),
+    // What is kept: a flame, standing in its dish.
+    icon: (
+      <>
+        <path d="M12 4.2c2.5 2.9 4.2 5.1 4.2 7.7a4.2 4.2 0 0 1-8.4 0c0-2.6 1.7-4.8 4.2-7.7z" />
+        <path d="M12 10.4c.9 1.1 1.5 1.9 1.5 2.8a1.5 1.5 0 0 1-3 0c0-.9.6-1.7 1.5-2.8z" opacity="0.5" />
+        <path d="M6.4 19.6h11.2" />
       </>
     ),
   },

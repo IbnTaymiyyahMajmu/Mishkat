@@ -378,6 +378,12 @@ export function SettingsPage() {
                 </td>
               </tr>
               <tr>
+                <td className={styles.layer}>{t("settings.src.pages")}</td>
+                <td className={styles.source}>
+                  {rich("settings.src.pagesValue", { link: out("https://quran.foundation") })}
+                </td>
+              </tr>
+              <tr>
                 <td className={styles.layer}>{t("settings.src.translation")}</td>
                 <td className={styles.source}>
                   {FILED_EDITIONS.length > 0

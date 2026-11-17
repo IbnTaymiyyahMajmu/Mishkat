@@ -234,6 +234,37 @@ export async function fetchMushaf(surah: number): Promise<Verse[]> {
 }
 
 /**
+ * One page of the Madīnah muṣḥaf: its ayat, each word with the line of the
+ * page it stands on and the glyph it is drawn with in that page's own font.
+ * The page view lays the fifteen lines out from this — see `pages.ts`.
+ */
+export async function fetchMushafPage(page: number): Promise<Verse[]> {
+  const out: Verse[] = [];
+  let part = 1;
+  for (;;) {
+    const j = await get<{ verses: Verse[]; pagination?: { total_pages?: number } }>(
+      `verses/by_page/${page}?words=true&word_fields=code_v2,line_number,text_uthmani&fields=text_uthmani&per_page=50&page=${part}`,
+    );
+    out.push(...(j.verses ?? []));
+    const total = j.pagination?.total_pages ?? 1;
+    if (part >= total) break;
+    part += 1;
+  }
+  return out;
+}
+
+/**
+ * Where the muṣḥaf's page fonts are kept: one file to a page, in two
+ * drawings — the page as printed, and the page as the Complex's tajweed
+ * muṣḥaf prints it, its letters in the colours of their rules.
+ */
+export function pageFontUrl(page: number, tajweed = false): string {
+  return tajweed
+    ? `${AUDIO_CDN}fonts/quran/hafs/v4/colrv1/woff2/p${page}.woff2`
+    : `${AUDIO_CDN}fonts/quran/hafs/v2/woff2/p${page}.woff2`;
+}
+
+/**
  * The surah with its recitation attached and nothing else. The muṣḥaf view
  * loads this only if the reader actually presses play, so simply reading does
  * not pay for audio metadata it never uses.

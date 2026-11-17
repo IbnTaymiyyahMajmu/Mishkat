@@ -101,7 +101,12 @@ export async function handle(request, { allow }) {
   }
   if (!upstream.ok) return reply('{"error":"tafsir.app refused"}', 502, permitted);
 
-  const body = await upstream.text();
+  let body;
+  try {
+    body = await upstream.text();
+  } catch {
+    return reply('{"error":"tafsir.app could not be reached"}', 502, permitted);
+  }
   if (kept.size >= KEEP) kept.delete(kept.keys().next().value);
   kept.set(key, body);
   return reply(body, 200, permitted, lasting);
@@ -124,16 +129,26 @@ if (direct) {
     .filter(Boolean);
 
   createServer(async (req, res) => {
-    const request = new Request(`http://localhost:${port}${req.url}`, {
-      method: req.method,
-      headers: Object.fromEntries(
-        Object.entries(req.headers).filter((h) => typeof h[1] === "string"),
-      ),
-    });
-    const response = await handle(request, { allow });
-    res.writeHead(response.status, Object.fromEntries(response.headers));
-    res.end(await response.text());
-  }).listen(port, () => {
+    // One bad request is answered as one bad request: `new Request` throws on
+    // a method it will not carry (TRACE, CONNECT), and thrown here it used to
+    // stop the relay.
+    try {
+      const request = new Request(`http://localhost:${port}${req.url}`, {
+        method: req.method,
+        headers: Object.fromEntries(
+          Object.entries(req.headers).filter((h) => typeof h[1] === "string"),
+        ),
+      });
+      const response = await handle(request, { allow });
+      res.writeHead(response.status, Object.fromEntries(response.headers));
+      res.end(await response.text());
+    } catch {
+      if (!res.headersSent) res.writeHead(400, { "Content-Type": "application/json; charset=utf-8" });
+      res.end('{"error":"not a request this relay answers"}');
+    }
+    // On this machine only: an origin is a header, and anything but a browser
+    // may write it as it likes.
+  }).listen(port, "127.0.0.1", () => {
     console.log(`tafsir.app relay on http://localhost:${port} — answering ${allow.join(", ")}`);
   });
 }

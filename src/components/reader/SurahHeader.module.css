@@ -102,6 +102,24 @@
   box-shadow: 0 6px 18px color-mix(in srgb, var(--color-accent) 28%, transparent);
   transition: transform 160ms ease, box-shadow 160ms ease;
 }
+/* The third door: the surah from memory. Quieter than the film's, since the
+   film is the one a reader has not met anywhere else. */
+.heartLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 13.5px;
+  letter-spacing: 0.02em;
+  padding: 7px 18px 7px 14px;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 60%, transparent);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: background 160ms ease;
+}
+.heartLink:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+
 .watchLink:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 24px color-mix(in srgb, var(--color-accent) 36%, transparent);

@@ -48,6 +48,23 @@
     0 0 0.45em color-mix(in srgb, currentColor 45%, transparent);
 }
 
+/* The lengthenings are one family in four colours, one for each length, so
+   their mark in a key is the four together, shortest first: a reader who
+   sees a gold letter and a crimson one finds both under "Hold". */
+.ladder {
+  display: inline-flex;
+  gap: 1px;
+  flex: none;
+}
+.ladder > i {
+  display: block;
+  width: 4px;
+  height: 11px;
+  background: var(--tj-c);
+}
+.ladder > i:first-child { border-start-start-radius: 3px; border-end-start-radius: 3px; }
+.ladder > i:last-child { border-start-end-radius: 3px; border-end-end-radius: 3px; }
+
 .swatch {
   display: inline-block;
   width: 10px;

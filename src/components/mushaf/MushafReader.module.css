@@ -42,9 +42,10 @@
 
 .barLegend { min-width: 0; }
 
-/* On a phone the bar is two rows and no more: the way back and on as arrows,
-   the size and the colour between them, and the legend as one row of its
-   own that runs on under a thumb rather than folding. */
+/* On a phone the way back and on are arrows, the size and the colour between
+   them, and the legend under them, folded to the width so that every colour
+   in it is on the screen: a key with its last colours scrolled out of sight
+   was a key that did not say what grey meant. */
 @media (max-width: 620px) {
   .bar { flex-wrap: nowrap; padding: 8px 12px; gap: 8px; }
   .barWord { display: none; }
@@ -52,12 +53,8 @@
   .barLegend {
     order: 9;
     flex-basis: 100%;
-    overflow-x: auto;
-    scrollbar-width: none;
-    mask-image: linear-gradient(to right, #000 calc(100% - 16px), transparent);
   }
-  .barLegend::-webkit-scrollbar { display: none; }
-  .barLegend > div { flex-wrap: nowrap; width: max-content; }
+  .barLegend > div { justify-content: center; row-gap: 6px; }
 }
 
 .page {
@@ -152,6 +149,18 @@
   color: var(--color-accent);
   vertical-align: middle;
 }
+
+/* The way from the surah set as running text to the page it is printed on. */
+.headPage {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: var(--font-heading);
+  font-size: 13.5px;
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+.headPage:hover { border-bottom-color: var(--color-accent); }
 
 .foot {
   max-width: 900px;

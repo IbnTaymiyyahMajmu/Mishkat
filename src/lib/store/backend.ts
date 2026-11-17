@@ -6,6 +6,7 @@ import {
   type Note,
   type NoteQuote,
 } from "./types";
+import { isValidVerseKey } from "../text";
 
 /**
  * Where a library is kept.
@@ -78,7 +79,7 @@ function migrateFromPrototype(): LibrarySnapshot {
         return {
           id: `legacy-${String(b.key)}`,
           verseKey: String(b.key ?? ""),
-          surah: Number(b.surah) || Number(String(b.key ?? "1").split(":")[0]) || 1,
+          surah: Number(String(b.key ?? "1").split(":")[0]) || 1,
           arabic: String(b.arabic ?? ""),
           translation: String(b.translation ?? ""),
           translator: "",
@@ -86,7 +87,7 @@ function migrateFromPrototype(): LibrarySnapshot {
           updatedAt: ts,
         };
       })
-      .filter((b) => b.verseKey);
+      .filter((b) => isValidVerseKey(b.verseKey));
     lib.updatedAt = Date.now();
   } catch {
     /* nothing to migrate */
@@ -114,7 +115,8 @@ export function normalise(value: unknown): LibrarySnapshot {
   return lib;
 }
 
-const VERSE_KEY = /^\d{1,3}:\d{1,3}$/;
+/** An ayah the muṣḥaf has: a row for surah 999 would be a link to nowhere. */
+const VERSE_KEY = { test: isValidVerseKey };
 
 const text = (x: unknown): string => (typeof x === "string" ? x : "");
 const stamp = (x: unknown, fallback: number): number =>

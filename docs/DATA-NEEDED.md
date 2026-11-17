@@ -507,23 +507,53 @@ for the sitting only; the counts are remembered with the other settings.
 
 ---
 
-## 6. Things the corpus gives you that we are not yet showing
+## 6. Things the corpus gives you, and where each is shown
 
-No new data needed — these are already in the payload and simply have no screen
-yet. Flagging them so you can say whether you want them:
+No new data needed — all of these were in the payload. Each now has a screen.
 
-- **Juz', hizb, rubʿ and page number** per ayah (page and juz' are shown in the
-  word study panel; nothing browses by them yet).
+- **Juz', hizb, rubʿ and page number** — **now browsed by.** The muṣḥaf by
+  its pages (`/mushaf/`, **Muṣḥaf** in the menu) opens a page by its surah, by
+  its juzʾ and the quarters of that juzʾ's two ḥizbs, or by its number, and
+  says at its head which page, juzʾ and ḥizb it is. The way to an ayah (`g`)
+  takes `page 42`, `hizb 12` and `rub 45` as well as `juz 30`. Where each
+  falls is counted from the corpus already held (`structure.json`), so finding
+  a page asks nobody.
 - **Sajdah markers** — now shown. The rail already marked them, but a phone has
   no rail, so an ayah of prostration says so at its own head: ۩ and the word,
   in whichever of the four languages the site is in.
 - **Revelation order** — shown as a tag and as a sort option in the index.
-- **Muṣḥaf page layout.** The muṣḥaf view lays out a *surah* continuously. Laying
-  out the *actual 604 pages* of the Madīnah muṣḥaf, with the correct line breaks,
-  needs the page/line data plus the matching font. I had this down as licensed
-  separately; the Foundation's documentation settles it. The glyph fonts are on
-  its CDN, a file to a page, and its terms let an application cache or bundle
-  them provided it keeps a developer account and credits the Foundation. See §8.
+- **Muṣḥaf page layout** — **built**, at `/mushaf/`. The 604 pages of the
+  Madīnah muṣḥaf, fifteen lines to a page, every word on the line it is
+  printed on, set in the King Fahd Complex's own font for that page and sized
+  so the page fills the screen's width. The band of a surah's name and the
+  basmala are put on the lines the corpus leaves empty for them; the first two
+  pages stand in their frame. A page is turned the way the book is — the next
+  is to the left, by the arrow, the arrow key or a stroke of the finger —
+  and a touched ayah offers itself in the reader and in the ayah study. The
+  surah muṣḥaf view links to the page its surah opens on. The fonts are read
+  from the Foundation's CDN and kept by the browser, and are credited under
+  Settings → Sources, as its terms ask.
+- **Tajwīd colouring** — **in use**, and now clearer:
+  - *The colours.* The two shortest lengths of a held vowel were nearly one
+    colour in every light, and the shortest sat close to the cream ink on a
+    dark ground. Each tajweed colour is now set where it is furthest from the
+    ink and from its neighbour on the ladder, measured in OKLab (the ladder's
+    closest pair went from 7 to 11–13 apart).
+  - *The key.* "Hold" is four colours, one for each length, but its mark in
+    the key was the red of one of them, so a gold letter matched nothing in
+    it. Its mark is now the four together, and over the reader a line says
+    what each asks for — 2 · 2·4·6 · 4·5 · 6 counts — and that a coloured
+    letter answers a tap. On a phone the muṣḥaf view's key used to run off
+    the edge of the screen; it now folds so every colour is in sight.
+  - *The printed pages in colour.* With tajweed on, `/mushaf/` shows the
+    Complex's tajweed muṣḥaf — the same pages, their letters coloured by
+    rule — recoloured to this site's own colours, so there is one key to
+    learn, and the legend's families pick out one rule at a time there too.
+    One thing for you: the printed pages also mark the heavy letters
+    (tafkhīm) in dark blue. The site's key has no such family, so they are
+    set in the ink. Say if you want a sixth family, "Heavy", in the key and
+    the reader too — the corpus's markings would need it added by hand,
+    since they do not carry it.
 
 ---
 
@@ -631,46 +661,27 @@ shaped this work:
 
 ### What else is there, that Mishkāt does not use yet
 
-You asked me to look for anything being missed. In the order I would take them:
+You asked me to look for anything being missed. The 604-page muṣḥaf and the
+tajwīd colouring, once first on this list, are built (§6). What is left, in the
+order I would take it:
 
-1. **The 604-page muṣḥaf.** `pages/lookup` gives the ayat on each page, each
-   word carries its line number, and the King Fahd glyph fonts are on the
-   Foundation's CDN a file to a page — in three generations, the newest with
-   tajwīd colour built into the glyphs. The terms allow bundling them. This is
-   the "Muṣḥaf page layout" item of §6, now unblocked.
-2. **Accounts, through Quran.com.** The User APIs carry bookmarks, collections,
-   notes, reading sessions, goals, streaks and preferences for a signed-in
-   Quran.com reader. Sign-in is OAuth2 with PKCE, and an application
-   registered as "Frontend" needs no secret for it — yours is registered as
-   "Backend", so this would be a second registration. One caution from the
-   documentation: calls to these APIs from a page on another site "may be
-   rejected", in which case they go through the same relay. A reader's
-   bookmarks here would be their bookmarks on Quran.com and in every other
-   application that uses it. `src/lib/store/backend.ts` was written for a
-   backend to drop into.
-3. **Tajwīd colouring.** `quran/verses/uthmani_tajweed` marks each letter with
-   its rule. A reading option, and a teaching one.
-4. **Hadith on an ayah.** `hadith_references/by_ayah` — the hadith that cite or
+1. **Hadith on an ayah.** `hadith_references/by_ayah` — the hadith that cite or
    explain an ayah, with a count per range so the reader can show where there
    are any. Not served at the open address; needs production access.
-5. **Answers on an ayah.** `answers/by_ayah` — scholars' answers to questions
+2. **Answers on an ayah.** `answers/by_ayah` — scholars' answers to questions
    about an ayah. Same: production only.
-6. **Surah introductions in other languages.** `resources/chapter_infos` lists
+3. **Surah introductions in other languages.** `resources/chapter_infos` lists
    five: English (Maudūdī's, which the site showed before it had introductions
    of its own — see §1), Urdu, Tamil, Malayalam, Italian.
-7. **Other scripts.** IndoPak, which South Asian readers learned on, and its
+4. **Other scripts.** IndoPak, which South Asian readers learned on, and its
    Nastaʿlīq form; the simplified Imlāʾī, which is the one to search.
-8. **Whole-surah recitation.** `chapter_recitations` — one file to a surah
+5. **Whole-surah recitation.** `chapter_recitations` — one file to a surah
    with every word timed, from a longer list of reciters than the eleven here.
    No gap between ayat because there is no join.
-9. **Reading offline.** The Content Sync endpoints let translations, tafsir
+6. **Reading offline.** The Content Sync endpoints let translations, tafsir
    and word meanings be kept on a device past the week, provided they are
    synced every seven days. That is the sanctioned route to a muṣḥaf that works
    on a plane.
-10. **Reflections.** Quran Reflect's lessons and reflections on an ayah, from
-    its verified contributors.
-11. **A listing.** Quran.com/apps lists applications that pass its review. The
-    requirements are the terms above, plus a named contact and a support route.
 
 **Not worth taking.** The JavaScript SDK (`@quranjs/api`): its server half
 does what the relay does in two hundred lines, and its browser half is for the
@@ -782,6 +793,25 @@ cleanly.
 
 **The questions of the Qur'an.** Sixteen speakers the commentators differ on
 are set out in `QUESTIONS-REVIEW.md` for you to rule on.
+
+**By heart (`/hifz/`).** Four things are yours to rule on.
+
+- *The hadith at the foot of the page.* "تعاهدوا القرآن…", al-Bukhārī 5033 and
+  Muslim 791 (ʿAbd al-Bāqī's numbers, both checked against the open hadith
+  corpus by number and wording). The Arabic is al-Bukhārī's as the corpus has
+  it. The English under it is mine — "Keep going back to the Qur'an. By the
+  One in whose hand my soul is, it slips away faster than camels from their
+  tethers" — and wants your eye, as do its Pashto, Persian and Spanish.
+- *The steps.* An ayah recited well is left 1, 2, 4, 7, 14, 30 and then 60
+  days (`STEPS` in `src/lib/store/hifz.ts`). They are a sensible ladder and
+  nothing more; a teacher's own schedule can be put there in one line.
+- *Counting as read.* An ayah judged in a sitting is noted as read that day,
+  so it lights the niche and counts toward a khatm portion. If reciting from
+  memory should not move the khatm plan on, it is one call to take out
+  (`noteReadKey` in `Sitting.tsx`).
+- *The words.* Sixty-two new sentences in each language, unread by a native
+  speaker like the rest (§9); "ḥifẓ" is «حفظ» in Pashto and Persian and "De
+  memoria" in Spanish.
 
 ---
 

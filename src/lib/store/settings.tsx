@@ -23,6 +23,7 @@ import {
 import { DEFAULT_TAFSIR_SHELF, reviveTafsirShelf, tafsirWork } from "../quran/tafsir";
 import { DEFAULT_LOCALE, isLocale, type LocaleId } from "../i18n/locales";
 import { createPersistedStore } from "./persisted";
+import { isValidVerseKey } from "../text";
 import { DEFAULT_QARI, isQari, type QariId } from "../audio/qari";
 
 export type Layout = "rows" | "stacked";
@@ -203,12 +204,19 @@ function clamp(n: number, lo: number, hi: number): number {
   return Math.min(hi, Math.max(lo, n));
 }
 
-/** A stored place is only a place if it names a surah there is. */
+/**
+ * A stored place is only a place if it names a surah there is — and the ayah,
+ * if it names one, is an ayah of that surah. The tafsir and the ayah study
+ * open on this place when their address names none, and used to open on
+ * whatever was written here.
+ */
 function reviveLastRead(stored: unknown): LastRead | null {
   if (!stored || typeof stored !== "object") return null;
   const { surah, verseKey } = stored as Partial<LastRead>;
   if (typeof surah !== "number" || !Number.isInteger(surah) || surah < 1 || surah > 114) return null;
-  return { surah, verseKey: typeof verseKey === "string" ? verseKey : null };
+  const held =
+    typeof verseKey === "string" && isValidVerseKey(verseKey) && verseKey.startsWith(`${surah}:`) ? verseKey : null;
+  return { surah, verseKey: held };
 }
 
 /**

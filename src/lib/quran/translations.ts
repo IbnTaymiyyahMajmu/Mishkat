@@ -264,7 +264,9 @@ const ENTITIES: Record<string, string> = {
 
 function decode(text: string): string {
   return text.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (whole, name: string) => {
-    if (name[0] !== "#") return ENTITIES[name.toLowerCase()] ?? whole;
+    // Asked of the table itself: `&constructor;` is not an entity, and looked
+    // up plainly it found Object's own and printed a function into the text.
+    if (name[0] !== "#") return Object.hasOwn(ENTITIES, name.toLowerCase()) ? ENTITIES[name.toLowerCase()] : whole;
     const code = name[1] === "x" || name[1] === "X" ? parseInt(name.slice(2), 16) : parseInt(name.slice(1), 10);
     return Number.isFinite(code) && code > 0 && code <= 0x10ffff ? String.fromCodePoint(code) : whole;
   });

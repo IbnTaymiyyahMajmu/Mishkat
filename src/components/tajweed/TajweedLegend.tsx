@@ -7,14 +7,37 @@ import { useLocale, type MessageKey } from "@/lib/i18n";
 import tj from "./Tajweed.module.css";
 import styles from "./TajweedLegend.module.css";
 
-/** A family's colour in the legend: the first of its rules' tones. */
-const FAMILY_TONE: Record<Family, string> = {
-  hold: tj.madd45,
+/** A family's colour in the legend. Holding has four, and is drawn as `Ladder`. */
+const FAMILY_TONE: Record<Exclude<Family, "hold">, string> = {
   nasal: tj.nasal,
   bounce: tj.bounce,
   merge: tj.merge,
   silent: tj.silent,
 };
+
+/** The four lengths of a held vowel, shortest first, with how long each is held. */
+const LENGTHS: { tone: string; counts: number[] }[] = [
+  { tone: tj.madd2, counts: [2] },
+  { tone: tj.madd246, counts: [2, 4, 6] },
+  { tone: tj.madd45, counts: [4, 5] },
+  { tone: tj.madd6, counts: [6] },
+];
+
+/** The colours of the lengthenings, together: the mark of the family that has four. */
+export function Ladder() {
+  return (
+    <span className={tj.ladder} aria-hidden="true">
+      {LENGTHS.map((l) => (
+        <i key={l.tone} className={l.tone} />
+      ))}
+    </span>
+  );
+}
+
+/** A family's mark in a key: its colour, or for holding, its four. */
+export function FamilyMark({ family }: { family: Family }) {
+  return family === "hold" ? <Ladder /> : <span className={`${tj.swatch} ${FAMILY_TONE[family]}`} aria-hidden="true" />;
+}
 
 /**
  * The attributes that tell a coloured text which families to show: none
@@ -75,7 +98,7 @@ export function TajweedLegend({
             onClick={() => toggle(f)}
             title={t(`tj.familyDo.${f}` as MessageKey)}
           >
-            <span className={`${tj.swatch} ${FAMILY_TONE[f]}`} aria-hidden="true" />
+            <FamilyMark family={f} />
             {t(`tj.family.${f}` as MessageKey)}
             {counts && !compact && <span className={styles.count}>{n(counts[f])}</span>}
             {on && (
@@ -89,6 +112,21 @@ export function TajweedLegend({
       <Link href="/tajweed/" className={styles.guide}>
         {compact ? "?" : t("tj.legend.guide")}
       </Link>
+      {/* Over the reader, what the four colours of holding each ask for, and
+          that any coloured letter answers a tap with its rule. */}
+      {!compact && (
+        <p className={styles.key}>
+          <span className={styles.keyHold}>{t("tj.legend.hold")}</span>
+          {LENGTHS.map((l) => (
+            <span key={l.tone} className={styles.keyStep}>
+              <span className={`${tj.swatch} ${l.tone}`} aria-hidden="true" />
+              <bdi>{l.counts.map(n).join("·")}</bdi>
+            </span>
+          ))}
+          <span className={styles.keyUnit}>{t("tj.countsUnit", { count: 6 })}</span>
+          <span className={styles.keyTap}>{t("tj.legend.tap")}</span>
+        </p>
+      )}
     </div>
   );
 }

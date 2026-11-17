@@ -197,7 +197,13 @@ export function relay({ clientId, clientSecret, env = "prelive", allow }) {
       return reply('{"error":"The Quran Foundation could not be reached"}', 502);
     }
 
-    const body = await res.text();
+    let body;
+    try {
+      body = await res.text();
+    } catch {
+      // The answer began and was cut off: that is the Foundation not reached.
+      return reply('{"error":"The Quran Foundation could not be reached"}', 502);
+    }
     if (!res.ok) return reply(body || '{"error":"refused"}', res.status);
 
     kept.delete(key);
@@ -247,16 +253,30 @@ if (direct) {
   }
 
   createServer(async (req, res) => {
-    const request = new Request(`http://localhost:${port}${req.url}`, {
-      method: req.method,
-      headers: Object.fromEntries(
-        Object.entries(req.headers).filter((h) => typeof h[1] === "string"),
-      ),
-    });
-    const response = await handle(request);
-    res.writeHead(response.status, Object.fromEntries(response.headers));
-    res.end(await response.text());
-  }).listen(port, () => {
+    // Anything that goes wrong with one request is that request's answer and
+    // nothing more. `new Request` throws on a method it will not carry (TRACE,
+    // CONNECT) and on an address it cannot read, and an error thrown here was
+    // nobody's to catch: one `curl -X TRACE` took the relay down for everyone.
+    try {
+      const request = new Request(`http://localhost:${port}${req.url}`, {
+        method: req.method,
+        headers: Object.fromEntries(
+          Object.entries(req.headers).filter((h) => typeof h[1] === "string"),
+        ),
+      });
+      const response = await handle(request);
+      res.writeHead(response.status, Object.fromEntries(response.headers));
+      res.end(await response.text());
+    } catch {
+      if (!res.headersSent) res.writeHead(400, { "Content-Type": "application/json; charset=utf-8" });
+      res.end('{"error":"not a request this relay answers"}');
+    }
+    // On this machine only. The relay answers with this site's credentials to
+    // whoever names an allowed origin, and an origin is a header anything but
+    // a browser may write as it likes — so it is not offered to the network
+    // the machine happens to be on. Deployed, the platform's own handler is
+    // used and none of this runs.
+  }).listen(port, "127.0.0.1", () => {
     console.log(
       `Quran Foundation relay (${env}) on http://localhost:${port} — answering ${allow.join(", ")}`,
     );

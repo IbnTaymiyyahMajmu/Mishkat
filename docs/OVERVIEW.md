@@ -95,6 +95,16 @@ visually distinct. Notes are grouped by surah, searchable, and exportable.
 text, no translation, no transliteration, no word rows — without changing a
 single setting, and restoring nothing on the way back.
 
+**The muṣḥaf by its pages.** `/mushaf/` (**Muṣḥaf** in the menu) is the Madīnah
+muṣḥaf as printed: 604 pages, fifteen lines, every word on its printed line,
+in the King Fahd Complex's own font for each page and sized to fill the screen.
+A page turns the way the book does — the next is to the left. Its head says the
+page, juzʾ and ḥizb, and opens an index by surah, by juzʾ with the quarters of
+its two ḥizbs, or by number; `page 42` and `hizb 12` work in the way to an ayah
+as well. With tajweed on, the pages are the Complex's tajweed muṣḥaf, recoloured
+to the site's own tajweed colours so one key serves the reader and the page
+(`src/components/mushaf/useTajweedPalette.ts`).
+
 **Recitation.** Real audio from eleven reciters, with the word being recited lit
 as it is read, using the corpus's word-timing segments.
 
@@ -104,6 +114,27 @@ chosen number of times or until stopped — and, optionally, a silence after eac
 ayah as long as the ayah itself, to recite it back in. The passage offered runs
 from the ayah being recited to the end of its rukūʿ, and the stretch being
 looped is drawn on the reader's rail.
+
+**By heart.** What is memorised is kept (`/hifz/`, **By heart** in the menu and
+under each surah's name). A sitting sets an ayah behind glass, each word its
+own pane and each pane as wide as its word; the reader recites it, then
+uncovers it a word at a time to check what they said against what is written,
+taps any word they slipped on, and says how it went — forgot, faltered, knew
+it. That decides when the ayah comes back: after a day, then two, four, a
+week, two weeks, a month, and every two months after that; tomorrow if it was
+faltered on; before the sitting ends if it was forgotten. A word marked as a
+slip carries a dot on its glass the next time, as a teacher's pencil marks a
+muṣḥaf. An ayah met for the first time is shown uncovered, to be read and
+heard, and covered when the reader has it. The first letter of each word can
+be asked for as a hint, and the ayah before is quoted above as the thread to
+recite on from. The page's first screen is what is due today; under it, every
+surah the reader holds, each ayah lit by how firmly it is held.
+
+The page does not listen. No microphone is asked for and no recitation is sent
+anywhere to be marked: the reader's own ear, checked against the text, is the
+test. The record is one key in the browser (`mishkat.hifz.v1`,
+`src/lib/store/hifz.ts`), and an ayah recited in a sitting counts as read that
+day, for the niche and the khatm plan alike.
 
 **Horizons: a surah recited over the signs it names.** Each surah has a film
 (`/read/<n>/horizons/`, the **Watch** door under its name in the reader). It
