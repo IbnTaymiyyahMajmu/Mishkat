@@ -29,6 +29,9 @@ export interface Word {
   char_type_name: string;
   text_uthmani?: string;
   text?: string;
+  /** The word as one glyph of its page's font, and the line of the page it is on. */
+  code_v2?: string;
+  line_number?: number;
   location?: string;
   audio_url?: string | null;
   translation?: { text: string; language_name: string };

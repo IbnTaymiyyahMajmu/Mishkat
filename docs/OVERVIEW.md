@@ -95,6 +95,16 @@ visually distinct. Notes are grouped by surah, searchable, and exportable.
 text, no translation, no transliteration, no word rows — without changing a
 single setting, and restoring nothing on the way back.
 
+**The muṣḥaf by its pages.** `/mushaf/` (**Muṣḥaf** in the menu) is the Madīnah
+muṣḥaf as printed: 604 pages, fifteen lines, every word on its printed line,
+in the King Fahd Complex's own font for each page and sized to fill the screen.
+A page turns the way the book does — the next is to the left. Its head says the
+page, juzʾ and ḥizb, and opens an index by surah, by juzʾ with the quarters of
+its two ḥizbs, or by number; `page 42` and `hizb 12` work in the way to an ayah
+as well. With tajweed on, the pages are the Complex's tajweed muṣḥaf, recoloured
+to the site's own tajweed colours so one key serves the reader and the page
+(`src/components/mushaf/useTajweedPalette.ts`).
+
 **Recitation.** Real audio from eleven reciters, with the word being recited lit
 as it is read, using the corpus's word-timing segments.
 

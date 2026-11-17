@@ -67,6 +67,19 @@ const NAV: { href: string; label: MessageKey; match: (p: string) => boolean; ico
     ),
   },
   {
+    href: "/mushaf/",
+    label: "nav.mushaf",
+    match: (p) => p.startsWith("/mushaf"),
+    // One page of it: its lines, and the band of a surah's name at the head.
+    icon: (
+      <>
+        <path d="M6.2 3.8h11.6v16.4H6.2z" />
+        <path d="M8.6 6.6h6.8v1.9H8.6z" opacity="0.6" />
+        <path d="M8.6 11.2h6.8M8.6 13.9h6.8M8.6 16.6h6.8" />
+      </>
+    ),
+  },
+  {
     href: "/plan/",
     label: "nav.plan",
     match: (p) => p.startsWith("/plan"),

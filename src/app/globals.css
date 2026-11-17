@@ -201,14 +201,21 @@
      between them is not taught twice — warm for the lengthenings, deepening
      with the length; green for the nasal sounds; blue for the bounce; slate
      for a letter run into the next; grey for what is written and not said.
-     Drawn here for paper, and again for the night. See lib/quran/tajweed.ts. */
-  --tj-madd2: #e8c25a;
-  --tj-madd246: #ffa452;
-  --tj-madd45: #ff7d61;
-  --tj-madd6: #f45d82;
-  --tj-nasal: #69d487;
-  --tj-bounce: #7cb0ff;
-  --tj-merge: #b3aa99;
+     Drawn here for a dark ground, and again for paper.
+
+     Each colour is set where it is furthest from the ink and from the colour
+     next to it on the ladder, measured as the eye measures colour (OKLab):
+     the two shortest lengths were once a step apart and read as one, and
+     the shortest sat close enough to the cream ink to be missed. Each step of
+     the ladder now turns the hue as well as darkening it. See
+     lib/quran/tajweed.ts. */
+  --tj-madd2: #efd127;
+  --tj-madd246: #ff9c2e;
+  --tj-madd45: #fa6b52;
+  --tj-madd6: #ed4f8d;
+  --tj-nasal: #61d779;
+  --tj-bounce: #6badff;
+  --tj-merge: #ab9f93;
   --tj-silent: color-mix(in srgb, var(--color-text) 34%, transparent);
 }
 
@@ -236,13 +243,13 @@
   --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
   --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
   --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
-  --tj-madd2: #a8740f;
-  --tj-madd246: #d0680c;
-  --tj-madd45: #cc2b2b;
-  --tj-madd6: #8c1111;
-  --tj-nasal: #23843a;
-  --tj-bounce: #1c62c7;
-  --tj-merge: #6f7d8c;
+  --tj-madd2: #8c7000;
+  --tj-madd246: #bd5e00;
+  --tj-madd45: #b7191c;
+  --tj-madd6: #741432;
+  --tj-nasal: #187e36;
+  --tj-bounce: #145ec1;
+  --tj-merge: #5f717f;
   --mk-paper: #fbfaf8;
   --mk-ink: #1c1b19;
   --mk-gold: #9d6d22;
@@ -316,13 +323,13 @@
   --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
   --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
   --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
-  --tj-madd2: #a26f0c;
-  --tj-madd246: #c8620b;
-  --tj-madd45: #c42a2a;
-  --tj-madd6: #861212;
-  --tj-nasal: #22803a;
-  --tj-bounce: #1b5ec0;
-  --tj-merge: #66737f;
+  --tj-madd2: #8c7000;
+  --tj-madd246: #bd5e00;
+  --tj-madd45: #b7191c;
+  --tj-madd6: #741432;
+  --tj-nasal: #187e36;
+  --tj-bounce: #145ec1;
+  --tj-merge: #5f717f;
   --mk-paper: #f3f2f2;
   --mk-ink: #201f1d;
   --mk-gold: #b68235;
@@ -365,13 +372,13 @@
 /* Night. A dark ground under a cold, still light, with the gold turned up to
    carry it: on paper the mid gold is a stroke, here it has to be visible ink. */
 :root[data-theme="night"] {
-  --tj-madd2: #e6c15a;
-  --tj-madd246: #ffa64a;
-  --tj-madd45: #ff7a5c;
-  --tj-madd6: #f2507a;
-  --tj-nasal: #5fd27a;
-  --tj-bounce: #6aa9ff;
-  --tj-merge: #9eabb8;
+  --tj-madd2: #efd127;
+  --tj-madd246: #ff9c2e;
+  --tj-madd45: #fa6b52;
+  --tj-madd6: #ed4f8d;
+  --tj-nasal: #61d779;
+  --tj-bounce: #6badff;
+  --tj-merge: #a3a7ae;
   color-scheme: dark;
   --mk-paper: #0d0e10;
   --mk-ink: #ebe6da;

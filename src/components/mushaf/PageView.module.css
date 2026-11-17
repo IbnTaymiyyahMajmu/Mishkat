@@ -1,0 +1,563 @@
+/* The muṣḥaf by its pages. One page on the screen, in a frame the width of a
+   book's page; a bar over it saying where the page is; an index drawn up from
+   the foot of the screen. The type's size is not set here: the page works it
+   out from its own longest line (PageView.tsx) and writes it on the sheet. */
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background:
+    radial-gradient(90% 40% at 50% 0%, color-mix(in srgb, var(--mk-gold) 8%, transparent), transparent 72%),
+    var(--color-bg);
+  --rule: color-mix(in srgb, var(--mk-gold) 34%, transparent);
+}
+
+/* ── where the page is ──────────────────────────────────────────────────── */
+
+/* Set left to right whatever language the site is in: the next page of this
+   book is on the left, and its arrow is kept there. */
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  direction: ltr;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.turn {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  min-height: 44px;
+  color: var(--color-accent);
+  background: transparent;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+.turn:hover:not(:disabled) { background: color-mix(in srgb, var(--color-accent) 10%, transparent); border-color: var(--rule); }
+.turn:disabled { opacity: 0.3; cursor: default; }
+
+.where {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  padding: 4px 10px;
+  font: inherit;
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 160ms ease;
+}
+.where:hover { background: color-mix(in srgb, var(--color-text) 6%, transparent); }
+.whereSurah {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 1.25;
+}
+.wherePlace {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  font-variant-numeric: lining-nums;
+}
+:global(html[data-script="arabic"]) .wherePlace { letter-spacing: 0; font-size: 13px; direction: rtl; }
+
+/* ── the page ───────────────────────────────────────────────────────────── */
+
+.stage {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 14px 24px;
+}
+
+/* The sheet is as wide as the page may be, and its font-size is the page's
+   fit. Everything inside is in ems of it, so the whole page scales as one. */
+.sheet {
+  width: min(100%, 560px);
+  min-height: 60vh;
+  font-size: 22px;
+}
+.sheet[data-frame] { width: min(100%, 430px); }
+
+.leaf {
+  /* Held back until the type has been sized, so a page is never seen once at
+     the wrong size and then again at the right one. */
+  opacity: 0;
+  font-family: var(--arabic-font);
+  color: var(--color-text);
+  padding: 0.55em 0;
+  border-block: 1px solid var(--rule);
+}
+.leaf[data-ready] { opacity: 1; animation: settle 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+/* A page turned to comes in from the side it was on in the book. */
+.leaf[data-ready][data-turned="next"] { animation-name: fromLeft; }
+.leaf[data-ready][data-turned="prev"] { animation-name: fromRight; }
+@keyframes settle {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fromLeft {
+  from { opacity: 0; transform: translateX(-22px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fromRight {
+  from { opacity: 0; transform: translateX(22px); }
+  to { opacity: 1; transform: none; }
+}
+.sheet[data-frame] .leaf {
+  padding: 1.1em 0.5em;
+  border: 1px solid var(--rule);
+  border-radius: 0.5em;
+  box-shadow: inset 0 0 0 0.22em var(--color-bg), inset 0 0 0 calc(0.22em + 1px) var(--rule);
+}
+
+.line,
+.name,
+.basmala,
+.basmalaDrawn,
+.empty {
+  margin: 0;
+  height: 1.87em;
+  line-height: 1.87em;
+  white-space: nowrap;
+}
+
+/* The basmala set from the first page's font, in the middle of its line. */
+.basmalaDrawn {
+  display: flex;
+  justify-content: center;
+  direction: rtl;
+}
+
+/* A line of the page: its words spread from margin to margin, as printed. */
+.line {
+  display: flex;
+  justify-content: space-between;
+  direction: rtl;
+}
+/* A line that does not reach the margin — the last of a surah, the lines of
+   the first two pages — stands in the middle, as it does on the page. */
+.line[data-short],
+.sheet[data-frame] .line {
+  justify-content: center;
+}
+/* Set from words rather than from the page's font: words need room between. */
+.leaf[data-plain] .line { gap: 0.28em; }
+
+.word {
+  cursor: pointer;
+  border-radius: 0.12em;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 160ms ease, color 160ms ease;
+}
+.word[data-on] {
+  background: var(--tint);
+  color: var(--color-accent-800);
+}
+.leaf[data-plain] .word[data-end] {
+  display: inline-grid;
+  place-items: center;
+  align-self: center;
+  width: 1.5em;
+  height: 1.5em;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+  border-radius: 50%;
+  font-family: var(--font-amiri), serif;
+  font-size: 0.5em;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+/* The band a surah's name is written in. */
+.name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.name > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 1.9em;
+  padding-top: 0.12em;
+  font-family: var(--font-amiri), var(--font-noto-naskh), serif;
+  font-size: 0.66em;
+  line-height: 1;
+  color: var(--color-accent);
+  border: 1px solid var(--rule);
+  border-radius: 0.3em;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--mk-gold) 16%, transparent), transparent 22% 78%, color-mix(in srgb, var(--mk-gold) 16%, transparent)),
+    color-mix(in srgb, var(--mk-gold) 6%, transparent);
+  box-shadow: inset 0 0 0 0.16em var(--color-bg), inset 0 0 0 calc(0.16em + 1px) var(--rule);
+}
+
+.basmala {
+  text-align: center;
+  font-family: var(--font-amiri-quran), serif;
+  font-size: 0.86em;
+  height: calc(1.87em / 0.86);
+  line-height: calc(1.87em / 0.86);
+}
+
+/* The foot of the page: its number, and its colour beside it. */
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.tajweed { font-size: 12.5px; padding: 4px 12px; }
+
+/* The key, while the page is in colour: a row of the bar, folded to fit. */
+.legend {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+}
+/* The bar is set left to right for its arrows; the key reads the page's way. */
+:global(html[dir="rtl"]) .legend { direction: rtl; }
+.legend > div { justify-content: center; row-gap: 6px; }
+
+.folio {
+  min-width: 3.2em;
+  padding: 2px 12px;
+  text-align: center;
+  font-family: var(--font-amiri), serif;
+  font-size: 16px;
+  color: var(--color-accent);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+}
+
+/* A page not yet here: its lines, faintly. */
+.ghost {
+  display: grid;
+  gap: 0.75em;
+  padding: 0.9em 0;
+  border-block: 1px solid var(--rule);
+}
+.ghost i {
+  display: block;
+  height: 1.2em;
+  border-radius: 0.2em;
+  background: color-mix(in srgb, var(--color-text) 7%, transparent);
+  animation: wait 1.6s ease-in-out infinite;
+}
+.ghost i:nth-child(3n) { animation-delay: 200ms; }
+.ghost i:nth-child(3n + 1) { animation-delay: 400ms; }
+@keyframes wait {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
+.state {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 80px 0;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  color: var(--muted-55);
+  text-align: center;
+}
+.state p { margin: 0; }
+
+/* ── the ayah that was touched ──────────────────────────────────────────── */
+
+.picked {
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 10px;
+  padding: 0 14px;
+  max-height: 0;
+  overflow: hidden;
+  background: var(--color-bg);
+  border-top: 1px solid transparent;
+  transition: max-height 280ms cubic-bezier(0.2, 0.8, 0.2, 1), padding 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.picked[data-open] {
+  max-height: 140px;
+  padding: 12px 14px calc(12px + env(safe-area-inset-bottom, 0px));
+  border-top-color: var(--color-divider);
+}
+.pickedName {
+  flex: 1 1 100%;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-variant-numeric: lining-nums;
+}
+.picked :global(.btn) { font-size: 13.5px; }
+
+/* ── the index ──────────────────────────────────────────────────────────── */
+
+.index {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  visibility: hidden;
+  transition: visibility 0s linear 320ms;
+}
+.index[data-open] { visibility: visible; transition-delay: 0s; }
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  background: rgb(0 0 0 / 55%);
+  opacity: 0;
+  transition: opacity 260ms ease;
+  cursor: default;
+}
+.index[data-open] .scrim { opacity: 1; }
+
+.panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 560px);
+  height: min(78vh, 680px);
+  background: var(--color-bg);
+  border: 1px solid var(--rule);
+  border-bottom: 0;
+  border-radius: 14px 14px 0 0;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(102%);
+  transition: transform 340ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.index[data-open] .panel { transform: none; }
+
+.panelHead {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px 12px 14px;
+  border-bottom: 1px solid var(--color-divider);
+}
+.tabs {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--color-divider);
+  border-radius: 999px;
+}
+.tab {
+  min-height: 36px;
+  padding: 4px 8px;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 14.5px;
+  color: var(--muted-72);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease;
+}
+.tab[aria-selected="true"] {
+  color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 16%, transparent);
+}
+.close {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  color: var(--muted-72);
+  background: transparent;
+  border: 1px solid var(--color-divider);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 6px 14px calc(18px + env(safe-area-inset-bottom, 0px));
+}
+
+.surahs,
+.juzs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  width: 100%;
+  padding: 11px 6px;
+  font: inherit;
+  text-align: start;
+  color: var(--color-text);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--color-divider);
+  cursor: pointer;
+}
+.row:hover { background: color-mix(in srgb, var(--color-text) 5%, transparent); }
+.row small {
+  flex: none;
+  width: 2.2em;
+  font-size: 12px;
+  color: var(--muted-55);
+  font-variant-numeric: lining-nums;
+}
+.row span { flex: 1; min-width: 0; font-family: var(--font-heading); font-size: 18px; }
+.row em,
+.juzHead em {
+  flex: none;
+  font-style: normal;
+  font-size: 12.5px;
+  color: var(--muted-55);
+  font-variant-numeric: lining-nums;
+}
+.row[aria-current] span { color: var(--color-accent); }
+.row[aria-current] em { color: var(--color-accent); }
+
+.juz {
+  padding: 10px 0 12px;
+  border-bottom: 1px solid var(--color-divider);
+}
+.juzHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 4px 6px 8px;
+  font: inherit;
+  color: var(--color-text);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.juzHead span { font-family: var(--font-heading); font-size: 18px; }
+.juz[aria-current] .juzHead span { color: var(--color-accent); }
+
+/* Two ḥizbs to a juzʾ, each its opening and its three quarters. */
+.quarters {
+  display: grid;
+  grid-template-columns: minmax(0, 1.9fr) repeat(3, minmax(0, 1fr)) minmax(0, 1.9fr) repeat(3, minmax(0, 1fr));
+  gap: 5px;
+}
+.quarter {
+  min-height: 38px;
+  padding: 4px 2px;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  color: var(--muted-72);
+  background: transparent;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-variant-numeric: lining-nums;
+  white-space: nowrap;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+.quarter[data-head] { color: var(--color-text); font-size: 13px; }
+.quarter:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.quarter[data-here] {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+}
+
+.byNumber {
+  display: grid;
+  gap: 18px;
+  padding: 22px 6px 6px;
+}
+.number {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 12px;
+  font-family: var(--font-heading);
+}
+.number > span {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+:global(html[data-script="arabic"]) .number > span { letter-spacing: 0; text-transform: none; font-size: 13px; }
+.number :global(.input) {
+  width: 5.2em;
+  min-height: 52px;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-variant-numeric: lining-nums;
+}
+.number em { font-style: normal; font-size: 14px; color: var(--muted-55); }
+.slider { width: 100%; accent-color: var(--color-accent); }
+.numberPlace {
+  margin: 0;
+  min-height: 3.4em;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  text-align: center;
+}
+.numberPlace span { font-family: var(--font-heading); font-size: 20px; }
+.numberPlace small { font-size: 13px; color: var(--muted-62); }
+.byNumber :global(.btn) { justify-self: center; min-width: 160px; min-height: 44px; }
+
+@media (min-width: 700px) {
+  .index { align-items: center; }
+  .panel { border-bottom: 1px solid var(--rule); border-radius: 14px; transform: translateY(24px); opacity: 0; transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 240ms ease; }
+  .index[data-open] .panel { opacity: 1; }
+  .stage { padding-top: 26px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leaf[data-ready], .ghost i { animation: none; }
+  .panel, .scrim, .picked { transition: none; }
+}

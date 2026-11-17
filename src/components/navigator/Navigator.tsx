@@ -53,6 +53,8 @@ const KIND: Record<Destination["kind"], MessageKey> = {
   ayah: "common.ayah",
   surah: "common.surah",
   juz: "common.juz",
+  page: "common.page",
+  hizb: "pages.hizb",
 };
 
 /**

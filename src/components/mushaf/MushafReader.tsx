@@ -12,6 +12,7 @@ import { usePlayerControls, usePlayerStatus } from "@/lib/audio/player";
 import { useToast } from "@/components/Toast";
 import { arabicNumber, plainText } from "@/lib/text";
 import { translationName } from "@/lib/quran/translations";
+import { surahPage } from "@/lib/quran/pages";
 import { useLocale } from "@/lib/i18n";
 import { useSurahNames } from "@/lib/i18n/surah";
 import { useReadingTracker } from "@/lib/useReadingTracker";
@@ -246,6 +247,10 @@ export function MushafReader({ surah }: { surah: number }) {
                 only name the surah is given. */}
             {[names.arabic ? t("common.surahN", { n: surah }) : chapterName, t("common.ayat", { count: chapter?.verses_count ?? verses.length })].join(" · ")}
           </div>
+          {/* The same surah as the page it is printed on: the muṣḥaf by its pages. */}
+          <Link href={`/mushaf/?p=${surahPage(surah)}`} className={styles.headPage}>
+            {t("pages.fromSurah", { n: surahPage(surah) })} {arrows.next}
+          </Link>
         </header>
 
         {chapter?.bismillah_pre && !loading && (

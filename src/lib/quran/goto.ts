@@ -1,6 +1,7 @@
 import type { Translate } from "../i18n/types";
 import { foldToText } from "../match";
 import { juzStart } from "./juz";
+import { PAGES, pageStart, rubStart } from "./pages";
 
 /**
  * Reading what a person types when they want to be somewhere else.
@@ -36,7 +37,7 @@ export interface Destination {
   surah: number;
   /** `null` is the head of the surah — its name and basmala, not its first ayah. */
   ayah: number | null;
-  kind: "ayah" | "surah" | "juz";
+  kind: "ayah" | "surah" | "juz" | "page" | "hizb";
   title: string;
   detail: string;
 }
@@ -143,6 +144,36 @@ export function resolveGoto(query: string, surahs: SurahRow[], here: number, say
         kind: "juz",
         title: say.t("common.juzN", { n: +juz[1] }),
         detail: say.t("goto.juzBeginsAt", { surah: say.name(row.id), key: `${start.surah}:${start.ayah}` }),
+      },
+    ];
+  }
+
+  // page 42, p42, hizb 12, rub 45 — the printed muṣḥaf's other divisions. A
+  // reader told "from page 42" or "the third quarter of ḥizb 12" has a place
+  // to go to, and it is the ayah that page or quarter opens at.
+  const division = /^(page|pg|p|página|pagina|pág|صفحة|صفحه|مخ|hizb|ḥizb|حزب|rub['ʿ’]?|ربع)\s*(\d{1,3})$/i.exec(raw);
+  if (division) {
+    const word = division[1].toLowerCase();
+    const n = +division[2];
+    const kind = /^(hizb|ḥizb|حزب)$/.test(word) ? "hizb" : /^(rub|ربع)/.test(word) ? "rub" : "page";
+    const limit = kind === "page" ? PAGES : kind === "hizb" ? 60 : 240;
+    if (n < 1 || n > limit) return [];
+    const quarter = kind === "hizb" ? (n - 1) * 4 + 1 : n;
+    const key = kind === "page" ? pageStart(n) : rubStart(quarter);
+    const [surah, ayah] = key.split(":").map(Number);
+    const row = byId(surah);
+    if (!row) return [];
+    const title =
+      kind === "page"
+        ? say.t("pages.pageN", { n })
+        : `${say.t("pages.hizbN", { n: Math.ceil(quarter / 4) })} ${["", "¼", "½", "¾"][(quarter - 1) % 4]}`.trim();
+    return [
+      {
+        surah,
+        ayah: ayah === 1 ? null : ayah,
+        kind: kind === "page" ? "page" : "hizb",
+        title,
+        detail: say.t("goto.juzBeginsAt", { surah: say.name(row.id), key }),
       },
     ];
   }
